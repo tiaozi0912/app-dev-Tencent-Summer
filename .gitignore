@@ -1,0 +1,10 @@
+.bundle
+db/*.sqlite3
+log/*.log
+log/searchd.development.pid
+tmp/
+.sass-cache/
+.idea/*
+config/development.sphinx.conf
+db/sphinx/*
+.DS_Store
