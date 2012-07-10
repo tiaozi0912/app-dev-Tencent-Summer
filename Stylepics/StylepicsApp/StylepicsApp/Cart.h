@@ -13,6 +13,6 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSMutableArray * audience;
 
--(void) addItem:(Item *) item;
 @end

@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSNumber *price;
 @property (nonatomic, strong) UIImage *photo;
+@property (nonatomic, strong) NSMutableArray *comments;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "NewsFeedNewCartCell.h"
+#import "NewsFeedNewItemCell.h"
+#import "NewsFeedVoteCell.h"
 
 @interface NewsFeedTableViewController : UITableViewController
 @property (nonatomic, strong) NSMutableArray* events;

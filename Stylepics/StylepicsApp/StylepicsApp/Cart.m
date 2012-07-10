@@ -12,9 +12,6 @@
 
 @synthesize name=_name;
 @synthesize items=_items;
-
--(void) addItem:(Item *) item {
-    [self.items addObject:item];
-}
+@synthesize audience=_audience;
 
 @end

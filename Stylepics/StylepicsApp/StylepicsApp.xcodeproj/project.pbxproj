@@ -23,6 +23,12 @@
 		0D94F51915A7D41300903F0B /* StylepicsEntryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */; };
 		0D94F51B15A7EBAB00903F0B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F51A15A7EBAB00903F0B /* MobileCoreServices.framework */; };
 		0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */; };
+		0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */; };
+		0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */; };
+		0D96665815AB93AF00753491 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665715AB93AF00753491 /* CartTableViewController.m */; };
+		0D96665B15AB97CD00753491 /* CartItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665A15AB97CD00753491 /* CartItemCell.m */; };
+		0D96665E15AB9DEB00753491 /* comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665D15AB9DEA00753491 /* comment.m */; };
+		0D96666115AB9FA900753491 /* AudienceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96666015AB9FA900753491 /* AudienceListView.m */; };
 		0D9C05A415AA1BCE006D86CE /* NewsFeedNewCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */; };
 		0D9C05AE15AAC125006D86CE /* carts.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A615AAC125006D86CE /* carts.png */; };
 		0D9C05AF15AAC125006D86CE /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A715AAC125006D86CE /* item1.png */; };
@@ -63,6 +69,18 @@
 		0D94F51A15A7EBAB00903F0B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
 		0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; };
+		0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewItemCell.h; path = "News Feed Page/NewsFeedNewItemCell.h"; sourceTree = "<group>"; };
+		0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewItemCell.m; path = "News Feed Page/NewsFeedNewItemCell.m"; sourceTree = "<group>"; };
+		0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedVoteCell.h; path = "News Feed Page/NewsFeedVoteCell.h"; sourceTree = "<group>"; };
+		0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedVoteCell.m; path = "News Feed Page/NewsFeedVoteCell.m"; sourceTree = "<group>"; };
+		0D96665615AB93AF00753491 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartTableViewController.h; path = "Cart Page/CartTableViewController.h"; sourceTree = "<group>"; };
+		0D96665715AB93AF00753491 /* CartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartTableViewController.m; path = "Cart Page/CartTableViewController.m"; sourceTree = "<group>"; };
+		0D96665915AB97CC00753491 /* CartItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartItemCell.h; path = "Cart Page/CartItemCell.h"; sourceTree = "<group>"; };
+		0D96665A15AB97CD00753491 /* CartItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartItemCell.m; path = "Cart Page/CartItemCell.m"; sourceTree = "<group>"; };
+		0D96665C15AB9DEA00753491 /* comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comment.h; sourceTree = "<group>"; };
+		0D96665D15AB9DEA00753491 /* comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comment.m; sourceTree = "<group>"; };
+		0D96665F15AB9FA900753491 /* AudienceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudienceListView.h; sourceTree = "<group>"; };
+		0D96666015AB9FA900753491 /* AudienceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudienceListView.m; sourceTree = "<group>"; };
 		0D9C05A215AA1BCE006D86CE /* NewsFeedNewCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewCartCell.h; path = "News Feed Page/NewsFeedNewCartCell.h"; sourceTree = "<group>"; };
 		0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewCartCell.m; path = "News Feed Page/NewsFeedNewCartCell.m"; sourceTree = "<group>"; };
 		0D9C05A615AAC125006D86CE /* carts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = carts.png; path = img/carts.png; sourceTree = "<group>"; };
@@ -121,27 +139,39 @@
 		0D94F4EE15A7D09700903F0B /* StylepicsApp */ = {
 			isa = PBXGroup;
 			children = (
-				0D94F4F715A7D09700903F0B /* StylepicsAppDelegate.h */,
-				0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */,
 				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
-				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
-				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
-				0D94F51715A7D41300903F0B /* StylepicsEntryPageViewController.h */,
-				0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */,
-				0D94F50515A7D2BB00903F0B /* UserEvent.h */,
-				0D9C05A215AA1BCE006D86CE /* NewsFeedNewCartCell.h */,
-				0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */,
-				0D94F50615A7D2BB00903F0B /* UserEvent.m */,
 				0D94F50715A7D2BB00903F0B /* User.h */,
+				0D94F50A15A7D2BB00903F0B /* User.m */,
 				0D94F50815A7D2BB00903F0B /* Item.h */,
 				0D94F50915A7D2BB00903F0B /* Item.m */,
-				0D94F50A15A7D2BB00903F0B /* User.m */,
+				0D96665C15AB9DEA00753491 /* comment.h */,
+				0D96665D15AB9DEA00753491 /* comment.m */,
 				0D94F50B15A7D2BB00903F0B /* Cart.h */,
 				0D94F50C15A7D2BB00903F0B /* Cart.m */,
-				0D94F51115A7D2F200903F0B /* cameraViewController.h */,
-				0D94F51215A7D2F200903F0B /* cameraViewController.m */,
+				0D94F50515A7D2BB00903F0B /* UserEvent.h */,
+				0D94F50615A7D2BB00903F0B /* UserEvent.m */,
+				0D94F51715A7D41300903F0B /* StylepicsEntryPageViewController.h */,
+				0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */,
+				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
+				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
+				0D9C05A215AA1BCE006D86CE /* NewsFeedNewCartCell.h */,
+				0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */,
+				0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */,
+				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
+				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
+				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
 				0D94F51415A7D30700903F0B /* CheckInViewController.h */,
 				0D94F51515A7D30800903F0B /* CheckInViewController.m */,
+				0D96665615AB93AF00753491 /* CartTableViewController.h */,
+				0D96665715AB93AF00753491 /* CartTableViewController.m */,
+				0D96665F15AB9FA900753491 /* AudienceListView.h */,
+				0D96666015AB9FA900753491 /* AudienceListView.m */,
+				0D96665915AB97CC00753491 /* CartItemCell.h */,
+				0D96665A15AB97CD00753491 /* CartItemCell.m */,
+				0D94F51115A7D2F200903F0B /* cameraViewController.h */,
+				0D94F51215A7D2F200903F0B /* cameraViewController.m */,
+				0D94F4F715A7D09700903F0B /* StylepicsAppDelegate.h */,
+				0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */,
 				0D94F4EF15A7D09700903F0B /* Supporting Files */,
 			);
 			path = StylepicsApp;
@@ -249,6 +279,12 @@
 				0D94F51915A7D41300903F0B /* StylepicsEntryPageViewController.m in Sources */,
 				0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */,
 				0D9C05A415AA1BCE006D86CE /* NewsFeedNewCartCell.m in Sources */,
+				0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */,
+				0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */,
+				0D96665815AB93AF00753491 /* CartTableViewController.m in Sources */,
+				0D96665B15AB97CD00753491 /* CartItemCell.m in Sources */,
+				0D96665E15AB9DEB00753491 /* comment.m in Sources */,
+				0D96666115AB9FA900753491 /* AudienceListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

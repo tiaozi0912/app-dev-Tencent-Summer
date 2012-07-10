@@ -41,64 +41,76 @@
     self.events = [[NSMutableArray alloc] init];
     
     //create one check-in event to events
-    UserEvent *userEvent = [[UserEvent alloc] init];
+    UserEvent *userEvent1 = [[UserEvent alloc] init];
     
-    User *user= [[User alloc] init];
-    user.name = @"Michael Wu";
-    user.photo = [UIImage imageNamed:@"user1.png"];
-    User *votee = user;
+    User *user1= [[User alloc] init];
+    user1.name = @"Michael Wu";
+    user1.photo = [UIImage imageNamed:@"user1.png"];
+    User *votee1 = user1;
     
-    Cart *cart = [[Cart alloc] init];
-    cart.name = @"Abercrombie & Fitch";
+    Cart *cart1 = [[Cart alloc] init];
+    cart1.name = @"Abercrombie & Fitch";
     
-    Item *item = [[Item alloc] init];
-    item.description = @"Can I wear this to date my first dream girl?";
-    item.price = [NSNumber numberWithDouble:49.99];
-    item.photo = [UIImage imageNamed:@"item1.png"];
-    [cart addItem:item];
+    Item *item1 = [[Item alloc] init];
+    item1.description = @"Can I wear this to date my first dream girl?";
+    item1.price = [NSNumber numberWithDouble:49.99];
+    item1.photo = [UIImage imageNamed:@"item1.png"];
+    [cart1.items addObject:item1];
     
-    userEvent.type = @"new cart";
-    userEvent.user = user;
-    userEvent.cart = cart;
-    userEvent.icon = [UIImage imageNamed:@"new cart.png"];
-    userEvent.votee = votee;
-    userEvent.description = [@"Check in for " stringByAppendingString:userEvent.cart.name];
-    [self.events addObject:userEvent];
+    userEvent1.type = @"new cart";
+    userEvent1.user = user1;
+    userEvent1.cart = cart1;
+    userEvent1.icon = [UIImage imageNamed:@"new cart.png"];
+    userEvent1.votee = votee1;
+    userEvent1.description = [@"Check-in to " stringByAppendingString:userEvent1.cart.name];
+    [self.events addObject:userEvent1];
     
-    /*//create one new-item event to events
-    user.name = @"Amanda Kao";
-    user.photo = [UIImage imageNamed:@"user2.png"];
+    //create one new-item event to events
+    UserEvent *userEvent2 = [[UserEvent alloc] init];
+    User *user2= [[User alloc] init];
+    user2.name = @"Amanda Kao";
+    user2.photo = [UIImage imageNamed:@"user2.png"];
     
-    cart.name = @"H&M";
+    Cart *cart2 = [[Cart alloc] init];
+    cart2.name = @"H&M";
     
-    item.description = @"I'd like to buy a vacation dress. What about this?";
-    item.price = [NSNumber numberWithDouble:44.99];
-    [cart addItem:item];
+    Item *item2 = [[Item alloc] init];
+    item2.description = @"Does this match my style of a party girl?";
+    item2.price = [NSNumber numberWithDouble:34.99];
+    item2.photo = [UIImage imageNamed:@"item1.png"];
+    [cart2.items addObject:item2];
     
-    userEvent.type = @"new item";
-    userEvent.user = user;
-    userEvent.cart = cart;
-    userEvent.icon = [UIImage imageNamed:@"new item.png"];
-    userEvent.votee = votee;
-    userEvent.description = [@"Added one item to Cart" stringByAppendingString:userEvent.cart.name];
-    [self.events addObject:userEvent];
+    userEvent2.type = @"new item";
+    userEvent2.user = user2;
+    userEvent2.cart = cart2;
+    userEvent2.icon = [UIImage imageNamed:@"new item.png"];
+    userEvent2.votee = votee1;
+    userEvent2.description = [@"Added one item to Cart " stringByAppendingString:userEvent2.cart.name];
+    [self.events addObject:userEvent2];
     
     //create one vote event to events
+    UserEvent *userEvent3 = [[UserEvent alloc] init];
+    User *user3= [[User alloc] init];
+    user3.name = @"Justine Goreux";
+    user3.photo = [UIImage imageNamed:@"user3.png"];
     
-    user.name = @"Justine Goreux";
-    user.photo = [UIImage imageNamed:@"user3.png"];
+    Cart *cart3 = [[Cart alloc] init];
+    cart3.name = @"H&M";
     
-    cart.name = @"H&M";
+    Item *item3 = [[Item alloc] init];
+    item3.description = @"Does this match my style of a party girl?";
+    item3.price = [NSNumber numberWithDouble:34.99];
+    item3.photo = [UIImage imageNamed:@"item1.png"];
     
-    [cart addItem:item];
+    [cart3.items addObject:item3];
     
-    userEvent.type = @"vote";
-    userEvent.user = user;
-    userEvent.cart = cart;
-    userEvent.icon = [UIImage imageNamed:@"vote.png"];
-    userEvent.votee = votee;
-    userEvent.description = [@"Voted for " stringByAppendingString:userEvent.votee.name];
-    [self.events addObject:userEvent];*/
+    userEvent3.type = @"vote";
+    userEvent3.user = user3;
+    userEvent3.cart = cart3;
+    userEvent3.icon = [UIImage imageNamed:@"vote.png"];
+    userEvent3.votee = votee1;
+    userEvent3.description = [@"Voted for " stringByAppendingString:userEvent3.votee.name];
+    [self.events addObject:userEvent3];
     
 }
 
@@ -149,12 +161,34 @@
         return cell;
     }else if ([eventType isEqualToString:@"new item"]) {
         static NSString *CellIdentifier = @"new item cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier]; 
+        NewsFeedNewItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[NewsFeedNewItemCell alloc]
+                    initWithStyle:UITableViewCellStyleDefault 
+                    reuseIdentifier:CellIdentifier];
+        }
         // Configure the cell...
+        cell.userImage.image = event.user.photo;
+        cell.userNameLabel.text = event.user.name;
+        cell.iconImage.image = event.icon;
+        cell.eventDescriptionLabel.text = event.description;
+        cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
+        cell.itemImage.image = [[event.cart.items lastObject] photo];
+        // In current version, photo uploading is limited to one picture at a time
         return cell;
     }else if ([eventType isEqualToString:@"vote"]) {
         static NSString *CellIdentifier = @"vote cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    // Configure the cell...
+        NewsFeedVoteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier]; 
+        if (cell == nil) {
+            cell = [[NewsFeedVoteCell alloc]
+                    initWithStyle:UITableViewCellStyleDefault 
+                    reuseIdentifier:CellIdentifier];
+        }
+        // Configure the cell...
+        cell.userImage.image = event.user.photo;
+        cell.userNameLabel.text = event.user.name;
+        cell.iconImage.image = event.icon;
+        cell.eventDescriptionLabel.text = event.description;
         return cell;
     }
     return nil;
