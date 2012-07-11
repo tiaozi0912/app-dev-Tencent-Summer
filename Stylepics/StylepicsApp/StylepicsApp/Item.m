@@ -13,5 +13,5 @@
 @synthesize  description=_description;
 @synthesize price=_price;
 @synthesize photo=_photo;
-
+@synthesize comments=_comments;
 @end

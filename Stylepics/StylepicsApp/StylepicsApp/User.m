@@ -10,7 +10,9 @@
 
 @implementation User
 
+@synthesize userID=_userID;
 @synthesize name=_name;
+@synthesize password=_password;
 @synthesize photo=_photo;
 
 @end

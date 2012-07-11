@@ -7,12 +7,11 @@
 //
 
 #import "StylepicsEntryPageViewController.h"
-#import "UserEvent.h"
 #import "User.h"
-#import "Cart.h"
-#import "Item.h"
 
-@interface StylepicsEntryPageViewController ()
+@interface StylepicsEntryPageViewController () {
+    NSMutableArray *userInfoTable;
+}
 
 @end
 
@@ -21,6 +20,7 @@
 #define CURRENTUSER @"currentUser"
 @synthesize username=_username;
 @synthesize password=_password;
+@synthesize status=_status;
 
 -(void) setUsername:(UITextField *)username
 {
@@ -35,13 +35,30 @@
     password.delegate = self;
 }
 
+-(NSUInteger) indexOfUserWithUsername:(NSString *)username {
+    for (id obj in userInfoTable){
+        if ([obj isKindOfClass:[User class]]) {
+            if ([((User*)obj).name isEqualToString:username]) {
+                return [userInfoTable indexOfObject:obj];
+            }
+        }
+    }
+    return -1;
+}
 
 - (IBAction)login {
     if ([self.username.text length] == 0)
     { 
         [self alertForEmptyName];  
-    }else{
-        [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
+    }else {
+        NSUInteger index = [self indexOfUserWithUsername:self.username.text];
+        if (index == -1) {
+            [self alertForInvalidUsername];
+        }else if ([[[userInfoTable objectAtIndex:index] password] isEqualToString:self.password.text]){
+            [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
+        }else{
+            [self alertForWrongPassword];
+        }
     }
 }
 
@@ -50,6 +67,15 @@
     [message show];
 }
 
+-(void) alertForInvalidUsername{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Oooops..." message:@"This username does not exist." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [message show];
+}
+
+-(void) alertForWrongPassword{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Oooops..." message:@"This password does not match this username." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [message show];
+}
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showNewsFeed"]) 
@@ -75,13 +101,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    StylepicsDatabase *database = [[StylepicsDatabase alloc] init];
+    userInfoTable = database.getUserInfo;
+    
 }
+
 
 - (void)viewDidUnload
 {
     [self setUsername:nil];
     [self setPassword:nil];
+    [self setStatus:nil];
+    userInfoTable = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
