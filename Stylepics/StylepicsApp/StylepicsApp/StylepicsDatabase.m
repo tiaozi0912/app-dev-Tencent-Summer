@@ -10,12 +10,10 @@
 #import "User.h"
 
 @implementation StylepicsDatabase
-
--(NSMutableArray *) getUserInfo{
-    NSMutableArray *userArray = [[NSMutableArray alloc] init];
+-(void) initDatabase{
     @try {
         NSFileManager *fileMgr = [NSFileManager defaultManager];
-        NSString *dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:@"stylepics.sqlite"];
+        NSString *dbPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"stylepics.sqlite"];
         BOOL success = [fileMgr fileExistsAtPath:dbPath];
         if(!success)
         {
@@ -25,6 +23,58 @@
         {
             NSLog(@"An error has occured.");
         }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"An exception occured: %@", [exception reason]);
+    }
+
+}
+-(BOOL) isLoggedInWithUsername:(NSString*) username
+                            password:(NSString*) password{
+    BOOL result;
+    @try {
+        NSString *query = [[NSString alloc] initWithFormat:@"SELECT id FROM UserTable WHERE username ='%@' AND password = '%@'", username, password];
+        const char *sql = [query UTF8String];
+        sqlite3_stmt *sqlStatement;
+        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Problem with prepare statement");
+        }
+        result = (sqlite3_step(sqlStatement)==SQLITE_ROW);
+        sqlite3_finalize(sqlStatement);
+    }
+    @catch (NSException *exception) {
+        NSLog(@"An exception occured: %@", [exception reason]);
+    }
+    @finally {
+        return result;
+    }
+}
+
+-(BOOL) existUsername:(NSString*) username{
+    BOOL result;
+    @try {
+        NSString *query = [[NSString alloc] initWithFormat:@"SELECT id FROM UserTable WHERE username ='%@'", username];
+        const char *sql = [query UTF8String];
+        sqlite3_stmt *sqlStatement;
+        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
+        {
+            NSLog(@"Problem with prepare statement");
+        }
+        result = (sqlite3_step(sqlStatement)==SQLITE_ROW);
+        sqlite3_finalize(sqlStatement);
+    }
+    @catch (NSException *exception) {
+        NSLog(@"An exception occured: %@", [exception reason]);
+    }
+    @finally {
+        return result;
+    }
+}
+
+-(NSMutableArray *) getUserInfo{
+    NSMutableArray *userArray = [[NSMutableArray alloc] init];
+    @try {
         const char *sql = "SELECT id, username, password, photo FROM UserTable";
         sqlite3_stmt *sqlStatement;
         if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
@@ -43,6 +93,7 @@
             MyUser.photo = [[UIImage alloc] initWithData:data];
             [userArray addObject:MyUser];
         }
+        sqlite3_finalize(sqlStatement);
     }
     @catch (NSException *exception) {
         NSLog(@"An exception occured: %@", [exception reason]);

@@ -13,6 +13,10 @@
     sqlite3 *db;
 }
 
+-(void) initDatabase;
+-(BOOL) isLoggedInWithUsername:(NSString*) username
+                      password:(NSString*) password;
+-(BOOL) existUsername:(NSString*) username;
 -(NSMutableArray *) getUserInfo;
 
 @end

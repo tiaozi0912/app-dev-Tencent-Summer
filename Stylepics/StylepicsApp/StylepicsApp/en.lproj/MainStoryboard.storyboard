@@ -54,13 +54,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9gh-yP-WeW">
-                                <rect key="frame" x="65" y="244" width="191" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
@@ -71,7 +64,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="password" destination="pmY-gl-1Nu" id="DUd-rk-alU"/>
-                        <outlet property="status" destination="9gh-yP-WeW" id="QXK-1X-mTH"/>
                         <outlet property="username" destination="INh-LT-e5R" id="bkb-go-w7m"/>
                         <segue destination="8Sd-3s-bsT" kind="push" identifier="showNewsFeed" id="GsG-jv-OTK"/>
                     </connections>
@@ -138,11 +130,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new cart cell" rowHeight="57" id="Xet-vw-IdK" customClass="NewsFeedNewCartCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="57"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new cart cell" rowHeight="68" id="Xet-vw-IdK" customClass="NewsFeedNewCartCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="67"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Uzi-IF-t10">
@@ -177,8 +169,8 @@
                                     <outlet property="userNameLabel" destination="9uT-Lm-K35" id="LPk-q3-GDc"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="271" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
-                                <rect key="frame" x="0.0" y="79" width="320" height="271"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="271" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
+                                <rect key="frame" x="0.0" y="90" width="320" height="271"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
@@ -221,8 +213,8 @@
                                     <outlet property="userNameLabel" destination="aW9-1E-OFR" id="AGh-ib-JEV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="54" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
-                                <rect key="frame" x="0.0" y="350" width="320" height="54"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="54" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
+                                <rect key="frame" x="0.0" y="361" width="320" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="53"/>
@@ -552,7 +544,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StylepicsEntryPageViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>

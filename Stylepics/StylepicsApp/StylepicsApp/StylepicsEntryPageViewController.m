@@ -11,6 +11,7 @@
 
 @interface StylepicsEntryPageViewController () {
     NSMutableArray *userInfoTable;
+    StylepicsDatabase *database;
 }
 
 @end
@@ -20,7 +21,7 @@
 #define CURRENTUSER @"currentUser"
 @synthesize username=_username;
 @synthesize password=_password;
-@synthesize status=_status;
+
 
 -(void) setUsername:(UITextField *)username
 {
@@ -35,30 +36,17 @@
     password.delegate = self;
 }
 
--(NSUInteger) indexOfUserWithUsername:(NSString *)username {
-    for (id obj in userInfoTable){
-        if ([obj isKindOfClass:[User class]]) {
-            if ([((User*)obj).name isEqualToString:username]) {
-                return [userInfoTable indexOfObject:obj];
-            }
-        }
-    }
-    return -1;
-}
 
 - (IBAction)login {
     if ([self.username.text length] == 0)
     { 
         [self alertForEmptyName];  
+    }else if ([database isLoggedInWithUsername:self.username.text password:self.password.text]){
+        [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
+    }else if ([database existUsername:self.username.text]){
+        [self alertForWrongPassword];
     }else {
-        NSUInteger index = [self indexOfUserWithUsername:self.username.text];
-        if (index == -1) {
-            [self alertForInvalidUsername];
-        }else if ([[[userInfoTable objectAtIndex:index] password] isEqualToString:self.password.text]){
-            [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
-        }else{
-            [self alertForWrongPassword];
-        }
+        [self alertForNonexistentUsername];
     }
 }
 
@@ -67,7 +55,7 @@
     [message show];
 }
 
--(void) alertForInvalidUsername{
+-(void) alertForNonexistentUsername{
     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Oooops..." message:@"This username does not exist." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [message show];
 }
@@ -80,9 +68,9 @@
 {
     if ([segue.identifier isEqualToString:@"showNewsFeed"]) 
     {
-        NSUserDefaults* database = [NSUserDefaults standardUserDefaults];
-        [database setObject:self.username.text forKey:CURRENTUSER];
-        [database synchronize];
+        NSUserDefaults* session = [NSUserDefaults standardUserDefaults];
+        [session setObject:self.username.text forKey:CURRENTUSER];
+        [session synchronize];
     }
 }
 
@@ -101,8 +89,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    StylepicsDatabase *database = [[StylepicsDatabase alloc] init];
-    userInfoTable = database.getUserInfo;
+     database = [[StylepicsDatabase alloc] init];
+    [database initDatabase];
     
 }
 
@@ -111,7 +99,6 @@
 {
     [self setUsername:nil];
     [self setPassword:nil];
-    [self setStatus:nil];
     userInfoTable = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.

@@ -119,6 +119,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D91EE5615AD0B7200D1015D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
+				0D96665F15AB9FA900753491 /* AudienceListView.h */,
+				0D96666015AB9FA900753491 /* AudienceListView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0D91EE5715AD0B8200D1015D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0D91EE5115ACE8B900D1015D /* StylepicsDatabase.h */,
+				0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */,
+				0D94F50715A7D2BB00903F0B /* User.h */,
+				0D94F50A15A7D2BB00903F0B /* User.m */,
+				0D94F50815A7D2BB00903F0B /* Item.h */,
+				0D94F50915A7D2BB00903F0B /* Item.m */,
+				0D96665C15AB9DEA00753491 /* comment.h */,
+				0D96665D15AB9DEA00753491 /* comment.m */,
+				0D94F50B15A7D2BB00903F0B /* Cart.h */,
+				0D94F50C15A7D2BB00903F0B /* Cart.m */,
+				0D94F50515A7D2BB00903F0B /* UserEvent.h */,
+				0D94F50615A7D2BB00903F0B /* UserEvent.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0D91EE5815AD0BB900D1015D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D94F51715A7D41300903F0B /* StylepicsEntryPageViewController.h */,
+				0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */,
+				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
+				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
+				0D9C05A215AA1BCE006D86CE /* NewsFeedNewCartCell.h */,
+				0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */,
+				0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */,
+				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
+				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
+				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
+				0D94F51415A7D30700903F0B /* CheckInViewController.h */,
+				0D94F51515A7D30800903F0B /* CheckInViewController.m */,
+				0D96665615AB93AF00753491 /* CartTableViewController.h */,
+				0D96665715AB93AF00753491 /* CartTableViewController.m */,
+				0D96665915AB97CC00753491 /* CartItemCell.h */,
+				0D96665A15AB97CD00753491 /* CartItemCell.m */,
+				0D94F51115A7D2F200903F0B /* cameraViewController.h */,
+				0D94F51215A7D2F200903F0B /* cameraViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		0D94F4D915A7D09700903F0B = {
 			isa = PBXGroup;
 			children = (
@@ -152,39 +206,9 @@
 		0D94F4EE15A7D09700903F0B /* StylepicsApp */ = {
 			isa = PBXGroup;
 			children = (
-				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
-				0D91EE5115ACE8B900D1015D /* StylepicsDatabase.h */,
-				0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */,
-				0D94F50715A7D2BB00903F0B /* User.h */,
-				0D94F50A15A7D2BB00903F0B /* User.m */,
-				0D94F50815A7D2BB00903F0B /* Item.h */,
-				0D94F50915A7D2BB00903F0B /* Item.m */,
-				0D96665C15AB9DEA00753491 /* comment.h */,
-				0D96665D15AB9DEA00753491 /* comment.m */,
-				0D94F50B15A7D2BB00903F0B /* Cart.h */,
-				0D94F50C15A7D2BB00903F0B /* Cart.m */,
-				0D94F50515A7D2BB00903F0B /* UserEvent.h */,
-				0D94F50615A7D2BB00903F0B /* UserEvent.m */,
-				0D94F51715A7D41300903F0B /* StylepicsEntryPageViewController.h */,
-				0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */,
-				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
-				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
-				0D9C05A215AA1BCE006D86CE /* NewsFeedNewCartCell.h */,
-				0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */,
-				0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */,
-				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
-				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
-				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
-				0D94F51415A7D30700903F0B /* CheckInViewController.h */,
-				0D94F51515A7D30800903F0B /* CheckInViewController.m */,
-				0D96665615AB93AF00753491 /* CartTableViewController.h */,
-				0D96665715AB93AF00753491 /* CartTableViewController.m */,
-				0D96665F15AB9FA900753491 /* AudienceListView.h */,
-				0D96666015AB9FA900753491 /* AudienceListView.m */,
-				0D96665915AB97CC00753491 /* CartItemCell.h */,
-				0D96665A15AB97CD00753491 /* CartItemCell.m */,
-				0D94F51115A7D2F200903F0B /* cameraViewController.h */,
-				0D94F51215A7D2F200903F0B /* cameraViewController.m */,
+				0D91EE5615AD0B7200D1015D /* View */,
+				0D91EE5815AD0BB900D1015D /* Controller */,
+				0D91EE5715AD0B8200D1015D /* Model */,
 				0D94F4F715A7D09700903F0B /* StylepicsAppDelegate.h */,
 				0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */,
 				0D91EE5415AD063900D1015D /* stylepics.sqlite */,
