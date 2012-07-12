@@ -29,6 +29,9 @@
     }
     return self;
 }
+- (IBAction)logout:(UIBarButtonItem *)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad
 {

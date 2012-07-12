@@ -19,7 +19,7 @@
                                 <rect key="frame" x="171" y="136" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" title="LOGIN">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -43,16 +43,19 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7RR-fb-AlN">
-                                <rect key="frame" x="65" y="136" width="85" height="37"/>
+                                <rect key="frame" x="62" y="136" width="92" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Register">
+                                <state key="normal" title="SIGNUP">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ZCB-td-5cu" kind="push" id="vIw-gZ-nuA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -69,7 +72,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="739" y="117"/>
+            <point key="canvasLocation" x="494" y="125"/>
         </scene>
         <!--Table View Controller - Carts-->
         <scene sceneID="NXo-kP-osz">
@@ -118,7 +121,7 @@
                     <navigationItem key="navigationItem" title="Carts" id="88u-UT-Mu5"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1677" y="-454"/>
+            <point key="canvasLocation" x="1925" y="-718"/>
         </scene>
         <!--News Feed Table View Controller - stylepics-->
         <scene sceneID="Ze0-ng-Ado">
@@ -264,6 +267,12 @@
                                 <segue destination="HHb-9J-DcQ" kind="push" id="ZhE-bw-cpn"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="O99-Tr-VK2"/>
+                        <barButtonItem title="Log out" id="6kL-eq-LPU">
+                            <connections>
+                                <action selector="logout:" destination="8Sd-3s-bsT" id="Bxn-jJ-EO3"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="stylepics" id="SY8-vZ-Qmd">
                         <barButtonItem key="leftBarButtonItem" title="Carts" id="Mca-Zq-pB3">
@@ -281,7 +290,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1184" y="117"/>
+            <point key="canvasLocation" x="1342" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0WG-5U-9ea">
@@ -303,7 +312,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="213" y="117"/>
+            <point key="canvasLocation" x="-27" y="125"/>
         </scene>
         <!--Check In View Controller - Check-In-->
         <scene sceneID="0w5-Bv-NOb">
@@ -348,7 +357,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1677" y="117"/>
+            <point key="canvasLocation" x="2085" y="109"/>
         </scene>
         <!--Cart Table View Controller-->
         <scene sceneID="LMl-kx-4Uv">
@@ -441,7 +450,7 @@
                     <navigationItem key="navigationItem" id="zXe-q2-cfQ"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2076" y="117"/>
+            <point key="canvasLocation" x="2676" y="101"/>
         </scene>
         <!--Camera View Controller - Snapshot-->
         <scene sceneID="dTe-TM-Jug">
@@ -479,7 +488,67 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1677" y="702"/>
+            <point key="canvasLocation" x="1901" y="854"/>
+        </scene>
+        <!--Registration Page View Controller - SIGN UP-->
+        <scene sceneID="Dlm-tf-8iN">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RX6-xr-rZ5" sceneMemberID="firstResponder"/>
+                <viewController id="ZCB-td-5cu" customClass="RegistrationPageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O8A-cu-Uho" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DHe-gW-gba">
+                                <rect key="frame" x="118" y="189" width="85" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="SIGNUP">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signup" destination="ZCB-td-5cu" eventType="touchUpInside" id="XbT-4F-yH1"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="fNR-2a-mut">
+                                <rect key="frame" x="65" y="40" width="191" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="4hf-pu-lMS">
+                                <rect key="frame" x="65" y="79" width="191" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Again" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="OR0-MX-ALo">
+                                <rect key="frame" x="65" y="118" width="191" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="backgroundTouched:" destination="ZCB-td-5cu" eventType="touchDown" id="Emw-EG-N65"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="SIGN UP" id="Mfe-G7-RhK"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="password" destination="4hf-pu-lMS" id="aDI-Z4-955"/>
+                        <outlet property="passwordAgain" destination="OR0-MX-ALo" id="jg3-Rf-I3Z"/>
+                        <outlet property="username" destination="fNR-2a-mut" id="kHs-Vh-bQB"/>
+                        <segue destination="8Sd-3s-bsT" kind="push" identifier="show news feed page" id="eri-Vj-gif"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="926" y="797"/>
         </scene>
     </scenes>
     <classes>
@@ -540,6 +609,14 @@
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="RegistrationPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordAgain" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="StylepicsEntryPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StylepicsEntryPageViewController.h"/>
             <relationships>
@@ -561,4 +638,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="eri-Vj-gif"/>
+    </inferredMetricsTieBreakers>
 </document>

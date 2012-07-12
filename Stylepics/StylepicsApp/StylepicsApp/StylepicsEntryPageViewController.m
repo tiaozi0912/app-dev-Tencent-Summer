@@ -10,7 +10,6 @@
 #import "User.h"
 
 @interface StylepicsEntryPageViewController () {
-    NSMutableArray *userInfoTable;
     StylepicsDatabase *database;
 }
 
@@ -89,9 +88,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     database = [[StylepicsDatabase alloc] init];
-    [database initDatabase];
-    
+     database = [[StylepicsDatabase alloc] init];    
 }
 
 
@@ -99,7 +96,6 @@
 {
     [self setUsername:nil];
     [self setPassword:nil];
-    userInfoTable = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

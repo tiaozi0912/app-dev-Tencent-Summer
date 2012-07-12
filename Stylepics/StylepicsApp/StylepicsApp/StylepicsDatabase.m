@@ -10,58 +10,45 @@
 #import "User.h"
 
 @implementation StylepicsDatabase
--(void) initDatabase{
-    @try {
-        NSFileManager *fileMgr = [NSFileManager defaultManager];
-        NSString *dbPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"stylepics.sqlite"];
-        BOOL success = [fileMgr fileExistsAtPath:dbPath];
-        if(!success)
-        {
-            NSLog(@"Cannot locate database file '%@'.", dbPath);
-        }
-        if(!(sqlite3_open([dbPath UTF8String], &db) == SQLITE_OK))
-        {
-            NSLog(@"An error has occured.");
-        }
-    }
-    @catch (NSException *exception) {
-        NSLog(@"An exception occured: %@", [exception reason]);
-    }
 
-}
 -(BOOL) isLoggedInWithUsername:(NSString*) username
                             password:(NSString*) password{
-    BOOL result;
-    @try {
-        NSString *query = [[NSString alloc] initWithFormat:@"SELECT id FROM UserTable WHERE username ='%@' AND password = '%@'", username, password];
-        const char *sql = [query UTF8String];
-        sqlite3_stmt *sqlStatement;
-        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
-        {
-            NSLog(@"Problem with prepare statement");
-        }
-        result = (sqlite3_step(sqlStatement)==SQLITE_ROW);
-        sqlite3_finalize(sqlStatement);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"An exception occured: %@", [exception reason]);
-    }
-    @finally {
-        return result;
-    }
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT userID FROM UserTable WHERE username ='%@' AND password = '%@'", username, password];
+    FMResultSet *results = [db executeQuery:query];
+    BOOL success = [results next];
+    [db close];
+    return success; 
 }
 
 -(BOOL) existUsername:(NSString*) username{
-    BOOL result;
-    @try {
-        NSString *query = [[NSString alloc] initWithFormat:@"SELECT id FROM UserTable WHERE username ='%@'", username];
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT userID FROM UserTable WHERE username ='%@'", username];
+    FMResultSet *results = [db executeQuery:query];
+    BOOL exist = [results next];
+    [db close];
+    return exist; 
+}
+
+-(int) getUserCount{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    NSString *query = [[NSString alloc] initWithString:@"SELECT COUNT(*) AS count FROM UserTable"];;
+    FMResultSet *results = [db executeQuery:query];
+    int userCount = [results intForColumn:@"count"];
+    [db close];
+    return userCount; 
+/*    @try {
+        NSString *query = [[NSString alloc] initWithString:@"SELECT COUNT(*) FROM UserTable"];
         const char *sql = [query UTF8String];
         sqlite3_stmt *sqlStatement;
         if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
         {
             NSLog(@"Problem with prepare statement");
         }
-        result = (sqlite3_step(sqlStatement)==SQLITE_ROW);
+        result = sqlite3_step(sqlStatement);
         sqlite3_finalize(sqlStatement);
     }
     @catch (NSException *exception) {
@@ -69,13 +56,21 @@
     }
     @finally {
         return result;
-    }
+    }*/
+}
+-(BOOL) addNewUserWithUsername:(NSString*) username
+                      password:(NSString*) password{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    BOOL success = [db executeUpdate:@"INSERT INTO UserTable (username, password) VALUES(?,?)", username, password];
+    [db close];
+    return success;
 }
 
--(NSMutableArray *) getUserInfo{
+/*-(NSMutableArray *) getUserInfo{
     NSMutableArray *userArray = [[NSMutableArray alloc] init];
     @try {
-        const char *sql = "SELECT id, username, password, photo FROM UserTable";
+        const char *sql = "SELECT userID, username, password, photo FROM UserTable";
         sqlite3_stmt *sqlStatement;
         if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
         {
@@ -101,5 +96,7 @@
     @finally {
         return userArray;
     }
-}
+ }*/
+
+
 @end

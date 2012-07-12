@@ -8,15 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "FMDatabase.h"
+#import "FMResultSet.h"
+#import "Utility.h"
 
-@interface StylepicsDatabase : NSObject{
-    sqlite3 *db;
-}
+@interface StylepicsDatabase : NSObject
 
--(void) initDatabase;
+//-(void) initDatabase;
 -(BOOL) isLoggedInWithUsername:(NSString*) username
                       password:(NSString*) password;
 -(BOOL) existUsername:(NSString*) username;
--(NSMutableArray *) getUserInfo;
+//-(void) closeDatabase;
+-(BOOL) addNewUserWithUsername:(NSString*) username
+                      password:(NSString*) password;
+
+
+//-(NSMutableArray *) getUserInfo;
 
 @end
