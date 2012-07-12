@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="494" y="125"/>
         </scene>
-        <!--Table View Controller - Carts-->
+        <!--Table View Controller - Manage Polls-->
         <scene sceneID="NXo-kP-osz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dN-MZ-s2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,7 +118,7 @@
                             <outlet property="delegate" destination="6a9-bf-0wD" id="73h-1S-a6t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Carts" id="88u-UT-Mu5"/>
+                    <navigationItem key="navigationItem" title="Manage Polls" id="88u-UT-Mu5"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1925" y="-718"/>
@@ -133,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new cart cell" rowHeight="68" id="Xet-vw-IdK" customClass="NewsFeedNewCartCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new poll cell" rowHeight="68" id="Xet-vw-IdK" customClass="NewsFeedNewPollCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -275,14 +275,14 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="stylepics" id="SY8-vZ-Qmd">
-                        <barButtonItem key="leftBarButtonItem" title="Carts" id="Mca-Zq-pB3">
+                        <barButtonItem key="leftBarButtonItem" title="Manage Polls" id="Mca-Zq-pB3">
                             <connections>
                                 <segue destination="6a9-bf-0wD" kind="push" id="WLE-3I-iDc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Check-In" id="CYp-xG-agb">
+                        <barButtonItem key="rightBarButtonItem" title="New Poll" id="CYp-xG-agb">
                             <connections>
-                                <segue destination="tlb-aD-9aU" kind="push" id="fXA-40-Y07"/>
+                                <segue destination="tlb-aD-9aU" kind="push" identifier="create a new poll" id="fXA-40-Y07"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -314,7 +314,7 @@
             </objects>
             <point key="canvasLocation" x="-27" y="125"/>
         </scene>
-        <!--Check In View Controller - Check-In-->
+        <!--Check In View Controller - New Poll-->
         <scene sceneID="0w5-Bv-NOb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9J-ho-zJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,7 +323,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give a name for your cart" minimumFontSize="17" id="OZs-8F-042">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give your poll a name" minimumFontSize="17" id="OZs-8F-042">
                                 <rect key="frame" x="61" y="63" width="202" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -333,7 +333,7 @@
                                 <rect key="frame" x="61" y="112" width="202" height="37"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Check in">
+                                <state key="normal" title="CREATE A POLL">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -350,20 +350,20 @@
                             <action selector="backgroundTouched:" destination="tlb-aD-9aU" eventType="touchDown" id="2t2-np-Knz"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Check-In" id="XJx-2q-D6g"/>
+                    <navigationItem key="navigationItem" title="New Poll" id="XJx-2q-D6g"/>
                     <connections>
                         <outlet property="textField" destination="OZs-8F-042" id="qv0-Jx-dH4"/>
-                        <segue destination="AtD-j7-Qhz" kind="push" identifier="showNewCart" id="GAG-CL-Cdg"/>
+                        <segue destination="AtD-j7-Qhz" kind="push" identifier="showNewPoll" id="GAG-CL-Cdg"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2085" y="109"/>
         </scene>
-        <!--Cart Table View Controller-->
+        <!--Poll Table View Controller-->
         <scene sceneID="LMl-kx-4Uv">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysj-kf-CGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="AtD-j7-Qhz" customClass="CartTableViewController" sceneMemberID="viewController">
+                <tableViewController id="AtD-j7-Qhz" customClass="PollTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="340" sectionHeaderHeight="22" sectionFooterHeight="22" id="vnW-Cp-J6N">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -558,33 +558,11 @@
                 <relationship kind="outlet" name="placeholder" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="CartItemCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartItemCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentIconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="countOfCommentsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionOfItemLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CartTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
-        </class>
         <class className="CheckInViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CheckInViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTouched:"/>
                 <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NewsFeedNewCartCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedNewCartCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="NewsFeedNewItemCell" superclassName="UITableViewCell">
@@ -593,6 +571,15 @@
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NewsFeedNewPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedNewPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
@@ -608,6 +595,9 @@
                 <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="PollTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollTableViewController.h"/>
         </class>
         <class className="RegistrationPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationPageViewController.h"/>

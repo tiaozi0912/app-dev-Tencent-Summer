@@ -22,7 +22,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
 {  
-    [self newCart];
+    [self newPoll];
     return YES;
 }
 
@@ -57,12 +57,12 @@
     [message show];
 }
 
-- (IBAction)newCart {
+- (IBAction)newPoll {
     if ([self.textField.text length] == 0)
     { 
         [self alertForEmptyName];  
     }else{
-        [self performSegueWithIdentifier:@"showNewCart" sender:self];
+        [self performSegueWithIdentifier:@"showNewPoll" sender:self];
     }
 }
 

@@ -1,19 +1,19 @@
 //
-//  CartTableViewController.m
+//  PollTableViewController.m
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/9/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "CartTableViewController.h"
+#import "PollTableViewController.h"
 
-@interface CartTableViewController ()
+@interface PollTableViewController ()
 
 @end
 
-@implementation CartTableViewController
-@synthesize cart=_cart;
+@implementation PollTableViewController
+@synthesize poll=_poll;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -58,13 +58,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.cart.items count];
+    return [self.poll.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"cart item cell";
-    CartItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"Poll item cell";
+    PollItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
     

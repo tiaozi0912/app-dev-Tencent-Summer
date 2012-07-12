@@ -13,7 +13,7 @@
 
 @synthesize type=_type;
 @synthesize user=_user;
-@synthesize cart=_cart;
+@synthesize poll=_poll;
 @synthesize icon=_icon;
 @synthesize votee=_votee;
 @synthesize description=_description;

@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
-#import "Cart.h"
+#import "Poll.h"
 
 @interface UserEvent : NSObject
 
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) User *user;
-@property (nonatomic, strong) Cart *cart; 
+@property (nonatomic, strong) Poll *poll; 
 @property (nonatomic, strong) UIImage *icon;
 @property (nonatomic, strong) User *votee;
 @property (nonatomic, strong) NSString *description;

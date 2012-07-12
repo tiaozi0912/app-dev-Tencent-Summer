@@ -1,14 +1,14 @@
 //
-//  Cart.m
+//  Poll.m
 //  BasicApp
 //
 //  Created by Yong Lin on 7/6/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "Cart.h"
+#import "Poll.h"
 
-@implementation Cart
+@implementation Poll
 
 @synthesize name=_name;
 @synthesize items=_items;

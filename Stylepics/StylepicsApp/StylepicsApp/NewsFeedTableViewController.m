@@ -9,7 +9,7 @@
 #import "NewsFeedTableViewController.h"
 #import "UserEvent.h"
 #import "User.h"
-#import "Cart.h"
+#import "Poll.h"
 #import "Item.h"
 
 @interface NewsFeedTableViewController ()
@@ -51,21 +51,21 @@
     user1.photo = [UIImage imageNamed:@"user1.png"];
     User *votee1 = user1;
     
-    Cart *cart1 = [[Cart alloc] init];
-    cart1.name = @"Abercrombie & Fitch";
+    Poll *poll1 = [[Poll alloc] init];
+    poll1.name = @"Abercrombie & Fitch";
     
     Item *item1 = [[Item alloc] init];
     item1.description = @"Can I wear this to date my first dream girl?";
     item1.price = [NSNumber numberWithDouble:49.99];
     item1.photo = [UIImage imageNamed:@"item1.png"];
-    [cart1.items addObject:item1];
+    [poll1.items addObject:item1];
     
-    userEvent1.type = @"new cart";
+    userEvent1.type = @"new poll";
     userEvent1.user = user1;
-    userEvent1.cart = cart1;
-    userEvent1.icon = [UIImage imageNamed:@"new cart.png"];
+    userEvent1.poll = poll1;
+    userEvent1.icon = [UIImage imageNamed:@"new poll.png"];
     userEvent1.votee = votee1;
-    userEvent1.description = [@"Check-in to " stringByAppendingString:userEvent1.cart.name];
+    userEvent1.description = [@"Check-in to " stringByAppendingString:userEvent1.poll.name];
     [self.events addObject:userEvent1];
     
     //create one new-item event to events
@@ -74,21 +74,21 @@
     user2.name = @"Amanda Kao";
     user2.photo = [UIImage imageNamed:@"user2.png"];
     
-    Cart *cart2 = [[Cart alloc] init];
-    cart2.name = @"H&M";
+    Poll *poll2 = [[Poll alloc] init];
+    poll2.name = @"H&M";
     
     Item *item2 = [[Item alloc] init];
     item2.description = @"Does this match my style of a party girl?";
     item2.price = [NSNumber numberWithDouble:34.99];
     item2.photo = [UIImage imageNamed:@"item1.png"];
-    [cart2.items addObject:item2];
+    [poll2.items addObject:item2];
     
     userEvent2.type = @"new item";
     userEvent2.user = user2;
-    userEvent2.cart = cart2;
+    userEvent2.poll = poll2;
     userEvent2.icon = [UIImage imageNamed:@"new item.png"];
     userEvent2.votee = votee1;
-    userEvent2.description = [@"Added one item to Cart " stringByAppendingString:userEvent2.cart.name];
+    userEvent2.description = [@"Added one item to Poll " stringByAppendingString:userEvent2.poll.name];
     [self.events addObject:userEvent2];
     
     //create one vote event to events
@@ -97,19 +97,19 @@
     user3.name = @"Justine Goreux";
     user3.photo = [UIImage imageNamed:@"user3.png"];
     
-    Cart *cart3 = [[Cart alloc] init];
-    cart3.name = @"H&M";
+    Poll *poll3 = [[Poll alloc] init];
+    poll3.name = @"H&M";
     
     Item *item3 = [[Item alloc] init];
     item3.description = @"Does this match my style of a party girl?";
     item3.price = [NSNumber numberWithDouble:34.99];
     item3.photo = [UIImage imageNamed:@"item1.png"];
     
-    [cart3.items addObject:item3];
+    [poll3.items addObject:item3];
     
     userEvent3.type = @"vote";
     userEvent3.user = user3;
-    userEvent3.cart = cart3;
+    userEvent3.poll = poll3;
     userEvent3.icon = [UIImage imageNamed:@"vote.png"];
     userEvent3.votee = votee1;
     userEvent3.description = [@"Voted for " stringByAppendingString:userEvent3.votee.name];
@@ -148,11 +148,11 @@
 {
     UserEvent *event = [self.events objectAtIndex:indexPath.row];
     NSString *eventType = event.type;
-    if ([eventType isEqualToString:@"new cart"]) {
-        static NSString *CellIdentifier = @"new cart cell";
-        NewsFeedNewCartCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if ([eventType isEqualToString:@"new poll"]) {
+        static NSString *CellIdentifier = @"new poll cell";
+        NewsFeedNewPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
      if (cell == nil) {
-     cell = [[NewsFeedNewCartCell alloc]
+     cell = [[NewsFeedNewPollCell alloc]
      initWithStyle:UITableViewCellStyleDefault 
      reuseIdentifier:CellIdentifier];
      }
@@ -176,7 +176,7 @@
         cell.iconImage.image = event.icon;
         cell.eventDescriptionLabel.text = event.description;
         cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
-        cell.itemImage.image = [[event.cart.items lastObject] photo];
+        cell.itemImage.image = [[event.poll.items lastObject] photo];
         // In current version, photo uploading is limited to one picture at a time
         return cell;
     }else if ([eventType isEqualToString:@"vote"]) {

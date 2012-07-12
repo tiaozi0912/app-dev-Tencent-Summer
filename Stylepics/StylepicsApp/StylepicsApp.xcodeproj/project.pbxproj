@@ -20,7 +20,7 @@
 		0D94F50D15A7D2BB00903F0B /* UserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50615A7D2BB00903F0B /* UserEvent.m */; };
 		0D94F50E15A7D2BB00903F0B /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50915A7D2BB00903F0B /* Item.m */; };
 		0D94F50F15A7D2BB00903F0B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50A15A7D2BB00903F0B /* User.m */; };
-		0D94F51015A7D2BB00903F0B /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50C15A7D2BB00903F0B /* Cart.m */; };
+		0D94F51015A7D2BB00903F0B /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50C15A7D2BB00903F0B /* Poll.m */; };
 		0D94F51315A7D2F200903F0B /* cameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51215A7D2F200903F0B /* cameraViewController.m */; };
 		0D94F51615A7D30800903F0B /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51515A7D30800903F0B /* CheckInViewController.m */; };
 		0D94F51915A7D41300903F0B /* StylepicsEntryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */; };
@@ -28,8 +28,8 @@
 		0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */; };
 		0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */; };
 		0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */; };
-		0D96665815AB93AF00753491 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665715AB93AF00753491 /* CartTableViewController.m */; };
-		0D96665B15AB97CD00753491 /* CartItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665A15AB97CD00753491 /* CartItemCell.m */; };
+		0D96665815AB93AF00753491 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665715AB93AF00753491 /* PollTableViewController.m */; };
+		0D96665B15AB97CD00753491 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665A15AB97CD00753491 /* PollItemCell.m */; };
 		0D96665E15AB9DEB00753491 /* comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665D15AB9DEA00753491 /* comment.m */; };
 		0D96666115AB9FA900753491 /* AudienceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96666015AB9FA900753491 /* AudienceListView.m */; };
 		0D96666315AC040C00753491 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D96666215AC040C00753491 /* libsqlite3.0.dylib */; };
@@ -37,10 +37,10 @@
 		0D99436015AEB1420037194D /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99435F15AEB1420037194D /* FMResultSet.m */; };
 		0D99436315AEB1590037194D /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99436215AEB1590037194D /* Utility.m */; };
 		0D99436515AEB9340037194D /* stylepics.db in Resources */ = {isa = PBXBuildFile; fileRef = 0D99436415AEB9340037194D /* stylepics.db */; };
-		0D9C05A415AA1BCE006D86CE /* NewsFeedNewCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */; };
-		0D9C05AE15AAC125006D86CE /* carts.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A615AAC125006D86CE /* carts.png */; };
+		0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */; };
+		0D9C05AE15AAC125006D86CE /* polls.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A615AAC125006D86CE /* polls.png */; };
 		0D9C05AF15AAC125006D86CE /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A715AAC125006D86CE /* item1.png */; };
-		0D9C05B015AAC125006D86CE /* new cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A815AAC125006D86CE /* new cart.png */; };
+		0D9C05B015AAC125006D86CE /* new poll.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A815AAC125006D86CE /* new poll.png */; };
 		0D9C05B115AAC125006D86CE /* new item.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A915AAC125006D86CE /* new item.png */; };
 		0D9C05B215AAC125006D86CE /* user1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AA15AAC125006D86CE /* user1.png */; };
 		0D9C05B315AAC125006D86CE /* user2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AB15AAC125006D86CE /* user2.png */; };
@@ -71,8 +71,8 @@
 		0D94F50815A7D2BB00903F0B /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		0D94F50915A7D2BB00903F0B /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		0D94F50A15A7D2BB00903F0B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		0D94F50B15A7D2BB00903F0B /* Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cart.h; sourceTree = "<group>"; };
-		0D94F50C15A7D2BB00903F0B /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
+		0D94F50B15A7D2BB00903F0B /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Poll.h; sourceTree = "<group>"; };
+		0D94F50C15A7D2BB00903F0B /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
 		0D94F51115A7D2F200903F0B /* cameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cameraViewController.h; sourceTree = "<group>"; };
 		0D94F51215A7D2F200903F0B /* cameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cameraViewController.m; sourceTree = "<group>"; };
 		0D94F51415A7D30700903F0B /* CheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInViewController.h; sourceTree = "<group>"; };
@@ -86,10 +86,10 @@
 		0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewItemCell.m; path = "News Feed Page/NewsFeedNewItemCell.m"; sourceTree = "<group>"; };
 		0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedVoteCell.h; path = "News Feed Page/NewsFeedVoteCell.h"; sourceTree = "<group>"; };
 		0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedVoteCell.m; path = "News Feed Page/NewsFeedVoteCell.m"; sourceTree = "<group>"; };
-		0D96665615AB93AF00753491 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartTableViewController.h; path = "Cart Page/CartTableViewController.h"; sourceTree = "<group>"; };
-		0D96665715AB93AF00753491 /* CartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartTableViewController.m; path = "Cart Page/CartTableViewController.m"; sourceTree = "<group>"; };
-		0D96665915AB97CC00753491 /* CartItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CartItemCell.h; path = "Cart Page/CartItemCell.h"; sourceTree = "<group>"; };
-		0D96665A15AB97CD00753491 /* CartItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CartItemCell.m; path = "Cart Page/CartItemCell.m"; sourceTree = "<group>"; };
+		0D96665615AB93AF00753491 /* PollTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = PollTableViewController.h; path = "Cart Page/PollTableViewController.h"; sourceTree = "<group>"; };
+		0D96665715AB93AF00753491 /* PollTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollTableViewController.m; path = "Cart Page/PollTableViewController.m"; sourceTree = "<group>"; };
+		0D96665915AB97CC00753491 /* PollItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollItemCell.h; path = "Cart Page/PollItemCell.h"; sourceTree = "<group>"; };
+		0D96665A15AB97CD00753491 /* PollItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollItemCell.m; path = "Cart Page/PollItemCell.m"; sourceTree = "<group>"; };
 		0D96665C15AB9DEA00753491 /* comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comment.h; sourceTree = "<group>"; };
 		0D96665D15AB9DEA00753491 /* comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comment.m; sourceTree = "<group>"; };
 		0D96665F15AB9FA900753491 /* AudienceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudienceListView.h; sourceTree = "<group>"; };
@@ -102,11 +102,11 @@
 		0D99436115AEB1590037194D /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		0D99436215AEB1590037194D /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		0D99436415AEB9340037194D /* stylepics.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = stylepics.db; sourceTree = "<group>"; };
-		0D9C05A215AA1BCE006D86CE /* NewsFeedNewCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewCartCell.h; path = "News Feed Page/NewsFeedNewCartCell.h"; sourceTree = "<group>"; };
-		0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewCartCell.m; path = "News Feed Page/NewsFeedNewCartCell.m"; sourceTree = "<group>"; };
-		0D9C05A615AAC125006D86CE /* carts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = carts.png; path = img/carts.png; sourceTree = "<group>"; };
+		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
+		0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewPollCell.m; path = "News Feed Page/NewsFeedNewPollCell.m"; sourceTree = "<group>"; };
+		0D9C05A615AAC125006D86CE /* polls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = polls.png; path = img/polls.png; sourceTree = "<group>"; };
 		0D9C05A715AAC125006D86CE /* item1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item1.png; path = img/item1.png; sourceTree = "<group>"; };
-		0D9C05A815AAC125006D86CE /* new cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new cart.png"; path = "img/new cart.png"; sourceTree = "<group>"; };
+		0D9C05A815AAC125006D86CE /* new poll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new poll.png"; path = "img/new poll.png"; sourceTree = "<group>"; };
 		0D9C05A915AAC125006D86CE /* new item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new item.png"; path = "img/new item.png"; sourceTree = "<group>"; };
 		0D9C05AA15AAC125006D86CE /* user1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user1.png; path = img/user1.png; sourceTree = "<group>"; };
 		0D9C05AB15AAC125006D86CE /* user2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user2.png; path = img/user2.png; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 				0D94F50915A7D2BB00903F0B /* Item.m */,
 				0D96665C15AB9DEA00753491 /* comment.h */,
 				0D96665D15AB9DEA00753491 /* comment.m */,
-				0D94F50B15A7D2BB00903F0B /* Cart.h */,
-				0D94F50C15A7D2BB00903F0B /* Cart.m */,
+				0D94F50B15A7D2BB00903F0B /* Poll.h */,
+				0D94F50C15A7D2BB00903F0B /* Poll.m */,
 				0D94F50515A7D2BB00903F0B /* UserEvent.h */,
 				0D94F50615A7D2BB00903F0B /* UserEvent.m */,
 			);
@@ -189,18 +189,18 @@
 				0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */,
 				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
 				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
-				0D9C05A215AA1BCE006D86CE /* NewsFeedNewCartCell.h */,
-				0D9C05A315AA1BCE006D86CE /* NewsFeedNewCartCell.m */,
+				0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */,
+				0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */,
 				0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */,
 				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
 				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
 				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
 				0D94F51415A7D30700903F0B /* CheckInViewController.h */,
 				0D94F51515A7D30800903F0B /* CheckInViewController.m */,
-				0D96665615AB93AF00753491 /* CartTableViewController.h */,
-				0D96665715AB93AF00753491 /* CartTableViewController.m */,
-				0D96665915AB97CC00753491 /* CartItemCell.h */,
-				0D96665A15AB97CD00753491 /* CartItemCell.m */,
+				0D96665615AB93AF00753491 /* PollTableViewController.h */,
+				0D96665715AB93AF00753491 /* PollTableViewController.m */,
+				0D96665915AB97CC00753491 /* PollItemCell.h */,
+				0D96665A15AB97CD00753491 /* PollItemCell.m */,
 				0D94F51115A7D2F200903F0B /* cameraViewController.h */,
 				0D94F51215A7D2F200903F0B /* cameraViewController.m */,
 			);
@@ -256,9 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				0D99436415AEB9340037194D /* stylepics.db */,
-				0D9C05A615AAC125006D86CE /* carts.png */,
+				0D9C05A615AAC125006D86CE /* polls.png */,
 				0D9C05A715AAC125006D86CE /* item1.png */,
-				0D9C05A815AAC125006D86CE /* new cart.png */,
+				0D9C05A815AAC125006D86CE /* new poll.png */,
 				0D9C05A915AAC125006D86CE /* new item.png */,
 				0D9C05AA15AAC125006D86CE /* user1.png */,
 				0D9C05AB15AAC125006D86CE /* user2.png */,
@@ -326,9 +326,9 @@
 			files = (
 				0D94F4F315A7D09700903F0B /* InfoPlist.strings in Resources */,
 				0D94F4FC15A7D09700903F0B /* MainStoryboard.storyboard in Resources */,
-				0D9C05AE15AAC125006D86CE /* carts.png in Resources */,
+				0D9C05AE15AAC125006D86CE /* polls.png in Resources */,
 				0D9C05AF15AAC125006D86CE /* item1.png in Resources */,
-				0D9C05B015AAC125006D86CE /* new cart.png in Resources */,
+				0D9C05B015AAC125006D86CE /* new poll.png in Resources */,
 				0D9C05B115AAC125006D86CE /* new item.png in Resources */,
 				0D9C05B215AAC125006D86CE /* user1.png in Resources */,
 				0D9C05B315AAC125006D86CE /* user2.png in Resources */,
@@ -350,16 +350,16 @@
 				0D94F50D15A7D2BB00903F0B /* UserEvent.m in Sources */,
 				0D94F50E15A7D2BB00903F0B /* Item.m in Sources */,
 				0D94F50F15A7D2BB00903F0B /* User.m in Sources */,
-				0D94F51015A7D2BB00903F0B /* Cart.m in Sources */,
+				0D94F51015A7D2BB00903F0B /* Poll.m in Sources */,
 				0D94F51315A7D2F200903F0B /* cameraViewController.m in Sources */,
 				0D94F51615A7D30800903F0B /* CheckInViewController.m in Sources */,
 				0D94F51915A7D41300903F0B /* StylepicsEntryPageViewController.m in Sources */,
 				0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */,
-				0D9C05A415AA1BCE006D86CE /* NewsFeedNewCartCell.m in Sources */,
+				0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */,
 				0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */,
 				0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */,
-				0D96665815AB93AF00753491 /* CartTableViewController.m in Sources */,
-				0D96665B15AB97CD00753491 /* CartItemCell.m in Sources */,
+				0D96665815AB93AF00753491 /* PollTableViewController.m in Sources */,
+				0D96665B15AB97CD00753491 /* PollItemCell.m in Sources */,
 				0D96665E15AB9DEB00753491 /* comment.m in Sources */,
 				0D96666115AB9FA900753491 /* AudienceListView.m in Sources */,
 				0D91EE5315ACE8B900D1015D /* StylepicsDatabase.m in Sources */,

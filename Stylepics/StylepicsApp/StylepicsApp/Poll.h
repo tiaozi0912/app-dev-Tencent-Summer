@@ -1,5 +1,5 @@
 //
-//  Cart.h
+//  Poll.h
 //  BasicApp
 //
 //  Created by Yong Lin on 7/6/12.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Item.h"
 
-@interface Cart : NSObject
+@interface Poll : NSObject
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *items;

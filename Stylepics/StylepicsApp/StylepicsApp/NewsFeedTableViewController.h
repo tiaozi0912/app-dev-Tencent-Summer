@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewsFeedNewCartCell.h"
+#import "NewsFeedNewPollCell.h"
 #import "NewsFeedNewItemCell.h"
 #import "NewsFeedVoteCell.h"
 

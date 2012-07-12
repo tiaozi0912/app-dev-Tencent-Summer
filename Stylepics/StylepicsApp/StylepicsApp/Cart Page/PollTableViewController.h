@@ -1,5 +1,5 @@
 //
-//  CartTableViewController.h
+//  PollTableViewController.h
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/9/12.
@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Cart.h"
+#import "Poll.h"
 #import "AudienceListView.h"
-#import "CartItemCell.h"
+#import "PollItemCell.h"
 
-@interface CartTableViewController : UITableViewController
-@property (nonatomic, strong) Cart* cart;
+@interface PollTableViewController : UITableViewController
+@property (nonatomic, strong) Poll* poll;
 @end

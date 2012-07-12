@@ -1,5 +1,5 @@
 //
-//  CartItemCell.h
+//  PollItemCell.h
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/9/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CartItemCell : UITableViewCell
+@interface PollItemCell : UITableViewCell
 @property (nonatomic, strong) IBOutlet UIImageView *itemImage;
 @property (nonatomic, strong) IBOutlet UILabel *descriptionOfItemLabel;
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;

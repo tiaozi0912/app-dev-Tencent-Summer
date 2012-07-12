@@ -1,18 +1,19 @@
 //
-//  NewsFeedNewCartCell.m
+//  PollItemCell.m
 //  StylepicsApp
 //
-//  Created by Yong Lin on 7/8/12.
+//  Created by Yong Lin on 7/9/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "NewsFeedNewCartCell.h"
+#import "PollItemCell.h"
 
-@implementation NewsFeedNewCartCell
-@synthesize userImage=_userImage;
-@synthesize userNameLabel=_userNameLabel;
-@synthesize iconImage=_iconImage;
-@synthesize eventDescriptionLabel=_eventDescriptionLabel;
+@implementation PollItemCell
+@synthesize itemImage=_itemImage;
+@synthesize countOfCommentsLabel=_countOfCommentsLabel;
+@synthesize descriptionOfItemLabel=_descriptionOfItemLabel;
+@synthesize priceLabel=_priceLabel;
+@synthesize commentIconImage=_commentIconImage;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
