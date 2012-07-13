@@ -386,7 +386,7 @@
                             </connections>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cart item cell" rowHeight="340" id="zBZ-kk-9gb" customClass="CartItemCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll item cell" rowHeight="340" id="zBZ-kk-9gb" customClass="PollItemCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="340"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -433,11 +433,11 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="commentIconImage" destination="RJY-m0-XKJ" id="2Cp-iy-Wff"/>
-                                    <outlet property="countOfCommentsLabel" destination="ku3-g4-M3Y" id="4Tc-pj-kjD"/>
-                                    <outlet property="descriptionOfItemLabel" destination="WRc-G6-rCe" id="PM9-Ig-17I"/>
-                                    <outlet property="itemImage" destination="4cn-mJ-UQl" id="icz-ml-eD8"/>
-                                    <outlet property="priceLabel" destination="u6W-h3-w00" id="fQt-rx-Nx2"/>
+                                    <outlet property="commentIconImage" destination="RJY-m0-XKJ" id="vLZ-nR-n3d"/>
+                                    <outlet property="countOfCommentsLabel" destination="ku3-g4-M3Y" id="I3o-Bs-Nl4"/>
+                                    <outlet property="descriptionOfItemLabel" destination="WRc-G6-rCe" id="x9J-gC-AOz"/>
+                                    <outlet property="itemImage" destination="4cn-mJ-UQl" id="gPc-QI-rjV"/>
+                                    <outlet property="priceLabel" destination="u6W-h3-w00" id="Uat-9l-EjK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -594,6 +594,16 @@
                 <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PollItemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollItemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="commentIconImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="countOfCommentsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="descriptionOfItemLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="PollTableViewController" superclassName="UITableViewController">

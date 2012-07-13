@@ -88,7 +88,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     database = [[StylepicsDatabase alloc] init];    
+    database = [[StylepicsDatabase alloc] init];  
+    [database getUserCount];
 }
 
 

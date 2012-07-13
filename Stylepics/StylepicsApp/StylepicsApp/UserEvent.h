@@ -13,10 +13,6 @@
 @interface UserEvent : NSObject
 
 @property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) User *user;
-@property (nonatomic, strong) Poll *poll; 
-@property (nonatomic, strong) UIImage *icon;
-@property (nonatomic, strong) User *votee;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSNumber *userID, *pollID, *itemID, *voteeID;
 
 @end

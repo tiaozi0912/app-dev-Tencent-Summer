@@ -11,7 +11,6 @@
 @implementation Poll
 
 @synthesize name=_name;
-@synthesize items=_items;
-@synthesize audience=_audience;
+@synthesize pollID=_pollID;
 
 @end

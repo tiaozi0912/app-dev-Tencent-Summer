@@ -10,9 +10,8 @@
 
 @interface User : NSObject 
 
-@property (nonatomic, assign) NSInteger userID;
+@property (nonatomic, assign) NSNumber *userID;
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *password;
 @property (nonatomic, retain) UIImage *photo;
 
 @end

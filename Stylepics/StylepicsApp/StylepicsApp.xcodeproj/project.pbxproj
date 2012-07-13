@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19615AF7606003011A0 /* PollItemCell.m */; };
+		0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19815AF7606003011A0 /* PollTableViewController.m */; };
 		0D91EE4F15ACDBD000D1015D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */; };
 		0D91EE5315ACE8B900D1015D /* StylepicsDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */; };
 		0D91EE5B15AD4BD300D1015D /* RegistrationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */; };
@@ -28,13 +30,9 @@
 		0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */; };
 		0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */; };
 		0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */; };
-		0D96665815AB93AF00753491 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665715AB93AF00753491 /* PollTableViewController.m */; };
-		0D96665B15AB97CD00753491 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665A15AB97CD00753491 /* PollItemCell.m */; };
 		0D96665E15AB9DEB00753491 /* comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665D15AB9DEA00753491 /* comment.m */; };
 		0D96666115AB9FA900753491 /* AudienceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96666015AB9FA900753491 /* AudienceListView.m */; };
 		0D96666315AC040C00753491 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D96666215AC040C00753491 /* libsqlite3.0.dylib */; };
-		0D99435C15AEB1360037194D /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99435B15AEB1360037194D /* FMDatabase.m */; };
-		0D99436015AEB1420037194D /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99435F15AEB1420037194D /* FMResultSet.m */; };
 		0D99436315AEB1590037194D /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99436215AEB1590037194D /* Utility.m */; };
 		0D99436515AEB9340037194D /* stylepics.db in Resources */ = {isa = PBXBuildFile; fileRef = 0D99436415AEB9340037194D /* stylepics.db */; };
 		0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */; };
@@ -46,9 +44,17 @@
 		0D9C05B315AAC125006D86CE /* user2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AB15AAC125006D86CE /* user2.png */; };
 		0D9C05B415AAC125006D86CE /* user3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AC15AAC125006D86CE /* user3.png */; };
 		0D9C05B515AAC125006D86CE /* vote.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AD15AAC125006D86CE /* vote.png */; };
+		0DEF0D8515AFA72D0011DC0A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */; };
+		0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */; };
+		0DEF0D8815AFA72D0011DC0A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D8115AFA72D0011DC0A /* FMDatabaseQueue.m */; };
+		0DEF0D8A15AFA72D0011DC0A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D8415AFA72D0011DC0A /* FMResultSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D8FA19515AF7606003011A0 /* PollItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollItemCell.h; path = "Poll Page/PollItemCell.h"; sourceTree = "<group>"; };
+		0D8FA19615AF7606003011A0 /* PollItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollItemCell.m; path = "Poll Page/PollItemCell.m"; sourceTree = "<group>"; };
+		0D8FA19715AF7606003011A0 /* PollTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollTableViewController.h; path = "Poll Page/PollTableViewController.h"; sourceTree = "<group>"; };
+		0D8FA19815AF7606003011A0 /* PollTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollTableViewController.m; path = "Poll Page/PollTableViewController.m"; sourceTree = "<group>"; };
 		0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		0D91EE5115ACE8B900D1015D /* StylepicsDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StylepicsDatabase.h; sourceTree = "<group>"; };
 		0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StylepicsDatabase.m; sourceTree = "<group>"; };
@@ -71,7 +77,7 @@
 		0D94F50815A7D2BB00903F0B /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		0D94F50915A7D2BB00903F0B /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		0D94F50A15A7D2BB00903F0B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		0D94F50B15A7D2BB00903F0B /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Poll.h; sourceTree = "<group>"; };
+		0D94F50B15A7D2BB00903F0B /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Poll.h; sourceTree = "<group>"; };
 		0D94F50C15A7D2BB00903F0B /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
 		0D94F51115A7D2F200903F0B /* cameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cameraViewController.h; sourceTree = "<group>"; };
 		0D94F51215A7D2F200903F0B /* cameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cameraViewController.m; sourceTree = "<group>"; };
@@ -86,23 +92,15 @@
 		0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewItemCell.m; path = "News Feed Page/NewsFeedNewItemCell.m"; sourceTree = "<group>"; };
 		0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedVoteCell.h; path = "News Feed Page/NewsFeedVoteCell.h"; sourceTree = "<group>"; };
 		0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedVoteCell.m; path = "News Feed Page/NewsFeedVoteCell.m"; sourceTree = "<group>"; };
-		0D96665615AB93AF00753491 /* PollTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = PollTableViewController.h; path = "Cart Page/PollTableViewController.h"; sourceTree = "<group>"; };
-		0D96665715AB93AF00753491 /* PollTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollTableViewController.m; path = "Cart Page/PollTableViewController.m"; sourceTree = "<group>"; };
-		0D96665915AB97CC00753491 /* PollItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollItemCell.h; path = "Cart Page/PollItemCell.h"; sourceTree = "<group>"; };
-		0D96665A15AB97CD00753491 /* PollItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollItemCell.m; path = "Cart Page/PollItemCell.m"; sourceTree = "<group>"; };
 		0D96665C15AB9DEA00753491 /* comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comment.h; sourceTree = "<group>"; };
 		0D96665D15AB9DEA00753491 /* comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comment.m; sourceTree = "<group>"; };
 		0D96665F15AB9FA900753491 /* AudienceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudienceListView.h; sourceTree = "<group>"; };
 		0D96666015AB9FA900753491 /* AudienceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudienceListView.m; sourceTree = "<group>"; };
 		0D96666215AC040C00753491 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		0D99435A15AEB1360037194D /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		0D99435B15AEB1360037194D /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		0D99435E15AEB1420037194D /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		0D99435F15AEB1420037194D /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		0D99436115AEB1590037194D /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		0D99436215AEB1590037194D /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		0D99436415AEB9340037194D /* stylepics.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = stylepics.db; sourceTree = "<group>"; };
-		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
+		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
 		0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewPollCell.m; path = "News Feed Page/NewsFeedNewPollCell.m"; sourceTree = "<group>"; };
 		0D9C05A615AAC125006D86CE /* polls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = polls.png; path = img/polls.png; sourceTree = "<group>"; };
 		0D9C05A715AAC125006D86CE /* item1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item1.png; path = img/item1.png; sourceTree = "<group>"; };
@@ -112,6 +110,14 @@
 		0D9C05AB15AAC125006D86CE /* user2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user2.png; path = img/user2.png; sourceTree = "<group>"; };
 		0D9C05AC15AAC125006D86CE /* user3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user3.png; path = img/user3.png; sourceTree = "<group>"; };
 		0D9C05AD15AAC125006D86CE /* vote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vote.png; path = img/vote.png; sourceTree = "<group>"; };
+		0DEF0D7A15AFA72D0011DC0A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		0DEF0D7E15AFA72D0011DC0A /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		0DEF0D8015AFA72D0011DC0A /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		0DEF0D8115AFA72D0011DC0A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		0DEF0D8315AFA72D0011DC0A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		0DEF0D8415AFA72D0011DC0A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,10 +140,14 @@
 		0D8DD69415AE93A5009177D0 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
-				0D99435E15AEB1420037194D /* FMResultSet.h */,
-				0D99435F15AEB1420037194D /* FMResultSet.m */,
-				0D99435A15AEB1360037194D /* FMDatabase.h */,
-				0D99435B15AEB1360037194D /* FMDatabase.m */,
+				0DEF0D7A15AFA72D0011DC0A /* FMDatabase.h */,
+				0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */,
+				0DEF0D7E15AFA72D0011DC0A /* FMDatabasePool.h */,
+				0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */,
+				0DEF0D8015AFA72D0011DC0A /* FMDatabaseQueue.h */,
+				0DEF0D8115AFA72D0011DC0A /* FMDatabaseQueue.m */,
+				0DEF0D8315AFA72D0011DC0A /* FMResultSet.h */,
+				0DEF0D8415AFA72D0011DC0A /* FMResultSet.m */,
 			);
 			name = FMDB;
 			sourceTree = "<group>";
@@ -197,12 +207,12 @@
 				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
 				0D94F51415A7D30700903F0B /* CheckInViewController.h */,
 				0D94F51515A7D30800903F0B /* CheckInViewController.m */,
-				0D96665615AB93AF00753491 /* PollTableViewController.h */,
-				0D96665715AB93AF00753491 /* PollTableViewController.m */,
-				0D96665915AB97CC00753491 /* PollItemCell.h */,
-				0D96665A15AB97CD00753491 /* PollItemCell.m */,
 				0D94F51115A7D2F200903F0B /* cameraViewController.h */,
 				0D94F51215A7D2F200903F0B /* cameraViewController.m */,
+				0D8FA19515AF7606003011A0 /* PollItemCell.h */,
+				0D8FA19615AF7606003011A0 /* PollItemCell.m */,
+				0D8FA19715AF7606003011A0 /* PollTableViewController.h */,
+				0D8FA19815AF7606003011A0 /* PollTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -358,15 +368,17 @@
 				0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */,
 				0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */,
 				0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */,
-				0D96665815AB93AF00753491 /* PollTableViewController.m in Sources */,
-				0D96665B15AB97CD00753491 /* PollItemCell.m in Sources */,
 				0D96665E15AB9DEB00753491 /* comment.m in Sources */,
 				0D96666115AB9FA900753491 /* AudienceListView.m in Sources */,
 				0D91EE5315ACE8B900D1015D /* StylepicsDatabase.m in Sources */,
 				0D91EE5B15AD4BD300D1015D /* RegistrationPageViewController.m in Sources */,
-				0D99435C15AEB1360037194D /* FMDatabase.m in Sources */,
-				0D99436015AEB1420037194D /* FMResultSet.m in Sources */,
 				0D99436315AEB1590037194D /* Utility.m in Sources */,
+				0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */,
+				0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */,
+				0DEF0D8515AFA72D0011DC0A /* FMDatabase.m in Sources */,
+				0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */,
+				0DEF0D8815AFA72D0011DC0A /* FMDatabaseQueue.m in Sources */,
+				0DEF0D8A15AFA72D0011DC0A /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

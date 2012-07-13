@@ -11,12 +11,7 @@
 
 @implementation UserEvent
 
-@synthesize type=_type;
-@synthesize user=_user;
-@synthesize poll=_poll;
-@synthesize icon=_icon;
-@synthesize votee=_votee;
-@synthesize description=_description;
+@synthesize type, userID, pollID, itemID, voteeID;
 
 
 @end

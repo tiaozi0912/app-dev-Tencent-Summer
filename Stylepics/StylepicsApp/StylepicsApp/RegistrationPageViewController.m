@@ -43,7 +43,7 @@
 
 
 - (IBAction)signup {
-    if ([self.username.text length] < 6)
+    if ([self.username.text length] < 4)
     { 
         [self alertForShortName];  
     }else if ([database existUsername:self.username.text]){
@@ -61,7 +61,7 @@
 }
 
 - (void)alertForShortName {
-    [Utility showAlert:@"Make your username longer" message:@"Your username should contain at least 6 characters."];
+    [Utility showAlert:@"Make your username longer" message:@"Your username should contain at least 4 characters."];
 }
 
 - (void)alertForShortPassword {

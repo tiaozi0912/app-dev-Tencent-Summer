@@ -11,6 +11,9 @@
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 #import "Utility.h"
+#import "UserEvent.h"
+#import "User.h"
+#import "Poll.h"
 
 @interface StylepicsDatabase : NSObject
 
@@ -18,6 +21,7 @@
 -(BOOL) isLoggedInWithUsername:(NSString*) username
                       password:(NSString*) password;
 -(BOOL) existUsername:(NSString*) username;
+-(int) getUserCount;
 //-(void) closeDatabase;
 -(BOOL) addNewUserWithUsername:(NSString*) username
                       password:(NSString*) password;
@@ -25,4 +29,7 @@
 
 //-(NSMutableArray *) getUserInfo;
 
+-(NSMutableArray*) getMostRecentEventsNum:(NSNumber*) number;
+-(User*) getUserWithID:(NSNumber *) userID;
+-(Poll*) getPollWithID:(NSNumber*) pollID;
 @end

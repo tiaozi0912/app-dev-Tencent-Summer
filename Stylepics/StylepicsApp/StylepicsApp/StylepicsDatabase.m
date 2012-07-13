@@ -7,7 +7,7 @@
 //
 
 #import "StylepicsDatabase.h"
-#import "User.h"
+
 
 @implementation StylepicsDatabase
 
@@ -35,9 +35,9 @@
 -(int) getUserCount{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];
-    NSString *query = [[NSString alloc] initWithString:@"SELECT COUNT(*) AS count FROM UserTable"];;
-    FMResultSet *results = [db executeQuery:query];
-    int userCount = [results intForColumn:@"count"];
+    NSString *query = [[NSString alloc] initWithString:@"SELECT count(*) AS '# of user' FROM UserTable"];
+    int userCount = [db intForQuery:query];
+    NSLog(@"%d", userCount);
     [db close];
     return userCount; 
 /*    @try {
@@ -97,6 +97,53 @@
         return userArray;
     }
  }*/
+-(NSMutableArray*) getMostRecentEventsNum:(NSNumber*) number
+{
+    NSMutableArray *events = [[NSMutableArray alloc] init];
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];  
+    int eventCount = [db intForQuery:@"SELECT count(*) FROM EventTable"];
+    FMResultSet *results = [db executeQuery:@"SELECT * FROM EventTable ORDER BY eventID DESC WHERE eventID > ?", [NSNumber numberWithInt:(eventCount - [number intValue])]];
+    [db close];
+    while ([results next]) {
+        UserEvent *event = [[UserEvent alloc] init];
+        event.type = [results stringForColumn:@"type"];
+        event.userID = [NSNumber numberWithInt:[results intForColumn:@"userID"]];
+        event.pollID = [NSNumber numberWithInt:[results intForColumn:@"pollID"]];
+        event.itemID = [NSNumber numberWithInt:[results intForColumn:@"itemID"]];
+        event.voteeID= [NSNumber numberWithInt:[results intForColumn:@"voteeID"]];
+        [events addObject:event];
+    }
+    return events;
+}
 
+-(User*) getUserWithID:(NSNumber*) userID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    User *user = [[User alloc] init];
+    user.userID = userID;
+    user.name = [db stringForQuery:@"SELECT username FROM UserTable WHERE userID = ?", userID];
+    user.photo = [[UIImage alloc] initWithData:[db dataForQuery:@"SELECT photo FROM UserTable WHERE userID = ?", userID]];
+    return user;
+}
 
+-(Poll*) getPollWithID:(NSNumber*) pollID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    Poll *poll = [[Poll alloc] init];
+    poll.pollID = pollID;
+    poll.name = [db stringForQuery:@"SELECT name FROM PollTable WHERE pollID = ?", pollID];
+    return poll;
+}
+
+-(Item*) getItemWithID:(NSNumber*) itemID
+                pollID:(NSNumber*) pollID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    Item *item = [[Item alloc] init];
+    item.userID = userID;
+    user.name = [db stringForQuery:@"SELECT username FROM UserTable WHERE userID = ?", userID];
+    user.photo = [[UIImage alloc] initWithData:[db dataForQuery:@"SELECT photo FROM UserTable WHERE userID = ?", userID]];
+    return user;    
+}
 @end

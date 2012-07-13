@@ -11,8 +11,8 @@
 
 @interface Poll : NSObject
 
+@property (nonatomic, strong) NSNumber *pollID;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic, strong) NSMutableArray * audience;
+//@property (nonatomic, strong) NSString *state;// state = "EDITING", "VOTING" or "FINISHED"
 
 @end

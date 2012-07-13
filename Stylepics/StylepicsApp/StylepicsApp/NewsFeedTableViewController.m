@@ -7,13 +7,16 @@
 //
 
 #import "NewsFeedTableViewController.h"
+#import "StylepicsDatabase.h"
 #import "UserEvent.h"
 #import "User.h"
 #import "Poll.h"
 #import "Item.h"
+#define NUMBEROFEVENTSLOADED 20
 
-@interface NewsFeedTableViewController ()
-
+@interface NewsFeedTableViewController (){
+    StylepicsDatabase *database;
+}
 @end
 
 @implementation NewsFeedTableViewController
@@ -41,79 +44,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    database = [[StylepicsDatabase alloc] init];
     self.events = [[NSMutableArray alloc] init];
-    
-    //create one check-in event to events
-    UserEvent *userEvent1 = [[UserEvent alloc] init];
-    
-    User *user1= [[User alloc] init];
-    user1.name = @"Michael Wu";
-    user1.photo = [UIImage imageNamed:@"user1.png"];
-    User *votee1 = user1;
-    
-    Poll *poll1 = [[Poll alloc] init];
-    poll1.name = @"Abercrombie & Fitch";
-    
-    Item *item1 = [[Item alloc] init];
-    item1.description = @"Can I wear this to date my first dream girl?";
-    item1.price = [NSNumber numberWithDouble:49.99];
-    item1.photo = [UIImage imageNamed:@"item1.png"];
-    [poll1.items addObject:item1];
-    
-    userEvent1.type = @"new poll";
-    userEvent1.user = user1;
-    userEvent1.poll = poll1;
-    userEvent1.icon = [UIImage imageNamed:@"new poll.png"];
-    userEvent1.votee = votee1;
-    userEvent1.description = [@"Check-in to " stringByAppendingString:userEvent1.poll.name];
-    [self.events addObject:userEvent1];
-    
-    //create one new-item event to events
-    UserEvent *userEvent2 = [[UserEvent alloc] init];
-    User *user2= [[User alloc] init];
-    user2.name = @"Amanda Kao";
-    user2.photo = [UIImage imageNamed:@"user2.png"];
-    
-    Poll *poll2 = [[Poll alloc] init];
-    poll2.name = @"H&M";
-    
-    Item *item2 = [[Item alloc] init];
-    item2.description = @"Does this match my style of a party girl?";
-    item2.price = [NSNumber numberWithDouble:34.99];
-    item2.photo = [UIImage imageNamed:@"item1.png"];
-    [poll2.items addObject:item2];
-    
-    userEvent2.type = @"new item";
-    userEvent2.user = user2;
-    userEvent2.poll = poll2;
-    userEvent2.icon = [UIImage imageNamed:@"new item.png"];
-    userEvent2.votee = votee1;
-    userEvent2.description = [@"Added one item to Poll " stringByAppendingString:userEvent2.poll.name];
-    [self.events addObject:userEvent2];
-    
-    //create one vote event to events
-    UserEvent *userEvent3 = [[UserEvent alloc] init];
-    User *user3= [[User alloc] init];
-    user3.name = @"Justine Goreux";
-    user3.photo = [UIImage imageNamed:@"user3.png"];
-    
-    Poll *poll3 = [[Poll alloc] init];
-    poll3.name = @"H&M";
-    
-    Item *item3 = [[Item alloc] init];
-    item3.description = @"Does this match my style of a party girl?";
-    item3.price = [NSNumber numberWithDouble:34.99];
-    item3.photo = [UIImage imageNamed:@"item1.png"];
-    
-    [poll3.items addObject:item3];
-    
-    userEvent3.type = @"vote";
-    userEvent3.user = user3;
-    userEvent3.poll = poll3;
-    userEvent3.icon = [UIImage imageNamed:@"vote.png"];
-    userEvent3.votee = votee1;
-    userEvent3.description = [@"Voted for " stringByAppendingString:userEvent3.votee.name];
-    [self.events addObject:userEvent3];
+    self.events = [database getMostRecentEventsNum:[NSNumber numberWithInt:NUMBEROFEVENTSLOADED]];
     
 }
 
@@ -146,6 +79,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UserEvent *event = [self.events objectAtIndex:indexPath.row];
     NSString *eventType = event.type;
     if ([eventType isEqualToString:@"new poll"]) {
@@ -157,10 +91,12 @@
      reuseIdentifier:CellIdentifier];
      }
         // Configure the cell...
-        cell.userImage.image = event.user.photo;
-        cell.userNameLabel.text = event.user.name;
-        cell.iconImage.image = event.icon;
-        cell.eventDescriptionLabel.text = event.description;
+        User *user=[database getUserWithID:event.userID];
+        cell.userImage.image = user.photo;
+        cell.userNameLabel.text = user.name;
+        cell.iconImage.image = [UIImage imageNamed:@"new poll.png"];
+        Poll *poll=[database getPollWithID:event.pollID];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", poll.name];
         return cell;
     }else if ([eventType isEqualToString:@"new item"]) {
         static NSString *CellIdentifier = @"new item cell";
@@ -171,10 +107,13 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        cell.userImage.image = event.user.photo;
-        cell.userNameLabel.text = event.user.name;
-        cell.iconImage.image = event.icon;
-        cell.eventDescriptionLabel.text = event.description;
+        User *user=[database getUserWithID:event.userID];
+        cell.userImage.image = user.photo;
+        cell.userNameLabel.text = user.name;
+        cell.iconImage.image = [UIImage imageNamed:@"new item.png"];
+        Poll *poll=[database getPollWithID:event.pollID];
+        Item *item=[database getItemWithID:event.itemID];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Added one item to Poll '%@'.", poll.name];
         cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
         cell.itemImage.image = [[event.poll.items lastObject] photo];
         // In current version, photo uploading is limited to one picture at a time
@@ -190,8 +129,8 @@
         // Configure the cell...
         cell.userImage.image = event.user.photo;
         cell.userNameLabel.text = event.user.name;
-        cell.iconImage.image = event.icon;
-        cell.eventDescriptionLabel.text = event.description;
+        cell.iconImage.image = [UIImage imageNamed:@"vote.png"];;
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.votee.name, event.poll.name];
         return cell;
     }
     return nil;
