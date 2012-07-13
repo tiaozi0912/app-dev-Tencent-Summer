@@ -1,5 +1,5 @@
 //
-//  CheckInViewController.h
+//  NewPollViewController.h
 //  BasicApp
 //
 //  Created by Yong Lin on 7/4/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CheckInViewController : UIViewController<UITextFieldDelegate>
+@interface NewPollViewController : UIViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 - (IBAction)backgroundTouched:(id)sender;
 @end

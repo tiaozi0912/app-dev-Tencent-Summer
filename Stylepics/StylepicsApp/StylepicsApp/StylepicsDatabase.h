@@ -32,4 +32,8 @@
 -(NSMutableArray*) getMostRecentEventsNum:(NSNumber*) number;
 -(User*) getUserWithID:(NSNumber *) userID;
 -(Poll*) getPollWithID:(NSNumber*) pollID;
+-(Item*) getItemWithID:(NSNumber*) itemID
+                pollID:(NSNumber*) pollID;
+-(void) newAPollCalled:(NSString*) name
+              byUserID:(NSNumber*) userID;
 @end

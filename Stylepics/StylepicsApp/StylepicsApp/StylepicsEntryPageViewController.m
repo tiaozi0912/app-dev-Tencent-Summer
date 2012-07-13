@@ -8,6 +8,7 @@
 
 #import "StylepicsEntryPageViewController.h"
 #import "User.h"
+#import "Utility.h"
 
 @interface StylepicsEntryPageViewController () {
     StylepicsDatabase *database;
@@ -16,8 +17,6 @@
 @end
 
 @implementation StylepicsEntryPageViewController
-
-#define CURRENTUSER @"currentUser"
 @synthesize username=_username;
 @synthesize password=_password;
 
@@ -50,26 +49,21 @@
 }
 
 - (void)alertForEmptyName {
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Please type something" message:@"Your username can not be empty." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [message show];
+    [Utility showAlert:@"Please type something" message:@"Your username can not be empty."];
 }
 
 -(void) alertForNonexistentUsername{
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Oooops..." message:@"This username does not exist." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [message show];
+    [Utility showAlert:@"Oooops..." message:@"This username does not exist."];
 }
 
 -(void) alertForWrongPassword{
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Oooops..." message:@"This password does not match this username." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [message show];
+    [Utility showAlert:@"Oooops..." message:@"This password does not match this username."];
 }
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showNewsFeed"]) 
     {
-        NSUserDefaults* session = [NSUserDefaults standardUserDefaults];
-        [session setObject:self.username.text forKey:CURRENTUSER];
-        [session synchronize];
+        //
     }
 }
 

@@ -94,7 +94,7 @@
         User *user=[database getUserWithID:event.userID];
         cell.userImage.image = user.photo;
         cell.userNameLabel.text = user.name;
-        cell.iconImage.image = [UIImage imageNamed:@"new poll.png"];
+        cell.iconImage.image = [UIImage imageNamed:@"new poll icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", poll.name];
         return cell;
@@ -110,12 +110,12 @@
         User *user=[database getUserWithID:event.userID];
         cell.userImage.image = user.photo;
         cell.userNameLabel.text = user.name;
-        cell.iconImage.image = [UIImage imageNamed:@"new item.png"];
+        cell.iconImage.image = [UIImage imageNamed:@"new item icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
-        Item *item=[database getItemWithID:event.itemID];
+        Item *item=[database getItemWithID:event.itemID pollID:event.pollID];
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Added one item to Poll '%@'.", poll.name];
         cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
-        cell.itemImage.image = [[event.poll.items lastObject] photo];
+        cell.itemImage.image = item.photo;
         // In current version, photo uploading is limited to one picture at a time
         return cell;
     }else if ([eventType isEqualToString:@"vote"]) {
@@ -127,10 +127,13 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        cell.userImage.image = event.user.photo;
-        cell.userNameLabel.text = event.user.name;
-        cell.iconImage.image = [UIImage imageNamed:@"vote.png"];;
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.votee.name, event.poll.name];
+        User *user=[database getUserWithID:event.userID];
+        cell.userImage.image = user.photo;
+        cell.userNameLabel.text = user.name;
+        cell.iconImage.image = [UIImage imageNamed:@"vote icon.png"];
+        Poll *poll=[database getPollWithID:event.pollID];
+        User *votee =[database getUserWithID:event.voteeID];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", votee.name, poll.name];
         return cell;
     }
     return nil;

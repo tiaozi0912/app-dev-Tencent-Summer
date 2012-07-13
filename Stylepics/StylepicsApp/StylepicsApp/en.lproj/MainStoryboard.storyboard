@@ -314,11 +314,11 @@
             </objects>
             <point key="canvasLocation" x="-27" y="125"/>
         </scene>
-        <!--Check In View Controller - New Poll-->
+        <!--New Poll View Controller - New Poll-->
         <scene sceneID="0w5-Bv-NOb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9J-ho-zJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController modalTransitionStyle="flipHorizontal" id="tlb-aD-9aU" customClass="CheckInViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="tlb-aD-9aU" customClass="NewPollViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h7d-5I-y0a" customClass="UIControl">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -341,7 +341,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="newCart" destination="tlb-aD-9aU" eventType="touchUpInside" id="n0b-Pd-Pxi"/>
+                                    <action selector="newPoll" destination="tlb-aD-9aU" eventType="touchUpInside" id="Hov-Gj-wed"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -558,8 +558,8 @@
                 <relationship kind="outlet" name="placeholder" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="CheckInViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CheckInViewController.h"/>
+        <class className="NewPollViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPollViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTouched:"/>
                 <relationship kind="outlet" name="textField" candidateClass="UITextField"/>

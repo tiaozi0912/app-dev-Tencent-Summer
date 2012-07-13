@@ -15,9 +15,13 @@
                             password:(NSString*) password{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT userID FROM UserTable WHERE username ='%@' AND password = '%@'", username, password];
-    FMResultSet *results = [db executeQuery:query];
+    FMResultSet *results = [db executeQuery:@"SELECT userID FROM UserTable WHERE username =? AND password = ?", username, password];
     BOOL success = [results next];
+    if (success) {
+        NSUserDefaults* session = [NSUserDefaults standardUserDefaults];
+        [session setObject:[NSNumber numberWithInt:[results intForColumn:@"userID"]] forKey:@"currentUserID"];
+        [session synchronize];
+    }
     [db close];
     return success; 
 }
@@ -103,8 +107,7 @@
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];  
     int eventCount = [db intForQuery:@"SELECT count(*) FROM EventTable"];
-    FMResultSet *results = [db executeQuery:@"SELECT * FROM EventTable ORDER BY eventID DESC WHERE eventID > ?", [NSNumber numberWithInt:(eventCount - [number intValue])]];
-    [db close];
+    FMResultSet *results = [db executeQuery:@"SELECT * FROM EventTable WHERE eventID > ? ORDER BY eventID DESC", [NSNumber numberWithInt:(eventCount - [number intValue])]];
     while ([results next]) {
         UserEvent *event = [[UserEvent alloc] init];
         event.type = [results stringForColumn:@"type"];
@@ -114,6 +117,7 @@
         event.voteeID= [NSNumber numberWithInt:[results intForColumn:@"voteeID"]];
         [events addObject:event];
     }
+    [db close];
     return events;
 }
 
@@ -141,9 +145,26 @@
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];
     Item *item = [[Item alloc] init];
-    item.userID = userID;
-    user.name = [db stringForQuery:@"SELECT username FROM UserTable WHERE userID = ?", userID];
-    user.photo = [[UIImage alloc] initWithData:[db dataForQuery:@"SELECT photo FROM UserTable WHERE userID = ?", userID]];
-    return user;    
+    item.itemID = itemID;
+    item.pollID = pollID;
+    item.photo = [[UIImage alloc] initWithData:[db dataForQuery:@"SELECT photo FROM Poll_?_Item_Table WHERE itemID = ?", pollID, itemID]];
+    [db close];
+    return item;    
 }
+//new poll 
+
+-(void) newAPollCalled:(NSString*) name
+             byUserID:(NSNumber*) userID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
+    [db executeUpdate:@"INSERT INTO PollTable (name, ownerID, state) VALUES (?,?,?)", name, userID, @"EDITING"];
+    NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
+    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE Poll_%d_ItemTable (itemID, description, price, photo)", pollID];
+    [db executeUpdate:query];
+    [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID) VALUES ('new poll', ?, ?)", userID, pollID];
+    [db close];
+}
+
 @end
