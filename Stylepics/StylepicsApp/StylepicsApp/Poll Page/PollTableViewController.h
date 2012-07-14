@@ -12,5 +12,6 @@
 #import "PollItemCell.h"
 
 @interface PollTableViewController : UITableViewController
-@property (nonatomic, strong) Poll* poll;
+@property (nonatomic, strong) Poll *poll;
+
 @end

@@ -14,6 +14,7 @@
 #import "UserEvent.h"
 #import "User.h"
 #import "Poll.h"
+#import "Item.h"
 
 @interface StylepicsDatabase : NSObject
 
@@ -32,8 +33,10 @@
 -(NSMutableArray*) getMostRecentEventsNum:(NSNumber*) number;
 -(User*) getUserWithID:(NSNumber *) userID;
 -(Poll*) getPollWithID:(NSNumber*) pollID;
+-(Poll*) getPollDetailsWithID:(NSNumber *)pollID;
 -(Item*) getItemWithID:(NSNumber*) itemID
                 pollID:(NSNumber*) pollID;
 -(void) newAPollCalled:(NSString*) name
               byUserID:(NSNumber*) userID;
+
 @end

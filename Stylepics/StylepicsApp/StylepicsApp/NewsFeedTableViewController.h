@@ -13,5 +13,4 @@
 
 @interface NewsFeedTableViewController : UITableViewController
 @property (nonatomic, strong) NSMutableArray* events;
-
 @end

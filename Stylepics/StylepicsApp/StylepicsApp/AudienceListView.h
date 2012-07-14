@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AudienceListView : UIView
-@property (nonatomic, strong) IBOutlet UILabel* placeholder;
+@property (nonatomic, weak) IBOutlet UILabel* placeholder;
 @end

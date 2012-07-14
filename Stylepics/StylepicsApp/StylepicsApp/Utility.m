@@ -24,4 +24,14 @@
     [alert show];
 }
 
++(void) setObject:(id) obj forKey:(NSString*) key{
+    NSUserDefaults *session = [NSUserDefaults standardUserDefaults];
+    [session setObject:obj forKey:key];
+    [session synchronize];
+}
+
++(id) getObjectForKey:(NSString*) key{
+    NSUserDefaults *session = [NSUserDefaults standardUserDefaults];
+    return [session objectForKey:key];
+}
 @end

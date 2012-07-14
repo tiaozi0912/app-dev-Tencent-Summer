@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface PollItemCell : UITableViewCell
-@property (nonatomic, strong) IBOutlet UIImageView *itemImage;
-@property (nonatomic, strong) IBOutlet UILabel *descriptionOfItemLabel;
-@property (nonatomic, strong) IBOutlet UILabel *priceLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *commentIconImage;
-@property (nonatomic, strong) IBOutlet UILabel *countOfCommentsLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *itemImage;
+@property (nonatomic, weak) IBOutlet UILabel *descriptionOfItemLabel;
+@property (nonatomic, weak) IBOutlet UILabel *priceLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *commentIconImage;
+@property (nonatomic, weak) IBOutlet UILabel *countOfCommentsLabel;
 
 @end

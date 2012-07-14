@@ -10,7 +10,5 @@
 
 @implementation Poll
 
-@synthesize name=_name;
-@synthesize pollID=_pollID;
-
+@synthesize name, pollID, ownerID, items, audience, state;
 @end

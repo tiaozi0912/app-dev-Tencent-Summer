@@ -55,7 +55,9 @@
     }else {
         if ([database addNewUserWithUsername:self.username.text password:self.password.text]){
             [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
+            [Utility setObject:self.username.text forKey:CURRENTUSER];
             [self performSegueWithIdentifier:@"show news feed page" sender:self];
+
         }
     }
 }
@@ -74,15 +76,6 @@
 
 -(void) alertForPasswordNotMatch{
     [Utility showAlert:@"Passwords mismatch!" message:@"Make sure the passwords you typed are the same one."];
-}
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"show news feed page"]) 
-    {
-        NSUserDefaults* session = [NSUserDefaults standardUserDefaults];
-        [session setObject:self.username.text forKey:CURRENTUSER];
-        [session synchronize];
-    }
 }
 
 -(IBAction)backgroundTouched:(id)sender

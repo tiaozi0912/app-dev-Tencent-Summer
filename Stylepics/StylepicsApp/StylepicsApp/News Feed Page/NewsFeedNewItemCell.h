@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsFeedNewItemCell : UITableViewCell
-@property (nonatomic, strong) IBOutlet UIImageView *userImage;
-@property (nonatomic, strong) IBOutlet UILabel *userNameLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *iconImage;
-@property (nonatomic, strong) IBOutlet UILabel *eventDescriptionLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *itemImage;
+@property (nonatomic, weak) IBOutlet UIImageView *userImage;
+@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *iconImage;
+@property (nonatomic, weak) IBOutlet UILabel *eventDescriptionLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *itemImage;
 @end

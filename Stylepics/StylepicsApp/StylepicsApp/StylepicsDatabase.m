@@ -19,7 +19,7 @@
     BOOL success = [results next];
     if (success) {
         NSUserDefaults* session = [NSUserDefaults standardUserDefaults];
-        [session setObject:[NSNumber numberWithInt:[results intForColumn:@"userID"]] forKey:@"currentUserID"];
+        [session setObject:[NSNumber numberWithInt:[results intForColumn:@"userID"]] forKey:CURRENTUSERID];
         [session synchronize];
     }
     [db close];
@@ -41,7 +41,6 @@
     [db open];
     NSString *query = [[NSString alloc] initWithString:@"SELECT count(*) AS '# of user' FROM UserTable"];
     int userCount = [db intForQuery:query];
-    NSLog(@"%d", userCount);
     [db close];
     return userCount; 
 /*    @try {
@@ -137,6 +136,36 @@
     Poll *poll = [[Poll alloc] init];
     poll.pollID = pollID;
     poll.name = [db stringForQuery:@"SELECT name FROM PollTable WHERE pollID = ?", pollID];
+    [db close];
+    return poll;
+}
+
+-(Poll*) getPollDetailsWithID:(NSNumber *)pollID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    [db open];
+    Poll *poll = [[Poll alloc] init];
+    poll.pollID = pollID;
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM PollTable WHERE pollID = %@", pollID]; 
+    FMResultSet *results=[db executeQuery:query];
+    while ([results next]){
+    poll.name = [results stringForColumn:@"name"];
+    poll.ownerID =[NSNumber numberWithInt:[results intForColumn:@"ownerID"]];
+    poll.state = [results stringForColumn:@"state"];
+    }
+    query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY itemID DESC", [pollID intValue]];
+    results = [db executeQuery:query];
+    poll.items= [[NSMutableArray alloc] init];
+    while ([results next]){
+        Item *item = [[Item alloc] init];
+        item.itemID = [NSNumber numberWithInt:[results intForColumn:@"itemID"]];
+        item.description = [results stringForColumn:@"description"];
+        item.price = [NSNumber numberWithDouble:[results doubleForColumn:@"price"]];
+        item.photo = [[UIImage alloc] initWithData:[results dataForColumn:@"photo"]];
+        //item.comments to be implemented...
+        [poll.items addObject:item];
+    }
+    //poll.audience...
+    [db close];
     return poll;
 }
 
@@ -147,7 +176,8 @@
     Item *item = [[Item alloc] init];
     item.itemID = itemID;
     item.pollID = pollID;
-    item.photo = [[UIImage alloc] initWithData:[db dataForQuery:@"SELECT photo FROM Poll_?_Item_Table WHERE itemID = ?", pollID, itemID]];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT photo FROM Poll_%@_ItemTable WHERE itemID = %@", pollID,itemID];
+    item.photo = [[UIImage alloc] initWithData:[db dataForQuery:query]];
     [db close];
     return item;    
 }
@@ -161,10 +191,11 @@
     //db.logsErrors=YES; 
     [db executeUpdate:@"INSERT INTO PollTable (name, ownerID, state) VALUES (?,?,?)", name, userID, @"EDITING"];
     NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
-    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE Poll_%d_ItemTable (itemID, description, price, photo)", pollID];
+    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE Poll_%d_ItemTable (itemID, description, price, photo)", [pollID intValue]];
     [db executeUpdate:query];
     [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID) VALUES ('new poll', ?, ?)", userID, pollID];
     [db close];
+    [Utility setObject:pollID forKey:IDOfPollToBeShown];
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D647C4715B1205C00530658 /* PollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D647C4615B1205C00530658 /* PollCell.m */; };
 		0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19615AF7606003011A0 /* PollItemCell.m */; };
 		0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19815AF7606003011A0 /* PollTableViewController.m */; };
 		0D91EE4F15ACDBD000D1015D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */; };
@@ -31,6 +32,8 @@
 		0D957D1E15B09BEC009D37AA /* vote icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D957D1B15B09BEC009D37AA /* vote icon.png */; };
 		0D957D1F15B09BEC009D37AA /* new item icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D957D1C15B09BEC009D37AA /* new item icon.png */; };
 		0D957D2015B09BEC009D37AA /* new poll icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D957D1D15B09BEC009D37AA /* new poll icon.png */; };
+		0D957D2215B0DC37009D37AA /* comments icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D957D2115B0DC37009D37AA /* comments icon.png */; };
+		0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */; };
 		0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */; };
 		0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */; };
 		0D96665E15AB9DEB00753491 /* comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665D15AB9DEA00753491 /* comment.m */; };
@@ -40,9 +43,7 @@
 		0D99436515AEB9340037194D /* stylepics.db in Resources */ = {isa = PBXBuildFile; fileRef = 0D99436415AEB9340037194D /* stylepics.db */; };
 		0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */; };
 		0D9C05AF15AAC125006D86CE /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A715AAC125006D86CE /* item1.png */; };
-		0D9C05B215AAC125006D86CE /* user1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AA15AAC125006D86CE /* user1.png */; };
-		0D9C05B315AAC125006D86CE /* user2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AB15AAC125006D86CE /* user2.png */; };
-		0D9C05B415AAC125006D86CE /* user3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05AC15AAC125006D86CE /* user3.png */; };
+		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
 		0DEF0D8515AFA72D0011DC0A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */; };
 		0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */; };
 		0DEF0D8815AFA72D0011DC0A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D8115AFA72D0011DC0A /* FMDatabaseQueue.m */; };
@@ -50,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D647C4515B1205C00530658 /* PollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollCell.h; sourceTree = "<group>"; };
+		0D647C4615B1205C00530658 /* PollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollCell.m; sourceTree = "<group>"; };
 		0D8FA19515AF7606003011A0 /* PollItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollItemCell.h; path = "Poll Page/PollItemCell.h"; sourceTree = "<group>"; };
 		0D8FA19615AF7606003011A0 /* PollItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollItemCell.m; path = "Poll Page/PollItemCell.m"; sourceTree = "<group>"; };
 		0D8FA19715AF7606003011A0 /* PollTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollTableViewController.h; path = "Poll Page/PollTableViewController.h"; sourceTree = "<group>"; };
@@ -80,7 +83,7 @@
 		0D94F50C15A7D2BB00903F0B /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
 		0D94F51115A7D2F200903F0B /* cameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cameraViewController.h; sourceTree = "<group>"; };
 		0D94F51215A7D2F200903F0B /* cameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cameraViewController.m; sourceTree = "<group>"; };
-		0D94F51415A7D30700903F0B /* NewPollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = NewPollViewController.h; sourceTree = "<group>"; };
+		0D94F51415A7D30700903F0B /* NewPollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPollViewController.h; sourceTree = "<group>"; };
 		0D94F51515A7D30800903F0B /* NewPollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPollViewController.m; sourceTree = "<group>"; };
 		0D94F51715A7D41300903F0B /* StylepicsEntryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StylepicsEntryPageViewController.h; sourceTree = "<group>"; };
 		0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StylepicsEntryPageViewController.m; sourceTree = "<group>"; };
@@ -90,6 +93,9 @@
 		0D957D1B15B09BEC009D37AA /* vote icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "vote icon.png"; path = "img/vote icon.png"; sourceTree = "<group>"; };
 		0D957D1C15B09BEC009D37AA /* new item icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new item icon.png"; path = "img/new item icon.png"; sourceTree = "<group>"; };
 		0D957D1D15B09BEC009D37AA /* new poll icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new poll icon.png"; path = "img/new poll icon.png"; sourceTree = "<group>"; };
+		0D957D2115B0DC37009D37AA /* comments icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comments icon.png"; path = "img/comments icon.png"; sourceTree = "<group>"; };
+		0D957D2315B0E09B009D37AA /* ManagePollsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagePollsTableViewController.h; sourceTree = "<group>"; };
+		0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagePollsTableViewController.m; sourceTree = "<group>"; };
 		0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewItemCell.h; path = "News Feed Page/NewsFeedNewItemCell.h"; sourceTree = "<group>"; };
 		0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewItemCell.m; path = "News Feed Page/NewsFeedNewItemCell.m"; sourceTree = "<group>"; };
 		0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedVoteCell.h; path = "News Feed Page/NewsFeedVoteCell.h"; sourceTree = "<group>"; };
@@ -105,9 +111,7 @@
 		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
 		0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewPollCell.m; path = "News Feed Page/NewsFeedNewPollCell.m"; sourceTree = "<group>"; };
 		0D9C05A715AAC125006D86CE /* item1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item1.png; path = img/item1.png; sourceTree = "<group>"; };
-		0D9C05AA15AAC125006D86CE /* user1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user1.png; path = img/user1.png; sourceTree = "<group>"; };
-		0D9C05AB15AAC125006D86CE /* user2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user2.png; path = img/user2.png; sourceTree = "<group>"; };
-		0D9C05AC15AAC125006D86CE /* user3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user3.png; path = img/user3.png; sourceTree = "<group>"; };
+		0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_profile_photo.jpeg; path = img/default_profile_photo.jpeg; sourceTree = "<group>"; };
 		0DEF0D7A15AFA72D0011DC0A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		0DEF0D7E15AFA72D0011DC0A /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
@@ -163,8 +167,18 @@
 			isa = PBXGroup;
 			children = (
 				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
+				0D647C4515B1205C00530658 /* PollCell.h */,
+				0D647C4615B1205C00530658 /* PollCell.m */,
 				0D96665F15AB9FA900753491 /* AudienceListView.h */,
 				0D96666015AB9FA900753491 /* AudienceListView.m */,
+				0D8FA19515AF7606003011A0 /* PollItemCell.h */,
+				0D8FA19615AF7606003011A0 /* PollItemCell.m */,
+				0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */,
+				0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */,
+				0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */,
+				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
+				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
+				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -191,24 +205,18 @@
 		0D91EE5815AD0BB900D1015D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0D957D2315B0E09B009D37AA /* ManagePollsTableViewController.h */,
+				0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */,
 				0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */,
 				0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */,
 				0D94F51715A7D41300903F0B /* StylepicsEntryPageViewController.h */,
 				0D94F51815A7D41300903F0B /* StylepicsEntryPageViewController.m */,
 				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
 				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
-				0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */,
-				0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */,
-				0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */,
-				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
-				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
-				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
 				0D94F51415A7D30700903F0B /* NewPollViewController.h */,
 				0D94F51515A7D30800903F0B /* NewPollViewController.m */,
 				0D94F51115A7D2F200903F0B /* cameraViewController.h */,
 				0D94F51215A7D2F200903F0B /* cameraViewController.m */,
-				0D8FA19515AF7606003011A0 /* PollItemCell.h */,
-				0D8FA19615AF7606003011A0 /* PollItemCell.m */,
 				0D8FA19715AF7606003011A0 /* PollTableViewController.h */,
 				0D8FA19815AF7606003011A0 /* PollTableViewController.m */,
 			);
@@ -263,14 +271,13 @@
 		0D94F4EF15A7D09700903F0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0D957D2115B0DC37009D37AA /* comments icon.png */,
+				0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */,
 				0D957D1B15B09BEC009D37AA /* vote icon.png */,
 				0D957D1C15B09BEC009D37AA /* new item icon.png */,
 				0D957D1D15B09BEC009D37AA /* new poll icon.png */,
 				0D99436415AEB9340037194D /* stylepics.db */,
 				0D9C05A715AAC125006D86CE /* item1.png */,
-				0D9C05AA15AAC125006D86CE /* user1.png */,
-				0D9C05AB15AAC125006D86CE /* user2.png */,
-				0D9C05AC15AAC125006D86CE /* user3.png */,
 				0D94F4F015A7D09700903F0B /* StylepicsApp-Info.plist */,
 				0D94F4F115A7D09700903F0B /* InfoPlist.strings */,
 				0D94F4F415A7D09700903F0B /* main.m */,
@@ -334,13 +341,12 @@
 				0D94F4F315A7D09700903F0B /* InfoPlist.strings in Resources */,
 				0D94F4FC15A7D09700903F0B /* MainStoryboard.storyboard in Resources */,
 				0D9C05AF15AAC125006D86CE /* item1.png in Resources */,
-				0D9C05B215AAC125006D86CE /* user1.png in Resources */,
-				0D9C05B315AAC125006D86CE /* user2.png in Resources */,
-				0D9C05B415AAC125006D86CE /* user3.png in Resources */,
 				0D99436515AEB9340037194D /* stylepics.db in Resources */,
 				0D957D1E15B09BEC009D37AA /* vote icon.png in Resources */,
 				0D957D1F15B09BEC009D37AA /* new item icon.png in Resources */,
 				0D957D2015B09BEC009D37AA /* new poll icon.png in Resources */,
+				0D957D2215B0DC37009D37AA /* comments icon.png in Resources */,
+				0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +381,8 @@
 				0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */,
 				0DEF0D8815AFA72D0011DC0A /* FMDatabaseQueue.m in Sources */,
 				0DEF0D8A15AFA72D0011DC0A /* FMResultSet.m in Sources */,
+				0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */,
+				0D647C4715B1205C00530658 /* PollCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

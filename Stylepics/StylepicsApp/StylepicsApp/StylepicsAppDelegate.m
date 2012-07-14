@@ -20,7 +20,6 @@
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDir = [documentPaths objectAtIndex:0];
     self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
-    NSLog(@"%@",databasePath);
     [self createAndCheckDatabase];
 
     // Override point for customization after application launch.

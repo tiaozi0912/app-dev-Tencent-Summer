@@ -1,21 +1,21 @@
 //
-//  PollTableViewController.m
+//  ManagePollsTableViewController.m
 //  StylepicsApp
 //
-//  Created by Yong Lin on 7/9/12.
+//  Created by Yong Lin on 7/13/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "PollTableViewController.h"
-#import "StylepicsDatabase.h"
+#import "ManagePollsTableViewController.h"
+#import "PollCell.h"
 #import "Utility.h"
-@interface PollTableViewController (){
-    StylepicsDatabase *database;
-}
+
+@interface ManagePollsTableViewController ()
+
+
 @end
 
-@implementation PollTableViewController
-@synthesize poll=_poll;
+@implementation ManagePollsTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,9 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    database =[[StylepicsDatabase alloc] init];
-    self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
-    self.title = self.poll.name;
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -45,8 +43,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -62,31 +58,34 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 3;
 }
+
+-(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    switch (section){ 
+        case 0: return @"ACTIVE POLLS";
+        case 1: return @"WATCHING POLLS";
+        case 2: return @"PAST POLLS";
+    }
+    return nil;
+}/* to customize the font in headers, use the method below instead
+-(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.poll.items.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Item *item = [self.poll.items objectAtIndex:indexPath.row];
-    static NSString *CellIdentifier = @"poll item cell";
-    PollItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"poll cell";
+    PollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[PollItemCell alloc]
-                initWithStyle:UITableViewCellStyleDefault 
-                reuseIdentifier:CellIdentifier];
+        cell = [[PollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
-    cell.itemImage.image = item.photo;
-    cell.descriptionOfItemLabel.text = item.description;
-    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
-    cell.commentIconImage.image = [UIImage imageNamed:@"comments icon"];
+    cell.pollTitleLabel.text = @"placeholder";
     return cell;
 }
 
@@ -133,6 +132,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [Utility setObject:[NSNumber numberWithInt:2] forKey:IDOfPollToBeShown];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

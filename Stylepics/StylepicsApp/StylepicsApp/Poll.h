@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Item.h"
 
 @interface Poll : NSObject
 
-@property (nonatomic, strong) NSNumber *pollID;
+@property (nonatomic, strong) NSNumber *pollID, *ownerID;
 @property (nonatomic, strong) NSString *name;
-//@property (nonatomic, strong) NSString *state;// state = "EDITING", "VOTING" or "FINISHED"
+@property (nonatomic, strong) NSString *state;// state = "EDITING", "VOTING" or "FINISHED"
+@property (nonatomic, strong) NSMutableArray *items, *audience;
 
 @end

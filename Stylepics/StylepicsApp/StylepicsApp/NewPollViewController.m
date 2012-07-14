@@ -65,19 +65,11 @@
         [self alertForEmptyName];  
     }else{
         StylepicsDatabase *database = [[StylepicsDatabase alloc] init];
-        NSUserDefaults *session = [NSUserDefaults standardUserDefaults];
-        NSNumber *currentUserID = [session objectForKey:@"currentUserID"];
-        [database newAPollCalled:self.textField.text byUserID:currentUserID];
+        [database newAPollCalled:self.textField.text byUserID:[Utility getObjectForKey:CURRENTUSERID]];
         [self performSegueWithIdentifier:@"showNewPoll" sender:self];
     }
 }
 
-         
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    [segue.destinationViewController setTitle:self.textField.text];
-}
 
 -(IBAction)backgroundTouched:(id)sender
 {

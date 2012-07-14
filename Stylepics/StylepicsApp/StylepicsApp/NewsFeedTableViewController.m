@@ -45,7 +45,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     database = [[StylepicsDatabase alloc] init];
-    self.events = [[NSMutableArray alloc] init];
     self.events = [database getMostRecentEventsNum:[NSNumber numberWithInt:NUMBEROFEVENTSLOADED]];
     
 }
@@ -65,6 +64,10 @@
 
 #pragma mark - Table view data source
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -74,7 +77,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.events count];
+    return self.events.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,7 +95,7 @@
      }
         // Configure the cell...
         User *user=[database getUserWithID:event.userID];
-        cell.userImage.image = user.photo;
+        cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
         cell.userNameLabel.text = user.name;
         cell.iconImage.image = [UIImage imageNamed:@"new poll icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
@@ -108,7 +111,7 @@
         }
         // Configure the cell...
         User *user=[database getUserWithID:event.userID];
-        cell.userImage.image = user.photo;
+        cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
         cell.userNameLabel.text = user.name;
         cell.iconImage.image = [UIImage imageNamed:@"new item icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
@@ -128,7 +131,7 @@
         }
         // Configure the cell...
         User *user=[database getUserWithID:event.userID];
-        cell.userImage.image = user.photo;
+        cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
         cell.userNameLabel.text = user.name;
         cell.iconImage.image = [UIImage imageNamed:@"vote icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
