@@ -122,7 +122,7 @@
 
 -(User*) getUserWithID:(NSNumber*) userID{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    [db open];
+    [db open]; 
     User *user = [[User alloc] init];
     user.userID = userID;
     user.name = [db stringForQuery:@"SELECT username FROM UserTable WHERE userID = ?", userID];
@@ -187,15 +187,37 @@
              byUserID:(NSNumber*) userID{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];
-    //db.traceExecution=YES; 
-    //db.logsErrors=YES; 
     [db executeUpdate:@"INSERT INTO PollTable (name, ownerID, state) VALUES (?,?,?)", name, userID, @"EDITING"];
     NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
-    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE Poll_%d_ItemTable (itemID, description, price, photo)", [pollID intValue]];
+    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" \"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB)", [pollID intValue]];
     [db executeUpdate:query];
     [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID) VALUES ('new poll', ?, ?)", userID, pollID];
     [db close];
     [Utility setObject:pollID forKey:IDOfPollToBeShown];
 }
 
+-(void) addItems:(Item*)item toPoll:(NSNumber*) pollID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    db.traceExecution=YES; 
+    db.logsErrors=YES; 
+    [db open];
+    sqlite3 *database = [db sqliteHandle];
+    
+    NSString *sql = [[NSString alloc] initWithFormat:@"INSERT INTO Poll_%d_ItemTable (description, price, photo) VALUES (?,?,?)", [pollID intValue]];
+	
+	sqlite3_stmt *statement;
+	if (sqlite3_prepare_v2(database, [sql cStringUsingEncoding:NSUTF8StringEncoding], -1, &statement, NULL) == SQLITE_OK) {
+        sqlite3_bind_text(statement, 1, [item.description UTF8String], -1, SQLITE_TRANSIENT);
+		sqlite3_bind_double(statement, 2, [item.price doubleValue]);
+		NSData *imageData = UIImagePNGRepresentation(item.photo);
+		sqlite3_bind_blob(statement, 3, [imageData bytes], [imageData length], SQLITE_TRANSIENT);
+		sqlite3_step(statement);
+	}
+    sqlite3_finalize(statement); 
+    NSNumber *userID = [NSNumber numberWithInt:[db intForQuery:@"SELECT ownerID FROM PollTable WHERE pollID = ?", pollID]];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT max(itemID) FROM Poll_%@_ItemTable", pollID];
+    NSNumber *itemID = [NSNumber numberWithInt:[db intForQuery:query]];
+    [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID, itemID) VALUES ('new item',?,?,?)", userID, pollID, itemID];
+    [db close];
+}
 @end

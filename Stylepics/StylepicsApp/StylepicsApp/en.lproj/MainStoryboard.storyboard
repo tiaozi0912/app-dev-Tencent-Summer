@@ -64,6 +64,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="stylepics" id="K85-Wk-xDX"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="password" destination="pmY-gl-1Nu" id="DUd-rk-alU"/>
@@ -257,11 +258,6 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Snapshot" id="JPg-EY-hDt">
-                            <connections>
-                                <segue destination="HHb-9J-DcQ" kind="push" id="ZhE-bw-cpn"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="O99-Tr-VK2"/>
                         <barButtonItem title="Log out" id="6kL-eq-LPU">
                             <connections>
@@ -282,6 +278,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
             </objects>
@@ -388,7 +385,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="339"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="4cn-mJ-UQl">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="4cn-mJ-UQl">
                                             <rect key="frame" x="42" y="29" width="236" height="256"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -445,7 +442,7 @@
                     <toolbarItems>
                         <barButtonItem title="Snapshot" id="icL-qj-3yn">
                             <connections>
-                                <segue destination="HHb-9J-DcQ" kind="push" id="jia-Ph-7tB"/>
+                                <segue destination="ld5-tW-awy" kind="push" id="mbz-ZM-kRb"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -456,48 +453,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2436" y="-165"/>
-        </scene>
-        <!--Camera View Controller - Snapshot-->
-        <scene sceneID="dTe-TM-Jug">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0G9-S3-TZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="HHb-9J-DcQ" customClass="cameraViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UAg-bC-SnK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="EZE-Ue-L8q">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems>
-                        <barButtonItem title="Camera" id="D2q-T6-13e">
-                            <connections>
-                                <action selector="useCamera" destination="HHb-9J-DcQ" id="10n-ML-rFp"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Mbt-51-pTq"/>
-                        <barButtonItem title="Photo Album" id="ELG-DQ-X42">
-                            <connections>
-                                <action selector="useCameraRoll" destination="HHb-9J-DcQ" id="cCu-nx-GDf"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Snapshot" id="8IA-fF-J5V"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="imageView" destination="EZE-Ue-L8q" id="PsD-in-SY2"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1775" y="755"/>
         </scene>
         <!--Registration Page View Controller - SIGN UP-->
         <scene sceneID="Dlm-tf-8iN">
@@ -559,6 +519,71 @@
             </objects>
             <point key="canvasLocation" x="1067" y="622"/>
         </scene>
+        <!--New Item View Controller-->
+        <scene sceneID="HpC-Ot-YOP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2s-t9-Py2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="ld5-tW-awy" customClass="NewItemViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="50f-Nw-GER" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" clearsOnBeginEditing="YES" minimumFontSize="17" id="gOi-y3-rFA">
+                                <rect key="frame" x="32" y="326" width="240" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price($)" clearsOnBeginEditing="YES" minimumFontSize="17" id="wZo-de-Z5l">
+                                <rect key="frame" x="32" y="365" width="159" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="hml-Ra-fU6">
+                                <rect key="frame" x="32" y="20" width="240" height="298"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="backgroundTouched:" destination="ld5-tW-awy" eventType="touchDown" id="xOd-EH-7ez"/>
+                        </connections>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Camera" id="AJu-j2-aIn">
+                            <connections>
+                                <action selector="TestOnSimulator:" destination="ld5-tW-awy" id="jG3-vg-Meu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Photo Roll" id="029-p8-7oP">
+                            <connections>
+                                <action selector="useCameraRoll" destination="ld5-tW-awy" id="HLy-HB-rkA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CnS-QF-i5h"/>
+                        <barButtonItem title="Finish" id="WOO-41-3fN">
+                            <connections>
+                                <action selector="finishAddingNewItems" destination="ld5-tW-awy" id="CM1-J2-7ak"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Cancel" id="eb3-YP-2bX">
+                            <connections>
+                                <action selector="cancelButton" destination="ld5-tW-awy" id="Afz-BH-vfE"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="f51-EF-XSU"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="gOi-y3-rFA" id="avm-eK-ou3"/>
+                        <outlet property="itemImage" destination="hml-Ra-fU6" id="IZq-kX-MT6"/>
+                        <outlet property="priceTextField" destination="wZo-de-Z5l" id="LNC-w5-qlo"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2465" y="448"/>
+        </scene>
     </scenes>
     <classes>
         <class className="AudienceListView" superclassName="UIView">
@@ -569,6 +594,16 @@
         </class>
         <class className="ManagePollsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManagePollsTableViewController.h"/>
+        </class>
+        <class className="NewItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="useCamera"/>
+                <relationship kind="action" name="useCameraRoll"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="NewPollViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPollViewController.h"/>
@@ -640,14 +675,6 @@
             <relationships>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="cameraViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/cameraViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="useCamera"/>
-                <relationship kind="action" name="useCameraRoll"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
     </classes>

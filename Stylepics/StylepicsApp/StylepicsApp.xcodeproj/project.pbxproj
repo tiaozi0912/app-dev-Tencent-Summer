@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1BC1D415B240F7005BECF9 /* item2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BC1D215B240F7005BECF9 /* item2.png */; };
+		0D1BC1D515B240F7005BECF9 /* item3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BC1D315B240F7005BECF9 /* item3.png */; };
 		0D647C4715B1205C00530658 /* PollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D647C4615B1205C00530658 /* PollCell.m */; };
 		0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19615AF7606003011A0 /* PollItemCell.m */; };
 		0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19815AF7606003011A0 /* PollTableViewController.m */; };
@@ -43,7 +45,10 @@
 		0D99436515AEB9340037194D /* stylepics.db in Resources */ = {isa = PBXBuildFile; fileRef = 0D99436415AEB9340037194D /* stylepics.db */; };
 		0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */; };
 		0D9C05AF15AAC125006D86CE /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A715AAC125006D86CE /* item1.png */; };
+		0D9EFC3615B3E502002180F1 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EFC3515B3E502002180F1 /* NewItemViewController.m */; };
 		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
+		0DE651D315B2149E002C8BA5 /* NewItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE651D215B2149E002C8BA5 /* NewItemTableViewController.m */; };
+		0DE651D615B215F7002C8BA5 /* NewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE651D515B215F7002C8BA5 /* NewItemCell.m */; };
 		0DEF0D8515AFA72D0011DC0A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */; };
 		0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */; };
 		0DEF0D8815AFA72D0011DC0A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D8115AFA72D0011DC0A /* FMDatabaseQueue.m */; };
@@ -51,6 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D1BC1D215B240F7005BECF9 /* item2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item2.png; path = img/item2.png; sourceTree = "<group>"; };
+		0D1BC1D315B240F7005BECF9 /* item3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item3.png; path = img/item3.png; sourceTree = "<group>"; };
 		0D647C4515B1205C00530658 /* PollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollCell.h; sourceTree = "<group>"; };
 		0D647C4615B1205C00530658 /* PollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollCell.m; sourceTree = "<group>"; };
 		0D8FA19515AF7606003011A0 /* PollItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollItemCell.h; path = "Poll Page/PollItemCell.h"; sourceTree = "<group>"; };
@@ -111,7 +118,13 @@
 		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
 		0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewPollCell.m; path = "News Feed Page/NewsFeedNewPollCell.m"; sourceTree = "<group>"; };
 		0D9C05A715AAC125006D86CE /* item1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item1.png; path = img/item1.png; sourceTree = "<group>"; };
+		0D9EFC3415B3E502002180F1 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
+		0D9EFC3515B3E502002180F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
 		0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_profile_photo.jpeg; path = img/default_profile_photo.jpeg; sourceTree = "<group>"; };
+		0DE651D115B2149E002C8BA5 /* NewItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemTableViewController.h; sourceTree = "<group>"; };
+		0DE651D215B2149E002C8BA5 /* NewItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemTableViewController.m; sourceTree = "<group>"; };
+		0DE651D415B215F7002C8BA5 /* NewItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemCell.h; sourceTree = "<group>"; };
+		0DE651D515B215F7002C8BA5 /* NewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemCell.m; sourceTree = "<group>"; };
 		0DEF0D7A15AFA72D0011DC0A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		0DEF0D7E15AFA72D0011DC0A /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
@@ -167,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
+				0DE651D415B215F7002C8BA5 /* NewItemCell.h */,
+				0DE651D515B215F7002C8BA5 /* NewItemCell.m */,
 				0D647C4515B1205C00530658 /* PollCell.h */,
 				0D647C4615B1205C00530658 /* PollCell.m */,
 				0D96665F15AB9FA900753491 /* AudienceListView.h */,
@@ -205,6 +220,10 @@
 		0D91EE5815AD0BB900D1015D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0D9EFC3415B3E502002180F1 /* NewItemViewController.h */,
+				0D9EFC3515B3E502002180F1 /* NewItemViewController.m */,
+				0DE651D115B2149E002C8BA5 /* NewItemTableViewController.h */,
+				0DE651D215B2149E002C8BA5 /* NewItemTableViewController.m */,
 				0D957D2315B0E09B009D37AA /* ManagePollsTableViewController.h */,
 				0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */,
 				0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */,
@@ -228,7 +247,6 @@
 			children = (
 				0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */,
 				0D96666215AC040C00753491 /* libsqlite3.0.dylib */,
-				0D94F51A15A7EBAB00903F0B /* MobileCoreServices.framework */,
 				0D94F4EE15A7D09700903F0B /* StylepicsApp */,
 				0D94F4E715A7D09700903F0B /* Frameworks */,
 				0D94F4E515A7D09700903F0B /* Products */,
@@ -246,6 +264,7 @@
 		0D94F4E715A7D09700903F0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D94F51A15A7EBAB00903F0B /* MobileCoreServices.framework */,
 				0D94F4E815A7D09700903F0B /* UIKit.framework */,
 				0D94F4EA15A7D09700903F0B /* Foundation.framework */,
 				0D94F4EC15A7D09700903F0B /* CoreGraphics.framework */,
@@ -278,6 +297,8 @@
 				0D957D1D15B09BEC009D37AA /* new poll icon.png */,
 				0D99436415AEB9340037194D /* stylepics.db */,
 				0D9C05A715AAC125006D86CE /* item1.png */,
+				0D1BC1D215B240F7005BECF9 /* item2.png */,
+				0D1BC1D315B240F7005BECF9 /* item3.png */,
 				0D94F4F015A7D09700903F0B /* StylepicsApp-Info.plist */,
 				0D94F4F115A7D09700903F0B /* InfoPlist.strings */,
 				0D94F4F415A7D09700903F0B /* main.m */,
@@ -347,6 +368,8 @@
 				0D957D2015B09BEC009D37AA /* new poll icon.png in Resources */,
 				0D957D2215B0DC37009D37AA /* comments icon.png in Resources */,
 				0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */,
+				0D1BC1D415B240F7005BECF9 /* item2.png in Resources */,
+				0D1BC1D515B240F7005BECF9 /* item3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +406,9 @@
 				0DEF0D8A15AFA72D0011DC0A /* FMResultSet.m in Sources */,
 				0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */,
 				0D647C4715B1205C00530658 /* PollCell.m in Sources */,
+				0DE651D315B2149E002C8BA5 /* NewItemTableViewController.m in Sources */,
+				0DE651D615B215F7002C8BA5 /* NewItemCell.m in Sources */,
+				0D9EFC3615B3E502002180F1 /* NewItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

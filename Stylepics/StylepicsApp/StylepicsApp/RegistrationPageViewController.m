@@ -25,20 +25,20 @@
 -(void) setUsername:(UITextField *)username
 {
     _username = username;
-    username.delegate = self;
+    self.username.delegate = self;
 }
 
 
 -(void) setPassword:(UITextField *)password
 {
     _password = password;
-    password.delegate = self;
+    self.password.delegate = self;
 }
 
 -(void) setPasswordAgain:(UITextField *)passwordAgain
 {
     _passwordAgain = passwordAgain;
-    passwordAgain.delegate = self;
+    self.passwordAgain.delegate = self;
 }
 
 
@@ -48,7 +48,7 @@
         [self alertForShortName];  
     }else if ([database existUsername:self.username.text]){
         [self alertForExistentUsername];
-    }else if ([self.username.text length] < 6){
+    }else if ([self.password.text length] < 6){
         [self alertForShortPassword];
     }else if (![self.passwordAgain.text isEqualToString:self.password.text]){
         [self alertForPasswordNotMatch];

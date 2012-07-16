@@ -85,7 +85,7 @@
         cell = [[PollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    cell.pollTitleLabel.text = @"placeholder";
+    cell.pollTitleLabel.text = @"Birthday party dress";
     return cell;
 }
 

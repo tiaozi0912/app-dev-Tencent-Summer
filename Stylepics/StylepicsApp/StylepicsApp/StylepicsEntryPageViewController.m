@@ -24,14 +24,14 @@
 -(void) setUsername:(UITextField *)username
 {
     _username = username;
-    username.delegate = self;
+    self.username.delegate = self;
 }
 
 
 -(void) setPassword:(UITextField *)password
 {
     _password = password;
-    password.delegate = self;
+    self.password.delegate = self;
 }
 
 

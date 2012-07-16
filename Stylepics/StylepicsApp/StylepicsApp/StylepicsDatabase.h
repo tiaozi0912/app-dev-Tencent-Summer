@@ -38,5 +38,5 @@
                 pollID:(NSNumber*) pollID;
 -(void) newAPollCalled:(NSString*) name
               byUserID:(NSNumber*) userID;
-
+-(void) addItems:(Item*)item toPoll:(NSNumber*) pollID;
 @end

@@ -32,6 +32,8 @@
     database =[[StylepicsDatabase alloc] init];
     self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
     self.title = self.poll.name;
+
+    self.navigationController.navigationBarHidden = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
