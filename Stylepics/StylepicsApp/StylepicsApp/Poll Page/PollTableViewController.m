@@ -83,6 +83,8 @@
         PollItemCell *cell = (PollItemCell*)[sender superview];
         if (![database voteForItem:cell.item.itemID inPoll:self.poll.pollID byUser:[Utility getObjectForKey:CURRENTUSERID]]){
             [Utility showAlert:@"Sorry!" message:@"You cannot vote more than once in a poll."];
+        }else {
+            [Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
         }
     }
 }
@@ -109,7 +111,11 @@
             [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
         }
     }else{
+        if (![database user:[Utility getObjectForKey:CURRENTUSERID] isAudienceOfPoll:self.poll.pollID]){
+            [database user:[Utility getObjectForKey:CURRENTUSERID] becomesAudienceOfPoll:self.poll.pollID];
+        }
         self.navigationController.toolbarHidden = YES;
+            
     }
     self.navigationController.navigationBarHidden = NO;
 }

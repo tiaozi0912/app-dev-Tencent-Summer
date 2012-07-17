@@ -44,4 +44,6 @@
 -(BOOL) voteForItem:(NSNumber*) itemID 
              inPoll:(NSNumber*) PollID 
              byUser:(NSNumber*) userID;
+-(BOOL) user:(NSNumber*) userID isAudienceOfPoll:(NSNumber*) pollID;
+-(void) user:(NSNumber*) userID becomesAudienceOfPoll:(NSNumber*) pollID;
 @end

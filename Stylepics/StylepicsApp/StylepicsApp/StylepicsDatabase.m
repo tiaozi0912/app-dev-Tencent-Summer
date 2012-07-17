@@ -189,7 +189,11 @@
     [db open];
     [db executeUpdate:@"INSERT INTO PollTable (name, ownerID, state) VALUES (?,?,?)", name, userID, @"EDITING"];
     NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
-    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" \"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB, \"votes\" INTEGER DEFAULT 0)", [pollID intValue]];
+   // db.traceExecution = YES;
+   // db.logsErrors = YES;
+    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" (\"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB, \"votes\" INTEGER DEFAULT 0)", [pollID intValue]];
+    [db executeUpdate:query];
+    query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_AudienceTable\" (\"audienceID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"voted\" BOOL DEFAULT (0), \"userID\" INTEGER )", [pollID intValue]];
     [db executeUpdate:query];
     [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID) VALUES ('new poll', ?, ?)", userID, pollID];
     [db close];
@@ -230,17 +234,38 @@
     [db close];
 }
 
+-(BOOL) user:(NSNumber*) userID isAudienceOfPoll:(NSNumber*) pollID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
+    [db open];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT audienceID Poll_%d_AudienceTable WHERE userID = %d", [pollID intValue], [userID intValue]];
+    FMResultSet *result = [db executeQuery:query];
+    BOOL returnValue = [result next];
+    [db close];
+    return returnValue;
+}
+
+-(void) user:(NSNumber*) userID becomesAudienceOfPoll:(NSNumber*) pollID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
+    [db open];
+    NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO Poll_%d_AudienceTable (userID) VALUES (%d)", [pollID intValue], [userID intValue]];
+    [db executeUpdate:query];
+    [db close];
+}
 -(BOOL) voteForItem:(NSNumber*) itemID 
              inPoll:(NSNumber*) pollID 
              byUser:(NSNumber*) userID{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    //db.traceExecution=YES; 
-    //db.logsErrors=YES; 
-   /* [db open];
-    [db executeUpdate:<#(NSString *), ...#>
-    if (userID){
+    db.traceExecution=YES; 
+    db.logsErrors=YES; 
+    [db open];    
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT voted FROM Poll_%d_AudienceTable WHERE userID = %d", [pollID intValue], [userID intValue]];
+    if ([db boolForQuery:query]){
         return NO;
-    }*/
+    }
     int numberOfVotes = [db intForQuery:@"SELECT numberOfVotes FROM Poll_?_ItemTable WHERE itemID = ?", pollID, itemID];
     [db executeUpdate:@"UPDATE Poll_?_ItemTable SET numberOfVotes = ? WHERE pollID = ?", [NSNumber numberWithInt:numberOfVotes+1], pollID];
     [db close];

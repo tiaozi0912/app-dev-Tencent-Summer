@@ -9,11 +9,9 @@
 #import "PollItemCell.h"
 
 @implementation PollItemCell
-@synthesize itemImage=_itemImage;
-@synthesize countOfCommentsLabel=_countOfCommentsLabel;
-@synthesize descriptionOfItemLabel=_descriptionOfItemLabel;
-@synthesize priceLabel=_priceLabel;
-@synthesize commentIconImage=_commentIconImage;
+
+@synthesize itemImage=_itemImage, item = _item,countOfCommentsLabel=_countOfCommentsLabel,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel,commentIconImage=_commentIconImage;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
