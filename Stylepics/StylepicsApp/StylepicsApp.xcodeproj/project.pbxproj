@@ -53,6 +53,11 @@
 		0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */; };
 		0DEF0D8815AFA72D0011DC0A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D8115AFA72D0011DC0A /* FMDatabaseQueue.m */; };
 		0DEF0D8A15AFA72D0011DC0A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D8415AFA72D0011DC0A /* FMResultSet.m */; };
+		4DE1947015B3551500DBFCD4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1946F15B3551500DBFCD4 /* Icon@2x.png */; };
+		4DE1947215B3552000DBFCD4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1947115B3552000DBFCD4 /* Icon.png */; };
+		4DE1947815B3EEAC00DBFCD4 /* text_logo_stylepics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1947715B3EEAC00DBFCD4 /* text_logo_stylepics.png */; };
+		4DE1947B15B3F65000DBFCD4 /* MyCustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1947A15B3F65000DBFCD4 /* MyCustomNavigationBar.m */; };
+		4DE1947D15B4020500DBFCD4 /* Custom-Nav-Bar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1947C15B4020500DBFCD4 /* Custom-Nav-Bar-BG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +138,12 @@
 		0DEF0D8115AFA72D0011DC0A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		0DEF0D8315AFA72D0011DC0A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		0DEF0D8415AFA72D0011DC0A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		4DE1946F15B3551500DBFCD4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4DE1947115B3552000DBFCD4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4DE1947715B3EEAC00DBFCD4 /* text_logo_stylepics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_logo_stylepics.png; sourceTree = "<group>"; };
+		4DE1947915B3F65000DBFCD4 /* MyCustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomNavigationBar.h; sourceTree = "<group>"; };
+		4DE1947A15B3F65000DBFCD4 /* MyCustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomNavigationBar.m; sourceTree = "<group>"; };
+		4DE1947C15B4020500DBFCD4 /* Custom-Nav-Bar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +205,8 @@
 				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
 				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
 				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
+				4DE1947915B3F65000DBFCD4 /* MyCustomNavigationBar.h */,
+				4DE1947A15B3F65000DBFCD4 /* MyCustomNavigationBar.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -245,6 +258,7 @@
 		0D94F4D915A7D09700903F0B = {
 			isa = PBXGroup;
 			children = (
+				4DE1946915B342EB00DBFCD4 /* Resources */,
 				0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */,
 				0D96666215AC040C00753491 /* libsqlite3.0.dylib */,
 				0D94F4EE15A7D09700903F0B /* StylepicsApp */,
@@ -290,6 +304,7 @@
 		0D94F4EF15A7D09700903F0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4DE1947715B3EEAC00DBFCD4 /* text_logo_stylepics.png */,
 				0D957D2115B0DC37009D37AA /* comments icon.png */,
 				0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */,
 				0D957D1B15B09BEC009D37AA /* vote icon.png */,
@@ -302,9 +317,19 @@
 				0D94F4F015A7D09700903F0B /* StylepicsApp-Info.plist */,
 				0D94F4F115A7D09700903F0B /* InfoPlist.strings */,
 				0D94F4F415A7D09700903F0B /* main.m */,
+				4DE1947C15B4020500DBFCD4 /* Custom-Nav-Bar-BG.png */,
 				0D94F4F615A7D09700903F0B /* StylepicsApp-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DE1946915B342EB00DBFCD4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4DE1946F15B3551500DBFCD4 /* Icon@2x.png */,
+				4DE1947115B3552000DBFCD4 /* Icon.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,8 +393,18 @@
 				0D957D2015B09BEC009D37AA /* new poll icon.png in Resources */,
 				0D957D2215B0DC37009D37AA /* comments icon.png in Resources */,
 				0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */,
+<<<<<<< HEAD
 				0D1BC1D415B240F7005BECF9 /* item2.png in Resources */,
 				0D1BC1D515B240F7005BECF9 /* item3.png in Resources */,
+=======
+				4DE1947015B3551500DBFCD4 /* Icon@2x.png in Resources */,
+				4DE1947215B3552000DBFCD4 /* Icon.png in Resources */,
+<<<<<<< HEAD
+>>>>>>> added application icon
+=======
+				4DE1947815B3EEAC00DBFCD4 /* text_logo_stylepics.png in Resources */,
+				4DE1947D15B4020500DBFCD4 /* Custom-Nav-Bar-BG.png in Resources */,
+>>>>>>> customized navigation bar
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,9 +441,13 @@
 				0DEF0D8A15AFA72D0011DC0A /* FMResultSet.m in Sources */,
 				0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */,
 				0D647C4715B1205C00530658 /* PollCell.m in Sources */,
+<<<<<<< HEAD
 				0DE651D315B2149E002C8BA5 /* NewItemTableViewController.m in Sources */,
 				0DE651D615B215F7002C8BA5 /* NewItemCell.m in Sources */,
 				0D9EFC3615B3E502002180F1 /* NewItemViewController.m in Sources */,
+=======
+				4DE1947B15B3F65000DBFCD4 /* MyCustomNavigationBar.m in Sources */,
+>>>>>>> customized navigation bar
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -82,7 +82,14 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
+    //customize naviagtion bar
+    /*self.navigationController.navigationBar.tintColor = [UIColor   
+                                                         colorWithRed:102.0/255   
+                                                         green:52.0/255   
+                                                         blue:133.0/255   
+                                                         alpha:1];  */
     database = [[StylepicsDatabase alloc] init];  
     [database getUserCount];
 }
