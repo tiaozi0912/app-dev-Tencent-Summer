@@ -50,15 +50,15 @@
     // e.g. self.myOutlet = nil;
 }
 - (IBAction)startOrEndVoting:(UIBarButtonItem *)sender {
-    if ([self.poll.state isEqualToString:@"EDITING"]){
-        self.poll.state = @"VOTING";
-        [database changeStateOfPoll:self.poll.pollID to:@"VOTING"];
+    if ([self.poll.state isEqualToString:EDITING]){
+        self.poll.state = VOTING;
+        [database changeStateOfPoll:self.poll.pollID to:VOTING];
         [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
         [[self.navigationController.toolbarItems objectAtIndex:2] setTitle:@"End Voting"];
         [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
-    }else if([self.poll.state isEqualToString:@"VOTING"]){
-        self.poll.state = @"FINISHED";
-        [database changeStateOfPoll:self.poll.pollID to:@"FINISHED"];
+    }else if([self.poll.state isEqualToString:VOTING]){
+        self.poll.state = FINISHED;
+        [database changeStateOfPoll:self.poll.pollID to:FINISHED];
         [[self.navigationController.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
         [[self.navigationController.toolbarItems objectAtIndex:2] setEnabled:NO];
     }
@@ -78,6 +78,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)vote:(UIButton *)sender {
+    if([self.poll.state isEqualToString:VOTING]&&[[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
+        NSIndexPath *indexPath =
+        [self.tableView
+         indexPathForCell:(UITableViewCell *)[sender superview]];
+        NSUInteger row = indexPath.row;
+        if (![database voteForItem:]){
+            [Utility showAlert:@"Sorry!" message:@"You cannot vote more than once in a poll."
+        }
+    }
+}
+
 #pragma mark - Table view data source
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -85,11 +97,11 @@
     self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
     [self.tableView reloadData];
     if ([[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
-        if ([self.poll.state isEqualToString:@"EDITING"]){
+        if ([self.poll.state isEqualToString:EDITING]){
             [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:YES];
             [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
             [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
-        } else if([self.poll.state isEqualToString:@"VOTING"]){
+        } else if([self.poll.state isEqualToString:VOTING]){
             [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
             [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"End Voting"];
             [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
@@ -128,7 +140,7 @@
                 reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    cell.itemImage.image = item.photo;
+    [cell.itemImage setImage:item.photo forState:UIControlStateNormal];
     cell.descriptionOfItemLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
     cell.commentIconImage.image = [UIImage imageNamed:@"comments icon"];

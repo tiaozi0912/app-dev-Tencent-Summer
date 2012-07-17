@@ -11,6 +11,9 @@
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
 #define CURRENTUSERID @"currentUserID"
 #define NEWUSER @"newUser"
+#define EDITING @"EDITING"
+#define VOTING @"VOTING"
+#define FINISHED @"FINISHED"
 
 @interface Utility : NSObject
 {

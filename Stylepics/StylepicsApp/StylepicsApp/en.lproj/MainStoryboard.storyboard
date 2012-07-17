@@ -428,6 +428,9 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="vote:" destination="AtD-j7-Qhz" eventType="touchUpInside" id="rLF-Nl-l3A"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -605,99 +608,6 @@
             <point key="canvasLocation" x="2465" y="448"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AudienceListView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AudienceListView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="placeholder" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ManagePollsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManagePollsTableViewController.h"/>
-        </class>
-        <class className="NewItemViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="useCamera"/>
-                <relationship kind="action" name="useCameraRoll"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NewPollViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPollViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundTouched:"/>
-                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NewsFeedNewItemCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedNewItemCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NewsFeedNewPollCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedNewPollCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NewsFeedTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedTableViewController.h"/>
-        </class>
-        <class className="NewsFeedVoteCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedVoteCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PollCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="pollTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PollItemCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollItemCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentIconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="countOfCommentsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionOfItemLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemImage" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PollTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollTableViewController.h"/>
-        </class>
-        <class className="RegistrationPageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationPageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordAgain" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="StylepicsEntryPageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StylepicsEntryPageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

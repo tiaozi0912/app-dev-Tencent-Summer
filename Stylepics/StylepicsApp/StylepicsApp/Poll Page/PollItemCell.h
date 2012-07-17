@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
 
 @interface PollItemCell : UITableViewCell
+
+@property (nonatomic, strong) 
 @property (nonatomic, strong) IBOutlet UIButton *itemImage;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionOfItemLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
