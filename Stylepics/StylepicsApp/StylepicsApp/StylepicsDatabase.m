@@ -189,7 +189,7 @@
     [db open];
     [db executeUpdate:@"INSERT INTO PollTable (name, ownerID, state) VALUES (?,?,?)", name, userID, @"EDITING"];
     NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
-    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" \"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB)", [pollID intValue]];
+    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" \"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB, \"votes\" INTEGER DEFAULT 0)", [pollID intValue]];
     [db executeUpdate:query];
     [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID) VALUES ('new poll', ?, ?)", userID, pollID];
     [db close];
@@ -198,8 +198,8 @@
 
 -(void) addItems:(Item*)item toPoll:(NSNumber*) pollID{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    db.traceExecution=YES; 
-    db.logsErrors=YES; 
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
     [db open];
     sqlite3 *database = [db sqliteHandle];
     
@@ -218,6 +218,15 @@
     NSString *query = [[NSString alloc] initWithFormat:@"SELECT max(itemID) FROM Poll_%@_ItemTable", pollID];
     NSNumber *itemID = [NSNumber numberWithInt:[db intForQuery:query]];
     [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID, itemID) VALUES ('new item',?,?,?)", userID, pollID, itemID];
+    [db close];
+}
+
+-(void) changeStateOfPoll:(NSNumber*) pollID to:(NSString*)state{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
+    [db open];
+    [db executeUpdate:@"UPDATE PollTable SET state = ? WHERE pollID = ?", state, pollID];
     [db close];
 }
 @end

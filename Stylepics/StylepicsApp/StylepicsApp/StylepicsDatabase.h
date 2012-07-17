@@ -39,4 +39,5 @@
 -(void) newAPollCalled:(NSString*) name
               byUserID:(NSNumber*) userID;
 -(void) addItems:(Item*)item toPoll:(NSNumber*) pollID;
+-(void) changeStateOfPoll:(NSNumber*) pollID to:(NSString*)state;
 @end

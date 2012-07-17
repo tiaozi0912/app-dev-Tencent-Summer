@@ -30,15 +30,17 @@
 {
     [super viewDidLoad];
     database =[[StylepicsDatabase alloc] init];
-    self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+    //self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
     self.title = self.poll.name;
 
-    self.navigationController.navigationBarHidden = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+- (IBAction)refresh:(UIBarButtonItem *)sender {
+    [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -47,7 +49,28 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+- (IBAction)startOrEndVoting:(UIBarButtonItem *)sender {
+    if ([self.poll.state isEqualToString:@"EDITING"]){
+        self.poll.state = @"VOTING";
+        [database changeStateOfPoll:self.poll.pollID to:@"VOTING"];
+        [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
+        [[self.navigationController.toolbarItems objectAtIndex:2] setTitle:@"End Voting"];
+        [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+    }else if([self.poll.state isEqualToString:@"VOTING"]){
+        self.poll.state = @"FINISHED";
+        [database changeStateOfPoll:self.poll.pollID to:@"FINISHED"];
+        [[self.navigationController.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
+        [[self.navigationController.toolbarItems objectAtIndex:2] setEnabled:NO];
+    }
+}
 
+- (IBAction)goHomePage:(UIBarButtonItem *)sender {
+    if ([[Utility getObjectForKey:NEWUSER] isEqualToString:@"TRUE"]){
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+    }else{
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+    }
+}
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -57,8 +80,29 @@
 
 #pragma mark - Table view data source
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
     [self.tableView reloadData];
+    if ([[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
+        if ([self.poll.state isEqualToString:@"EDITING"]){
+            [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:YES];
+            [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
+            [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+        } else if([self.poll.state isEqualToString:@"VOTING"]){
+            [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
+            [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"End Voting"];
+            [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+        } else {
+            [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
+            [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"Finished"];
+            [[self.navigationController.toolbarItems objectAtIndex:2]setEnabled:NO];
+            [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+        }
+    }else{
+        self.navigationController.toolbarHidden = YES;
+    }
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -84,7 +128,6 @@
                 reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
     cell.itemImage.image = item.photo;
     cell.descriptionOfItemLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    

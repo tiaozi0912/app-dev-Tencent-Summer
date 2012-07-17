@@ -10,6 +10,7 @@
 #import "StylepicsAppDelegate.h" 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
 #define CURRENTUSERID @"currentUserID"
+#define NEWUSER @"newUser"
 
 @interface Utility : NSObject
 {

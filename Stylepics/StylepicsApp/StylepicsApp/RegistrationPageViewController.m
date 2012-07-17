@@ -56,6 +56,7 @@
         if ([database addNewUserWithUsername:self.username.text password:self.password.text]){
             [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
             [Utility setObject:self.username.text forKey:CURRENTUSER];
+            [Utility setObject:@"TRUE" forKey:NEWUSER];
             [self performSegueWithIdentifier:@"show news feed page" sender:self];
 
         }

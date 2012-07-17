@@ -40,6 +40,7 @@
     { 
         [self alertForEmptyName];  
     }else if ([database isLoggedInWithUsername:self.username.text password:self.password.text]){
+        [Utility setObject:@"FALSE" forKey:NEWUSER];
         [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
     }else if ([database existUsername:self.username.text]){
         [self alertForWrongPassword];

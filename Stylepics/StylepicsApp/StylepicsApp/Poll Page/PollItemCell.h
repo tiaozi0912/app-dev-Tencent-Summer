@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PollItemCell : UITableViewCell
-@property (nonatomic, weak) IBOutlet UIImageView *itemImage;
+@property (nonatomic, strong) IBOutlet UIButton *itemImage;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionOfItemLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *commentIconImage;
