@@ -229,4 +229,21 @@
     [db executeUpdate:@"UPDATE PollTable SET state = ? WHERE pollID = ?", state, pollID];
     [db close];
 }
+
+-(BOOL) voteForItem:(NSNumber*) itemID 
+             inPoll:(NSNumber*) pollID 
+             byUser:(NSNumber*) userID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
+   /* [db open];
+    [db executeUpdate:<#(NSString *), ...#>
+    if (userID){
+        return NO;
+    }*/
+    int numberOfVotes = [db intForQuery:@"SELECT numberOfVotes FROM Poll_?_ItemTable WHERE itemID = ?", pollID, itemID];
+    [db executeUpdate:@"UPDATE Poll_?_ItemTable SET numberOfVotes = ? WHERE pollID = ?", [NSNumber numberWithInt:numberOfVotes+1], pollID];
+    [db close];
+    return YES;
+}
 @end

@@ -10,6 +10,7 @@
 #import "Poll.h"
 #import "AudienceListView.h"
 #import "PollItemCell.h"
+#import "Item.h"
 
 @interface PollTableViewController : UITableViewController
 @property (nonatomic, strong) Poll *poll;

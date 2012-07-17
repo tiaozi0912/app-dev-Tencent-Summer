@@ -11,7 +11,7 @@
 
 @interface PollItemCell : UITableViewCell
 
-@property (nonatomic, strong) 
+@property (nonatomic, strong) Item* item;
 @property (nonatomic, strong) IBOutlet UIButton *itemImage;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionOfItemLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
