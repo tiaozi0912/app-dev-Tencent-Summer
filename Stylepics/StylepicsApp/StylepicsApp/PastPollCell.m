@@ -1,15 +1,15 @@
 //
-//  PollCell.m
+//  PastPollCell.m
 //  StylepicsApp
 //
-//  Created by Yong Lin on 7/13/12.
+//  Created by Yong Lin on 7/17/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "PollCell.h"
+#import "PastPollCell.h"
 
-@implementation PollCell
-@synthesize pollTitleLabel=_pollTitleLabel;
+@implementation PastPollCell
+@synthesize nameLabel, votesLabel, dateLabel, poll;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

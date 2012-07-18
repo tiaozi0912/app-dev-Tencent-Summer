@@ -8,10 +8,7 @@
 
 #import "NewsFeedTableViewController.h"
 #import "StylepicsDatabase.h"
-#import "UserEvent.h"
-#import "User.h"
-#import "Poll.h"
-#import "Item.h"
+
 #define NUMBEROFEVENTSLOADED 20
 
 @interface NewsFeedTableViewController (){

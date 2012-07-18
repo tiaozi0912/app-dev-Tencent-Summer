@@ -18,7 +18,7 @@
 
 @interface StylepicsDatabase : NSObject
 
-//-(void) initDatabase;
+-(void) initialize;
 -(BOOL) isLoggedInWithUsername:(NSString*) username
                       password:(NSString*) password;
 -(BOOL) existUsername:(NSString*) username;
@@ -30,10 +30,11 @@
 
 //-(NSMutableArray *) getUserInfo;
 
--(NSMutableArray*) getMostRecentEventsNum:(NSNumber*) number;
+-(NSArray*) getMostRecentEventsNum:(NSNumber*) number;
 -(User*) getUserWithID:(NSNumber *) userID;
 -(Poll*) getPollWithID:(NSNumber*) pollID;
 -(Poll*) getPollDetailsWithID:(NSNumber *)pollID;
+-(Poll*) getPollResultWithID:(NSNumber *)pollID;
 -(Item*) getItemWithID:(NSNumber*) itemID
                 pollID:(NSNumber*) pollID;
 -(void) newAPollCalled:(NSString*) name
@@ -46,4 +47,5 @@
              byUser:(NSNumber*) userID;
 -(BOOL) user:(NSNumber*) userID isAudienceOfPoll:(NSNumber*) pollID;
 -(void) user:(NSNumber*) userID becomesAudienceOfPoll:(NSNumber*) pollID;
+-(NSArray*) getPollOfType:(NSString*) type forUser:(NSNumber*) userID;
 @end

@@ -8,7 +8,7 @@
 
 #import "PollTableViewController.h"
 #import "StylepicsDatabase.h"
-#import "Utility.h"
+
 @interface PollTableViewController (){
     StylepicsDatabase *database;
 }
@@ -31,7 +31,6 @@
     [super viewDidLoad];
     database =[[StylepicsDatabase alloc] init];
     //self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
-    self.title = self.poll.name;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -53,15 +52,21 @@
     if ([self.poll.state isEqualToString:EDITING]){
         self.poll.state = VOTING;
         [database changeStateOfPoll:self.poll.pollID to:VOTING];
-        [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
-        [[self.navigationController.toolbarItems objectAtIndex:2] setTitle:@"End Voting"];
-        [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+        [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
+        [[self.toolbarItems objectAtIndex:2] setTitle:@"End Voting"];
+        [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
     }else if([self.poll.state isEqualToString:VOTING]){
         self.poll.state = FINISHED;
         [database changeStateOfPoll:self.poll.pollID to:FINISHED];
-        [[self.navigationController.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
-        [[self.navigationController.toolbarItems objectAtIndex:2] setEnabled:NO];
+        [[self.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
+        [[self.toolbarItems objectAtIndex:3] setEnabled:NO];
     }
+}
+- (IBAction)addNewItem:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"add new item" sender:self];
+}
+- (IBAction)showPollResult:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"show poll result" sender:self];
 }
 
 - (IBAction)goHomePage:(UIBarButtonItem *)sender {
@@ -79,8 +84,8 @@
 }
 
 - (IBAction)vote:(UIButton *)sender {
-    if([self.poll.state isEqualToString:VOTING]&&[[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
-        PollItemCell *cell = (PollItemCell*)[sender superview];
+    if([self.poll.state isEqualToString:VOTING]&&![[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
+        PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
         if (![database voteForItem:cell.item.itemID inPoll:self.poll.pollID byUser:[Utility getObjectForKey:CURRENTUSERID]]){
             [Utility showAlert:@"Sorry!" message:@"You cannot vote more than once in a poll."];
         }else {
@@ -94,21 +99,22 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+    self.title = self.poll.name;
     [self.tableView reloadData];
     if ([[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
         if ([self.poll.state isEqualToString:EDITING]){
-            [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:YES];
-            [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
-            [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+            [[self.toolbarItems objectAtIndex:0]setEnabled:YES];
+            [[self.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
+            [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
         } else if([self.poll.state isEqualToString:VOTING]){
-            [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
-            [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"End Voting"];
-            [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+            [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
+            [[self.toolbarItems objectAtIndex:2]setTitle:@"End Voting"];
+            [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
         } else {
-            [[self.navigationController.toolbarItems objectAtIndex:1]setEnabled:NO];
-            [[self.navigationController.toolbarItems objectAtIndex:2]setTitle:@"Finished"];
-            [[self.navigationController.toolbarItems objectAtIndex:2]setEnabled:NO];
-            [[self.navigationController.toolbarItems objectAtIndex:3]setEnabled:YES];
+            [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
+            [[self.toolbarItems objectAtIndex:2]setTitle:@"Finished"];
+            [[self.toolbarItems objectAtIndex:2]setEnabled:NO];
+            [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
         }
     }else{
         if (![database user:[Utility getObjectForKey:CURRENTUSERID] isAudienceOfPoll:self.poll.pollID]){
@@ -143,6 +149,7 @@
     }
     cell.item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
+    cell.itemImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [cell.itemImage setImage:cell.item.photo forState:UIControlStateNormal];
     cell.descriptionOfItemLabel.text = cell.item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.item.price];    

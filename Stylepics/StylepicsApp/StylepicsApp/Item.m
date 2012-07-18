@@ -11,7 +11,7 @@
 @implementation Item
 
 @synthesize  description=_description;
-@synthesize price, itemID, pollID;
+@synthesize price, itemID, pollID, numberOfVotes;
 @synthesize photo=_photo;
 @synthesize comments=_comments;
 @end

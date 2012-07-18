@@ -7,11 +7,16 @@
 //
 
 #import "ManagePollsTableViewController.h"
-#import "PollCell.h"
-#import "Utility.h"
+#import "ActivePollCell.h"
+#import "FollowedPollCell.h"
+#import "PastPollCell.h"
+#import "StylepicsDatabase.h"
 
 @interface ManagePollsTableViewController ()
-
+{
+    StylepicsDatabase *database;
+    NSArray *activePolls, *pastPolls, *followedPolls;
+}
 
 @end
 
@@ -29,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    database = [[StylepicsDatabase alloc] init];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -52,6 +58,10 @@
 #pragma mark - Table view data source
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    activePolls = [database getPollOfType:ACTIVE forUser:[Utility getObjectForKey:CURRENTUSERID]];
+    pastPolls = [database getPollOfType:PAST forUser:[Utility getObjectForKey:CURRENTUSERID]];
+    followedPolls = [database getPollOfType:FOLLOWED forUser:[Utility getObjectForKey:CURRENTUSERID]];
     [self.tableView reloadData];
 }
 
@@ -64,7 +74,7 @@
 -(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     switch (section){ 
         case 0: return @"ACTIVE POLLS";
-        case 1: return @"WATCHING POLLS";
+        case 1: return @"FOLLOWED POLLS";
         case 2: return @"PAST POLLS";
     }
     return nil;
@@ -73,20 +83,59 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 1;
+    switch (section) {
+        case 0: return activePolls.count;
+        case 1: return followedPolls.count;
+        case 2: return pastPolls.count;
+    }// Return the number of rows in the section.
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"poll cell";
-    PollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[PollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    switch (indexPath.section) {
+        case 0:{
+            static NSString *CellIdentifier = @"active poll cell";
+            ActivePollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[ActivePollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            cell.poll = [activePolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = cell.poll.name;
+            cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.poll.totalVotes];
+            cell.stateLabel.text = cell.poll.state;
+            return cell;
+        }
+        case 1:{
+            static NSString *CellIdentifier = @"followed poll cell";
+            FollowedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[FollowedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            cell.poll = [followedPolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = cell.poll.name;
+            User *owner = [database getUserWithID:cell.poll.ownerID];
+            cell.ownerLabel.text = owner.name;
+            cell.stateLabel.text = cell.poll.state;
+            return cell;
+        }
+        case 2:{
+            static NSString *CellIdentifier = @"past poll cell";
+            PastPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[PastPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            cell.poll = [pastPolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = cell.poll.name;
+            cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.poll.totalVotes];
+            cell.dateLabel.text = @"7/17/2012";
+            return cell;
+        }
+        default:
+            break;
     }
     // Configure the cell...
-    cell.pollTitleLabel.text = @"Birthday party dress";
-    return cell;
+    return nil;
 }
 
 /*
@@ -132,7 +181,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [Utility setObject:[NSNumber numberWithInt:2] forKey:IDOfPollToBeShown];
+    switch (indexPath.section) {
+        case 0:{
+            ActivePollCell *cell = (ActivePollCell *)[tableView cellForRowAtIndexPath:indexPath];
+            [Utility setObject:cell.poll.pollID forKey:IDOfPollToBeShown];
+            
+        }
+        case 1:{
+            FollowedPollCell *cell = (FollowedPollCell *)[tableView cellForRowAtIndexPath:indexPath];
+            [Utility setObject:cell.poll.pollID forKey:IDOfPollToBeShown];
+        }
+        case 2:{
+            PastPollCell *cell = (PastPollCell *)[tableView cellForRowAtIndexPath:indexPath];
+            [Utility setObject:cell.poll.pollID forKey:IDOfPollToBeShown];
+        }
+        default:
+            break;
+    }
+
+    [self performSegueWithIdentifier:@"show poll" sender:self];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

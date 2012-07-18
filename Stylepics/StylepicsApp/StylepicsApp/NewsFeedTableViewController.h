@@ -12,5 +12,5 @@
 #import "NewsFeedVoteCell.h"
 
 @interface NewsFeedTableViewController : UITableViewController
-@property (nonatomic, strong) NSMutableArray* events;
+@property (nonatomic, strong) NSArray* events;
 @end

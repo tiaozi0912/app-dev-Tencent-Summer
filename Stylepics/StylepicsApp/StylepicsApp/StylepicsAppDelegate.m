@@ -7,6 +7,7 @@
 //
 
 #import "StylepicsAppDelegate.h"
+#import "StylepicsDatabase.h"
 
 @implementation StylepicsAppDelegate
 
@@ -20,8 +21,10 @@
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDir = [documentPaths objectAtIndex:0];
     self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
+    NSLog(@"%@", self.databasePath);
     [self createAndCheckDatabase];
-
+    StylepicsDatabase *database = [[StylepicsDatabase alloc] init];
+    [database initialize];
     // Override point for customization after application launch.
     return YES;
 }

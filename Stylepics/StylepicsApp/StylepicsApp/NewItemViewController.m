@@ -14,7 +14,9 @@
 @interface NewItemViewController ()
 {
     StylepicsDatabase *database;
+    BOOL itemAdded;
 }
+ 
 @end
 
 @implementation NewItemViewController
@@ -57,6 +59,7 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
+    itemAdded = NO;
 	// Do any additional setup after loading the view.
 }
 
@@ -78,6 +81,7 @@
 
 - (IBAction)TestOnSimulator:(id)sender {
     self.itemImage.image = [UIImage imageNamed:@"item2.png"];
+    itemAdded = YES;
 }//when testing on devices, reconnect useCamera method below
 
 - (IBAction)useCamera 
@@ -129,6 +133,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImage *image = [info 
                           objectForKey:UIImagePickerControllerOriginalImage];
         self.itemImage.image = image;
+        itemAdded = YES;
         if (newMedia)
             UIImageWriteToSavedPhotosAlbum(image, 
                                            self,
@@ -155,17 +160,21 @@ finishedSavingWithError:(NSError *)error
     [self dismissModalViewControllerAnimated:YES];
 }
 -(IBAction) finishAddingNewItems{
+    if (itemAdded) {
     database = [[StylepicsDatabase alloc] init];
     Item *item = [[Item alloc] init];
     item.photo = self.itemImage.image;
     item.description = self.descriptionTextField.text;
     item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
     [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
+    }else{
+        [Utility showAlert:@"Sorry! You have not finished yet." message:@"You have to add one item before clicking on me."];
+    }
 }
 
 - (IBAction)cancelButton{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

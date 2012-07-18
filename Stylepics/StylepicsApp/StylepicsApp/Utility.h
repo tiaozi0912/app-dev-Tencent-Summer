@@ -14,6 +14,9 @@
 #define EDITING @"EDITING"
 #define VOTING @"VOTING"
 #define FINISHED @"FINISHED"
+#define ACTIVE @"ACTIVE"
+#define PAST @"PAST"
+#define FOLLOWED @"FOLLOWED"
 
 @interface Utility : NSObject
 {
