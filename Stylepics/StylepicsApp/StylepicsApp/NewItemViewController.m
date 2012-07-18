@@ -165,7 +165,7 @@ finishedSavingWithError:(NSError *)error
 }
 
 - (IBAction)cancelButton{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

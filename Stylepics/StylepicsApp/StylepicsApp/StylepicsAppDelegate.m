@@ -13,6 +13,7 @@
 @synthesize window = _window;
 @synthesize databaseName, databasePath;
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.databaseName = @"stylepics.db";
@@ -23,6 +24,23 @@
     [self createAndCheckDatabase];
 
     // Override point for customization after application launch.
+    
+    // Create image for navigation background - portrait
+    UIImage *NavigationPortraitBackground = [UIImage imageNamed:@"Custom-Nav-Bar-BG"];
+    // resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    // Create image for navigation background - landscape
+    UIImage *NavigationLandscapeBackground = [UIImage imageNamed:@"Custom-Nav-Bar-BG"];
+    
+    // Set the background image all UINavigationBars
+    [[UINavigationBar appearance] setBackgroundImage:NavigationPortraitBackground 
+                                       forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:NavigationLandscapeBackground 
+                                       forBarMetrics:UIBarMetricsLandscapePhone];
+    // Set back button for navbar
+    UIImage *backButton = [[UIImage imageNamed:@"Custom-UI-Bar-Button-Item"]  resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+
     return YES;
 }
 

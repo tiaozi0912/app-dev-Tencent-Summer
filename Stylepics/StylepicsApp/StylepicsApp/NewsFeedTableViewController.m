@@ -42,6 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //self.title = @"Coding Cluster"; 
+    // use setNavigationBarHidden:animated: if you need animation 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -64,6 +67,11 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (IBAction)createNewPoll:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"create a new poll" sender:self];
+}
+
 
 #pragma mark - Table view data source
 
