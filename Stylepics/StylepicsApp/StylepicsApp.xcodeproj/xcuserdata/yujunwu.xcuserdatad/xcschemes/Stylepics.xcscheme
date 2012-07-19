@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
                BuildableName = "StylepicsApp.app"
-               BlueprintName = "StylepicsApp"
+               BlueprintName = "Stylepics"
                ReferencedContainer = "container:StylepicsApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +33,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
             BuildableName = "StylepicsApp.app"
-            BlueprintName = "StylepicsApp"
+            BlueprintName = "Stylepics"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -52,7 +52,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
             BuildableName = "StylepicsApp.app"
-            BlueprintName = "StylepicsApp"
+            BlueprintName = "Stylepics"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -70,7 +70,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
             BuildableName = "StylepicsApp.app"
-            BlueprintName = "StylepicsApp"
+            BlueprintName = "Stylepics"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
