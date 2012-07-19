@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E2620" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="9e7-Gv-pa3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="9e7-Gv-pa3">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -11,12 +11,12 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="StylepicsEntryPageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3" customClass="UIControl">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                    <view key="view" alpha="0.94999999999999996" contentMode="scaleToFill" id="3" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="duH-T6-Dld">
-                                <rect key="frame" x="171" y="136" width="85" height="37"/>
+                                <rect key="frame" x="171" y="182" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="LOGIN">
@@ -31,19 +31,19 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="INh-LT-e5R">
-                                <rect key="frame" x="65" y="40" width="191" height="31"/>
+                                <rect key="frame" x="65" y="86" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="pmY-gl-1Nu">
-                                <rect key="frame" x="65" y="84" width="191" height="31"/>
+                                <rect key="frame" x="65" y="130" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7RR-fb-AlN">
-                                <rect key="frame" x="62" y="136" width="92" height="37"/>
+                                <rect key="frame" x="62" y="182" width="92" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SIGNUP">
@@ -57,14 +57,34 @@
                                     <segue destination="ZCB-td-5cu" kind="push" id="vIw-gZ-nuA"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" id="OQX-3Q-Ffj" customClass="MyCustomNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="dbd-oo-R5u">
+                                        <nil key="title"/>
+                                        <view key="titleView" opaque="NO" contentMode="scaleToFill" id="Rwf-Xp-HUM">
+                                            <rect key="frame" x="96" y="6" width="128" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text_logo_stylepics.png" id="n4G-3E-Vpj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <connections>
                             <action selector="backgroundTouched:" destination="2" eventType="touchDown" id="wsu-Bt-wKw"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="stylepics" id="K85-Wk-xDX"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="password" destination="pmY-gl-1Nu" id="DUd-rk-alU"/>
@@ -73,15 +93,17 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="702" y="125"/>
+            <point key="canvasLocation" x="850" y="185"/>
         </scene>
         <!--Manage Polls Table View Controller - Manage Polls-->
         <scene sceneID="NXo-kP-osz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dN-MZ-s2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="6a9-bf-0wD" customClass="ManagePollsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FFx-ZW-oVu">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FFx-ZW-oVu">
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
+
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -230,12 +252,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evl-Jf-Mnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="8Sd-3s-bsT" customClass="NewsFeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Rv7-Am-ueW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="deI-fZ-3B2" customClass="MyCustomNavigationBar">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem id="LXX-wn-gG8">
+                                    <nil key="title"/>
+                                    <barButtonItem key="leftBarButtonItem" image="Polls-Icon.png" id="Mca-Zq-pB3">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <connections>
+                                            <segue destination="6a9-bf-0wD" kind="push" id="WLE-3I-iDc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <view key="titleView" opaque="NO" contentMode="scaleToFill" id="Wdp-Oo-Xhj">
+                                        <rect key="frame" x="83" y="6" width="154" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text_logo_stylepics.png" id="diQ-Jg-Qnn">
+                                                <rect key="frame" x="0.0" y="0.0" width="154" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <barButtonItem key="rightBarButtonItem" image="New-Poll-Icon.png" id="CYp-xG-agb">
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <connections>
+                                            <segue destination="tlb-aD-9aU" kind="push" identifier="create a new poll" id="fXA-40-Y07"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="282" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="282"/>
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="282" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
+                                <rect key="frame" x="0.0" y="66" width="320" height="282"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="281"/>
@@ -270,6 +324,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <outlet property="eventDescriptionLabel" destination="BFN-no-Hot" id="EHG-jc-Vq9"/>
                                     <outlet property="iconImage" destination="EJ3-t5-xDP" id="NxH-sv-FwP"/>
@@ -278,8 +333,8 @@
                                     <outlet property="userNameLabel" destination="aW9-1E-OFR" id="AGh-ib-JEV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="72" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
-                                <rect key="frame" x="0.0" y="304" width="320" height="72"/>
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="72" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
+                                <rect key="frame" x="0.0" y="348" width="320" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="71"/>
@@ -310,6 +365,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <outlet property="eventDescriptionLabel" destination="g00-fD-L1y" id="S8u-h5-8WR"/>
                                     <outlet property="iconImage" destination="9Tu-mJ-5Ss" id="fnM-zC-5S0"/>
@@ -317,8 +373,8 @@
                                     <outlet property="userNameLabel" destination="eKY-dZ-Kln" id="fZh-Ey-iVb"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new poll cell" rowHeight="88" id="Xet-vw-IdK" customClass="NewsFeedNewPollCell">
-                                <rect key="frame" x="0.0" y="376" width="320" height="88"/>
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new poll cell" rowHeight="88" id="Xet-vw-IdK" customClass="NewsFeedNewPollCell">
+                                <rect key="frame" x="0.0" y="420" width="320" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="87"/>
@@ -349,6 +405,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <outlet property="eventDescriptionLabel" destination="Mhs-8T-Ibz" id="cXW-Tu-eFI"/>
                                     <outlet property="iconImage" destination="DIw-lY-F5b" id="a5X-wj-edW"/>
@@ -371,22 +428,9 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="stylepics" id="SY8-vZ-Qmd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="Mca-Zq-pB3">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <connections>
-                                <segue destination="6a9-bf-0wD" kind="push" id="WLE-3I-iDc"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="new poll icon.png" id="CYp-xG-agb">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <connections>
-                                <segue destination="tlb-aD-9aU" kind="push" identifier="create a new poll" id="fXA-40-Y07"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="stylepics" id="SY8-vZ-Qmd"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="AtD-j7-Qhz" kind="push" identifier="show a poll from news feed" id="ceQ-hi-cBi"/>
@@ -399,8 +443,10 @@
         <scene sceneID="0WG-5U-9ea">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfg-9f-nVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController toolbarHidden="NO" id="9e7-Gv-pa3" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="9e7-Gv-pa3" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="pQg-jA-Ets">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -422,18 +468,18 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9J-ho-zJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController modalTransitionStyle="flipHorizontal" id="tlb-aD-9aU" customClass="NewPollViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="h7d-5I-y0a" customClass="UIControl">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                    <view key="view" alpha="0.94999999999999996" contentMode="scaleToFill" id="h7d-5I-y0a" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Give your poll a name" minimumFontSize="17" clearButtonMode="whileEditing" id="OZs-8F-042">
-                                <rect key="frame" x="61" y="63" width="202" height="31"/>
+                                <rect key="frame" x="61" y="105" width="202" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lqq-7E-Kqf">
-                                <rect key="frame" x="61" y="112" width="202" height="37"/>
+                                <rect key="frame" x="61" y="154" width="202" height="37"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="CREATE A POLL">
@@ -447,8 +493,15 @@
                                     <action selector="newPoll" destination="tlb-aD-9aU" eventType="touchUpInside" id="Hov-Gj-wed"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" id="hNq-ZP-tHH" customClass="MyCustomNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="New Poll" id="Ppy-aH-4P7"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <connections>
                             <action selector="backgroundTouched:" destination="tlb-aD-9aU" eventType="touchDown" id="2t2-np-Knz"/>
                         </connections>
@@ -468,20 +521,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysj-kf-CGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="AtD-j7-Qhz" customClass="PollTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="378" sectionHeaderHeight="22" sectionFooterHeight="22" id="vnW-Cp-J6N">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="gnu-DO-aSK" customClass="AudienceListView">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading Audience List ..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="J3N-Z0-CHB">
-                                    <rect key="frame" x="29" y="11" width="238" height="21"/>
+                                    <rect key="frame" x="30" y="53" width="238" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <navigationBar contentMode="scaleToFill" id="bbW-xS-bQ7" customClass="MyCustomNavigationBar">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <items>
+                                        <navigationItem id="eaj-Jf-DdK">
+                                            <nil key="title"/>
+                                            <barButtonItem key="leftBarButtonItem" title="Home" id="tZd-f8-m9O">
+                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <connections>
+                                                    <action selector="goHomePage:" destination="AtD-j7-Qhz" id="Ig8-AG-gL3"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <view key="titleView" opaque="NO" contentMode="scaleToFill" id="GGg-ck-nn3">
+                                                <rect key="frame" x="96" y="6" width="128" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text_logo_stylepics.png" id="8bT-sS-iWT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="33"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lze-Lt-7cn">
+                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <connections>
+                                                    <action selector="refresh:" destination="AtD-j7-Qhz" id="d0p-qJ-I01"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </navigationItem>
+                                    </items>
+                                </navigationBar>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
@@ -489,22 +574,22 @@
                             </connections>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll item cell" rowHeight="378" id="zBZ-kk-9gb" customClass="PollItemCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="378"/>
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll item cell" rowHeight="378" id="zBZ-kk-9gb" customClass="PollItemCell">
+                                <rect key="frame" x="0.0" y="107" width="320" height="378"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ku3-g4-M3Y">
-                                            <rect key="frame" x="70" y="336" width="42" height="21"/>
+                                            <rect key="frame" x="235" y="299" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="RJY-m0-XKJ">
-                                            <rect key="frame" x="25" y="332" width="32" height="30"/>
+                                            <rect key="frame" x="185" y="299" width="32" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WRc-G6-rCe">
@@ -519,7 +604,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="XXX.XX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="u6W-h3-w00">
                                             <rect key="frame" x="95" y="299" width="62" height="21"/>
@@ -546,6 +631,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <outlet property="commentIconImage" destination="RJY-m0-XKJ" id="vLZ-nR-n3d"/>
                                     <outlet property="countOfCommentsLabel" destination="ku3-g4-M3Y" id="I3o-Bs-Nl4"/>
@@ -579,19 +665,8 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="zXe-q2-cfQ">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="tZd-f8-m9O">
-                            <connections>
-                                <action selector="goHomePage:" destination="AtD-j7-Qhz" id="Ig8-AG-gL3"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lze-Lt-7cn">
-                            <connections>
-                                <action selector="refresh:" destination="AtD-j7-Qhz" id="d0p-qJ-I01"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationItem key="navigationItem" id="zXe-q2-cfQ"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="PLI-kD-jhi" kind="modal" identifier="show poll result" modalTransitionStyle="partialCurl" id="Ri5-vt-ryA"/>
@@ -610,10 +685,9 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="usI-hz-oud">
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="usI-hz-oud" customClass="MyCustomNavigationBar">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <items>
                                 <navigationItem title="Poll Result" id="uhw-41-idl">
                                     <barButtonItem key="leftBarButtonItem" systemItem="reply" id="hwx-nR-q3G">
@@ -623,7 +697,7 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleAspectFit" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll result cell" rowHeight="113" id="ZI8-ye-y5G" customClass="PollResultCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleAspectFit" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll result cell" rowHeight="113" id="ZI8-ye-y5G" customClass="PollResultCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -676,6 +750,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="WzQ-GF-JI7" id="Vkg-qW-7ND"/>
                                     <outlet property="itemImage" destination="dcp-zw-sIu" id="e7M-4p-48w"/>
@@ -712,11 +787,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RX6-xr-rZ5" sceneMemberID="firstResponder"/>
                 <viewController id="ZCB-td-5cu" customClass="RegistrationPageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O8A-cu-Uho" customClass="UIControl">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DHe-gW-gba">
-                                <rect key="frame" x="118" y="189" width="85" height="37"/>
+                                <rect key="frame" x="118" y="266" width="85" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="SIGNUP">
@@ -731,23 +806,43 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="fNR-2a-mut">
-                                <rect key="frame" x="65" y="40" width="191" height="31"/>
+                                <rect key="frame" x="65" y="117" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="4hf-pu-lMS">
-                                <rect key="frame" x="65" y="79" width="191" height="31"/>
+                                <rect key="frame" x="65" y="156" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Again" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="OR0-MX-ALo">
-                                <rect key="frame" x="65" y="118" width="191" height="31"/>
+                                <rect key="frame" x="65" y="195" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" id="ThF-9j-lP4" customClass="MyCustomNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="n6d-On-kfC">
+                                        <nil key="title"/>
+                                        <view key="titleView" opaque="NO" contentMode="scaleToFill" id="Bs1-PY-Ugb">
+                                            <rect key="frame" x="96" y="6" width="128" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="text_logo_stylepics.png" id="466-lT-hfo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
@@ -764,7 +859,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1067" y="622"/>
+            <point key="canvasLocation" x="1247" y="673"/>
         </scene>
         <!--New Item View Controller-->
         <scene sceneID="HpC-Ot-YOP">
@@ -819,6 +914,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <navigationBar contentMode="scaleToFill" id="bT8-TD-ajl" customClass="MyCustomNavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Adding Item" id="3wi-qx-Vgo"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
@@ -839,10 +941,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="New-Poll-Icon.png" width="20" height="20"/>
+        <image name="Polls-Icon.png" width="20" height="20"/>
         <image name="default_profile_photo.jpeg" width="199" height="203"/>
         <image name="hanger.png" width="256" height="256"/>
         <image name="new item icon.png" width="27" height="34"/>
-        <image name="new poll icon.png" width="44" height="44"/>
+        <image name="new poll icon.png" width="16" height="16"/>
+        <image name="text_logo_stylepics.png" width="799" height="284"/>
         <image name="vote icon.png" width="33" height="32"/>
     </resources>
     <classes>
@@ -870,6 +975,9 @@
         </class>
         <class className="ManagePollsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManagePollsTableViewController.h"/>
+        </class>
+        <class className="MyCustomNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyCustomNavigationBar.h"/>
         </class>
         <class className="NewItemViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewItemViewController.h"/>

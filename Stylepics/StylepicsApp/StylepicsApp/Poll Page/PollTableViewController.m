@@ -104,6 +104,7 @@
     self.title = self.poll.name;
     [self.tableView reloadData];
     if ([[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
+        self.navigationController.toolbarHidden = NO;
         if ([self.poll.state isEqualToString:EDITING]){
             [[self.toolbarItems objectAtIndex:0]setEnabled:YES];
             [[self.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
@@ -122,10 +123,13 @@
         if (![database user:[Utility getObjectForKey:CURRENTUSERID] isAudienceOfPoll:self.poll.pollID]){
             [database user:[Utility getObjectForKey:CURRENTUSERID] becomesAudienceOfPoll:self.poll.pollID];
         }
-        self.navigationController.toolbarHidden = YES;
             
     }
-    self.navigationController.navigationBarHidden = NO;
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.toolbarHidden = YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

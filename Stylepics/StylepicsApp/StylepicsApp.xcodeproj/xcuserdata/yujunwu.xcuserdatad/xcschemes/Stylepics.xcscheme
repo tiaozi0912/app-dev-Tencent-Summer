@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-               BuildableName = "Stylepics.app"
-               BlueprintName = "StylepicsApp"
+               BuildableName = "StylepicsApp.app"
+               BlueprintName = "Stylepics"
                ReferencedContainer = "container:StylepicsApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,15 +32,15 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "Stylepics.app"
-            BlueprintName = "StylepicsApp"
+            BuildableName = "StylepicsApp.app"
+            BlueprintName = "Stylepics"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
    <LaunchAction
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "Stylepics.app"
-            BlueprintName = "StylepicsApp"
+            BuildableName = "StylepicsApp.app"
+            BlueprintName = "Stylepics"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "Stylepics.app"
-            BlueprintName = "StylepicsApp"
+            BuildableName = "StylepicsApp.app"
+            BlueprintName = "Stylepics"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
