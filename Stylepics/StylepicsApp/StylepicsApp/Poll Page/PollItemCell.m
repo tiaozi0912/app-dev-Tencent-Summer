@@ -10,7 +10,7 @@
 
 @implementation PollItemCell
 
-@synthesize itemImage=_itemImage, item = _item,countOfCommentsLabel=_countOfCommentsLabel,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel,commentIconImage=_commentIconImage;
+@synthesize itemImage=_itemImage, countOfCommentsLabel=_countOfCommentsLabel,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel,commentIconImage=_commentIconImage;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

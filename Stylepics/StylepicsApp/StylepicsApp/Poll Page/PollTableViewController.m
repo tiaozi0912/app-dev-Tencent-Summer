@@ -86,7 +86,9 @@
 - (IBAction)vote:(UIButton *)sender {
     if([self.poll.state isEqualToString:VOTING]&&![[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
         PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
-        if (![database voteForItem:cell.item.itemID inPoll:self.poll.pollID byUser:[Utility getObjectForKey:CURRENTUSERID]]){
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        Item *item = [self.poll.items objectAtIndex:indexPath.row];
+        if (![database voteForItem:item.itemID inPoll:self.poll.pollID byUser:[Utility getObjectForKey:CURRENTUSERID]]){
             [Utility showAlert:@"Sorry!" message:@"You cannot vote more than once in a poll."];
         }else {
             [Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
@@ -147,12 +149,12 @@
                 initWithStyle:UITableViewCellStyleDefault 
                 reuseIdentifier:CellIdentifier];
     }
-    cell.item = [self.poll.items objectAtIndex:indexPath.row];
+    Item *item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
     cell.itemImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [cell.itemImage setImage:cell.item.photo forState:UIControlStateNormal];
-    cell.descriptionOfItemLabel.text = cell.item.description;
-    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.item.price];    
+    [cell.itemImage setImage:item.photo forState:UIControlStateNormal];
+    cell.descriptionOfItemLabel.text = item.description;
+    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
     cell.commentIconImage.image = [UIImage imageNamed:@"comments icon"];
     return cell;
 }
