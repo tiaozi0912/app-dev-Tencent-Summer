@@ -19,6 +19,7 @@
     [db executeUpdate:@"CREATE  TABLE  IF NOT EXISTS \"PollTable\" (\"pollID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"name\" VARCHAR, \"ownerID\" INTEGER, \"state\" VARCHAR DEFAULT EDITING, \"totalVotes\" INTEGER DEFAULT 0, \"maxVotesForSingleItem\" INTEGER DEFAULT 1)"];
     
 }
+
 -(BOOL) isLoggedInWithUsername:(NSString*) username
                             password:(NSString*) password{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
@@ -26,9 +27,7 @@
     FMResultSet *results = [db executeQuery:@"SELECT userID FROM UserTable WHERE username =? AND password = ?", username, password];
     BOOL success = [results next];
     if (success) {
-        NSUserDefaults* session = [NSUserDefaults standardUserDefaults];
-        [session setObject:[NSNumber numberWithInt:[results intForColumn:@"userID"]] forKey:CURRENTUSERID];
-        [session synchronize];
+        [Utility setObject:[NSNumber numberWithInt:[results intForColumn:@"userID"]] forKey:CURRENTUSERID]; 
     }
     [db close];
     return success; 
@@ -74,9 +73,12 @@
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];
     BOOL success = [db executeUpdate:@"INSERT INTO UserTable (username, password) VALUES(?,?)", username, password];
+    if (success){
     int userID = [db intForQuery:@"SELECT userID FROM UserTable WHERE username = ?", username];
     NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"User_%d_PollTable\" (\"pollID\" INTEGER PRIMARY KEY  NOT NULL , \"type\" VARCHAR)", userID];
     [db executeUpdate:query];
+    [Utility setObject:[NSNumber numberWithInt:userID] forKey:CURRENTUSERID];
+    }
     [db close];
     return success;
 }
@@ -233,7 +235,7 @@
     // db.logsErrors = YES;
     [db executeUpdate:@"INSERT INTO PollTable (name, ownerID, state) VALUES (?,?,?)", name, userID, @"EDITING"];
     NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
-    NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO User_%@_PollTable (pollID, type) VALUES (%@, %@)", userID, pollID, ACTIVE];
+    NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO User_%@_PollTable (pollID, type) VALUES (%@, \"ACTIVE\")", userID, pollID];
     [db executeUpdate:query];
     query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" (\"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB, \"numberOfVotes\" INTEGER DEFAULT 0)", [pollID intValue]];
     [db executeUpdate:query];
@@ -277,7 +279,7 @@
     [db executeUpdate:@"UPDATE PollTable SET state = ? WHERE pollID = ?", state, pollID];
     if ([state isEqualToString:FINISHED]) {
         NSNumber *userID = [Utility getObjectForKey:CURRENTUSERID];
-        NSString *query = [[NSString alloc] initWithFormat:@"UPDATE User_%@_PollTable SET type = %@ WHERE pollID = %@", userID, PAST, pollID];
+        NSString *query = [[NSString alloc] initWithFormat:@"UPDATE User_%@_PollTable SET type = \"PAST\" WHERE pollID = %@", userID, pollID];
         [db executeUpdate:query];
     }
     [db close];
@@ -302,7 +304,7 @@
     [db open];
     NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO Poll_%d_AudienceTable (userID) VALUES (%d)", [pollID intValue], [userID intValue]];
     [db executeUpdate:query];
-    query = [[NSString alloc] initWithFormat:@"UPDATE User_%@_PollTable SET type = %@ WHERE pollID = %@", userID, FOLLOWED, pollID];
+    query = [[NSString alloc] initWithFormat:@"UPDATE User_%@_PollTable SET type = \"FOLLOWED\" WHERE pollID = %@", userID, pollID];
     [db executeUpdate:query];
     [db close];
 }
@@ -341,7 +343,7 @@
     db.logsErrors=YES; 
     [db open]; 
     NSMutableArray *polls = [[NSMutableArray alloc] init];
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM User_%@_PollTable WHERE type = %@ ORDER BY pollID DESC", userID, type];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM User_%@_PollTable WHERE type = \"%@\" ORDER BY pollID DESC", userID, type];
     FMResultSet *results = [db executeQuery:query];
     while ([results next]&&(polls.count < 30)) {
         Poll *poll = [[Poll alloc] init];
@@ -349,10 +351,10 @@
         poll.pollID = [NSNumber numberWithInt:[results intForColumn:@"pollID"]];
         FMResultSet *rs=[db executeQuery:@"SELECT * FROM PollTable WHERE pollID = ?", poll.pollID];
         while ([rs next]){
-            poll.name = [results stringForColumn:@"name"];
-            poll.ownerID =[NSNumber numberWithInt:[results intForColumn:@"ownerID"]];
-            poll.state = [results stringForColumn:@"state"];
-            poll.totalVotes = [NSNumber numberWithInt:[results intForColumn:@"totalVotes"]];
+            poll.name = [rs stringForColumn:@"name"];
+            poll.ownerID =[NSNumber numberWithInt:[rs intForColumn:@"ownerID"]];
+            poll.state = [rs stringForColumn:@"state"];
+            poll.totalVotes = [NSNumber numberWithInt:[rs intForColumn:@"totalVotes"]];
         }
         [polls addObject:poll];
     }

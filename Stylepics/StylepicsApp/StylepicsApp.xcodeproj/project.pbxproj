@@ -80,7 +80,7 @@
 		0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StylepicsDatabase.m; sourceTree = "<group>"; };
 		0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationPageViewController.h; sourceTree = "<group>"; };
 		0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationPageViewController.m; sourceTree = "<group>"; };
-		0D94F4E415A7D09700903F0B /* Stylepics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylepics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D94F4E415A7D09700903F0B /* StylepicsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StylepicsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D94F4E815A7D09700903F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D94F4EA15A7D09700903F0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D94F4EC15A7D09700903F0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -263,7 +263,7 @@
 		0D94F4E515A7D09700903F0B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0D94F4E415A7D09700903F0B /* Stylepics.app */,
+				0D94F4E415A7D09700903F0B /* StylepicsApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,9 +318,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0D94F4E315A7D09700903F0B /* Stylepics */ = {
+		0D94F4E315A7D09700903F0B /* StylepicsApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0D94F50215A7D09700903F0B /* Build configuration list for PBXNativeTarget "Stylepics" */;
+			buildConfigurationList = 0D94F50215A7D09700903F0B /* Build configuration list for PBXNativeTarget "StylepicsApp" */;
 			buildPhases = (
 				0D94F4E015A7D09700903F0B /* Sources */,
 				0D94F4E115A7D09700903F0B /* Frameworks */,
@@ -330,9 +330,9 @@
 			);
 			dependencies = (
 			);
-			name = Stylepics;
+			name = StylepicsApp;
 			productName = StylepicsApp;
-			productReference = 0D94F4E415A7D09700903F0B /* Stylepics.app */;
+			productReference = 0D94F4E415A7D09700903F0B /* StylepicsApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -357,7 +357,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0D94F4E315A7D09700903F0B /* Stylepics */,
+				0D94F4E315A7D09700903F0B /* StylepicsApp */,
 			);
 		};
 /* End PBXProject section */
@@ -495,7 +495,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StylepicsApp/StylepicsApp-Prefix.pch";
 				INFOPLIST_FILE = "StylepicsApp/StylepicsApp-Info.plist";
-				PRODUCT_NAME = Stylepics;
+				PRODUCT_NAME = StylepicsApp;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -506,7 +506,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StylepicsApp/StylepicsApp-Prefix.pch";
 				INFOPLIST_FILE = "StylepicsApp/StylepicsApp-Info.plist";
-				PRODUCT_NAME = Stylepics;
+				PRODUCT_NAME = StylepicsApp;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -523,7 +523,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0D94F50215A7D09700903F0B /* Build configuration list for PBXNativeTarget "Stylepics" */ = {
+		0D94F50215A7D09700903F0B /* Build configuration list for PBXNativeTarget "StylepicsApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D94F50315A7D09700903F0B /* Debug */,

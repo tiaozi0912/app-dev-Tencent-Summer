@@ -189,6 +189,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UserEvent *event = [self.events objectAtIndex:indexPath.row];
+    [Utility setObject:event.pollID forKey:IDOfPollToBeShown];
+    [self performSegueWithIdentifier:@"show a poll from news feed" sender:self];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

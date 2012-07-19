@@ -35,7 +35,6 @@
 {
     [super viewDidLoad];
     database = [[StylepicsDatabase alloc] init];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -46,6 +45,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -94,6 +94,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
+
         case 0:{
             static NSString *CellIdentifier = @"active poll cell";
             ActivePollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -102,10 +103,11 @@
             }
             cell.poll = [activePolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = cell.poll.name;
+        NSLog(@"%@", cell.poll.name);
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.poll.totalVotes];
             cell.stateLabel.text = cell.poll.state;
             return cell;
-        }
+        } 
         case 1:{
             static NSString *CellIdentifier = @"followed poll cell";
             FollowedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -118,7 +120,7 @@
             cell.ownerLabel.text = owner.name;
             cell.stateLabel.text = cell.poll.state;
             return cell;
-        }
+        } 
         case 2:{
             static NSString *CellIdentifier = @"past poll cell";
             PastPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -131,8 +133,6 @@
             cell.dateLabel.text = @"7/17/2012";
             return cell;
         }
-        default:
-            break;
     }
     // Configure the cell...
     return nil;
