@@ -58,7 +58,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
     itemAdded = NO;
 	// Do any additional setup after loading the view.
 }

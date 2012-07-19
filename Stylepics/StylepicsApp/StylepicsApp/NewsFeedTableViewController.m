@@ -10,7 +10,9 @@
 #import "StylepicsDatabase.h"
 
 #define NUMBEROFEVENTSLOADED 20
-
+#define HEIGHTOFNEWPOLLCELL 60
+#define HEIGHTOFNEWITEMCELL 260
+#define HEIGHTOFVOTECELL 60
 @interface NewsFeedTableViewController (){
     StylepicsDatabase *database;
 }
@@ -144,6 +146,21 @@
         return cell;
     }
     return nil;
+}
+
+
+//Set up cell height
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UserEvent *event = [self.events objectAtIndex:indexPath.row];
+    NSString *eventType = event.type;
+    if ([eventType isEqualToString:@"new poll"]) {
+        return HEIGHTOFNEWPOLLCELL;
+    }else if ([eventType isEqualToString:@"new item"]){
+     return HEIGHTOFNEWITEMCELL;
+    }else if ([eventType isEqualToString:@"vote"]){
+      return HEIGHTOFVOTECELL;
+     }
 }
 
 /*

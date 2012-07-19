@@ -51,7 +51,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 - (IBAction)back:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)refresh:(UIBarButtonItem *)sender {
