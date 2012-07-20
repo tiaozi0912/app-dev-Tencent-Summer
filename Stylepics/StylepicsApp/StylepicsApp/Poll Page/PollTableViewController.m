@@ -115,6 +115,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Tool-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault]; 
     self.title = self.poll.name;
     [self.tableView reloadData];
     if ([[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
@@ -141,8 +143,10 @@
     }
 }
 
--(void) viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+-(void) viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
 
 }
 
