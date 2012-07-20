@@ -196,7 +196,8 @@
         poll.totalVotes = [NSNumber numberWithInt:[results intForColumn:@"totalVotes"]];
         poll.maxVotesForSingleItem = [NSNumber numberWithInt:[results intForColumn:@"maxVotesForSingleItem"]];
     }
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY numberOfVotes DESC", [pollID intValue]];
+   /* NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY numberOfVotes DESC", [pollID intValue]];*/
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY itemID DESC", [pollID intValue]];
     results = [db executeQuery:query];
     poll.items= [[NSMutableArray alloc] init];
     while ([results next]){
@@ -302,9 +303,9 @@
     //db.traceExecution=YES; 
     //db.logsErrors=YES; 
     [db open];
-    NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO Poll_%d_AudienceTable (userID) VALUES (%d)", [pollID intValue], [userID intValue]];
+    NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO Poll_%@_AudienceTable (userID) VALUES (%@)", pollID, userID];
     [db executeUpdate:query];
-    query = [[NSString alloc] initWithFormat:@"UPDATE User_%@_PollTable SET type = \"FOLLOWED\" WHERE pollID = %@", userID, pollID];
+    query = [[NSString alloc] initWithFormat:@"INSERT INTO User_%@_PollTable (pollID, type) VALUES (%@,'FOLLOWED')", userID, pollID];
     [db executeUpdate:query];
     [db close];
 }
@@ -322,7 +323,7 @@
     query = [[NSString alloc] initWithFormat:@"SELECT numberOfVotes FROM Poll_%d_ItemTable WHERE itemID = %d", [pollID intValue], [itemID intValue]];
     int newNumberOfVotes = [db intForQuery:query] + 1;
     int maxVotesForSingleItem = [db intForQuery:@"SELECT maxVotesForSingleItem FROM PollTable WHERE pollID = ?", pollID];
-    query = [[NSString alloc] initWithFormat:@"UPDATE Poll_%d_ItemTable SET numberOfVotes = %d WHERE itemID = %d", [pollID intValue],newNumberOfVotes+1, [itemID intValue]];
+    query = [[NSString alloc] initWithFormat:@"UPDATE Poll_%d_ItemTable SET numberOfVotes = %d WHERE itemID = %d", [pollID intValue],newNumberOfVotes, [itemID intValue]];
     [db executeUpdate:query];
     int newTotalVotes = [db intForQuery:@"SELECT totalVotes FROM PollTable WHERE pollID = ?", pollID] + 1;
     [db executeUpdate:@"UPDATE PollTable SET totalVotes = ? WHERE pollID = ?", [NSNumber numberWithInt: newTotalVotes], pollID]; 
@@ -339,8 +340,8 @@
 
 -(NSArray*) getPollOfType:(NSString*) type forUser:(NSNumber*) userID{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    db.traceExecution=YES; 
-    db.logsErrors=YES; 
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
     [db open]; 
     NSMutableArray *polls = [[NSMutableArray alloc] init];
     NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM User_%@_PollTable WHERE type = \"%@\" ORDER BY pollID DESC", userID, type];
@@ -360,5 +361,16 @@
     }
     [db close];
     return [polls copy];
+}
+
+-(BOOL) deleteItem:(NSNumber*)itemID inPoll:(NSNumber*)pollID{
+    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
+    //db.traceExecution=YES; 
+    //db.logsErrors=YES; 
+    [db open];
+    NSString *query = [[NSString alloc] initWithFormat:@"DELETE FROM Poll_%@_ItemTable WHERE itemID = %@", pollID, itemID];
+    BOOL success = [db executeUpdate:query];
+    [db close];
+    return success;
 }
 @end

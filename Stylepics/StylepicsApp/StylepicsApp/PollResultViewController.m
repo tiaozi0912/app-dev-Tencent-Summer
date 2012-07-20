@@ -51,7 +51,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 - (IBAction)back:(UIBarButtonItem *)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)refresh:(UIBarButtonItem *)sender {
@@ -82,13 +82,13 @@
                 initWithStyle:UITableViewCellStyleDefault 
                 reuseIdentifier:CellIdentifier];
     }
-    cell.item = [self.poll.items objectAtIndex:indexPath.row];
+    Item* item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
-    cell.itemImage.image = cell.item.photo;
-    cell.descriptionLabel.text = cell.item.description;
-    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.item.price];    
-    cell.numberOfVotesIndicator.progress = [cell.item.numberOfVotes floatValue]/[self.poll.maxVotesForSingleItem floatValue];
-    cell.numberOfVotesLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.item.numberOfVotes];    
+    cell.itemImage.image = item.photo;
+    cell.descriptionLabel.text = item.description;
+    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
+    cell.numberOfVotesIndicator.progress = [item.numberOfVotes floatValue]/[self.poll.maxVotesForSingleItem floatValue];
+    cell.numberOfVotesLabel.text = [[NSString alloc] initWithFormat:@"%@", item.numberOfVotes];    
     return cell;
 }
 

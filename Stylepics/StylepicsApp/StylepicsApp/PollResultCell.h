@@ -15,5 +15,4 @@
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet UIProgressView *numberOfVotesIndicator;
 @property (nonatomic, weak) IBOutlet UILabel *numberOfVotesLabel;
-@property (nonatomic, strong) Item *item;
 @end

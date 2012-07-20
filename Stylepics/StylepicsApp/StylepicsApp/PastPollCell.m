@@ -9,7 +9,7 @@
 #import "PastPollCell.h"
 
 @implementation PastPollCell
-@synthesize nameLabel, votesLabel, dateLabel, poll;
+@synthesize nameLabel, votesLabel, dateLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

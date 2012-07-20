@@ -96,7 +96,8 @@
 {
     [super viewDidLoad];
     database = [[StylepicsDatabase alloc] init];
-    
+
+    //self.navigationController.toolbarHidden = YES;
 }
 
 

@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     database =[[StylepicsDatabase alloc] init];
+    self.navigationController.toolbarHidden = YES;
+    
     //self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -59,7 +61,7 @@
         self.poll.state = FINISHED;
         [database changeStateOfPoll:self.poll.pollID to:FINISHED];
         [[self.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
-        [[self.toolbarItems objectAtIndex:3] setEnabled:NO];
+        [[self.toolbarItems objectAtIndex:2] setEnabled:NO];
     }
 }
 - (IBAction)addNewItem:(UIBarButtonItem *)sender {
@@ -96,6 +98,18 @@
     }
 }
 
+- (IBAction)deleteItem:(UIButton *)sender {
+    if([self.poll.state isEqualToString:EDITING]&&[[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
+        PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        Item *item = [self.poll.items objectAtIndex:indexPath.row];
+        [database deleteItem:item.itemID inPoll:self.poll.pollID];
+        [self.poll.items removeObjectAtIndex:indexPath.row];
+        [Utility showAlert:@"Removed successfully!" message:@"This item has been removed from the poll."];
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - Table view data source
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -129,7 +143,7 @@
 
 -(void) viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.toolbarHidden = YES;
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -159,7 +173,6 @@
     [cell.itemImage setImage:item.photo forState:UIControlStateNormal];
     cell.descriptionOfItemLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
-    cell.commentIconImage.image = [UIImage imageNamed:@"comments icon"];
     return cell;
 }
 

@@ -48,4 +48,5 @@
 -(BOOL) user:(NSNumber*) userID isAudienceOfPoll:(NSNumber*) pollID;
 -(void) user:(NSNumber*) userID becomesAudienceOfPoll:(NSNumber*) pollID;
 -(NSArray*) getPollOfType:(NSString*) type forUser:(NSNumber*) userID;
+-(BOOL) deleteItem:(NSNumber*)itemID inPoll:(NSNumber*)pollID;
 @end

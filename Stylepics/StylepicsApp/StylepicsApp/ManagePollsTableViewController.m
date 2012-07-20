@@ -11,6 +11,7 @@
 #import "FollowedPollCell.h"
 #import "PastPollCell.h"
 #import "StylepicsDatabase.h"
+#define POLLCELLHEIGHT 46
 
 @interface ManagePollsTableViewController ()
 {
@@ -54,6 +55,11 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+- (IBAction)backButton:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark - Table view data source
 
@@ -101,11 +107,11 @@
             if (cell == nil) {
                 cell = [[ActivePollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            cell.poll = [activePolls objectAtIndex:indexPath.row];
-            cell.nameLabel.text = cell.poll.name;
-        NSLog(@"%@", cell.poll.name);
-            cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.poll.totalVotes];
-            cell.stateLabel.text = cell.poll.state;
+            Poll* poll = [activePolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = poll.name;
+        NSLog(@"%@", poll.name);
+            cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
+            cell.stateLabel.text = poll.state;
             return cell;
         } 
         case 1:{
@@ -114,11 +120,11 @@
             if (cell == nil) {
                 cell = [[FollowedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            cell.poll = [followedPolls objectAtIndex:indexPath.row];
-            cell.nameLabel.text = cell.poll.name;
-            User *owner = [database getUserWithID:cell.poll.ownerID];
+            Poll *poll = [followedPolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = poll.name;
+            User *owner = [database getUserWithID:poll.ownerID];
             cell.ownerLabel.text = owner.name;
-            cell.stateLabel.text = cell.poll.state;
+            cell.stateLabel.text = poll.state;
             return cell;
         } 
         case 2:{
@@ -127,9 +133,9 @@
             if (cell == nil) {
                 cell = [[PastPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            cell.poll = [pastPolls objectAtIndex:indexPath.row];
-            cell.nameLabel.text = cell.poll.name;
-            cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", cell.poll.totalVotes];
+            Poll *poll = [pastPolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = poll.name;
+            cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.dateLabel.text = @"7/17/2012";
             return cell;
         }
@@ -138,6 +144,11 @@
     return nil;
 }
 
+//Set up cell height
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return POLLCELLHEIGHT;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -183,17 +194,18 @@
 {
     switch (indexPath.section) {
         case 0:{
-            ActivePollCell *cell = (ActivePollCell *)[tableView cellForRowAtIndexPath:indexPath];
-            [Utility setObject:cell.poll.pollID forKey:IDOfPollToBeShown];
-            
+            Poll* poll = [activePolls objectAtIndex:indexPath.row];
+            [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+            break;
         }
         case 1:{
-            FollowedPollCell *cell = (FollowedPollCell *)[tableView cellForRowAtIndexPath:indexPath];
-            [Utility setObject:cell.poll.pollID forKey:IDOfPollToBeShown];
+            Poll* poll = [followedPolls objectAtIndex:indexPath.row];
+            [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+            break;
         }
         case 2:{
-            PastPollCell *cell = (PastPollCell *)[tableView cellForRowAtIndexPath:indexPath];
-            [Utility setObject:cell.poll.pollID forKey:IDOfPollToBeShown];
+            Poll* poll = [pastPolls objectAtIndex:indexPath.row];
+            [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         }
         default:
             break;

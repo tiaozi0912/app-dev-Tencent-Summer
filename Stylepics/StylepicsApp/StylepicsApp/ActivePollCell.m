@@ -9,7 +9,7 @@
 #import "ActivePollCell.h"
 
 @implementation ActivePollCell
-@synthesize nameLabel, votesLabel, stateLabel, poll;
+@synthesize nameLabel, votesLabel, stateLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

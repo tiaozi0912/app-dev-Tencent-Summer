@@ -58,6 +58,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.toolbar setBackgroundImage:navigationBarBackground forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
     itemAdded = NO;
 	// Do any additional setup after loading the view.
 }

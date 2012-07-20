@@ -13,5 +13,4 @@
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *votesLabel;
 @property (nonatomic, weak) IBOutlet UILabel *stateLabel;
-@property (nonatomic, strong) Poll *poll;
 @end

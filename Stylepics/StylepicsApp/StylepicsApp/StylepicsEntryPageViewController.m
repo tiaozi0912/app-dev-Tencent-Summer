@@ -84,7 +84,9 @@
 {
     [super viewDidLoad];
     database = [[StylepicsDatabase alloc] init];  
-    [database getUserCount];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.toolbar setBackgroundImage:navigationBarBackground forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault]; 
 }
 
 
@@ -100,6 +102,7 @@
     self.username.text = nil;
     self.password.text = nil;
     [super viewWillAppear:animated];
+    self.navigationController.toolbarHidden = YES;
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

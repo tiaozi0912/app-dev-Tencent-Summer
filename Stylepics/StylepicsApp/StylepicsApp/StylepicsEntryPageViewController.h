@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "StylepicsDatabase.h"
+#import "StylepicsAppDelegate.h" 
 
 @interface StylepicsEntryPageViewController : UIViewController<UITextFieldDelegate>
 

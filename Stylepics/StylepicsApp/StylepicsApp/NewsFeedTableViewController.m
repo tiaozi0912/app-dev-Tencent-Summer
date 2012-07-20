@@ -11,7 +11,7 @@
 
 #define NUMBEROFEVENTSLOADED 20
 #define HEIGHTOFNEWPOLLCELL 60
-#define HEIGHTOFNEWITEMCELL 260
+#define HEIGHTOFNEWITEMCELL 295
 #define HEIGHTOFVOTECELL 60
 @interface NewsFeedTableViewController (){
     StylepicsDatabase *database;
@@ -44,7 +44,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     database = [[StylepicsDatabase alloc] init];
-
     
 }
 
@@ -69,8 +68,8 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.events = [database getMostRecentEventsNum:[NSNumber numberWithInt:NUMBEROFEVENTSLOADED]];
     self.navigationController.toolbarHidden = NO;
+    self.events = [database getMostRecentEventsNum:[NSNumber numberWithInt:NUMBEROFEVENTSLOADED]];
     [self.tableView reloadData];
 }
 
@@ -103,7 +102,6 @@
         User *user=[database getUserWithID:event.userID];
         cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
         cell.userNameLabel.text = user.name;
-        cell.iconImage.image = [UIImage imageNamed:@"new poll icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", poll.name];
         return cell;
@@ -119,7 +117,6 @@
         User *user=[database getUserWithID:event.userID];
         cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
         cell.userNameLabel.text = user.name;
-        cell.iconImage.image = [UIImage imageNamed:@"new item icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
         Item *item=[database getItemWithID:event.itemID pollID:event.pollID];
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Added one item to Poll '%@'.", poll.name];
@@ -139,7 +136,6 @@
         User *user=[database getUserWithID:event.userID];
         cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
         cell.userNameLabel.text = user.name;
-        cell.iconImage.image = [UIImage imageNamed:@"vote icon.png"];
         Poll *poll=[database getPollWithID:event.pollID];
         User *votee =[database getUserWithID:event.voteeID];
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", votee.name, poll.name];
@@ -161,6 +157,7 @@
     }else if ([eventType isEqualToString:@"vote"]){
       return HEIGHTOFVOTECELL;
      }
+    return HEIGHTOFNEWPOLLCELL;
 }
 
 /*
