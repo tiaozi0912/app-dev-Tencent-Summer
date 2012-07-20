@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D1BC1D415B240F7005BECF9 /* item2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BC1D215B240F7005BECF9 /* item2.png */; };
 		0D1BC1D515B240F7005BECF9 /* item3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BC1D315B240F7005BECF9 /* item3.png */; };
+		0D433A1115B91800001B5632 /* options.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D433A1015B91800001B5632 /* options.png */; };
 		0D647C4715B1205C00530658 /* ActivePollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D647C4615B1205C00530658 /* ActivePollCell.m */; };
 		0D7AE97915B6671800A23CE0 /* FollowedPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7AE97815B6671800A23CE0 /* FollowedPollCell.m */; };
 		0D7AE97C15B6673800A23CE0 /* PastPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7AE97B15B6673800A23CE0 /* PastPollCell.m */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		0D1BC1D215B240F7005BECF9 /* item2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item2.png; path = img/item2.png; sourceTree = "<group>"; };
 		0D1BC1D315B240F7005BECF9 /* item3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item3.png; path = img/item3.png; sourceTree = "<group>"; };
+		0D433A1015B91800001B5632 /* options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = options.png; path = img/options.png; sourceTree = "<group>"; };
 		0D647C4515B1205C00530658 /* ActivePollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivePollCell.h; sourceTree = "<group>"; };
 		0D647C4615B1205C00530658 /* ActivePollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivePollCell.m; sourceTree = "<group>"; };
 		0D7AE97715B6671800A23CE0 /* FollowedPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowedPollCell.h; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		0D94F4EF15A7D09700903F0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0D433A1015B91800001B5632 /* options.png */,
 				0D9FAE9C15B8EADC00B102EA /* delete.png */,
 				0D9FAE9A15B8E12D00B102EA /* new poll icon.png */,
 				0D957D2115B0DC37009D37AA /* comments icon.png */,
@@ -407,6 +410,7 @@
 				4D12A6AD15B7376E00B5DA22 /* Polls-Icon.png in Resources */,
 				0D9FAE9B15B8E12D00B102EA /* new poll icon.png in Resources */,
 				0D9FAE9D15B8EADD00B102EA /* delete.png in Resources */,
+				0D433A1115B91800001B5632 /* options.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

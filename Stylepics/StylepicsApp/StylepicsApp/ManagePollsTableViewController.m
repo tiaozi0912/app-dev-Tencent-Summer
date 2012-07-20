@@ -112,6 +112,7 @@
         NSLog(@"%@", poll.name);
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.stateLabel.text = poll.state;
+            [cell.nameLabel sizeToFit];
             return cell;
         } 
         case 1:{
@@ -125,6 +126,8 @@
             User *owner = [database getUserWithID:poll.ownerID];
             cell.ownerLabel.text = owner.name;
             cell.stateLabel.text = poll.state;
+            [cell.nameLabel sizeToFit];
+            [cell.ownerLabel sizeToFit];
             return cell;
         } 
         case 2:{
@@ -137,6 +140,7 @@
             cell.nameLabel.text = poll.name;
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.dateLabel.text = @"7/17/2012";
+            [cell.nameLabel sizeToFit];
             return cell;
         }
     }

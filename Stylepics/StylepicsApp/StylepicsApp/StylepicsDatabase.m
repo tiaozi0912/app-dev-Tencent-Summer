@@ -165,7 +165,7 @@
     poll.state = [results stringForColumn:@"state"];
     poll.totalVotes = [NSNumber numberWithInt:[results intForColumn:@"totalVotes"]];
     }
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY itemID DESC", [pollID intValue]];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable WHERE deleted = 0 ORDER BY itemID DESC", [pollID intValue]];
     results = [db executeQuery:query];
     poll.items= [[NSMutableArray alloc] init];
     while ([results next]){
@@ -197,7 +197,7 @@
         poll.maxVotesForSingleItem = [NSNumber numberWithInt:[results intForColumn:@"maxVotesForSingleItem"]];
     }
    /* NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY numberOfVotes DESC", [pollID intValue]];*/
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY itemID DESC", [pollID intValue]];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable WHERE deleted = 0 ORDER BY itemID DESC", [pollID intValue]];
     results = [db executeQuery:query];
     poll.items= [[NSMutableArray alloc] init];
     while ([results next]){
@@ -238,7 +238,7 @@
     NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
     NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO User_%@_PollTable (pollID, type) VALUES (%@, \"ACTIVE\")", userID, pollID];
     [db executeUpdate:query];
-    query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" (\"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB, \"numberOfVotes\" INTEGER DEFAULT 0)", [pollID intValue]];
+    query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" (\"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB, \"numberOfVotes\" INTEGER DEFAULT 0, \"deleted\" BOOL DEFAULT 0)", [pollID intValue]];
     [db executeUpdate:query];
     query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_AudienceTable\" (\"audienceID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"voted\" BOOL DEFAULT (0), \"userID\" INTEGER )", [pollID intValue]];
     [db executeUpdate:query];
@@ -249,8 +249,8 @@
 
 -(void) addItems:(Item*)item toPoll:(NSNumber*) pollID{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    //db.traceExecution=YES; 
-    //db.logsErrors=YES; 
+    db.traceExecution=YES; 
+    db.logsErrors=YES; 
     [db open];
     sqlite3 *database = [db sqliteHandle];
     
@@ -368,7 +368,7 @@
     //db.traceExecution=YES; 
     //db.logsErrors=YES; 
     [db open];
-    NSString *query = [[NSString alloc] initWithFormat:@"DELETE FROM Poll_%@_ItemTable WHERE itemID = %@", pollID, itemID];
+    NSString *query = [[NSString alloc] initWithFormat:@"UPDATE Poll_%@_ItemTable SET deleted = 1 WHERE itemID = %@", pollID, itemID];
     BOOL success = [db executeUpdate:query];
     [db close];
     return success;

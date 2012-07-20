@@ -58,9 +58,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.toolbar setBackgroundImage:navigationBarBackground forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
     itemAdded = NO;
 	// Do any additional setup after loading the view.
 }
@@ -68,12 +65,18 @@
 
 - (void)viewDidUnload
 {
-    self.descriptionTextField.text = nil;
-    self.priceTextField.text = nil;
-    self.itemImage = nil;
     [super viewDidUnload];
 
     // Release any retained subviews of the main view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [UIView beginAnimations:@"animation2" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration: 0.7];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO]; 
+    [UIView commitAnimations];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -169,14 +172,14 @@ finishedSavingWithError:(NSError *)error
     item.description = self.descriptionTextField.text;
     item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
     [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     }else{
         [Utility showAlert:@"Sorry! You have not finished yet." message:@"You have to add one item before clicking on me."];
     }
 }
 
 - (IBAction)cancelButton{
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

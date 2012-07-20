@@ -8,7 +8,7 @@
 
 #import "PollTableViewController.h"
 #import "StylepicsDatabase.h"
-
+#define  POLLITEMCELLHEIGHT 350
 @interface PollTableViewController (){
     StylepicsDatabase *database;
 }
@@ -172,8 +172,14 @@
     cell.itemImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [cell.itemImage setImage:item.photo forState:UIControlStateNormal];
     cell.descriptionOfItemLabel.text = item.description;
-    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
+    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price]; 
+    [cell.descriptionOfItemLabel sizeToFit];
+    [cell.priceLabel sizeToFit];
     return cell;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return POLLITEMCELLHEIGHT;
 }
 
 /*

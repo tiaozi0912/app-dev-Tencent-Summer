@@ -104,6 +104,8 @@
         cell.userNameLabel.text = user.name;
         Poll *poll=[database getPollWithID:event.pollID];
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", poll.name];
+        [cell.userNameLabel sizeToFit];
+        [cell.eventDescriptionLabel sizeToFit];
         return cell;
     }else if ([eventType isEqualToString:@"new item"]) {
         static NSString *CellIdentifier = @"new item cell";
@@ -123,6 +125,8 @@
         cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
         cell.itemImage.image = item.photo;
         // In current version, photo uploading is limited to one picture at a time
+        [cell.userNameLabel sizeToFit];
+        [cell.eventDescriptionLabel sizeToFit];
         return cell;
     }else if ([eventType isEqualToString:@"vote"]) {
         static NSString *CellIdentifier = @"vote cell";
@@ -139,6 +143,8 @@
         Poll *poll=[database getPollWithID:event.pollID];
         User *votee =[database getUserWithID:event.voteeID];
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", votee.name, poll.name];
+        [cell.userNameLabel sizeToFit];
+        [cell.eventDescriptionLabel sizeToFit];
         return cell;
     }
     return nil;
