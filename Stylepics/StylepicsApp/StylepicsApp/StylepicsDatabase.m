@@ -260,7 +260,7 @@
 	if (sqlite3_prepare_v2(database, [sql cStringUsingEncoding:NSUTF8StringEncoding], -1, &statement, NULL) == SQLITE_OK) {
         sqlite3_bind_text(statement, 1, [item.description UTF8String], -1, SQLITE_TRANSIENT);
 		sqlite3_bind_double(statement, 2, [item.price doubleValue]);
-		NSData *imageData = UIImagePNGRepresentation(item.photo);
+		NSData *imageData = UIImageJPEGRepresentation(item.photo, 1.0);
 		sqlite3_bind_blob(statement, 3, [imageData bytes], [imageData length], SQLITE_TRANSIENT);
 		sqlite3_step(statement);
 	}

@@ -64,13 +64,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.toolbarHidden = NO;
+    self.events = [database getMostRecentEventsNum:[NSNumber numberWithInt:NUMBEROFEVENTSLOADED]];
+    [self.tableView reloadData];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.navigationController.toolbarHidden = NO;
-    self.events = [database getMostRecentEventsNum:[NSNumber numberWithInt:NUMBEROFEVENTSLOADED]];
-    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

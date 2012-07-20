@@ -112,8 +112,8 @@
 
 #pragma mark - Table view data source
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
     self.title = self.poll.name;
     [self.tableView reloadData];

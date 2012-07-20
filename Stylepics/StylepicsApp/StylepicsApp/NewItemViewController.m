@@ -77,6 +77,7 @@
     [UIView setAnimationDuration: 0.7];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO]; 
     [UIView commitAnimations];
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -172,14 +173,23 @@ finishedSavingWithError:(NSError *)error
     item.description = self.descriptionTextField.text;
     item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
     [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];
-    [self.navigationController popViewControllerAnimated:YES];
+        [self backWithFlipAnimation];
     }else{
         [Utility showAlert:@"Sorry! You have not finished yet." message:@"You have to add one item before clicking on me."];
     }
 }
 
 - (IBAction)cancelButton{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self backWithFlipAnimation];
+}
+
+-(void)backWithFlipAnimation{
+    [UIView beginAnimations:@"animation2" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration: 0.7];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO]; 
+    [UIView commitAnimations];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 @end
