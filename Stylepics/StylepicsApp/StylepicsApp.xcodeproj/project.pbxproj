@@ -61,8 +61,9 @@
 		4D12A69A15B7274300B5DA22 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A69915B7274300B5DA22 /* Icon@2x.png */; };
 		4D12A69C15B7274A00B5DA22 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A69B15B7274A00B5DA22 /* Icon.png */; };
 		4D12A69E15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A69D15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png */; };
-		4D12A6A015B7277000B5DA22 /* Custom-Nav-Bar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A69F15B7277000B5DA22 /* Custom-Nav-Bar-BG.png */; };
-		4D12A6AD15B7376E00B5DA22 /* Polls-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A6AC15B7376E00B5DA22 /* Polls-Icon.png */; };
+		4DD552FD15B934570056847B /* Custom-Nav-Bar-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD552FC15B934570056847B /* Custom-Nav-Bar-BG@2x.png */; };
+		4DD5530015B9348A0056847B /* Custom-Nav-Bar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD552FF15B9348A0056847B /* Custom-Nav-Bar-BG.png */; };
+		4DD5530215B934BD0056847B /* Polls-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD5530115B934BD0056847B /* Polls-Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,8 +153,9 @@
 		4D12A69915B7274300B5DA22 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4D12A69B15B7274A00B5DA22 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		4D12A69D15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-UI-Bar-Button-Item.png"; sourceTree = "<group>"; };
-		4D12A69F15B7277000B5DA22 /* Custom-Nav-Bar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG.png"; sourceTree = "<group>"; };
-		4D12A6AC15B7376E00B5DA22 /* Polls-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Polls-Icon.png"; sourceTree = "<group>"; };
+		4DD552FC15B934570056847B /* Custom-Nav-Bar-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG@2x.png"; sourceTree = "<group>"; };
+		4DD552FF15B9348A0056847B /* Custom-Nav-Bar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG.png"; sourceTree = "<group>"; };
+		4DD5530115B934BD0056847B /* Polls-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Polls-Icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,13 +322,14 @@
 				0D8F49CE15B6004200C2DAEF /* hanger.png */,
 				0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */,
 				0D957D1B15B09BEC009D37AA /* vote icon.png */,
+				4DD552FC15B934570056847B /* Custom-Nav-Bar-BG@2x.png */,
+				4DD552FF15B9348A0056847B /* Custom-Nav-Bar-BG.png */,
 				4D12A69B15B7274A00B5DA22 /* Icon.png */,
 				0D957D1C15B09BEC009D37AA /* new item icon.png */,
 				4D12A69915B7274300B5DA22 /* Icon@2x.png */,
-				4D12A69F15B7277000B5DA22 /* Custom-Nav-Bar-BG.png */,
-				4D12A6AC15B7376E00B5DA22 /* Polls-Icon.png */,
 				4D12A69D15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png */,
 				0D99436415AEB9340037194D /* stylepics.db */,
+				4DD5530115B934BD0056847B /* Polls-Icon.png */,
 				0D9C05A715AAC125006D86CE /* item1.png */,
 				0D1BC1D215B240F7005BECF9 /* item2.png */,
 				0D1BC1D315B240F7005BECF9 /* item3.png */,
@@ -406,11 +409,12 @@
 				4D12A69A15B7274300B5DA22 /* Icon@2x.png in Resources */,
 				4D12A69C15B7274A00B5DA22 /* Icon.png in Resources */,
 				4D12A69E15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png in Resources */,
-				4D12A6A015B7277000B5DA22 /* Custom-Nav-Bar-BG.png in Resources */,
-				4D12A6AD15B7376E00B5DA22 /* Polls-Icon.png in Resources */,
 				0D9FAE9B15B8E12D00B102EA /* new poll icon.png in Resources */,
 				0D9FAE9D15B8EADD00B102EA /* delete.png in Resources */,
 				0D433A1115B91800001B5632 /* options.png in Resources */,
+				4DD552FD15B934570056847B /* Custom-Nav-Bar-BG@2x.png in Resources */,
+				4DD5530015B9348A0056847B /* Custom-Nav-Bar-BG.png in Resources */,
+				4DD5530215B934BD0056847B /* Polls-Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
