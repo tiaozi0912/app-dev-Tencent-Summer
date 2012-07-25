@@ -23,6 +23,7 @@
 
 @synthesize events=_events;
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -31,7 +32,9 @@
     }
     return self;
 }
-- (IBAction)logout:(UIBarButtonItem *)sender {
+
+- (IBAction)logout:(UIBarButtonItem *)sender 
+{
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

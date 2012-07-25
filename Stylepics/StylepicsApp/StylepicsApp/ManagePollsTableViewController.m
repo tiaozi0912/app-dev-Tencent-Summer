@@ -18,10 +18,13 @@
     StylepicsDatabase *database;
     NSArray *activePolls, *pastPolls, *followedPolls;
 }
-
+@property (nonatomic, strong) NSArray *activePolls, *pastPolls, *followedPolls;
 @end
 
 @implementation ManagePollsTableViewController
+
+@synthesize activePolls = _activePolls, pastPolls = _pastPolls, followedPolls = _followedPolls;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -65,9 +68,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    activePolls = [database getPollOfType:ACTIVE forUser:[Utility getObjectForKey:CURRENTUSERID]];
-    pastPolls = [database getPollOfType:PAST forUser:[Utility getObjectForKey:CURRENTUSERID]];
-    followedPolls = [database getPollOfType:FOLLOWED forUser:[Utility getObjectForKey:CURRENTUSERID]];
+    self.activePolls = [database getPollOfType:ACTIVE forUser:[Utility getObjectForKey:CURRENTUSERID]];
+    self.pastPolls = [database getPollOfType:PAST forUser:[Utility getObjectForKey:CURRENTUSERID]];
+    self.followedPolls = [database getPollOfType:FOLLOWED forUser:[Utility getObjectForKey:CURRENTUSERID]];
     [self.tableView reloadData];
 }
 
@@ -90,9 +93,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return activePolls.count;
-        case 1: return followedPolls.count;
-        case 2: return pastPolls.count;
+        case 0: return self.activePolls.count;
+        case 1: return self.followedPolls.count;
+        case 2: return self.pastPolls.count;
     }// Return the number of rows in the section.
     return 0;
 }
@@ -107,7 +110,7 @@
             if (cell == nil) {
                 cell = [[ActivePollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            Poll* poll = [activePolls objectAtIndex:indexPath.row];
+            Poll* poll = [self.activePolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.name;
         NSLog(@"%@", poll.name);
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
@@ -121,7 +124,7 @@
             if (cell == nil) {
                 cell = [[FollowedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            Poll *poll = [followedPolls objectAtIndex:indexPath.row];
+            Poll *poll = [self.followedPolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.name;
             User *owner = [database getUserWithID:poll.ownerID];
             cell.ownerLabel.text = owner.name;
@@ -136,7 +139,7 @@
             if (cell == nil) {
                 cell = [[PastPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            Poll *poll = [pastPolls objectAtIndex:indexPath.row];
+            Poll *poll = [self.pastPolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.name;
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.dateLabel.text = @"7/17/2012";
@@ -198,17 +201,17 @@
 {
     switch (indexPath.section) {
         case 0:{
-            Poll* poll = [activePolls objectAtIndex:indexPath.row];
+            Poll* poll = [self.activePolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             break;
         }
         case 1:{
-            Poll* poll = [followedPolls objectAtIndex:indexPath.row];
+            Poll* poll = [self.followedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             break;
         }
         case 2:{
-            Poll* poll = [pastPolls objectAtIndex:indexPath.row];
+            Poll* poll = [self.pastPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         }
         default:

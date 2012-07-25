@@ -41,6 +41,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 - (IBAction)refresh:(UIBarButtonItem *)sender {
+    dispatch_queue_t downloadQueue = dispatch_queue_create("poll result download", NULL);
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    dispatch_async(downloadQueue, ^{
+        self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.navigationItem.rightBarButtonItem = sender;
+            [self.tableView reloadData];
+        });
+    });
+    dispatch_release(downloadQueue);
     [self.tableView reloadData];
 }
 
@@ -143,7 +155,7 @@
     }
 }
 
--(void) viewDidDisappear:(BOOL)animated{
+-(void) viewWillDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];

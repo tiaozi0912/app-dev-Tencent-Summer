@@ -66,7 +66,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-
+    self.descriptionTextField = nil;
+    self.priceTextField = nil;
     // Release any retained subviews of the main view.
 }
 
@@ -172,7 +173,7 @@ finishedSavingWithError:(NSError *)error
     item.photo = self.itemImage.image;
     item.description = self.descriptionTextField.text;
     item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
-    [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];
+    [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];        
         [self backWithFlipAnimation];
     }else{
         [Utility showAlert:@"Sorry! You have not finished yet." message:@"You have to add one item before clicking on me."];

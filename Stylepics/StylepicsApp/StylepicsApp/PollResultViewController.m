@@ -61,8 +61,18 @@
 }
 
 - (IBAction)refresh:(UIBarButtonItem *)sender {
-    self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
-    [self.tableView reloadData];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("poll result download", NULL);
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    dispatch_async(downloadQueue, ^{
+        self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.navigationItem.rightBarButtonItem = sender;
+            [self.tableView reloadData];
+        });
+    });
+    dispatch_release(downloadQueue);
 }
 
 #pragma mark - Table view data source
