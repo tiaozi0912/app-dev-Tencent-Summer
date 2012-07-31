@@ -11,7 +11,6 @@
 
 @implementation UserEvent
 
-@synthesize type, userID, pollID, itemID, voteeID;
-
+@synthesize eventID=_eventID, type=_type, userID=_userID, pollID=_pollID, itemID=_itemID, voteeID=_voteeID;
 
 @end

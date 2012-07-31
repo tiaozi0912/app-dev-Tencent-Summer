@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StylepicsAppDelegate.h"
 #import "NewsFeedNewPollCell.h"
 #import "NewsFeedNewItemCell.h"
 #import "NewsFeedVoteCell.h"
 
-@interface NewsFeedTableViewController : UITableViewController
-@property (nonatomic, strong) NSArray* events;
+@interface NewsFeedTableViewController : UITableViewController<RKObjectLoaderDelegate>
+
 @end

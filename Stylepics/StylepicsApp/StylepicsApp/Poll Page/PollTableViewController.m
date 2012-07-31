@@ -31,6 +31,7 @@
     [super viewDidLoad];
     database =[[StylepicsDatabase alloc] init];
     self.navigationController.toolbarHidden = YES;
+    self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     
     //self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
 
@@ -46,7 +47,7 @@
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     dispatch_async(downloadQueue, ^{
-        self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+       // self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.navigationItem.rightBarButtonItem = sender;
             [self.tableView reloadData];
@@ -65,13 +66,13 @@
 - (IBAction)startOrEndVoting:(UIBarButtonItem *)sender {
     if ([self.poll.state isEqualToString:EDITING]){
         self.poll.state = VOTING;
-        [database changeStateOfPoll:self.poll.pollID to:VOTING];
+      //  [database changeStateOfPoll:self.poll.pollID to:VOTING];
         [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
         [[self.toolbarItems objectAtIndex:2] setTitle:@"End Voting"];
         [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
     }else if([self.poll.state isEqualToString:VOTING]){
         self.poll.state = FINISHED;
-        [database changeStateOfPoll:self.poll.pollID to:FINISHED];
+      //  [database changeStateOfPoll:self.poll.pollID to:FINISHED];
         [[self.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
         [[self.toolbarItems objectAtIndex:2] setEnabled:NO];
     }
@@ -102,11 +103,11 @@
         PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Item *item = [self.poll.items objectAtIndex:indexPath.row];
-        if (![database voteForItem:item.itemID inPoll:self.poll.pollID byUser:[Utility getObjectForKey:CURRENTUSERID]]){
+        /*if (![database voteForItem:item.itemID inPoll:self.poll.pollID byUser:[Utility getObjectForKey:CURRENTUSERID]]){
             [Utility showAlert:@"Sorry!" message:@"You cannot vote more than once in a poll."];
         }else {
             [Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
-        }
+        }*/
     }
 }
 
@@ -115,7 +116,7 @@
         PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Item *item = [self.poll.items objectAtIndex:indexPath.row];
-        [database deleteItem:item.itemID inPoll:self.poll.pollID];
+        //[database deleteItem:item.itemID inPoll:self.poll.pollID];
         [self.poll.items removeObjectAtIndex:indexPath.row];
         [Utility showAlert:@"Removed successfully!" message:@"This item has been removed from the poll."];
         [self.tableView reloadData];
@@ -126,7 +127,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+    /*self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
     UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Tool-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault]; 
     self.title = self.poll.name;
@@ -152,7 +153,7 @@
             [database user:[Utility getObjectForKey:CURRENTUSERID] becomesAudienceOfPoll:self.poll.pollID];
         }
             
-    }
+    }*/
 }
 
 -(void) viewWillDisappear:(BOOL)animated{
@@ -185,8 +186,9 @@
     }
     Item *item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
-    cell.itemImage.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [cell.itemImage setImage:item.photo forState:UIControlStateNormal];
+    cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
+    cell.itemImage.url = item.photoURL;
+    [HJObjectManager manage:cell.itemImage];
     cell.descriptionOfItemLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price]; 
     [cell.descriptionOfItemLabel sizeToFit];
@@ -194,9 +196,6 @@
     return cell;
 }
 
--(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return POLLITEMCELLHEIGHT;
-}
 
 /*
 // Override to support conditional editing of the table view.

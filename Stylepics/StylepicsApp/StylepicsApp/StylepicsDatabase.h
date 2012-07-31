@@ -16,9 +16,9 @@
 #import "Poll.h"
 #import "Item.h"
 
-@interface StylepicsDatabase : NSObject
+@interface StylepicsDatabase : NSObject//<RKObjectLoaderDelegate>
 
--(void) initialize;
+/*//-(void) initialize;
 -(BOOL) isLoggedInWithUsername:(NSString*) username
                       password:(NSString*) password;
 -(BOOL) existUsername:(NSString*) username;
@@ -30,23 +30,23 @@
 
 //-(NSMutableArray *) getUserInfo;
 
--(NSArray*) getMostRecentEventsNum:(NSNumber*) number;
--(User*) getUserWithID:(NSNumber *) userID;
--(Poll*) getPollWithID:(NSNumber*) pollID;
--(Poll*) getPollDetailsWithID:(NSNumber *)pollID;
--(Poll*) getPollResultWithID:(NSNumber *)pollID;
--(Item*) getItemWithID:(NSNumber*) itemID
++(NSArray*) getMostRecentEventsNum:(NSNumber*) number;
++(User*) getUserWithID:(NSNumber *) userID;
++(Poll*) getPollWithID:(NSNumber*) pollID;
++(Poll*) getPollDetailsWithID:(NSNumber *)pollID;
++(Poll*) getPollResultWithID:(NSNumber *)pollID;
++(Item*) getItemWithID:(NSNumber*) itemID
                 pollID:(NSNumber*) pollID;
--(void) newAPollCalled:(NSString*) name
++(void) newAPollCalled:(NSString*) name
               byUserID:(NSNumber*) userID;
--(void) addItems:(Item*)item toPoll:(NSNumber*) pollID;
--(void) changeStateOfPoll:(NSNumber*) pollID 
++(void) addItems:(Item*)item toPoll:(NSNumber*) pollID;
++(void) changeStateOfPoll:(NSNumber*) pollID
                        to:(NSString*) state;
--(BOOL) voteForItem:(NSNumber*) itemID 
++(BOOL) voteForItem:(NSNumber*) itemID
              inPoll:(NSNumber*) PollID 
              byUser:(NSNumber*) userID;
--(BOOL) user:(NSNumber*) userID isAudienceOfPoll:(NSNumber*) pollID;
--(void) user:(NSNumber*) userID becomesAudienceOfPoll:(NSNumber*) pollID;
--(NSArray*) getPollOfType:(NSString*) type forUser:(NSNumber*) userID;
--(BOOL) deleteItem:(NSNumber*)itemID inPoll:(NSNumber*)pollID;
++(BOOL) user:(NSNumber*) userID isAudienceOfPoll:(NSNumber*) pollID;
++(void) user:(NSNumber*) userID becomesAudienceOfPoll:(NSNumber*) pollID;
++(NSArray*) getPollOfType:(NSString*) type forUser:(NSNumber*) userID;
++(BOOL) deleteItem:(NSNumber*)itemID inPoll:(NSNumber*)pollID;*/
 @end

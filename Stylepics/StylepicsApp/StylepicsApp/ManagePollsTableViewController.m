@@ -7,15 +7,12 @@
 //
 
 #import "ManagePollsTableViewController.h"
-#import "ActivePollCell.h"
-#import "FollowedPollCell.h"
-#import "PastPollCell.h"
-#import "StylepicsDatabase.h"
+
 #define POLLCELLHEIGHT 46
 
 @interface ManagePollsTableViewController ()
 {
-    StylepicsDatabase *database;
+    //StylepicsDatabase *database;
     NSArray *activePolls, *pastPolls, *followedPolls;
 }
 @property (nonatomic, strong) NSArray *activePolls, *pastPolls, *followedPolls;
@@ -38,7 +35,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    database = [[StylepicsDatabase alloc] init];
+    RKObjectMapping* pollMapping = [RKObjectMapping mappingForClass:[Poll class]];
+    [pollMapping mapAttributes:
+     @"pollID", @"ownerID", @"totalVotes", @"maxVotes", @"itemID", @"voteeID",
+     nil];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:pollMapping forKeyPath:@"event"];
+    //database = [[StylepicsDatabase alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -68,10 +70,10 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.activePolls = [database getPollOfType:ACTIVE forUser:[Utility getObjectForKey:CURRENTUSERID]];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/user/%@/polls", [Utility getObjectForKey:CURRENTUSERID]] delegate:self];
+   /* self.activePolls = [database getPollOfType:ACTIVE forUser:[Utility getObjectForKey:CURRENTUSERID]];
     self.pastPolls = [database getPollOfType:PAST forUser:[Utility getObjectForKey:CURRENTUSERID]];
-    self.followedPolls = [database getPollOfType:FOLLOWED forUser:[Utility getObjectForKey:CURRENTUSERID]];
-    [self.tableView reloadData];
+    self.followedPolls = [database getPollOfType:FOLLOWED forUser:[Utility getObjectForKey:CURRENTUSERID]];*/
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -126,8 +128,8 @@
             }
             Poll *poll = [self.followedPolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.name;
-            User *owner = [database getUserWithID:poll.ownerID];
-            cell.ownerLabel.text = owner.name;
+          //  User *owner = [database getUserWithID:poll.ownerID];
+          //  cell.ownerLabel.text = owner.name;
             cell.stateLabel.text = poll.state;
             [cell.nameLabel sizeToFit];
             [cell.ownerLabel sizeToFit];
@@ -226,6 +228,18 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
+{
+ //   for (id object)
+    [self.tableView reloadData];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    //show errors: existent username and invalid password
+    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    NSLog(@"Encountered an error: %@", error);
 }
 
 @end

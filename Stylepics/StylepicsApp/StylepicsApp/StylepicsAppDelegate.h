@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import "Utility.h"
+#import "HJObjManager.h"
 
-@interface StylepicsAppDelegate : UIResponder <UIApplicationDelegate>
+HJObjManager *HJObjectManager;
+
+@interface StylepicsAppDelegate : UIResponder 
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSString *databaseName;

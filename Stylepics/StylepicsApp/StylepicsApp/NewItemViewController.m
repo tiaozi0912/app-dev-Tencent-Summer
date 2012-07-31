@@ -11,10 +11,12 @@
 #import "Utility.h"
 #import "StylepicsDatabase.h"
 
+
 @interface NewItemViewController ()
 {
     StylepicsDatabase *database;
     BOOL itemAdded;
+    NSURL *photoURL;
 }
  
 @end
@@ -141,11 +143,18 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                           objectForKey:UIImagePickerControllerOriginalImage];
         self.itemImage.image = image;
         itemAdded = YES;
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         if (newMedia)
-            UIImageWriteToSavedPhotosAlbum(image, 
-                                           self,
-                                           @selector(image:finishedSavingWithError:contextInfo:),
-                                           nil);
+            [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
+                if (error) {
+                    NSLog(@"error");
+                } else {
+                    NSLog(@"url %@", assetURL);
+                    //photoURL = assetURL;
+                }  
+            }];
+        library = nil;
+        photoURL = [NSURL URLWithString:@"http://i.dailymail.co.uk/i/pix/2012/07/27/article-2180047-143F90C1000005DC-196_634x423.jpg"];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {
@@ -166,14 +175,15 @@ finishedSavingWithError:(NSError *)error
 {
     [self dismissModalViewControllerAnimated:YES];
 }
+
 -(IBAction) finishAddingNewItems{
     if (itemAdded) {
     database = [[StylepicsDatabase alloc] init];
     Item *item = [[Item alloc] init];
-    item.photo = self.itemImage.image;
+    item.photoURL = photoURL;
     item.description = self.descriptionTextField.text;
     item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
-    [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];        
+ //   [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];
         [self backWithFlipAnimation];
     }else{
         [Utility showAlert:@"Sorry! You have not finished yet." message:@"You have to add one item before clicking on me."];

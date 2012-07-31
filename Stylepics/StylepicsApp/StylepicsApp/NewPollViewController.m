@@ -65,7 +65,7 @@
         [self alertForEmptyName];  
     }else{
         StylepicsDatabase *database = [[StylepicsDatabase alloc] init];
-        [database newAPollCalled:self.textField.text byUserID:[Utility getObjectForKey:CURRENTUSERID]];
+        //[database newAPollCalled:self.textField.text byUserID:[Utility getObjectForKey:CURRENTUSERID]];
         [self performSegueWithIdentifier:@"showNewPoll" sender:self];
     }
 }

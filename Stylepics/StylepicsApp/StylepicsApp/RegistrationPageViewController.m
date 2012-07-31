@@ -10,13 +10,12 @@
 #import "Utility.h"
 
 @interface RegistrationPageViewController (){
-    StylepicsDatabase *database;
+    //StylepicsDatabase *database;
 }
 @end
 
 @implementation RegistrationPageViewController
 
-#define CURRENTUSER @"currentUser"
 @synthesize username=_username;
 @synthesize password=_password;
 @synthesize passwordAgain=_passwordAgain;
@@ -43,23 +42,19 @@
 
 
 - (IBAction)signup {
-    if ([self.username.text length] < 4)
+    if ([self.username.text length] < 3)
     { 
         [self alertForShortName];  
-    }else if ([database existUsername:self.username.text]){
-        [self alertForExistentUsername];
-    }else if ([self.password.text length] < 6){
+    }else if ([self.password.text length] < 0){
         [self alertForShortPassword];
     }else if (![self.passwordAgain.text isEqualToString:self.password.text]){
         [self alertForPasswordNotMatch];
     }else {
-        if ([database addNewUserWithUsername:self.username.text password:self.password.text]){
-            [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
-            [Utility setObject:self.username.text forKey:CURRENTUSER];
-            [Utility setObject:@"TRUE" forKey:NEWUSER];
-            [self performSegueWithIdentifier:@"show news feed page" sender:self];
-
-        }
+        User* user = [User new];
+        user.username = self.username.text;
+        user.password = self.password.text;
+        [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/signup" forMethod:RKRequestMethodPOST];
+        [[RKObjectManager sharedManager] postObject:user delegate:self];
     }
 }
 
@@ -71,12 +66,24 @@
     [Utility showAlert:@"Make your password longer" message:@"Your password should contain at least 6 characters."];
 }
 
--(void) alertForExistentUsername{
-    [Utility showAlert:@"Oooops..." message:@"This username already exists."];
-}
 
 -(void) alertForPasswordNotMatch{
     [Utility showAlert:@"Passwords mismatch!" message:@"Make sure the passwords you typed are the same one."];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+    // signup was successful
+    User* user = [objects objectAtIndex:0];
+    [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
+    [Utility setObject:user.userID forKey:CURRENTUSERID];
+    [Utility setObject:@"TRUE" forKey:NEWUSER];
+    [self performSegueWithIdentifier:@"show news feed page" sender:self];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    //show errors: existent username and invalid password
+    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    NSLog(@"Encountered an error: %@", error);
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -95,7 +102,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    database = [[StylepicsDatabase alloc] init];
+    //database = [[StylepicsDatabase alloc] init];
 
     //self.navigationController.toolbarHidden = YES;
 }
@@ -107,6 +114,15 @@
     [self setPassword:nil];
     [self setPasswordAgain:nil];
     [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.username.text=nil;
+    self.password.text=nil;
+    self.passwordAgain.text=nil;
+    [super viewDidDisappear:animated];
     // Release any retained subviews of the main view.
 }
 

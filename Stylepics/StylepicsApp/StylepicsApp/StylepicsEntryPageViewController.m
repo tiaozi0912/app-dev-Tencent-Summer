@@ -11,7 +11,7 @@
 #import "Utility.h"
 
 @interface StylepicsEntryPageViewController () {
-    StylepicsDatabase *database;
+    //StylepicsDatabase *database;
 }
 
 @end
@@ -39,33 +39,40 @@
     if ([self.username.text length] == 0)
     { 
         [self alertForEmptyName];  
-    }else if ([database isLoggedInWithUsername:self.username.text password:self.password.text]){
-        [Utility setObject:@"FALSE" forKey:NEWUSER];
-        [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
-    }else if ([database existUsername:self.username.text]){
-        [self alertForWrongPassword];
-    }else {
-        [self alertForNonexistentUsername];
-    }
-}
-
-- (void)alertForEmptyName {
-    [Utility showAlert:@"Please type something" message:@"Your username can not be empty."];
-}
-
--(void) alertForNonexistentUsername{
-    [Utility showAlert:@"Oooops..." message:@"This username does not exist."];
-}
-
--(void) alertForWrongPassword{
-    [Utility showAlert:@"Oooops..." message:@"This password does not match this username."];
-}
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"showNewsFeed"]) 
+    }else if ([self.password.text length] == 0)
     {
-        //
+        [self alertForEmptyPassword];
+    }else{
+        User* user = [User new];
+        user.username = self.username.text;
+        user.password = self.password.text;
+        [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/login" forMethod:RKRequestMethodPOST];
+        [[RKObjectManager sharedManager] postObject:user delegate:self];
     }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+    // Login was successful
+    User* user = [objects objectAtIndex:0];
+    [Utility setObject:user.userID forKey:CURRENTUSERID];
+    [Utility setObject:@"FALSE" forKey:NEWUSER];
+    [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    //show errors: non-existent user and wrong password
+    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    NSLog(@"Encountered an error: %@", error);
+}
+
+- (void)alertForEmptyName
+{
+    [Utility showAlert:@"Warning!" message:@"Please type in your username."];
+}
+
+- (void)alertForEmptyPassword
+{
+    [Utility showAlert:@"Warning!" message:@"Please type in your password."];
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -83,7 +90,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    database = [[StylepicsDatabase alloc] init];  
+  //database = [[StylepicsDatabase alloc] init];
     UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     UIImage *toolBarBackground =[[UIImage imageNamed:@"Custom-Tool-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -105,6 +112,7 @@
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

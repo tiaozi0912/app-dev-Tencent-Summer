@@ -9,19 +9,24 @@
 #import "NewsFeedTableViewController.h"
 #import "StylepicsDatabase.h"
 
-#define NUMBEROFEVENTSLOADED 20
+#define NUMBEROFEVENTSLOADED 200
 #define HEIGHTOFNEWPOLLCELL 60
 #define HEIGHTOFNEWITEMCELL 295
 #define HEIGHTOFVOTECELL 60
 @interface NewsFeedTableViewController (){
-    StylepicsDatabase *database;
+    //StylepicsDatabase *database;
+    int loaderKey;
 }
+@property (nonatomic, strong) NSArray* events;
+@property (nonatomic, strong) User* user;
+@property (nonatomic, strong) Poll* poll;
+@property (nonatomic, strong) Item* item; 
 @end
 
 @implementation NewsFeedTableViewController
 
 
-@synthesize events=_events;
+@synthesize events=_events, user = _user, poll = _poll, item = _item;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -46,8 +51,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    database = [[StylepicsDatabase alloc] init];
-    
+   // database = [[StylepicsDatabase alloc] init];
 }
 
 - (void)viewDidUnload
@@ -63,19 +67,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = NO;
-    self.events = [database getMostRecentEventsNum:[NSNumber numberWithInt:NUMBEROFEVENTSLOADED]];
-    [self.tableView reloadData];
+    [self loadEvents];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 }
 
+
+#pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -90,8 +93,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     UserEvent *event = [self.events objectAtIndex:indexPath.row];
+    [self loadUserWithID:event.userID];//self.user=[database getUserWithID:event.userID];
+    [self loadPollWithID:event.pollID];
+    UIImage *profilePhoto = (self.user.profilePhoto==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:_user.profilePhoto);
     NSString *eventType = event.type;
     if ([eventType isEqualToString:@"new poll"]) {
         static NSString *CellIdentifier = @"new poll cell";
@@ -101,12 +106,10 @@
      initWithStyle:UITableViewCellStyleDefault 
      reuseIdentifier:CellIdentifier];
      }
-        // Configure the cell...
-        User *user=[database getUserWithID:event.userID];
-        cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
-        cell.userNameLabel.text = user.name;
-        Poll *poll=[database getPollWithID:event.pollID];
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", poll.name];
+        // Configure the cell...        
+        cell.userImage.image = profilePhoto;
+        cell.userNameLabel.text = _user.username;
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", _poll.name];
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
@@ -119,14 +122,13 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        User *user=[database getUserWithID:event.userID];
-        cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
-        cell.userNameLabel.text = user.name;
-        Poll *poll=[database getPollWithID:event.pollID];
-        Item *item=[database getItemWithID:event.itemID pollID:event.pollID];
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Added one item to Poll '%@'.", poll.name];
+        cell.userImage.image = profilePhoto;
+        cell.userNameLabel.text = _user.username;
+        [self loadItemWithID:event.itemID inPoll:event.pollID];
+        cell.eventDescriptionLabel.text = [NSString stringWithFormat:@"Added one item to Poll '%@'.", _poll.name];
         cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
-        cell.itemImage.image = item.photo;
+        cell.itemImage.url = _item.photoURL;
+        [HJObjectManager manage:cell.itemImage];
         // In current version, photo uploading is limited to one picture at a time
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
@@ -140,12 +142,10 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        User *user=[database getUserWithID:event.userID];
-        cell.userImage.image = (user.photo==nil? [UIImage imageNamed:@"default_profile_photo.jpeg"]:user.photo);
-        cell.userNameLabel.text = user.name;
-        Poll *poll=[database getPollWithID:event.pollID];
-        User *votee =[database getUserWithID:event.voteeID];
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", votee.name, poll.name];
+        cell.userImage.image = profilePhoto;
+        cell.userNameLabel.text = _user.username;
+        [self loadUserWithID:event.voteeID];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", _user.username, _poll.name];
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
@@ -222,6 +222,70 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+-(void)loadEvents
+{
+    /*[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidateModel) name:NewEventNotification object:nil];*/
+    loaderKey = 0;
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/event" delegate:self];
+}
+
+-(void)loadUserWithID:(NSNumber*)userID
+{
+    loaderKey = 1;
+    NSString *path = [NSString stringWithFormat:@"/user/%@", userID];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:path delegate:self];
+}
+
+-(void)loadPollWithID:(NSNumber*)pollID
+{
+    loaderKey = 2;
+    NSString *path = [NSString stringWithFormat:@"/poll/%@", pollID];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:path delegate:self];
+}
+
+-(void)loadItemWithID:(NSNumber*)itemID
+               inPoll:(NSNumber*)pollID
+{
+    loaderKey = 3;
+    NSString *path = [NSString stringWithFormat:@"/poll/%@/items/%@", pollID, itemID];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:path delegate:self];
+}
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
+{
+    switch (loaderKey) {
+        case 0:
+        {
+            _events = objects;
+            [self.tableView reloadData];
+        }
+            break;
+        case 1:
+        {
+            _user = [objects objectAtIndex:0];
+        }
+            break;
+        case 2:
+        {
+            _poll = [objects objectAtIndex:0];
+        }
+            break;
+        case 3:
+        {
+            _item = [objects objectAtIndex:0];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    //show errors: existent username and invalid password
+    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    NSLog(@"Encountered an error: %@", error);
 }
 
 @end

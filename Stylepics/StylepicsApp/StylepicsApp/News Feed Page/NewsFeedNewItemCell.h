@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Utility.h"
 
 @interface NewsFeedNewItemCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet UIImageView *userImage;
 @property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *iconImage;
 @property (nonatomic, weak) IBOutlet UILabel *eventDescriptionLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *itemImage;
+@property (nonatomic, weak) IBOutlet HJManagedImageV *itemImage;
 @end

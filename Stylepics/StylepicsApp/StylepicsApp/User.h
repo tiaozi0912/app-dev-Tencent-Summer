@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Utility.h"
 
-@interface User : NSObject 
+@interface User : NSObject
 
-@property (nonatomic, assign) NSNumber *userID;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) UIImage *photo;
+@property (nonatomic, strong) NSNumber *userID;
+@property (nonatomic, strong) NSString *username, *password;
+@property (nonatomic, strong) UIImage *profilePhoto;
+@property (nonatomic, strong) NSURL *profilePhotoURL;
 
 @end

@@ -10,7 +10,7 @@
 #import "StylepicsDatabase.h"
 #import "StylepicsAppDelegate.h" 
 
-@interface StylepicsEntryPageViewController : UIViewController<UITextFieldDelegate>
+@interface StylepicsEntryPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *username;

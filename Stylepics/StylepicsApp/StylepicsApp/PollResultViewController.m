@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     database = [[StylepicsDatabase alloc] init];
-    self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+ //   self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -66,7 +66,7 @@
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     dispatch_async(downloadQueue, ^{
-        self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+//        self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.navigationItem.rightBarButtonItem = sender;
             [self.tableView reloadData];
@@ -100,7 +100,8 @@
     }
     Item* item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
-    cell.itemImage.image = item.photo;
+    cell.itemImage.url= item.photoURL;
+    [HJObjectManager manage:cell.itemImage];
     cell.descriptionLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
     cell.numberOfVotesIndicator.progress = [item.numberOfVotes floatValue]/[self.poll.maxVotesForSingleItem floatValue];

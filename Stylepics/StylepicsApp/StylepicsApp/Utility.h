@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit/RKJSONParserJSONKit.h>
 #import "StylepicsAppDelegate.h" 
+#import "StylepicsDatabase.h"
+#import "HJObjManager.h"
+#import "HJManagedImageV.h"
+
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
 #define CURRENTUSERID @"currentUserID"
 #define NEWUSER @"newUser"

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Item.h"
+#import "Utility.h"
 
 @interface PollResultCell : UITableViewCell
-@property (nonatomic, weak) IBOutlet UIImageView *itemImage;
+@property (nonatomic, weak) IBOutlet HJManagedImageV *itemImage;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet UIProgressView *numberOfVotesIndicator;

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSNumber *price, *itemID, *pollID, *numberOfVotes;
-@property (nonatomic, strong) UIImage *photo;
+@property (nonatomic, strong) NSURL *photoURL;
 @property (nonatomic, strong) NSMutableArray *comments;
 
 @end

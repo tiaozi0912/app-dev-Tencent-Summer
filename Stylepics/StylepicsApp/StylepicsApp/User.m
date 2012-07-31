@@ -8,10 +8,12 @@
 
 #import "User.h"
 
+
 @implementation User
 
 @synthesize userID=_userID;
-@synthesize name=_name;
-@synthesize photo=_photo;
-
+@synthesize username=_username;
+@synthesize password=_password;
+@synthesize profilePhoto = _profilePhoto;
+@synthesize profilePhotoURL=_profilePhotoURL;
 @end

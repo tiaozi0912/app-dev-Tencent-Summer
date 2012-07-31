@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "StylepicsDatabase.h"
 
-@interface RegistrationPageViewController : UIViewController<UITextFieldDelegate>
+@interface RegistrationPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *username;

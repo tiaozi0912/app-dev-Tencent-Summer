@@ -9,9 +9,12 @@
 #import "StylepicsDatabase.h"
 
 
-@implementation StylepicsDatabase
+@implementation StylepicsDatabase{
+    BOOL success;
+    
+}
 
--(void) initialize{
+/*-(void) initialize{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];
     [db executeUpdate:@"CREATE  TABLE  IF NOT EXISTS \"UserTable\" (\"userID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"username\" VARCHAR NOT NULL , \"password\" VARCHAR NOT NULL , \"photo\" BLOB)"];
@@ -46,8 +49,7 @@
 -(int) getUserCount{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
     [db open];
-    NSString *query = [[NSString alloc] initWithString:@"SELECT count(*) AS '# of user' FROM UserTable"];
-    int userCount = [db intForQuery:query];
+    int userCount = [db intForQuery:@"SELECT count(*) AS '# of user' FROM UserTable"];
     [db close];
     return userCount; 
 /*    @try {
@@ -67,7 +69,7 @@
     @finally {
         return result;
     }*/
-}
+/*}
 -(BOOL) addNewUserWithUsername:(NSString*) username
                       password:(NSString*) password{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
@@ -83,36 +85,6 @@
     return success;
 }
 
-/*-(NSMutableArray *) getUserInfo{
-    NSMutableArray *userArray = [[NSMutableArray alloc] init];
-    @try {
-        const char *sql = "SELECT userID, username, password, photo FROM UserTable";
-        sqlite3_stmt *sqlStatement;
-        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
-        {
-            NSLog(@"Problem with prepare statement");
-        }
-        //
-        while (sqlite3_step(sqlStatement)==SQLITE_ROW) {
-            User *MyUser = [[User alloc]init];
-            MyUser.userID = sqlite3_column_int(sqlStatement, 0);
-            MyUser.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement,1)];
-            MyUser.password = [NSString stringWithUTF8String:(char *) sqlite3_column_text(sqlStatement, 2)];
-            const char *raw = sqlite3_column_blob(sqlStatement, 3);
-            int rawLen = sqlite3_column_bytes(sqlStatement, 3);
-            NSData *data = [NSData dataWithBytes:raw length:rawLen];
-            MyUser.photo = [[UIImage alloc] initWithData:data];
-            [userArray addObject:MyUser];
-        }
-        sqlite3_finalize(sqlStatement);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"An exception occured: %@", [exception reason]);
-    }
-    @finally {
-        return userArray;
-    }
- }*/
 -(NSArray*) getMostRecentEventsNum:(NSNumber*) number
 {
     NSMutableArray *events = [[NSMutableArray alloc] init];
@@ -138,7 +110,7 @@
     [db open]; 
     User *user = [[User alloc] init];
     user.userID = userID;
-    user.name = [db stringForQuery:@"SELECT username FROM UserTable WHERE userID = ?", userID];
+    user.username = [db stringForQuery:@"SELECT username FROM UserTable WHERE userID = ?", userID];
     user.photo = [[UIImage alloc] initWithData:[db dataForQuery:@"SELECT photo FROM UserTable WHERE userID = ?", userID]];
     return user;
 }
@@ -173,7 +145,7 @@
         item.itemID = [NSNumber numberWithInt:[results intForColumn:@"itemID"]];
         item.description = [results stringForColumn:@"description"];
         item.price = [NSNumber numberWithDouble:[results doubleForColumn:@"price"]];
-        item.photo = [[UIImage alloc] initWithData:[results dataForColumn:@"photo"]];
+        item.photoURL = [NSURL URLWithString:[results stringForColumn:@"photoURL"]];
         item.numberOfVotes = [NSNumber numberWithInt:[results intForColumn:@"numberOfVotes"]];
         //item.comments to be implemented...
         [poll.items addObject:item];
@@ -197,7 +169,7 @@
         poll.maxVotesForSingleItem = [NSNumber numberWithInt:[results intForColumn:@"maxVotesForSingleItem"]];
     }
    /* NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable ORDER BY numberOfVotes DESC", [pollID intValue]];*/
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable WHERE deleted = 0 ORDER BY itemID DESC", [pollID intValue]];
+/*    NSString *query = [[NSString alloc] initWithFormat:@"SELECT * FROM Poll_%d_ItemTable WHERE deleted = 0 ORDER BY itemID DESC", [pollID intValue]];
     results = [db executeQuery:query];
     poll.items= [[NSMutableArray alloc] init];
     while ([results next]){
@@ -205,7 +177,7 @@
         item.itemID = [NSNumber numberWithInt:[results intForColumn:@"itemID"]];
         item.description = [results stringForColumn:@"description"];
         item.price = [NSNumber numberWithDouble:[results doubleForColumn:@"price"]];
-        item.photo = [[UIImage alloc] initWithData:[results dataForColumn:@"photo"]];
+        item.photoURL = [NSURL URLWithString:[results stringForColumn:@"photoURL"]];
         item.numberOfVotes = [NSNumber numberWithInt:[results intForColumn:@"numberOfVotes"]];
         //item.comments to be implemented...
         [poll.items addObject:item];
@@ -221,8 +193,8 @@
     Item *item = [[Item alloc] init];
     item.itemID = itemID;
     item.pollID = pollID;
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT photo FROM Poll_%@_ItemTable WHERE itemID = %@", pollID,itemID];
-    item.photo = [[UIImage alloc] initWithData:[db dataForQuery:query]];
+    NSString *query = [[NSString alloc] initWithFormat:@"SELECT photoURL FROM Poll_%@_ItemTable WHERE itemID = %@", pollID,itemID];
+    item.photoURL = [NSURL URLWithString:[db stringForQuery:query]];
     [db close];
     return item;    
 }
@@ -238,7 +210,7 @@
     NSNumber *pollID = [NSNumber numberWithInt:[db intForQuery:@"SELECT max(pollID) FROM PollTable"]];
     NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO User_%@_PollTable (pollID, type) VALUES (%@, \"ACTIVE\")", userID, pollID];
     [db executeUpdate:query];
-    query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" (\"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photo\" BLOB, \"numberOfVotes\" INTEGER DEFAULT 0, \"deleted\" BOOL DEFAULT 0)", [pollID intValue]];
+    query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_ItemTable\" (\"itemID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"description\" VARCHAR, \"price\" DOUBLE, \"photoURL\" VARCHAR, \"numberOfVotes\" INTEGER DEFAULT 0, \"deleted\" BOOL DEFAULT 0)", [pollID intValue]];
     [db executeUpdate:query];
     query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"Poll_%d_AudienceTable\" (\"audienceID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"voted\" BOOL DEFAULT (0), \"userID\" INTEGER )", [pollID intValue]];
     [db executeUpdate:query];
@@ -252,21 +224,10 @@
     db.traceExecution=YES; 
     db.logsErrors=YES; 
     [db open];
-    sqlite3 *database = [db sqliteHandle];
-    
-    NSString *sql = [[NSString alloc] initWithFormat:@"INSERT INTO Poll_%d_ItemTable (description, price, photo) VALUES (?,?,?)", [pollID intValue]];
-	
-	sqlite3_stmt *statement;
-	if (sqlite3_prepare_v2(database, [sql cStringUsingEncoding:NSUTF8StringEncoding], -1, &statement, NULL) == SQLITE_OK) {
-        sqlite3_bind_text(statement, 1, [item.description UTF8String], -1, SQLITE_TRANSIENT);
-		sqlite3_bind_double(statement, 2, [item.price doubleValue]);
-		NSData *imageData = UIImageJPEGRepresentation(item.photo, 1.0);
-		sqlite3_bind_blob(statement, 3, [imageData bytes], [imageData length], SQLITE_TRANSIENT);
-		sqlite3_step(statement);
-	}
-    sqlite3_finalize(statement); 
+    NSString *query = [[NSString alloc] initWithFormat:@"INSERT INTO Poll_%@_ItemTable (description, price, photoURL) VALUES (\"%@\",%@,\"%@\")", pollID, item.description, item.price, [item.photoURL absoluteString]];
+    [db executeUpdate:query];
     NSNumber *userID = [NSNumber numberWithInt:[db intForQuery:@"SELECT ownerID FROM PollTable WHERE pollID = ?", pollID]];
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT max(itemID) FROM Poll_%@_ItemTable", pollID];
+    query = [[NSString alloc] initWithFormat:@"SELECT max(itemID) FROM Poll_%@_ItemTable", pollID];
     NSNumber *itemID = [NSNumber numberWithInt:[db intForQuery:query]];
     [db executeUpdate:@"INSERT INTO EventTable (type, userID, pollID, itemID) VALUES ('new item',?,?,?)", userID, pollID, itemID];
     [db close];
@@ -322,14 +283,18 @@
     }
     query = [[NSString alloc] initWithFormat:@"SELECT numberOfVotes FROM Poll_%d_ItemTable WHERE itemID = %d", [pollID intValue], [itemID intValue]];
     int newNumberOfVotes = [db intForQuery:query] + 1;
-    int maxVotesForSingleItem = [db intForQuery:@"SELECT maxVotesForSingleItem FROM PollTable WHERE pollID = ?", pollID];
     query = [[NSString alloc] initWithFormat:@"UPDATE Poll_%d_ItemTable SET numberOfVotes = %d WHERE itemID = %d", [pollID intValue],newNumberOfVotes, [itemID intValue]];
     [db executeUpdate:query];
+    
+    int maxVotesForSingleItem = [db intForQuery:@"SELECT maxVotesForSingleItem FROM PollTable WHERE pollID = ?", pollID];
+    
+    if (newNumberOfVotes > maxVotesForSingleItem){
+        [db executeUpdate:@"UPDATE PollTable SET maxVotesForSingleItem = ? WHERE pollID = ?",[NSNumber numberWithInt: newNumberOfVotes], pollID];
+    }
+    
     int newTotalVotes = [db intForQuery:@"SELECT totalVotes FROM PollTable WHERE pollID = ?", pollID] + 1;
     [db executeUpdate:@"UPDATE PollTable SET totalVotes = ? WHERE pollID = ?", [NSNumber numberWithInt: newTotalVotes], pollID]; 
-    if (newTotalVotes > maxVotesForSingleItem){
-        [db executeUpdate:@"UPDATE PollTable SET maxVotesForSingleItem = ? WHERE pollID = ?",[NSNumber numberWithInt: newTotalVotes], pollID];
-    }
+
     query = [[NSString alloc] initWithFormat:@"UPDATE Poll_%d_AudienceTable SET voted = 1 WHERE userID = %d", [pollID intValue],[userID intValue]];
     [db executeUpdate:query];    
     NSNumber *voteeID = [NSNumber numberWithInt:[db intForQuery:@"SELECT ownerID FROM PollTable WHERE pollID = ?", pollID]];
@@ -373,4 +338,19 @@
     [db close];
     return success;
 }
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+    if [objectLoader ]
+    // Login was successful
+    User* user = [objects objectAtIndex:0];
+    [Utility setObject:user.userID forKey:CURRENTUSERID];
+    [Utility setObject:@"FALSE" forKey:NEWUSER];
+    [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    //show errors: non-existent user and wrong password
+    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    NSLog(@"Encountered an error: %@", error);
+}*/
 @end
