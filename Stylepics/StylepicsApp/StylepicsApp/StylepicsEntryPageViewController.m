@@ -40,6 +40,7 @@
     user = [User new];
     user.username = self.usernameField.text;
     user.password = self.passwordField.text;
+    user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
     [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
         loader.resourcePath = @"/login";
         loader.serializationMapping =[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
@@ -66,14 +67,14 @@
 } 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
-{  
+{
+    [aTextField resignFirstResponder];
     if ([aTextField isEqual:self.usernameField]){
-        [self.usernameField resignFirstResponder];
         [self.passwordField becomeFirstResponder];
-        return NO;
+       // return NO;
     }else{
         [self login];
-        return NO;
+       // return NO;
     }
     return YES;
 }

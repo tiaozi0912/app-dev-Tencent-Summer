@@ -84,18 +84,17 @@
 } 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
-{  
+{
+    [aTextField resignFirstResponder];
     if ([aTextField isEqual: _usernameField]){
-        [_usernameField resignFirstResponder];
         [_passwordField becomeFirstResponder];
-        return NO;
+       // return NO;
     }else if ([aTextField isEqual: _passwordField]){
-        [_passwordField resignFirstResponder];
         [_passwordConfirmationField becomeFirstResponder];
-        return NO;
+      //  return NO;
     }else {
         [self signup];
-        return NO;
+      //  return NO;
     } 
     return YES;
 }
