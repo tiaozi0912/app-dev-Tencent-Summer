@@ -19,7 +19,8 @@
     // Initialize the RestKit Object Manager
 	[RKObjectManager managerWithBaseURLString:BaseURL];
     [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
-
+     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
     // Class:User
     RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[User class]];
     //userMapping.primaryKeyAttribute = @"userID";
@@ -28,11 +29,13 @@
      @"id", @"userID",
      @"user_name", @"username",
      @"password", @"password",
+     @"password_confirmation", @"passwordConfirmation",
      @"profilePhotoURL", @"profilePhotoURL", 
      nil];
     
     // Class:PollListItem
     RKObjectMapping* pollListItemMapping = [RKObjectMapping mappingForClass:[PollListItem class]];
+    [pollListItemMapping setPreferredDateFormatter:dateFormatter];
     [pollListItemMapping mapAttributes:@"pollID", @"userID", @"totalVotes", @"type", @"title", @"state", @"startTime", @"endTime",nil];
     [pollListItemMapping mapRelationship:@"owner" withMapping:userMapping];
 
@@ -60,6 +63,7 @@
     
     // Class:Poll
     RKObjectMapping* pollMapping = [RKObjectMapping mappingForClass:[Poll class]];
+    [pollMapping setPreferredDateFormatter:dateFormatter];
     [pollMapping mapAttributes:@"pollID", @"ownerID", @"totalVotes", @"maxVotesForSingleItem", @"title", @"state", @"startTime", @"endTime", nil];
     [pollMapping mapRelationship:@"owner" withMapping:userMapping];
     [pollMapping mapRelationship:@"items" withMapping:itemMapping];
@@ -75,10 +79,10 @@
     [eventMapping mapRelationship:@"item" withMapping:itemMapping];
     
 
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"users"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:pollListItemMapping withRootKeyPath:@"poll_list"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"items"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollMapping withRootKeyPath:@"polls"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"item"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollMapping withRootKeyPath:@"poll"];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"events"];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"audience"];
 

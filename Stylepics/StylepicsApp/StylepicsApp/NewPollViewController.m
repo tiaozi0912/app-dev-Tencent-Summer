@@ -80,17 +80,17 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
     if ([objectLoader wasSentToResourcePath:@"/polls"]){
-        [Utility setObject:((Poll*)object).pollID forKey:IDOfPollToBeShown];
+        [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         
         Event *newPollEvent = [Event new];
         newPollEvent.type = NEWPOLLEVENT;
-        newPollEvent.user.userID = poll.owner.userID;
+        newPollEvent.user.userID = poll.ownerID;
         newPollEvent.poll.pollID = poll.pollID;
         [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
         
         PollListItem *pollListItem = [PollListItem new];
-        pollListItem.pollID = ((Poll*)object).pollID;
-        pollListItem.userID = [Utility getObjectForKey:CURRENTUSERID];
+        pollListItem.pollID = poll.pollID;
+        pollListItem.userID = poll.ownerID;
         pollListItem.type = ACTIVE;
         [[RKObjectManager sharedManager] postObject:pollListItem delegate:self];
         [self performSegueWithIdentifier:@"showNewPoll" sender:self];

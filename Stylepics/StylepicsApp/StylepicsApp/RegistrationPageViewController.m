@@ -41,24 +41,16 @@
 {
     _passwordConfirmationField = passwordConfirmationField;
     _passwordConfirmationField.delegate = self;
-    _passwordConfirmationField.returnKeyType =UIReturnKeyGo;
+    _passwordConfirmationField.returnKeyType =UIReturnKeyDone;
 }
 
 
 - (IBAction)signup {
-    if (![self.passwordConfirmationField.text isEqualToString:self.passwordField.text]){
-        [self alertForPasswordNotMatch];
-    }else {
-        user = [User new];
-        user.username = self.usernameField.text;
-        user.password = self.passwordField.text;
-        [[RKObjectManager sharedManager] postObject:user delegate:self];
-    }
-}
-
-
--(void) alertForPasswordNotMatch{
-    [Utility showAlert:@"Passwords mismatch!" message:@"Make sure the passwords you typed are the same one."];
+    user = [User new];
+    user.username = self.usernameField.text;
+    user.password = self.passwordField.text;
+    user.passwordConfirmation = self.passwordConfirmationField.text;
+    [[RKObjectManager sharedManager] postObject:user delegate:self];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {

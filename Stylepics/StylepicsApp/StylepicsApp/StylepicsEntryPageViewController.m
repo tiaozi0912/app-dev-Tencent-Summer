@@ -37,21 +37,13 @@
 
 
 - (IBAction)login {
-    if ([self.usernameField.text length] == 0)
-    { 
-        [self alertForEmptyName];  
-    }else if ([self.passwordField.text length] == 0)
-    {
-        [self alertForEmptyPassword];
-    }else{
-        user = [User new];
-        user.username = self.usernameField.text;
-        user.password = self.passwordField.text;
-        [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
-            loader.resourcePath = @"/login";
-            loader.serializationMapping =[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
-        }];
-    }
+    user = [User new];
+    user.username = self.usernameField.text;
+    user.password = self.passwordField.text;
+    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
+        loader.resourcePath = @"/login";
+        loader.serializationMapping =[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
+    }];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
@@ -65,16 +57,6 @@
     //show errors: non-existent user and wrong password
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
-}
-
-- (void)alertForEmptyName
-{
-    [Utility showAlert:@"Warning!" message:@"Please type in your username."];
-}
-
-- (void)alertForEmptyPassword
-{
-    [Utility showAlert:@"Warning!" message:@"Please type in your password."];
 }
 
 -(IBAction)backgroundTouched:(id)sender
