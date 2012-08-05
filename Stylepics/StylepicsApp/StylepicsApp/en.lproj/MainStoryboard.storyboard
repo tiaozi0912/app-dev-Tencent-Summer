@@ -33,13 +33,13 @@
                                 <rect key="frame" x="65" y="49" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="pmY-gl-1Nu">
                                 <rect key="frame" x="65" y="88" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7RR-fb-AlN">
                                 <rect key="frame" x="65" y="140" width="79" height="37"/>
@@ -64,8 +64,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="K85-Wk-xDX"/>
                     <connections>
-                        <outlet property="password" destination="pmY-gl-1Nu" id="DUd-rk-alU"/>
-                        <outlet property="username" destination="INh-LT-e5R" id="bkb-go-w7m"/>
+                        <outlet property="passwordField" destination="pmY-gl-1Nu" id="nKZ-rn-8Lw"/>
+                        <outlet property="usernameField" destination="INh-LT-e5R" id="RPA-JN-sFX"/>
                         <segue destination="8Sd-3s-bsT" kind="push" identifier="showNewsFeed" id="GsG-jv-OTK"/>
                     </connections>
                 </viewController>
@@ -145,16 +145,17 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="OWNER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="qq1-YU-NFi">
-                                            <rect key="frame" x="197" y="6" width="63" height="21"/>
+                                            <rect key="frame" x="197" y="7" width="63" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="default_profile_photo.jpeg" id="g6j-gu-Ow7">
-                                            <rect key="frame" x="174" y="6" width="20" height="20"/>
+                                        <view contentMode="scaleToFill" id="EHl-Ja-4X1" customClass="HJManagedImageV">
+                                            <rect key="frame" x="175" y="8" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
+                                            <color key="backgroundColor" red="0.50196081399917603" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -162,6 +163,7 @@
                                     <outlet property="nameLabel" destination="xVs-MZ-35p" id="5fN-V6-GHp"/>
                                     <outlet property="ownerLabel" destination="qq1-YU-NFi" id="pCC-VG-QXp"/>
                                     <outlet property="stateLabel" destination="P1O-NE-eFf" id="Zqz-df-opt"/>
+                                    <outlet property="userPhoto" destination="EHl-Ja-4X1" id="pFY-8C-WbP"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="past poll cell" rowHeight="46" id="zh6-Mj-a6n" customClass="PastPollCell">
@@ -193,7 +195,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vote icon.png" id="NA7-4E-b8A">
-                                            <rect key="frame" x="174" y="7" width="20" height="20"/>
+                                            <rect key="frame" x="175" y="8" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -244,32 +246,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="294"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="8Gk-5u-cjH">
-                                            <rect key="frame" x="9" y="14" width="41" height="42"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="aW9-1E-OFR">
-                                            <rect key="frame" x="58" y="10" width="242" height="21"/>
+                                            <rect key="frame" x="58" y="15" width="242" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Added one item to her/his cart" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="BFN-no-Hot">
-                                            <rect key="frame" x="83" y="39" width="197" height="16"/>
+                                            <rect key="frame" x="83" y="44" width="197" height="16"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="new item icon.png" id="EJ3-t5-xDP">
-                                            <rect key="frame" x="58" y="36" width="21" height="21"/>
+                                            <rect key="frame" x="58" y="41" width="21" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" id="sjb-J3-SZu" customClass="HJManagedImageV">
                                             <rect key="frame" x="58" y="65" width="222" height="222"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <view contentMode="scaleAspectFit" id="sjj-9m-Tat" customClass="HJManagedImageV">
+                                            <rect key="frame" x="10" y="20" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -279,7 +282,7 @@
                                     <outlet property="eventDescriptionLabel" destination="BFN-no-Hot" id="EHG-jc-Vq9"/>
                                     <outlet property="iconImage" destination="EJ3-t5-xDP" id="NxH-sv-FwP"/>
                                     <outlet property="itemImage" destination="sjb-J3-SZu" id="wXW-oH-jUS"/>
-                                    <outlet property="userImage" destination="8Gk-5u-cjH" id="Jly-QJ-vAK"/>
+                                    <outlet property="userImage" destination="sjj-9m-Tat" id="JH1-G1-o0d"/>
                                     <outlet property="userNameLabel" destination="aW9-1E-OFR" id="AGh-ib-JEV"/>
                                 </connections>
                             </tableViewCell>
@@ -290,10 +293,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="71"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="jbo-GW-5u4">
-                                            <rect key="frame" x="9" y="19" width="41" height="42"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="eKY-dZ-Kln">
                                             <rect key="frame" x="58" y="15" width="242" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -312,6 +311,11 @@
                                             <rect key="frame" x="58" y="41" width="21" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <view contentMode="scaleAspectFit" id="cgM-ou-5FX" customClass="HJManagedImageV">
+                                            <rect key="frame" x="10" y="20" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -319,7 +323,7 @@
                                 <connections>
                                     <outlet property="eventDescriptionLabel" destination="g00-fD-L1y" id="S8u-h5-8WR"/>
                                     <outlet property="iconImage" destination="9Tu-mJ-5Ss" id="fnM-zC-5S0"/>
-                                    <outlet property="userImage" destination="jbo-GW-5u4" id="3Yi-9a-3Ld"/>
+                                    <outlet property="userImage" destination="cgM-ou-5FX" id="c31-gi-HOD"/>
                                     <outlet property="userNameLabel" destination="eKY-dZ-Kln" id="fZh-Ey-iVb"/>
                                 </connections>
                             </tableViewCell>
@@ -330,28 +334,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Uzi-IF-t10">
-                                            <rect key="frame" x="9" y="20" width="41" height="41"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="9uT-Lm-K35">
-                                            <rect key="frame" x="58" y="20" width="248" height="21"/>
+                                            <rect key="frame" x="58" y="15" width="248" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="new poll icon.png" id="DIw-lY-F5b">
-                                            <rect key="frame" x="58" y="41" width="19" height="21"/>
+                                            <rect key="frame" x="58" y="41" width="21" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Created a poll" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Mhs-8T-Ibz">
-                                            <rect key="frame" x="85" y="41" width="203" height="20"/>
+                                            <rect key="frame" x="83" y="44" width="197" height="16"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <view contentMode="scaleAspectFit" id="IFR-Nr-olV" customClass="HJManagedImageV">
+                                            <rect key="frame" x="10" y="20" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -359,7 +364,7 @@
                                 <connections>
                                     <outlet property="eventDescriptionLabel" destination="Mhs-8T-Ibz" id="cXW-Tu-eFI"/>
                                     <outlet property="iconImage" destination="DIw-lY-F5b" id="a5X-wj-edW"/>
-                                    <outlet property="userImage" destination="Uzi-IF-t10" id="ar8-6V-Ezb"/>
+                                    <outlet property="userImage" destination="IFR-Nr-olV" id="X9F-dA-gdy"/>
                                     <outlet property="userNameLabel" destination="9uT-Lm-K35" id="LPk-q3-GDc"/>
                                 </connections>
                             </tableViewCell>
@@ -689,7 +694,7 @@
                                         <view contentMode="scaleToFill" id="Jge-oR-oUq" customClass="HJManagedImageV">
                                             <rect key="frame" x="45" y="60" width="230" height="230"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rYU-uQ-mPb">
                                             <rect key="frame" x="33" y="50" width="30" height="30"/>
@@ -717,6 +722,9 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="vote:" destination="AtD-j7-Qhz" eventType="touchUpInside" id="fC6-mn-18u"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -904,19 +912,19 @@
                                 <rect key="frame" x="65" y="54" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="4hf-pu-lMS">
                                 <rect key="frame" x="65" y="93" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Again" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="OR0-MX-ALo">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Confirmation" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="OR0-MX-ALo">
                                 <rect key="frame" x="65" y="132" width="191" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -927,9 +935,9 @@
                     <navigationItem key="navigationItem" id="Mfe-G7-RhK"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="password" destination="4hf-pu-lMS" id="aDI-Z4-955"/>
-                        <outlet property="passwordAgain" destination="OR0-MX-ALo" id="jg3-Rf-I3Z"/>
-                        <outlet property="username" destination="fNR-2a-mut" id="kHs-Vh-bQB"/>
+                        <outlet property="passwordConfirmationField" destination="OR0-MX-ALo" id="l7e-hL-ADE"/>
+                        <outlet property="passwordField" destination="4hf-pu-lMS" id="hzo-H1-BFf"/>
+                        <outlet property="usernameField" destination="fNR-2a-mut" id="Evd-if-M7v"/>
                         <segue destination="8Sd-3s-bsT" kind="push" identifier="show news feed page" id="eri-Vj-gif"/>
                     </connections>
                 </viewController>
@@ -1007,7 +1015,6 @@
     <resources>
         <image name="Polls-Icon.png" width="20" height="20"/>
         <image name="comments icon.png" width="45" height="45"/>
-        <image name="default_profile_photo.jpeg" width="199" height="203"/>
         <image name="delete.png" width="46" height="45"/>
         <image name="hanger.png" width="256" height="256"/>
         <image name="new item icon.png" width="27" height="34"/>
@@ -1030,6 +1037,7 @@
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ownerLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userPhoto" candidateClass="HJManagedImageV"/>
             </relationships>
         </class>
         <class className="HJManagedImageV" superclassName="UIView">
@@ -1061,7 +1069,7 @@
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1070,7 +1078,7 @@
             <relationships>
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1082,7 +1090,7 @@
             <relationships>
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="userImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1123,16 +1131,16 @@
         <class className="RegistrationPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationPageViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordAgain" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordConfirmationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="StylepicsEntryPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StylepicsEntryPageViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>
     </classes>
@@ -1142,7 +1150,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GsG-jv-OTK"/>
         <segue reference="ceQ-hi-cBi"/>
+        <segue reference="GsG-jv-OTK"/>
     </inferredMetricsTieBreakers>
 </document>

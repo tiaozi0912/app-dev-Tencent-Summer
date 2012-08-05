@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PollResultCell.h"
-#import "StylepicsDatabase.h"
+#import "Utility.h"
 
-@interface PollResultViewController : UITableViewController
+@interface PollResultViewController : UITableViewController<RKObjectLoaderDelegate>
 
 @end

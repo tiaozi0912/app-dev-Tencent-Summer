@@ -7,14 +7,11 @@
 //
 
 #import "NewItemViewController.h"
-#import "Item.h"
-#import "Utility.h"
-#import "StylepicsDatabase.h"
+
 
 
 @interface NewItemViewController ()
 {
-    StylepicsDatabase *database;
     BOOL itemAdded;
     NSURL *photoURL;
 }
@@ -70,10 +67,12 @@
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
+    photoURL = nil;
     // Release any retained subviews of the main view.
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -88,7 +87,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)TestOnSimulator:(id)sender {
+- (IBAction)TestOnSimulator:(id)sender
+{
     self.itemImage.image = [UIImage imageNamed:@"item2.png"];
     itemAdded = YES;
 }//when testing on devices, reconnect useCamera method below
@@ -176,18 +176,36 @@ finishedSavingWithError:(NSError *)error
     [self dismissModalViewControllerAnimated:YES];
 }
 
--(IBAction) finishAddingNewItems{
+-(IBAction) finishAddingNewItems
+{
     if (itemAdded) {
-    database = [[StylepicsDatabase alloc] init];
-    Item *item = [[Item alloc] init];
-    item.photoURL = photoURL;
-    item.description = self.descriptionTextField.text;
-    item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
- //   [database addItems:item toPoll:[Utility getObjectForKey:IDOfPollToBeShown]];
-        [self backWithFlipAnimation];
+        Item *item = [Item new];
+        item.photoURL = photoURL;
+        item.description = self.descriptionTextField.text;
+        item.numberOfVotes = [NSNumber numberWithInt:0];
+        item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+        item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+        [[RKObjectManager sharedManager] postObject:item delegate:self];
+        Event *newItemEvent = [Event new];
+        newItemEvent.type = NEWITEMEVENT;
+        newItemEvent.poll.pollID = item.pollID;
+        newItemEvent.item = item;
+        newItemEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
+        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
     }else{
-        [Utility showAlert:@"Sorry! You have not finished yet." message:@"You have to add one item before clicking on me."];
+        [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
     }
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
+{
+    NSLog(@"The new item has been added!");
+    [self backWithFlipAnimation];
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    [Utility showAlert:@"Sorry!" message:error.localizedDescription];
 }
 
 - (IBAction)cancelButton{

@@ -7,13 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
+
+#define EDITING @"EDITING"
+#define VOTING @"VOTING"
+#define FINISHED @"FINISHED"
 
 @interface Poll : NSObject
 
-@property (nonatomic, strong) NSNumber *pollID, *ownerID, *totalVotes, *maxVotesForSingleItem;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *pollID, *totalVotes, *maxVotesForSingleItem, *ownerID;
+@property (nonatomic, strong) User* owner;
+@property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *state;// state = "EDITING", "VOTING" or "FINISHED"
-@property (nonatomic, strong) NSString *type;// type = "ACTIVE", "PAST" or "FOLLOWED"
-@property (nonatomic, strong) NSMutableArray *items, *audience;
+@property (nonatomic, strong) NSArray *items, *audience;
+@property (nonatomic, strong) NSDate *startTime, *endTime;
 
 @end

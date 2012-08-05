@@ -11,17 +11,13 @@
 #define POLLCELLHEIGHT 46
 
 @interface ManagePollsTableViewController ()
-{
-    //StylepicsDatabase *database;
-    NSArray *activePolls, *pastPolls, *followedPolls;
-}
-@property (nonatomic, strong) NSArray *activePolls, *pastPolls, *followedPolls;
+
+@property (nonatomic, strong) NSMutableArray *activePolls, *pastPolls, *followedPolls;
 @end
 
 @implementation ManagePollsTableViewController
 
-@synthesize activePolls = _activePolls, pastPolls = _pastPolls, followedPolls = _followedPolls;
-
+@synthesize activePolls, pastPolls, followedPolls;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,12 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    RKObjectMapping* pollMapping = [RKObjectMapping mappingForClass:[Poll class]];
-    [pollMapping mapAttributes:
-     @"pollID", @"ownerID", @"totalVotes", @"maxVotes", @"itemID", @"voteeID",
-     nil];
-    [[RKObjectManager sharedManager].mappingProvider setMapping:pollMapping forKeyPath:@"event"];
-    //database = [[StylepicsDatabase alloc] init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -65,16 +55,40 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-#pragma mark - Table view data source
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/user/%@/polls", [Utility getObjectForKey:CURRENTUSERID]] delegate:self];
-   /* self.activePolls = [database getPollOfType:ACTIVE forUser:[Utility getObjectForKey:CURRENTUSERID]];
-    self.pastPolls = [database getPollOfType:PAST forUser:[Utility getObjectForKey:CURRENTUSERID]];
-    self.followedPolls = [database getPollOfType:FOLLOWED forUser:[Utility getObjectForKey:CURRENTUSERID]];*/
+    self.activePolls = [NSMutableArray new];
+    self.followedPolls = [NSMutableArray new];
+    self.pastPolls = [NSMutableArray new];
+    NSString *resourcePath = [NSString stringWithFormat:@"/users/%@/poll_list",[Utility getObjectForKey:CURRENTUSERID]];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
 }
+
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObject:(id)object
+{
+    NSArray *pollList = object;
+    for (id obj in pollList){
+        if ([obj isKindOfClass:[PollListItem class]]){
+            PollListItem* pollListItem = (PollListItem*) obj;
+            if ([pollListItem.type isEqualToString:ACTIVE]){
+                [self.activePolls addObject:pollListItem];
+            }else if ([pollListItem.type isEqualToString:FOLLOWED]){
+                [self.followedPolls addObject:pollListItem];
+            }else if ([pollListItem.type isEqualToString:PAST]){
+                [self.pastPolls addObject:pollListItem];
+            }
+        }
+    }
+    [self.tableView reloadData];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{    
+    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    NSLog(@"Encountered an error: %@", error);
+}
+
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -112,9 +126,8 @@
             if (cell == nil) {
                 cell = [[ActivePollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            Poll* poll = [self.activePolls objectAtIndex:indexPath.row];
-            cell.nameLabel.text = poll.name;
-        NSLog(@"%@", poll.name);
+            PollListItem* poll = [self.activePolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = poll.title;
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.stateLabel.text = poll.state;
             [cell.nameLabel sizeToFit];
@@ -126,10 +139,11 @@
             if (cell == nil) {
                 cell = [[FollowedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            Poll *poll = [self.followedPolls objectAtIndex:indexPath.row];
-            cell.nameLabel.text = poll.name;
-          //  User *owner = [database getUserWithID:poll.ownerID];
-          //  cell.ownerLabel.text = owner.name;
+            PollListItem *poll = [self.followedPolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = poll.title;
+            cell.ownerLabel.text = poll.owner.username;
+            cell.userPhoto.url = poll.owner.profilePhotoURL;
+            [HJObjectManager manage:cell.userPhoto];
             cell.stateLabel.text = poll.state;
             [cell.nameLabel sizeToFit];
             [cell.ownerLabel sizeToFit];
@@ -141,8 +155,8 @@
             if (cell == nil) {
                 cell = [[PastPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            Poll *poll = [self.pastPolls objectAtIndex:indexPath.row];
-            cell.nameLabel.text = poll.name;
+            PollListItem *poll = [self.pastPolls objectAtIndex:indexPath.row];
+            cell.nameLabel.text = poll.title;
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.dateLabel.text = @"7/17/2012";
             [cell.nameLabel sizeToFit];
@@ -230,16 +244,5 @@
      */
 }
 
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
-{
- //   for (id object)
-    [self.tableView reloadData];
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-    //show errors: existent username and invalid password
-    [Utility showAlert:@"Error!" message:[error localizedDescription]];
-    NSLog(@"Encountered an error: %@", error);
-}
 
 @end

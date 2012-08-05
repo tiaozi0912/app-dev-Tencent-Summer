@@ -19,7 +19,7 @@
     // Initialize the RestKit Object Manager
 	[RKObjectManager managerWithBaseURLString:BaseURL];
     [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
-    
+
     // Class:User
     RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[User class]];
     //userMapping.primaryKeyAttribute = @"userID";
@@ -28,22 +28,77 @@
      @"id", @"userID",
      @"user_name", @"username",
      @"password", @"password",
-     //@"profilePhoto", @"profilePhoto",
-     //@"profilePhotoURL", @"profilePhotoURL",
+     @"profilePhotoURL", @"profilePhotoURL", 
      nil];
     
-    // Class:UserEvent
-    RKObjectMapping* userEventMapping = [RKObjectMapping mappingForClass:[UserEvent class]];
-    [userEventMapping mapAttributes:
-     @"eventID", @"type", @"userID", @"pollID", @"itemID", @"voteeID",
+    // Class:PollListItem
+    RKObjectMapping* pollListItemMapping = [RKObjectMapping mappingForClass:[PollListItem class]];
+    [pollListItemMapping mapAttributes:@"pollID", @"userID", @"totalVotes", @"type", @"title", @"state", @"startTime", @"endTime",nil];
+    [pollListItemMapping mapRelationship:@"owner" withMapping:userMapping];
+
+    // Class:Audience
+    RKObjectMapping* audienceMapping = [RKObjectMapping mappingForClass:[Audience class]];
+    //userMapping.primaryKeyAttribute = @"userID";
+    audienceMapping.setDefaultValueForMissingAttributes = YES; // clear out any missing attributes (token on logout)
+    [audienceMapping mapKeyPathsToAttributes:
+     @"audienceID", @"audienceID",
+     @"userID", @"userID",
+     @"hasVoted", @"hasVoted",
+     @"username", @"username",
+     @"profilePhotoURL", @"profilePhotoURL",
+     @"pollID", @"pollID",
      nil];
+    
+    // Class:Comment
+    //.........
+    
+    // Class:Item
+    RKObjectMapping* itemMapping = [RKObjectMapping mappingForClass:[Poll class]];
+    [itemMapping mapAttributes:@"itemID", @"description", @"price", @"numberOfVotes", @"photoURL",@"pollID", nil];
+    //[itemMapping mapRelationship:@"comments" withMapping:commentMapping];
 
     
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:userEventMapping withRootKeyPath:@"event"];
-    //Class:Poll
+    // Class:Poll
+    RKObjectMapping* pollMapping = [RKObjectMapping mappingForClass:[Poll class]];
+    [pollMapping mapAttributes:@"pollID", @"ownerID", @"totalVotes", @"maxVotesForSingleItem", @"title", @"state", @"startTime", @"endTime", nil];
+    [pollMapping mapRelationship:@"owner" withMapping:userMapping];
+    [pollMapping mapRelationship:@"items" withMapping:itemMapping];
+    [pollMapping mapRelationship:@"audience" withMapping:audienceMapping];
     
-    /*self.databaseName = @"stylepics.db";    
+
+    
+    // Class:Event
+    RKObjectMapping* eventMapping = [RKObjectMapping mappingForClass:[Event class]];
+    [eventMapping mapAttributes:@"eventID", @"type",nil];
+    [eventMapping mapRelationship:@"user" withMapping:userMapping];
+    [eventMapping mapRelationship:@"poll" withMapping:pollMapping];
+    [eventMapping mapRelationship:@"item" withMapping:itemMapping];
+    
+
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"users"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollListItemMapping withRootKeyPath:@"poll_list"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"items"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollMapping withRootKeyPath:@"polls"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"events"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"audience"];
+
+    
+    [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/users/:userID"];
+	[[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/signup" forMethod:RKRequestMethodPOST];
+    
+    [[RKObjectManager sharedManager].router routeClass:[PollListItem class] toResourcePath:@"/users/:userID/poll_list/:pollID"];
+	[[RKObjectManager sharedManager].router routeClass:[PollListItem class] toResourcePath:@"/users/:userID/poll_list" forMethod:RKRequestMethodPOST];
+    
+    [[RKObjectManager sharedManager].router routeClass:[Poll class] toResourcePath:@"/polls/:pollID"];
+    [[RKObjectManager sharedManager].router routeClass:[Poll class] toResourcePath:@"/polls" forMethod:RKRequestMethodPOST];
+    
+    [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/polls/:pollID/items/:itemID"];
+    [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/polls/:pollID/items" forMethod:RKRequestMethodPOST];
+    
+    [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience/:audienceID"];
+    [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience" forMethod:RKRequestMethodPOST];
+    
+    /*self.databaseName = @"stylepics.db";
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDir = [documentPaths objectAtIndex:0];
     self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
@@ -76,30 +131,6 @@
     return YES;
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {  
-    if ([request isGET]) {
-        // Handling GET /foo.xml
-        
-        if ([response isOK]) {
-            // Success! Let's take a look at the data
-            NSLog(@"Retrieved JSON: %@", [response bodyAsString]);
-        }
-        
-    } else if ([request isPOST]) {
-        
-        // Handling POST /other.json        
-        if ([response isJSON]) {
-            NSLog(@"Got a JSON response back from our POST!");
-        }
-        
-    } else if ([request isDELETE]) {
-        
-        // Handling DELETE /missing_resource.txt
-        if ([response isNotFound]) {
-            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
-        }
-    }
-}
 
 /*-(void) createAndCheckDatabase
 {

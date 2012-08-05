@@ -12,8 +12,8 @@
 @interface RegistrationPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITextField *username;
-@property (weak, nonatomic) IBOutlet UITextField *password;
-@property (weak, nonatomic) IBOutlet UITextField *passwordAgain;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordConfirmationField;
 
 @end

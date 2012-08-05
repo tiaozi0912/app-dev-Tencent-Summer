@@ -7,10 +7,10 @@
 //
 
 #import "PollTableViewController.h"
-#import "StylepicsDatabase.h"
 #define  POLLITEMCELLHEIGHT 350
 @interface PollTableViewController (){
-    StylepicsDatabase *database;
+   // StylepicsDatabase *database;
+    NSUInteger audienceIndex;
 }
 @end
 
@@ -29,57 +29,55 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    database =[[StylepicsDatabase alloc] init];
     self.navigationController.toolbarHidden = YES;
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
-    
-    //self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
-
+    self.poll = [Poll new];
+    self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 - (IBAction)refresh:(UIBarButtonItem *)sender {
-    dispatch_queue_t downloadQueue = dispatch_queue_create("poll result download", NULL);
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    [spinner startAnimating];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    dispatch_async(downloadQueue, ^{
-       // self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.navigationItem.rightBarButtonItem = sender;
-            [self.tableView reloadData];
-        });
-    });
-    dispatch_release(downloadQueue);
-    [self.tableView reloadData];
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.poll = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
 - (IBAction)startOrEndVoting:(UIBarButtonItem *)sender {
     if ([self.poll.state isEqualToString:EDITING]){
         self.poll.state = VOTING;
-      //  [database changeStateOfPoll:self.poll.pollID to:VOTING];
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
         [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
         [[self.toolbarItems objectAtIndex:2] setTitle:@"End Voting"];
         [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
     }else if([self.poll.state isEqualToString:VOTING]){
         self.poll.state = FINISHED;
-      //  [database changeStateOfPoll:self.poll.pollID to:FINISHED];
+        self.poll.endTime = [NSDate date];
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+        PollListItem *pollListItem = [PollListItem new];
+        pollListItem.pollID = self.poll.pollID;
+        pollListItem.userID = self.poll.owner.userID;
+        pollListItem.type = PAST;
+        [[RKObjectManager sharedManager] putObject:pollListItem delegate:self];
         [[self.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
         [[self.toolbarItems objectAtIndex:2] setEnabled:NO];
     }
 }
+
 - (IBAction)addNewItem:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:@"add new item" sender:self];
 }
+
 - (IBAction)showPollResult:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:@"show poll result" sender:self];
 }
@@ -100,14 +98,28 @@
 
 - (IBAction)vote:(UIButton *)sender {
     if([self.poll.state isEqualToString:VOTING]&&![[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
-        PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        Item *item = [self.poll.items objectAtIndex:indexPath.row];
-        /*if (![database voteForItem:item.itemID inPoll:self.poll.pollID byUser:[Utility getObjectForKey:CURRENTUSERID]]){
+        if ([[self.poll.audience objectAtIndex:audienceIndex] hasVoted]){
             [Utility showAlert:@"Sorry!" message:@"You cannot vote more than once in a poll."];
         }else {
+            PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+            Item *item = [self.poll.items objectAtIndex:indexPath.row];
+            item.numberOfVotes = [NSNumber numberWithInt:[item.numberOfVotes intValue]+ 1];
+            if (item.numberOfVotes > self.poll.maxVotesForSingleItem){
+                self.poll.maxVotesForSingleItem = item.numberOfVotes;
+            }
+            self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue]+ 1];
+            [[self.poll.audience objectAtIndex:audienceIndex] setHasVoted:YES];
             [Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
-        }*/
+            [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+            
+            Event *votingEvent = [Event new];
+            votingEvent.type = VOTINGEVENT;
+            votingEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
+            votingEvent.poll = self.poll;
+            [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];
+            
+        }
     }
 }
 
@@ -116,44 +128,18 @@
         PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Item *item = [self.poll.items objectAtIndex:indexPath.row];
-        //[database deleteItem:item.itemID inPoll:self.poll.pollID];
-        [self.poll.items removeObjectAtIndex:indexPath.row];
+        [[RKObjectManager sharedManager] deleteObject:item delegate:self];
         [Utility showAlert:@"Removed successfully!" message:@"This item has been removed from the poll."];
         [self.tableView reloadData];
     }
 }
 
-#pragma mark - Table view data source
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    /*self.poll =[database getPollDetailsWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+    self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Tool-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault]; 
-    self.title = self.poll.name;
-    [self.tableView reloadData];
-    if ([[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
-        self.navigationController.toolbarHidden = NO;
-        if ([self.poll.state isEqualToString:EDITING]){
-            [[self.toolbarItems objectAtIndex:0]setEnabled:YES];
-            [[self.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
-            [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
-        } else if([self.poll.state isEqualToString:VOTING]){
-            [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-            [[self.toolbarItems objectAtIndex:2]setTitle:@"End Voting"];
-            [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
-        } else {
-            [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-            [[self.toolbarItems objectAtIndex:2]setTitle:@"Finished"];
-            [[self.toolbarItems objectAtIndex:2]setEnabled:NO];
-            [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
-        }
-    }else{
-        if (![database user:[Utility getObjectForKey:CURRENTUSERID] isAudienceOfPoll:self.poll.pollID]){
-            [database user:[Utility getObjectForKey:CURRENTUSERID] becomesAudienceOfPoll:self.poll.pollID];
-        }
-            
-    }*/
 }
 
 -(void) viewWillDisappear:(BOOL)animated{
@@ -162,6 +148,67 @@
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
 
 }
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
+{
+    //NSString *getPollPath = [NSString stringWithFormat:@"/poll/%@/audience", self.poll.pollID];
+    //NSString *audiencePath = [NSString stringWithFormat:@"/poll/%@/audience", self.poll.pollID];
+    
+    //Successfully loaded a poll
+    if ([objectLoader wasSentToResourcePath:@"/polls/:pollID"]){
+        self.title = self.poll.title;
+        //find whether the current user is among the audience of the poll
+        audienceIndex = [self.poll.audience indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop)
+                         {
+                             if ([obj userID] == [Utility getObjectForKey:CURRENTUSERID]){
+                                 *stop = YES;
+                                 return YES;
+                             }else return NO;
+                         }];
+        //if the current user owns this poll
+        if ([[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.ownerID]){
+            self.navigationController.toolbarHidden = NO;
+            if ([self.poll.state isEqualToString:EDITING]){
+                [[self.toolbarItems objectAtIndex:0]setEnabled:YES];
+                [[self.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
+                [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
+            } else if([self.poll.state isEqualToString:VOTING]){
+                [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
+                [[self.toolbarItems objectAtIndex:2]setTitle:@"End Voting"];
+                [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
+            } else {
+                [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
+                [[self.toolbarItems objectAtIndex:2]setTitle:@"Finished"];
+                [[self.toolbarItems objectAtIndex:2]setEnabled:NO];
+                [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
+            }
+        }else{
+            //if the current user is a new audience of this poll
+            if  (audienceIndex == NSNotFound){
+                Audience *newAudience = [Audience new];
+                newAudience.userID = [Utility getObjectForKey:CURRENTUSERID];
+                [[RKObjectManager sharedManager] postObject:newAudience delegate:self];
+                PollListItem *followedPoll = [PollListItem new];
+                followedPoll.pollID = self.poll.pollID;
+                followedPoll.type = FOLLOWED;
+                followedPoll.userID = [Utility getObjectForKey:CURRENTUSERID];
+                [[RKObjectManager sharedManager] postObject:followedPoll delegate:self];
+            }
+        }
+    }else if ([objectLoader wasSentToResourcePath:@"/polls/:pollID/audience"]) {
+        NSLog(@"User[%@] has become one of the audience of this poll now.",[Utility getObjectForKey:CURRENTUSERID]);
+    }else if ([objectLoader wasSentToResourcePath:@"/polls/:pollID" method:RKRequestMethodPUT]){
+        NSLog(@"Updating of this poll has been done");
+    }
+    [self.tableView reloadData];
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    [Utility showAlert:@"Sorry!" message:error.localizedDescription];
+}
+
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

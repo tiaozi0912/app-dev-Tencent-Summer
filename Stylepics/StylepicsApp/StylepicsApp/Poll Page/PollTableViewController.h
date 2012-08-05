@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Poll.h"
 #import "AudienceListView.h"
 #import "PollItemCell.h"
-#import "Item.h"
+#import "Utility.h"
 
-@interface PollTableViewController : UITableViewController
+@interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate>
 @property (nonatomic, strong) Poll *poll;
 
 @end

@@ -12,12 +12,12 @@
 
 @implementation Utility
 
-+(NSString *) getDatabasePath
+/*+(NSString *) getDatabasePath
 {
      NSString *databasePath = [(StylepicsAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
     
     return databasePath; 
-}
+}*/
 
 +(void) showAlert:(NSString *)title message:(NSString *)msg
 {

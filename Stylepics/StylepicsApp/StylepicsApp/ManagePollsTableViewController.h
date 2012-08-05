@@ -10,7 +10,7 @@
 #import "ActivePollCell.h"
 #import "FollowedPollCell.h"
 #import "PastPollCell.h"
-#import "StylepicsDatabase.h"
+#import "Utility.h"
 
 @interface ManagePollsTableViewController : UITableViewController<RKObjectLoaderDelegate>
 

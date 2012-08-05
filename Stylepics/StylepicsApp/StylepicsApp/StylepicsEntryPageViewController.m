@@ -12,48 +12,50 @@
 
 @interface StylepicsEntryPageViewController () {
     //StylepicsDatabase *database;
+    User* user;
 }
 
 @end
 
 @implementation StylepicsEntryPageViewController
-@synthesize username=_username;
-@synthesize password=_password;
+@synthesize usernameField=_usernameField;
+@synthesize passwordField=_passwordField;
 
 
--(void) setUsername:(UITextField *)username
+-(void) setUsername:(UITextField *)usernameField
 {
-    _username = username;
-    self.username.delegate = self;
+    _usernameField = usernameField;
+    self.usernameField.delegate = self;
 }
 
 
--(void) setPassword:(UITextField *)password
+-(void) setPasswordField:(UITextField *)passwordField
 {
-    _password = password;
-    self.password.delegate = self;
+    _passwordField = passwordField;
+    self.passwordField.delegate = self;
 }
 
 
 - (IBAction)login {
-    if ([self.username.text length] == 0)
+    if ([self.usernameField.text length] == 0)
     { 
         [self alertForEmptyName];  
-    }else if ([self.password.text length] == 0)
+    }else if ([self.passwordField.text length] == 0)
     {
         [self alertForEmptyPassword];
     }else{
-        User* user = [User new];
-        user.username = self.username.text;
-        user.password = self.password.text;
-        [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/login" forMethod:RKRequestMethodPOST];
-        [[RKObjectManager sharedManager] postObject:user delegate:self];
+        user = [User new];
+        user.username = self.usernameField.text;
+        user.password = self.passwordField.text;
+        [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
+            loader.resourcePath = @"/login";
+            loader.serializationMapping =[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
+        }];
     }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
     // Login was successful
-    User* user = [objects objectAtIndex:0];
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"FALSE" forKey:NEWUSER];
     [self performSegueWithIdentifier:@"showNewsFeed" sender:self];
@@ -61,7 +63,7 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     //show errors: non-existent user and wrong password
-    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
 }
 
@@ -77,13 +79,20 @@
 
 -(IBAction)backgroundTouched:(id)sender
 {
-    [self.username resignFirstResponder];
-    [self.password resignFirstResponder];
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
 } 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
 {  
-    [self login];
+    if ([aTextField isEqual:self.usernameField]){
+        [self.usernameField resignFirstResponder];
+        [self.passwordField becomeFirstResponder];
+        return NO;
+    }else{
+        [self login];
+        return NO;
+    }
     return YES;
 }
 
@@ -100,15 +109,15 @@
 
 - (void)viewDidUnload
 {
-    [self setUsername:nil];
-    [self setPassword:nil];
+    [self setUsernameField:nil];
+    [self setPasswordField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.username.text = nil;
-    self.password.text = nil;
+    self.usernameField.text = nil;
+    self.passwordField.text = nil;
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
 }

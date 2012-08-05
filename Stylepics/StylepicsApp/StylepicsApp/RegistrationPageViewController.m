@@ -11,59 +11,49 @@
 
 @interface RegistrationPageViewController (){
     //StylepicsDatabase *database;
+    User* user;
 }
 @end
 
 @implementation RegistrationPageViewController
 
-@synthesize username=_username;
-@synthesize password=_password;
-@synthesize passwordAgain=_passwordAgain;
+@synthesize usernameField=_usernameField;
+@synthesize passwordField=_passwordField;
+@synthesize passwordConfirmationField=_passwordConfirmationField;
 
 
--(void) setUsername:(UITextField *)username
+-(void) setUsername:(UITextField *)usernameField
 {
-    _username = username;
-    self.username.delegate = self;
+    _usernameField = usernameField;
+    _usernameField.delegate = self;
+    _usernameField.returnKeyType = UIReturnKeyNext;
 }
 
 
--(void) setPassword:(UITextField *)password
+-(void) setPassword:(UITextField *)passwordField
 {
-    _password = password;
-    self.password.delegate = self;
+    _passwordField = passwordField;
+    _passwordField.delegate = self;
+    _passwordField.returnKeyType = UIReturnKeyNext;
 }
 
--(void) setPasswordAgain:(UITextField *)passwordAgain
+-(void) setPasswordConfirmationField:(UITextField *)passwordConfirmationField
 {
-    _passwordAgain = passwordAgain;
-    self.passwordAgain.delegate = self;
+    _passwordConfirmationField = passwordConfirmationField;
+    _passwordConfirmationField.delegate = self;
+    _passwordConfirmationField.returnKeyType =UIReturnKeyGo;
 }
 
 
 - (IBAction)signup {
-    if ([self.username.text length] < 3)
-    { 
-        [self alertForShortName];  
-    }else if ([self.password.text length] < 0){
-        [self alertForShortPassword];
-    }else if (![self.passwordAgain.text isEqualToString:self.password.text]){
+    if (![self.passwordConfirmationField.text isEqualToString:self.passwordField.text]){
         [self alertForPasswordNotMatch];
     }else {
-        User* user = [User new];
-        user.username = self.username.text;
-        user.password = self.password.text;
-        [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/signup" forMethod:RKRequestMethodPOST];
+        user = [User new];
+        user.username = self.usernameField.text;
+        user.password = self.passwordField.text;
         [[RKObjectManager sharedManager] postObject:user delegate:self];
     }
-}
-
-- (void)alertForShortName {
-    [Utility showAlert:@"Make your username longer" message:@"Your username should contain at least 4 characters."];
-}
-
-- (void)alertForShortPassword {
-    [Utility showAlert:@"Make your password longer" message:@"Your password should contain at least 6 characters."];
 }
 
 
@@ -73,29 +63,47 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
     // signup was successful
-    User* user = [objects objectAtIndex:0];
     [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
+    NSLog(@"userID:%@, username:%@, password:%@", user.userID, user.username, user.password);
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"TRUE" forKey:NEWUSER];
     [self performSegueWithIdentifier:@"show news feed page" sender:self];
 }
 
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
+    }
+}
+
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     //show errors: existent username and invalid password
-    [Utility showAlert:@"Error!" message:[error localizedDescription]];
+    [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
 }
 
 -(IBAction)backgroundTouched:(id)sender
 {
-    [self.username resignFirstResponder];
-    [self.password resignFirstResponder];
-    [self.passwordAgain resignFirstResponder];
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    [self.passwordConfirmationField resignFirstResponder];
 } 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
 {  
-    [self signup];
+    if ([aTextField isEqual: _usernameField]){
+        [_usernameField resignFirstResponder];
+        [_passwordField becomeFirstResponder];
+        return NO;
+    }else if ([aTextField isEqual: _passwordField]){
+        [_passwordField resignFirstResponder];
+        [_passwordConfirmationField becomeFirstResponder];
+        return NO;
+    }else {
+        [self signup];
+        return NO;
+    } 
     return YES;
 }
 
@@ -110,18 +118,18 @@
 
 - (void)viewDidUnload
 {
-    [self setUsername:nil];
-    [self setPassword:nil];
-    [self setPasswordAgain:nil];
+    [self setUsernameField:nil];
+    [self setPasswordField:nil];
+    [self setPasswordConfirmationField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    self.username.text=nil;
-    self.password.text=nil;
-    self.passwordAgain.text=nil;
+    self.usernameField.text=nil;
+    self.passwordField.text=nil;
+    self.passwordConfirmationField.text=nil;
     [super viewDidDisappear:animated];
     // Release any retained subviews of the main view.
 }

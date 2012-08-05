@@ -8,8 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
-#import "Utility.h"
 #import "HJObjManager.h"
+#import "HJManagedImageV.h"
+#import "Event.h"
+#import "User.h"
+#import "Poll.h"
+#import "Item.h"
+#import "PollListItem.h"
+#import "Audience.h"
+
+#define IDOfPollToBeShown @"IDOfPollToBeShown"
+#define CURRENTUSERID @"currentUserID"
+#define NEWUSER @"newUser"
+
+#define ACTIVE @"ACTIVE"
+#define PAST @"PAST"
+#define FOLLOWED @"FOLLOWED"
 
 HJObjManager *HJObjectManager;
 
@@ -19,6 +33,6 @@ HJObjManager *HJObjectManager;
 @property (strong, nonatomic) NSString *databaseName;
 @property (strong, nonatomic) NSString *databasePath;
 
--(void) createAndCheckDatabase;
+//-(void) createAndCheckDatabase;
 
 @end

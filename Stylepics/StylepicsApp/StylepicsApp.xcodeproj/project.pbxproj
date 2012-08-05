@@ -38,7 +38,6 @@
 		0D94F4F515A7D09700903F0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F4F415A7D09700903F0B /* main.m */; };
 		0D94F4F915A7D09700903F0B /* StylepicsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */; };
 		0D94F4FC15A7D09700903F0B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */; };
-		0D94F50D15A7D2BB00903F0B /* UserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50615A7D2BB00903F0B /* UserEvent.m */; };
 		0D94F50E15A7D2BB00903F0B /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50915A7D2BB00903F0B /* Item.m */; };
 		0D94F50F15A7D2BB00903F0B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50A15A7D2BB00903F0B /* User.m */; };
 		0D94F51015A7D2BB00903F0B /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50C15A7D2BB00903F0B /* Poll.m */; };
@@ -64,12 +63,16 @@
 		0D98F3EE15C0B3380046423C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3ED15C0B3380046423C /* libxml2.dylib */; };
 		0D99436315AEB1590037194D /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D99436215AEB1590037194D /* Utility.m */; };
 		0D99436515AEB9340037194D /* stylepics.db in Resources */ = {isa = PBXBuildFile; fileRef = 0D99436415AEB9340037194D /* stylepics.db */; };
+		0D9B1C6115CB0E77003A34DD /* Audience.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B1C6015CB0E77003A34DD /* Audience.m */; };
 		0D9BA1CA15C603EC00599AA2 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BA1C915C603EC00599AA2 /* Environment.m */; };
 		0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */; };
 		0D9C05AF15AAC125006D86CE /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A715AAC125006D86CE /* item1.png */; };
 		0D9EFC3615B3E502002180F1 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EFC3515B3E502002180F1 /* NewItemViewController.m */; };
 		0D9FAE9B15B8E12D00B102EA /* new poll icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FAE9A15B8E12D00B102EA /* new poll icon.png */; };
 		0D9FAE9D15B8EADD00B102EA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FAE9C15B8EADC00B102EA /* delete.png */; };
+		0DA3D96C15C8A771008B9E32 /* AppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */; };
+		0DA4105115CA43C000859E59 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4105015CA43C000859E59 /* Event.m */; };
+		0DA5C3C915CDA9B90020D7A8 /* PollListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5C3C815CDA9B90020D7A8 /* PollListItem.m */; };
 		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
 		0DEF0D8515AFA72D0011DC0A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */; };
 		0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */; };
@@ -187,8 +190,6 @@
 		0D94F4F715A7D09700903F0B /* StylepicsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StylepicsAppDelegate.h; sourceTree = "<group>"; };
 		0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StylepicsAppDelegate.m; sourceTree = "<group>"; };
 		0D94F4FB15A7D09700903F0B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		0D94F50515A7D2BB00903F0B /* UserEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEvent.h; sourceTree = "<group>"; };
-		0D94F50615A7D2BB00903F0B /* UserEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEvent.m; sourceTree = "<group>"; };
 		0D94F50715A7D2BB00903F0B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		0D94F50815A7D2BB00903F0B /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		0D94F50915A7D2BB00903F0B /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
@@ -226,6 +227,8 @@
 		0D99436115AEB1590037194D /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		0D99436215AEB1590037194D /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		0D99436415AEB9340037194D /* stylepics.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = stylepics.db; sourceTree = "<group>"; };
+		0D9B1C5F15CB0E77003A34DD /* Audience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audience.h; sourceTree = "<group>"; };
+		0D9B1C6015CB0E77003A34DD /* Audience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audience.m; sourceTree = "<group>"; };
 		0D9BA1C815C603EC00599AA2 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		0D9BA1C915C603EC00599AA2 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
 		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
@@ -235,6 +238,11 @@
 		0D9EFC3515B3E502002180F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
 		0D9FAE9A15B8E12D00B102EA /* new poll icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new poll icon.png"; sourceTree = "<group>"; };
 		0D9FAE9C15B8EADC00B102EA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete.png; path = img/delete.png; sourceTree = "<group>"; };
+		0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataModel.xcdatamodel; sourceTree = "<group>"; };
+		0DA4104F15CA43C000859E59 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		0DA4105015CA43C000859E59 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		0DA5C3C715CDA9B90020D7A8 /* PollListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollListItem.h; sourceTree = "<group>"; };
+		0DA5C3C815CDA9B90020D7A8 /* PollListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollListItem.m; sourceTree = "<group>"; };
 		0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_profile_photo.jpeg; path = img/default_profile_photo.jpeg; sourceTree = "<group>"; };
 		0DEF0D7A15AFA72D0011DC0A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -371,8 +379,12 @@
 				0D96665D15AB9DEA00753491 /* comment.m */,
 				0D94F50B15A7D2BB00903F0B /* Poll.h */,
 				0D94F50C15A7D2BB00903F0B /* Poll.m */,
-				0D94F50515A7D2BB00903F0B /* UserEvent.h */,
-				0D94F50615A7D2BB00903F0B /* UserEvent.m */,
+				0DA4104F15CA43C000859E59 /* Event.h */,
+				0DA4105015CA43C000859E59 /* Event.m */,
+				0D9B1C5F15CB0E77003A34DD /* Audience.h */,
+				0D9B1C6015CB0E77003A34DD /* Audience.m */,
+				0DA5C3C715CDA9B90020D7A8 /* PollListItem.h */,
+				0DA5C3C815CDA9B90020D7A8 /* PollListItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -441,6 +453,7 @@
 		0D94F4EE15A7D09700903F0B /* StylepicsApp */ = {
 			isa = PBXGroup;
 			children = (
+				0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */,
 				0D94F4F715A7D09700903F0B /* StylepicsAppDelegate.h */,
 				0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */,
 				0D8DD6AF15AE9F20009177D0 /* Utility */,
@@ -639,7 +652,6 @@
 			files = (
 				0D94F4F515A7D09700903F0B /* main.m in Sources */,
 				0D94F4F915A7D09700903F0B /* StylepicsAppDelegate.m in Sources */,
-				0D94F50D15A7D2BB00903F0B /* UserEvent.m in Sources */,
 				0D94F50E15A7D2BB00903F0B /* Item.m in Sources */,
 				0D94F50F15A7D2BB00903F0B /* User.m in Sources */,
 				0D94F51015A7D2BB00903F0B /* Poll.m in Sources */,
@@ -677,6 +689,10 @@
 				0D553A8E15C27D5A00799F0A /* HJObjManager.m in Sources */,
 				0D553A8F15C27D5A00799F0A /* HJWeakMutableArray.m in Sources */,
 				0D9BA1CA15C603EC00599AA2 /* Environment.m in Sources */,
+				0DA3D96C15C8A771008B9E32 /* AppDataModel.xcdatamodeld in Sources */,
+				0DA4105115CA43C000859E59 /* Event.m in Sources */,
+				0D9B1C6115CB0E77003A34DD /* Audience.m in Sources */,
+				0DA5C3C915CDA9B90020D7A8 /* PollListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +825,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */,
+			);
+			currentVersion = 0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */;
+			path = AppDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0D94F4DB15A7D09700903F0B /* Project object */;
 }

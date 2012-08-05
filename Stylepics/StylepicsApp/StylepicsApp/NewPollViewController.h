@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Utility.h"
 
-@interface NewPollViewController : UIViewController<UITextFieldDelegate>
+@interface NewPollViewController : UIViewController<UITextFieldDelegate, RKObjectLoaderDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 - (IBAction)backgroundTouched:(id)sender;
 @end

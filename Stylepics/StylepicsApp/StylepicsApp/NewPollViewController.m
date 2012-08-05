@@ -11,7 +11,9 @@
 #import "Utility.h"
 
 @interface NewPollViewController ()
-
+{
+    Poll* poll;
+}
 @end
 
 @implementation NewPollViewController
@@ -24,7 +26,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
 {  
-    [self newPoll];
+    [self newPoll]; 
     return YES;
 }
 
@@ -64,13 +66,41 @@
     { 
         [self alertForEmptyName];  
     }else{
-        StylepicsDatabase *database = [[StylepicsDatabase alloc] init];
-        //[database newAPollCalled:self.textField.text byUserID:[Utility getObjectForKey:CURRENTUSERID]];
+        poll = [Poll new];
+        poll.title = self.textField.text;
+        poll.ownerID = [Utility getObjectForKey:CURRENTUSERID];
+        poll.state = EDITING;
+        poll.totalVotes = [NSNumber numberWithInt:0];
+        poll.maxVotesForSingleItem = [NSNumber numberWithInt:1];
+        poll.startTime = [NSDate date];
+        [[RKObjectManager sharedManager] postObject:poll delegate:self];
+    }
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
+{
+    if ([objectLoader wasSentToResourcePath:@"/polls"]){
+        [Utility setObject:((Poll*)object).pollID forKey:IDOfPollToBeShown];
+        
+        Event *newPollEvent = [Event new];
+        newPollEvent.type = NEWPOLLEVENT;
+        newPollEvent.user.userID = poll.owner.userID;
+        newPollEvent.poll.pollID = poll.pollID;
+        [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
+        
+        PollListItem *pollListItem = [PollListItem new];
+        pollListItem.pollID = ((Poll*)object).pollID;
+        pollListItem.userID = [Utility getObjectForKey:CURRENTUSERID];
+        pollListItem.type = ACTIVE;
+        [[RKObjectManager sharedManager] postObject:pollListItem delegate:self];
         [self performSegueWithIdentifier:@"showNewPoll" sender:self];
     }
 }
 
-
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Encountered Error: %@",[error localizedDescription]);
+}
 -(IBAction)backgroundTouched:(id)sender
 {
     [self.textField resignFirstResponder];

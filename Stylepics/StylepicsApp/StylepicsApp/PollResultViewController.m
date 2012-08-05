@@ -9,14 +9,13 @@
 #import "PollResultViewController.h"
 
 @interface PollResultViewController (){
-    StylepicsDatabase *database;
     float totalVotes;
 }
 @property (nonatomic, strong) Poll *poll;
 @end
 
 @implementation PollResultViewController
-@synthesize poll;
+@synthesize poll=_poll;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,8 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    database = [[StylepicsDatabase alloc] init];
- //   self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
+    self.poll = [Poll new];
+    self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -42,6 +42,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.poll = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -61,18 +62,17 @@
 }
 
 - (IBAction)refresh:(UIBarButtonItem *)sender {
-    dispatch_queue_t downloadQueue = dispatch_queue_create("poll result download", NULL);
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    [spinner startAnimating];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    dispatch_async(downloadQueue, ^{
-//        self.poll =[database getPollResultWithID:[Utility getObjectForKey:IDOfPollToBeShown]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.navigationItem.rightBarButtonItem = sender;
-            [self.tableView reloadData];
-        });
-    });
-    dispatch_release(downloadQueue);
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
+{
+    [self.tableView reloadData];
+}
+
+-(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    [Utility showAlert:@"Sorry!" message:error.localizedDescription];
 }
 
 #pragma mark - Table view data source

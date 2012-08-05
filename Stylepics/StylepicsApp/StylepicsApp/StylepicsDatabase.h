@@ -11,10 +11,7 @@
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 #import "Utility.h"
-#import "UserEvent.h"
-#import "User.h"
-#import "Poll.h"
-#import "Item.h"
+
 
 @interface StylepicsDatabase : NSObject//<RKObjectLoaderDelegate>
 
