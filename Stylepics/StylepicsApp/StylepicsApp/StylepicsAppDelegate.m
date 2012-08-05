@@ -29,6 +29,7 @@
      @"id", @"userID",
      @"user_name", @"username",
      @"password", @"password",
+     @"email", @"email",
      @"password_confirmation", @"passwordConfirmation",
      @"profilePhotoURL", @"profilePhotoURL", 
      nil];

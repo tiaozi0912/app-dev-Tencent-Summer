@@ -11,6 +11,6 @@
 @interface User : NSObject
 
 @property (nonatomic, strong) NSNumber *userID;
-@property (nonatomic, strong) NSString *username, *password, *passwordConfirmation;
+@property (nonatomic, strong) NSString *username, *password, *passwordConfirmation, *email;
 @property (nonatomic, strong) NSURL *profilePhotoURL;
 @end

@@ -14,6 +14,7 @@
 @synthesize userID=_userID;
 @synthesize username=_username;
 @synthesize password=_password;
+@synthesize email=_email;
 @synthesize passwordConfirmation = _passwordConfirmation;
 @synthesize profilePhotoURL=_profilePhotoURL;
 @end

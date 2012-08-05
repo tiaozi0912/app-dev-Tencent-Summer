@@ -48,6 +48,7 @@
 - (IBAction)signup {
     user = [User new];
     user.username = self.usernameField.text;
+    user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
     user.password = self.passwordField.text;
     user.passwordConfirmation = self.passwordConfirmationField.text;
     [[RKObjectManager sharedManager] postObject:user delegate:self];
