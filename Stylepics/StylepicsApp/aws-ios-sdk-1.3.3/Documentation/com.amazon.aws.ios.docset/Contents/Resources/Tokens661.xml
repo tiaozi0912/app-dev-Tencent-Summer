@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2IpPermissionUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2IpPermissionUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Ip Permission Unmarshaller</Abstract>
+			<DeclaredIn>EC2IpPermissionUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="661"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

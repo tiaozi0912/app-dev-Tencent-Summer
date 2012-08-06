@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SNSSubscribeResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SNSSubscribeResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Subscribe Result Unmarshaller</Abstract>
+			<DeclaredIn>SNSSubscribeResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1200"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

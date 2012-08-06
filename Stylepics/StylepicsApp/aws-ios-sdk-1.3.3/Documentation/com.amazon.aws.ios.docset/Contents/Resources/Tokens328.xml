@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBUpdateItemRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBUpdateItemRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Update Item Request Marshaller</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="328"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

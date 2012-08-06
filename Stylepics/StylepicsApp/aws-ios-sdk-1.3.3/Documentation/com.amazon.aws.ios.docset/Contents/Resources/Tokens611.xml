@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ImportInstanceResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ImportInstanceResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Import Instance Response Unmarshaller</Abstract>
+			<DeclaredIn>EC2ImportInstanceResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="611"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

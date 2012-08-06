@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingExecutePolicyRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingExecutePolicyRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Execute Policy Request Marshaller</Abstract>
+			<DeclaredIn>AutoScalingExecutePolicyRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="124"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBBatchDeleteAttributesRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBBatchDeleteAttributesRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Batch Delete Attributes Request Marshaller</Abstract>
+			<DeclaredIn>SimpleDBBatchDeleteAttributesRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1313"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

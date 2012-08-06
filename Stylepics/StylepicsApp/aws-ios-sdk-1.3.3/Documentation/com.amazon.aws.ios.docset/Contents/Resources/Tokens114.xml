@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingDisableMetricsCollectionRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingDisableMetricsCollectionRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Disable Metrics Collection Request Marshaller</Abstract>
+			<DeclaredIn>AutoScalingDisableMetricsCollectionRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="114"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

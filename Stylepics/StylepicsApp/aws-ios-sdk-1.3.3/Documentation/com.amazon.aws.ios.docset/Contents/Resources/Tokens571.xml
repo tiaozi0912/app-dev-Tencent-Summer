@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DiskImageDescriptionUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DiskImageDescriptionUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Disk Image Description Unmarshaller</Abstract>
+			<DeclaredIn>EC2DiskImageDescriptionUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="571"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SecurityTokenServiceGetFederationTokenRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetFederationTokenRequest</TokenIdentifier>
+			<Abstract type="html">Get Federation Token Request</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>
+			
+			<NodeRef refid="1297"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SecurityTokenServiceGetFederationTokenRequest/setName:</TokenIdentifier>
+			<Abstract type="html">The name of the federated user associated with the credentials. For
+information about limitations on user names, go to &lt;a
+vices.com/IAM/latest/UserGuide/LimitationsOnEntities.html&quot;&gt;Limitations
+on IAM Entities&lt;/a&gt; in &lt;i&gt;Using AWS Identity and Access
+Management&lt;/i&gt;.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;2 - 32&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[\w+=,.@-]*&lt;br/&gt;</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *name</Declaration>
+			
+			
+			<Anchor>//api/name/name</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SecurityTokenServiceGetFederationTokenRequest/name</TokenIdentifier>
+			<Abstract type="html">The name of the federated user associated with the credentials. For
+information about limitations on user names, go to &lt;a
+vices.com/IAM/latest/UserGuide/LimitationsOnEntities.html&quot;&gt;Limitations
+on IAM Entities&lt;/a&gt; in &lt;i&gt;Using AWS Identity and Access
+Management&lt;/i&gt;.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;2 - 32&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[\w+=,.@-]*&lt;br/&gt;</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *name</Declaration>
+			
+			
+			<Anchor>//api/name/name</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SecurityTokenServiceGetFederationTokenRequest/setPolicy:</TokenIdentifier>
+			<Abstract type="html">A policy specifying the permissions to associate with the credentials.
+The caller can delegate their own permissions by specifying a policy,
+and both policies will be checked when a service call is made. For
+more information about how permissions work in the context of
+temporary credentials, see &lt;a
+docs.amazonwebservices.com/IAM/latest/UserGuide/TokenPermissions.html&quot;
+target=&quot;_blank&quot;&gt;Controlling Permissions in Temporary Credentials&lt;/a&gt;
+in &lt;i&gt;Using AWS Identity and Access Management&lt;/i&gt;.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;1 - 2048&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[\u0009\u000A\u000D\u0020-\u00FF]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *policy</Declaration>
+			
+			
+			<Anchor>//api/name/policy</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SecurityTokenServiceGetFederationTokenRequest/policy</TokenIdentifier>
+			<Abstract type="html">A policy specifying the permissions to associate with the credentials.
+The caller can delegate their own permissions by specifying a policy,
+and both policies will be checked when a service call is made. For
+more information about how permissions work in the context of
+temporary credentials, see &lt;a
+docs.amazonwebservices.com/IAM/latest/UserGuide/TokenPermissions.html&quot;
+target=&quot;_blank&quot;&gt;Controlling Permissions in Temporary Credentials&lt;/a&gt;
+in &lt;i&gt;Using AWS Identity and Access Management&lt;/i&gt;.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;1 - 2048&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[\u0009\u000A\u000D\u0020-\u00FF]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *policy</Declaration>
+			
+			
+			<Anchor>//api/name/policy</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SecurityTokenServiceGetFederationTokenRequest/setDurationSeconds:</TokenIdentifier>
+			<Abstract type="html">The duration, in seconds, that the session should last. Acceptable
+durations for federation sessions range from 3600s (one hour) to
+129600s (36 hours), with 43200s (12 hours) as the default.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Range: &lt;/b&gt;3600 - 129600&lt;br/&gt;</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *durationSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/durationSeconds</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SecurityTokenServiceGetFederationTokenRequest/durationSeconds</TokenIdentifier>
+			<Abstract type="html">The duration, in seconds, that the session should last. Acceptable
+durations for federation sessions range from 3600s (one hour) to
+129600s (36 hours), with 43200s (12 hours) as the default.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Range: &lt;/b&gt;3600 - 129600&lt;br/&gt;</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *durationSeconds</Declaration>
+			
+			
+			<Anchor>//api/name/durationSeconds</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SecurityTokenServiceGetFederationTokenRequest/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new GetFederationTokenRequest object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SecurityTokenServiceGetFederationTokenRequest/initWithName:</TokenIdentifier>
+			<Abstract type="html">Constructs a new GetFederationTokenRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithName:(NSString *)theName</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theName</Name>
+					<Abstract type="html">The name of the federated user associated with the
+credentials. For information about limitations on user names, go to &lt;a
+vices.com/IAM/latest/UserGuide/LimitationsOnEntities.html&quot;&gt;Limitations
+on IAM Entities&lt;/a&gt; in &lt;i&gt;Using AWS Identity and Access
+Management&lt;/i&gt;.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithName:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SecurityTokenServiceGetFederationTokenRequest/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequest.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

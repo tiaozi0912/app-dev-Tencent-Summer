@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2RegisterImageRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2RegisterImageRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Register Image Request Marshaller</Abstract>
+			<DeclaredIn>EC2RegisterImageRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="714"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

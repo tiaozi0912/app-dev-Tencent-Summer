@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S3ErrorResponseHandler.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S3ErrorResponseHandler</TokenIdentifier>
+			<Abstract type="html">Parse an error response from Amazon S3 and construct the corresponding
+AWSServiceException object.</Abstract>
+			<DeclaredIn>S3ErrorResponseHandler.h</DeclaredIn>
+			
+			<NodeRef refid="989"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3ErrorResponseHandler/setException:</TokenIdentifier>
+			<Abstract type="html">The exception represented by the XML</Abstract>
+			<DeclaredIn>S3ErrorResponseHandler.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) AmazonServiceException *exception</Declaration>
+			
+			
+			<Anchor>//api/name/exception</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3ErrorResponseHandler/exception</TokenIdentifier>
+			<Abstract type="html">The exception represented by the XML</Abstract>
+			<DeclaredIn>S3ErrorResponseHandler.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) AmazonServiceException *exception</Declaration>
+			
+			
+			<Anchor>//api/name/exception</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3ErrorResponseHandler/initWithStatusCode:</TokenIdentifier>
+			<Abstract type="html">Initialize the object with the an HTTP status code</Abstract>
+			<DeclaredIn>S3ErrorResponseHandler.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithStatusCode:(NSInteger)statusCode</Declaration>
+			
+			
+			<Anchor>//api/name/initWithStatusCode:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

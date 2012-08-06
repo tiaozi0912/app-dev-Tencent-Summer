@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBBatchResponse.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBBatchResponse</TokenIdentifier>
+			<Abstract type="html">Batch Response</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>
+			
+			<NodeRef refid="256"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchResponse/setException:</TokenIdentifier>
+			<Abstract type="html">If an exception was thrown, this will return the exception.</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>- (void)setException:(AmazonServiceException *)theException</Declaration>
+			
+			
+			<Anchor>//api/name/setException:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchResponse/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new  object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchResponse/setItems:</TokenIdentifier>
+			<Abstract type="html">The value of the Items property for this object.</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBBatchResponse/items</TokenIdentifier>
+			<Abstract type="html">The value of the Items property for this object.</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchResponse/setConsumedCapacityUnits:</TokenIdentifier>
+			<Abstract type="html">The number of Capacity Units of the provisioned throughput of the
+table consumed during the operation. &lt;code&gt;GetItem&lt;/code&gt;,
+&lt;code&gt;BatchGetItem&lt;/code&gt;, &lt;code&gt;BatchWriteItem&lt;/code&gt;,
+&lt;code&gt;Query&lt;/code&gt;, and &lt;code&gt;Scan&lt;/code&gt; operations consume
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt;, while &lt;code&gt;PutItem&lt;/code&gt;,
+&lt;code&gt;UpdateItem&lt;/code&gt;, and &lt;code&gt;DeleteItem&lt;/code&gt; operations
+consume &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *consumedCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/consumedCapacityUnits</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBBatchResponse/consumedCapacityUnits</TokenIdentifier>
+			<Abstract type="html">The number of Capacity Units of the provisioned throughput of the
+table consumed during the operation. &lt;code&gt;GetItem&lt;/code&gt;,
+&lt;code&gt;BatchGetItem&lt;/code&gt;, &lt;code&gt;BatchWriteItem&lt;/code&gt;,
+&lt;code&gt;Query&lt;/code&gt;, and &lt;code&gt;Scan&lt;/code&gt; operations consume
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt;, while &lt;code&gt;PutItem&lt;/code&gt;,
+&lt;code&gt;UpdateItem&lt;/code&gt;, and &lt;code&gt;DeleteItem&lt;/code&gt; operations
+consume &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *consumedCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/consumedCapacityUnits</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchResponse/itemsObjectAtIndex:</TokenIdentifier>
+			<Abstract type="html">Returns a value from the items array for the specified index</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>- (NSDictionary *)itemsObjectAtIndex:(int)index</Declaration>
+			
+			
+			<Anchor>//api/name/itemsObjectAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchResponse/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBBatchResponse.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

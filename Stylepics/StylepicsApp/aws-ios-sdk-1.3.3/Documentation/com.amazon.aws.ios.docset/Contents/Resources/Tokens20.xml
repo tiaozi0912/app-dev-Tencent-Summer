@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AmazonServiceResponse.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AmazonServiceResponse</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>
+			
+			<NodeRef refid="20"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/setBody:</TokenIdentifier>
+			<Abstract type="html">The body of the html response.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSData *body</Declaration>
+			
+			
+			<Anchor>//api/name/body</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonServiceResponse/body</TokenIdentifier>
+			<Abstract type="html">The body of the html response.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSData *body</Declaration>
+			
+			
+			<Anchor>//api/name/body</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/setHttpStatusCode:</TokenIdentifier>
+			<Abstract type="html">The HTTP status code of the response from the service.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSInteger httpStatusCode</Declaration>
+			
+			
+			<Anchor>//api/name/httpStatusCode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonServiceResponse/httpStatusCode</TokenIdentifier>
+			<Abstract type="html">The HTTP status code of the response from the service.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSInteger httpStatusCode</Declaration>
+			
+			
+			<Anchor>//api/name/httpStatusCode</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/setIsFinishedLoading:</TokenIdentifier>
+			<Abstract type="html">Whether the response is finished loading.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) bool isFinishedLoading</Declaration>
+			
+			
+			<Anchor>//api/name/isFinishedLoading</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonServiceResponse/isFinishedLoading</TokenIdentifier>
+			<Abstract type="html">Whether the response is finished loading.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) bool isFinishedLoading</Declaration>
+			
+			
+			<Anchor>//api/name/isFinishedLoading</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/setDidTimeout:</TokenIdentifier>
+			<Abstract type="html">Whether the original request was timed out.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) bool didTimeout</Declaration>
+			
+			
+			<Anchor>//api/name/didTimeout</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonServiceResponse/didTimeout</TokenIdentifier>
+			<Abstract type="html">Whether the original request was timed out.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) bool didTimeout</Declaration>
+			
+			
+			<Anchor>//api/name/didTimeout</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/setException:</TokenIdentifier>
+			<Abstract type="html">If an exception was thrown, this will return the exception.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSException *exception</Declaration>
+			
+			
+			<Anchor>//api/name/exception</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonServiceResponse/exception</TokenIdentifier>
+			<Abstract type="html">If an exception was thrown, this will return the exception.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSException *exception</Declaration>
+			
+			
+			<Anchor>//api/name/exception</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/setRequest:</TokenIdentifier>
+			<Abstract type="html">The request for which this is the response</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) AmazonServiceRequest *request</Declaration>
+			
+			
+			<Anchor>//api/name/request</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonServiceResponse/request</TokenIdentifier>
+			<Abstract type="html">The request for which this is the response</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) AmazonServiceRequest *request</Declaration>
+			
+			
+			<Anchor>//api/name/request</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/setRequestId:</TokenIdentifier>
+			<Abstract type="html">The requestId assigned by the service</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *requestId</Declaration>
+			
+			
+			<Anchor>//api/name/requestId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonServiceResponse/requestId</TokenIdentifier>
+			<Abstract type="html">The requestId assigned by the service</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *requestId</Declaration>
+			
+			
+			<Anchor>//api/name/requestId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/processBody</TokenIdentifier>
+			<Abstract type="html">Once the body has been received, perform additional processing, such as parse as XML.</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>- (void)processBody</Declaration>
+			
+			
+			<Anchor>//api/name/processBody</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/connection:didReceiveResponse:</TokenIdentifier>
+			<Abstract type="html">delegate method for NSURLConnection</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response</Declaration>
+			
+			
+			<Anchor>//api/name/connection:didReceiveResponse:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/connection:didReceiveData:</TokenIdentifier>
+			<Abstract type="html">delegate method for NSURLConnection</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data</Declaration>
+			
+			
+			<Anchor>//api/name/connection:didReceiveData:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonServiceResponse/connectionDidFinishLoading:</TokenIdentifier>
+			<Abstract type="html">delegate method for NSURLConnection</Abstract>
+			<DeclaredIn>AmazonServiceResponse.h</DeclaredIn>			
+			
+			<Declaration>- (void)connectionDidFinishLoading:(NSURLConnection *)connection</Declaration>
+			
+			
+			<Anchor>//api/name/connectionDidFinishLoading:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

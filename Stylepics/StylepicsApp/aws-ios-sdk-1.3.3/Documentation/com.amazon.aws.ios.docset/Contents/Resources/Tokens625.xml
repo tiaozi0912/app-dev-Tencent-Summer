@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ImportVolumeTaskDetailsUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ImportVolumeTaskDetailsUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Import Volume Task Details Unmarshaller</Abstract>
+			<DeclaredIn>EC2ImportVolumeTaskDetailsUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="625"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

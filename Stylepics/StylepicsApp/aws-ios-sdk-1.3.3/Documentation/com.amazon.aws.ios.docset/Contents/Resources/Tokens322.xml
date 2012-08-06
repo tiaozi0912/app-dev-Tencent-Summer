@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBScanRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBScanRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Scan Request Marshaller</Abstract>
+			<DeclaredIn>DynamoDBScanRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="322"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

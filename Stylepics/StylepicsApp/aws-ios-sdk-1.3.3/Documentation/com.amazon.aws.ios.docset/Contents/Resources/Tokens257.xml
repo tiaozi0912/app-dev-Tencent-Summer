@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBBatchResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBBatchResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Batch Response Unmarshaller</Abstract>
+			<DeclaredIn>DynamoDBBatchResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="257"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

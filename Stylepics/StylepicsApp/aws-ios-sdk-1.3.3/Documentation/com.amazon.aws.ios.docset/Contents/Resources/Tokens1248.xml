@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSGetQueueAttributesResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSGetQueueAttributesResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Get Queue Attributes Result Unmarshaller</Abstract>
+			<DeclaredIn>SQSGetQueueAttributesResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1248"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -16,6 +16,7 @@
 #import "Item.h"
 #import "PollListItem.h"
 #import "Audience.h"
+#import <AWSiOSSDK/S3/AmazonS3Client.h>
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
 #define CURRENTUSERID @"currentUserID"

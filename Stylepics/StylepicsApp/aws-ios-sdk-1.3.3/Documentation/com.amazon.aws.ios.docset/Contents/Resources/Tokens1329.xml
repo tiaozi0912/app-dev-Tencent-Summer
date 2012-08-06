@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBDomainMetadataRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBDomainMetadataRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Domain Metadata Request Marshaller</Abstract>
+			<DeclaredIn>SimpleDBDomainMetadataRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1329"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

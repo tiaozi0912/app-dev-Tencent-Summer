@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBWebServiceClient.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBWebServiceClient</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>DynamoDBWebServiceClient.h</DeclaredIn>
+			
+			<NodeRef refid="335"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBWebServiceClient/invoke:rawRequest:unmarshallerDelegate:</TokenIdentifier>
+			<Abstract type="html">Utility method that sends the AmazonServiceRequest to be processed.</Abstract>
+			<DeclaredIn>DynamoDBWebServiceClient.h</DeclaredIn>			
+			
+			<Declaration>- (AmazonServiceResponse *)invoke:(AmazonServiceRequest *)generatedRequest rawRequest:(AmazonServiceRequestConfig *)originalRequest unmarshallerDelegate:(Class)unmarshallerDelegate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>request</Name>
+					<Abstract type="html">An AmazonServiceRequest describing the parameters of a request.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The response from the service.</Abstract></ReturnValue>
+			<Anchor>//api/name/invoke:rawRequest:unmarshallerDelegate:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

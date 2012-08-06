@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AmazonSecurityTokenServiceClient.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AmazonSecurityTokenServiceClient</TokenIdentifier>
+			<Abstract type="html">&lt;summary&gt;
+Interface for accessing AmazonSecurityTokenService.</Abstract>
+			<DeclaredIn>AmazonSecurityTokenServiceClient.h</DeclaredIn>
+			
+			<NodeRef refid="16"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonSecurityTokenServiceClient/getSessionToken:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;
+The GetSessionToken action returns a set of temporary credentials for an AWS account or IAM user. The credentials
+consist of an Access Key ID, a Secret Access Key, and a security token. These credentials are valid for the specified
+duration only. The session duration for IAM users can be between one and 36 hours, with a default of 12 hours. The
+session duration for AWS account owners is restricted to one hour. Providing the AWS Multi-Factor Authentication (MFA)
+device serial number and the token code is optional.
+&lt;/p&gt;
+&lt;p&gt;
+For more information about using GetSessionToken to create temporary credentials, go to  Creating Temporary Credentials
+to Enable Access for IAM Users  in &lt;i&gt;Using IAM&lt;/i&gt; .
+&lt;/p&gt;</Abstract>
+			<DeclaredIn>AmazonSecurityTokenServiceClient.h</DeclaredIn>			
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetSessionTokenRequest</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetSessionTokenResponse</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (SecurityTokenServiceGetSessionTokenResponse *)getSessionToken:(SecurityTokenServiceGetSessionTokenRequest *)getSessionTokenRequest</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>getSessionTokenRequest</Name>
+					<Abstract type="html">Container for the necessary parameters to execute the GetSessionToken service method on
+AmazonSecurityTokenService.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The response from the GetSessionToken service method, as returned by AmazonSecurityTokenService.</Abstract></ReturnValue>
+			<Anchor>//api/name/getSessionToken:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonSecurityTokenServiceClient/getFederationToken:</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;
+The GetFederationToken action returns a set of temporary credentials for a federated user with the user name and policy
+specified in the request. The credentials consist of an Access Key ID, a Secret Access Key, and a security token.
+Credentials created by IAM users are valid for the specified duration, between one and 36 hours; credentials created
+using account credentials last one hour.
+&lt;/p&gt;
+&lt;p&gt;
+The federated user who holds these credentials has any permissions allowed by the intersection of the specified policy
+and any resource or user policies that apply to the caller of the GetFederationToken API, and any resource policies that
+apply to the federated user&apos;s Amazon Resource Name (ARN). For more information about how token permissions work, see  Creating Temporary Credentials to
+Enable Access for Federated Users  in &lt;i&gt;Using AWS Identity and Access Management&lt;/i&gt; .
+&lt;/p&gt;</Abstract>
+			<DeclaredIn>AmazonSecurityTokenServiceClient.h</DeclaredIn>			
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetFederationTokenRequest</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetFederationTokenResponse</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (SecurityTokenServiceGetFederationTokenResponse *)getFederationToken:(SecurityTokenServiceGetFederationTokenRequest *)getFederationTokenRequest</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>getFederationTokenRequest</Name>
+					<Abstract type="html">Container for the necessary parameters to execute the GetFederationToken service method
+on AmazonSecurityTokenService.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The response from the GetFederationToken service method, as returned by AmazonSecurityTokenService.</Abstract></ReturnValue>
+			<Anchor>//api/name/getFederationToken:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

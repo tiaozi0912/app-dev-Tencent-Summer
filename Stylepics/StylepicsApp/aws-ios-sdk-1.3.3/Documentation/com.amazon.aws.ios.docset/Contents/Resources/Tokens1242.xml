@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSDeleteQueueRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSDeleteQueueRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Queue Request Marshaller</Abstract>
+			<DeclaredIn>SQSDeleteQueueRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1242"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

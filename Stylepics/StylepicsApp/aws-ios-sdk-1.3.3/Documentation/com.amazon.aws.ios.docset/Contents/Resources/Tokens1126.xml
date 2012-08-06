@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESSetIdentityNotificationTopicRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESSetIdentityNotificationTopicRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Set Identity Notification Topic Request Marshaller</Abstract>
+			<DeclaredIn>SESSetIdentityNotificationTopicRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1126"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S3VersionSummaryUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S3VersionSummaryUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Creates an S3VersionSummary from an XML service repsonse.</Abstract>
+			<DeclaredIn>S3VersionSummaryUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1057"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3VersionSummaryUnmarshaller/setSummary:</TokenIdentifier>
+			<Abstract type="html">The S3VersionSummary represented by the XML</Abstract>
+			<DeclaredIn>S3VersionSummaryUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) S3VersionSummary *summary</Declaration>
+			
+			
+			<Anchor>//api/name/summary</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3VersionSummaryUnmarshaller/summary</TokenIdentifier>
+			<Abstract type="html">The S3VersionSummary represented by the XML</Abstract>
+			<DeclaredIn>S3VersionSummaryUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) S3VersionSummary *summary</Declaration>
+			
+			
+			<Anchor>//api/name/summary</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

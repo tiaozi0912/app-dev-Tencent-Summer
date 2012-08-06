@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DeleteKeyPairRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DeleteKeyPairRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Key Pair Request Marshaller</Abstract>
+			<DeclaredIn>EC2DeleteKeyPairRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="435"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

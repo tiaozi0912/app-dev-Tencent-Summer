@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/CloudWatchListMetricsRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/CloudWatchListMetricsRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">List Metrics Request Marshaller</Abstract>
+			<DeclaredIn>CloudWatchListMetricsRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="225"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

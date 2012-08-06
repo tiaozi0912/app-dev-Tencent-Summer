@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSBatchResponseErrorEntryUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSBatchResponseErrorEntryUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Batch Result Error Entry Unmarshaller</Abstract>
+			<DeclaredIn>SQSBatchResponseErrorEntryUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1216"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

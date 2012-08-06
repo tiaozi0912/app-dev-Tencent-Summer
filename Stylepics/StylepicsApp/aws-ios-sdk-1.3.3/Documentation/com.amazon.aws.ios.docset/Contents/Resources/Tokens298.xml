@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBLimitExceededException.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBLimitExceededException</TokenIdentifier>
+			<Abstract type="html">&lt;p&gt;
+This exception is thrown when the subscriber exceeded the limits on
+the number of objects or operations.
+&lt;/p&gt;</Abstract>
+			<DeclaredIn>DynamoDBLimitExceededException.h</DeclaredIn>
+			
+			<NodeRef refid="298"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBLimitExceededException/initWithMessage:</TokenIdentifier>
+			<Abstract type="html">Initialize the exeption with a message.</Abstract>
+			<DeclaredIn>DynamoDBLimitExceededException.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithMessage:(NSString *)message</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>message</Name>
+					<Abstract type="html">The message.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">The exception.</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithMessage:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBLimitExceededException/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBLimitExceededException.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

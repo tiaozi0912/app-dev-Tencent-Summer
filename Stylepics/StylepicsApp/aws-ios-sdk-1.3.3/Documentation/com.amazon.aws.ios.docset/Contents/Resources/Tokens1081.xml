@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESGetSendQuotaRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESGetSendQuotaRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Get Send Quota Request Marshaller</Abstract>
+			<DeclaredIn>SESGetSendQuotaRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1081"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

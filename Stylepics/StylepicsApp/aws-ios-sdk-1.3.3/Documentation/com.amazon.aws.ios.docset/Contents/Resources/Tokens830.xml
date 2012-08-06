@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ElasticLoadBalancingCreateLBCookieStickinessPolicyRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ElasticLoadBalancingCreateLBCookieStickinessPolicyRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Create L B Cookie Stickiness Policy Request Marshaller</Abstract>
+			<DeclaredIn>ElasticLoadBalancingCreateLBCookieStickinessPolicyRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="830"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

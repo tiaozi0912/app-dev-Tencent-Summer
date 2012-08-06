@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBDeleteDomainRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBDeleteDomainRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Domain Request Marshaller</Abstract>
+			<DeclaredIn>SimpleDBDeleteDomainRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1326"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S3CommonPrefixesUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S3CommonPrefixesUnmarshaller</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>S3CommonPrefixesUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="959"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3CommonPrefixesUnmarshaller/setCommonPrefixes:</TokenIdentifier>
+			<Abstract type="html">The Common Prefixes represented by the XML</Abstract>
+			<DeclaredIn>S3CommonPrefixesUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *commonPrefixes</Declaration>
+			
+			
+			<Anchor>//api/name/commonPrefixes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3CommonPrefixesUnmarshaller/commonPrefixes</TokenIdentifier>
+			<Abstract type="html">The Common Prefixes represented by the XML</Abstract>
+			<DeclaredIn>S3CommonPrefixesUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *commonPrefixes</Declaration>
+			
+			
+			<Anchor>//api/name/commonPrefixes</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

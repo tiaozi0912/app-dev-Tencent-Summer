@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SecurityTokenServiceGetFederationTokenRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetFederationTokenRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Get Federation Token Request Marshaller</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1298"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

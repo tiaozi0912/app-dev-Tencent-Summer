@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESSendEmailRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESSendEmailRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Send Email Request Marshaller</Abstract>
+			<DeclaredIn>SESSendEmailRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1110"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

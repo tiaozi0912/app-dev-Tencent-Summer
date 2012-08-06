@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DeleteSecurityGroupRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DeleteSecurityGroupRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Security Group Request Marshaller</Abstract>
+			<DeclaredIn>EC2DeleteSecurityGroupRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="441"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SNSGetSubscriptionAttributesRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SNSGetSubscriptionAttributesRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Get Subscription Attributes Request Marshaller</Abstract>
+			<DeclaredIn>SNSGetSubscriptionAttributesRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1160"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

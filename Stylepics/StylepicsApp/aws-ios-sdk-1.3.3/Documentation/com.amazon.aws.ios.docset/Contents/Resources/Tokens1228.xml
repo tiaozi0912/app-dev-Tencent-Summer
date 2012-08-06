@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSCreateQueueRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSCreateQueueRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Create Queue Request Marshaller</Abstract>
+			<DeclaredIn>SQSCreateQueueRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1228"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

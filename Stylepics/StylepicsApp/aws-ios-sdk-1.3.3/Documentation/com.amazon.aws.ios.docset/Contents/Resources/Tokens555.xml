@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribeVolumeStatusRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribeVolumeStatusRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Volume Status Request Marshaller</Abstract>
+			<DeclaredIn>EC2DescribeVolumeStatusRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="555"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

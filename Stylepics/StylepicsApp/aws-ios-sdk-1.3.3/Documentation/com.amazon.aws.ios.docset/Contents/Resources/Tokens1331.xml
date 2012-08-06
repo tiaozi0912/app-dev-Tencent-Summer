@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBDomainMetadataResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBDomainMetadataResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Domain Metadata Result Unmarshaller</Abstract>
+			<DeclaredIn>SimpleDBDomainMetadataResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1331"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

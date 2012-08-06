@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S3DeleteErrorUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S3DeleteErrorUnmarshaller</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>S3DeleteErrorUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="980"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3DeleteErrorUnmarshaller/setDeleteError:</TokenIdentifier>
+			<Abstract type="html">The DeleteError represented by the XML</Abstract>
+			<DeclaredIn>S3DeleteErrorUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) DeleteError *deleteError</Declaration>
+			
+			
+			<Anchor>//api/name/deleteError</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3DeleteErrorUnmarshaller/deleteError</TokenIdentifier>
+			<Abstract type="html">The DeleteError represented by the XML</Abstract>
+			<DeclaredIn>S3DeleteErrorUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) DeleteError *deleteError</Declaration>
+			
+			
+			<Anchor>//api/name/deleteError</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

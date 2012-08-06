@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingDescribeAutoScalingNotificationTypesRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingDescribeAutoScalingNotificationTypesRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Auto Scaling Notification Types Request Marshaller</Abstract>
+			<DeclaredIn>AutoScalingDescribeAutoScalingNotificationTypesRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="78"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

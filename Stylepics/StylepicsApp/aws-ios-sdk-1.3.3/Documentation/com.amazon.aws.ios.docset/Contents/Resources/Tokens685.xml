@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ModifyVolumeAttributeRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ModifyVolumeAttributeRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Modify Volume Attribute Request Marshaller</Abstract>
+			<DeclaredIn>EC2ModifyVolumeAttributeRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="685"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

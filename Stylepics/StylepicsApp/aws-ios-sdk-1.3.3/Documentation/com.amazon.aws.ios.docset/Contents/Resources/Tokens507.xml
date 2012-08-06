@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribePlacementGroupsRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribePlacementGroupsRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Placement Groups Request Marshaller</Abstract>
+			<DeclaredIn>EC2DescribePlacementGroupsRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="507"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

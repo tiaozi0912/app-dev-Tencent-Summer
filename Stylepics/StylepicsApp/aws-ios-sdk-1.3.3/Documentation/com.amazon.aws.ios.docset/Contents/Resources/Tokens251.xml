@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBAttributeValueUpdate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBAttributeValueUpdate</TokenIdentifier>
+			<Abstract type="html">Attribute Value Update</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>
+			
+			<NodeRef refid="251"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBAttributeValueUpdate/setValue:</TokenIdentifier>
+			<Abstract type="html">AttributeValue can be &lt;code&gt;String&lt;/code&gt;, &lt;code&gt;Number&lt;/code&gt;,
+&lt;code&gt;StringSet&lt;/code&gt;, &lt;code&gt;NumberSet&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBAttributeValue *value</Declaration>
+			
+			
+			<Anchor>//api/name/value</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBAttributeValueUpdate/value</TokenIdentifier>
+			<Abstract type="html">AttributeValue can be &lt;code&gt;String&lt;/code&gt;, &lt;code&gt;Number&lt;/code&gt;,
+&lt;code&gt;StringSet&lt;/code&gt;, &lt;code&gt;NumberSet&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBAttributeValue *value</Declaration>
+			
+			
+			<Anchor>//api/name/value</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBAttributeValueUpdate/setAction:</TokenIdentifier>
+			<Abstract type="html">The type of action for an item update operation. Only use the add
+action for numbers or sets; the specified value is added to the
+existing value. If a set of values is specified, the values are added
+to the existing set. Adds the specified attribute. If the attribute
+exists, it is replaced by the new value. If no value is specified,
+this removes the attribute and its value. If a set of values is
+specified, then the values in the specified set are removed from the
+old set.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Allowed Values: &lt;/b&gt;ADD, PUT, DELETE</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *action</Declaration>
+			
+			
+			<Anchor>//api/name/action</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBAttributeValueUpdate/action</TokenIdentifier>
+			<Abstract type="html">The type of action for an item update operation. Only use the add
+action for numbers or sets; the specified value is added to the
+existing value. If a set of values is specified, the values are added
+to the existing set. Adds the specified attribute. If the attribute
+exists, it is replaced by the new value. If no value is specified,
+this removes the attribute and its value. If a set of values is
+specified, then the values in the specified set are removed from the
+old set.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Allowed Values: &lt;/b&gt;ADD, PUT, DELETE</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *action</Declaration>
+			
+			
+			<Anchor>//api/name/action</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBAttributeValueUpdate/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new AttributeValueUpdate object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBAttributeValueUpdate/initWithValue:andAction:</TokenIdentifier>
+			<Abstract type="html">Constructs a new AttributeValueUpdate object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithValue:(DynamoDBAttributeValue *)theValue andAction:(NSString *)theAction</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theValue</Name>
+					<Abstract type="html">AttributeValue can be &lt;code&gt;String&lt;/code&gt;,
+&lt;code&gt;Number&lt;/code&gt;, &lt;code&gt;StringSet&lt;/code&gt;, &lt;code&gt;NumberSet&lt;/code&gt;.</Abstract>
+				</Parameter><Parameter>
+					<Name>theAction</Name>
+					<Abstract type="html">The type of action for an item update operation. Only
+use the add action for numbers or sets; the specified value is added
+to the existing value. If a set of values is specified, the values are
+added to the existing set. Adds the specified attribute. If the
+attribute exists, it is replaced by the new value. If no value is
+specified, this removes the attribute and its value. If a set of
+values is specified, then the values in the specified set are removed
+from the old set.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithValue:andAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBAttributeValueUpdate/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBAttributeValueUpdate.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

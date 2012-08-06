@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2IamInstanceProfileSpecificationUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2IamInstanceProfileSpecificationUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Iam Instance Profile Specification Unmarshaller</Abstract>
+			<DeclaredIn>EC2IamInstanceProfileSpecificationUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="601"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

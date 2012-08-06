@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBSelectResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBSelectResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Select Result Unmarshaller</Abstract>
+			<DeclaredIn>SimpleDBSelectResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1367"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

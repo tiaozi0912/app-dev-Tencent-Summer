@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBDeleteItemResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBDeleteItemResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Item Result Unmarshaller</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="273"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

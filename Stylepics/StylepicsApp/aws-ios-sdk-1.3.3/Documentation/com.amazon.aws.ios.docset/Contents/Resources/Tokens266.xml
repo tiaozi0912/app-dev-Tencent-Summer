@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBCreateTableRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBCreateTableRequest</TokenIdentifier>
+			<Abstract type="html">Create Table Request</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>
+			
+			<NodeRef refid="266"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBCreateTableRequest/setTableName:</TokenIdentifier>
+			<Abstract type="html">The name of the table you want to create. Allowed characters are
+&lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;, &lt;code&gt;_&lt;/code&gt;
+(underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and &lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBCreateTableRequest/tableName</TokenIdentifier>
+			<Abstract type="html">The name of the table you want to create. Allowed characters are
+&lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;, &lt;code&gt;_&lt;/code&gt;
+(underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and &lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBCreateTableRequest/setKeySchema:</TokenIdentifier>
+			<Abstract type="html">The KeySchema identifies the primary key as a one attribute primary
+key (hash) or a composite two attribute (hash-and-range) primary key.
+Single attribute primary keys have one index value: a
+&lt;code&gt;HashKeyElement&lt;/code&gt;. A composite hash-and-range primary key
+contains two attribute values: a &lt;code&gt;HashKeyElement&lt;/code&gt; and a
+&lt;code&gt;RangeKeyElement&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKeySchema *keySchema</Declaration>
+			
+			
+			<Anchor>//api/name/keySchema</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBCreateTableRequest/keySchema</TokenIdentifier>
+			<Abstract type="html">The KeySchema identifies the primary key as a one attribute primary
+key (hash) or a composite two attribute (hash-and-range) primary key.
+Single attribute primary keys have one index value: a
+&lt;code&gt;HashKeyElement&lt;/code&gt;. A composite hash-and-range primary key
+contains two attribute values: a &lt;code&gt;HashKeyElement&lt;/code&gt; and a
+&lt;code&gt;RangeKeyElement&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKeySchema *keySchema</Declaration>
+			
+			
+			<Anchor>//api/name/keySchema</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBCreateTableRequest/setProvisionedThroughput:</TokenIdentifier>
+			<Abstract type="html">Provisioned throughput reserves the required read and write resources
+for your table in terms of &lt;code&gt;ReadCapacityUnits&lt;/code&gt; and
+&lt;code&gt;WriteCapacityUnits&lt;/code&gt;. Values for provisioned throughput
+depend upon your expected read/write rates, item size, and
+consistency. Provide the expected number of read and write operations,
+assuming an item size of 1k and strictly consistent reads. For 2k item
+size, double the value. For 3k, triple the value, etc.
+Eventually-consistent reads consume half the resources of strictly
+consistent reads.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBProvisionedThroughput *provisionedThroughput</Declaration>
+			
+			
+			<Anchor>//api/name/provisionedThroughput</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBCreateTableRequest/provisionedThroughput</TokenIdentifier>
+			<Abstract type="html">Provisioned throughput reserves the required read and write resources
+for your table in terms of &lt;code&gt;ReadCapacityUnits&lt;/code&gt; and
+&lt;code&gt;WriteCapacityUnits&lt;/code&gt;. Values for provisioned throughput
+depend upon your expected read/write rates, item size, and
+consistency. Provide the expected number of read and write operations,
+assuming an item size of 1k and strictly consistent reads. For 2k item
+size, double the value. For 3k, triple the value, etc.
+Eventually-consistent reads consume half the resources of strictly
+consistent reads.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBProvisionedThroughput *provisionedThroughput</Declaration>
+			
+			
+			<Anchor>//api/name/provisionedThroughput</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBCreateTableRequest/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new CreateTableRequest object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBCreateTableRequest/initWithTableName:andKeySchema:</TokenIdentifier>
+			<Abstract type="html">Constructs a new CreateTableRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTableName:(NSString *)theTableName andKeySchema:(DynamoDBKeySchema *)theKeySchema</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theTableName</Name>
+					<Abstract type="html">The name of the table you want to create. Allowed
+characters are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;,
+&lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and
+&lt;code&gt;.&lt;/code&gt; (period).</Abstract>
+				</Parameter><Parameter>
+					<Name>theKeySchema</Name>
+					<Abstract type="html">The KeySchema identifies the primary key as a one
+attribute primary key (hash) or a composite two attribute
+(hash-and-range) primary key. Single attribute primary keys have one
+index value: a &lt;code&gt;HashKeyElement&lt;/code&gt;. A composite hash-and-range
+primary key contains two attribute values: a
+&lt;code&gt;HashKeyElement&lt;/code&gt; and a &lt;code&gt;RangeKeyElement&lt;/code&gt;.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTableName:andKeySchema:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBCreateTableRequest/initWithTableName:andKeySchema:andProvisionedThroughput:</TokenIdentifier>
+			<Abstract type="html">Constructs a new CreateTableRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTableName:(NSString *)theTableName andKeySchema:(DynamoDBKeySchema *)theKeySchema andProvisionedThroughput:(DynamoDBProvisionedThroughput *)theProvisionedThroughput</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theTableName</Name>
+					<Abstract type="html">The name of the table you want to create. Allowed
+characters are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;,
+&lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and
+&lt;code&gt;.&lt;/code&gt; (period).</Abstract>
+				</Parameter><Parameter>
+					<Name>theKeySchema</Name>
+					<Abstract type="html">The KeySchema identifies the primary key as a one
+attribute primary key (hash) or a composite two attribute
+(hash-and-range) primary key. Single attribute primary keys have one
+index value: a &lt;code&gt;HashKeyElement&lt;/code&gt;. A composite hash-and-range
+primary key contains two attribute values: a
+&lt;code&gt;HashKeyElement&lt;/code&gt; and a &lt;code&gt;RangeKeyElement&lt;/code&gt;.</Abstract>
+				</Parameter><Parameter>
+					<Name>theProvisionedThroughput</Name>
+					<Abstract type="html">Provisioned throughput reserves the
+required read and write resources for your table in terms of
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt; and &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.
+Values for provisioned throughput depend upon your expected read/write
+rates, item size, and consistency. Provide the expected number of read
+and write operations, assuming an item size of 1k and strictly
+consistent reads. For 2k item size, double the value. For 3k, triple
+the value, etc. Eventually-consistent reads consume half the resources
+of strictly consistent reads.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTableName:andKeySchema:andProvisionedThroughput:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBCreateTableRequest/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBCreateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

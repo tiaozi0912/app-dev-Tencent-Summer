@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSDeleteMessageRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSDeleteMessageRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Message Request Marshaller</Abstract>
+			<DeclaredIn>SQSDeleteMessageRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1239"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

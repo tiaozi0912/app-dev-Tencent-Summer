@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESListIdentitiesResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESListIdentitiesResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">List Identities Result Unmarshaller</Abstract>
+			<DeclaredIn>SESListIdentitiesResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1097"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

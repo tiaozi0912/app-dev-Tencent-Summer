@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ElasticLoadBalancingCreateLoadBalancerPolicyRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ElasticLoadBalancingCreateLoadBalancerPolicyRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Create Load Balancer Policy Request Marshaller</Abstract>
+			<DeclaredIn>ElasticLoadBalancingCreateLoadBalancerPolicyRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="837"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

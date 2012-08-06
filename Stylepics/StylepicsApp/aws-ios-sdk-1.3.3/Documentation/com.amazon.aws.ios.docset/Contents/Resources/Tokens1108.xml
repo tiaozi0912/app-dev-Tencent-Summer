@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESSendDataPointUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESSendDataPointUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Send Data Point Unmarshaller</Abstract>
+			<DeclaredIn>SESSendDataPointUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1108"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

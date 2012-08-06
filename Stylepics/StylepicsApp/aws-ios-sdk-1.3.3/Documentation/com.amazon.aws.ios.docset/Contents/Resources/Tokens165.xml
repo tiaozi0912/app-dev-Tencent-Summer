@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingSetDesiredCapacityRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingSetDesiredCapacityRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Set Desired Capacity Request Marshaller</Abstract>
+			<DeclaredIn>AutoScalingSetDesiredCapacityRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="165"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

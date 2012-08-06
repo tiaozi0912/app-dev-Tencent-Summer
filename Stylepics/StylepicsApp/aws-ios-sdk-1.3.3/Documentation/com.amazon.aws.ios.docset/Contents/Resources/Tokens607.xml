@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ImportInstanceLaunchSpecification.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ImportInstanceLaunchSpecification</TokenIdentifier>
+			<Abstract type="html">Import Instance Launch Specification</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>
+			
+			<NodeRef refid="607"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new  object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setArchitecture:</TokenIdentifier>
+			<Abstract type="html">The value of the Architecture property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *architecture</Declaration>
+			
+			
+			<Anchor>//api/name/architecture</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/architecture</TokenIdentifier>
+			<Abstract type="html">The value of the Architecture property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *architecture</Declaration>
+			
+			
+			<Anchor>//api/name/architecture</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setSecurityGroups:</TokenIdentifier>
+			<Abstract type="html">The value of the SecurityGroups property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *securityGroups</Declaration>
+			
+			
+			<Anchor>//api/name/securityGroups</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/securityGroups</TokenIdentifier>
+			<Abstract type="html">The value of the SecurityGroups property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *securityGroups</Declaration>
+			
+			
+			<Anchor>//api/name/securityGroups</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setAdditionalInfo:</TokenIdentifier>
+			<Abstract type="html">The value of the AdditionalInfo property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *additionalInfo</Declaration>
+			
+			
+			<Anchor>//api/name/additionalInfo</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/additionalInfo</TokenIdentifier>
+			<Abstract type="html">The value of the AdditionalInfo property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *additionalInfo</Declaration>
+			
+			
+			<Anchor>//api/name/additionalInfo</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setUserData:</TokenIdentifier>
+			<Abstract type="html">The value of the UserData property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *userData</Declaration>
+			
+			
+			<Anchor>//api/name/userData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/userData</TokenIdentifier>
+			<Abstract type="html">The value of the UserData property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *userData</Declaration>
+			
+			
+			<Anchor>//api/name/userData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setInstanceType:</TokenIdentifier>
+			<Abstract type="html">The value of the InstanceType property for this object.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Allowed Values: &lt;/b&gt;t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *instanceType</Declaration>
+			
+			
+			<Anchor>//api/name/instanceType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/instanceType</TokenIdentifier>
+			<Abstract type="html">The value of the InstanceType property for this object.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Allowed Values: &lt;/b&gt;t1.micro, m1.small, m1.medium, m1.large, m1.xlarge, m2.xlarge, m2.2xlarge, m2.4xlarge, c1.medium, c1.xlarge, cc1.4xlarge, cc2.8xlarge, cg1.4xlarge</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *instanceType</Declaration>
+			
+			
+			<Anchor>//api/name/instanceType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setPlacement:</TokenIdentifier>
+			<Abstract type="html">Describes where an Amazon EC2 instance is running within an Amazon EC2
+region.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) EC2Placement *placement</Declaration>
+			
+			
+			<Anchor>//api/name/placement</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/placement</TokenIdentifier>
+			<Abstract type="html">Describes where an Amazon EC2 instance is running within an Amazon EC2
+region.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) EC2Placement *placement</Declaration>
+			
+			
+			<Anchor>//api/name/placement</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setBlockDeviceMappings:</TokenIdentifier>
+			<Abstract type="html">The value of the BlockDeviceMappings property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *blockDeviceMappings</Declaration>
+			
+			
+			<Anchor>//api/name/blockDeviceMappings</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/blockDeviceMappings</TokenIdentifier>
+			<Abstract type="html">The value of the BlockDeviceMappings property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *blockDeviceMappings</Declaration>
+			
+			
+			<Anchor>//api/name/blockDeviceMappings</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setMonitoring:</TokenIdentifier>
+			<Abstract type="html">The value of the Monitoring property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) bool monitoring</Declaration>
+			
+			
+			<Anchor>//api/name/monitoring</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/monitoring</TokenIdentifier>
+			<Abstract type="html">The value of the Monitoring property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) bool monitoring</Declaration>
+			
+			
+			<Anchor>//api/name/monitoring</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setSubnetId:</TokenIdentifier>
+			<Abstract type="html">The value of the SubnetId property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *subnetId</Declaration>
+			
+			
+			<Anchor>//api/name/subnetId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/subnetId</TokenIdentifier>
+			<Abstract type="html">The value of the SubnetId property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *subnetId</Declaration>
+			
+			
+			<Anchor>//api/name/subnetId</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setDisableApiTermination:</TokenIdentifier>
+			<Abstract type="html">The value of the DisableApiTermination property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) bool disableApiTermination</Declaration>
+			
+			
+			<Anchor>//api/name/disableApiTermination</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/disableApiTermination</TokenIdentifier>
+			<Abstract type="html">The value of the DisableApiTermination property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) bool disableApiTermination</Declaration>
+			
+			
+			<Anchor>//api/name/disableApiTermination</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setInstanceInitiatedShutdownBehavior:</TokenIdentifier>
+			<Abstract type="html">The value of the InstanceInitiatedShutdownBehavior property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *instanceInitiatedShutdownBehavior</Declaration>
+			
+			
+			<Anchor>//api/name/instanceInitiatedShutdownBehavior</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/instanceInitiatedShutdownBehavior</TokenIdentifier>
+			<Abstract type="html">The value of the InstanceInitiatedShutdownBehavior property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *instanceInitiatedShutdownBehavior</Declaration>
+			
+			
+			<Anchor>//api/name/instanceInitiatedShutdownBehavior</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/setPrivateIpAddress:</TokenIdentifier>
+			<Abstract type="html">The value of the PrivateIpAddress property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *privateIpAddress</Declaration>
+			
+			
+			<Anchor>//api/name/privateIpAddress</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/EC2ImportInstanceLaunchSpecification/privateIpAddress</TokenIdentifier>
+			<Abstract type="html">The value of the PrivateIpAddress property for this object.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *privateIpAddress</Declaration>
+			
+			
+			<Anchor>//api/name/privateIpAddress</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/addSecurityGroup:</TokenIdentifier>
+			<Abstract type="html">Adds a single object to securityGroups.
+This function will alloc and init securityGroups if not already done.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>- (void)addSecurityGroup:(NSString *)securityGroupObject</Declaration>
+			
+			
+			<Anchor>//api/name/addSecurityGroup:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/addBlockDeviceMapping:</TokenIdentifier>
+			<Abstract type="html">Adds a single object to blockDeviceMappings.
+This function will alloc and init blockDeviceMappings if not already done.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>- (void)addBlockDeviceMapping:(EC2BlockDeviceMapping *)blockDeviceMappingObject</Declaration>
+			
+			
+			<Anchor>//api/name/addBlockDeviceMapping:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/EC2ImportInstanceLaunchSpecification/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>EC2ImportInstanceLaunchSpecification.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

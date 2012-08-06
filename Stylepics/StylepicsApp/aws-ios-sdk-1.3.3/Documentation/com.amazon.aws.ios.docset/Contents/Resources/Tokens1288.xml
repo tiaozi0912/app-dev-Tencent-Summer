@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSSendMessageResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSSendMessageResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Send Message Result Unmarshaller</Abstract>
+			<DeclaredIn>SQSSendMessageResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1288"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribeSpotDatafeedSubscriptionResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribeSpotDatafeedSubscriptionResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Spot Datafeed Subscription Response Unmarshaller</Abstract>
+			<DeclaredIn>EC2DescribeSpotDatafeedSubscriptionResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="537"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

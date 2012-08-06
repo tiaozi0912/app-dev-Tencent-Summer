@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SecurityTokenServiceGetSessionTokenResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetSessionTokenResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Get Session Token Result Unmarshaller</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetSessionTokenResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1304"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

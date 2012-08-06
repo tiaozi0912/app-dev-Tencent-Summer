@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBProvisionedThroughputDescriptionUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBProvisionedThroughputDescriptionUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Provisioned Throughput Description Unmarshaller</Abstract>
+			<DeclaredIn>DynamoDBProvisionedThroughputDescriptionUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="305"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

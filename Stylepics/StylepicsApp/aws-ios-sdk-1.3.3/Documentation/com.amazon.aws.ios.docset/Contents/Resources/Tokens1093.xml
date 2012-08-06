@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESIdentityVerificationAttributesUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESIdentityVerificationAttributesUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Identity Verification Attributes Unmarshaller</Abstract>
+			<DeclaredIn>SESIdentityVerificationAttributesUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1093"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

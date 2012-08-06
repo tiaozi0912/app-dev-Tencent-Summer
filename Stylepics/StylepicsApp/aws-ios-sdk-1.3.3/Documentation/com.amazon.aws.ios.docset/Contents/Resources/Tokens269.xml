@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBCreateTableResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBCreateTableResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Create Table Result Unmarshaller</Abstract>
+			<DeclaredIn>DynamoDBCreateTableResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="269"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

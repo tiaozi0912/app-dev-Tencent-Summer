@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribeBundleTasksResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribeBundleTasksResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Bundle Tasks Response Unmarshaller</Abstract>
+			<DeclaredIn>EC2DescribeBundleTasksResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="469"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

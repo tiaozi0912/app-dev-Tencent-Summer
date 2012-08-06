@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingBlockDeviceMappingUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingBlockDeviceMappingUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Block Device Mapping Unmarshaller</Abstract>
+			<DeclaredIn>AutoScalingBlockDeviceMappingUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="37"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

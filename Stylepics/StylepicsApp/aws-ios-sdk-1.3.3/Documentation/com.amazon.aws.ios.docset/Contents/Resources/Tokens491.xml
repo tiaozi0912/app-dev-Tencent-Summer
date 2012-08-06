@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribeInstanceStatusRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribeInstanceStatusRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Instance Status Request Marshaller</Abstract>
+			<DeclaredIn>EC2DescribeInstanceStatusRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="491"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S3BucketLifecycleConfigurationUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S3BucketLifecycleConfigurationUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Creates an S3BucketLifecycleConfiguration from an XML service repsonse.</Abstract>
+			<DeclaredIn>S3BucketLifecycleConfigurationUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="952"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3BucketLifecycleConfigurationUnmarshaller/setConfiguration:</TokenIdentifier>
+			<Abstract type="html">The S3BucketLifecycleConfiguration represented by the XML</Abstract>
+			<DeclaredIn>S3BucketLifecycleConfigurationUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) S3BucketLifecycleConfiguration *configuration</Declaration>
+			
+			
+			<Anchor>//api/name/configuration</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3BucketLifecycleConfigurationUnmarshaller/configuration</TokenIdentifier>
+			<Abstract type="html">The S3BucketLifecycleConfiguration represented by the XML</Abstract>
+			<DeclaredIn>S3BucketLifecycleConfigurationUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) S3BucketLifecycleConfiguration *configuration</Declaration>
+			
+			
+			<Anchor>//api/name/configuration</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

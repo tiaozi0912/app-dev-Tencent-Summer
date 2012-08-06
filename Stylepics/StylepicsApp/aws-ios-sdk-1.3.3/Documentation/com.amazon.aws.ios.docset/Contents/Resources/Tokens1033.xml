@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S3OwnerUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S3OwnerUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Creates an S3Owner from the an XML service response</Abstract>
+			<DeclaredIn>S3OwnerUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1033"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3OwnerUnmarshaller/setOwner:</TokenIdentifier>
+			<Abstract type="html">The S3Owner represented by the XML</Abstract>
+			<DeclaredIn>S3OwnerUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) S3Owner *owner</Declaration>
+			
+			
+			<Anchor>//api/name/owner</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3OwnerUnmarshaller/owner</TokenIdentifier>
+			<Abstract type="html">The S3Owner represented by the XML</Abstract>
+			<DeclaredIn>S3OwnerUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) S3Owner *owner</Declaration>
+			
+			
+			<Anchor>//api/name/owner</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

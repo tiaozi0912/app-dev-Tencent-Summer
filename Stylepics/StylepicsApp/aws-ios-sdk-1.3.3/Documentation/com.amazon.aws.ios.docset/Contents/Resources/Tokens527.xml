@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribeSnapshotAttributeRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribeSnapshotAttributeRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Snapshot Attribute Request Marshaller</Abstract>
+			<DeclaredIn>EC2DescribeSnapshotAttributeRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="527"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

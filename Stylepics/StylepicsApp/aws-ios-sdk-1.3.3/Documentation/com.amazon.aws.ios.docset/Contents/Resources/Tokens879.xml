@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ElasticLoadBalancingDisableAvailabilityZonesForLoadBalancerRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ElasticLoadBalancingDisableAvailabilityZonesForLoadBalancerRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Disable Availability Zones For Load Balancer Request Marshaller</Abstract>
+			<DeclaredIn>ElasticLoadBalancingDisableAvailabilityZonesForLoadBalancerRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="879"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

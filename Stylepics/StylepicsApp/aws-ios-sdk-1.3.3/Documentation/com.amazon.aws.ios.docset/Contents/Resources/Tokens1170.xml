@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SNSListSubscriptionsByTopicRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SNSListSubscriptionsByTopicRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">List Subscriptions By Topic Request Marshaller</Abstract>
+			<DeclaredIn>SNSListSubscriptionsByTopicRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1170"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

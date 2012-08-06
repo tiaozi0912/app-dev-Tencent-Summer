@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingDescribeLaunchConfigurationsResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingDescribeLaunchConfigurationsResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Launch Configurations Result Unmarshaller</Abstract>
+			<DeclaredIn>AutoScalingDescribeLaunchConfigurationsResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="84"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

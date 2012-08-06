@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SecurityTokenServiceCredentialsUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceCredentialsUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Credentials Unmarshaller</Abstract>
+			<DeclaredIn>SecurityTokenServiceCredentialsUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1294"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

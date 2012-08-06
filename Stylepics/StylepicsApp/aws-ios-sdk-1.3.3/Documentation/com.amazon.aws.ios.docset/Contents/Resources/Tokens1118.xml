@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESSetIdentityDkimEnabledRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESSetIdentityDkimEnabledRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Set Identity Dkim Enabled Request Marshaller</Abstract>
+			<DeclaredIn>SESSetIdentityDkimEnabledRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1118"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

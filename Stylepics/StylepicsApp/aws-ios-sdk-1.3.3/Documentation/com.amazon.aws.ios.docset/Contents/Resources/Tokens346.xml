@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2AllocateAddressResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2AllocateAddressResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Allocate Address Response Unmarshaller</Abstract>
+			<DeclaredIn>EC2AllocateAddressResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="346"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingAlarmUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingAlarmUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Alarm Unmarshaller</Abstract>
+			<DeclaredIn>AutoScalingAlarmUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="30"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

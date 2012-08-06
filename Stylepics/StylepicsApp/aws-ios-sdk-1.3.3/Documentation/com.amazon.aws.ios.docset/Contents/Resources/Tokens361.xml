@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2AvailabilityZoneUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2AvailabilityZoneUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Availability Zone Unmarshaller</Abstract>
+			<DeclaredIn>EC2AvailabilityZoneUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="361"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ElasticLoadBalancingAppCookieStickinessPolicyUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ElasticLoadBalancingAppCookieStickinessPolicyUnmarshaller</TokenIdentifier>
+			<Abstract type="html">App Cookie Stickiness Policy Unmarshaller</Abstract>
+			<DeclaredIn>ElasticLoadBalancingAppCookieStickinessPolicyUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="809"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

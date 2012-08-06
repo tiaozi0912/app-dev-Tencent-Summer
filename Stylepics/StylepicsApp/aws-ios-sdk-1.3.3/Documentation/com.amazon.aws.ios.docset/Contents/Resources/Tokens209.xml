@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/CloudWatchDisableAlarmActionsRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/CloudWatchDisableAlarmActionsRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Disable Alarm Actions Request Marshaller</Abstract>
+			<DeclaredIn>CloudWatchDisableAlarmActionsRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="209"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

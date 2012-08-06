@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2BundleTaskErrorUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2BundleTaskErrorUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Bundle Task Error Unmarshaller</Abstract>
+			<DeclaredIn>EC2BundleTaskErrorUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="370"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

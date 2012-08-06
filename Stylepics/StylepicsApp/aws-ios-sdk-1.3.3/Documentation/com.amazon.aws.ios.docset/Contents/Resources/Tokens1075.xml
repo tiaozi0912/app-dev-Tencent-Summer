@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESGetIdentityNotificationAttributesResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESGetIdentityNotificationAttributesResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Get Identity Notification Attributes Result Unmarshaller</Abstract>
+			<DeclaredIn>SESGetIdentityNotificationAttributesResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1075"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

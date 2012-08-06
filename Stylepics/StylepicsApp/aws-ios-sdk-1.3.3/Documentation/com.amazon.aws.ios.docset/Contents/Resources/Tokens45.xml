@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingCreateOrUpdateTagsRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingCreateOrUpdateTagsRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Create Or Update Tags Request Marshaller</Abstract>
+			<DeclaredIn>AutoScalingCreateOrUpdateTagsRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="45"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingDeleteTagsRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingDeleteTagsRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Tags Request Marshaller</Abstract>
+			<DeclaredIn>AutoScalingDeleteTagsRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="63"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

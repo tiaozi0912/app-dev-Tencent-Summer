@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBUpdateTableRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBUpdateTableRequest</TokenIdentifier>
+			<Abstract type="html">Update Table Request</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>
+			
+			<NodeRef refid="331"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateTableRequest/setTableName:</TokenIdentifier>
+			<Abstract type="html">The name of the table you want to update. Allowed characters are
+&lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;, &lt;code&gt;_&lt;/code&gt;
+(underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and &lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBUpdateTableRequest/tableName</TokenIdentifier>
+			<Abstract type="html">The name of the table you want to update. Allowed characters are
+&lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;, &lt;code&gt;_&lt;/code&gt;
+(underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and &lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateTableRequest/setProvisionedThroughput:</TokenIdentifier>
+			<Abstract type="html">Provisioned throughput reserves the required read and write resources
+for your table in terms of &lt;code&gt;ReadCapacityUnits&lt;/code&gt; and
+&lt;code&gt;WriteCapacityUnits&lt;/code&gt;. Values for provisioned throughput
+depend upon your expected read/write rates, item size, and
+consistency. Provide the expected number of read and write operations,
+assuming an item size of 1k and strictly consistent reads. For 2k item
+size, double the value. For 3k, triple the value, etc.
+Eventually-consistent reads consume half the resources of strictly
+consistent reads.</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBProvisionedThroughput *provisionedThroughput</Declaration>
+			
+			
+			<Anchor>//api/name/provisionedThroughput</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBUpdateTableRequest/provisionedThroughput</TokenIdentifier>
+			<Abstract type="html">Provisioned throughput reserves the required read and write resources
+for your table in terms of &lt;code&gt;ReadCapacityUnits&lt;/code&gt; and
+&lt;code&gt;WriteCapacityUnits&lt;/code&gt;. Values for provisioned throughput
+depend upon your expected read/write rates, item size, and
+consistency. Provide the expected number of read and write operations,
+assuming an item size of 1k and strictly consistent reads. For 2k item
+size, double the value. For 3k, triple the value, etc.
+Eventually-consistent reads consume half the resources of strictly
+consistent reads.</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBProvisionedThroughput *provisionedThroughput</Declaration>
+			
+			
+			<Anchor>//api/name/provisionedThroughput</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateTableRequest/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new UpdateTableRequest object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateTableRequest/initWithTableName:andProvisionedThroughput:</TokenIdentifier>
+			<Abstract type="html">Constructs a new UpdateTableRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTableName:(NSString *)theTableName andProvisionedThroughput:(DynamoDBProvisionedThroughput *)theProvisionedThroughput</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theTableName</Name>
+					<Abstract type="html">The name of the table you want to update. Allowed
+characters are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;,
+&lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and
+&lt;code&gt;.&lt;/code&gt; (period).</Abstract>
+				</Parameter><Parameter>
+					<Name>theProvisionedThroughput</Name>
+					<Abstract type="html">Provisioned throughput reserves the
+required read and write resources for your table in terms of
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt; and &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.
+Values for provisioned throughput depend upon your expected read/write
+rates, item size, and consistency. Provide the expected number of read
+and write operations, assuming an item size of 1k and strictly
+consistent reads. For 2k item size, double the value. For 3k, triple
+the value, etc. Eventually-consistent reads consume half the resources
+of strictly consistent reads.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTableName:andProvisionedThroughput:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateTableRequest/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBUpdateTableRequest.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESDeleteVerifiedEmailAddressRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESDeleteVerifiedEmailAddressRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Verified Email Address Request Marshaller</Abstract>
+			<DeclaredIn>SESDeleteVerifiedEmailAddressRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1065"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

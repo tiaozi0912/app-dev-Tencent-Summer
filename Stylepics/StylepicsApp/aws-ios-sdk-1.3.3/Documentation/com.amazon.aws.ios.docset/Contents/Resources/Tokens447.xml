@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DeleteSpotDatafeedSubscriptionRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DeleteSpotDatafeedSubscriptionRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Spot Datafeed Subscription Request Marshaller</Abstract>
+			<DeclaredIn>EC2DeleteSpotDatafeedSubscriptionRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="447"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

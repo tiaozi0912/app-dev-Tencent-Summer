@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2GetConsoleOutputRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2GetConsoleOutputRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Get Console Output Request Marshaller</Abstract>
+			<DeclaredIn>EC2GetConsoleOutputRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="590"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

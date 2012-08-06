@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2TagDescriptionUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2TagDescriptionUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Tag Description Unmarshaller</Abstract>
+			<DeclaredIn>EC2TagDescriptionUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="781"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

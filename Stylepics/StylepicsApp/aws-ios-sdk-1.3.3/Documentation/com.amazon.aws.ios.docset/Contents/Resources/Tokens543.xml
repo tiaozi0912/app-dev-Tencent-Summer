@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribeSpotPriceHistoryRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribeSpotPriceHistoryRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Spot Price History Request Marshaller</Abstract>
+			<DeclaredIn>EC2DescribeSpotPriceHistoryRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="543"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

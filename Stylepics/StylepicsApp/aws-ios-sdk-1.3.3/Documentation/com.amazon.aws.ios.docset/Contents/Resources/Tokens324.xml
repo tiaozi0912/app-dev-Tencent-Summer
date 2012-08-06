@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBScanResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBScanResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Scan Result Unmarshaller</Abstract>
+			<DeclaredIn>DynamoDBScanResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="324"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

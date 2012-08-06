@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2AssociateAddressRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2AssociateAddressRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Associate Address Request Marshaller</Abstract>
+			<DeclaredIn>EC2AssociateAddressRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="348"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

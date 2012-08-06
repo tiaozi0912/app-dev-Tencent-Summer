@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DescribeImageAttributeResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DescribeImageAttributeResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Image Attribute Response Unmarshaller</Abstract>
+			<DeclaredIn>EC2DescribeImageAttributeResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="481"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

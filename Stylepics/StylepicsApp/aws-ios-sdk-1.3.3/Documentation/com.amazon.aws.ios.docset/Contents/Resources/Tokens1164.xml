@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SNSGetTopicAttributesRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SNSGetTopicAttributesRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Get Topic Attributes Request Marshaller</Abstract>
+			<DeclaredIn>SNSGetTopicAttributesRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1164"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

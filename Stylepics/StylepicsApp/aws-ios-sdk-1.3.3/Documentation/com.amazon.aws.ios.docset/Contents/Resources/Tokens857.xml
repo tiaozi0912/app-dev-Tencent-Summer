@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ElasticLoadBalancingDeregisterInstancesFromLoadBalancerResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ElasticLoadBalancingDeregisterInstancesFromLoadBalancerResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Deregister Instances From Load Balancer Result Unmarshaller</Abstract>
+			<DeclaredIn>ElasticLoadBalancingDeregisterInstancesFromLoadBalancerResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="857"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

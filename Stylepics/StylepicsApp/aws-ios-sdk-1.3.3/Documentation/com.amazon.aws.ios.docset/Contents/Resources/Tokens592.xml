@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2GetConsoleOutputResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2GetConsoleOutputResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Get Console Output Response Unmarshaller</Abstract>
+			<DeclaredIn>EC2GetConsoleOutputResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="592"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

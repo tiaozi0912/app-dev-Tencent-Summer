@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESSendRawEmailResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESSendRawEmailResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Send Raw Email Result Unmarshaller</Abstract>
+			<DeclaredIn>SESSendRawEmailResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1116"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

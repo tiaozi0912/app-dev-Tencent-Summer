@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2SnapshotUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2SnapshotUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Snapshot Unmarshaller</Abstract>
+			<DeclaredIn>EC2SnapshotUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="756"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

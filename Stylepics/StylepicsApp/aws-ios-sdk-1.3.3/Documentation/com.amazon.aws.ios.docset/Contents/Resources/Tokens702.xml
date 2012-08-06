@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2PurchaseReservedInstancesOfferingRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2PurchaseReservedInstancesOfferingRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Purchase Reserved Instances Offering Request Marshaller</Abstract>
+			<DeclaredIn>EC2PurchaseReservedInstancesOfferingRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="702"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

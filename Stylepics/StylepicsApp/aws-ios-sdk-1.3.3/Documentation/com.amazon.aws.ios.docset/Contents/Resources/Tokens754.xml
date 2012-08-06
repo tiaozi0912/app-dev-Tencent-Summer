@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2SecurityGroupUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2SecurityGroupUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Security Group Unmarshaller</Abstract>
+			<DeclaredIn>EC2SecurityGroupUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="754"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

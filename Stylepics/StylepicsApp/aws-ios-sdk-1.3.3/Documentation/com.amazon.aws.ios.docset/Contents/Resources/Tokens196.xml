@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/CloudWatchDescribeAlarmHistoryResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/CloudWatchDescribeAlarmHistoryResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Alarm History Result Unmarshaller</Abstract>
+			<DeclaredIn>CloudWatchDescribeAlarmHistoryResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="196"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

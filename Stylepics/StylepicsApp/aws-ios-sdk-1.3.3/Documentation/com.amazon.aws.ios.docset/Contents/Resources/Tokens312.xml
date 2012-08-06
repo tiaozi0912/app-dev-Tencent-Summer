@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBPutRequestUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBPutRequestUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Put Request Unmarshaller</Abstract>
+			<DeclaredIn>DynamoDBPutRequestUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="312"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

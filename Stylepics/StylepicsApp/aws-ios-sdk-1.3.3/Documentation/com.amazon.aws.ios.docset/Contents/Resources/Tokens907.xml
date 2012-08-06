@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ElasticLoadBalancingLoadBalancerDescriptionUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ElasticLoadBalancingLoadBalancerDescriptionUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Load Balancer Description Unmarshaller</Abstract>
+			<DeclaredIn>ElasticLoadBalancingLoadBalancerDescriptionUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="907"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

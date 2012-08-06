@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESVerifyDomainDkimResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESVerifyDomainDkimResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Verify Domain Dkim Result Unmarshaller</Abstract>
+			<DeclaredIn>SESVerifyDomainDkimResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1132"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

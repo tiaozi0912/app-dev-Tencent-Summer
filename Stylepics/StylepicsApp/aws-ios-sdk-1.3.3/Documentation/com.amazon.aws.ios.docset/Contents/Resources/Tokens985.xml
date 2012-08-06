@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S3DeleteObjectsResultUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S3DeleteObjectsResultUnmarshaller</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>S3DeleteObjectsResultUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="985"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3DeleteObjectsResultUnmarshaller/setDeletedObjects:</TokenIdentifier>
+			<Abstract type="html">The list of DeletedObjects represented by the XML</Abstract>
+			<DeclaredIn>S3DeleteObjectsResultUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *deletedObjects</Declaration>
+			
+			
+			<Anchor>//api/name/deletedObjects</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3DeleteObjectsResultUnmarshaller/deletedObjects</TokenIdentifier>
+			<Abstract type="html">The list of DeletedObjects represented by the XML</Abstract>
+			<DeclaredIn>S3DeleteObjectsResultUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *deletedObjects</Declaration>
+			
+			
+			<Anchor>//api/name/deletedObjects</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S3DeleteObjectsResultUnmarshaller/setDeleteErrors:</TokenIdentifier>
+			<Abstract type="html">The list of DeleteErrors represented by the XML</Abstract>
+			<DeclaredIn>S3DeleteObjectsResultUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *deleteErrors</Declaration>
+			
+			
+			<Anchor>//api/name/deleteErrors</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S3DeleteObjectsResultUnmarshaller/deleteErrors</TokenIdentifier>
+			<Abstract type="html">The list of DeleteErrors represented by the XML</Abstract>
+			<DeclaredIn>S3DeleteObjectsResultUnmarshaller.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSMutableArray *deleteErrors</Declaration>
+			
+			
+			<Anchor>//api/name/deleteErrors</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2StorageUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2StorageUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Storage Unmarshaller</Abstract>
+			<DeclaredIn>EC2StorageUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="778"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

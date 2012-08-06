@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SNSPublishRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SNSPublishRequest</TokenIdentifier>
+			<Abstract type="html">Publish Request</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>
+			
+			<NodeRef refid="1182"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/setTopicArn:</TokenIdentifier>
+			<Abstract type="html">The topic you want to publish to.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *topicArn</Declaration>
+			
+			
+			<Anchor>//api/name/topicArn</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SNSPublishRequest/topicArn</TokenIdentifier>
+			<Abstract type="html">The topic you want to publish to.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *topicArn</Declaration>
+			
+			
+			<Anchor>//api/name/topicArn</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/setMessage:</TokenIdentifier>
+			<Abstract type="html">The message you want to send to the topic. &lt;p&gt;Constraints: Messages
+must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
+8192 characters).</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *message</Declaration>
+			
+			
+			<Anchor>//api/name/message</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SNSPublishRequest/message</TokenIdentifier>
+			<Abstract type="html">The message you want to send to the topic. &lt;p&gt;Constraints: Messages
+must be UTF-8 encoded strings at most 8 KB in size (8192 bytes, not
+8192 characters).</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *message</Declaration>
+			
+			
+			<Anchor>//api/name/message</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/setSubject:</TokenIdentifier>
+			<Abstract type="html">Optional parameter to be used as the &quot;Subject&quot; line of when the
+message is delivered to e-mail endpoints. This field will also be
+included, if present, in the standard JSON messages delivered to other
+endpoints. &lt;p&gt;Constraints: Subjects must be ASCII text that begins
+with a letter, number or punctuation mark; must not include line
+breaks or control characters; and must be less than 100 characters
+long.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *subject</Declaration>
+			
+			
+			<Anchor>//api/name/subject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SNSPublishRequest/subject</TokenIdentifier>
+			<Abstract type="html">Optional parameter to be used as the &quot;Subject&quot; line of when the
+message is delivered to e-mail endpoints. This field will also be
+included, if present, in the standard JSON messages delivered to other
+endpoints. &lt;p&gt;Constraints: Subjects must be ASCII text that begins
+with a letter, number or punctuation mark; must not include line
+breaks or control characters; and must be less than 100 characters
+long.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *subject</Declaration>
+			
+			
+			<Anchor>//api/name/subject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/setMessageStructure:</TokenIdentifier>
+			<Abstract type="html">Optional parameter. It will have one valid value: &quot;json&quot;. If this
+option, Message is present and set to &quot;json&quot;, the value of Message
+must: be a syntactically valid JSON object. It must contain at least a
+top level JSON key of &quot;default&quot; with a value that is a string. For any
+other top level key that matches one of our transport protocols (e.g.
+&quot;http&quot;), then the corresponding value (if it is a string) will be used
+for the message published for that protocol &lt;p&gt;Constraints: Keys in
+the JSON object that correspond to supported transport protocols must
+have simple JSON string values. The values will be parsed (unescaped)
+before they are used in outgoing messages. Typically, outbound
+notifications are JSON encoded (meaning, the characters will be
+reescaped for sending). JSON strings are UTF-8. Values have a minimum
+length of 0 (the empty string, &quot;&quot;, is allowed). Values have a maximum
+length bounded by the overall message size (so, including multiple
+protocols may limit message sizes). Non-string values will cause the
+key to be ignored. Keys that do not correspond to supported transport
+protocols will be ignored. Duplicate keys are not allowed. Failure to
+parse or validate any key or value in the message will cause the
+Publish call to return an error (no partial delivery).</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *messageStructure</Declaration>
+			
+			
+			<Anchor>//api/name/messageStructure</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SNSPublishRequest/messageStructure</TokenIdentifier>
+			<Abstract type="html">Optional parameter. It will have one valid value: &quot;json&quot;. If this
+option, Message is present and set to &quot;json&quot;, the value of Message
+must: be a syntactically valid JSON object. It must contain at least a
+top level JSON key of &quot;default&quot; with a value that is a string. For any
+other top level key that matches one of our transport protocols (e.g.
+&quot;http&quot;), then the corresponding value (if it is a string) will be used
+for the message published for that protocol &lt;p&gt;Constraints: Keys in
+the JSON object that correspond to supported transport protocols must
+have simple JSON string values. The values will be parsed (unescaped)
+before they are used in outgoing messages. Typically, outbound
+notifications are JSON encoded (meaning, the characters will be
+reescaped for sending). JSON strings are UTF-8. Values have a minimum
+length of 0 (the empty string, &quot;&quot;, is allowed). Values have a maximum
+length bounded by the overall message size (so, including multiple
+protocols may limit message sizes). Non-string values will cause the
+key to be ignored. Keys that do not correspond to supported transport
+protocols will be ignored. Duplicate keys are not allowed. Failure to
+parse or validate any key or value in the message will cause the
+Publish call to return an error (no partial delivery).</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *messageStructure</Declaration>
+			
+			
+			<Anchor>//api/name/messageStructure</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new PublishRequest object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/initWithTopicArn:andMessage:</TokenIdentifier>
+			<Abstract type="html">Constructs a new PublishRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTopicArn:(NSString *)theTopicArn andMessage:(NSString *)theMessage</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theTopicArn</Name>
+					<Abstract type="html">The topic you want to publish to.</Abstract>
+				</Parameter><Parameter>
+					<Name>theMessage</Name>
+					<Abstract type="html">The message you want to send to the topic.
+&lt;p&gt;Constraints: Messages must be UTF-8 encoded strings at most 8 KB in
+size (8192 bytes, not 8192 characters).</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTopicArn:andMessage:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/initWithTopicArn:andMessage:andSubject:</TokenIdentifier>
+			<Abstract type="html">Constructs a new PublishRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTopicArn:(NSString *)theTopicArn andMessage:(NSString *)theMessage andSubject:(NSString *)theSubject</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theTopicArn</Name>
+					<Abstract type="html">The topic you want to publish to.</Abstract>
+				</Parameter><Parameter>
+					<Name>theMessage</Name>
+					<Abstract type="html">The message you want to send to the topic.
+&lt;p&gt;Constraints: Messages must be UTF-8 encoded strings at most 8 KB in
+size (8192 bytes, not 8192 characters).</Abstract>
+				</Parameter><Parameter>
+					<Name>theSubject</Name>
+					<Abstract type="html">Optional parameter to be used as the &quot;Subject&quot; line
+of when the message is delivered to e-mail endpoints. This field will
+also be included, if present, in the standard JSON messages delivered
+to other endpoints. &lt;p&gt;Constraints: Subjects must be ASCII text that
+begins with a letter, number or punctuation mark; must not include
+line breaks or control characters; and must be less than 100
+characters long.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTopicArn:andMessage:andSubject:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SNSPublishRequest/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>SNSPublishRequest.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ConversionTaskUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ConversionTaskUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Conversion Task Unmarshaller</Abstract>
+			<DeclaredIn>EC2ConversionTaskUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="393"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

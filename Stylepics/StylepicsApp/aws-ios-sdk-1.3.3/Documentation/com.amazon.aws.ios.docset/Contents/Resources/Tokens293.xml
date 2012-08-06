@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBKeySchemaElementUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBKeySchemaElementUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Key Schema Element Unmarshaller</Abstract>
+			<DeclaredIn>DynamoDBKeySchemaElementUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="293"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

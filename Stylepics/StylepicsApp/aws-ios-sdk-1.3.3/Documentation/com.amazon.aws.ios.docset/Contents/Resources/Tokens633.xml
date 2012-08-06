@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2InstanceExportDetailsUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2InstanceExportDetailsUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Instance Export Details Unmarshaller</Abstract>
+			<DeclaredIn>EC2InstanceExportDetailsUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="633"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AmazonUnmarshallerXMLParserDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AmazonUnmarshallerXMLParserDelegate</TokenIdentifier>
+			<Abstract type="html">Base class for type-specific response unmarshallers.</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>
+			
+			<NodeRef refid="23"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonUnmarshallerXMLParserDelegate/setCurrentText:</TokenIdentifier>
+			<Abstract type="html">Inner text of the current XML node</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *currentText</Declaration>
+			
+			
+			<Anchor>//api/name/currentText</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonUnmarshallerXMLParserDelegate/currentText</TokenIdentifier>
+			<Abstract type="html">Inner text of the current XML node</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) NSString *currentText</Declaration>
+			
+			
+			<Anchor>//api/name/currentText</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonUnmarshallerXMLParserDelegate/setCurrentTag:</TokenIdentifier>
+			<Abstract type="html">The tag name of the current XML node</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *currentTag</Declaration>
+			
+			
+			<Anchor>//api/name/currentTag</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonUnmarshallerXMLParserDelegate/currentTag</TokenIdentifier>
+			<Abstract type="html">The tag name of the current XML node</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *currentTag</Declaration>
+			
+			
+			<Anchor>//api/name/currentTag</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonUnmarshallerXMLParserDelegate/setEndElementTagName:</TokenIdentifier>
+			<Abstract type="html">If an alias has been set, this is the expected container tag for the unmarshaller.</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *endElementTagName</Declaration>
+			
+			
+			<Anchor>//api/name/endElementTagName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AmazonUnmarshallerXMLParserDelegate/endElementTagName</TokenIdentifier>
+			<Abstract type="html">If an alias has been set, this is the expected container tag for the unmarshaller.</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *endElementTagName</Declaration>
+			
+			
+			<Anchor>//api/name/endElementTagName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonUnmarshallerXMLParserDelegate/initWithCaller:withParentObject:withSetter:</TokenIdentifier>
+			<Abstract type="html">Set up this unmarshaller at the bottom of a call chain.
+When parsing nested tags, control is handed to another delegate.
+When that delegate is done, it will
+&lt;ul&gt;
+&lt;li&gt;set the parser&apos;s delegate to the caller, returning control to it.&lt;/li&gt;
+&lt;li&gt;assign the object it created to the parent field with &lt;code&gt;[parent setter:object]&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (AmazonUnmarshallerXMLParserDelegate *)initWithCaller:(AmazonUnmarshallerXMLParserDelegate *)aCaller withParentObject:(id)parent withSetter:(SEL)setter</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>aCaller</Name>
+					<Abstract type="html">The unmarshaller to return control to when this one is done</Abstract>
+				</Parameter><Parameter>
+					<Name>parent</Name>
+					<Abstract type="html">The object to set my unmarshalled value on</Abstract>
+				</Parameter><Parameter>
+					<Name>setter</Name>
+					<Abstract type="html">The setter to call on the parent object</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithCaller:withParentObject:withSetter:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AmazonUnmarshallerXMLParserDelegate/initWithCaller:withParentObject:withSetter:withAlias:</TokenIdentifier>
+			<Abstract type="html">Set up this unmarshaller at the bottom of a call chain.
+When parsing nested tags, control is handed to another delegate.
+When that delegate is done, it will
+&lt;ul&gt;
+&lt;li&gt;set the parser&apos;s delegate to the caller, returning control to it.&lt;/li&gt;
+&lt;li&gt;assign the object it created to the parent field with &lt;code&gt;[parent setter:object]&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;</Abstract>
+			<DeclaredIn>AmazonUnmarshallerXMLParserDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (AmazonUnmarshallerXMLParserDelegate *)initWithCaller:(AmazonUnmarshallerXMLParserDelegate *)aCaller withParentObject:(id)parent withSetter:(SEL)setter withAlias:(NSString *)alias</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>aCaller</Name>
+					<Abstract type="html">The unmarshaller to return control to when this one is done</Abstract>
+				</Parameter><Parameter>
+					<Name>parent</Name>
+					<Abstract type="html">The object to set my unmarshalled value on</Abstract>
+				</Parameter><Parameter>
+					<Name>setter</Name>
+					<Abstract type="html">The setter to call on the parent object</Abstract>
+				</Parameter><Parameter>
+					<Name>alias</Name>
+					<Abstract type="html">Use this parser for a different container tag which has the same contents.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithCaller:withParentObject:withSetter:withAlias:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

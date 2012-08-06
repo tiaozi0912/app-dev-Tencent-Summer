@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBSelectRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBSelectRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Select Request Marshaller</Abstract>
+			<DeclaredIn>SimpleDBSelectRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1365"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

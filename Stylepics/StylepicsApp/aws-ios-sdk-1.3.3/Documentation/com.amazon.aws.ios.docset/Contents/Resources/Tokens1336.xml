@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBGetAttributesResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBGetAttributesResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Get Attributes Result Unmarshaller</Abstract>
+			<DeclaredIn>SimpleDBGetAttributesResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1336"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSChangeMessageVisibilityBatchResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSChangeMessageVisibilityBatchResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Change Message Visibility Batch Result Unmarshaller</Abstract>
+			<DeclaredIn>SQSChangeMessageVisibilityBatchResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1223"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

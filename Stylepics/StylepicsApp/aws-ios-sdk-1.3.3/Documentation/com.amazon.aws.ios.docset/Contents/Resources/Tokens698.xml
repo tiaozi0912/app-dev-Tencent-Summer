@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2PrivateIpAddressSpecificationUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2PrivateIpAddressSpecificationUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Private Ip Address Specification Unmarshaller</Abstract>
+			<DeclaredIn>EC2PrivateIpAddressSpecificationUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="698"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

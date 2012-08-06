@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESListVerifiedEmailAddressesResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESListVerifiedEmailAddressesResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">List Verified Email Addresses Result Unmarshaller</Abstract>
+			<DeclaredIn>SESListVerifiedEmailAddressesResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1101"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

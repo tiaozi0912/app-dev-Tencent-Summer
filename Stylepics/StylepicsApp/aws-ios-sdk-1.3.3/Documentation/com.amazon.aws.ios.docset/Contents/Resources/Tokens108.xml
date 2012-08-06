@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingDescribeScheduledActionsResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingDescribeScheduledActionsResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Scheduled Actions Result Unmarshaller</Abstract>
+			<DeclaredIn>AutoScalingDescribeScheduledActionsResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="108"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SNSListTopicsResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SNSListTopicsResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">List Topics Result Unmarshaller</Abstract>
+			<DeclaredIn>SNSListTopicsResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1180"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

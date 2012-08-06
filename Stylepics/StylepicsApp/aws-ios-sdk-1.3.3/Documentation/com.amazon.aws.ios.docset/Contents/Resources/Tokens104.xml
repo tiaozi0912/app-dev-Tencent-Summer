@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingDescribeScalingProcessTypesResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingDescribeScalingProcessTypesResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Scaling Process Types Result Unmarshaller</Abstract>
+			<DeclaredIn>AutoScalingDescribeScalingProcessTypesResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="104"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBCreateDomainRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBCreateDomainRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Create Domain Request Marshaller</Abstract>
+			<DeclaredIn>SimpleDBCreateDomainRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1319"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DeactivateLicenseRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DeactivateLicenseRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Deactivate License Request Marshaller</Abstract>
+			<DeclaredIn>EC2DeactivateLicenseRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="432"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

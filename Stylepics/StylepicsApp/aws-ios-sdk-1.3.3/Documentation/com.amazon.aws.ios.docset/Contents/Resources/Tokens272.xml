@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBDeleteItemResponse.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBDeleteItemResponse</TokenIdentifier>
+			<Abstract type="html">Delete Item Result</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>
+			
+			<NodeRef refid="272"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBDeleteItemResponse/setException:</TokenIdentifier>
+			<Abstract type="html">If an exception was thrown, this will return the exception.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>- (void)setException:(AmazonServiceException *)theException</Declaration>
+			
+			
+			<Anchor>//api/name/setException:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBDeleteItemResponse/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new  object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBDeleteItemResponse/setAttributes:</TokenIdentifier>
+			<Abstract type="html">If the &lt;code&gt;ReturnValues&lt;/code&gt; parameter is provided as
+&lt;code&gt;ALL_OLD&lt;/code&gt; in the request, Amazon DynamoDB returns an array
+of attribute name-value pairs (essentially, the deleted item).
+Otherwise, the response contains an empty set.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *attributes</Declaration>
+			
+			
+			<Anchor>//api/name/attributes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBDeleteItemResponse/attributes</TokenIdentifier>
+			<Abstract type="html">If the &lt;code&gt;ReturnValues&lt;/code&gt; parameter is provided as
+&lt;code&gt;ALL_OLD&lt;/code&gt; in the request, Amazon DynamoDB returns an array
+of attribute name-value pairs (essentially, the deleted item).
+Otherwise, the response contains an empty set.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *attributes</Declaration>
+			
+			
+			<Anchor>//api/name/attributes</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBDeleteItemResponse/setConsumedCapacityUnits:</TokenIdentifier>
+			<Abstract type="html">The number of Capacity Units of the provisioned throughput of the
+table consumed during the operation. &lt;code&gt;GetItem&lt;/code&gt;,
+&lt;code&gt;BatchGetItem&lt;/code&gt;, &lt;code&gt;BatchWriteItem&lt;/code&gt;,
+&lt;code&gt;Query&lt;/code&gt;, and &lt;code&gt;Scan&lt;/code&gt; operations consume
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt;, while &lt;code&gt;PutItem&lt;/code&gt;,
+&lt;code&gt;UpdateItem&lt;/code&gt;, and &lt;code&gt;DeleteItem&lt;/code&gt; operations
+consume &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *consumedCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/consumedCapacityUnits</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBDeleteItemResponse/consumedCapacityUnits</TokenIdentifier>
+			<Abstract type="html">The number of Capacity Units of the provisioned throughput of the
+table consumed during the operation. &lt;code&gt;GetItem&lt;/code&gt;,
+&lt;code&gt;BatchGetItem&lt;/code&gt;, &lt;code&gt;BatchWriteItem&lt;/code&gt;,
+&lt;code&gt;Query&lt;/code&gt;, and &lt;code&gt;Scan&lt;/code&gt; operations consume
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt;, while &lt;code&gt;PutItem&lt;/code&gt;,
+&lt;code&gt;UpdateItem&lt;/code&gt;, and &lt;code&gt;DeleteItem&lt;/code&gt; operations
+consume &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *consumedCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/consumedCapacityUnits</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBDeleteItemResponse/attributesValueForKey:</TokenIdentifier>
+			<Abstract type="html">Returns a value from the attributes dictionary for the specified key.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>- (DynamoDBAttributeValue *)attributesValueForKey:(NSString *)theKey</Declaration>
+			
+			
+			<Anchor>//api/name/attributesValueForKey:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBDeleteItemResponse/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBDeleteItemResponse.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

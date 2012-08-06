@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBScanRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBScanRequest</TokenIdentifier>
+			<Abstract type="html">Scan Request</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>
+			
+			<NodeRef refid="321"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/setTableName:</TokenIdentifier>
+			<Abstract type="html">The name of the table in which you want to scan. Allowed characters
+are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;,
+&lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and
+&lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanRequest/tableName</TokenIdentifier>
+			<Abstract type="html">The name of the table in which you want to scan. Allowed characters
+are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;,
+&lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and
+&lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/setAttributesToGet:</TokenIdentifier>
+			<Abstract type="html">List of &lt;code&gt;Attribute&lt;/code&gt; names. If attribute names are not
+specified then all attributes will be returned. If some attributes are
+not found, they will not appear in the result.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;1 - &lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *attributesToGet</Declaration>
+			
+			
+			<Anchor>//api/name/attributesToGet</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanRequest/attributesToGet</TokenIdentifier>
+			<Abstract type="html">List of &lt;code&gt;Attribute&lt;/code&gt; names. If attribute names are not
+specified then all attributes will be returned. If some attributes are
+not found, they will not appear in the result.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;1 - &lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *attributesToGet</Declaration>
+			
+			
+			<Anchor>//api/name/attributesToGet</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/setLimit:</TokenIdentifier>
+			<Abstract type="html">The maximum number of items to return. If Amazon DynamoDB hits this
+limit while scanning the table, it stops the scan and returns the
+matching values up to the limit, and a &lt;code&gt;LastEvaluatedKey&lt;/code&gt;
+to apply in a subsequent operation to continue the scan. Also, if the
+scanned data set size exceeds 1 MB before Amazon DynamoDB hits this
+limit, it stops the scan and returns the matching values up to the
+limit, and a &lt;code&gt;LastEvaluatedKey&lt;/code&gt; to apply in a subsequent
+operation to continue the scan.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Range: &lt;/b&gt;1 - &lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *limit</Declaration>
+			
+			
+			<Anchor>//api/name/limit</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanRequest/limit</TokenIdentifier>
+			<Abstract type="html">The maximum number of items to return. If Amazon DynamoDB hits this
+limit while scanning the table, it stops the scan and returns the
+matching values up to the limit, and a &lt;code&gt;LastEvaluatedKey&lt;/code&gt;
+to apply in a subsequent operation to continue the scan. Also, if the
+scanned data set size exceeds 1 MB before Amazon DynamoDB hits this
+limit, it stops the scan and returns the matching values up to the
+limit, and a &lt;code&gt;LastEvaluatedKey&lt;/code&gt; to apply in a subsequent
+operation to continue the scan.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Range: &lt;/b&gt;1 - &lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *limit</Declaration>
+			
+			
+			<Anchor>//api/name/limit</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/setCount:</TokenIdentifier>
+			<Abstract type="html">If set to &lt;code&gt;true&lt;/code&gt;, Amazon DynamoDB returns a total number of
+items for the &lt;code&gt;Scan&lt;/code&gt; operation, even if the operation has
+no matching items for the assigned filter. Do not set
+&lt;code&gt;Count&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; while providing a list of
+&lt;code&gt;AttributesToGet&lt;/code&gt;, otherwise Amazon DynamoDB returns a
+validation error.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) bool count</Declaration>
+			
+			
+			<Anchor>//api/name/count</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanRequest/count</TokenIdentifier>
+			<Abstract type="html">If set to &lt;code&gt;true&lt;/code&gt;, Amazon DynamoDB returns a total number of
+items for the &lt;code&gt;Scan&lt;/code&gt; operation, even if the operation has
+no matching items for the assigned filter. Do not set
+&lt;code&gt;Count&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; while providing a list of
+&lt;code&gt;AttributesToGet&lt;/code&gt;, otherwise Amazon DynamoDB returns a
+validation error.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) bool count</Declaration>
+			
+			
+			<Anchor>//api/name/count</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/setScanFilter:</TokenIdentifier>
+			<Abstract type="html">Evaluates the scan results and returns only the desired values.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *scanFilter</Declaration>
+			
+			
+			<Anchor>//api/name/scanFilter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanRequest/scanFilter</TokenIdentifier>
+			<Abstract type="html">Evaluates the scan results and returns only the desired values.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *scanFilter</Declaration>
+			
+			
+			<Anchor>//api/name/scanFilter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/setExclusiveStartKey:</TokenIdentifier>
+			<Abstract type="html">Primary key of the item from which to continue an earlier scan. An
+earlier scan might provide this value if that scan operation was
+interrupted before scanning the entire table; either because of the
+result set size or the &lt;code&gt;Limit&lt;/code&gt; parameter. The
+&lt;code&gt;LastEvaluatedKey&lt;/code&gt; can be passed back in a new scan request
+to continue the operation from that point.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKey *exclusiveStartKey</Declaration>
+			
+			
+			<Anchor>//api/name/exclusiveStartKey</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanRequest/exclusiveStartKey</TokenIdentifier>
+			<Abstract type="html">Primary key of the item from which to continue an earlier scan. An
+earlier scan might provide this value if that scan operation was
+interrupted before scanning the entire table; either because of the
+result set size or the &lt;code&gt;Limit&lt;/code&gt; parameter. The
+&lt;code&gt;LastEvaluatedKey&lt;/code&gt; can be passed back in a new scan request
+to continue the operation from that point.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKey *exclusiveStartKey</Declaration>
+			
+			
+			<Anchor>//api/name/exclusiveStartKey</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new ScanRequest object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/initWithTableName:</TokenIdentifier>
+			<Abstract type="html">Constructs a new ScanRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTableName:(NSString *)theTableName</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theTableName</Name>
+					<Abstract type="html">The name of the table in which you want to scan.
+Allowed characters are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;,
+&lt;code&gt;0-9&lt;/code&gt;, &lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen)
+and &lt;code&gt;.&lt;/code&gt; (period).</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTableName:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/addAttributesToGet:</TokenIdentifier>
+			<Abstract type="html">Adds a single object to attributesToGet.
+This function will alloc and init attributesToGet if not already done.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>- (void)addAttributesToGet:(NSString *)attributesToGetObject</Declaration>
+			
+			
+			<Anchor>//api/name/addAttributesToGet:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/setScanFilterValue:forKey:</TokenIdentifier>
+			<Abstract type="html">Set a value in the dictionary scanFilter for the specified key.
+This function will alloc and init scanFilter if not already done.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>- (void)setScanFilterValue:(DynamoDBCondition *)theValue forKey:(NSString *)theKey</Declaration>
+			
+			
+			<Anchor>//api/name/setScanFilterValue:forKey:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanRequest/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBScanRequest.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

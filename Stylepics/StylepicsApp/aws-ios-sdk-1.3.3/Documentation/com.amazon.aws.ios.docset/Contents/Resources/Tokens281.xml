@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBDescribeTableRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBDescribeTableRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Describe Table Request Marshaller</Abstract>
+			<DeclaredIn>DynamoDBDescribeTableRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="281"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

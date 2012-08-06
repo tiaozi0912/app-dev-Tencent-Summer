@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESDeleteIdentityResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESDeleteIdentityResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Identity Result Unmarshaller</Abstract>
+			<DeclaredIn>SESDeleteIdentityResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1063"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

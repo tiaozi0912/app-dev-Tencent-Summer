@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBUpdateItemRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBUpdateItemRequest</TokenIdentifier>
+			<Abstract type="html">Update Item Request</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>
+			
+			<NodeRef refid="327"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/setTableName:</TokenIdentifier>
+			<Abstract type="html">The name of the table in which you want to update an item. Allowed
+characters are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;,
+&lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and
+&lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBUpdateItemRequest/tableName</TokenIdentifier>
+			<Abstract type="html">The name of the table in which you want to update an item. Allowed
+characters are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;, &lt;code&gt;0-9&lt;/code&gt;,
+&lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen) and
+&lt;code&gt;.&lt;/code&gt; (period).
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;3 - 255&lt;br/&gt;
+&lt;b&gt;Pattern: &lt;/b&gt;[a-zA-Z0-9_.-]+&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *tableName</Declaration>
+			
+			
+			<Anchor>//api/name/tableName</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/setKey:</TokenIdentifier>
+			<Abstract type="html">The primary key that uniquely identifies each item in a table. A
+primary key can be a one attribute (hash) primary key or a two
+attribute (hash-and-range) primary key.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKey *key</Declaration>
+			
+			
+			<Anchor>//api/name/key</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBUpdateItemRequest/key</TokenIdentifier>
+			<Abstract type="html">The primary key that uniquely identifies each item in a table. A
+primary key can be a one attribute (hash) primary key or a two
+attribute (hash-and-range) primary key.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKey *key</Declaration>
+			
+			
+			<Anchor>//api/name/key</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/setAttributeUpdates:</TokenIdentifier>
+			<Abstract type="html">Map of attribute name to the new value and action for the update. The
+attribute names specify the attributes to modify, and cannot contain
+any primary key attributes.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *attributeUpdates</Declaration>
+			
+			
+			<Anchor>//api/name/attributeUpdates</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBUpdateItemRequest/attributeUpdates</TokenIdentifier>
+			<Abstract type="html">Map of attribute name to the new value and action for the update. The
+attribute names specify the attributes to modify, and cannot contain
+any primary key attributes.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *attributeUpdates</Declaration>
+			
+			
+			<Anchor>//api/name/attributeUpdates</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/setExpected:</TokenIdentifier>
+			<Abstract type="html">Designates an attribute for a conditional modification. The
+&lt;code&gt;Expected&lt;/code&gt; parameter allows you to provide an attribute
+name, and whether or not Amazon DynamoDB should check to see if the
+attribute has a particular value before modifying it.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *expected</Declaration>
+			
+			
+			<Anchor>//api/name/expected</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBUpdateItemRequest/expected</TokenIdentifier>
+			<Abstract type="html">Designates an attribute for a conditional modification. The
+&lt;code&gt;Expected&lt;/code&gt; parameter allows you to provide an attribute
+name, and whether or not Amazon DynamoDB should check to see if the
+attribute has a particular value before modifying it.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *expected</Declaration>
+			
+			
+			<Anchor>//api/name/expected</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/setReturnValues:</TokenIdentifier>
+			<Abstract type="html">Use this parameter if you want to get the attribute name-value pairs
+before or after they are modified. For &lt;code&gt;PUT&lt;/code&gt; operations,
+the possible parameter values are &lt;code&gt;NONE&lt;/code&gt; (default) or
+&lt;code&gt;ALL_OLD&lt;/code&gt;. For update operations, the possible parameter
+values are &lt;code&gt;NONE&lt;/code&gt; (default) or &lt;code&gt;ALL_OLD&lt;/code&gt;,
+&lt;code&gt;UPDATEDOLD&lt;/code&gt;, &lt;code&gt;ALLNEW&lt;/code&gt; or
+&lt;code&gt;UPDATED_NEW&lt;/code&gt;. &lt;ul&gt; &lt;li&gt;&lt;code&gt;NONE&lt;/code&gt;: Nothing is
+returned.&lt;/li&gt; &lt;li&gt;&lt;code&gt;ALL_OLD&lt;/code&gt;: Returns the attributes of the
+item as they were before the operation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UPDATED_OLD&lt;/code&gt;: Returns the values of the updated
+attributes, only, as they were before the operation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ALL_NEW&lt;/code&gt;: Returns all the attributes and their new
+values after the operation.&lt;/li&gt; &lt;li&gt;&lt;code&gt;UPDATED_NEW&lt;/code&gt;: Returns
+the values of the updated attributes, only, as they are after the
+operation.&lt;/li&gt; &lt;/ul&gt;
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Allowed Values: &lt;/b&gt;NONE, ALLOLD, UPDATEDOLD, ALLNEW, UPDATEDNEW</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *returnValues</Declaration>
+			
+			
+			<Anchor>//api/name/returnValues</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBUpdateItemRequest/returnValues</TokenIdentifier>
+			<Abstract type="html">Use this parameter if you want to get the attribute name-value pairs
+before or after they are modified. For &lt;code&gt;PUT&lt;/code&gt; operations,
+the possible parameter values are &lt;code&gt;NONE&lt;/code&gt; (default) or
+&lt;code&gt;ALL_OLD&lt;/code&gt;. For update operations, the possible parameter
+values are &lt;code&gt;NONE&lt;/code&gt; (default) or &lt;code&gt;ALL_OLD&lt;/code&gt;,
+&lt;code&gt;UPDATEDOLD&lt;/code&gt;, &lt;code&gt;ALLNEW&lt;/code&gt; or
+&lt;code&gt;UPDATED_NEW&lt;/code&gt;. &lt;ul&gt; &lt;li&gt;&lt;code&gt;NONE&lt;/code&gt;: Nothing is
+returned.&lt;/li&gt; &lt;li&gt;&lt;code&gt;ALL_OLD&lt;/code&gt;: Returns the attributes of the
+item as they were before the operation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UPDATED_OLD&lt;/code&gt;: Returns the values of the updated
+attributes, only, as they were before the operation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ALL_NEW&lt;/code&gt;: Returns all the attributes and their new
+values after the operation.&lt;/li&gt; &lt;li&gt;&lt;code&gt;UPDATED_NEW&lt;/code&gt;: Returns
+the values of the updated attributes, only, as they are after the
+operation.&lt;/li&gt; &lt;/ul&gt;
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Allowed Values: &lt;/b&gt;NONE, ALLOLD, UPDATEDOLD, ALLNEW, UPDATEDNEW</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSString *returnValues</Declaration>
+			
+			
+			<Anchor>//api/name/returnValues</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new UpdateItemRequest object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/initWithTableName:andKey:andAttributeUpdates:</TokenIdentifier>
+			<Abstract type="html">Constructs a new UpdateItemRequest object.
+Callers should use properties to initialize any additional object members.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithTableName:(NSString *)theTableName andKey:(DynamoDBKey *)theKey andAttributeUpdates:(NSMutableDictionary *)theAttributeUpdates</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>theTableName</Name>
+					<Abstract type="html">The name of the table in which you want to update
+an item. Allowed characters are &lt;code&gt;a-z&lt;/code&gt;, &lt;code&gt;A-Z&lt;/code&gt;,
+&lt;code&gt;0-9&lt;/code&gt;, &lt;code&gt;_&lt;/code&gt; (underscore), &lt;code&gt;-&lt;/code&gt; (hyphen)
+and &lt;code&gt;.&lt;/code&gt; (period).</Abstract>
+				</Parameter><Parameter>
+					<Name>theKey</Name>
+					<Abstract type="html">The primary key that uniquely identifies each item in a
+table. A primary key can be a one attribute (hash) primary key or a
+two attribute (hash-and-range) primary key.</Abstract>
+				</Parameter><Parameter>
+					<Name>theAttributeUpdates</Name>
+					<Abstract type="html">Map of attribute name to the new value and
+action for the update. The attribute names specify the attributes to
+modify, and cannot contain any primary key attributes.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initWithTableName:andKey:andAttributeUpdates:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/setAttributeUpdatesValue:forKey:</TokenIdentifier>
+			<Abstract type="html">Set a value in the dictionary attributeUpdates for the specified key.
+This function will alloc and init attributeUpdates if not already done.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (void)setAttributeUpdatesValue:(DynamoDBAttributeValueUpdate *)theValue forKey:(NSString *)theKey</Declaration>
+			
+			
+			<Anchor>//api/name/setAttributeUpdatesValue:forKey:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/setExpectedValue:forKey:</TokenIdentifier>
+			<Abstract type="html">Set a value in the dictionary expected for the specified key.
+This function will alloc and init expected if not already done.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (void)setExpectedValue:(DynamoDBExpectedAttributeValue *)theValue forKey:(NSString *)theKey</Declaration>
+			
+			
+			<Anchor>//api/name/setExpectedValue:forKey:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBUpdateItemRequest/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBUpdateItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

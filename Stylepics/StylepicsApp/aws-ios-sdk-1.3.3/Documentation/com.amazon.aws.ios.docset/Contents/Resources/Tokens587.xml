@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ExportToS3TaskUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ExportToS3TaskUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Export To S3 Task Unmarshaller</Abstract>
+			<DeclaredIn>EC2ExportToS3TaskUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="587"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

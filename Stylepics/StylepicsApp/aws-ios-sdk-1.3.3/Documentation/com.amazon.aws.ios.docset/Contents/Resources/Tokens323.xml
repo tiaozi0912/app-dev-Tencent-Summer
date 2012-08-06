@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBScanResponse.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBScanResponse</TokenIdentifier>
+			<Abstract type="html">Scan Result</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>
+			
+			<NodeRef refid="323"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/setException:</TokenIdentifier>
+			<Abstract type="html">If an exception was thrown, this will return the exception.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>- (void)setException:(AmazonServiceException *)theException</Declaration>
+			
+			
+			<Anchor>//api/name/setException:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new  object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/setItems:</TokenIdentifier>
+			<Abstract type="html">The value of the Items property for this object.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanResponse/items</TokenIdentifier>
+			<Abstract type="html">The value of the Items property for this object.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableArray *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/setCount:</TokenIdentifier>
+			<Abstract type="html">Number of items in the response.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *count</Declaration>
+			
+			
+			<Anchor>//api/name/count</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanResponse/count</TokenIdentifier>
+			<Abstract type="html">Number of items in the response.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *count</Declaration>
+			
+			
+			<Anchor>//api/name/count</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/setScannedCount:</TokenIdentifier>
+			<Abstract type="html">Number of items in the complete scan before any filters are applied. A
+high &lt;code&gt;ScannedCount&lt;/code&gt; value with few, or no,
+&lt;code&gt;Count&lt;/code&gt; results indicates an inefficient &lt;code&gt;Scan&lt;/code&gt;
+operation.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *scannedCount</Declaration>
+			
+			
+			<Anchor>//api/name/scannedCount</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanResponse/scannedCount</TokenIdentifier>
+			<Abstract type="html">Number of items in the complete scan before any filters are applied. A
+high &lt;code&gt;ScannedCount&lt;/code&gt; value with few, or no,
+&lt;code&gt;Count&lt;/code&gt; results indicates an inefficient &lt;code&gt;Scan&lt;/code&gt;
+operation.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *scannedCount</Declaration>
+			
+			
+			<Anchor>//api/name/scannedCount</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/setLastEvaluatedKey:</TokenIdentifier>
+			<Abstract type="html">Primary key of the item where the scan operation stopped. Provide this
+value in a subsequent scan operation to continue the operation from
+that point. The &lt;code&gt;LastEvaluatedKey&lt;/code&gt; is null when the entire
+scan result set is complete (i.e. the operation processed the &quot;last
+page&quot;).</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKey *lastEvaluatedKey</Declaration>
+			
+			
+			<Anchor>//api/name/lastEvaluatedKey</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanResponse/lastEvaluatedKey</TokenIdentifier>
+			<Abstract type="html">Primary key of the item where the scan operation stopped. Provide this
+value in a subsequent scan operation to continue the operation from
+that point. The &lt;code&gt;LastEvaluatedKey&lt;/code&gt; is null when the entire
+scan result set is complete (i.e. the operation processed the &quot;last
+page&quot;).</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) DynamoDBKey *lastEvaluatedKey</Declaration>
+			
+			
+			<Anchor>//api/name/lastEvaluatedKey</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/setConsumedCapacityUnits:</TokenIdentifier>
+			<Abstract type="html">The number of Capacity Units of the provisioned throughput of the
+table consumed during the operation. &lt;code&gt;GetItem&lt;/code&gt;,
+&lt;code&gt;BatchGetItem&lt;/code&gt;, &lt;code&gt;BatchWriteItem&lt;/code&gt;,
+&lt;code&gt;Query&lt;/code&gt;, and &lt;code&gt;Scan&lt;/code&gt; operations consume
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt;, while &lt;code&gt;PutItem&lt;/code&gt;,
+&lt;code&gt;UpdateItem&lt;/code&gt;, and &lt;code&gt;DeleteItem&lt;/code&gt; operations
+consume &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *consumedCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/consumedCapacityUnits</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBScanResponse/consumedCapacityUnits</TokenIdentifier>
+			<Abstract type="html">The number of Capacity Units of the provisioned throughput of the
+table consumed during the operation. &lt;code&gt;GetItem&lt;/code&gt;,
+&lt;code&gt;BatchGetItem&lt;/code&gt;, &lt;code&gt;BatchWriteItem&lt;/code&gt;,
+&lt;code&gt;Query&lt;/code&gt;, and &lt;code&gt;Scan&lt;/code&gt; operations consume
+&lt;code&gt;ReadCapacityUnits&lt;/code&gt;, while &lt;code&gt;PutItem&lt;/code&gt;,
+&lt;code&gt;UpdateItem&lt;/code&gt;, and &lt;code&gt;DeleteItem&lt;/code&gt; operations
+consume &lt;code&gt;WriteCapacityUnits&lt;/code&gt;.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSNumber *consumedCapacityUnits</Declaration>
+			
+			
+			<Anchor>//api/name/consumedCapacityUnits</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/itemsObjectAtIndex:</TokenIdentifier>
+			<Abstract type="html">Returns a value from the items array for the specified index</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>- (NSDictionary *)itemsObjectAtIndex:(int)index</Declaration>
+			
+			
+			<Anchor>//api/name/itemsObjectAtIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBScanResponse/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBScanResponse.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

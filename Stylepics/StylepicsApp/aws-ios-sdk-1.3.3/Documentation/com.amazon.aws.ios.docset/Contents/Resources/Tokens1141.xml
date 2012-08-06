@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESVerifyEmailIdentityRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESVerifyEmailIdentityRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Verify Email Identity Request Marshaller</Abstract>
+			<DeclaredIn>SESVerifyEmailIdentityRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1141"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

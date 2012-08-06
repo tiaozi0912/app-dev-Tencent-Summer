@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ConfirmProductInstanceRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ConfirmProductInstanceRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Confirm Product Instance Request Marshaller</Abstract>
+			<DeclaredIn>EC2ConfirmProductInstanceRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="389"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

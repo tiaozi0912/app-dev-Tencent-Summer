@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ActivateLicenseRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ActivateLicenseRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Activate License Request Marshaller</Abstract>
+			<DeclaredIn>EC2ActivateLicenseRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="339"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

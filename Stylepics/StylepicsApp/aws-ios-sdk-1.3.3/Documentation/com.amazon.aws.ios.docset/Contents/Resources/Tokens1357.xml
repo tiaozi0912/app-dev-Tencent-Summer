@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SimpleDBPutAttributesRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SimpleDBPutAttributesRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Put Attributes Request Marshaller</Abstract>
+			<DeclaredIn>SimpleDBPutAttributesRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1357"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

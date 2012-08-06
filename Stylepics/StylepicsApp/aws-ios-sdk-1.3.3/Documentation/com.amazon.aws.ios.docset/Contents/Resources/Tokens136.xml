@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingMetricCollectionTypeUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingMetricCollectionTypeUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Metric Collection Type Unmarshaller</Abstract>
+			<DeclaredIn>AutoScalingMetricCollectionTypeUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="136"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

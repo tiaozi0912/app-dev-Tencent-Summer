@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DynamoDBBatchGetItemRequest.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DynamoDBBatchGetItemRequest</TokenIdentifier>
+			<Abstract type="html">Batch Get Item Request</Abstract>
+			<DeclaredIn>DynamoDBBatchGetItemRequest.h</DeclaredIn>
+			
+			<NodeRef refid="252"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchGetItemRequest/init</TokenIdentifier>
+			<Abstract type="html">Default constructor for a new  object.  Callers should use the
+property methods to initialize this object after creating it.</Abstract>
+			<DeclaredIn>DynamoDBBatchGetItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchGetItemRequest/setRequestItems:</TokenIdentifier>
+			<Abstract type="html">A map of the table name and corresponding items to get by primary key.
+While requesting items, each table name can be invoked only once per
+operation.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;1 - 100&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBBatchGetItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *requestItems</Declaration>
+			
+			
+			<Anchor>//api/name/requestItems</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DynamoDBBatchGetItemRequest/requestItems</TokenIdentifier>
+			<Abstract type="html">A map of the table name and corresponding items to get by primary key.
+While requesting items, each table name can be invoked only once per
+operation.
+&lt;p&gt;
+&lt;b&gt;Constraints:&lt;/b&gt;&lt;br/&gt;
+&lt;b&gt;Length: &lt;/b&gt;1 - 100&lt;br/&gt;</Abstract>
+			<DeclaredIn>DynamoDBBatchGetItemRequest.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, retain) NSMutableDictionary *requestItems</Declaration>
+			
+			
+			<Anchor>//api/name/requestItems</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchGetItemRequest/setRequestItemsValue:forKey:</TokenIdentifier>
+			<Abstract type="html">Set a value in the dictionary requestItems for the specified key.
+This function will alloc and init requestItems if not already done.</Abstract>
+			<DeclaredIn>DynamoDBBatchGetItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (void)setRequestItemsValue:(DynamoDBKeysAndAttributes *)theValue forKey:(NSString *)theKey</Declaration>
+			
+			
+			<Anchor>//api/name/setRequestItemsValue:forKey:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DynamoDBBatchGetItemRequest/description</TokenIdentifier>
+			<Abstract type="html">Returns a string representation of this object; useful for testing and
+debugging.</Abstract>
+			<DeclaredIn>DynamoDBBatchGetItemRequest.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)description</Declaration>
+			
+			<ReturnValue><Abstract type="html">A string representation of this object.</Abstract></ReturnValue>
+			<Anchor>//api/name/description</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

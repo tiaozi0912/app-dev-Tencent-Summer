@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSSendMessageRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSSendMessageRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Send Message Request Marshaller</Abstract>
+			<DeclaredIn>SQSSendMessageRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1286"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

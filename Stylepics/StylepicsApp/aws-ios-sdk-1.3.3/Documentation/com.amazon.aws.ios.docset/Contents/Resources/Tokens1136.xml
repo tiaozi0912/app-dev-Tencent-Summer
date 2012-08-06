@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESVerifyDomainIdentityResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESVerifyDomainIdentityResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Verify Domain Identity Result Unmarshaller</Abstract>
+			<DeclaredIn>SESVerifyDomainIdentityResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1136"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

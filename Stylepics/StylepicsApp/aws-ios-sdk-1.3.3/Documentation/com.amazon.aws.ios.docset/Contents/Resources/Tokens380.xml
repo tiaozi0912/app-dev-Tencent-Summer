@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2CancelExportTaskRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2CancelExportTaskRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Cancel Export Task Request Marshaller</Abstract>
+			<DeclaredIn>EC2CancelExportTaskRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="380"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

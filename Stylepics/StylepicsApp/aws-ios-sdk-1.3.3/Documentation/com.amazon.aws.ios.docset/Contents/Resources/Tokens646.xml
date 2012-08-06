@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2InstanceNetworkInterfaceUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2InstanceNetworkInterfaceUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Instance Network Interface Unmarshaller</Abstract>
+			<DeclaredIn>EC2InstanceNetworkInterfaceUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="646"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

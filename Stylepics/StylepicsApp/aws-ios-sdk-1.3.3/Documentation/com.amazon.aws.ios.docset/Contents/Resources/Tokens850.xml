@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ElasticLoadBalancingDeleteLoadBalancerPolicyResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ElasticLoadBalancingDeleteLoadBalancerPolicyResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Load Balancer Policy Result Unmarshaller</Abstract>
+			<DeclaredIn>ElasticLoadBalancingDeleteLoadBalancerPolicyResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="850"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESSetIdentityFeedbackForwardingEnabledResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESSetIdentityFeedbackForwardingEnabledResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Set Identity Feedback Forwarding Enabled Result Unmarshaller</Abstract>
+			<DeclaredIn>SESSetIdentityFeedbackForwardingEnabledResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1124"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

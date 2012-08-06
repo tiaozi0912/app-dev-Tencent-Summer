@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SESGetSendStatisticsRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SESGetSendStatisticsRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Get Send Statistics Request Marshaller</Abstract>
+			<DeclaredIn>SESGetSendStatisticsRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1085"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

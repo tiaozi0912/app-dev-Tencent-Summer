@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2RebootInstancesRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2RebootInstancesRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Reboot Instances Request Marshaller</Abstract>
+			<DeclaredIn>EC2RebootInstancesRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="707"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

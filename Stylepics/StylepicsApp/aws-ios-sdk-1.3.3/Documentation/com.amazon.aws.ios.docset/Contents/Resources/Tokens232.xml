@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/CloudWatchMetricUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/CloudWatchMetricUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Metric Unmarshaller</Abstract>
+			<DeclaredIn>CloudWatchMetricUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="232"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2CreateKeyPairRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2CreateKeyPairRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Create Key Pair Request Marshaller</Abstract>
+			<DeclaredIn>EC2CreateKeyPairRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="403"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

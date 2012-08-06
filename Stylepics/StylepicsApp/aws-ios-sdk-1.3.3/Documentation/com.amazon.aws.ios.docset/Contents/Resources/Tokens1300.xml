@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SecurityTokenServiceGetFederationTokenResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SecurityTokenServiceGetFederationTokenResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Get Federation Token Result Unmarshaller</Abstract>
+			<DeclaredIn>SecurityTokenServiceGetFederationTokenResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1300"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

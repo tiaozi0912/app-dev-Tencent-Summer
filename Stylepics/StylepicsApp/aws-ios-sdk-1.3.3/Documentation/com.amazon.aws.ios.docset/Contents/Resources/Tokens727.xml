@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2RequestSpotInstancesResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2RequestSpotInstancesResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Request Spot Instances Response Unmarshaller</Abstract>
+			<DeclaredIn>EC2RequestSpotInstancesResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="727"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

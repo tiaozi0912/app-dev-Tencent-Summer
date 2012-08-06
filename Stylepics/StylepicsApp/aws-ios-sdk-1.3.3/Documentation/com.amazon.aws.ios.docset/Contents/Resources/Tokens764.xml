@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2SpotPlacementUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2SpotPlacementUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Spot Placement Unmarshaller</Abstract>
+			<DeclaredIn>EC2SpotPlacementUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="764"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

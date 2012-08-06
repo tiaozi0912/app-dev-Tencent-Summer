@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AutoScalingPutScalingPolicyResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AutoScalingPutScalingPolicyResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Put Scaling Policy Result Unmarshaller</Abstract>
+			<DeclaredIn>AutoScalingPutScalingPolicyResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="149"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

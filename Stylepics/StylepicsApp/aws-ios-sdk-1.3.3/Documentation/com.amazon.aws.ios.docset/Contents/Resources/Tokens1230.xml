@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SQSCreateQueueResponseUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SQSCreateQueueResponseUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Create Queue Result Unmarshaller</Abstract>
+			<DeclaredIn>SQSCreateQueueResponseUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="1230"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

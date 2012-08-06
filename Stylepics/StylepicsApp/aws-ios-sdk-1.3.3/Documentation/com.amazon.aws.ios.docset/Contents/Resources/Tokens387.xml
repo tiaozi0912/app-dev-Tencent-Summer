@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2CancelledSpotInstanceRequestUnmarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2CancelledSpotInstanceRequestUnmarshaller</TokenIdentifier>
+			<Abstract type="html">Cancelled Spot Instance Request Unmarshaller</Abstract>
+			<DeclaredIn>EC2CancelledSpotInstanceRequestUnmarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="387"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

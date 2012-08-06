@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2ImportInstanceRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2ImportInstanceRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Import Instance Request Marshaller</Abstract>
+			<DeclaredIn>EC2ImportInstanceRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="609"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>

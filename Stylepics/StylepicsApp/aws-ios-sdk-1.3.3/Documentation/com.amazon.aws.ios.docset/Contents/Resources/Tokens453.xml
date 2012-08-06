@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/EC2DeleteVolumeRequestMarshaller.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/EC2DeleteVolumeRequestMarshaller</TokenIdentifier>
+			<Abstract type="html">Delete Volume Request Marshaller</Abstract>
+			<DeclaredIn>EC2DeleteVolumeRequestMarshaller.h</DeclaredIn>
+			
+			<NodeRef refid="453"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>
