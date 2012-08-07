@@ -113,8 +113,8 @@
     [[RKObjectManager sharedManager].mappingProvider registerMapping:pollListItemMapping withRootKeyPath:@"poll_list"];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"item"];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:pollMapping withRootKeyPath:@"poll"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"events"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"audience"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"event"];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:audienceMapping withRootKeyPath:@"audience"];
 
     
     [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/users/:userID"];
@@ -128,6 +128,9 @@
     
     [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/polls/:pollID/items/:itemID"];
     [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/polls/:pollID/items" forMethod:RKRequestMethodPOST];
+    
+    [[RKObjectManager sharedManager].router routeClass:[Event class] toResourcePath:@"/events/:eventID"];
+    [[RKObjectManager sharedManager].router routeClass:[Event class] toResourcePath:@"/events" forMethod:RKRequestMethodPOST];
     
     [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience/:audienceID"];
     [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience" forMethod:RKRequestMethodPOST];
