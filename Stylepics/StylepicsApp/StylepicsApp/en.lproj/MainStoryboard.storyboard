@@ -846,7 +846,7 @@
                                         <view contentMode="scaleToFill" id="aZJ-iP-eFQ" customClass="HJManagedImageV">
                                             <rect key="frame" x="20" y="10" width="68" height="68"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1133,6 +1133,10 @@
         </class>
         <class className="PollResultViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PollResultViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="refresh:" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="PollTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PollTableViewController.h"/>

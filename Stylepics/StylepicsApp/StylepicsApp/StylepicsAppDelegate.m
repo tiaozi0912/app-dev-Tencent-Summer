@@ -84,7 +84,7 @@
     [pollMapping setPreferredDateFormatter:dateFormatter];
     [pollMapping mapKeyPathsToAttributes:
      @"poll_id", @"pollID",
-     @"owner_id", @"ownerID",
+     @"user_id", @"ownerID",
      @"total_votes", @"totalVotes",
      @"max_votes_for_single_item", @"maxVotesForSingleItem",
      @"title", @"title",
