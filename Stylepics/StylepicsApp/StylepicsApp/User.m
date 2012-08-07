@@ -17,4 +17,5 @@
 @synthesize email=_email;
 @synthesize passwordConfirmation = _passwordConfirmation;
 @synthesize profilePhotoURL=_profilePhotoURL;
+@synthesize singleAccessToken = _singleAccessToken;
 @end

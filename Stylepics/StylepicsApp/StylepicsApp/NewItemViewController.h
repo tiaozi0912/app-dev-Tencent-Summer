@@ -12,13 +12,14 @@
 #import "Item.h"
 #import "Utility.h"
 
-@interface NewItemViewController : UIViewController<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,RKObjectLoaderDelegate>
+@interface NewItemViewController : UIViewController<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate>
 {
     BOOL newMedia; 
 }
 @property (nonatomic, weak) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *uploadingSpin;
 - (IBAction)useCamera;
 - (IBAction)useCameraRoll;
 @end

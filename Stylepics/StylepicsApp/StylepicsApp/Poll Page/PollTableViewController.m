@@ -9,7 +9,6 @@
 #import "PollTableViewController.h"
 #define  POLLITEMCELLHEIGHT 350
 @interface PollTableViewController (){
-   // StylepicsDatabase *database;
     NSUInteger audienceIndex;
 }
 @end
@@ -53,7 +52,31 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (IBAction)startOrEndVoting:(UIBarButtonItem *)sender {
+- (IBAction)startOrEndVotingPressed
+{
+    if ([self.poll.state isEqualToString:EDITING]){
+        self.alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to ask for votes now?" message:@"Note: Once you start to ask for votes, your friends can vote in your poll. But you can not edit your poll any more." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        [self.alertView show];
+        self.alertView = nil;
+    }else if ([self.poll.state isEqualToString:VOTING]){
+        self.alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to end this poll now?" message:@"Note: Once you start to ask for votes, your friends can vote in your poll. But you can not edit your poll any more." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        [self.alertView show];
+        self.alertView = nil;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSLog(@"A voting state change was cancelled.");
+    }
+    if (buttonIndex == 1) {
+        [self startOrEndVoting];
+    }
+}
+
+- (void)startOrEndVoting
+{
     if ([self.poll.state isEqualToString:EDITING]){
         self.poll.state = VOTING;
         [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
@@ -66,7 +89,7 @@
         [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
         PollListItem *pollListItem = [PollListItem new];
         pollListItem.pollID = self.poll.pollID;
-        pollListItem.userID = self.poll.owner.userID;
+        pollListItem.userID = [Utility getObjectForKey:CURRENTUSERID];
         pollListItem.type = PAST;
         [[RKObjectManager sharedManager] putObject:pollListItem delegate:self];
         [[self.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
@@ -109,7 +132,12 @@
                 self.poll.maxVotesForSingleItem = item.numberOfVotes;
             }
             self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue]+ 1];
-            [[self.poll.audience objectAtIndex:audienceIndex] setHasVoted:YES];
+            [[RKObjectManager sharedManager] putObject:item delegate:self];
+            
+            Audience *audience = [self.poll.audience objectAtIndex:audienceIndex];
+            audience.hasVoted=YES;
+            [[RKObjectManager sharedManager] putObject:audience delegate:self];
+            
             [Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
             [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
             
@@ -147,6 +175,13 @@
     UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
 
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
+    }
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
@@ -253,35 +288,6 @@
 }
 */
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

@@ -73,7 +73,10 @@
 		0DA3D96C15C8A771008B9E32 /* AppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */; };
 		0DA4105115CA43C000859E59 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4105015CA43C000859E59 /* Event.m */; };
 		0DA5C3C915CDA9B90020D7A8 /* PollListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5C3C815CDA9B90020D7A8 /* PollListItem.m */; };
+		0DA7C91C15D0A92D003B9EB6 /* doneHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA7C91A15D0A92D003B9EB6 /* doneHighlighted.png */; };
+		0DA7C91D15D0A92D003B9EB6 /* doneNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA7C91B15D0A92D003B9EB6 /* doneNormal.png */; };
 		0DC94A2815CF404200383472 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC94A2715CF404200383472 /* AWSiOSSDK.framework */; };
+		0DC94A2F15CF474B00383472 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC94A2E15CF474B00383472 /* AmazonClientManager.m */; };
 		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
 		0DEF0D8515AFA72D0011DC0A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */; };
 		0DEF0D8715AFA72D0011DC0A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DEF0D7F15AFA72D0011DC0A /* FMDatabasePool.m */; };
@@ -244,7 +247,11 @@
 		0DA4105015CA43C000859E59 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		0DA5C3C715CDA9B90020D7A8 /* PollListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollListItem.h; sourceTree = "<group>"; };
 		0DA5C3C815CDA9B90020D7A8 /* PollListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollListItem.m; sourceTree = "<group>"; };
+		0DA7C91A15D0A92D003B9EB6 /* doneHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = doneHighlighted.png; path = img/doneHighlighted.png; sourceTree = "<group>"; };
+		0DA7C91B15D0A92D003B9EB6 /* doneNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = doneNormal.png; path = img/doneNormal.png; sourceTree = "<group>"; };
 		0DC94A2715CF404200383472 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = "aws-ios-sdk-1.3.3/AWSiOSSDK.framework"; sourceTree = "<group>"; };
+		0DC94A2D15CF474B00383472 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
+		0DC94A2E15CF474B00383472 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
 		0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_profile_photo.jpeg; path = img/default_profile_photo.jpeg; sourceTree = "<group>"; };
 		0DEF0D7A15AFA72D0011DC0A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		0DEF0D7B15AFA72D0011DC0A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -474,6 +481,8 @@
 		0D94F4EF15A7D09700903F0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0DA7C91A15D0A92D003B9EB6 /* doneHighlighted.png */,
+				0DA7C91B15D0A92D003B9EB6 /* doneNormal.png */,
 				0D433A1015B91800001B5632 /* options.png */,
 				0D9FAE9C15B8EADC00B102EA /* delete.png */,
 				0D9FAE9A15B8E12D00B102EA /* new poll icon.png */,
@@ -520,6 +529,8 @@
 			children = (
 				0D9BA1C815C603EC00599AA2 /* Environment.h */,
 				0D9BA1C915C603EC00599AA2 /* Environment.m */,
+				0DC94A2D15CF474B00383472 /* AmazonClientManager.h */,
+				0DC94A2E15CF474B00383472 /* AmazonClientManager.m */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -644,6 +655,8 @@
 				4DD5530215B934BD0056847B /* Polls-Icon.png in Resources */,
 				4DD5530515B936D00056847B /* Custom-Tool-Bar-BG.png in Resources */,
 				4DD5530615B936D00056847B /* Custom-Tool-Bar-BG@2x.png in Resources */,
+				0DA7C91C15D0A92D003B9EB6 /* doneHighlighted.png in Resources */,
+				0DA7C91D15D0A92D003B9EB6 /* doneNormal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +710,7 @@
 				0DA4105115CA43C000859E59 /* Event.m in Sources */,
 				0D9B1C6115CB0E77003A34DD /* Audience.m in Sources */,
 				0DA5C3C915CDA9B90020D7A8 /* PollListItem.m in Sources */,
+				0DC94A2F15CF474B00383472 /* AmazonClientManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

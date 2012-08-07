@@ -26,18 +26,28 @@
     //userMapping.primaryKeyAttribute = @"userID";
     userMapping.setDefaultValueForMissingAttributes = YES; // clear out any missing attributes (token on logout)
     [userMapping mapKeyPathsToAttributes:
-     @"id", @"userID",
+     @"user_id", @"userID",
      @"user_name", @"username",
      @"password", @"password",
      @"email", @"email",
      @"password_confirmation", @"passwordConfirmation",
-     @"profilePhotoURL", @"profilePhotoURL", 
+     @"profile_photo_url", @"profilePhotoURL",
+     @"single_access_token", @"singleAccessToken",
      nil];
     
     // Class:PollListItem
     RKObjectMapping* pollListItemMapping = [RKObjectMapping mappingForClass:[PollListItem class]];
     [pollListItemMapping setPreferredDateFormatter:dateFormatter];
-    [pollListItemMapping mapAttributes:@"pollID", @"userID", @"totalVotes", @"type", @"title", @"state", @"startTime", @"endTime",nil];
+    [pollListItemMapping mapKeyPathsToAttributes:
+     @"poll_id", @"pollID",
+     @"user_id", @"userID",
+     @"total_votes", @"totalVotes",
+     @"type", @"type",
+     @"title", @"title",
+     @"state", @"state",
+     @"start_time", @"startTime",
+     @"end_time", @"endTime",
+     nil];
     [pollListItemMapping mapRelationship:@"owner" withMapping:userMapping];
 
     // Class:Audience
@@ -45,12 +55,12 @@
     //userMapping.primaryKeyAttribute = @"userID";
     audienceMapping.setDefaultValueForMissingAttributes = YES; // clear out any missing attributes (token on logout)
     [audienceMapping mapKeyPathsToAttributes:
-     @"audienceID", @"audienceID",
-     @"userID", @"userID",
-     @"hasVoted", @"hasVoted",
-     @"username", @"username",
-     @"profilePhotoURL", @"profilePhotoURL",
-     @"pollID", @"pollID",
+     @"audience_id", @"audienceID",
+     @"user_id", @"userID",
+     @"has_voted", @"hasVoted",
+     @"user_name", @"username",
+     @"profile_Photo_url", @"profilePhotoURL",
+     @"poll_id", @"pollID",
      nil];
     
     // Class:Comment
@@ -58,14 +68,30 @@
     
     // Class:Item
     RKObjectMapping* itemMapping = [RKObjectMapping mappingForClass:[Poll class]];
-    [itemMapping mapAttributes:@"itemID", @"description", @"price", @"numberOfVotes", @"photoURL",@"pollID", nil];
+    [itemMapping mapKeyPathsToAttributes:
+     @"item_id", @"itemID",
+     @"description", @"description"
+     @"price", @"price"
+     @"number_of_votes", @"numberOfVotes",
+     @"photo_url", @"photoURL",
+     @"poll_id", @"pollID",
+     nil];
     //[itemMapping mapRelationship:@"comments" withMapping:commentMapping];
 
     
     // Class:Poll
     RKObjectMapping* pollMapping = [RKObjectMapping mappingForClass:[Poll class]];
     [pollMapping setPreferredDateFormatter:dateFormatter];
-    [pollMapping mapAttributes:@"pollID", @"ownerID", @"totalVotes", @"maxVotesForSingleItem", @"title", @"state", @"startTime", @"endTime", nil];
+    [pollMapping mapKeyPathsToAttributes:
+     @"poll_id", @"pollID",
+     @"owner_id", @"ownerID",
+     @"total_votes", @"totalVotes",
+     @"max_votes_for_single_item", @"maxVotesForSingleItem",
+     @"title", @"title",
+     @"state", @"state",
+     @"start_time", @"startTime",
+     @"end_time", @"endTime",
+     nil];
     [pollMapping mapRelationship:@"owner" withMapping:userMapping];
     [pollMapping mapRelationship:@"items" withMapping:itemMapping];
     [pollMapping mapRelationship:@"audience" withMapping:audienceMapping];
@@ -74,7 +100,10 @@
     
     // Class:Event
     RKObjectMapping* eventMapping = [RKObjectMapping mappingForClass:[Event class]];
-    [eventMapping mapAttributes:@"eventID", @"type",nil];
+    [eventMapping mapKeyPathsToAttributes:
+     @"event_id", @"eventID",
+     @"type", @"type",
+     nil];
     [eventMapping mapRelationship:@"user" withMapping:userMapping];
     [eventMapping mapRelationship:@"poll" withMapping:pollMapping];
     [eventMapping mapRelationship:@"item" withMapping:itemMapping];
@@ -103,14 +132,7 @@
     [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience/:audienceID"];
     [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience" forMethod:RKRequestMethodPOST];
     
-    /*self.databaseName = @"stylepics.db";
-    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDir = [documentPaths objectAtIndex:0];
-    self.databasePath = [documentDir stringByAppendingPathComponent:self.databaseName];
-    NSLog(@"%@", self.databasePath);
-    [self createAndCheckDatabase];
-    StylepicsDatabase *database = [[StylepicsDatabase alloc] init];
-    [database initialize];*/
+
     // Override point for customization after application launch.
     
     

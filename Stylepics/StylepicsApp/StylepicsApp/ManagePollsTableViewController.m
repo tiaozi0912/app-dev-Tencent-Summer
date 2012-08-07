@@ -64,6 +64,13 @@
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
 }
 
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
+    }
+}
+
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObject:(id)object
 {
     NSArray *pollList = object;

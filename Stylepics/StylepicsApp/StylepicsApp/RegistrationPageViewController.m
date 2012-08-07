@@ -58,6 +58,7 @@
     // signup was successful
     [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
     NSLog(@"userID:%@, username:%@, password:%@", user.userID, user.username, user.password);
+    [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"TRUE" forKey:NEWUSER];
     [self performSegueWithIdentifier:@"show news feed page" sender:self];

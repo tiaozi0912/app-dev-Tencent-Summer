@@ -72,8 +72,14 @@
         poll.state = EDITING;
         poll.totalVotes = [NSNumber numberWithInt:0];
         poll.maxVotesForSingleItem = [NSNumber numberWithInt:1];
-        poll.startTime = [NSDate date];
         [[RKObjectManager sharedManager] postObject:poll delegate:self];
+    }
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
     }
 }
 
@@ -84,13 +90,13 @@
         
         Event *newPollEvent = [Event new];
         newPollEvent.type = NEWPOLLEVENT;
-        newPollEvent.user.userID = poll.ownerID;
+        newPollEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
         newPollEvent.poll.pollID = poll.pollID;
         [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
         
         PollListItem *pollListItem = [PollListItem new];
         pollListItem.pollID = poll.pollID;
-        pollListItem.userID = poll.ownerID;
+        pollListItem.userID = [Utility getObjectForKey:CURRENTUSERID];
         pollListItem.type = ACTIVE;
         [[RKObjectManager sharedManager] postObject:pollListItem delegate:self];
         [self performSegueWithIdentifier:@"showNewPoll" sender:self];

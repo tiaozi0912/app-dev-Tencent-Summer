@@ -15,7 +15,6 @@
 #define HEIGHTOFNEWITEMCELL 295
 #define HEIGHTOFVOTECELL 60
 @interface NewsFeedTableViewController (){
-    //StylepicsDatabase *database;
     //int loaderKey;
 }
 @property (nonatomic, strong) NSArray* events; 
@@ -38,7 +37,21 @@
 
 - (IBAction)logout:(UIBarButtonItem *)sender 
 {
+    User* user = [User new];
+    user.singleAccessToken = [Utility getObjectForKey:SINGLE_ACCESS_TOKEN_KEY];
+    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader *loader) {
+        loader.delegate = self;
+        loader.resourcePath = @"/logout";
+        loader.serializationMapping = [[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
+    }];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
+    }
 }
 
 - (void)viewDidLoad
@@ -77,8 +90,12 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
-    self.events = objects;
-    [self.tableView reloadData];
+    if ([objectLoader wasSentToResourcePath:@"/events"]){
+        self.events = objects;
+        [self.tableView reloadData];
+    }else{
+        NSLog(@"logout successfully!");
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
@@ -112,7 +129,7 @@
      reuseIdentifier:CellIdentifier];
      }
         // Configure the cell...        
-        cell.userImage.url = (event.user.profilePhotoURL == nil? [[NSBundle mainBundle] URLForResource: @"default_profile_photo" withExtension:@"jpeg"]:event.user.profilePhotoURL);
+        cell.userImage.url = (event.user.profilePhotoURL == nil? [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", APP_UI_IMAGES_BUCKET_NAME, @"default_profile_photo.jpeg"]]:event.user.profilePhotoURL);
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", event.poll.title];
@@ -128,7 +145,7 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        cell.userImage.url = (event.user.profilePhotoURL == nil? [[NSBundle mainBundle] URLForResource: @"default_profile_photo" withExtension:@"jpeg"]:event.user.profilePhotoURL);
+        cell.userImage.url = (event.user.profilePhotoURL == nil? [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", APP_UI_IMAGES_BUCKET_NAME, @"default_profile_photo.jpeg"]]:event.user.profilePhotoURL);
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [NSString stringWithFormat:@"Added one item to Poll '%@'.", event.poll.title];
@@ -147,7 +164,7 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        cell.userImage.url = (event.user.profilePhotoURL == nil? [[NSBundle mainBundle] URLForResource: @"default_profile_photo" withExtension:@"jpeg"]:event.user.profilePhotoURL);
+        cell.userImage.url = (event.user.profilePhotoURL == nil? [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", APP_UI_IMAGES_BUCKET_NAME, @"default_profile_photo.jpeg"]]:event.user.profilePhotoURL);
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.poll.owner.username, event.poll.title];

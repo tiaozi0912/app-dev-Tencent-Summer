@@ -14,6 +14,7 @@
 {
     BOOL itemAdded;
     NSURL *photoURL;
+    Item *item;
 }
  
 @end
@@ -37,12 +38,6 @@
     [self.descriptionTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
 } 
-
-- (BOOL)textFieldShouldReturn:(UITextField *)aTextField
-{  
-    [aTextField resignFirstResponder];
-    return YES;
-}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -68,6 +63,8 @@
     self.descriptionTextField = nil;
     self.priceTextField = nil;
     photoURL = nil;
+    item = nil;
+    
     // Release any retained subviews of the main view.
 }
 
@@ -109,7 +106,7 @@
         imagePicker.allowsEditing = NO;
         [self presentModalViewController:imagePicker 
                                 animated:YES];
-        newMedia = YES;
+        //newMedia = YES;
     }
 }
 
@@ -128,7 +125,7 @@
                                   nil];
         imagePicker.allowsEditing = NO;
         [self presentModalViewController:imagePicker animated:YES];
-        newMedia = NO;
+        //newMedia = NO;
     } 
 }
 
@@ -143,7 +140,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                           objectForKey:UIImagePickerControllerOriginalImage];
         self.itemImage.image = image;
         itemAdded = YES;
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+     /*   ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
         if (newMedia)
             [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
                 if (error) {
@@ -154,7 +151,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 }  
             }];
         library = nil;
-        photoURL = [NSURL URLWithString:@"http://i.dailymail.co.uk/i/pix/2012/07/27/article-2180047-143F90C1000005DC-196_634x423.jpg"];
+        photoURL = [NSURL URLWithString:@"http://i.dailymail.co.uk/i/pix/2012/07/27/article-2180047-143F90C1000005DC-196_634x423.jpg"];*/
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {
@@ -162,14 +159,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	}
 }
 
--(void)image:(UIImage *)image
+/*-(void)image:(UIImage *)image
 finishedSavingWithError:(NSError *)error 
  contextInfo:(void *)contextInfo
 {
     if (error) {
         [Utility showAlert:@"Save failed" message:@"Failed to save image"];
     }
-}
+}*/
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
@@ -179,34 +176,77 @@ finishedSavingWithError:(NSError *)error
 -(IBAction) finishAddingNewItems
 {
     if (itemAdded) {
-        Item *item = [Item new];
-        item.photoURL = photoURL;
-        item.description = self.descriptionTextField.text;
-        item.numberOfVotes = [NSNumber numberWithInt:0];
+        item = [Item new];
         item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-        item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
         [[RKObjectManager sharedManager] postObject:item delegate:self];
-        Event *newItemEvent = [Event new];
-        newItemEvent.type = NEWITEMEVENT;
-        newItemEvent.poll.pollID = item.pollID;
-        newItemEvent.item = item;
-        newItemEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
-        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
     }else{
         [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
     }
 }
 
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
+    }
+}
+
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
-    NSLog(@"The new item has been added!");
-    [self backWithFlipAnimation];
+    if ([objectLoader wasSentToResourcePath:@"/polls/:pollID/items" method:RKRequestMethodPOST]){
+        NSString *imageName = [NSString stringWithFormat:@"Item_%@_in_Poll_%@", item.itemID, item.pollID];
+        S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
+        por.cannedACL = [S3CannedACL publicRead];
+        por.contentType = @"image/jpeg";
+        por.delegate = self;
+        por.filename = [imageName stringByAppendingString:@".jpeg"];
+        item.photoURL = [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, por.filename]];
+        NSData *imageData = UIImageJPEGRepresentation(self.itemImage.image, 0.8f);
+        por.data = imageData;
+        [self.uploadingSpin startAnimating];
+        [[AmazonClientManager s3] putObject:por];
+    
+        NSLog(@"The new item has been added!");
+        Event *newItemEvent = [Event new];
+        newItemEvent.type = NEWITEMEVENT;
+        newItemEvent.poll.pollID = item.pollID;
+        newItemEvent.item.itemID = item.itemID;
+        newItemEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
+        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
+    }else if ([objectLoader wasSentToResourcePath:@"/polls/:pollID/items/:itemID" method:RKRequestMethodPOST]){
+        [self.uploadingSpin stopAnimating];
+        [self backWithFlipAnimation];
+    }
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     [Utility showAlert:@"Sorry!" message:error.localizedDescription];
 }
+
+#pragma mark - AmazonServiceRequestDelegate Implementations
+
+-(void)request:(AmazonServiceRequest *)request didCompleteWithResponse:(AmazonServiceResponse *)response
+{
+    item.description = self.descriptionTextField.text;
+    item.numberOfVotes = [NSNumber numberWithInt:0];
+    item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+    item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+    [[RKObjectManager sharedManager] putObject:item delegate:self];
+}
+
+
+-(void)request:(AmazonServiceRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+}
+
+-(void)request:(AmazonServiceRequest *)request didFailWithServiceException:(NSException *)exception
+{
+    NSLog(@"%@", exception);
+}
+
+#pragma mark - Helper Methods
 
 - (IBAction)cancelButton{
     [self backWithFlipAnimation];
@@ -220,5 +260,38 @@ finishedSavingWithError:(NSError *)error
     [UIView commitAnimations];
     [self.navigationController popViewControllerAnimated:NO];
 }
+
+/*-(void)doneButton{
+    [self.priceTextField resignFirstResponder];
+}*/
+#pragma mark - TextFieldDelegate Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+/*- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == self.priceTextField) {
+        // create custom button
+        UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        doneButton.frame = CGRectMake(0, 163, 106, 53);
+        doneButton.adjustsImageWhenHighlighted = NO;
+        [doneButton setImage:[UIImage imageNamed:@"doneNormal.png"] forState:UIControlStateNormal];
+        [doneButton setImage:[UIImage imageNamed:@"doneHighlighted.png"] forState:UIControlStateHighlighted];
+        [doneButton addTarget:self action:@selector(doneButton) forControlEvents:UIControlEventTouchUpInside];
+        
+        // locate keyboard view
+        UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+        for (UIView *keyboard in tempWindow.subviews) {
+            if ([[keyboard description] hasPrefix:@"<UIKeyboard"]) {
+                [keyboard addSubview:doneButton];
+                break; 
+            } 
+        }
+    }
+}*/
 
 @end

@@ -16,11 +16,12 @@
 #import "Item.h"
 #import "PollListItem.h"
 #import "Audience.h"
-#import <AWSiOSSDK/S3/AmazonS3Client.h>
+#import "AmazonClientManager.h"
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
 #define CURRENTUSERID @"currentUserID"
 #define NEWUSER @"newUser"
+#define SINGLE_ACCESS_TOKEN_KEY @"singleAccessTokenKey"
 
 #define ACTIVE @"ACTIVE"
 #define PAST @"PAST"

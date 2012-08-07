@@ -11,7 +11,6 @@
 #import "Utility.h"
 
 @interface StylepicsEntryPageViewController () {
-    //StylepicsDatabase *database;
     User* user;
 }
 
@@ -37,18 +36,25 @@
 
 
 - (IBAction)login {
-    user = [User new];
-    user.username = self.usernameField.text;
-    user.password = self.passwordField.text;
-    user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
-    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
-        loader.resourcePath = @"/login";
-        loader.serializationMapping =[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
-    }];
+    if ([self.usernameField.text length] == 0 ||[self.usernameField.text length] == 0 ){
+        [Utility showAlert:@"Sorry!" message:@"Neither username nor password can be empty."];
+    }else{
+        user = [User new];
+        user.username = self.usernameField.text;
+        user.password = self.passwordField.text;
+        user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
+        [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
+            loader.resourcePath = @"/login";
+            loader.objectMapping = [[RKObjectManager sharedManager].mappingProvider objectMappingForClass:[User class]];
+            loader.serializationMapping =[[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
+            loader.delegate = self;
+        }];
+    }
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id) object {
     // Login was successful
+    [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"FALSE" forKey:NEWUSER];
     [self performSegueWithIdentifier:@"showNewsFeed" sender:self];

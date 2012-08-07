@@ -65,6 +65,13 @@
     [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
 }
 
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
+    }
+}
+
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
     [self.tableView reloadData];

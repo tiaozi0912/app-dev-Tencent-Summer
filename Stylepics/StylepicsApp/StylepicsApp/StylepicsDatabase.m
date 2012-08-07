@@ -14,76 +14,8 @@
     
 }
 
-/*-(void) initialize{
-    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    [db open];
-    [db executeUpdate:@"CREATE  TABLE  IF NOT EXISTS \"UserTable\" (\"userID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"username\" VARCHAR NOT NULL , \"password\" VARCHAR NOT NULL , \"photo\" BLOB)"];
-    [db executeUpdate:@"CREATE  TABLE  IF NOT EXISTS \"EventTable\" (\"eventID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"type\" VARCHAR, \"userID\" INTEGER, \"pollID\" INTEGER, \"itemID\" INTEGER, \"voteeID\" INTEGER)"];
-    [db executeUpdate:@"CREATE  TABLE  IF NOT EXISTS \"PollTable\" (\"pollID\" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , \"name\" VARCHAR, \"ownerID\" INTEGER, \"state\" VARCHAR DEFAULT EDITING, \"totalVotes\" INTEGER DEFAULT 0, \"maxVotesForSingleItem\" INTEGER DEFAULT 1)"];
-    
-}
+/*
 
--(BOOL) isLoggedInWithUsername:(NSString*) username
-                            password:(NSString*) password{
-    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    [db open];
-    FMResultSet *results = [db executeQuery:@"SELECT userID FROM UserTable WHERE username =? AND password = ?", username, password];
-    BOOL success = [results next];
-    if (success) {
-        [Utility setObject:[NSNumber numberWithInt:[results intForColumn:@"userID"]] forKey:CURRENTUSERID]; 
-    }
-    [db close];
-    return success; 
-}
-
--(BOOL) existUsername:(NSString*) username{
-    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    [db open];
-    NSString *query = [[NSString alloc] initWithFormat:@"SELECT userID FROM UserTable WHERE username ='%@'", username];
-    FMResultSet *results = [db executeQuery:query];
-    BOOL exist = [results next];
-    [db close];
-    return exist; 
-}
-
--(int) getUserCount{
-    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    [db open];
-    int userCount = [db intForQuery:@"SELECT count(*) AS '# of user' FROM UserTable"];
-    [db close];
-    return userCount; 
-/*    @try {
-        NSString *query = [[NSString alloc] initWithString:@"SELECT COUNT(*) FROM UserTable"];
-        const char *sql = [query UTF8String];
-        sqlite3_stmt *sqlStatement;
-        if(sqlite3_prepare(db, sql, -1, &sqlStatement, NULL) != SQLITE_OK)
-        {
-            NSLog(@"Problem with prepare statement");
-        }
-        result = sqlite3_step(sqlStatement);
-        sqlite3_finalize(sqlStatement);
-    }
-    @catch (NSException *exception) {
-        NSLog(@"An exception occured: %@", [exception reason]);
-    }
-    @finally {
-        return result;
-    }*/
-/*}
--(BOOL) addNewUserWithUsername:(NSString*) username
-                      password:(NSString*) password{
-    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    [db open];
-    BOOL success = [db executeUpdate:@"INSERT INTO UserTable (username, password) VALUES(?,?)", username, password];
-    if (success){
-    int userID = [db intForQuery:@"SELECT userID FROM UserTable WHERE username = ?", username];
-    NSString *query = [[NSString alloc] initWithFormat:@"CREATE TABLE \"User_%d_PollTable\" (\"pollID\" INTEGER PRIMARY KEY  NOT NULL , \"type\" VARCHAR)", userID];
-    [db executeUpdate:query];
-    [Utility setObject:[NSNumber numberWithInt:userID] forKey:CURRENTUSERID];
-    }
-    [db close];
-    return success;
-}
 
 -(NSArray*) getMostRecentEventsNum:(NSNumber*) number
 {
@@ -105,15 +37,6 @@
     return [events copy];
 }
 
--(User*) getUserWithID:(NSNumber*) userID{
-    FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
-    [db open]; 
-    User *user = [[User alloc] init];
-    user.userID = userID;
-    user.username = [db stringForQuery:@"SELECT username FROM UserTable WHERE userID = ?", userID];
-    user.photo = [[UIImage alloc] initWithData:[db dataForQuery:@"SELECT photo FROM UserTable WHERE userID = ?", userID]];
-    return user;
-}
 
 -(Poll*) getPollWithID:(NSNumber*) pollID{
     FMDatabase *db = [FMDatabase databaseWithPath:[Utility getDatabasePath]];
