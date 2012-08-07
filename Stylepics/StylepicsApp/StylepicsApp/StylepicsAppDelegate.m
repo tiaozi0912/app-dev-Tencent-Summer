@@ -21,10 +21,9 @@
     [RKObjectManager sharedManager].serializationMIMEType = RKMIMETypeJSON;
      NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    
     // Class:User
     RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[User class]];
-    //userMapping.primaryKeyAttribute = @"userID";
-    userMapping.setDefaultValueForMissingAttributes = YES; // clear out any missing attributes (token on logout)
     [userMapping mapKeyPathsToAttributes:
      @"user_id", @"userID",
      @"user_name", @"username",
@@ -102,7 +101,10 @@
     RKObjectMapping* eventMapping = [RKObjectMapping mappingForClass:[Event class]];
     [eventMapping mapKeyPathsToAttributes:
      @"event_id", @"eventID",
-     @"type", @"type",
+     @"event_type", @"eventType",
+     @"user_id", @"userID",
+     @"poll_id", @"pollID",
+     @"item_id", @"itemID",
      nil];
     [eventMapping mapRelationship:@"user" withMapping:userMapping];
     [eventMapping mapRelationship:@"poll" withMapping:pollMapping];

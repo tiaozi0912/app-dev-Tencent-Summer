@@ -119,7 +119,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Event *event = [self.events objectAtIndex:indexPath.row];
-    NSString *eventType = event.type;
+    NSString *eventType = event.eventType;
     if ([eventType isEqualToString:@"new poll"]) {
         static NSString *CellIdentifier = @"new poll cell";
         NewsFeedNewPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -180,7 +180,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Event *event = [self.events objectAtIndex:indexPath.row];
-    NSString *eventType = event.type;
+    NSString *eventType = event.eventType;
     if ([eventType isEqualToString:@"new poll"]) {
         return HEIGHTOFNEWPOLLCELL;
     }else if ([eventType isEqualToString:@"new item"]){

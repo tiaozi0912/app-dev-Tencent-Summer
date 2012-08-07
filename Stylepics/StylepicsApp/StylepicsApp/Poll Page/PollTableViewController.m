@@ -142,9 +142,9 @@
             [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
             
             Event *votingEvent = [Event new];
-            votingEvent.type = VOTINGEVENT;
-            votingEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
-            votingEvent.poll = self.poll;
+            votingEvent.eventType = VOTINGEVENT;
+            votingEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
+            votingEvent.pollID = self.poll.pollID;
             [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];
             
         }

@@ -89,9 +89,9 @@
         [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         
         Event *newPollEvent = [Event new];
-        newPollEvent.type = NEWPOLLEVENT;
-        newPollEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
-        newPollEvent.poll.pollID = poll.pollID;
+        newPollEvent.eventType = NEWPOLLEVENT;
+        newPollEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
+        newPollEvent.pollID = poll.pollID;
         [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
         
         PollListItem *pollListItem = [PollListItem new];

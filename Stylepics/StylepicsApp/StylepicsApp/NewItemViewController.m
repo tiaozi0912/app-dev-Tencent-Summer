@@ -208,10 +208,10 @@ finishedSavingWithError:(NSError *)error
     
         NSLog(@"The new item has been added!");
         Event *newItemEvent = [Event new];
-        newItemEvent.type = NEWITEMEVENT;
-        newItemEvent.poll.pollID = item.pollID;
-        newItemEvent.item.itemID = item.itemID;
-        newItemEvent.user.userID = [Utility getObjectForKey:CURRENTUSERID];
+        newItemEvent.eventType = NEWITEMEVENT;
+        newItemEvent.pollID = item.pollID;
+        newItemEvent.itemID = item.itemID;
+        newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
     }else if ([objectLoader wasSentToResourcePath:@"/polls/:pollID/items/:itemID" method:RKRequestMethodPOST]){
         [self.uploadingSpin stopAnimating];
@@ -264,6 +264,33 @@ finishedSavingWithError:(NSError *)error
 /*-(void)doneButton{
     [self.priceTextField resignFirstResponder];
 }*/
+
+- (NSString*) formatCurrencyWithString: (NSString *) string
+{
+    // alloc formatter
+    NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
+    
+    // set options.
+    [currencyStyle setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    
+    // reset style to no style for converting string to number.
+    [currencyStyle setNumberStyle:NSNumberFormatterNoStyle];
+    
+    //create number from string
+    NSNumber * balance = [currencyStyle numberFromString:string];
+    
+    //now set to currency format
+    [currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [currencyStyle setMaximumFractionDigits:2];
+    [currencyStyle setMinimumFractionDigits:2];
+    // get formatted string
+    NSString* formatted = [currencyStyle stringFromNumber:balance];
+    
+    currencyStyle = nil;
+    
+    //return formatted string
+    return formatted;
+}
 #pragma mark - TextFieldDelegate Methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -293,5 +320,6 @@ finishedSavingWithError:(NSError *)error
         }
     }
 }*/
+
 
 @end
