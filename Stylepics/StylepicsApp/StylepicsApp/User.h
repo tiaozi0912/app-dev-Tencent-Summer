@@ -12,5 +12,5 @@
 
 @property (nonatomic, strong) NSNumber *userID;
 @property (nonatomic, strong) NSString *username, *password, *passwordConfirmation, *email, *singleAccessToken;
-@property (nonatomic, strong) NSURL *profilePhotoURL;
+@property (nonatomic, strong) NSString *profilePhotoURL;
 @end

@@ -9,7 +9,6 @@
 #import "PollResultViewController.h"
 
 @interface PollResultViewController (){
-    float totalVotes;
 }
 @property (nonatomic, strong) Poll *poll;
 @end
@@ -107,7 +106,7 @@
     }
     Item* item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
-    cell.itemImage.url= item.photoURL;
+    cell.itemImage.url= [NSURL URLWithString:item.photoURL];
     [HJObjectManager manage:cell.itemImage];
     cell.descriptionLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    

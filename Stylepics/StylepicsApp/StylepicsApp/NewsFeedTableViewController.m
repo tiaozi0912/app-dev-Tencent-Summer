@@ -17,7 +17,7 @@
 @interface NewsFeedTableViewController (){
     //int loaderKey;
 }
-@property (nonatomic, strong) NSArray* events; 
+@property (nonatomic, strong) NSArray* events;
 @end
 
 @implementation NewsFeedTableViewController
@@ -47,13 +47,6 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:
-(RKResponse*)response {
-    if ([response isJSON]) {
-        NSLog(@"Got a JSON, %@", response.bodyAsString);
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,7 +55,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-   // database = [[StylepicsDatabase alloc] init];
+
 }
 
 - (void)viewDidUnload
@@ -85,13 +78,25 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    self.events = nil;
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/events" delegate:self];
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
     if ([objectLoader wasSentToResourcePath:@"/events"]){
         self.events = objects;
+        NSLog(@"%u", self.events.count);
+        Event *event = [self.events objectAtIndex:0];
+        NSLog(@"eventType = %@, eventID = %@", event.eventType, event.eventID);
+        
         [self.tableView reloadData];
     }else{
         NSLog(@"logout successfully!");
@@ -128,8 +133,9 @@
      initWithStyle:UITableViewCellStyleDefault 
      reuseIdentifier:CellIdentifier];
      }
-        // Configure the cell...        
-        cell.userImage.url = (event.user.profilePhotoURL == nil? [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", APP_UI_IMAGES_BUCKET_NAME, @"default_profile_photo.jpeg"]]:event.user.profilePhotoURL);
+        // Configure the cell...
+        cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
+        cell.userImage.url = (event.user.profilePhotoURL == nil? nil:[NSURL URLWithString:event.user.profilePhotoURL]);
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", event.poll.title];
@@ -145,11 +151,12 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        cell.userImage.url = (event.user.profilePhotoURL == nil? [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", APP_UI_IMAGES_BUCKET_NAME, @"default_profile_photo.jpeg"]]:event.user.profilePhotoURL);
+        cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
+        cell.userImage.url = (event.user.profilePhotoURL == nil? nil:[NSURL URLWithString:event.user.profilePhotoURL]);
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [NSString stringWithFormat:@"Added one item to Poll '%@'.", event.poll.title];
-        cell.itemImage.url = event.item.photoURL;
+        cell.itemImage.url = [NSURL URLWithString:event.item.photoURL];
         [HJObjectManager manage:cell.itemImage];
         // In current version, photo uploading is limited to one picture at a time
         [cell.userNameLabel sizeToFit];
@@ -164,10 +171,11 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...
-        cell.userImage.url = (event.user.profilePhotoURL == nil? [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", APP_UI_IMAGES_BUCKET_NAME, @"default_profile_photo.jpeg"]]:event.user.profilePhotoURL);
+        cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
+        cell.userImage.url = (event.user.profilePhotoURL == nil? nil:[NSURL URLWithString:event.user.profilePhotoURL]);
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.poll.owner.username, event.poll.title];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.poll.user.username, event.poll.title];
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;

@@ -9,7 +9,6 @@
 #import "NewItemViewController.h"
 
 
-
 @interface NewItemViewController ()
 {
     BOOL itemAdded;
@@ -44,6 +43,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+    //    [AmazonClientManager initializeS3];
         // Custom initialization
     }
     return self;
@@ -53,6 +53,11 @@
 {
     [super viewDidLoad];
     itemAdded = NO;
+    [UIView beginAnimations:@"animation2" context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration: 0.7];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
+    [UIView commitAnimations];
 	// Do any additional setup after loading the view.
 }
 
@@ -64,18 +69,13 @@
     self.priceTextField = nil;
     photoURL = nil;
     item = nil;
-    
+  //  [AmazonClientManager clearCredentials];
     // Release any retained subviews of the main view.
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [UIView beginAnimations:@"animation2" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration: 0.7];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO]; 
-    [UIView commitAnimations];
     self.navigationItem.hidesBackButton = YES;
 }
 
@@ -86,7 +86,7 @@
 
 - (IBAction)TestOnSimulator:(id)sender
 {
-    self.itemImage.image = [UIImage imageNamed:@"item2.png"];
+    self.itemImage.image = [UIImage imageNamed:@"user3.png"];
     itemAdded = YES;
 }//when testing on devices, reconnect useCamera method below
 
@@ -193,19 +193,45 @@ finishedSavingWithError:(NSError *)error
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
-    if ([objectLoader wasSentToResourcePath:@"/polls/:pollID/items" method:RKRequestMethodPOST]){
-        NSString *imageName = [NSString stringWithFormat:@"Item_%@_in_Poll_%@", item.itemID, item.pollID];
-        S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
-        por.cannedACL = [S3CannedACL publicRead];
-        por.contentType = @"image/jpeg";
-        por.delegate = self;
-        por.filename = [imageName stringByAppendingString:@".jpeg"];
-        item.photoURL = [NSURL URLWithString:[IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, por.filename]];
-        NSData *imageData = UIImageJPEGRepresentation(self.itemImage.image, 0.8f);
-        por.data = imageData;
-        [self.uploadingSpin startAnimating];
-        [[AmazonClientManager s3] putObject:por];
-    
+    if ([objectLoader wasSentToResourcePath:@"/items" method:RKRequestMethodPOST] ){
+        @try {
+            NSString *imageName = [NSString stringWithFormat:@"Item_%@.jpeg", item.itemID];
+            NSData *imageData = UIImageJPEGRepresentation(self.itemImage.image, 0.8f);
+            
+            //S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
+         //   
+
+           // por.delegate = self;
+          /*  [self.uploadingSpin startAnimating];
+            NSLog(@"start uploading...");
+
+            NSLog(@"sent request");*/
+            @try {
+                //AmazonS3Client *s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY_ID withSecretKey:SECRET_KEY];
+                S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
+                por.contentType = @"image/jpeg";
+                por.data = imageData;
+                por.cannedACL = [S3CannedACL publicRead];
+                //[s3 putObject:por];
+                [AmazonClientManager initializeS3];
+                [[AmazonClientManager s3] putObject:por];
+            }
+            @catch (AmazonClientException *exception) {
+                NSLog(@"Failed to Create Object [%@]", exception);
+            }
+            
+            item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, imageName];
+            item.description = self.descriptionTextField.text;
+            item.numberOfVotes = [NSNumber numberWithInt:0];
+            item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+            item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+            [[RKObjectManager sharedManager] putObject:item delegate:self];
+            
+        }
+        @catch (AmazonClientException *exception) {
+            NSLog(@"Failed to Create Object [%@]", exception);
+        }
+    }else if (objectLoader.method == RKRequestMethodPUT){
         NSLog(@"The new item has been added!");
         Event *newItemEvent = [Event new];
         newItemEvent.eventType = NEWITEMEVENT;
@@ -213,7 +239,7 @@ finishedSavingWithError:(NSError *)error
         newItemEvent.itemID = item.itemID;
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
-    }else if ([objectLoader wasSentToResourcePath:@"/polls/:pollID/items/:itemID" method:RKRequestMethodPOST]){
+    }else {
         [self.uploadingSpin stopAnimating];
         [self backWithFlipAnimation];
     }
@@ -222,28 +248,6 @@ finishedSavingWithError:(NSError *)error
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
     [Utility showAlert:@"Sorry!" message:error.localizedDescription];
-}
-
-#pragma mark - AmazonServiceRequestDelegate Implementations
-
--(void)request:(AmazonServiceRequest *)request didCompleteWithResponse:(AmazonServiceResponse *)response
-{
-    item.description = self.descriptionTextField.text;
-    item.numberOfVotes = [NSNumber numberWithInt:0];
-    item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
-    item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-    [[RKObjectManager sharedManager] putObject:item delegate:self];
-}
-
-
--(void)request:(AmazonServiceRequest *)request didFailWithError:(NSError *)error
-{
-    NSLog(@"%@", error);
-}
-
--(void)request:(AmazonServiceRequest *)request didFailWithServiceException:(NSException *)exception
-{
-    NSLog(@"%@", exception);
 }
 
 #pragma mark - Helper Methods

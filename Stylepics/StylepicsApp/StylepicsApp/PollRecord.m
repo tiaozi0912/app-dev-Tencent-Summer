@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "PollListItem.h"
+#import "PollRecord.h"
 
-@implementation PollListItem
+@implementation PollRecord
 
-@synthesize pollID, userID, totalVotes, type, title, state, owner, startTime, endTime;
+@synthesize pollID, userID, totalVotes, pollRecordType, title, state, owner, startTime, endTime;
 
 @end

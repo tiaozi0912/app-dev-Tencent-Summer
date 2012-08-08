@@ -13,5 +13,5 @@
 
 @interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) Poll *poll;
-@property (nonatomic, weak) IBOutlet UIAlertView *alertView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingWheel;
 @end

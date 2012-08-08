@@ -17,5 +17,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *commentIconImage;
 @property (nonatomic, weak) IBOutlet UILabel *countOfCommentsLabel;
-
+@property (weak, nonatomic) IBOutlet UIButton *voteButton;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @end

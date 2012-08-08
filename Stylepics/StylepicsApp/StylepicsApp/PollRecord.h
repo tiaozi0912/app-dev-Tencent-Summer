@@ -1,5 +1,5 @@
 //
-//  PollListItem.h
+//  PollRecord.h
 //  StylepicsApp
 //
 //  Created by Yong Lin on 8/4/12.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
-@interface PollListItem : NSObject
+@interface PollRecord : NSObject
 
 @property (nonatomic, strong) NSNumber *pollID, *userID, *totalVotes;
-@property (nonatomic, strong) NSString *type, *title, *state;
+@property (nonatomic, strong) NSString *pollRecordType, *title, *state;
 @property (nonatomic, strong) User *owner;
 @property (nonatomic, strong) NSDate *startTime, *endTime;
 

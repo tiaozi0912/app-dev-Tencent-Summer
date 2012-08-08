@@ -60,8 +60,8 @@
     self.activePolls = [NSMutableArray new];
     self.followedPolls = [NSMutableArray new];
     self.pastPolls = [NSMutableArray new];
-    NSString *resourcePath = [NSString stringWithFormat:@"/users/%@/poll_list",[Utility getObjectForKey:CURRENTUSERID]];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
+    //NSString *resourcePath = [NSString stringWithFormat:@"/poll_records/%@",[Utility getObjectForKey:CURRENTUSERID]];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:
@@ -71,18 +71,18 @@
     }
 }
 
-- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObject:(id)object
+- (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
-    NSArray *pollList = object;
-    for (id obj in pollList){
-        if ([obj isKindOfClass:[PollListItem class]]){
-            PollListItem* pollListItem = (PollListItem*) obj;
-            if ([pollListItem.type isEqualToString:ACTIVE]){
-                [self.activePolls addObject:pollListItem];
-            }else if ([pollListItem.type isEqualToString:FOLLOWED]){
-                [self.followedPolls addObject:pollListItem];
-            }else if ([pollListItem.type isEqualToString:PAST]){
-                [self.pastPolls addObject:pollListItem];
+    NSArray *pollRecords = objects;
+    for (id obj in pollRecords){
+        if ([obj isKindOfClass:[PollRecord class]]){
+            PollRecord* pollRecord = (PollRecord*) obj;
+            if ([pollRecord.pollRecordType isEqualToString:ACTIVE]){
+                [self.activePolls addObject:pollRecord];
+            }else if ([pollRecord.pollRecordType isEqualToString:FOLLOWED]){
+                [self.followedPolls addObject:pollRecord];
+            }else if ([pollRecord.pollRecordType isEqualToString:PAST]){
+                [self.pastPolls addObject:pollRecord];
             }
         }
     }
@@ -133,7 +133,7 @@
             if (cell == nil) {
                 cell = [[ActivePollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            PollListItem* poll = [self.activePolls objectAtIndex:indexPath.row];
+            PollRecord* poll = [self.activePolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.title;
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.stateLabel.text = poll.state;
@@ -146,10 +146,11 @@
             if (cell == nil) {
                 cell = [[FollowedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            PollListItem *poll = [self.followedPolls objectAtIndex:indexPath.row];
+            PollRecord *poll = [self.followedPolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.title;
             cell.ownerLabel.text = poll.owner.username;
-            cell.userPhoto.url = poll.owner.profilePhotoURL;
+            cell.userPhoto.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
+            cell.userPhoto.url = [NSURL URLWithString:poll.owner.profilePhotoURL];
             [HJObjectManager manage:cell.userPhoto];
             cell.stateLabel.text = poll.state;
             [cell.nameLabel sizeToFit];
@@ -162,7 +163,7 @@
             if (cell == nil) {
                 cell = [[PastPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            PollListItem *poll = [self.pastPolls objectAtIndex:indexPath.row];
+            PollRecord *poll = [self.pastPolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.title;
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
             cell.dateLabel.text = @"7/17/2012";

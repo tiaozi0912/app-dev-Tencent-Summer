@@ -12,7 +12,6 @@
 @implementation StylepicsAppDelegate
 
 @synthesize window = _window;
-//@synthesize databaseName, databasePath;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {   
@@ -25,7 +24,7 @@
     // Class:User
     RKObjectMapping* userMapping = [RKObjectMapping mappingForClass:[User class]];
     [userMapping mapKeyPathsToAttributes:
-     @"user_id", @"userID",
+     @"id", @"userID",
      @"user_name", @"username",
      @"password", @"password",
      @"email", @"email",
@@ -34,55 +33,60 @@
      @"single_access_token", @"singleAccessToken",
      nil];
     
-    // Class:PollListItem
-    RKObjectMapping* pollListItemMapping = [RKObjectMapping mappingForClass:[PollListItem class]];
-    [pollListItemMapping setPreferredDateFormatter:dateFormatter];
-    [pollListItemMapping mapKeyPathsToAttributes:
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
+    
+    
+    // Class:PollRecord
+    RKObjectMapping* pollRecordMapping = [RKObjectMapping mappingForClass:[PollRecord class]];
+    [pollRecordMapping setPreferredDateFormatter:dateFormatter];
+    [pollRecordMapping mapKeyPathsToAttributes:
      @"poll_id", @"pollID",
      @"user_id", @"userID",
      @"total_votes", @"totalVotes",
-     @"type", @"type",
+     @"poll_record_type", @"pollRecordType",
      @"title", @"title",
      @"state", @"state",
      @"start_time", @"startTime",
      @"end_time", @"endTime",
      nil];
-    [pollListItemMapping mapRelationship:@"owner" withMapping:userMapping];
-
+    [pollRecordMapping mapRelationship:@"owner" withMapping:userMapping];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollRecordMapping withRootKeyPath:@"poll_record"];
+    
     // Class:Audience
     RKObjectMapping* audienceMapping = [RKObjectMapping mappingForClass:[Audience class]];
     //userMapping.primaryKeyAttribute = @"userID";
     audienceMapping.setDefaultValueForMissingAttributes = YES; // clear out any missing attributes (token on logout)
     [audienceMapping mapKeyPathsToAttributes:
-     @"audience_id", @"audienceID",
+     @"id", @"audienceID",
      @"user_id", @"userID",
      @"has_voted", @"hasVoted",
      @"user_name", @"username",
      @"profile_Photo_url", @"profilePhotoURL",
      @"poll_id", @"pollID",
      nil];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:audienceMapping withRootKeyPath:@"audience"];
     
     // Class:Comment
     //.........
     
     // Class:Item
-    RKObjectMapping* itemMapping = [RKObjectMapping mappingForClass:[Poll class]];
+    RKObjectMapping* itemMapping = [RKObjectMapping mappingForClass:[Item class]];
     [itemMapping mapKeyPathsToAttributes:
-     @"item_id", @"itemID",
-     @"description", @"description"
-     @"price", @"price"
+     @"id", @"itemID",
+     @"description", @"description",
+     @"price", @"price",
      @"number_of_votes", @"numberOfVotes",
      @"photo_url", @"photoURL",
      @"poll_id", @"pollID",
      nil];
     //[itemMapping mapRelationship:@"comments" withMapping:commentMapping];
-
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"item"];
     
     // Class:Poll
     RKObjectMapping* pollMapping = [RKObjectMapping mappingForClass:[Poll class]];
     [pollMapping setPreferredDateFormatter:dateFormatter];
     [pollMapping mapKeyPathsToAttributes:
-     @"poll_id", @"pollID",
+     @"id", @"pollID",
      @"user_id", @"ownerID",
      @"total_votes", @"totalVotes",
      @"max_votes_for_single_item", @"maxVotesForSingleItem",
@@ -91,16 +95,16 @@
      @"start_time", @"startTime",
      @"end_time", @"endTime",
      nil];
-    [pollMapping mapRelationship:@"owner" withMapping:userMapping];
+    [pollMapping mapRelationship:@"user" withMapping:userMapping];
     [pollMapping mapRelationship:@"items" withMapping:itemMapping];
-    [pollMapping mapRelationship:@"audience" withMapping:audienceMapping];
-    
+    [pollMapping mapRelationship:@"audiences" withMapping:audienceMapping];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollMapping withRootKeyPath:@"poll"];
 
     
     // Class:Event
     RKObjectMapping* eventMapping = [RKObjectMapping mappingForClass:[Event class]];
     [eventMapping mapKeyPathsToAttributes:
-     @"event_id", @"eventID",
+     @"id", @"eventID",
      @"event_type", @"eventType",
      @"user_id", @"userID",
      @"poll_id", @"pollID",
@@ -109,33 +113,29 @@
     [eventMapping mapRelationship:@"user" withMapping:userMapping];
     [eventMapping mapRelationship:@"poll" withMapping:pollMapping];
     [eventMapping mapRelationship:@"item" withMapping:itemMapping];
+    [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"event"];
     
 
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:userMapping withRootKeyPath:@"user"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollListItemMapping withRootKeyPath:@"poll_list"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"item"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:pollMapping withRootKeyPath:@"poll"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"event"];
-    [[RKObjectManager sharedManager].mappingProvider registerMapping:audienceMapping withRootKeyPath:@"audience"];
 
     
     [[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/users/:userID"];
 	[[RKObjectManager sharedManager].router routeClass:[User class] toResourcePath:@"/signup" forMethod:RKRequestMethodPOST];
     
-    [[RKObjectManager sharedManager].router routeClass:[PollListItem class] toResourcePath:@"/users/:userID/poll_list/:pollID"];
-	[[RKObjectManager sharedManager].router routeClass:[PollListItem class] toResourcePath:@"/users/:userID/poll_list" forMethod:RKRequestMethodPOST];
+    [[RKObjectManager sharedManager].router routeClass:[PollRecord class] toResourcePath:@"/poll_records/:pollID"];
+	[[RKObjectManager sharedManager].router routeClass:[PollRecord class] toResourcePath:@"/poll_records" forMethod:RKRequestMethodPOST];
     
     [[RKObjectManager sharedManager].router routeClass:[Poll class] toResourcePath:@"/polls/:pollID"];
     [[RKObjectManager sharedManager].router routeClass:[Poll class] toResourcePath:@"/polls" forMethod:RKRequestMethodPOST];
     
-    [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/polls/:pollID/items/:itemID"];
-    [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/polls/:pollID/items" forMethod:RKRequestMethodPOST];
+    [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/items/:itemID"];
+    [[RKObjectManager sharedManager].router routeClass:[Item class] toResourcePath:@"/items" forMethod:RKRequestMethodPOST];
     
     [[RKObjectManager sharedManager].router routeClass:[Event class] toResourcePath:@"/events/:eventID"];
     [[RKObjectManager sharedManager].router routeClass:[Event class] toResourcePath:@"/events" forMethod:RKRequestMethodPOST];
     
-    [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience/:audienceID"];
-    [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/polls/:pollID/audience" forMethod:RKRequestMethodPOST];
+    
+    [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/audiences/:audienceID"];
+    [[RKObjectManager sharedManager].router routeClass:[Audience class] toResourcePath:@"/audiences" forMethod:RKRequestMethodPOST];
     
 
     // Override point for customization after application launch.
@@ -162,21 +162,6 @@
     
     return YES;
 }
-
-
-/*-(void) createAndCheckDatabase
-{
-    BOOL success; 
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    success = [fileManager fileExistsAtPath:databasePath];
-    
-    if(success) return; 
-    
-    NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:self.databaseName];
-    
-    [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
-}*/
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

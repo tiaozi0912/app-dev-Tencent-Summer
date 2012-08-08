@@ -9,6 +9,8 @@
 #import "PollItemCell.h"
 
 @implementation PollItemCell
+@synthesize voteButton = _voteButton;
+@synthesize deleteButton = _deleteButton;
 
 @synthesize itemImage=_itemImage, countOfCommentsLabel=_countOfCommentsLabel,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel,commentIconImage=_commentIconImage;
 

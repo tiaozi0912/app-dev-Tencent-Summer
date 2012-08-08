@@ -94,11 +94,11 @@
         newPollEvent.pollID = poll.pollID;
         [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
         
-        PollListItem *pollListItem = [PollListItem new];
-        pollListItem.pollID = poll.pollID;
-        pollListItem.userID = [Utility getObjectForKey:CURRENTUSERID];
-        pollListItem.type = ACTIVE;
-        [[RKObjectManager sharedManager] postObject:pollListItem delegate:self];
+        PollRecord *pollRecord = [PollRecord new];
+        pollRecord.pollID = poll.pollID;
+        pollRecord.userID = [Utility getObjectForKey:CURRENTUSERID];
+        pollRecord.pollRecordType = ACTIVE;
+        [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
         [self performSegueWithIdentifier:@"showNewPoll" sender:self];
     }
 }

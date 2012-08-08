@@ -9,5 +9,5 @@
 #import "Audience.h"
 
 @implementation Audience
-@synthesize audienceID, hasVoted;
+@synthesize audienceID, hasVoted, pollID;
 @end

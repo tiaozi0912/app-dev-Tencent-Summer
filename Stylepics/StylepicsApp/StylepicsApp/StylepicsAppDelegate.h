@@ -14,7 +14,7 @@
 #import "User.h"
 #import "Poll.h"
 #import "Item.h"
-#import "PollListItem.h"
+#import "PollRecord.h"
 #import "Audience.h"
 #import "AmazonClientManager.h"
 
@@ -32,9 +32,6 @@ HJObjManager *HJObjectManager;
 @interface StylepicsAppDelegate : UIResponder 
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) NSString *databaseName;
-@property (strong, nonatomic) NSString *databasePath;
 
-//-(void) createAndCheckDatabase;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "AmazonClientManager.h"
-static AmazonS3Client       *s3  = nil;
+static AmazonS3Client *s3  = nil;
 
 @implementation AmazonClientManager
 

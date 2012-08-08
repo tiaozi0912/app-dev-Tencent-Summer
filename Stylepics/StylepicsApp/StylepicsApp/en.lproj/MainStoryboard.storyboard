@@ -643,7 +643,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysj-kf-CGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="AtD-j7-Qhz" customClass="PollTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="346" sectionHeaderHeight="22" sectionFooterHeight="22" id="vnW-Cp-J6N">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="346" sectionHeaderHeight="22" sectionFooterHeight="22" id="vnW-Cp-J6N">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -733,9 +733,11 @@
                                 <connections>
                                     <outlet property="commentIconImage" destination="RJY-m0-XKJ" id="vLZ-nR-n3d"/>
                                     <outlet property="countOfCommentsLabel" destination="ku3-g4-M3Y" id="I3o-Bs-Nl4"/>
+                                    <outlet property="deleteButton" destination="rYU-uQ-mPb" id="N5c-Jt-OAo"/>
                                     <outlet property="descriptionOfItemLabel" destination="WRc-G6-rCe" id="x9J-gC-AOz"/>
                                     <outlet property="itemImage" destination="Jge-oR-oUq" id="OQc-yj-04B"/>
                                     <outlet property="priceLabel" destination="u6W-h3-w00" id="Uat-9l-EjK"/>
+                                    <outlet property="voteButton" destination="qBO-gG-swn" id="qcY-MP-qOb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -780,10 +782,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingWheel" destination="qP4-s0-J9m" id="QBx-7v-smu"/>
                         <segue destination="PLI-kD-jhi" kind="push" identifier="show poll result" id="Ri5-vt-ryA"/>
                         <segue destination="ld5-tW-awy" kind="push" identifier="add new item" id="LU7-nh-1pt"/>
                     </connections>
                 </tableViewController>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="qP4-s0-J9m">
+                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="2392" y="-165"/>
         </scene>
@@ -982,7 +989,7 @@
                     <toolbarItems>
                         <barButtonItem systemItem="camera" id="AJu-j2-aIn">
                             <connections>
-                                <action selector="useCamera" destination="ld5-tW-awy" id="2Sf-wl-9JG"/>
+                                <action selector="TestOnSimulator:" destination="ld5-tW-awy" id="Lyb-bs-WuW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="CnS-QF-i5h"/>
@@ -1055,8 +1062,6 @@
         <class className="NewItemViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewItemViewController.h"/>
             <relationships>
-                <relationship kind="action" name="TestOnSimulator:"/>
-                <relationship kind="action" name="backgroundTouched:"/>
                 <relationship kind="action" name="useCamera"/>
                 <relationship kind="action" name="useCameraRoll"/>
                 <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
@@ -1116,9 +1121,11 @@
             <relationships>
                 <relationship kind="outlet" name="commentIconImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="countOfCommentsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="descriptionOfItemLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="voteButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="PollResultCell" superclassName="UITableViewCell">
@@ -1133,10 +1140,6 @@
         </class>
         <class className="PollResultViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PollResultViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="refresh:" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="PollTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PollTableViewController.h"/>
@@ -1147,7 +1150,7 @@
                 <relationship kind="action" name="refresh:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="showPollResult:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="vote:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="alertView" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="loadingWheel" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
         <class className="RegistrationPageViewController" superclassName="UIViewController">
