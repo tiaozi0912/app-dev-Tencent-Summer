@@ -19,7 +19,4 @@
 @property (nonatomic, weak) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *uploadingSpin;
-- (IBAction)useCamera;
-- (IBAction)useCameraRoll;
 @end

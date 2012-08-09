@@ -1,6 +1,6 @@
 //
 //  NewItemViewController.m
-//  StylepicsApp
+//  
 //
 //  Created by Yong Lin on 7/15/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
@@ -14,6 +14,7 @@
     BOOL itemAdded;
     NSURL *photoURL;
     Item *item;
+    UIActivityIndicatorView *spinner;
 }
  
 @end
@@ -94,8 +95,9 @@
     if (itemAdded) {
         [self.descriptionTextField resignFirstResponder];
         [self.priceTextField resignFirstResponder];
-        self.navigationItem.leftBarButtonItem.enabled = NO;
-        [self.uploadingSpin startAnimating];
+        spinner =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+        [spinner startAnimating];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
         item = [Item new];
         item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
         [[RKObjectManager sharedManager] postObject:item delegate:self];
@@ -120,7 +122,7 @@
 	[popupQuery showInView:self.view];
 	popupQuery = nil;
 }
-- (IBAction)TestOnSimulator:(id)sender
+- (void) TestOnSimulator
 {
     self.itemImage.image = [UIImage imageNamed:@"user3.png"];
     itemAdded = YES;
@@ -256,7 +258,8 @@ finishedSavingWithError:(NSError *)error
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
     }else {
-        [self.uploadingSpin stopAnimating];
+        [spinner stopAnimating];
+        spinner = nil;
         [self backWithFlipAnimation];
     }
 }
@@ -318,7 +321,12 @@ finishedSavingWithError:(NSError *)error
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
      switch (buttonIndex) {
-         case 0:[self useCamera];
+         case 0:
+#if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
+             [self TestOnSimulator];
+#elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
+             [self useCamera];
+#endif
      break;
          case 1:[self useCameraRoll];
      break;
