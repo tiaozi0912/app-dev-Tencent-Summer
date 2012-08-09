@@ -82,7 +82,11 @@
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
     [self.passwordConfirmationField resignFirstResponder];
-} 
+}
+
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
 {

@@ -119,7 +119,7 @@
      }
         // Configure the cell...
         cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
-        cell.userImage.url = (event.user.profilePhotoURL == nil? nil:[NSURL URLWithString:event.user.profilePhotoURL]);
+        cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", event.poll.title];
@@ -136,7 +136,7 @@
         }
         // Configure the cell...
         cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
-        cell.userImage.url = (event.user.profilePhotoURL == nil? nil:[NSURL URLWithString:event.user.profilePhotoURL]);
+        cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [NSString stringWithFormat:@"Added one item to Poll '%@'.", event.poll.title];
@@ -156,7 +156,7 @@
         }
         // Configure the cell...
         cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
-        cell.userImage.url = (event.user.profilePhotoURL == nil? nil:[NSURL URLWithString:event.user.profilePhotoURL]);
+        cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.poll.user.username, event.poll.title];

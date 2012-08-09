@@ -96,7 +96,7 @@
         pollRecord.pollID = self.poll.pollID;
         pollRecord.pollRecordType = PAST;
         [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
-        [[self.toolbarItems objectAtIndex:2] setTitle:@"Finished"];
+        [[self.toolbarItems objectAtIndex:2] setTitle:@"Ended"];
         [[self.toolbarItems objectAtIndex:2] setEnabled:NO];
     }
 }
@@ -206,15 +206,15 @@
             self.navigationController.toolbarHidden = NO;
             if ([self.poll.state isEqualToString:EDITING]){
                 [[self.toolbarItems objectAtIndex:0]setEnabled:YES];
-                [[self.toolbarItems objectAtIndex:2]setTitle:@"Ask for votes"];
+                [[self.toolbarItems objectAtIndex:2]setTitle:@"Open Poll"];
                 [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
             } else if([self.poll.state isEqualToString:VOTING]){
                 [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-                [[self.toolbarItems objectAtIndex:2]setTitle:@"End Voting"];
+                [[self.toolbarItems objectAtIndex:2]setTitle:@"End Poll"];
                 [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
             } else {
                 [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-                [[self.toolbarItems objectAtIndex:2]setTitle:@"Finished"];
+                [[self.toolbarItems objectAtIndex:2]setTitle:@"Ended"];
                 [[self.toolbarItems objectAtIndex:2]setEnabled:NO];
                 [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
             }

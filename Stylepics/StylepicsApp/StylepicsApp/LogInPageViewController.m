@@ -65,11 +65,16 @@
     NSLog(@"Encountered an error: %@", error);
 }
 
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(IBAction)backgroundTouched:(id)sender
 {
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
 } 
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)aTextField
 {
