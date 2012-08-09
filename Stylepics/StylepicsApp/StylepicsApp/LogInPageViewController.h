@@ -1,5 +1,5 @@
 //
-//  StylepicsEntryPageViewController.h
+//  LogInPageViewController.h
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/6/12.
@@ -10,7 +10,7 @@
 #import "StylepicsDatabase.h"
 #import "StylepicsAppDelegate.h" 
 
-@interface StylepicsEntryPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
+@interface LogInPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;

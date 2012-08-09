@@ -103,9 +103,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //database = [[StylepicsDatabase alloc] init];
-
-    //self.navigationController.toolbarHidden = YES;
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+    self.navigationController.toolbarHidden = YES;
 }
 
 

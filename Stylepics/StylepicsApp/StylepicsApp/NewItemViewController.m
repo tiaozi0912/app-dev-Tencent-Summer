@@ -32,12 +32,6 @@
     self.priceTextField.delegate= self;
 }
 
--(IBAction)backgroundTouched:(id)sender
-{
-    [self.descriptionTextField resignFirstResponder];
-    [self.priceTextField resignFirstResponder];
-} 
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,12 +46,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     itemAdded = NO;
     [UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration: 0.7];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
     [UIView commitAnimations];
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 	// Do any additional setup after loading the view.
 }
 
@@ -76,21 +72,61 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.toolbarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.toolbarHidden = YES;
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+#pragma User Action
+
+-(IBAction) finishAddingNewItems
+{
+    if (itemAdded) {
+        [self.descriptionTextField resignFirstResponder];
+        [self.priceTextField resignFirstResponder];
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+        [self.uploadingSpin startAnimating];
+        item = [Item new];
+        item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+        [[RKObjectManager sharedManager] postObject:item delegate:self];
+    }else{
+        [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
+    }
+}
+
+- (IBAction)cancelButton{
+    [self backWithFlipAnimation];
+}
+
+-(IBAction)backgroundTouched:(id)sender
+{
+    [self.descriptionTextField resignFirstResponder];
+    [self.priceTextField resignFirstResponder];
+}
+
+-(IBAction)showActionSheet:(id)sender {
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from photo library", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showInView:self.view];
+	popupQuery = nil;
+}
 - (IBAction)TestOnSimulator:(id)sender
 {
     self.itemImage.image = [UIImage imageNamed:@"user3.png"];
     itemAdded = YES;
 }//when testing on devices, reconnect useCamera method below
 
-- (IBAction)useCamera 
+- (void)useCamera
 {
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeCamera])
@@ -110,7 +146,7 @@
     }
 }
 
-- (IBAction)useCameraRoll
+- (void)useCameraRoll
 {
     if ([UIImagePickerController isSourceTypeAvailable:
          UIImagePickerControllerSourceTypeSavedPhotosAlbum])
@@ -128,6 +164,7 @@
         //newMedia = NO;
     } 
 }
+
 
 -(void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -173,16 +210,7 @@ finishedSavingWithError:(NSError *)error
     [self dismissModalViewControllerAnimated:YES];
 }
 
--(IBAction) finishAddingNewItems
-{
-    if (itemAdded) {
-        item = [Item new];
-        item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-        [[RKObjectManager sharedManager] postObject:item delegate:self];
-    }else{
-        [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
-    }
-}
+#pragma RKObjectLoaderDelegate Methods
 
 - (void)request:(RKRequest*)request didLoadResponse:
 (RKResponse*)response {
@@ -197,29 +225,17 @@ finishedSavingWithError:(NSError *)error
         @try {
             NSString *imageName = [NSString stringWithFormat:@"Item_%@.jpeg", item.itemID];
             NSData *imageData = UIImageJPEGRepresentation(self.itemImage.image, 0.8f);
-            
-            //S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
-         //   
-
-           // por.delegate = self;
-          /*  [self.uploadingSpin startAnimating];
-            NSLog(@"start uploading...");
-
-            NSLog(@"sent request");*/
             @try {
-                //AmazonS3Client *s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY_ID withSecretKey:SECRET_KEY];
                 S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
                 por.contentType = @"image/jpeg";
                 por.data = imageData;
                 por.cannedACL = [S3CannedACL publicRead];
-                //[s3 putObject:por];
                 [AmazonClientManager initializeS3];
                 [[AmazonClientManager s3] putObject:por];
             }
             @catch (AmazonClientException *exception) {
                 NSLog(@"Failed to Create Object [%@]", exception);
-            }
-            
+            }            
             item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, imageName];
             item.description = self.descriptionTextField.text;
             item.numberOfVotes = [NSNumber numberWithInt:0];
@@ -252,10 +268,6 @@ finishedSavingWithError:(NSError *)error
 
 #pragma mark - Helper Methods
 
-- (IBAction)cancelButton{
-    [self backWithFlipAnimation];
-}
-
 -(void)backWithFlipAnimation{
     [UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -269,32 +281,7 @@ finishedSavingWithError:(NSError *)error
     [self.priceTextField resignFirstResponder];
 }*/
 
-- (NSString*) formatCurrencyWithString: (NSString *) string
-{
-    // alloc formatter
-    NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
-    
-    // set options.
-    [currencyStyle setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    
-    // reset style to no style for converting string to number.
-    [currencyStyle setNumberStyle:NSNumberFormatterNoStyle];
-    
-    //create number from string
-    NSNumber * balance = [currencyStyle numberFromString:string];
-    
-    //now set to currency format
-    [currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [currencyStyle setMaximumFractionDigits:2];
-    [currencyStyle setMinimumFractionDigits:2];
-    // get formatted string
-    NSString* formatted = [currencyStyle stringFromNumber:balance];
-    
-    currencyStyle = nil;
-    
-    //return formatted string
-    return formatted;
-}
+
 #pragma mark - TextFieldDelegate Methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -302,6 +289,7 @@ finishedSavingWithError:(NSError *)error
     [textField resignFirstResponder];
     return YES;
 }
+
 
 /*- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -325,5 +313,19 @@ finishedSavingWithError:(NSError *)error
     }
 }*/
 
+#pragma mark - UIActionSheetDelegate Methods
 
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+     switch (buttonIndex) {
+         case 0:[self useCamera];
+     break;
+         case 1:[self useCameraRoll];
+     break;
+         case 2:[actionSheet resignFirstResponder];
+     break;
+     default:
+     break;
+     }
+}
 @end

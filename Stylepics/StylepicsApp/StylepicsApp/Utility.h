@@ -15,8 +15,10 @@
     
 }
 
-//+(NSString *) getDatabasePath;
 +(void) showAlert:(NSString *) title message:(NSString *) msg; 
 +(void) setObject:(id) obj forKey:(NSString*) key;
 +(id) getObjectForKey:(NSString*) key;
++ (NSString*) formatCurrencyWithString: (NSString *) string;
++(NSString*) formatCurrencyWithNumber: (NSNumber *) number;
++(UILabel*)formatTitleWithString:(NSString *) titleText;
 @end

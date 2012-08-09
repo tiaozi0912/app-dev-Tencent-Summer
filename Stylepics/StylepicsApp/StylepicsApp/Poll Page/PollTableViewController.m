@@ -33,6 +33,7 @@
     [super viewDidLoad];
     self.navigationController.toolbarHidden = YES;
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -57,12 +58,10 @@
 - (IBAction)startOrEndVotingPressed
 {
     if ([self.poll.state isEqualToString:EDITING]){
-        NSLog(@"button pressed");
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to ask for votes now?" message:@"Note: Once you start to ask for votes, your friends can vote in your poll. But you can not edit your poll any more." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
         [alertView show];
         alertView = nil;
     }else if ([self.poll.state isEqualToString:VOTING]){
-        NSLog(@"button pressed");
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to end this poll now?" message:@"Note: Once you start to ask for votes, your friends can vote in your poll. But you can not edit your poll any more." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
         [alertView show];
         alertView = nil;
@@ -86,7 +85,7 @@
         [self.tableView reloadData];
         [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
         [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-        [[self.toolbarItems objectAtIndex:2] setTitle:@"End Voting"];
+        [[self.toolbarItems objectAtIndex:2] setTitle:@"End Poll"];
         [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
     }else if([self.poll.state isEqualToString:VOTING]){
         self.poll.state = FINISHED;
@@ -111,11 +110,7 @@
 }
 
 - (IBAction)goHomePage:(UIBarButtonItem *)sender {
-    if ([[Utility getObjectForKey:NEWUSER] isEqualToString:@"TRUE"]){
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
-    }else{
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
-    }
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
 }
 
 
@@ -170,8 +165,6 @@
     self.poll = [Poll new];
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
     [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Tool-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault]; 
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -180,9 +173,6 @@
 }
 -(void) viewWillDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
-
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:
@@ -200,6 +190,7 @@
     //Successfully loaded a poll
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
         [self.loadingWheel stopAnimating];
+        self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         self.title = self.poll.title;
         //find whether the current user is among the audience of the poll
@@ -215,7 +206,7 @@
             self.navigationController.toolbarHidden = NO;
             if ([self.poll.state isEqualToString:EDITING]){
                 [[self.toolbarItems objectAtIndex:0]setEnabled:YES];
-                [[self.toolbarItems objectAtIndex:2]setTitle:@"Start Voting"];
+                [[self.toolbarItems objectAtIndex:2]setTitle:@"Ask for votes"];
                 [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
             } else if([self.poll.state isEqualToString:VOTING]){
                 [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
@@ -290,7 +281,7 @@
     cell.itemImage.url = [NSURL URLWithString:item.photoURL];
     [HJObjectManager manage:cell.itemImage];
     cell.descriptionOfItemLabel.text = item.description;
-    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price]; 
+    cell.priceLabel.text = [Utility formatCurrencyWithNumber:item.price];
     [cell.descriptionOfItemLabel sizeToFit];
     [cell.priceLabel sizeToFit];
     return cell;

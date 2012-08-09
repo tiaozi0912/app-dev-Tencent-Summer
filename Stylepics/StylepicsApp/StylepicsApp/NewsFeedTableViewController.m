@@ -8,20 +8,18 @@
 
 #import "NewsFeedTableViewController.h"
 #import "Utility.h"
-//#import "StylepicsDatabase.h"
 
 #define NUMBEROFEVENTSLOADED 200
 #define HEIGHTOFNEWPOLLCELL 60
 #define HEIGHTOFNEWITEMCELL 295
 #define HEIGHTOFVOTECELL 60
+
 @interface NewsFeedTableViewController (){
-    //int loaderKey;
 }
 @property (nonatomic, strong) NSArray* events;
 @end
 
 @implementation NewsFeedTableViewController
-
 
 @synthesize events=_events;
 
@@ -35,21 +33,12 @@
     return self;
 }
 
-- (IBAction)logout:(UIBarButtonItem *)sender 
-{
-    User* user = [User new];
-    user.singleAccessToken = [Utility getObjectForKey:SINGLE_ACCESS_TOKEN_KEY];
-    [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader *loader) {
-        loader.delegate = self;
-        loader.resourcePath = @"/logout";
-        loader.serializationMapping = [[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
-    }];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -73,7 +62,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.toolbarHidden = NO;
+    self.navigationController.toolbarHidden = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -94,12 +83,7 @@
     if ([objectLoader wasSentToResourcePath:@"/events"]){
         self.events = objects;
         NSLog(@"%u", self.events.count);
-        Event *event = [self.events objectAtIndex:0];
-        NSLog(@"eventType = %@, eventID = %@", event.eventType, event.eventID);
-        
         [self.tableView reloadData];
-    }else{
-        NSLog(@"logout successfully!");
     }
 }
 
@@ -239,6 +223,12 @@
 */
 
 #pragma mark - Table view delegate
+
+- (void)tableView: (UITableView*)tableView
+  willDisplayCell: (UITableViewCell*)cell
+forRowAtIndexPath: (NSIndexPath*)indexPath{
+   // cell.backgroundColor = [UIColor clearColor];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

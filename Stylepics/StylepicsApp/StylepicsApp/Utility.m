@@ -36,4 +36,65 @@
     NSUserDefaults *session = [NSUserDefaults standardUserDefaults];
     return [session objectForKey:key];
 }
+
++ (NSString*) formatCurrencyWithString: (NSString *) string
+{
+    // alloc formatter
+    NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
+    
+    // set options.
+    [currencyStyle setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    
+    // reset style to no style for converting string to number.
+    [currencyStyle setNumberStyle:NSNumberFormatterNoStyle];
+    
+    //create number from string
+    NSNumber * balance = [currencyStyle numberFromString:string];
+    
+    //now set to currency format
+    [currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [currencyStyle setMaximumFractionDigits:2];
+    [currencyStyle setMinimumFractionDigits:2];
+    // get formatted string
+    NSString* formatted = [currencyStyle stringFromNumber:balance];
+    
+    currencyStyle = nil;
+    
+    //return formatted string
+    return formatted;
+}
+
++ (NSString*) formatCurrencyWithNumber: (NSNumber *) price
+{
+    // alloc formatter
+    NSNumberFormatter *currencyStyle = [[NSNumberFormatter alloc] init];
+    
+    // set options.
+    [currencyStyle setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    
+    // set to currency format
+    [currencyStyle setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [currencyStyle setMaximumFractionDigits:2];
+    [currencyStyle setMinimumFractionDigits:2];
+    // get formatted string
+    NSString* formatted = [currencyStyle stringFromNumber:price];
+    
+    currencyStyle = nil;
+    
+    //return formatted string
+    return formatted;
+}
+
++(UILabel*)formatTitleWithString:(NSString *) titleText
+{
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
+    title.backgroundColor = [UIColor clearColor];
+    title.font = [UIFont fontWithName:@"Cochin-BoldItalic" size:28];
+    title.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    title.textAlignment = UITextAlignmentCenter;
+    title.textColor = [UIColor whiteColor]; // change this color
+    title.text = titleText;
+    [title sizeToFit];
+    return title;
+}
 @end

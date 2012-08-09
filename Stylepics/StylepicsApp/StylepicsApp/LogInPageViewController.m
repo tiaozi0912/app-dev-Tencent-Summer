@@ -1,25 +1,24 @@
 //
-//  StylepicsEntryPageViewController.m
+//  LogInPageViewController
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/6/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "StylepicsEntryPageViewController.h"
+#import "LogInPageViewController.h"
 #import "User.h"
 #import "Utility.h"
 
-@interface StylepicsEntryPageViewController () {
+@interface LogInPageViewController () {
     User* user;
 }
 
 @end
 
-@implementation StylepicsEntryPageViewController
+@implementation LogInPageViewController
 @synthesize usernameField=_usernameField;
 @synthesize passwordField=_passwordField;
-
 
 -(void) setUsername:(UITextField *)usernameField
 {
@@ -88,11 +87,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  //database = [[StylepicsDatabase alloc] init];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:@"Custom-Nav-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
-    UIImage *toolBarBackground =[[UIImage imageNamed:@"Custom-Tool-Bar-BG.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.toolbar setBackgroundImage:toolBarBackground forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault]; 
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    
 }
 
 
@@ -109,6 +105,7 @@
     self.passwordField.text = nil;
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

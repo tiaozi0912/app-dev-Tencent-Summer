@@ -10,7 +10,9 @@
 
 #define POLLCELLHEIGHT 46
 
-@interface ManagePollsTableViewController ()
+@interface ManagePollsTableViewController (){
+    dispatch_queue_t downloadQueue;
+}
 
 @property (nonatomic, strong) NSMutableArray *activePolls, *pastPolls, *followedPolls;
 @end
@@ -31,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -41,7 +45,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
+    dispatch_release(downloadQueue);
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -57,12 +61,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.toolbarHidden = YES;
     self.activePolls = [NSMutableArray new];
     self.followedPolls = [NSMutableArray new];
     self.pastPolls = [NSMutableArray new];
-    //NSString *resourcePath = [NSString stringWithFormat:@"/poll_records/%@",[Utility getObjectForKey:CURRENTUSERID]];
+    /*downloadQueue = dispatch_queue_create("image downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
+    });*/
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 }
+
 
 - (void)request:(RKRequest*)request didLoadResponse:
 (RKResponse*)response {
@@ -125,6 +134,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   /* if (![NSThread isMainThread])
+    {
+        return [self performSelector:@selector(tableView: cellForRowAtIndexPath:) withObject:tableView withObject:indexPath];
+       
+    }*/
     switch (indexPath.section) {
 
         case 0:{

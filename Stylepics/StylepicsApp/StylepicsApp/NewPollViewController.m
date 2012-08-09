@@ -42,6 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 	// Do any additional setup after loading the view.
 }
 
@@ -54,14 +56,14 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);;
 }
 - (void)alertForEmptyName {
     [Utility showAlert:@"Please type something" message:@"Your new poll should have a name."];
-
 }
 
-- (IBAction)newPoll {
+- (IBAction)newPoll
+{
     if ([self.textField.text length] == 0)
     { 
         [self alertForEmptyName];  
@@ -74,6 +76,11 @@
         poll.maxVotesForSingleItem = [NSNumber numberWithInt:1];
         [[RKObjectManager sharedManager] postObject:poll delegate:self];
     }
+}
+
+-(IBAction)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:

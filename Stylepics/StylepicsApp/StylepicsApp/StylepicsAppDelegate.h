@@ -27,6 +27,8 @@
 #define PAST @"PAST"
 #define FOLLOWED @"FOLLOWED"
 
+#define BACKGROUND_COLOR @"backgroundImage.jpeg"
+#define NAV_BAR_BACKGROUND_COLOR @"NavBarImage.jpeg"
 HJObjManager *HJObjectManager;
 
 @interface StylepicsAppDelegate : UIResponder 
