@@ -251,7 +251,7 @@
                              }else return NO;
                          }];
         //if the current user owns this poll
-     /*   if (isOwnerView){
+        if (isOwnerView){
             self.addItemButton.enabled = YES;
         }else{
             self.addItemButton.enabled = NO;
@@ -266,7 +266,7 @@
                 pollRecord.pollRecordType = FOLLOWED;
                 [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
             }
-        }*/
+        }
     }else if ([objectLoader wasSentToResourcePath:@"/audiences" method: RKRequestMethodPOST]) {
         NSLog(@"User[%@] has become one of the audience of this poll now.",[Utility getObjectForKey:CURRENTUSERID]);
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];

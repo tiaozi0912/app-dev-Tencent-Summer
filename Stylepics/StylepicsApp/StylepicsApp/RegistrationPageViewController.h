@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StylepicsDatabase.h"
+#import "Utility.h"
 
 @interface RegistrationPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
 

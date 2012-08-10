@@ -7,7 +7,6 @@
 //
 
 #import "NewPollViewController.h"
-#import "StylepicsDatabase.h"
 #import "Utility.h"
 
 @interface NewPollViewController ()

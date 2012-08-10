@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StylepicsDatabase.h"
 #import "StylepicsAppDelegate.h" 
 
 @interface LogInPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>

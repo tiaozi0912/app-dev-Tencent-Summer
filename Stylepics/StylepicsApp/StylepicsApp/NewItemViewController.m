@@ -20,6 +20,7 @@
 @end
 
 @implementation NewItemViewController
+@synthesize cameraButton;
 
 @synthesize itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
 
@@ -61,6 +62,7 @@
 
 - (void)viewDidUnload
 {
+    [self setCameraButton:nil];
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
@@ -120,7 +122,7 @@
 -(IBAction)showActionSheet:(id)sender {
 	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from photo library", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[popupQuery showInView:self.view];
+	[popupQuery showFromBarButtonItem:self.cameraButton animated:YES];
 	popupQuery = nil;
 }
 - (void) TestOnSimulator

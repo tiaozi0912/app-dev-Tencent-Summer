@@ -1066,6 +1066,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <connections>
+                        <outlet property="cameraButton" destination="AJu-j2-aIn" id="2UT-hu-Wgp"/>
                         <outlet property="descriptionTextField" destination="gOi-y3-rFA" id="avm-eK-ou3"/>
                         <outlet property="itemImage" destination="hml-Ra-fU6" id="IZq-kX-MT6"/>
                         <outlet property="priceTextField" destination="wZo-de-Z5l" id="LNC-w5-qlo"/>
@@ -1124,6 +1125,8 @@
         <class className="NewItemViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewItemViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="action" name="showActionSheet:"/>
                 <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>

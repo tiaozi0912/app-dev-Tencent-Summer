@@ -29,8 +29,6 @@
 		0D8F49D615B6065A00C2DAEF /* PollResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8F49D515B6065A00C2DAEF /* PollResultCell.m */; };
 		0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19615AF7606003011A0 /* PollItemCell.m */; };
 		0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19815AF7606003011A0 /* PollTableViewController.m */; };
-		0D91EE4F15ACDBD000D1015D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */; };
-		0D91EE5315ACE8B900D1015D /* StylepicsDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */; };
 		0D91EE5B15AD4BD300D1015D /* RegistrationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */; };
 		0D94F4E915A7D09700903F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F4E815A7D09700903F0B /* UIKit.framework */; };
 		0D94F4EB15A7D09700903F0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F4EA15A7D09700903F0B /* Foundation.framework */; };
@@ -54,7 +52,6 @@
 		0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */; };
 		0D96665E15AB9DEB00753491 /* comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665D15AB9DEA00753491 /* comment.m */; };
 		0D96666115AB9FA900753491 /* AudienceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96666015AB9FA900753491 /* AudienceListView.m */; };
-		0D96666315AC040C00753491 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D96666215AC040C00753491 /* libsqlite3.0.dylib */; };
 		0D98F3E215C0B2B20046423C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3D715C0B2070046423C /* libRestKit.a */; };
 		0D98F3E415C0B2EE0046423C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3E315C0B2EE0046423C /* CFNetwork.framework */; };
 		0D98F3E615C0B2FA0046423C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3E515C0B2FA0046423C /* CoreData.framework */; };
@@ -183,9 +180,6 @@
 		0D8FA19615AF7606003011A0 /* PollItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollItemCell.m; path = "Poll Page/PollItemCell.m"; sourceTree = "<group>"; };
 		0D8FA19715AF7606003011A0 /* PollTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollTableViewController.h; path = "Poll Page/PollTableViewController.h"; sourceTree = "<group>"; };
 		0D8FA19815AF7606003011A0 /* PollTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollTableViewController.m; path = "Poll Page/PollTableViewController.m"; sourceTree = "<group>"; };
-		0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		0D91EE5115ACE8B900D1015D /* StylepicsDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StylepicsDatabase.h; sourceTree = "<group>"; };
-		0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StylepicsDatabase.m; sourceTree = "<group>"; };
 		0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationPageViewController.h; sourceTree = "<group>"; };
 		0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationPageViewController.m; sourceTree = "<group>"; };
 		0D94F4E415A7D09700903F0B /* Stylepics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylepics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,7 +219,6 @@
 		0D96665D15AB9DEA00753491 /* comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comment.m; sourceTree = "<group>"; };
 		0D96665F15AB9FA900753491 /* AudienceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudienceListView.h; sourceTree = "<group>"; };
 		0D96666015AB9FA900753491 /* AudienceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudienceListView.m; sourceTree = "<group>"; };
-		0D96666215AC040C00753491 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		0D98F3CB15C0B2060046423C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "RestKit-RestKit-6540552/RestKit.xcodeproj"; sourceTree = "<group>"; };
 		0D98F3E315C0B2EE0046423C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0D98F3E515C0B2FA0046423C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -292,8 +285,6 @@
 				0D98F3E615C0B2FA0046423C /* CoreData.framework in Frameworks */,
 				0D98F3E415C0B2EE0046423C /* CFNetwork.framework in Frameworks */,
 				0D98F3E215C0B2B20046423C /* libRestKit.a in Frameworks */,
-				0D91EE4F15ACDBD000D1015D /* libsqlite3.dylib in Frameworks */,
-				0D96666315AC040C00753491 /* libsqlite3.0.dylib in Frameworks */,
 				0D94F51B15A7EBAB00903F0B /* MobileCoreServices.framework in Frameworks */,
 				0D94F4E915A7D09700903F0B /* UIKit.framework in Frameworks */,
 				0D94F4EB15A7D09700903F0B /* Foundation.framework in Frameworks */,
@@ -373,8 +364,6 @@
 		0D91EE5715AD0B8200D1015D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0D91EE5115ACE8B900D1015D /* StylepicsDatabase.h */,
-				0D91EE5215ACE8B900D1015D /* StylepicsDatabase.m */,
 				0D94F50715A7D2BB00903F0B /* User.h */,
 				0D94F50A15A7D2BB00903F0B /* User.m */,
 				0D94F50815A7D2BB00903F0B /* Item.h */,
@@ -423,8 +412,6 @@
 		0D94F4D915A7D09700903F0B = {
 			isa = PBXGroup;
 			children = (
-				0D91EE4E15ACDBD000D1015D /* libsqlite3.dylib */,
-				0D96666215AC040C00753491 /* libsqlite3.0.dylib */,
 				0D94F4EE15A7D09700903F0B /* StylepicsApp */,
 				0D94F4E715A7D09700903F0B /* Frameworks */,
 				0D94F4E515A7D09700903F0B /* Products */,
@@ -687,7 +674,6 @@
 				0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */,
 				0D96665E15AB9DEB00753491 /* comment.m in Sources */,
 				0D96666115AB9FA900753491 /* AudienceListView.m in Sources */,
-				0D91EE5315ACE8B900D1015D /* StylepicsDatabase.m in Sources */,
 				0D91EE5B15AD4BD300D1015D /* RegistrationPageViewController.m in Sources */,
 				0D99436315AEB1590037194D /* Utility.m in Sources */,
 				0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */,
@@ -800,6 +786,7 @@
 		0D94F50315A7D09700903F0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -814,6 +801,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Stylepics;
+				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -821,6 +809,7 @@
 		0D94F50415A7D09700903F0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -835,6 +824,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = Stylepics;
+				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
