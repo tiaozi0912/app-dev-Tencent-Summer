@@ -11,7 +11,10 @@
 #import "PollItemCell.h"
 #import "Utility.h"
 
-@interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate>
+@interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) Poll *poll;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingWheel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addItemButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
+
 @end

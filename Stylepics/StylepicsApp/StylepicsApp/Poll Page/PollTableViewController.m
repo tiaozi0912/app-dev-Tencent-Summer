@@ -18,6 +18,8 @@
 @implementation PollTableViewController
 @synthesize poll=_poll;
 @synthesize loadingWheel = _loadingWheel;
+@synthesize addItemButton = _addItemButton;
+@synthesize actionButton = _actionButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,8 +32,9 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
-    self.navigationController.toolbarHidden = YES;
+    self.navigationController.toolbarHidden = NO;
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     // Uncomment the following line to preserve selection between presentations.
@@ -49,13 +52,76 @@
 - (void)viewDidUnload
 {
     [self setLoadingWheel:nil];
+    [self setAddItemButton:nil];
+    [self setActionButton:nil];
     [super viewDidUnload];
     self.poll = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (IBAction)startOrEndVotingPressed
+- (IBAction)showActionSheet:(id)sender {
+    NSString *pollOperation;
+    NSString *deleteButton;
+    if (isOwnerView)
+    {
+        deleteButton = @"Detele";
+        if ([self.poll.state isEqualToString:EDITING]){
+            pollOperation = @"Open Poll";
+        } else if([self.poll.state isEqualToString:VOTING]){
+            pollOperation = @"End Poll";
+        } else {
+            pollOperation = nil;
+        }
+    }else{
+        deleteButton = nil;
+        if (audienceIndex == NSNotFound ){
+            pollOperation = @"Follow this poll";
+        } else {
+            pollOperation = @"Unfollow this poll";
+        }
+    }
+   UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:pollOperation, @"Show Poll Result", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showFromBarButtonItem:self.actionButton animated:YES];
+	popupQuery = nil;
+}
+
+
+#pragma mark - UIActionSheetDelegate Methods
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0){
+        NSLog(@"delete request sent");
+        [[RKObjectManager sharedManager] deleteObject:self.poll delegate:self];
+    }
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Open Poll"]){
+        self.poll.state = VOTING;
+        [self.tableView reloadData];
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"End Poll"]){
+        self.poll.state = FINISHED;
+        self.poll.endTime = [NSDate date];
+        [self.tableView reloadData];
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+        pollRecord = [PollRecord new];
+        pollRecord.pollID = self.poll.pollID;
+        pollRecord.pollRecordType = PAST;
+        [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Follow this poll"]){
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Unfollow this poll"]){
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Show Poll Result"]){        
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Delete"]){
+        NSLog(@"delete request sent");
+        [[RKObjectManager sharedManager] deleteObject:self.poll delegate:self];
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]){
+        [actionSheet resignFirstResponder];
+    }
+
+}
+
+- (void)askForConfirmationOfPollOperation
 {
     if ([self.poll.state isEqualToString:EDITING]){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to ask for votes now?" message:@"Note: Once you start to ask for votes, your friends can vote in your poll. But you can not edit your poll any more." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
@@ -81,23 +147,9 @@
 - (void)startOrEndVoting
 {
     if ([self.poll.state isEqualToString:EDITING]){
-        self.poll.state = VOTING;
-        [self.tableView reloadData];
-        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
-        [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-        [[self.toolbarItems objectAtIndex:2] setTitle:@"End Poll"];
-        [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
+
     }else if([self.poll.state isEqualToString:VOTING]){
-        self.poll.state = FINISHED;
-        self.poll.endTime = [NSDate date];
-        [self.tableView reloadData];
-        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
-        pollRecord = [PollRecord new];
-        pollRecord.pollID = self.poll.pollID;
-        pollRecord.pollRecordType = PAST;
-        [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
-        [[self.toolbarItems objectAtIndex:2] setTitle:@"Ended"];
-        [[self.toolbarItems objectAtIndex:2] setEnabled:NO];
+
     }
 }
 
@@ -162,14 +214,14 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.poll = [Poll new];
-    self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.poll = [Poll new];
+    self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
 }
 -(void) viewWillDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -202,23 +254,10 @@
                              }else return NO;
                          }];
         //if the current user owns this poll
-        if (isOwnerView){
-            self.navigationController.toolbarHidden = NO;
-            if ([self.poll.state isEqualToString:EDITING]){
-                [[self.toolbarItems objectAtIndex:0]setEnabled:YES];
-                [[self.toolbarItems objectAtIndex:2]setTitle:@"Open Poll"];
-                [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
-            } else if([self.poll.state isEqualToString:VOTING]){
-                [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-                [[self.toolbarItems objectAtIndex:2]setTitle:@"End Poll"];
-                [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
-            } else {
-                [[self.toolbarItems objectAtIndex:0]setEnabled:NO];
-                [[self.toolbarItems objectAtIndex:2]setTitle:@"Ended"];
-                [[self.toolbarItems objectAtIndex:2]setEnabled:NO];
-                [[self.toolbarItems objectAtIndex:3]setEnabled:YES];
-            }
+     /*   if (isOwnerView){
+            self.addItemButton.enabled = YES;
         }else{
+            self.addItemButton.enabled = NO;
             //if the current user is a new audience of this poll
             if  (audienceIndex == NSNotFound){
                 Audience *newAudience = [Audience new];
@@ -230,7 +269,7 @@
                 pollRecord.pollRecordType = FOLLOWED;
                 [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
             }
-        }
+        }*/
     }else if ([objectLoader wasSentToResourcePath:@"/audiences" method: RKRequestMethodPOST]) {
         NSLog(@"User[%@] has become one of the audience of this poll now.",[Utility getObjectForKey:CURRENTUSERID]);
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
