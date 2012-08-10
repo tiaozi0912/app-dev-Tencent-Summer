@@ -98,6 +98,7 @@
         spinner =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
         [spinner startAnimating];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        self.navigationItem.rightBarButtonItem.enabled = NO;
         item = [Item new];
         item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
         [[RKObjectManager sharedManager] postObject:item delegate:self];

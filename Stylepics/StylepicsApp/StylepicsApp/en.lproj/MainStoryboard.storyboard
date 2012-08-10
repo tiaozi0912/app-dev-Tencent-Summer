@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
-        <!--Entry Page View Controller - Styplepics-->
+        <!--Entry Page View Controller - Stylepics-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -51,7 +51,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Styplepics" id="K85-Wk-xDX"/>
+                    <navigationItem key="navigationItem" title="Stylepics" id="K85-Wk-xDX"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="f2L-zX-XKp" kind="push" identifier="login" id="drI-SX-Ysi"/>
@@ -771,8 +771,8 @@
                         <outlet property="actionButton" destination="2f8-JI-TJE" id="oNX-5P-4WF"/>
                         <outlet property="addItemButton" destination="icL-qj-3yn" id="Y6C-vP-wX1"/>
                         <outlet property="loadingWheel" destination="qP4-s0-J9m" id="QBx-7v-smu"/>
-                        <segue destination="PLI-kD-jhi" kind="push" identifier="show poll result" id="Ri5-vt-ryA"/>
                         <segue destination="ld5-tW-awy" kind="push" identifier="add new item" id="LU7-nh-1pt"/>
+                        <segue destination="PLI-kD-jhi" kind="push" identifier="show poll result" id="D5W-qn-RUp"/>
                     </connections>
                 </tableViewController>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="qP4-s0-J9m">
@@ -931,6 +931,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loginButton" destination="ZF7-H1-QFW" id="awU-9X-oJo"/>
                         <outlet property="passwordField" destination="ekK-ZN-urY" id="B2F-35-HMW"/>
                         <outlet property="usernameField" destination="QW8-Nt-Did" id="T78-wQ-smK"/>
                         <segue destination="8Sd-3s-bsT" kind="push" identifier="showNewsFeed" id="99r-W4-uDU"/>
@@ -999,6 +1000,7 @@
                     <connections>
                         <outlet property="passwordConfirmationField" destination="OR0-MX-ALo" id="l7e-hL-ADE"/>
                         <outlet property="passwordField" destination="4hf-pu-lMS" id="hzo-H1-BFf"/>
+                        <outlet property="signupButton" destination="DHe-gW-gba" id="9Wk-vl-i19"/>
                         <outlet property="usernameField" destination="fNR-2a-mut" id="Evd-if-M7v"/>
                         <segue destination="8Sd-3s-bsT" kind="push" identifier="show news feed page" id="eri-Vj-gif"/>
                     </connections>
@@ -1025,7 +1027,7 @@
                                 <rect key="frame" x="20" y="48" width="135" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="hanger.png" id="hml-Ra-fU6">
                                 <rect key="frame" x="35" y="98" width="250" height="250"/>
@@ -1111,6 +1113,7 @@
         <class className="LogInPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInPageViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
@@ -1200,6 +1203,8 @@
         <class className="PollTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PollTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addNewItem:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="deleteItem:" candidateClass="UIButton"/>
                 <relationship kind="action" name="goHomePage:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="refresh:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="showActionSheet:"/>
@@ -1215,6 +1220,7 @@
             <relationships>
                 <relationship kind="outlet" name="passwordConfirmationField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signupButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
             </relationships>
         </class>

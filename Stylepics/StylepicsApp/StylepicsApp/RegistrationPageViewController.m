@@ -20,6 +20,7 @@
 @synthesize usernameField=_usernameField;
 @synthesize passwordField=_passwordField;
 @synthesize passwordConfirmationField=_passwordConfirmationField;
+@synthesize signupButton = _signupButton;
 
 
 -(void) setUsername:(UITextField *)usernameField
@@ -46,11 +47,15 @@
 
 
 - (IBAction)signup {
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    [self.passwordConfirmationField resignFirstResponder];
     user = [User new];
     user.username = self.usernameField.text;
     user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
     user.password = self.passwordField.text;
     user.passwordConfirmation = self.passwordConfirmationField.text;
+    self.signupButton.enabled = NO;
     [[RKObjectManager sharedManager] postObject:user delegate:self];
 }
 
@@ -75,6 +80,7 @@
     //show errors: existent username and invalid password
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
+    self.signupButton.enabled = YES;
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -118,6 +124,7 @@
     [self setUsernameField:nil];
     [self setPasswordField:nil];
     [self setPasswordConfirmationField:nil];
+    [self setSignupButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

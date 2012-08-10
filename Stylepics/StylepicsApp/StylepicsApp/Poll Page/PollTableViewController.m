@@ -34,7 +34,6 @@
 {
     
     [super viewDidLoad];
-    self.navigationController.toolbarHidden = NO;
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     // Uncomment the following line to preserve selection between presentations.
@@ -60,12 +59,28 @@
     // e.g. self.myOutlet = nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.toolbarHidden = NO;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.poll = [Poll new];
+    self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
+}
+-(void) viewWillDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
 - (IBAction)showActionSheet:(id)sender {
     NSString *pollOperation;
     NSString *deleteButton;
     if (isOwnerView)
     {
-        deleteButton = @"Detele";
+        deleteButton = @"Delete this poll";
         if ([self.poll.state isEqualToString:EDITING]){
             pollOperation = @"Open Poll";
         } else if([self.poll.state isEqualToString:VOTING]){
@@ -92,10 +107,6 @@
 
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0){
-        NSLog(@"delete request sent");
-        [[RKObjectManager sharedManager] deleteObject:self.poll delegate:self];
-    }
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Open Poll"]){
         self.poll.state = VOTING;
         [self.tableView reloadData];
@@ -111,8 +122,9 @@
         [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Follow this poll"]){
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Unfollow this poll"]){
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Show Poll Result"]){        
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Delete"]){
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Show Poll Result"]){
+        [self performSegueWithIdentifier:@"show poll result" sender:self];
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Delete this poll"]){
         NSLog(@"delete request sent");
         [[RKObjectManager sharedManager] deleteObject:self.poll delegate:self];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]){
@@ -210,21 +222,6 @@
         Item *item = [self.poll.items objectAtIndex:indexPath.row];
         [[RKObjectManager sharedManager] deleteObject:item delegate:self];
     }
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    self.poll = [Poll new];
-    self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
-}
--(void) viewWillDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:

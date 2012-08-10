@@ -19,6 +19,7 @@
 @implementation LogInPageViewController
 @synthesize usernameField=_usernameField;
 @synthesize passwordField=_passwordField;
+@synthesize loginButton = _loginButton;
 
 -(void) setUsername:(UITextField *)usernameField
 {
@@ -38,10 +39,13 @@
     if ([self.usernameField.text length] == 0 ||[self.usernameField.text length] == 0 ){
         [Utility showAlert:@"Sorry!" message:@"Neither username nor password can be empty."];
     }else{
+        [self.usernameField resignFirstResponder];
+        [self.passwordField resignFirstResponder];
         user = [User new];
         user.username = self.usernameField.text;
         user.password = self.passwordField.text;
         user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
+        self.loginButton.enabled = NO;
         [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
             loader.resourcePath = @"/login";
             loader.objectMapping = [[RKObjectManager sharedManager].mappingProvider objectMappingForClass:[User class]];
@@ -63,6 +67,7 @@
     //show errors: non-existent user and wrong password
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
+    self.loginButton.enabled = YES;
 }
 
 - (IBAction)back:(id)sender {
@@ -101,6 +106,7 @@
 {
     [self setUsernameField:nil];
     [self setPasswordField:nil];
+    [self setLoginButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
