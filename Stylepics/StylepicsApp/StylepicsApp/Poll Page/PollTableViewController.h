@@ -10,6 +10,7 @@
 #import "AudienceListView.h"
 #import "PollItemCell.h"
 #import "Utility.h"
+#import "SingleItemViewController.h"
 
 @interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) Poll *poll;

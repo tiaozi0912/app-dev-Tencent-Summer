@@ -29,6 +29,14 @@
 
 #define BACKGROUND_COLOR @"backgroundImage.jpeg"
 #define NAV_BAR_BACKGROUND_COLOR @"NavBarImage.jpeg"
+
+typedef enum{
+    SingleItemViewOptionNew,
+    SingleItemViewOptionEdit,
+    SingleItemViewOptionView
+}SingleItemViewOption;
+
+
 HJObjManager *HJObjectManager;
 
 @interface StylepicsAppDelegate : UIResponder 

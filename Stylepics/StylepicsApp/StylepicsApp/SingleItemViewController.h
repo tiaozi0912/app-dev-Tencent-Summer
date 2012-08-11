@@ -1,5 +1,5 @@
 //
-//  NewItemViewController.h
+//  SingleItemViewController.h
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/15/12.
@@ -12,7 +12,7 @@
 #import "Item.h"
 #import "Utility.h"
 
-@interface NewItemViewController : UIViewController<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate,UIActionSheetDelegate>
+@interface SingleItemViewController : UIViewController<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate,UIActionSheetDelegate>
 {
     BOOL newMedia; 
 }
@@ -20,4 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+
+@property (nonatomic) SingleItemViewOption singleItemViewOption;
+@property (strong, nonatomic) Item *item;
+
 @end

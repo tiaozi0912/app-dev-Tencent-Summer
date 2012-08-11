@@ -71,11 +71,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="active poll cell" rowHeight="46" id="AAb-0I-zV5" customClass="ActivePollCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="active poll cell" rowHeight="46" id="AAb-0I-zV5" customClass="ActivePollCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="NAME" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cm4-fc-Evq">
@@ -112,11 +112,11 @@
                                     <outlet property="votesLabel" destination="Ebu-Xb-aQp" id="kMh-Qd-1Dp"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="followed poll cell" rowHeight="46" id="Uqa-NO-xiV" customClass="FollowedPollCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="followed poll cell" rowHeight="46" id="Uqa-NO-xiV" customClass="FollowedPollCell">
                                 <rect key="frame" x="0.0" y="68" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="NAME" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xVs-MZ-35p">
@@ -155,11 +155,11 @@
                                     <outlet property="userPhoto" destination="EHl-Ja-4X1" id="pFY-8C-WbP"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="past poll cell" rowHeight="46" id="zh6-Mj-a6n" customClass="PastPollCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="past poll cell" rowHeight="46" id="zh6-Mj-a6n" customClass="PastPollCell">
                                 <rect key="frame" x="0.0" y="114" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="NAME" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="nfw-5b-SZ0">
@@ -236,7 +236,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="295" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="295" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="295"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -283,7 +283,7 @@
                                     <outlet property="userNameLabel" destination="aW9-1E-OFR" id="AGh-ib-JEV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="72" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="72" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
                                 <rect key="frame" x="0.0" y="317" width="320" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -324,7 +324,7 @@
                                     <outlet property="userNameLabel" destination="eKY-dZ-Kln" id="fZh-Ey-iVb"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new poll cell" rowHeight="88" id="Xet-vw-IdK" customClass="NewsFeedNewPollCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new poll cell" rowHeight="88" id="Xet-vw-IdK" customClass="NewsFeedNewPollCell">
                                 <rect key="frame" x="0.0" y="389" width="320" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -406,7 +406,7 @@
                         <sections>
                             <tableViewSection id="XLG-zP-99z">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="97" id="qwY-5j-vMn">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="97" id="qwY-5j-vMn">
                                         <rect key="frame" x="0.0" y="10" width="320" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -425,7 +425,7 @@
                             </tableViewSection>
                             <tableViewSection id="WvF-i5-4CY">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rWe-04-MaL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rWe-04-MaL">
                                         <rect key="frame" x="0.0" y="129" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -450,7 +450,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="XWU-RE-DnL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" id="XWU-RE-DnL">
                                         <rect key="frame" x="0.0" y="174" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -475,7 +475,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="QTK-b3-KGr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" id="QTK-b3-KGr">
                                         <rect key="frame" x="0.0" y="218" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -500,7 +500,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="xAz-AG-jck">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" id="xAz-AG-jck">
                                         <rect key="frame" x="0.0" y="262" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -529,7 +529,7 @@
                             </tableViewSection>
                             <tableViewSection id="SsG-sV-oaJ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0uy-ix-DeC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0uy-ix-DeC">
                                         <rect key="frame" x="0.0" y="327" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -645,7 +645,7 @@
                 </activityIndicatorView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysj-kf-CGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="AtD-j7-Qhz" customClass="PollTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="346" sectionHeaderHeight="22" sectionFooterHeight="22" id="vnW-Cp-J6N">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="346" sectionHeaderHeight="22" sectionFooterHeight="22" id="vnW-Cp-J6N">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -685,7 +685,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll item cell" rowHeight="350" id="zBZ-kk-9gb" customClass="PollItemCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll item cell" rowHeight="350" id="zBZ-kk-9gb" customClass="PollItemCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="350"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -814,7 +814,7 @@
                         <outlet property="followerCount" destination="z7P-hi-bTb" id="1YM-6L-T3M"/>
                         <outlet property="loadingWheel" destination="qP4-s0-J9m" id="QBx-7v-smu"/>
                         <outlet property="startTimeLabel" destination="hX7-4u-r5q" id="qR8-Qb-F6Y"/>
-                        <segue destination="ld5-tW-awy" kind="push" identifier="add new item" id="LU7-nh-1pt"/>
+                        <segue destination="ld5-tW-awy" kind="push" identifier="show single item view" id="LU7-nh-1pt"/>
                         <segue destination="PLI-kD-jhi" kind="push" identifier="show poll result" id="D5W-qn-RUp"/>
                     </connections>
                 </tableViewController>
@@ -916,7 +916,7 @@
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2865" y="-165"/>
+            <point key="canvasLocation" x="2958" y="0.0"/>
         </scene>
         <!--Log In Page View Controller - Log In-->
         <scene sceneID="0oK-4b-FE2">
@@ -1047,11 +1047,11 @@
             </objects>
             <point key="canvasLocation" x="904" y="827"/>
         </scene>
-        <!--New Item View Controller - Add New Item-->
+        <!--Single Item View Controller - Add New Item-->
         <scene sceneID="HpC-Ot-YOP">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w2s-t9-Py2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="new item view controller" modalTransitionStyle="flipHorizontal" id="ld5-tW-awy" customClass="NewItemViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="new item view controller" modalTransitionStyle="flipHorizontal" id="ld5-tW-awy" customClass="SingleItemViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="50f-Nw-GER" customClass="UIControl">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1069,7 +1069,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="hanger.png" id="hml-Ra-fU6">
-                                <rect key="frame" x="35" y="98" width="250" height="250"/>
+                                <rect key="frame" x="20" y="87" width="280" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -1090,10 +1090,10 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Add New Item" id="f51-EF-XSU">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="dbx-3p-gpI"/>
-                        <barButtonItem key="leftBarButtonItem" title="Add" id="WOO-41-3fN">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="WOO-41-3fN">
+                            <color key="tintColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="finishAddingNewItems" destination="ld5-tW-awy" id="CM1-J2-7ak"/>
+                                <action selector="done" destination="ld5-tW-awy" id="ivW-1P-dpX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="eb3-YP-2bX">
@@ -1160,15 +1160,6 @@
         </class>
         <class className="ManagePollsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManagePollsTableViewController.h"/>
-        </class>
-        <class className="NewItemViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewItemViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
-            </relationships>
         </class>
         <class className="NewPollViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPollViewController.h"/>
@@ -1268,6 +1259,15 @@
         <class className="SettingsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
         </class>
+        <class className="SingleItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SingleItemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1276,6 +1276,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="eri-Vj-gif"/>
-        <segue reference="ceQ-hi-cBi"/>
+        <segue reference="E46-aS-6G1"/>
     </inferredMetricsTieBreakers>
 </document>

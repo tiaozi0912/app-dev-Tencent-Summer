@@ -18,7 +18,7 @@
 #define APP_UI_IMAGES_BUCKET_NAME       @"app-ui-images-akiajbfjoiwfjzd6aypa"
 
 #if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-#define ITEM_PHOTOS_BUCKET_NAME         @"test-item-photos-akiajbfjoiwfjzd6aypa"
+#define ITEM_PHOTOS_BUCKET_NAME         @"testing-item-photos-akiajbfjoiwfjzd6aypa"
 #elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
 #define ITEM_PHOTOS_BUCKET_NAME         @"item-photos-akiajbfjoiwfjzd6aypa"
 #endif

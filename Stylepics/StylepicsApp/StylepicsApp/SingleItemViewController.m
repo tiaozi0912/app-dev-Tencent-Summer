@@ -1,15 +1,15 @@
 //
-//  NewItemViewController.m
+//  SingleItemViewController.m
 //  
 //
 //  Created by Yong Lin on 7/15/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "NewItemViewController.h"
+#import "SingleItemViewController.h"
 
 
-@interface NewItemViewController ()
+@interface SingleItemViewController ()
 {
     BOOL itemAdded;
     NSURL *photoURL;
@@ -19,9 +19,9 @@
  
 @end
 
-@implementation NewItemViewController
+@implementation SingleItemViewController
 @synthesize cameraButton;
-
+@synthesize singleItemViewOption, item;
 @synthesize itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
 
 -(void) setDescriptionTextField:(UITextField *)descriptionTextField{
@@ -48,8 +48,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSArray *titles = [[NSArray alloc] initWithObjects:@"Add New Item", @"Edit Item", @"View Item",nil];
+    self.title = [titles objectAtIndex:singleItemViewOption];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     itemAdded = NO;
+    if (item){
+        self.descriptionTextField.text = item.description;
+        self.priceTextField.text = [item.price stringValue];
+        self.itemImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.photoURL]]];
+    }
     [UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration: 0.7];
@@ -75,14 +82,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.toolbarHidden = NO;
+    self.navigationController.toolbarHidden = !(self.singleItemViewOption == SingleItemViewOptionNew);
     self.navigationItem.hidesBackButton = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.navigationController.toolbarHidden = YES;
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -92,21 +98,40 @@
 
 #pragma User Action
 
--(IBAction) finishAddingNewItems
+-(IBAction)done
 {
-    if (itemAdded) {
-        [self.descriptionTextField resignFirstResponder];
-        [self.priceTextField resignFirstResponder];
-        spinner =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
-        [spinner startAnimating];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-        item = [Item new];
-        item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-        [[RKObjectManager sharedManager] postObject:item delegate:self];
-    }else{
-        [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
+    switch (self.singleItemViewOption) {
+        case SingleItemViewOptionView:
+            [self backWithFlipAnimation];
+            break;
+        case SingleItemViewOptionEdit:
+        {
+            item.description = self.descriptionTextField.text;
+            item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+            [[RKObjectManager sharedManager] putObject:item delegate:self];
+            break;
+        }
+        case SingleItemViewOptionNew:
+        {
+            if (itemAdded) {
+                [self.descriptionTextField resignFirstResponder];
+                [self.priceTextField resignFirstResponder];
+                spinner =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+                [spinner startAnimating];
+                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+                self.navigationItem.rightBarButtonItem.enabled = NO;
+                item = [Item new];
+                item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+                [[RKObjectManager sharedManager] postObject:item delegate:self];
+            }else{
+                [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
+            }
+            break;
+        }
+        default:
+            break;
     }
+
 }
 
 - (IBAction)cancelButton{
@@ -247,7 +272,6 @@ finishedSavingWithError:(NSError *)error
             item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
             item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
             [[RKObjectManager sharedManager] putObject:item delegate:self];
-            
         }
         @catch (AmazonClientException *exception) {
             NSLog(@"Failed to Create Object [%@]", exception);

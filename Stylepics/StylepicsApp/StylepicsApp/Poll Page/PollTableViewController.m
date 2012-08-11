@@ -20,6 +20,8 @@
     BOOL isOwnerView;
     PollRecord *pollRecord;
     UIAlertView *openPollAlertView, *endPollAlertView, *deletePollAlertView;
+    SingleItemViewOption singleItemViewOption;
+    Item *itemToBeShown;
 }
 @end
 
@@ -120,7 +122,8 @@
 }
 
 - (IBAction)addNewItem:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"add new item" sender:self];
+    singleItemViewOption = SingleItemViewOptionNew;
+    [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
 
 - (IBAction)deleteItem:(UIButton *)sender {
@@ -285,6 +288,7 @@
     //Successfully loaded a poll
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
         [self.loadingWheel stopAnimating];
+        self.title = self.poll.title;
         self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         //if the current user owns this poll
@@ -297,7 +301,7 @@
         self.startTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
         [self.startTimeLabel sizeToFit];
         [self.followerCount sizeToFit];
-        self.title = self.poll.title;
+
         //find whether the current user is among the audience of the poll
         audienceIndex = [self.poll.audiences indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop)
                          {
@@ -366,27 +370,33 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+/*- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
-}
-*/
+}*/
 
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    itemToBeShown = [self.poll.items objectAtIndex:indexPath.row];
+    if ((isOwnerView)&&([self.poll.state isEqualToString:EDITING])){
+        singleItemViewOption = SingleItemViewOptionEdit;
+    }else{
+        singleItemViewOption = SingleItemViewOptionView;
+    }
+    [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"show single item view"]){
+        SingleItemViewController* nextViewController = (SingleItemViewController*) segue.destinationViewController;
+        nextViewController.singleItemViewOption = singleItemViewOption;
+        if (!singleItemViewOption == SingleItemViewOptionNew){
+            nextViewController.item = itemToBeShown;
+        }
+    }
+}
 @end

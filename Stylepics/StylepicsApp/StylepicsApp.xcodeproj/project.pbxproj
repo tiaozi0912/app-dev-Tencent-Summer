@@ -72,7 +72,7 @@
 		0D9DDB0C15D3536B008D27AB /* backgroundImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0D9DDB0B15D3536B008D27AB /* backgroundImage.jpeg */; };
 		0D9DDB0F15D35693008D27AB /* EntryPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9DDB0E15D35692008D27AB /* EntryPageViewController.m */; };
 		0D9DDB1315D36860008D27AB /* LandingPageImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9DDB1215D36860008D27AB /* LandingPageImage.png */; };
-		0D9EFC3615B3E502002180F1 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EFC3515B3E502002180F1 /* NewItemViewController.m */; };
+		0D9EFC3615B3E502002180F1 /* SingleItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */; };
 		0D9FAE9B15B8E12D00B102EA /* new poll icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FAE9A15B8E12D00B102EA /* new poll icon.png */; };
 		0D9FAE9D15B8EADD00B102EA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FAE9C15B8EADC00B102EA /* delete.png */; };
 		0DA3D96C15C8A771008B9E32 /* AppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */; };
@@ -246,8 +246,8 @@
 		0D9DDB0D15D35692008D27AB /* EntryPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryPageViewController.h; sourceTree = "<group>"; };
 		0D9DDB0E15D35692008D27AB /* EntryPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryPageViewController.m; sourceTree = "<group>"; };
 		0D9DDB1215D36860008D27AB /* LandingPageImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LandingPageImage.png; path = img/LandingPageImage.png; sourceTree = "<group>"; };
-		0D9EFC3415B3E502002180F1 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
-		0D9EFC3515B3E502002180F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
+		0D9EFC3415B3E502002180F1 /* SingleItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleItemViewController.h; sourceTree = "<group>"; };
+		0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleItemViewController.m; sourceTree = "<group>"; };
 		0D9FAE9A15B8E12D00B102EA /* new poll icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new poll icon.png"; sourceTree = "<group>"; };
 		0D9FAE9C15B8EADC00B102EA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete.png; path = img/delete.png; sourceTree = "<group>"; };
 		0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -399,8 +399,8 @@
 				0D94F51515A7D30800903F0B /* NewPollViewController.m */,
 				0D8FA19715AF7606003011A0 /* PollTableViewController.h */,
 				0D8FA19815AF7606003011A0 /* PollTableViewController.m */,
-				0D9EFC3415B3E502002180F1 /* NewItemViewController.h */,
-				0D9EFC3515B3E502002180F1 /* NewItemViewController.m */,
+				0D9EFC3415B3E502002180F1 /* SingleItemViewController.h */,
+				0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */,
 				0D8F49D115B605CF00C2DAEF /* PollResultViewController.h */,
 				0D8F49D215B605CF00C2DAEF /* PollResultViewController.m */,
 				0D9DDAEC15D3100A008D27AB /* SettingsTableViewController.h */,
@@ -680,7 +680,7 @@
 				0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */,
 				0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */,
 				0D647C4715B1205C00530658 /* ActivePollCell.m in Sources */,
-				0D9EFC3615B3E502002180F1 /* NewItemViewController.m in Sources */,
+				0D9EFC3615B3E502002180F1 /* SingleItemViewController.m in Sources */,
 				0D8F49D315B605CF00C2DAEF /* PollResultViewController.m in Sources */,
 				0D8F49D615B6065A00C2DAEF /* PollResultCell.m in Sources */,
 				0D7AE97915B6671800A23CE0 /* FollowedPollCell.m in Sources */,
