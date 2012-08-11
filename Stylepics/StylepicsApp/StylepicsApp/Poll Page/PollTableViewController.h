@@ -16,5 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingWheel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addItemButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followerCount;
 
 @end

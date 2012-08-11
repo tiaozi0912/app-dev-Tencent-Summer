@@ -11,8 +11,10 @@
 @implementation PollItemCell
 @synthesize voteButton = _voteButton;
 @synthesize deleteButton = _deleteButton;
+@synthesize voteCountLabel = _voteCountLabel;
+@synthesize commentCountLabel = _commentCountLabel;
 
-@synthesize itemImage=_itemImage, countOfCommentsLabel=_countOfCommentsLabel,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel,commentIconImage=_commentIconImage;
+@synthesize itemImage=_itemImage,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

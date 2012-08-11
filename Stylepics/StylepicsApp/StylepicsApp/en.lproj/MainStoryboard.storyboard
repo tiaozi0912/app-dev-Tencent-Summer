@@ -67,7 +67,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dN-MZ-s2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="6a9-bf-0wD" customClass="ManagePollsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FFx-ZW-oVu">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -218,7 +218,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="AtD-j7-Qhz" kind="push" identifier="show poll" id="E46-aS-6G1"/>
                     </connections>
@@ -232,7 +232,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evl-Jf-Mnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="8Sd-3s-bsT" customClass="NewsFeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Rv7-Am-ueW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -386,7 +386,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="AtD-j7-Qhz" kind="push" identifier="show a poll from news feed" id="ceQ-hi-cBi"/>
                     </connections>
@@ -400,7 +400,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yA-pi-pnl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="pIC-4E-dbg" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Lco-3I-wxV">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -636,19 +636,54 @@
             </objects>
             <point key="canvasLocation" x="2335" y="-768"/>
         </scene>
-        <!--Poll Table View Controller-->
+        <!--Poll Table View Controller - Your Poll-->
         <scene sceneID="LMl-kx-4Uv">
             <objects>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="qP4-s0-J9m">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysj-kf-CGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="AtD-j7-Qhz" customClass="PollTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="346" sectionHeaderHeight="22" sectionFooterHeight="22" id="vnW-Cp-J6N">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <scrollView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" indicatorStyle="black" id="huJ-Yd-Ihp">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="4jj-uv-3Yb">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </scrollView>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Created at:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="zrc-j2-KMI">
+                                    <rect key="frame" x="20" y="11" width="73" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="hX7-4u-r5q">
+                                    <rect key="frame" x="90" y="13" width="62" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Followers:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="IdE-mY-LrS">
+                                    <rect key="frame" x="211" y="11" width="75" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="z7P-hi-bTb">
+                                    <rect key="frame" x="275" y="13" width="37" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll item cell" rowHeight="350" id="zBZ-kk-9gb" customClass="PollItemCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="350"/>
@@ -658,14 +693,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ku3-g4-M3Y">
-                                            <rect key="frame" x="273" y="318" width="31" height="21"/>
+                                            <rect key="frame" x="274" y="318" width="26" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xkT-al-NiB">
+                                            <rect key="frame" x="217" y="318" width="27" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="comments icon.png" id="RJY-m0-XKJ">
-                                            <rect key="frame" x="248" y="318" width="23" height="21"/>
+                                            <rect key="frame" x="252" y="318" width="23" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="WRc-G6-rCe">
@@ -717,18 +759,22 @@
                                                 <action selector="deleteItem:" destination="AtD-j7-Qhz" eventType="touchUpInside" id="w8v-Kb-zGH"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vote icon.png" id="D0A-H5-n1I">
+                                            <rect key="frame" x="195" y="318" width="23" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
-                                    <outlet property="commentIconImage" destination="RJY-m0-XKJ" id="vLZ-nR-n3d"/>
-                                    <outlet property="countOfCommentsLabel" destination="ku3-g4-M3Y" id="I3o-Bs-Nl4"/>
+                                    <outlet property="commentCountLabel" destination="ku3-g4-M3Y" id="tgO-JS-DnU"/>
                                     <outlet property="deleteButton" destination="g16-RD-mB6" id="Nie-fj-sr9"/>
                                     <outlet property="descriptionOfItemLabel" destination="WRc-G6-rCe" id="x9J-gC-AOz"/>
                                     <outlet property="itemImage" destination="Jge-oR-oUq" id="OQc-yj-04B"/>
                                     <outlet property="priceLabel" destination="u6W-h3-w00" id="Uat-9l-EjK"/>
                                     <outlet property="voteButton" destination="qBO-gG-swn" id="qcY-MP-qOb"/>
+                                    <outlet property="voteCountLabel" destination="xkT-al-NiB" id="3GJ-ul-z1A"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -746,39 +792,32 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem enabled="NO" style="plain" systemItem="flexibleSpace" id="8w4-qE-uVU"/>
-                        <barButtonItem systemItem="action" id="2f8-JI-TJE">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="showActionSheet:" destination="AtD-j7-Qhz" id="cyd-iN-3cP"/>
-                            </connections>
-                        </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="zXe-q2-cfQ">
+                    <navigationItem key="navigationItem" title="Your Poll" id="zXe-q2-cfQ">
                         <barButtonItem key="leftBarButtonItem" title="Home" id="tZd-f8-m9O">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="goHomePage:" destination="AtD-j7-Qhz" id="Ig8-AG-gL3"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lze-Lt-7cn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2f8-JI-TJE">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="refresh:" destination="AtD-j7-Qhz" id="d0p-qJ-I01"/>
+                                <action selector="showActionSheet:" destination="AtD-j7-Qhz" id="cyd-iN-3cP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="actionButton" destination="2f8-JI-TJE" id="oNX-5P-4WF"/>
                         <outlet property="addItemButton" destination="icL-qj-3yn" id="Y6C-vP-wX1"/>
+                        <outlet property="followerCount" destination="z7P-hi-bTb" id="1YM-6L-T3M"/>
                         <outlet property="loadingWheel" destination="qP4-s0-J9m" id="QBx-7v-smu"/>
+                        <outlet property="startTimeLabel" destination="hX7-4u-r5q" id="qR8-Qb-F6Y"/>
                         <segue destination="ld5-tW-awy" kind="push" identifier="add new item" id="LU7-nh-1pt"/>
                         <segue destination="PLI-kD-jhi" kind="push" identifier="show poll result" id="D5W-qn-RUp"/>
                     </connections>
                 </tableViewController>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="qP4-s0-J9m">
-                    <rect key="frame" x="10" y="10" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </activityIndicatorView>
             </objects>
             <point key="canvasLocation" x="2392" y="-165"/>
         </scene>
@@ -862,7 +901,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Poll Result" id="UWl-4Z-gyg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="18C-Fw-AIk">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="18C-Fw-AIk">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="back:" destination="PLI-kD-jhi" id="Ra9-DM-PvW"/>
@@ -1125,8 +1164,7 @@
         <class className="NewItemViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewItemViewController.h"/>
             <relationships>
-                <relationship kind="action" name="backgroundTouched:"/>
-                <relationship kind="action" name="showActionSheet:"/>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
@@ -1181,13 +1219,13 @@
         <class className="PollItemCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PollItemCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="commentIconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="countOfCommentsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="commentCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="descriptionOfItemLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="voteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="voteCountLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="PollResultCell" superclassName="UITableViewCell">
@@ -1209,13 +1247,13 @@
                 <relationship kind="action" name="addNewItem:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="deleteItem:" candidateClass="UIButton"/>
                 <relationship kind="action" name="goHomePage:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="refresh:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="showActionSheet:"/>
-                <relationship kind="action" name="showPollResult:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="vote:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="addItemButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="followerCount" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="loadingWheel" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="startTimeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="RegistrationPageViewController" superclassName="UIViewController">

@@ -15,8 +15,8 @@
 @property (nonatomic, strong) IBOutlet HJManagedImageV *itemImage;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionOfItemLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *commentIconImage;
-@property (nonatomic, weak) IBOutlet UILabel *countOfCommentsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *voteButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UILabel *voteCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
 @end

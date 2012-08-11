@@ -71,6 +71,12 @@
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/events" delegate:self];
 }
 
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.events = nil;
+}
+
 - (void)request:(RKRequest*)request didLoadResponse:
 (RKResponse*)response {
     if ([response isJSON]) {
