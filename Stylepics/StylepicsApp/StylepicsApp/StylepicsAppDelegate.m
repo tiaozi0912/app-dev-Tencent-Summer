@@ -89,7 +89,7 @@
      @"id", @"pollID",
      @"user_id", @"ownerID",
      @"total_votes", @"totalVotes",
-     @"max_votes_for_single_item", @"maxVotesForSingleItem",
+     //@"max_votes_for_single_item", @"maxVotesForSingleItem",
      @"title", @"title",
      @"state", @"state",
      @"start_time", @"startTime",

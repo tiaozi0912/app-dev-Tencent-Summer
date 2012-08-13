@@ -17,6 +17,8 @@
 #import "PollRecord.h"
 #import "Audience.h"
 #import "AmazonClientManager.h"
+#import "AppFormattedLabel.h"
+
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
 #define CURRENTUSERID @"currentUserID"

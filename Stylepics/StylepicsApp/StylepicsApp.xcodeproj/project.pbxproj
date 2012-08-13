@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D03A99315D7353600A0A9BD /* HintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D03A99215D7353600A0A9BD /* HintView.m */; };
+		0D03A99A15D79A6100A0A9BD /* AppFormattedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D03A99915D79A6100A0A9BD /* AppFormattedLabel.m */; };
 		0D07B06A15D1A87600C20943 /* user3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D07B06915D1A87600C20943 /* user3.png */; };
 		0D1BC1D415B240F7005BECF9 /* item2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BC1D215B240F7005BECF9 /* item2.png */; };
 		0D1BC1D515B240F7005BECF9 /* item3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BC1D315B240F7005BECF9 /* item3.png */; };
@@ -29,6 +31,7 @@
 		0D8F49D615B6065A00C2DAEF /* PollResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8F49D515B6065A00C2DAEF /* PollResultCell.m */; };
 		0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19615AF7606003011A0 /* PollItemCell.m */; };
 		0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19815AF7606003011A0 /* PollTableViewController.m */; };
+		0D901FCD15D9858E0030BEBE /* empty vote icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D901FCC15D9858E0030BEBE /* empty vote icon.png */; };
 		0D91EE5B15AD4BD300D1015D /* RegistrationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */; };
 		0D94F4E915A7D09700903F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F4E815A7D09700903F0B /* UIKit.framework */; };
 		0D94F4EB15A7D09700903F0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F4EA15A7D09700903F0B /* Foundation.framework */; };
@@ -140,6 +143,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D03A99115D7353600A0A9BD /* HintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintView.h; sourceTree = "<group>"; };
+		0D03A99215D7353600A0A9BD /* HintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HintView.m; sourceTree = "<group>"; };
+		0D03A99815D79A6100A0A9BD /* AppFormattedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppFormattedLabel.h; sourceTree = "<group>"; };
+		0D03A99915D79A6100A0A9BD /* AppFormattedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFormattedLabel.m; sourceTree = "<group>"; };
 		0D07B06915D1A87600C20943 /* user3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user3.png; path = img/user3.png; sourceTree = "<group>"; };
 		0D1BC1D215B240F7005BECF9 /* item2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item2.png; path = img/item2.png; sourceTree = "<group>"; };
 		0D1BC1D315B240F7005BECF9 /* item3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item3.png; path = img/item3.png; sourceTree = "<group>"; };
@@ -180,6 +187,7 @@
 		0D8FA19615AF7606003011A0 /* PollItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollItemCell.m; path = "Poll Page/PollItemCell.m"; sourceTree = "<group>"; };
 		0D8FA19715AF7606003011A0 /* PollTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PollTableViewController.h; path = "Poll Page/PollTableViewController.h"; sourceTree = "<group>"; };
 		0D8FA19815AF7606003011A0 /* PollTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollTableViewController.m; path = "Poll Page/PollTableViewController.m"; sourceTree = "<group>"; };
+		0D901FCC15D9858E0030BEBE /* empty vote icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "empty vote icon.png"; path = "img/empty vote icon.png"; sourceTree = "<group>"; };
 		0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationPageViewController.h; sourceTree = "<group>"; };
 		0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationPageViewController.m; sourceTree = "<group>"; };
 		0D94F4E415A7D09700903F0B /* Stylepics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylepics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -357,6 +365,10 @@
 				0D8F49D515B6065A00C2DAEF /* PollResultCell.m */,
 				0D9DDB0615D34249008D27AB /* AppUIView.h */,
 				0D9DDB0715D34249008D27AB /* AppUIView.m */,
+				0D03A99115D7353600A0A9BD /* HintView.h */,
+				0D03A99215D7353600A0A9BD /* HintView.m */,
+				0D03A99815D79A6100A0A9BD /* AppFormattedLabel.h */,
+				0D03A99915D79A6100A0A9BD /* AppFormattedLabel.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -477,6 +489,7 @@
 				0D957D2115B0DC37009D37AA /* comments icon.png */,
 				0D8F49CE15B6004200C2DAEF /* hanger.png */,
 				0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */,
+				0D901FCC15D9858E0030BEBE /* empty vote icon.png */,
 				0D957D1B15B09BEC009D37AA /* vote icon.png */,
 				4DD552FC15B934570056847B /* Custom-Nav-Bar-BG@2x.png */,
 				4DD552FF15B9348A0056847B /* Custom-Nav-Bar-BG.png */,
@@ -651,6 +664,7 @@
 				0D9DDB0A15D3506D008D27AB /* NavBarImage.jpeg in Resources */,
 				0D9DDB0C15D3536B008D27AB /* backgroundImage.jpeg in Resources */,
 				0D9DDB1315D36860008D27AB /* LandingPageImage.png in Resources */,
+				0D901FCD15D9858E0030BEBE /* empty vote icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +717,8 @@
 				0D9DDAEE15D3100A008D27AB /* SettingsTableViewController.m in Sources */,
 				0D9DDB0815D34249008D27AB /* AppUIView.m in Sources */,
 				0D9DDB0F15D35693008D27AB /* EntryPageViewController.m in Sources */,
+				0D03A99315D7353600A0A9BD /* HintView.m in Sources */,
+				0D03A99A15D79A6100A0A9BD /* AppFormattedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

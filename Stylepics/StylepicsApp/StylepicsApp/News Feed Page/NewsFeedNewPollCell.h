@@ -11,8 +11,8 @@
 
 @interface NewsFeedNewPollCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet HJManagedImageV *userImage;
-@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
+@property (nonatomic, weak) IBOutlet AppFormattedLabel *userNameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *iconImage;
-@property (nonatomic, weak) IBOutlet UILabel *eventDescriptionLabel;
+@property (nonatomic, weak) IBOutlet AppFormattedLabel *eventDescriptionLabel;
 
 @end

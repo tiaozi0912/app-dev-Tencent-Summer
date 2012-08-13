@@ -9,6 +9,7 @@
 #import "PollResultViewController.h"
 
 @interface PollResultViewController (){
+    double maxVotesForSingleItem;
 }
 @property (nonatomic, strong) Poll *poll;
 @end
@@ -29,6 +30,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    
     self.poll = [Poll new];
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
     [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
@@ -75,6 +77,11 @@
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
+    maxVotesForSingleItem = 1;
+    for (Item* item in self.poll.items)
+    {
+        maxVotesForSingleItem = MAX(maxVotesForSingleItem, [item.numberOfVotes doubleValue]);
+    }
     [self.tableView reloadData];
 }
 
@@ -112,51 +119,12 @@
     [HJObjectManager manage:cell.itemImage];
     cell.descriptionLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
-    cell.numberOfVotesIndicator.progress = [item.numberOfVotes floatValue]/[self.poll.maxVotesForSingleItem floatValue];
+    cell.numberOfVotesIndicator.progress = [item.numberOfVotes floatValue]/maxVotesForSingleItem;
     cell.numberOfVotesLabel.text = [[NSString alloc] initWithFormat:@"%@", item.numberOfVotes];
     [cell.descriptionLabel sizeToFit];
     [cell.priceLabel sizeToFit];
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

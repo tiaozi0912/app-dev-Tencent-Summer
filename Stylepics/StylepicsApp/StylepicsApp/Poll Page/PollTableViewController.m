@@ -42,6 +42,22 @@
     return self;
 }
 
+-(void) loadView
+{
+    [super loadView];
+    if (!self.poll.items){
+        HintView *emptyPollHint = [HintView new];
+        emptyPollHint = [emptyPollHint initWithFrame:CGRectMake(20, 60, 280, 60)];
+
+        emptyPollHint.label.text = @"This poll is still empty.";
+        emptyPollHint.label.numberOfLines = 3;
+        [emptyPollHint.label sizeToFit];
+
+        [self.tableView addSubview:emptyPollHint];
+    }
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -135,35 +151,42 @@
     }
 }
 
-- (IBAction)vote:(UIButton *)sender {
-    if([self.poll.state isEqualToString:VOTING]&&![[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID]){
-        if ([[self.poll.audiences objectAtIndex:audienceIndex] hasVoted]){
-            [Utility showAlert:@"Sorry!" message:@"You cannot vote more than once in a poll."];
-        }else {
-            PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
-            NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-            Item *item = [self.poll.items objectAtIndex:indexPath.row];
-            item.numberOfVotes = [NSNumber numberWithInt:[item.numberOfVotes intValue]+ 1];
-            if (item.numberOfVotes > self.poll.maxVotesForSingleItem){
-                self.poll.maxVotesForSingleItem = item.numberOfVotes;
-            }
-            self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue]+ 1];
-            [[RKObjectManager sharedManager] putObject:item delegate:self];
-            
-            Audience *audience = [self.poll.audiences objectAtIndex:audienceIndex];
-            audience.hasVoted=YES;
-            [[RKObjectManager sharedManager] putObject:audience delegate:self];
-            
-            [Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
-            [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
-            
-            Event *votingEvent = [Event new];
-            votingEvent.eventType = VOTINGEVENT;
-            votingEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
-            votingEvent.pollID = self.poll.pollID;
-            [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];
-            
-        }
+- (IBAction)vote:(UIButton *)sender
+{
+    PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Item *item = [self.poll.items objectAtIndex:indexPath.row];
+    Audience *audience = [self.poll.audiences objectAtIndex:audienceIndex];
+    
+    if ([[[self.poll.audiences objectAtIndex:audienceIndex] hasVoted] boolValue]){
+        // if the current user has voted for an item in this poll, then undo the voting
+        self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue] - 1];
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+        
+        item.numberOfVotes = [NSNumber numberWithInt:[item.numberOfVotes intValue] - 1];
+        [[RKObjectManager sharedManager] putObject:item delegate:self];
+        
+        audience.hasVoted= [NSNumber numberWithInt:0];
+        [[RKObjectManager sharedManager] putObject:audience delegate:self];
+        
+    }else {
+        //if the current user has not voted for an item in this poll, then vote for this item
+        item.numberOfVotes = [NSNumber numberWithInt:[item.numberOfVotes intValue]+ 1];
+        [[RKObjectManager sharedManager] putObject:item delegate:self];
+        
+        audience.hasVoted=item.itemID;
+        [[RKObjectManager sharedManager] putObject:audience delegate:self];
+        
+        //[Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
+        self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue]+ 1];
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+        
+        Event *votingEvent = [Event new];
+        votingEvent.eventType = VOTINGEVENT;
+        votingEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
+        votingEvent.pollID = self.poll.pollID;
+        [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];
+        
     }
 }
 
@@ -353,10 +376,20 @@
                 initWithStyle:UITableViewCellStyleDefault 
                 reuseIdentifier:CellIdentifier];
     }
-    cell.voteButton.hidden = isOwnerView || (![self.poll.state isEqualToString:VOTING]);
-    cell.deleteButton.hidden = !(isOwnerView && [self.poll.state isEqualToString:EDITING]);
+    Audience *currentUser = [self.poll.audiences objectAtIndex:audienceIndex];
     Item *item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
+    cell.voteButton.hidden = YES;
+    // if the current user has voted for the item
+    if ([currentUser.hasVoted isEqualToNumber:item.itemID]){
+        cell.voteButton.hidden = NO;
+        cell.voteButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"vote icon.png"]];
+    }
+    if ((!isOwnerView) && ([self.poll.state isEqualToString:VOTING]) && ([currentUser.hasVoted intValue] == 0)){
+        cell.voteButton.hidden = NO;
+        cell.voteButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"empty vote icon.png"]];
+    }
+    cell.deleteButton.hidden = !(isOwnerView && [self.poll.state isEqualToString:EDITING]);
     cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
     cell.itemImage.url = [NSURL URLWithString:item.photoURL];
     [HJObjectManager manage:cell.itemImage];

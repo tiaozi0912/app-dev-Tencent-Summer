@@ -39,8 +39,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-    //    [AmazonClientManager initializeS3];
-        // Custom initialization
     }
     return self;
 }
@@ -50,6 +48,11 @@
     [super viewDidLoad];
     NSArray *titles = [[NSArray alloc] initWithObjects:@"Add New Item", @"Edit Item", @"View Item",nil];
     self.title = [titles objectAtIndex:singleItemViewOption];
+    if (singleItemViewOption == SingleItemViewOptionView)
+    {
+        self.descriptionTextField.enabled = NO;
+        self.priceTextField.enabled = NO;
+    }
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     itemAdded = NO;
     if (item){
