@@ -60,6 +60,7 @@
      @"id", @"audienceID",
      @"user_id", @"userID",
      @"has_voted", @"hasVoted",
+     @"is_following", @"isFollowing",
      @"user_name", @"username",
      @"profile_Photo_url", @"profilePhotoURL",
      @"poll_id", @"pollID",
@@ -78,6 +79,8 @@
      @"number_of_votes", @"numberOfVotes",
      @"photo_url", @"photoURL",
      @"poll_id", @"pollID",
+     @"brand", @"brand",
+     @"category", @"category",
      nil];
     //[itemMapping mapRelationship:@"comments" withMapping:commentMapping];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"item"];
@@ -94,6 +97,7 @@
      @"state", @"state",
      @"start_time", @"startTime",
      @"end_time", @"endTime",
+     @"number_of_followers", @"followerCount",
      nil];
     [pollMapping mapRelationship:@"user" withMapping:userMapping];
     [pollMapping mapRelationship:@"items" withMapping:itemMapping];
@@ -111,6 +115,7 @@
      @"item_id", @"itemID",
      nil];
     [eventMapping mapRelationship:@"user" withMapping:userMapping];
+    [eventMapping mapKeyPath:@"poll_owner" toRelationship:@"pollOwner" withMapping:userMapping];
     [eventMapping mapRelationship:@"poll" withMapping:pollMapping];
     [eventMapping mapRelationship:@"item" withMapping:itemMapping];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"event"];

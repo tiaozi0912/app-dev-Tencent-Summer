@@ -11,7 +11,7 @@
 @implementation Item
 
 @synthesize  description=_description;
-@synthesize price, itemID, numberOfVotes, pollID;
+@synthesize price, itemID, numberOfVotes, pollID, brand, category;
 @synthesize photoURL=_photoURL;
 //@synthesize comments=_comments;
 @end

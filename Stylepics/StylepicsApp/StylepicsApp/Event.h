@@ -22,5 +22,6 @@
 @property (nonatomic, strong) Poll* poll;
 @property (nonatomic, strong) Item* item;
 @property (nonatomic, strong) User* user;
+@property (nonatomic, strong) User* pollOwner;
 
 @end

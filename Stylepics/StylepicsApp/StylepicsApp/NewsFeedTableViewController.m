@@ -165,7 +165,7 @@
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.poll.user.username, event.poll.title];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.pollOwner.username, event.poll.title];
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;

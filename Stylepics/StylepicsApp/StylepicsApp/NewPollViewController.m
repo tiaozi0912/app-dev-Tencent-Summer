@@ -72,7 +72,6 @@
         poll.ownerID = [Utility getObjectForKey:CURRENTUSERID];
         poll.state = EDITING;
         poll.totalVotes = [NSNumber numberWithInt:0];
-        poll.maxVotesForSingleItem = [NSNumber numberWithInt:1];
         [[RKObjectManager sharedManager] postObject:poll delegate:self];
     }
 }

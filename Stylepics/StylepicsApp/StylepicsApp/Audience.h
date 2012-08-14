@@ -10,6 +10,6 @@
 
 @interface Audience : User
 
-@property (nonatomic, strong) NSNumber *audienceID, *pollID, *hasVoted;
+@property (nonatomic, strong) NSNumber *audienceID, *pollID, *hasVoted, *isFollowing;
 
 @end

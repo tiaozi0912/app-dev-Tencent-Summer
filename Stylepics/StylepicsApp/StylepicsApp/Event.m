@@ -12,7 +12,7 @@
 
 @synthesize eventID=_eventID, userID = _userID, pollID = _pollID, itemID = _itemID;
 @synthesize eventType=_eventType;
-@synthesize poll=_poll;
+@synthesize poll=_poll, pollOwner=_pollOwner;
 @synthesize user=_user;
 @synthesize item=_item;
 @end

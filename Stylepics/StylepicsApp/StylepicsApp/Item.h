@@ -10,7 +10,7 @@
 
 @interface Item : NSObject
 
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *description, *brand, *category;
 @property (nonatomic, strong) NSNumber *price, *itemID, *numberOfVotes,*pollID;
 @property (nonatomic, strong) NSString *photoURL;
 //@property (nonatomic, strong) NSArray *comments;
