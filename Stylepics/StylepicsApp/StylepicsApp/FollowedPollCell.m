@@ -9,7 +9,7 @@
 #import "FollowedPollCell.h"
 
 @implementation FollowedPollCell
-@synthesize nameLabel, ownerLabel, stateLabel;
+@synthesize nameLabel, ownerLabel, stateLabel, userPhoto;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

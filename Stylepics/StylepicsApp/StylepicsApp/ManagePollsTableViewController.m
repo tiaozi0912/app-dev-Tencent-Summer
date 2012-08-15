@@ -45,7 +45,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    dispatch_release(downloadQueue);
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -180,8 +179,9 @@
             PollRecord *poll = [self.pastPolls objectAtIndex:indexPath.row];
             cell.nameLabel.text = poll.title;
             cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
-            cell.dateLabel.text = @"7/17/2012";
+            cell.dateLabel.text =[NSDateFormatter localizedStringFromDate:poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
             [cell.nameLabel sizeToFit];
+            [cell.dateLabel sizeToFit];
             return cell;
         }
     }

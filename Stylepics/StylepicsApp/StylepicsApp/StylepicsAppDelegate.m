@@ -159,6 +159,7 @@
 	NSString* cacheDirectory = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/imgcache/"] ;
 	HJMOFileCache* fileCache = [[HJMOFileCache alloc] initWithRootPath:cacheDirectory];
 	HJObjectManager.fileCache = fileCache;
+    [HJObjectManager.fileCache emptyCache];
 	
 	// Have the file cache trim itself down to a size & age limit, so it doesn't grow forever
 	fileCache.fileCountLimit = 100;

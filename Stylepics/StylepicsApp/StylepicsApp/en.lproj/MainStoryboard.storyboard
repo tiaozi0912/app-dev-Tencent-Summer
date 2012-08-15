@@ -172,7 +172,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DATE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Eqk-H3-Gf1" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="174" y="24" width="55" height="21"/>
+                                            <rect key="frame" x="174" y="24" width="126" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -639,7 +639,7 @@
             </objects>
             <point key="canvasLocation" x="2335" y="-768"/>
         </scene>
-        <!--Poll Table View Controller - Your Poll-->
+        <!--Poll Table View Controller-->
         <scene sceneID="LMl-kx-4Uv">
             <objects>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="qP4-s0-J9m">
@@ -788,15 +788,15 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem enabled="NO" style="plain" systemItem="flexibleSpace" id="8w4-qE-uVU"/>
                         <barButtonItem systemItem="add" id="icL-qj-3yn">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addNewItem:" destination="AtD-j7-Qhz" id="mIc-D5-WpW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem enabled="NO" style="plain" systemItem="flexibleSpace" id="8w4-qE-uVU"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Your Poll" id="zXe-q2-cfQ">
+                    <navigationItem key="navigationItem" id="zXe-q2-cfQ">
                         <barButtonItem key="leftBarButtonItem" title="Home" id="tZd-f8-m9O">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -1067,8 +1067,22 @@
                                 <rect key="frame" x="20" y="60" width="280" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Uwd-Oo-50L">
-                                        <rect key="frame" x="20" y="7" width="240" height="43"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="This poll is empty. You can add more items to stuff this poll." lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontSizeToFit="NO" id="Uwd-Oo-50L">
+                                        <rect key="frame" x="20" y="8" width="456" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view alpha="0.40000000596046448" contentMode="scaleToFill" id="A9U-Rm-VoT" customClass="HintView">
+                                <rect key="frame" x="115" y="335" width="200" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="d7Y-ub-pYr">
+                                        <rect key="frame" x="67" y="-23" width="240" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1326,6 +1340,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="eri-Vj-gif"/>
-        <segue reference="ceQ-hi-cBi"/>
+        <segue reference="E46-aS-6G1"/>
     </inferredMetricsTieBreakers>
 </document>

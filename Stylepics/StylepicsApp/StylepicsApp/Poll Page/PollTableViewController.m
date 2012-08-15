@@ -25,6 +25,8 @@
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
     NSNumber *isLoadedBefore;
+    HintView *emptyPollHint, *emptyPollHintInAudienceView;
+    HintView *addItemHint;
 }
 @end
 
@@ -55,8 +57,41 @@
     [super viewDidLoad];
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    CGRect frameOfEmptyPollHint = CGRectMake(20, 60, 280, 60);
+
+    CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
+    
+    CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 60, 280, 60);
+    
+    emptyPollHint = [HintView new];
+    emptyPollHint = [emptyPollHint initWithFrame:frameOfEmptyPollHint];
+    emptyPollHint.label.text = @"This poll is empty. You can add more items to stuff this poll.";
+    emptyPollHint.label.numberOfLines = 2;
+    emptyPollHint.hidden = YES;
+   
+    addItemHint = [HintView new];
+    addItemHint = [addItemHint initWithFrame:frameOfAddItemHint];
+    addItemHint.label.text = @"Add items from this plus button";
+    addItemHint.label.numberOfLines = 1;
+    addItemHint.hidden = YES;
+    
+    emptyPollHintInAudienceView = [HintView new];
+    emptyPollHintInAudienceView = [emptyPollHintInAudienceView initWithFrame:frameOfEmptyPollHintInAudienceView];
+    emptyPollHintInAudienceView.label.text = @"This poll is empty. You can add more items to stuff this poll.";
+    emptyPollHintInAudienceView.label.numberOfLines = 2;
+    emptyPollHintInAudienceView.hidden = YES;
+
+
+    [emptyPollHint.label sizeThatFits:frameOfEmptyPollHint.size];
+    [addItemHint.label sizeThatFits:frameOfAddItemHint.size];
+    [emptyPollHintInAudienceView sizeThatFits:frameOfEmptyPollHintInAudienceView.size];
+    
+    [self.view addSubview:emptyPollHint];
+    [self.view addSubview:addItemHint];
+    [self.view addSubview:emptyPollHintInAudienceView];
+    
+    self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -71,6 +106,11 @@
     [self setFollowerCount:nil];
     [super viewDidUnload];
     self.poll = nil;
+    pollRecord = nil;
+    itemToBeShown = nil;
+    isLoadedBefore = nil;
+    emptyPollHint = nil;
+    addItemHint = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -133,7 +173,7 @@
             pollOperation = UNFOLLOW_POLL_BUTTON_TITLE;
         }
     }
-   UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:pollOperation, SHOW_POLL_RESULT_BUTTON_TITLE, nil];
+   UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: SHOW_POLL_RESULT_BUTTON_TITLE, pollOperation, nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showFromBarButtonItem:self.actionButton animated:YES];
 	popupQuery = nil;
@@ -231,7 +271,7 @@
 }
 -(void)confirmToDeletePoll
 {
-    UIAlertView *deletePollAlertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to delete poll?" message:@"Note: Once you delete this poll, you will delete the items in this poll as well." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+    UIAlertView *deletePollAlertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to delete this poll?" message:@"Note: Once you delete this poll, you will delete the items in this poll as well." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
     [deletePollAlertView show];
     deletePollAlertView.tag = DeletePollAlertView;
     deletePollAlertView = nil;
@@ -322,22 +362,26 @@
     
     //Successfully loaded a poll
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
-        [self.loadingWheel stopAnimating];
+
         self.title = self.poll.title;
         self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+        isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         
+        //
         if (self.poll.items.count == 0){
-            HintView *emptyPollHint = [HintView new];
-            emptyPollHint = [emptyPollHint initWithFrame:CGRectMake(20, 60, 280, 60)];
-            
-            emptyPollHint.label.text = @"This poll is still empty.";
-            emptyPollHint.label.numberOfLines = 3;
-            [emptyPollHint.label sizeToFit];
-            
-            [self.view addSubview:emptyPollHint];
+            if (isOwnerView) {
+                addItemHint.hidden = NO;
+                emptyPollHint.hidden = NO;
+            }else {
+                emptyPollHintInAudienceView.hidden = NO;
+            }
+        }else {
+            addItemHint.hidden = YES;
+            emptyPollHint.hidden = YES;
+            emptyPollHintInAudienceView.hidden = YES;
         }
         
-        isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
+        
         //if the current user owns this poll
         if (isOwnerView){
             //self.addItemButton.enabled = (self.poll.state == EDITING);
@@ -383,7 +427,9 @@
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
+    if (objectLoader.method == RKRequestMethodGET){
     [Utility showAlert:@"Sorry!" message:error.localizedDescription];
+    }
     if ([error.localizedDescription isEqualToString:@"This poll does not exist any more."]){
     self.addItemButton.enabled = NO;
     self.actionButton.enabled = NO;

@@ -78,7 +78,8 @@
     self.priceTextField = nil;
     photoURL = nil;
     item = nil;
-  //  [AmazonClientManager clearCredentials];
+    spinner = nil;
+    [AmazonClientManager clearCredentials];
     // Release any retained subviews of the main view.
 }
 

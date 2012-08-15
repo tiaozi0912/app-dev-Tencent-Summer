@@ -50,6 +50,7 @@
 - (void)viewDidUnload
 {
     self.events = nil;
+    self.tableView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -152,7 +153,7 @@
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
-    }else if ([eventType isEqualToString:@"vote"]) {
+    }else /*if ([eventType isEqualToString:@"vote"]) */{
         static NSString *CellIdentifier = @"vote cell";
         NewsFeedVoteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier]; 
         if (cell == nil) {
