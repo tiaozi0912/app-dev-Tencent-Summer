@@ -238,31 +238,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="295" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new item cell" rowHeight="295" id="mO0-Lk-d4j" customClass="NewsFeedNewItemCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="295"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="294"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="294"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="aW9-1E-OFR" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="58" y="15" width="111" height="21"/>
+                                            <rect key="frame" x="58" y="15" width="159" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Added one item to her/his cart" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="BFN-no-Hot" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="83" y="44" width="197" height="16"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="add an item to poll" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="BFN-no-Hot" customClass="AppFormattedLabel">
+                                            <rect key="frame" x="58" y="40" width="184" height="16"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="new item icon.png" id="EJ3-t5-xDP">
-                                            <rect key="frame" x="58" y="41" width="21" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <view contentMode="scaleToFill" id="sjb-J3-SZu" customClass="HJManagedImageV">
                                             <rect key="frame" x="58" y="65" width="222" height="222"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -278,10 +274,10 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="krJ-SZ-UcQ" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="225" y="24" width="55" height="16"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="krJ-SZ-UcQ" customClass="SmallFormattedLabel">
+                                            <rect key="frame" x="250" y="46" width="65" height="11"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -292,47 +288,42 @@
                                 <connections>
                                     <outlet property="categoryIcon" destination="8Nd-1e-CCd" id="VJj-9u-kFh"/>
                                     <outlet property="eventDescriptionLabel" destination="BFN-no-Hot" id="EHG-jc-Vq9"/>
-                                    <outlet property="iconImage" destination="EJ3-t5-xDP" id="NxH-sv-FwP"/>
                                     <outlet property="itemImage" destination="sjb-J3-SZu" id="wXW-oH-jUS"/>
                                     <outlet property="timeStampLabel" destination="krJ-SZ-UcQ" id="pqz-d0-als"/>
                                     <outlet property="userImage" destination="sjj-9m-Tat" id="JH1-G1-o0d"/>
                                     <outlet property="userNameLabel" destination="aW9-1E-OFR" id="AGh-ib-JEV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="72" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="vote cell" rowHeight="72" id="W18-Mo-VL8" customClass="NewsFeedVoteCell">
                                 <rect key="frame" x="0.0" y="317" width="320" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="71"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="eKY-dZ-Kln" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="58" y="15" width="242" height="21"/>
+                                            <rect key="frame" x="58" y="15" width="159" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Voted for " lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="g00-fD-L1y" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="83" y="44" width="197" height="16"/>
+                                            <rect key="frame" x="58" y="40" width="184" height="16"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="vote icon.png" id="9Tu-mJ-5Ss">
-                                            <rect key="frame" x="58" y="41" width="21" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <view contentMode="scaleAspectFit" id="cgM-ou-5FX" customClass="HJManagedImageV">
                                             <rect key="frame" x="10" y="20" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="08d-A9-v4u" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="225" y="24" width="55" height="16"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="08d-A9-v4u" customClass="SmallFormattedLabel">
+                                            <rect key="frame" x="250" y="46" width="65" height="11"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -348,39 +339,34 @@
                                 <connections>
                                     <outlet property="categoryIcon" destination="pzi-NI-i9J" id="oJf-AY-ed3"/>
                                     <outlet property="eventDescriptionLabel" destination="g00-fD-L1y" id="S8u-h5-8WR"/>
-                                    <outlet property="iconImage" destination="9Tu-mJ-5Ss" id="fnM-zC-5S0"/>
                                     <outlet property="timeStampLabel" destination="08d-A9-v4u" id="qXx-vC-6HV"/>
                                     <outlet property="userImage" destination="cgM-ou-5FX" id="c31-gi-HOD"/>
                                     <outlet property="userNameLabel" destination="eKY-dZ-Kln" id="fZh-Ey-iVb"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new poll cell" rowHeight="88" id="Xet-vw-IdK" customClass="NewsFeedNewPollCell">
+                            <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="new poll cell" rowHeight="88" id="Xet-vw-IdK" customClass="NewsFeedNewPollCell">
                                 <rect key="frame" x="0.0" y="389" width="320" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="9uT-Lm-K35" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="58" y="15" width="248" height="21"/>
+                                            <rect key="frame" x="58" y="15" width="159" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="oMM-2I-xIF" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="225" y="24" width="55" height="16"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="oMM-2I-xIF" customClass="SmallFormattedLabel">
+                                            <rect key="frame" x="250" y="46" width="65" height="11"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="new poll icon.png" id="DIw-lY-F5b">
-                                            <rect key="frame" x="58" y="41" width="21" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Created a poll" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Mhs-8T-Ibz" customClass="AppFormattedLabel">
-                                            <rect key="frame" x="83" y="44" width="197" height="16"/>
+                                            <rect key="frame" x="58" y="40" width="184" height="16"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -403,7 +389,6 @@
                                 <connections>
                                     <outlet property="categoryIcon" destination="GAc-q0-m0Y" id="UIE-Ma-yUe"/>
                                     <outlet property="eventDescriptionLabel" destination="Mhs-8T-Ibz" id="cXW-Tu-eFI"/>
-                                    <outlet property="iconImage" destination="DIw-lY-F5b" id="a5X-wj-edW"/>
                                     <outlet property="timeStampLabel" destination="oMM-2I-xIF" id="4QW-ao-HUv"/>
                                     <outlet property="userImage" destination="IFR-Nr-olV" id="X9F-dA-gdy"/>
                                     <outlet property="userNameLabel" destination="9uT-Lm-K35" id="LPk-q3-GDc"/>
@@ -695,7 +680,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="4jj-uv-3Yb">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Created at:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="zrc-j2-KMI" customClass="AppFormattedLabel">
@@ -706,7 +691,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="hX7-4u-r5q" customClass="AppFormattedLabel">
-                                    <rect key="frame" x="90" y="13" width="62" height="21"/>
+                                    <rect key="frame" x="93" y="13" width="62" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -720,7 +705,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="z7P-hi-bTb" customClass="AppFormattedLabel">
-                                    <rect key="frame" x="275" y="13" width="37" height="19"/>
+                                    <rect key="frame" x="278" y="13" width="37" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" This poll is being edited." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" id="01n-65-UG8" customClass="AppFormattedLabel">
+                                    <rect key="frame" x="20" y="40" width="266" height="51"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -731,7 +723,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell alpha="0.94999999999999996" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poll item cell" rowHeight="350" id="zBZ-kk-9gb" customClass="PollItemCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="350"/>
+                                <rect key="frame" x="0.0" y="118" width="320" height="350"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="349"/>
@@ -1235,7 +1227,6 @@
         <image name="comments icon.png" width="45" height="45"/>
         <image name="delete.png" width="46" height="45"/>
         <image name="hanger.png" width="256" height="256"/>
-        <image name="new item icon.png" width="27" height="34"/>
         <image name="new poll icon.png" width="20" height="20"/>
         <image name="options.png" width="31" height="31"/>
         <image name="vote icon.png" width="33" height="32"/>
@@ -1291,6 +1282,7 @@
         <class className="NewsFeedNewItemCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedNewItemCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
@@ -1365,6 +1357,7 @@
                 <relationship kind="outlet" name="followerCount" candidateClass="AppFormattedLabel"/>
                 <relationship kind="outlet" name="loadingWheel" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="startTimeLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="stateIndicator" candidateClass="AppFormattedLabel"/>
             </relationships>
         </class>
         <class className="RegistrationPageViewController" superclassName="UIViewController">
@@ -1387,6 +1380,9 @@
                 <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
             </relationships>
+        </class>
+        <class className="SmallFormattedLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmallFormattedLabel.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

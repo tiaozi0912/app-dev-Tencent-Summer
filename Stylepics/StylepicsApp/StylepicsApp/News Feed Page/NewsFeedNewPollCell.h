@@ -12,9 +12,9 @@
 @interface NewsFeedNewPollCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet HJManagedImageV *userImage;
 @property (nonatomic, weak) IBOutlet AppFormattedLabel *userNameLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *iconImage;
+//@property (nonatomic, weak) IBOutlet UIImageView *iconImage;
 @property (nonatomic, weak) IBOutlet AppFormattedLabel *eventDescriptionLabel;
-@property (nonatomic, weak) IBOutlet AppFormattedLabel *timeStampLabel;
+@property (nonatomic, weak) IBOutlet SmallFormattedLabel *timeStampLabel;
 @property (nonatomic, weak) IBOutlet HJManagedImageV
 *categoryIcon;
 

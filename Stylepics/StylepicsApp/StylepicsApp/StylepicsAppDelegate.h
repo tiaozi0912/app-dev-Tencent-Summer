@@ -18,6 +18,7 @@
 #import "Audience.h"
 #import "AmazonClientManager.h"
 #import "AppFormattedLabel.h"
+#import "SmallFormattedLabel.h"
 
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"

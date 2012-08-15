@@ -11,7 +11,7 @@
 @implementation NewsFeedNewItemCell
 @synthesize userImage=_userImage;
 @synthesize userNameLabel=_userNameLabel;
-@synthesize iconImage=_iconImage;
+//@synthesize iconImage=_iconImage;
 @synthesize eventDescriptionLabel=_eventDescriptionLabel;
 @synthesize itemImage=_itemnImage;
 @synthesize timeStampLabel = _timeStampLabel, categoryIcon = _categoryIcon;

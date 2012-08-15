@@ -129,7 +129,7 @@
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", event.poll.title];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"created a new poll '%@'. ", event.poll.title];
         cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
         cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
         [HJObjectManager manage:cell.categoryIcon];
@@ -150,7 +150,7 @@
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
-        cell.eventDescriptionLabel.text = [NSString stringWithFormat:@"Added one item to Poll '%@'.", event.poll.title];
+        cell.eventDescriptionLabel.text = [NSString stringWithFormat:@"added an item to Poll '%@'.", event.poll.title];
         cell.itemImage.url = [NSURL URLWithString:event.item.photoURL];
         [HJObjectManager manage:cell.itemImage];
         // In current version, photo uploading is limited to one picture at a time
@@ -174,7 +174,7 @@
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.pollOwner.username, event.poll.title];
+        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"voted in %@'s Poll '%@'. ", event.pollOwner.username, event.poll.title];
         cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
         cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
         [HJObjectManager manage:cell.categoryIcon];
@@ -202,44 +202,6 @@
     return HEIGHTOFNEWPOLLCELL;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -263,27 +225,6 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
      */
 }
 
-/*-(void)loadUserWithID:(NSNumber*)userID
-{
-    loaderKey = 1;
-    NSString *path = [NSString stringWithFormat:@"/user/%@", userID];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:path delegate:self];
-}
-
--(void)loadPollWithID:(NSNumber*)pollID
-{
-    loaderKey = 2;
-    NSString *path = [NSString stringWithFormat:@"/poll/%@", pollID];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:path delegate:self];
-}
-
--(void)loadItemWithID:(NSNumber*)itemID
-               inPoll:(NSNumber*)pollID
-{
-    loaderKey = 3;
-    NSString *path = [NSString stringWithFormat:@"/poll/%@/items/%@", pollID, itemID];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:path delegate:self];
-}*/
 
 
 

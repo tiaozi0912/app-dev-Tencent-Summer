@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *followerCount;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *stateIndicator;
 
 @end

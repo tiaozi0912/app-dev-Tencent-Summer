@@ -25,7 +25,7 @@
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
     NSNumber *isLoadedBefore;
-    HintView *emptyPollHint, *emptyPollHintInAudienceView, *addItemHint, *stateIndicator;
+    HintView *emptyPollHint, *emptyPollHintInAudienceView, *addItemHint;
 }
 @end
 
@@ -36,6 +36,7 @@
 @synthesize actionButton = _actionButton;
 @synthesize startTimeLabel = _startTimeLabel;
 @synthesize followerCount = _followerCount;
+@synthesize stateIndicator = _stateIndicator;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -63,7 +64,6 @@
     
     CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 60, 280, 60);
     
-    CGRect frameOfStateIndicator = CGRectMake(0.0, self.tableView.contentOffset.y +200, 320.0, 200);
     
     emptyPollHint = [HintView new];
     emptyPollHint = [emptyPollHint initWithFrame:frameOfEmptyPollHint];
@@ -83,20 +83,9 @@
     emptyPollHintInAudienceView.label.numberOfLines = 2;
     emptyPollHintInAudienceView.hidden = YES;
 
-    stateIndicator = [HintView new];
-    stateIndicator = [stateIndicator initWithFrame:frameOfStateIndicator];
-    stateIndicator.label.text = @"This poll is being edited.";
-    stateIndicator.label.numberOfLines = 2;
-
-    [emptyPollHint.label sizeThatFits:frameOfEmptyPollHint.size];
-    [addItemHint.label sizeThatFits:frameOfAddItemHint.size];
-    [emptyPollHintInAudienceView sizeThatFits:frameOfEmptyPollHintInAudienceView.size];
-    [stateIndicator sizeThatFits:frameOfStateIndicator.size];
-    
     [self.view addSubview:emptyPollHint];
     [self.view addSubview:addItemHint];
     [self.view addSubview:emptyPollHintInAudienceView];
-    [self.view addSubview:stateIndicator];
     self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -392,11 +381,25 @@
         if (isOwnerView){
             //self.addItemButton.enabled = (self.poll.state == EDITING);
             self.navigationController.toolbarHidden = !([self.poll.state isEqualToString:EDITING]);
+            if ([self.poll.state isEqualToString:EDITING]){
+                self.stateIndicator.text = @"Poll State: Editing \nYou can add and edit items in the poll";
+            }else if ([self.poll.state isEqualToString:VOTING]){
+                self.stateIndicator.text = @"Poll State: Voting \nPlease wait for your friends' votes until you want to end this poll";
+            }else {
+                self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";
+            }
         }else{
             self.navigationController.toolbarHidden = YES;
             //NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
            // [toolbarItems removeObject:self.addItemButton];
             //self.toolbarItems = [toolbarItems copy];
+            if ([self.poll.state isEqualToString:EDITING]){
+                self.stateIndicator.text = @"Poll State: Editing \nThis is being edited. You can track this poll by following it.";
+            }else if ([self.poll.state isEqualToString:VOTING]){
+                self.stateIndicator.text = @"Poll State: Voting \nPlease vote on the item in the poll by clicking the checkbox in the picture. You can also undo the vote by clicking on the checked checkbox.";    
+            }else {
+                self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";    
+            }
         }
         self.followerCount.text = [NSString stringWithFormat:@"%@", self.poll.followerCount];
         self.startTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
