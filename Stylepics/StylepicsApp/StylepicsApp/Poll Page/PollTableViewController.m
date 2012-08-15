@@ -58,7 +58,7 @@
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
-    CGRect frameOfEmptyPollHint = CGRectMake(20, 60, 280, 60);
+    CGRect frameOfEmptyPollHint = CGRectMake(20, 150, 280, 60);
 
     CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
     
@@ -382,9 +382,9 @@
             //self.addItemButton.enabled = (self.poll.state == EDITING);
             self.navigationController.toolbarHidden = !([self.poll.state isEqualToString:EDITING]);
             if ([self.poll.state isEqualToString:EDITING]){
-                self.stateIndicator.text = @"Poll State: Editing \nYou can add and edit items in the poll";
+                self.stateIndicator.text = @"Poll State: Editing \nYou can add and edit items in the poll.";
             }else if ([self.poll.state isEqualToString:VOTING]){
-                self.stateIndicator.text = @"Poll State: Voting \nPlease wait for your friends' votes until you want to end this poll";
+                self.stateIndicator.text = @"Poll State: Voting \nPlease wait for your friends' votes until you want to end this poll.";
             }else {
                 self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";
             }

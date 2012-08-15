@@ -8,6 +8,7 @@
 
 #import "NewPollViewController.h"
 #import "Utility.h"
+#import<QuartzCore/QuartzCore.h>
 
 @interface NewPollViewController ()
 {
@@ -16,6 +17,7 @@
 @end
 
 @implementation NewPollViewController
+@synthesize tips = _tips;
 @synthesize textField=_textField;
 
 -(void)setTextField:(UITextField *)textField{
@@ -27,6 +29,12 @@
 {  
     [self newPoll]; 
     return YES;
+}
+
+-(void)setTips:(UILabel *)tips
+{
+    _tips = tips;
+    _tips.backgroundColor =[UIColor clearColor];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,6 +57,7 @@
 - (void)viewDidUnload
 {
     [self setTextField:nil];
+    [self setTips:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

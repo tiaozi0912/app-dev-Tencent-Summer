@@ -52,6 +52,13 @@
     {
         self.descriptionTextField.enabled = NO;
         self.priceTextField.enabled = NO;
+        self.descriptionTextField.borderStyle = UITextBorderStyleNone;
+        self.priceTextField.borderStyle = UITextBorderStyleNone;
+    }else{
+        self.descriptionTextField.enabled = YES;
+        self.priceTextField.enabled = YES;
+        self.descriptionTextField.borderStyle = UITextBorderStyleRoundedRect;
+        self.priceTextField.borderStyle = UITextBorderStyleRoundedRect;
     }
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     itemAdded = NO;
@@ -211,18 +218,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                           objectForKey:UIImagePickerControllerOriginalImage];
         self.itemImage.image = image;
         itemAdded = YES;
-     /*   ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        if (newMedia)
-            [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error){
-                if (error) {
-                    NSLog(@"error");
-                } else {
-                    NSLog(@"url %@", assetURL);
-                    //photoURL = assetURL;
-                }  
-            }];
-        library = nil;
-        photoURL = [NSURL URLWithString:@"http://i.dailymail.co.uk/i/pix/2012/07/27/article-2180047-143F90C1000005DC-196_634x423.jpg"];*/
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {

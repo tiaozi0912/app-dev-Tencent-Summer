@@ -12,4 +12,5 @@
 @interface NewPollViewController : UIViewController<UITextFieldDelegate, RKObjectLoaderDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 - (IBAction)backgroundTouched:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *tips;
 @end

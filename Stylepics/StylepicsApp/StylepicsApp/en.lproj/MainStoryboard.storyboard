@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="LOGIN">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -40,7 +40,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="SIGNUP">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -145,7 +145,7 @@
                                         <view contentMode="scaleToFill" id="EHl-Ja-4X1" customClass="HJManagedImageV">
                                             <rect key="frame" x="175" y="8" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.36403160839999998" green="0.72722018489999996" blue="0.1592334447" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -208,13 +208,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Poll Manager" id="88u-UT-Mu5">
                         <barButtonItem key="leftBarButtonItem" title="Home" id="gcT-6F-j75">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backButton:" destination="6a9-bf-0wD" id="KbF-jS-j9Q"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="new poll icon.png" id="jkA-LW-geO">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="tlb-aD-9aU" kind="push" id="u3a-4G-uJW"/>
                             </connections>
@@ -267,12 +267,12 @@
                                         <view contentMode="scaleAspectFit" id="8Nd-1e-CCd" customClass="HJManagedImageV">
                                             <rect key="frame" x="277" y="20" width="23" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <view contentMode="scaleAspectFit" id="sjj-9m-Tat" customClass="HJManagedImageV">
                                             <rect key="frame" x="10" y="20" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="krJ-SZ-UcQ" customClass="SmallFormattedLabel">
                                             <rect key="frame" x="250" y="46" width="65" height="11"/>
@@ -318,7 +318,7 @@
                                         <view contentMode="scaleAspectFit" id="cgM-ou-5FX" customClass="HJManagedImageV">
                                             <rect key="frame" x="10" y="20" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xx:xx:xx" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="08d-A9-v4u" customClass="SmallFormattedLabel">
                                             <rect key="frame" x="250" y="46" width="65" height="11"/>
@@ -330,7 +330,7 @@
                                         <view contentMode="scaleAspectFit" id="pzi-NI-i9J" customClass="HJManagedImageV">
                                             <rect key="frame" x="277" y="20" width="23" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -375,12 +375,12 @@
                                         <view contentMode="scaleAspectFit" id="IFR-Nr-olV" customClass="HJManagedImageV">
                                             <rect key="frame" x="10" y="20" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <view contentMode="scaleAspectFit" id="GAc-q0-m0Y" customClass="HJManagedImageV">
                                             <rect key="frame" x="277" y="20" width="23" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -400,16 +400,17 @@
                             <outlet property="delegate" destination="8Sd-3s-bsT" id="Qc7-As-EVh"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="dUC-ef-jD1"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Stylepics" id="SY8-vZ-Qmd">
                         <barButtonItem key="leftBarButtonItem" image="Polls-Icon.png" id="Mca-Zq-pB3">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="6a9-bf-0wD" kind="push" id="WLE-3I-iDc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="options.png" id="5Ug-tc-qLk">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="pIC-4E-dbg" kind="push" id="wAB-oZ-R7b"/>
                             </connections>
@@ -421,7 +422,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1427" y="101"/>
+            <point key="canvasLocation" x="2113" y="101"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="Bi7-qS-cAn">
@@ -442,10 +443,18 @@
                                             <rect key="frame" x="10" y="1" width="300" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="9cB-y1-WGa">
+                                                <view contentMode="scaleAspectFit" id="N1j-cL-oyG" customClass="HJManagedImageV">
                                                     <rect key="frame" x="120" y="8" width="60" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                    <subviews>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="1Lf-ww-FvZ">
+                                                            <rect key="frame" x="12" y="21" width="37" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="color" red="0.0" green="1" blue="1" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
+                                                        </activityIndicatorView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -454,11 +463,11 @@
                             </tableViewSection>
                             <tableViewSection id="WvF-i5-4CY">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rWe-04-MaL">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="rWe-04-MaL">
                                         <rect key="frame" x="0.0" y="129" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZRT-IS-RTi">
@@ -468,72 +477,21 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Ier-u7-87h">
-                                                    <rect key="frame" x="119" y="11" width="150" height="21"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="tJM-fK-vUQ">
+                                                    <rect key="frame" x="136" y="15" width="125" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" id="XWU-RE-DnL">
-                                        <rect key="frame" x="0.0" y="174" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" id="xAz-AG-jck">
+                                        <rect key="frame" x="0.0" y="174" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fsc-9q-jpk">
-                                                    <rect key="frame" x="20" y="11" width="81" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="680-dm-hOu">
-                                                    <rect key="frame" x="119" y="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" id="QTK-b3-KGr">
-                                        <rect key="frame" x="0.0" y="218" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Set Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="bBI-uD-EP2">
-                                                    <rect key="frame" x="20" y="11" width="113" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Crn-pp-IN6">
-                                                    <rect key="frame" x="119" y="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" id="xAz-AG-jck">
-                                        <rect key="frame" x="0.0" y="262" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Set Profile Picture" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cTI-AO-inH">
@@ -559,7 +517,7 @@
                             <tableViewSection id="SsG-sV-oaJ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0uy-ix-DeC">
-                                        <rect key="frame" x="0.0" y="327" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="239" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -585,6 +543,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="mIy-8J-tpQ"/>
+                    <connections>
+                        <outlet property="Username" destination="tJM-fK-vUQ" id="zI3-dD-ERF"/>
+                        <outlet property="profilePhoto" destination="N1j-cL-oyG" id="PiP-Ni-bjA"/>
+                        <outlet property="spinner" destination="1Lf-ww-FvZ" id="jcp-JJ-RVs"/>
+                        <outlet property="username" destination="tJM-fK-vUQ" id="db0-Sd-v3l"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1479" y="856"/>
@@ -632,7 +596,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Create">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -642,8 +606,17 @@
                                     <action selector="newPoll" destination="tlb-aD-9aU" eventType="touchUpInside" id="Hov-Gj-wed"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="cR5-qt-ft3">
+                                <rect key="frame" x="73" y="232" width="178" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">1. Create a new poll                            2. List what you want to compare for a purchase                                3. Ask friends for votes </string>
+                                <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
                             <action selector="backgroundTouched:" destination="tlb-aD-9aU" eventType="touchDown" id="2t2-np-Knz"/>
                         </connections>
@@ -651,7 +624,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="New Poll" id="XJx-2q-D6g">
                         <barButtonItem key="leftBarButtonItem" image="Polls-Icon.png" id="SWf-QG-l8W">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="back" destination="tlb-aD-9aU" id="b9a-pN-WWK"/>
                             </connections>
@@ -660,6 +633,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="textField" destination="OZs-8F-042" id="qv0-Jx-dH4"/>
+                        <outlet property="tips" destination="cR5-qt-ft3" id="OlC-vD-RFf"/>
                         <segue destination="AtD-j7-Qhz" kind="push" identifier="showNewPoll" id="GAG-CL-Cdg"/>
                     </connections>
                 </viewController>
@@ -832,13 +806,13 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="zXe-q2-cfQ">
                         <barButtonItem key="leftBarButtonItem" title="Home" id="tZd-f8-m9O">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="goHomePage:" destination="AtD-j7-Qhz" id="Ig8-AG-gL3"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="2f8-JI-TJE">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="showActionSheet:" destination="AtD-j7-Qhz" id="cyd-iN-3cP"/>
                             </connections>
@@ -851,12 +825,13 @@
                         <outlet property="followerCount" destination="z7P-hi-bTb" id="1YM-6L-T3M"/>
                         <outlet property="loadingWheel" destination="qP4-s0-J9m" id="QBx-7v-smu"/>
                         <outlet property="startTimeLabel" destination="hX7-4u-r5q" id="qR8-Qb-F6Y"/>
+                        <outlet property="stateIndicator" destination="01n-65-UG8" id="AFu-aW-4fV"/>
                         <segue destination="ld5-tW-awy" kind="push" identifier="show single item view" id="LU7-nh-1pt"/>
                         <segue destination="PLI-kD-jhi" kind="push" identifier="show poll result" id="D5W-qn-RUp"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2392" y="-165"/>
+            <point key="canvasLocation" x="3078" y="-165"/>
         </scene>
         <!--Poll Result View Controller - Poll Result-->
         <scene sceneID="mxb-Ii-Hb2">
@@ -878,8 +853,9 @@
                                         <progressView opaque="NO" contentMode="scaleToFill" id="GJI-WS-8Za">
                                             <rect key="frame" x="20" y="89" width="238" height="9"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <color key="progressTintColor" red="1" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.85490196078431369" green="0.92941176470588238" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="progressTintColor" red="0.46666666666666667" green="0.76862745098039209" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="trackTintColor" red="0.85490196078431369" green="0.92941176470588238" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
                                         </progressView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="izX-5r-snh" customClass="AppFormattedLabel">
                                             <rect key="frame" x="266" y="83" width="42" height="21"/>
@@ -941,13 +917,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Poll Result" id="UWl-4Z-gyg">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="18C-Fw-AIk">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="back:" destination="PLI-kD-jhi" id="Ra9-DM-PvW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Ob0-ps-ai3">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="refresh:" destination="PLI-kD-jhi" id="EQX-mQ-SJW"/>
                             </connections>
@@ -955,7 +931,7 @@
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2958" y="0.0"/>
+            <point key="canvasLocation" x="3644" y="0.0"/>
         </scene>
         <!--Log In Page View Controller - Log In-->
         <scene sceneID="0oK-4b-FE2">
@@ -972,7 +948,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="LOGIN">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -1034,7 +1010,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="SIGNUP">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -1098,7 +1074,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" id="IAX-ke-ilL" customClass="HintView">
-                                <rect key="frame" x="20" y="60" width="280" height="60"/>
+                                <rect key="frame" x="20" y="150" width="280" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="This poll is empty. You can add more items to stuff this poll." lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="14" adjustsFontSizeToFit="NO" id="Uwd-Oo-50L">
@@ -1140,7 +1116,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="j7c-DV-LHH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -1151,7 +1127,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2148" y="535"/>
+            <point key="canvasLocation" x="2834" y="535"/>
         </scene>
         <!--Single Item View Controller - Add New Item-->
         <scene sceneID="HpC-Ot-YOP">
@@ -1162,13 +1138,13 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" clearButtonMode="whileEditing" id="gOi-y3-rFA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" minimumFontSize="17" clearButtonMode="whileEditing" id="gOi-y3-rFA">
                                 <rect key="frame" x="20" y="9" width="280" height="31"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" minimumFontSize="17" clearButtonMode="whileEditing" id="wZo-de-Z5l">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$" minimumFontSize="17" clearButtonMode="whileEditing" id="wZo-de-Z5l">
                                 <rect key="frame" x="20" y="48" width="135" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1197,13 +1173,13 @@
                     <navigationItem key="navigationItem" title="Add New Item" id="f51-EF-XSU">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="dbx-3p-gpI"/>
                         <barButtonItem key="leftBarButtonItem" title="Done" id="WOO-41-3fN">
-                            <color key="tintColor" red="0.40000000596046448" green="0.40000000596046448" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.26445597627737227" green="0.92489735401459849" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="done" destination="ld5-tW-awy" id="ivW-1P-dpX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="eb3-YP-2bX">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelButton" destination="ld5-tW-awy" id="Afz-BH-vfE"/>
                             </connections>
@@ -1218,7 +1194,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2607" y="467"/>
+            <point key="canvasLocation" x="3293" y="467"/>
         </scene>
     </scenes>
     <resources>
@@ -1277,6 +1253,7 @@
             <relationships>
                 <relationship kind="action" name="backgroundTouched:"/>
                 <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tips" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="NewsFeedNewItemCell" superclassName="UITableViewCell">
@@ -1284,9 +1261,8 @@
             <relationships>
                 <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
-                <relationship kind="outlet" name="timeStampLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="SmallFormattedLabel"/>
                 <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
@@ -1296,8 +1272,7 @@
             <relationships>
                 <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="AppFormattedLabel"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="timeStampLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="SmallFormattedLabel"/>
                 <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="AppFormattedLabel"/>
             </relationships>
@@ -1310,8 +1285,7 @@
             <relationships>
                 <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="timeStampLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="SmallFormattedLabel"/>
                 <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
             </relationships>
@@ -1371,6 +1345,11 @@
         </class>
         <class className="SettingsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="profilePhoto" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="SingleItemViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SingleItemViewController.h"/>
@@ -1391,7 +1370,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eri-Vj-gif"/>
         <segue reference="ceQ-hi-cBi"/>
+        <segue reference="eri-Vj-gif"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -41,7 +41,6 @@
 }
 -(void) setLabel:(UILabel *)label{
     _label = label;
-    _label.text = @"";
     _label.font = [UIFont fontWithName:@"Cochin" size:14];
     _label.backgroundColor = [UIColor clearColor];
     _label.textColor = [UIColor blackColor];
