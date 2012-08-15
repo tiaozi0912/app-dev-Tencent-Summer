@@ -12,12 +12,6 @@
 
 @implementation Utility
 
-/*+(NSString *) getDatabasePath
-{
-     NSString *databasePath = [(StylepicsAppDelegate *)[[UIApplication sharedApplication] delegate] databasePath];
-    
-    return databasePath; 
-}*/
 
 +(void) showAlert:(NSString *)title message:(NSString *)msg
 {
@@ -96,5 +90,32 @@
     title.text = titleText;
     [title sizeToFit];
     return title;
+}
+
++(NSString*)formatTimeWithDate:(NSDate *) date
+{
+    return [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+}
+
++(NSURL*)URLforCategory:(PollCategory) category;
+{
+    NSURL* url;
+    switch (category) {
+        case Accessory: url = [NSURL URLWithString:@""];
+            break;
+        case Apparel:
+            break;
+        case Automotive:
+            break;
+        case Food:
+            break;
+        case Electronics:
+            break;
+        case Others:
+            break;
+        default:
+            break;
+    }
+    return url;
 }
 @end

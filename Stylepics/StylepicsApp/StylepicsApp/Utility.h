@@ -21,4 +21,6 @@
 + (NSString*) formatCurrencyWithString: (NSString *) string;
 +(NSString*) formatCurrencyWithNumber: (NSNumber *) number;
 +(UILabel*)formatTitleWithString:(NSString *) titleText;
++(NSString*)formatTimeWithDate:(NSDate *) date;
++(NSURL*)URLforCategory:(PollCategory) category;
 @end

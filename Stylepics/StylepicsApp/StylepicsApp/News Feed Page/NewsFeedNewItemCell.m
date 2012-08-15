@@ -14,6 +14,7 @@
 @synthesize iconImage=_iconImage;
 @synthesize eventDescriptionLabel=_eventDescriptionLabel;
 @synthesize itemImage=_itemnImage;
+@synthesize timeStampLabel = _timeStampLabel, categoryIcon = _categoryIcon;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

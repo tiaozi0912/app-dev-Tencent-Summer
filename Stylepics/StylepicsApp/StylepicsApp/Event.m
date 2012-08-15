@@ -10,7 +10,7 @@
 
 @implementation Event
 
-@synthesize eventID=_eventID, userID = _userID, pollID = _pollID, itemID = _itemID;
+@synthesize eventID=_eventID, userID = _userID, pollID = _pollID, itemID = _itemID, timeStamp = _timeStamp;
 @synthesize eventType=_eventType;
 @synthesize poll=_poll, pollOwner=_pollOwner;
 @synthesize user=_user;

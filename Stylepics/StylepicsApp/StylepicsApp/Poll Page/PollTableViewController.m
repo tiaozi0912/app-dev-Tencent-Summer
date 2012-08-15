@@ -25,8 +25,7 @@
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
     NSNumber *isLoadedBefore;
-    HintView *emptyPollHint, *emptyPollHintInAudienceView;
-    HintView *addItemHint;
+    HintView *emptyPollHint, *emptyPollHintInAudienceView, *addItemHint, *stateIndicator;
 }
 @end
 
@@ -64,6 +63,8 @@
     
     CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 60, 280, 60);
     
+    CGRect frameOfStateIndicator = CGRectMake(0.0, self.tableView.contentOffset.y +200, 320.0, 200);
+    
     emptyPollHint = [HintView new];
     emptyPollHint = [emptyPollHint initWithFrame:frameOfEmptyPollHint];
     emptyPollHint.label.text = @"This poll is empty. You can add more items to stuff this poll.";
@@ -82,15 +83,20 @@
     emptyPollHintInAudienceView.label.numberOfLines = 2;
     emptyPollHintInAudienceView.hidden = YES;
 
+    stateIndicator = [HintView new];
+    stateIndicator = [stateIndicator initWithFrame:frameOfStateIndicator];
+    stateIndicator.label.text = @"This poll is being edited.";
+    stateIndicator.label.numberOfLines = 2;
 
     [emptyPollHint.label sizeThatFits:frameOfEmptyPollHint.size];
     [addItemHint.label sizeThatFits:frameOfAddItemHint.size];
     [emptyPollHintInAudienceView sizeThatFits:frameOfEmptyPollHintInAudienceView.size];
+    [stateIndicator sizeThatFits:frameOfStateIndicator.size];
     
     [self.view addSubview:emptyPollHint];
     [self.view addSubview:addItemHint];
     [self.view addSubview:emptyPollHintInAudienceView];
-    
+    [self.view addSubview:stateIndicator];
     self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.

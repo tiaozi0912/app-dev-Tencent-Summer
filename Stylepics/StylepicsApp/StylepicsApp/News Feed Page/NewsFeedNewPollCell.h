@@ -14,5 +14,8 @@
 @property (nonatomic, weak) IBOutlet AppFormattedLabel *userNameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *iconImage;
 @property (nonatomic, weak) IBOutlet AppFormattedLabel *eventDescriptionLabel;
+@property (nonatomic, weak) IBOutlet AppFormattedLabel *timeStampLabel;
+@property (nonatomic, weak) IBOutlet HJManagedImageV
+*categoryIcon;
 
 @end

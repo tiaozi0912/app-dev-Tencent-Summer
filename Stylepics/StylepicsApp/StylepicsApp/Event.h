@@ -23,5 +23,6 @@
 @property (nonatomic, strong) Item* item;
 @property (nonatomic, strong) User* user;
 @property (nonatomic, strong) User* pollOwner;
+@property (nonatomic, strong) NSDate* timeStamp;
 
 @end

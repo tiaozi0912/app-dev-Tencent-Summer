@@ -113,6 +113,7 @@
      @"user_id", @"userID",
      @"poll_id", @"pollID",
      @"item_id", @"itemID",
+     @"created_at", @"timeStamp",
      nil];
     [eventMapping mapRelationship:@"user" withMapping:userMapping];
     [eventMapping mapKeyPath:@"poll_owner" toRelationship:@"pollOwner" withMapping:userMapping];

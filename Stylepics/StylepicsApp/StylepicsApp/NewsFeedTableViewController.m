@@ -130,6 +130,10 @@
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Created a new poll '%@'. ", event.poll.title];
+        cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
+        cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
+        [HJObjectManager manage:cell.categoryIcon];
+        [cell.timeStampLabel sizeToFit];
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
@@ -150,6 +154,10 @@
         cell.itemImage.url = [NSURL URLWithString:event.item.photoURL];
         [HJObjectManager manage:cell.itemImage];
         // In current version, photo uploading is limited to one picture at a time
+        cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
+        cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
+        [HJObjectManager manage:cell.categoryIcon];
+        [cell.timeStampLabel sizeToFit];
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
@@ -167,6 +175,10 @@
         [HJObjectManager manage:cell.userImage];
         cell.userNameLabel.text = event.user.username;
         cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:@"Voted in %@'s Poll '%@'. ", event.pollOwner.username, event.poll.title];
+        cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
+        cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
+        [HJObjectManager manage:cell.categoryIcon];
+        [cell.timeStampLabel sizeToFit];
         [cell.userNameLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;

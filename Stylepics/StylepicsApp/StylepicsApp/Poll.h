@@ -13,6 +13,15 @@
 #define VOTING @"VOTING"
 #define FINISHED @"FINISHED"
 
+typedef enum{
+    Apparel = 0,
+    Accessory,
+    Food,
+    Electronics,
+    Automotive,
+    Others
+}PollCategory;
+
 @interface Poll : NSObject
 
 @property (nonatomic, strong) NSNumber *pollID, *totalVotes, *ownerID, *followerCount;
@@ -21,5 +30,6 @@
 @property (nonatomic, strong) NSString *state;// state = "EDITING", "VOTING" or "FINISHED"
 @property (nonatomic, strong) NSMutableArray *items, *audiences;
 @property (nonatomic, strong) NSDate *startTime, *endTime;
+@property (nonatomic) PollCategory category;
 
 @end
