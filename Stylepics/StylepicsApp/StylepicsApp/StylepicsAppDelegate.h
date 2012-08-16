@@ -30,8 +30,8 @@
 #define PAST @"PAST"
 #define FOLLOWED @"FOLLOWED"
 
-#define BACKGROUND_COLOR @"backgroundImage.jpeg"
-#define NAV_BAR_BACKGROUND_COLOR @"NavBarImage.jpeg"
+#define BACKGROUND_COLOR @"BG.png"
+#define NAV_BAR_BACKGROUND_COLOR @"Custom-Nav-Bar-BG.png"
 
 typedef enum{
     SingleItemViewOptionNew,

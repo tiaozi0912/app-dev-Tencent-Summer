@@ -8,9 +8,10 @@
 
 #import "RegistrationPageViewController.h"
 #import "Utility.h"
-
+#define UsernameField 0
+#define PasswordField 1
+#define PasswordConfirmationField 2
 @interface RegistrationPageViewController (){
-    //StylepicsDatabase *database;
     User* user;
 }
 @end
@@ -28,6 +29,7 @@
     _usernameField = usernameField;
     _usernameField.delegate = self;
     _usernameField.returnKeyType = UIReturnKeyNext;
+    _usernameField.tag = UsernameField;
 }
 
 
@@ -36,6 +38,7 @@
     _passwordField = passwordField;
     _passwordField.delegate = self;
     _passwordField.returnKeyType = UIReturnKeyNext;
+    _passwordField.tag = PasswordField;
 }
 
 -(void) setPasswordConfirmationField:(UITextField *)passwordConfirmationField
@@ -43,20 +46,27 @@
     _passwordConfirmationField = passwordConfirmationField;
     _passwordConfirmationField.delegate = self;
     _passwordConfirmationField.returnKeyType =UIReturnKeyDone;
+    _passwordConfirmationField.tag = PasswordConfirmationField;
 }
 
 
 - (IBAction)signup {
-    [self.usernameField resignFirstResponder];
-    [self.passwordField resignFirstResponder];
-    [self.passwordConfirmationField resignFirstResponder];
-    user = [User new];
-    user.username = self.usernameField.text;
-    user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
-    user.password = self.passwordField.text;
-    user.passwordConfirmation = self.passwordConfirmationField.text;
-    self.signupButton.enabled = NO;
-    [[RKObjectManager sharedManager] postObject:user delegate:self];
+    if (_passwordField.text.length < 6){
+        [Utility showAlert:@"Password is too short!" message:@"Password should be longer than 6 characters"];
+    }else if ([_passwordConfirmationField.text isEqualToString:_passwordField.text]){
+        [Utility showAlert:@"Password Confirmation Mismatch!" message:@"Your password and password confirmation should be exactly the same."];
+    }else {
+        [self.usernameField resignFirstResponder];
+        [self.passwordField resignFirstResponder];
+        [self.passwordConfirmationField resignFirstResponder];
+        user = [User new];
+        user.username = self.usernameField.text;
+        user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
+        user.password = self.passwordField.text;
+        user.passwordConfirmation = self.passwordConfirmationField.text;
+        self.signupButton.enabled = NO;
+        [[RKObjectManager sharedManager] postObject:user delegate:self];
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
@@ -91,22 +101,31 @@
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)aTextField
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [aTextField resignFirstResponder];
-    if ([aTextField isEqual: _usernameField]){
-        [_passwordField becomeFirstResponder];
-       // return NO;
-    }else if ([aTextField isEqual: _passwordField]){
-        [_passwordConfirmationField becomeFirstResponder];
-      //  return NO;
-    }else {
-        [self signup];
-      //  return NO;
-    } 
+    [textField resignFirstResponder];
+    switch (textField.tag) {
+        case UsernameField:{
+            NSLog(@"%d", textField.tag);
+            [_passwordField becomeFirstResponder];
+            return NO;
+        }
+        case PasswordField:{
+            NSLog(@"%d", textField.tag);
+            [self.passwordConfirmationField becomeFirstResponder];
+            return NO;
+        }
+        case PasswordConfirmationField:{
+            NSLog(@"%d", textField.tag);
+            [self signup];
+            return NO;
+        }
+        default:
+            break;
+    }
     return YES;
 }
 
@@ -116,6 +135,8 @@
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     self.navigationController.toolbarHidden = YES;
+    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
 }
 
 

@@ -10,6 +10,9 @@
 #import "User.h"
 #import "Utility.h"
 
+#define UsernameField 0
+#define PasswordField 1
+
 @interface LogInPageViewController () {
     User* user;
 }
@@ -24,14 +27,16 @@
 -(void) setUsername:(UITextField *)usernameField
 {
     _usernameField = usernameField;
-    self.usernameField.delegate = self;
+    _usernameField.delegate = self;
+    _usernameField.tag = UsernameField;
 }
 
 
 -(void) setPasswordField:(UITextField *)passwordField
 {
     _passwordField = passwordField;
-    self.passwordField.delegate = self;
+    _passwordField.delegate = self;
+    _passwordField.tag = PasswordField;
 }
 
 
@@ -71,7 +76,7 @@
 }
 
 - (IBAction)back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -80,25 +85,29 @@
     [self.passwordField resignFirstResponder];
 } 
 
-
-- (BOOL)textFieldShouldReturn:(UITextField *)aTextField
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [aTextField resignFirstResponder];
-    if ([aTextField isEqual:self.usernameField]){
-        [self.passwordField becomeFirstResponder];
-       // return NO;
-    }else{
+    [textField resignFirstResponder];
+    if (textField.tag == UsernameField)
+    {
+        [_passwordField becomeFirstResponder];
+        return NO;
+    }else {
         [self login];
-       // return NO;
+        return NO;
     }
     return YES;
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    
+    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.toolbarHidden = YES;
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 }
 
 
@@ -115,8 +124,6 @@
     self.usernameField.text = nil;
     self.passwordField.text = nil;
     [super viewWillAppear:animated];
-    self.navigationController.toolbarHidden = YES;
-    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
