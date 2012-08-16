@@ -62,7 +62,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.toolbarHidden = YES;
     self.activePolls = [NSMutableArray new];
     self.followedPolls = [NSMutableArray new];
     self.pastPolls = [NSMutableArray new];

@@ -83,7 +83,7 @@
 {
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
     title.backgroundColor = [UIColor clearColor];
-    title.font = [UIFont fontWithName:@"Cochin-BoldItalic" size:28];
+    title.font = [UIFont fontWithName:@"Noteworthy-Light" size:25];
     title.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     title.textAlignment = UITextAlignmentCenter;
     title.textColor = [UIColor whiteColor]; // change this color

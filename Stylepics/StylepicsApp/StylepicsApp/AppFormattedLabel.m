@@ -12,14 +12,14 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.font = [UIFont fontWithName:@"Cochin" size:15.0];
+    self.font = [UIFont fontWithName:@"Noteworthy-Light" size:15.0];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.font = [UIFont fontWithName:@"Cochin" size:15];
+        self.font = [UIFont fontWithName:@"Noteworthy-Light" size:15];
     }
     return self;
 }
