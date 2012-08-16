@@ -93,11 +93,10 @@
 		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
 		4D12A69715B7273A00B5DA22 /* text_logo_stylepics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A69615B7273A00B5DA22 /* text_logo_stylepics.png */; };
 		4D12A69E15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A69D15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png */; };
-		4DD552FD15B934570056847B /* Custom-Nav-Bar-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD552FC15B934570056847B /* Custom-Nav-Bar-BG@2x.png */; };
-		4DD5530015B9348A0056847B /* Custom-Nav-Bar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD552FF15B9348A0056847B /* Custom-Nav-Bar-BG.png */; };
 		4DD5530215B934BD0056847B /* Polls-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD5530115B934BD0056847B /* Polls-Icon.png */; };
-		4DD5530515B936D00056847B /* Custom-Tool-Bar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD5530315B936D00056847B /* Custom-Tool-Bar-BG.png */; };
-		4DD5530615B936D00056847B /* Custom-Tool-Bar-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD5530415B936D00056847B /* Custom-Tool-Bar-BG@2x.png */; };
+		4DEB892315DC326E00066FE2 /* Custom-Nav-Bar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEB892115DC326E00066FE2 /* Custom-Nav-Bar-BG.png */; };
+		4DEB892415DC326E00066FE2 /* Custom-Nav-Bar-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEB892215DC326E00066FE2 /* Custom-Nav-Bar-BG@2x.png */; };
+		4DEB892615DC35A200066FE2 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEB892515DC35A200066FE2 /* BG.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,11 +279,10 @@
 		0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_profile_photo.jpeg; path = img/default_profile_photo.jpeg; sourceTree = "<group>"; };
 		4D12A69615B7273A00B5DA22 /* text_logo_stylepics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_logo_stylepics.png; sourceTree = "<group>"; };
 		4D12A69D15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-UI-Bar-Button-Item.png"; sourceTree = "<group>"; };
-		4DD552FC15B934570056847B /* Custom-Nav-Bar-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG@2x.png"; sourceTree = "<group>"; };
-		4DD552FF15B9348A0056847B /* Custom-Nav-Bar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG.png"; sourceTree = "<group>"; };
 		4DD5530115B934BD0056847B /* Polls-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Polls-Icon.png"; sourceTree = "<group>"; };
-		4DD5530315B936D00056847B /* Custom-Tool-Bar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Tool-Bar-BG.png"; sourceTree = "<group>"; };
-		4DD5530415B936D00056847B /* Custom-Tool-Bar-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Tool-Bar-BG@2x.png"; sourceTree = "<group>"; };
+		4DEB892115DC326E00066FE2 /* Custom-Nav-Bar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG.png"; sourceTree = "<group>"; };
+		4DEB892215DC326E00066FE2 /* Custom-Nav-Bar-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Custom-Nav-Bar-BG@2x.png"; sourceTree = "<group>"; };
+		4DEB892515DC35A200066FE2 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +488,8 @@
 				0DA9861015DB84900088493A /* Default@2x.png */,
 				0DA9860D15DB14FB0088493A /* Icon@2x.png */,
 				0DA9860B15DB14E10088493A /* Icon.png */,
+				4DEB892115DC326E00066FE2 /* Custom-Nav-Bar-BG.png */,
+				4DEB892215DC326E00066FE2 /* Custom-Nav-Bar-BG@2x.png */,
 				0D9DDB1215D36860008D27AB /* LandingPageImage.png */,
 				0D9DDB0915D3506D008D27AB /* NavBarImage.jpeg */,
 				0D9DDB0415D34091008D27AB /* backgroundImage.tiff */,
@@ -501,14 +501,11 @@
 				0D9FAE9A15B8E12D00B102EA /* new poll icon.png */,
 				0D957D2115B0DC37009D37AA /* comments icon.png */,
 				0D8F49CE15B6004200C2DAEF /* hanger.png */,
+				4DEB892515DC35A200066FE2 /* BG.png */,
 				0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */,
 				0D901FCC15D9858E0030BEBE /* empty vote icon.png */,
 				0D957D1B15B09BEC009D37AA /* vote icon.png */,
-				4DD552FC15B934570056847B /* Custom-Nav-Bar-BG@2x.png */,
-				4DD552FF15B9348A0056847B /* Custom-Nav-Bar-BG.png */,
 				0D957D1C15B09BEC009D37AA /* new item icon.png */,
-				4DD5530315B936D00056847B /* Custom-Tool-Bar-BG.png */,
-				4DD5530415B936D00056847B /* Custom-Tool-Bar-BG@2x.png */,
 				4D12A69D15B7276500B5DA22 /* Custom-UI-Bar-Button-Item.png */,
 				0D99436415AEB9340037194D /* stylepics.db */,
 				4DD5530115B934BD0056847B /* Polls-Icon.png */,
@@ -661,11 +658,7 @@
 				0D9FAE9B15B8E12D00B102EA /* new poll icon.png in Resources */,
 				0D9FAE9D15B8EADD00B102EA /* delete.png in Resources */,
 				0D433A1115B91800001B5632 /* options.png in Resources */,
-				4DD552FD15B934570056847B /* Custom-Nav-Bar-BG@2x.png in Resources */,
-				4DD5530015B9348A0056847B /* Custom-Nav-Bar-BG.png in Resources */,
 				4DD5530215B934BD0056847B /* Polls-Icon.png in Resources */,
-				4DD5530515B936D00056847B /* Custom-Tool-Bar-BG.png in Resources */,
-				4DD5530615B936D00056847B /* Custom-Tool-Bar-BG@2x.png in Resources */,
 				0DA7C91C15D0A92D003B9EB6 /* doneHighlighted.png in Resources */,
 				0DA7C91D15D0A92D003B9EB6 /* doneNormal.png in Resources */,
 				0D07B06A15D1A87600C20943 /* user3.png in Resources */,
@@ -678,6 +671,9 @@
 				0DA9860E15DB14FB0088493A /* Icon@2x.png in Resources */,
 				0DA9861115DB84900088493A /* Default.png in Resources */,
 				0DA9861215DB84900088493A /* Default@2x.png in Resources */,
+				4DEB892315DC326E00066FE2 /* Custom-Nav-Bar-BG.png in Resources */,
+				4DEB892415DC326E00066FE2 /* Custom-Nav-Bar-BG@2x.png in Resources */,
+				4DEB892615DC35A200066FE2 /* BG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
