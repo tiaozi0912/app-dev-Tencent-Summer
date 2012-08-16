@@ -83,7 +83,7 @@
 {
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
     title.backgroundColor = [UIColor clearColor];
-    title.font = [UIFont fontWithName:@"Cochin-BoldItalic" size:28];
+    title.font = [UIFont fontWithName:@"Noteworthy-Bold" size:25];
     title.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     title.textAlignment = UITextAlignmentCenter;
     title.textColor = [UIColor whiteColor]; // change this color
@@ -117,5 +117,15 @@
             break;
     }
     return url;
+}
+
++(UIColor*) backgroundColor
+{
+    return [UIColor colorWithRed:218 green:237 blue:226 alpha:1];
+}
+
++(UIColor*) navBarColor
+{
+    return [UIColor colorWithRed:119 green:196 blue:211 alpha:1];
 }
 @end
