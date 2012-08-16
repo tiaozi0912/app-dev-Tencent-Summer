@@ -26,12 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.toolbarHidden =YES;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
-    UIImage *toolBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.toolbar setBackgroundImage:toolBarBackground forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
 	// Do any additional setup after loading the view.
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 }

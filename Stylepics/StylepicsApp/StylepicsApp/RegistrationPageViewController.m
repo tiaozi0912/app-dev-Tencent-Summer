@@ -66,7 +66,7 @@
     [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"TRUE" forKey:NEWUSER];
-    [self performSegueWithIdentifier:@"show news feed page" sender:self];
+    [self performSegueWithIdentifier:@"show home" sender:self];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:
