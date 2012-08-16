@@ -76,7 +76,8 @@
     [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"TRUE" forKey:NEWUSER];
-    [self performSegueWithIdentifier:@"show home" sender:self];
+    [self dismissModalViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserLoginNotification object:self];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:

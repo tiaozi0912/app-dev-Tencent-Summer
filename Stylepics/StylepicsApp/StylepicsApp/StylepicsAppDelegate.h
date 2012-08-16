@@ -33,12 +33,12 @@
 #define BACKGROUND_COLOR @"BG.png"
 #define NAV_BAR_BACKGROUND_COLOR @"Custom-Nav-Bar-BG.png"
 
+#define UserLoginNotification @"logged in"
 typedef enum{
     SingleItemViewOptionNew,
     SingleItemViewOptionEdit,
     SingleItemViewOptionView
 }SingleItemViewOption;
-
 
 HJObjManager *HJObjectManager;
 

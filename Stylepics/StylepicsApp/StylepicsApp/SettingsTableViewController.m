@@ -81,7 +81,7 @@
         loader.resourcePath = @"/logout";
         loader.serializationMapping = [[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
     }];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 #pragma RKObjectLoaderDelegate Methods
