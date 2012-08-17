@@ -82,6 +82,7 @@
         loader.serializationMapping = [[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
     }];
     [self.navigationController.parentViewController dismissModalViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserLogoutNotification object:self];
 }
 
 #pragma RKObjectLoaderDelegate Methods

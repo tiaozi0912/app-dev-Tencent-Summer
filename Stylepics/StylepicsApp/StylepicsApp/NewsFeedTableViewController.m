@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"Home loaded");
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];

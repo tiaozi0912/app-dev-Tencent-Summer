@@ -101,9 +101,6 @@
     [self.passwordConfirmationField resignFirstResponder];
 }
 
-- (IBAction)back:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -134,10 +131,6 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-    self.navigationController.toolbarHidden = YES;
-    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
 }
 
 

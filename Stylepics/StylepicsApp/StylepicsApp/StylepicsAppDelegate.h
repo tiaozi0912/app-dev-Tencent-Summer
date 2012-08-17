@@ -34,6 +34,7 @@
 #define NAV_BAR_BACKGROUND_COLOR @"Custom-Nav-Bar-BG.png"
 
 #define UserLoginNotification @"logged in"
+#define UserLogoutNotification @"logged out"
 typedef enum{
     SingleItemViewOptionNew,
     SingleItemViewOptionEdit,

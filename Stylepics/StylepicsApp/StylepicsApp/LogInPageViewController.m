@@ -65,8 +65,7 @@
     [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"FALSE" forKey:NEWUSER];
-    [self dismissModalViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:UserLoginNotification object:self];
+    [self performSegueWithIdentifier:@"show home" sender:self];
 
 }
 
@@ -75,10 +74,6 @@
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
     self.loginButton.enabled = YES;
-}
-
-- (IBAction)back:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -106,10 +101,6 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.toolbarHidden = YES;
-    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 }
 
 
@@ -128,9 +119,10 @@
     [super viewWillAppear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 
 @end
