@@ -32,7 +32,10 @@
 
 #define BACKGROUND_COLOR @"BG.png"
 #define NAV_BAR_BACKGROUND_COLOR @"Custom-Nav-Bar-BG.png"
-
+#define FEEDS_ICON @"feeds-icon"
+#define FEEDS_ICON_HIGHLIGHT @"feeds-icon-highlight"
+#define PROFILE_ICON @"profile-icon"
+#define PROFILE_ICON_HIGHLIGHT @"profile-icon-highlight"
 #define UserLoginNotification @"logged in"
 #define UserLogoutNotification @"logged out"
 typedef enum{
