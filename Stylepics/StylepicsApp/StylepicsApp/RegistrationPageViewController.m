@@ -53,7 +53,7 @@
 - (IBAction)signup {
     if (_passwordField.text.length < 6){
         [Utility showAlert:@"Password is too short!" message:@"Password should be longer than 6 characters"];
-    }else if ([_passwordConfirmationField.text isEqualToString:_passwordField.text]){
+    }else if (![_passwordConfirmationField.text isEqualToString:_passwordField.text]){
         [Utility showAlert:@"Password Confirmation Mismatch!" message:@"Your password and password confirmation should be exactly the same."];
     }else {
         [self.usernameField resignFirstResponder];
@@ -76,8 +76,7 @@
     [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"TRUE" forKey:NEWUSER];
-    [self dismissModalViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:UserLoginNotification object:self];
+    [self performSegueWithIdentifier:@"show home" sender:self];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:
