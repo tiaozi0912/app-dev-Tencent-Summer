@@ -71,6 +71,11 @@
 		0D9BA1CA15C603EC00599AA2 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BA1C915C603EC00599AA2 /* Environment.m */; };
 		0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */; };
 		0D9C05AF15AAC125006D86CE /* item1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C05A715AAC125006D86CE /* item1.png */; };
+		0D9C0CA415DEC1A8005FA5C5 /* CenterButtonTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C0CA315DEC1A8005FA5C5 /* CenterButtonTabController.m */; };
+		0D9C0CA715DEC21E005FA5C5 /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C0CA515DEC21E005FA5C5 /* camera_button_take.png */; };
+		0D9C0CA815DEC21E005FA5C5 /* camera_button_take@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C0CA615DEC21E005FA5C5 /* camera_button_take@2x.png */; };
+		0D9C0CAB15DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C0CA915DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte.png */; };
+		0D9C0CAC15DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9C0CAA15DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte@2x.png */; };
 		0D9DDAEE15D3100A008D27AB /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9DDAED15D3100A008D27AB /* SettingsTableViewController.m */; };
 		0D9DDB0515D34091008D27AB /* backgroundImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0D9DDB0415D34091008D27AB /* backgroundImage.tiff */; };
 		0D9DDB0815D34249008D27AB /* AppUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9DDB0715D34249008D27AB /* AppUIView.m */; };
@@ -93,6 +98,7 @@
 		0DC94A2815CF404200383472 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC94A2715CF404200383472 /* AWSiOSSDK.framework */; };
 		0DC94A2F15CF474B00383472 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC94A2E15CF474B00383472 /* AmazonClientManager.m */; };
 		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
+		0DF8D7AE15DE2D4A0010E475 /* AddNewItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8D7AD15DE2D4A0010E475 /* AddNewItemController.m */; };
 		4D12A69715B7273A00B5DA22 /* text_logo_stylepics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12A69615B7273A00B5DA22 /* text_logo_stylepics.png */; };
 		4DD5530215B934BD0056847B /* Polls-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DD5530115B934BD0056847B /* Polls-Icon.png */; };
 /* End PBXBuildFile section */
@@ -247,6 +253,12 @@
 		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
 		0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewPollCell.m; path = "News Feed Page/NewsFeedNewPollCell.m"; sourceTree = "<group>"; };
 		0D9C05A715AAC125006D86CE /* item1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item1.png; path = img/item1.png; sourceTree = "<group>"; };
+		0D9C0CA215DEC1A8005FA5C5 /* CenterButtonTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterButtonTabController.h; sourceTree = "<group>"; };
+		0D9C0CA315DEC1A8005FA5C5 /* CenterButtonTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterButtonTabController.m; sourceTree = "<group>"; };
+		0D9C0CA515DEC21E005FA5C5 /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
+		0D9C0CA615DEC21E005FA5C5 /* camera_button_take@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera_button_take@2x.png"; sourceTree = "<group>"; };
+		0D9C0CA915DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_cameraButton_ready_matte.png; sourceTree = "<group>"; };
+		0D9C0CAA15DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBar_cameraButton_ready_matte@2x.png"; sourceTree = "<group>"; };
 		0D9DDAEC15D3100A008D27AB /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		0D9DDAED15D3100A008D27AB /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		0D9DDB0415D34091008D27AB /* backgroundImage.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = backgroundImage.tiff; sourceTree = "<group>"; };
@@ -276,6 +288,8 @@
 		0DC94A2D15CF474B00383472 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
 		0DC94A2E15CF474B00383472 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
 		0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_profile_photo.jpeg; path = img/default_profile_photo.jpeg; sourceTree = "<group>"; };
+		0DF8D7AC15DE2D4A0010E475 /* AddNewItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewItemController.h; sourceTree = "<group>"; };
+		0DF8D7AD15DE2D4A0010E475 /* AddNewItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewItemController.m; sourceTree = "<group>"; };
 		4D12A69615B7273A00B5DA22 /* text_logo_stylepics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_logo_stylepics.png; sourceTree = "<group>"; };
 		4DD5530115B934BD0056847B /* Polls-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Polls-Icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -417,6 +431,10 @@
 				0D8F49D215B605CF00C2DAEF /* PollResultViewController.m */,
 				0D9DDAEC15D3100A008D27AB /* SettingsTableViewController.h */,
 				0D9DDAED15D3100A008D27AB /* SettingsTableViewController.m */,
+				0DF8D7AC15DE2D4A0010E475 /* AddNewItemController.h */,
+				0DF8D7AD15DE2D4A0010E475 /* AddNewItemController.m */,
+				0D9C0CA215DEC1A8005FA5C5 /* CenterButtonTabController.h */,
+				0D9C0CA315DEC1A8005FA5C5 /* CenterButtonTabController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -477,6 +495,10 @@
 		0D94F4EF15A7D09700903F0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0D9C0CA915DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte.png */,
+				0D9C0CAA15DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte@2x.png */,
+				0D9C0CA515DEC21E005FA5C5 /* camera_button_take.png */,
+				0D9C0CA615DEC21E005FA5C5 /* camera_button_take@2x.png */,
 				0D9A683F15DD8426004A93DA /* BG.png */,
 				0D9A684015DD8427004A93DA /* Custom-Nav-Bar-BG.png */,
 				0D9A684115DD8427004A93DA /* Custom-Nav-Bar-BG@2x.png */,
@@ -665,6 +687,10 @@
 				0D9A684215DD8427004A93DA /* BG.png in Resources */,
 				0D9A684315DD8427004A93DA /* Custom-Nav-Bar-BG.png in Resources */,
 				0D9A684415DD8427004A93DA /* Custom-Nav-Bar-BG@2x.png in Resources */,
+				0D9C0CA715DEC21E005FA5C5 /* camera_button_take.png in Resources */,
+				0D9C0CA815DEC21E005FA5C5 /* camera_button_take@2x.png in Resources */,
+				0D9C0CAB15DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte.png in Resources */,
+				0D9C0CAC15DEC45A005FA5C5 /* tabBar_cameraButton_ready_matte@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +745,8 @@
 				0D03A99315D7353600A0A9BD /* HintView.m in Sources */,
 				0D03A99A15D79A6100A0A9BD /* AppFormattedLabel.m in Sources */,
 				0DA3EA8415DC1D8A00546961 /* SmallFormattedLabel.m in Sources */,
+				0DF8D7AE15DE2D4A0010E475 /* AddNewItemController.m in Sources */,
+				0D9C0CA415DEC1A8005FA5C5 /* CenterButtonTabController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

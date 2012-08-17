@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E2620" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="AGP-re-4Dj">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -23,8 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="backgroundTouched:" destination="dba-aP-mLK" eventType="touchDown" id="L8k-Ke-f7a"/>
-                                    <action selector="backgroundTouched:" destination="TEI-15-lt5" eventType="valueChanged" id="gXG-wk-2wY"/>
+                                    <action selector="backgroundTouched:" destination="TEI-15-lt5" eventType="touchDown" id="3qA-BC-DXm"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d9n-V9-Rji">
@@ -170,7 +168,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dzf-0E-dti" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController definesPresentationContext="YES" id="AGP-re-4Dj" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hTT-lz-FXo">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -1026,11 +1024,11 @@
             </objects>
             <point key="canvasLocation" x="4084" y="482"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Center Button Tab Controller-->
         <scene sceneID="Rja-Z1-Bnm">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oxg-yl-RgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController definesPresentationContext="YES" id="x6Q-vc-1xh" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="x6Q-vc-1xh" customClass="CenterButtonTabController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="XZL-8y-tvH">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -1039,12 +1037,12 @@
                     </tabBar>
                     <connections>
                         <segue destination="N2Q-wT-Pg5" kind="relationship" relationship="viewControllers" id="VwA-cl-780"/>
-                        <segue destination="qy2-is-Ecn" kind="relationship" relationship="viewControllers" id="207-CM-Mxo"/>
+                        <segue destination="bsG-2L-Xxs" kind="relationship" relationship="viewControllers" id="AZp-C3-uVn"/>
                         <segue destination="DrO-mn-DYT" kind="relationship" relationship="viewControllers" id="TYh-Cy-uGf"/>
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="1866" y="430"/>
+            <point key="canvasLocation" x="2001" y="474"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vfg-qe-edi">
@@ -1110,6 +1108,98 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="3608" y="1185"/>
+        </scene>
+        <!--Add New Item Controller - Add New Item-->
+        <scene sceneID="NMo-cl-37H">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VMg-Rt-yAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="j5e-0n-Z7z" customClass="AddNewItemController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nwy-uL-KQ3" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" minimumFontSize="17" clearButtonMode="whileEditing" id="04V-Nm-4n9">
+                                <rect key="frame" x="20" y="9" width="280" height="31"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ld5-tW-awy" id="UrK-tN-nWU"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" minimumFontSize="17" clearButtonMode="whileEditing" id="HnZ-dZ-Lrq">
+                                <rect key="frame" x="20" y="48" width="135" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ld5-tW-awy" id="YWr-Z1-5Yx"/>
+                                </connections>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="hanger.png" id="d5q-e1-g9h">
+                                <rect key="frame" x="20" y="87" width="280" height="278"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <connections>
+                            <action selector="backgroundTouched:" destination="j5e-0n-Z7z" eventType="valueChanged" id="cpH-aj-lbD"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Item" id="8ar-cg-IP6">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Rvd-tr-KfK"/>
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="bL4-H1-s9u">
+                            <color key="tintColor" red="0.26445597630000001" green="0.92489735399999995" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addToPoll" destination="j5e-0n-Z7z" id="mO3-DH-yYS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="sI1-kz-lQX">
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButton" destination="j5e-0n-Z7z" id="oMI-Ly-trx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="04V-Nm-4n9" id="tMc-mJ-yIs"/>
+                        <outlet property="itemImage" destination="d5q-e1-g9h" id="IPH-Ch-QgP"/>
+                        <outlet property="priceTextField" destination="HnZ-dZ-Lrq" id="xLq-TT-iqC"/>
+                        <segue destination="t4M-C9-5tn" kind="modal" identifier="choose poll to add to" id="GmH-9Z-TPf"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2825" y="1348"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="XfQ-Xu-ctP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Afp-Kp-A0D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="t4M-C9-5tn" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xmI-cA-crQ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Xeg-NF-o1t">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="t4M-C9-5tn" id="c3V-Sl-7BS"/>
+                            <outlet property="delegate" destination="t4M-C9-5tn" id="lre-jl-KOS"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="3206" y="1666"/>
         </scene>
         <!--Single Item View Controller - Add New Item-->
         <scene sceneID="HpC-Ot-YOP">
@@ -1182,7 +1272,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2936" y="1067"/>
+            <point key="canvasLocation" x="3206" y="993"/>
         </scene>
         <!--Navigation Controller - Home-->
         <scene sceneID="xve-u6-DHd">
@@ -1202,6 +1292,21 @@
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="2461" y="419"/>
+        </scene>
+        <!--View Controller -  -->
+        <scene sceneID="IKe-fY-1NE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ijo-jZ-gfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="bsG-2L-Xxs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AKl-0I-m9G">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title=" " id="3t7-se-qbx"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2463" y="1051"/>
         </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="bkU-ih-LCq">
@@ -1226,26 +1331,6 @@
             </objects>
             <point key="canvasLocation" x="2402" y="-300"/>
         </scene>
-        <!--Navigation Controller - Camera-->
-        <scene sceneID="gph-w1-L3F">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="152-2h-lpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="qy2-is-Ecn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Camera" id="qZ1-u7-KQ9"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="YcQ-qQ-e7V"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iIg-Wn-tzI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ld5-tW-awy" kind="relationship" relationship="rootViewController" id="QCP-Hr-0pv"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="2454" y="1067"/>
-        </scene>
     </scenes>
     <resources>
         <image name="LandingPageImage.png" width="900" height="1125"/>
@@ -1257,6 +1342,174 @@
         <image name="options.png" width="31" height="31"/>
         <image name="vote icon.png" width="33" height="32"/>
     </resources>
+    <classes>
+        <class className="ActivePollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivePollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="votesLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AddNewItemController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewItemController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="AppFormattedLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppFormattedLabel.h"/>
+        </class>
+        <class className="CenterButtonTabController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CenterButtonTabController.h"/>
+            <relationships>
+                <relationship kind="action" name="cameraButtonClicked:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="FollowedPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FollowedPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ownerLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userPhoto" candidateClass="HJManagedImageV"/>
+            </relationships>
+        </class>
+        <class className="HJManagedImageV" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HJManagedImageV.h"/>
+        </class>
+        <class className="HintView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HintView.h"/>
+        </class>
+        <class className="LogInPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogInPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ManagePollsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManagePollsTableViewController.h"/>
+        </class>
+        <class className="NewPollViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPollViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tips" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NewsFeedNewItemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedNewItemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="SmallFormattedLabel"/>
+                <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NewsFeedNewPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedNewPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="SmallFormattedLabel"/>
+                <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+        <class className="NewsFeedTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedTableViewController.h"/>
+        </class>
+        <class className="NewsFeedVoteCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedVoteCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="SmallFormattedLabel"/>
+                <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="userNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PastPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PastPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="votesLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PollItemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollItemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="commentCountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="descriptionOfItemLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="voteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="voteCountLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PollResultCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollResultCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="numberOfVotesIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="numberOfVotesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PollResultViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollResultViewController.h"/>
+        </class>
+        <class className="PollTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="addItemButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="followerCount" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="loadingWheel" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="startTimeLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="stateIndicator" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+        <class className="RegistrationPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="passwordConfirmationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signupButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="profilePhoto" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SingleItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SingleItemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SmallFormattedLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmallFormattedLabel.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -1265,6 +1518,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="Z4b-pe-Ltz"/>
         <segue reference="ceQ-hi-cBi"/>
-        <segue reference="4zL-bK-KwG"/>
     </inferredMetricsTieBreakers>
 </document>

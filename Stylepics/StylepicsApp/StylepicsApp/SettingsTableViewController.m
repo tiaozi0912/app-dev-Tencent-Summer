@@ -71,6 +71,7 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 #pragma User Acitons
 
 - (void)Logout {
@@ -81,8 +82,7 @@
         loader.resourcePath = @"/logout";
         loader.serializationMapping = [[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
     }];
-    [self.navigationController.parentViewController dismissModalViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:UserLogoutNotification object:self];
+    [[self.navigationController presentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
 #pragma RKObjectLoaderDelegate Methods
@@ -224,7 +224,7 @@
         imagePicker.allowsEditing = NO;
         [self presentModalViewController:imagePicker animated:YES];
         //newMedia = NO;
-    }
+    } 
 }
 
 
