@@ -13,33 +13,46 @@
     NSURL *photoURL;
     UIActivityIndicatorView *spinner;
     Item *item;
+    NSMutableArray *pickerDataArray;
+    NSMutableArray *activePolls;
 }
 @end
 
 
 @implementation AddNewItemController
-@synthesize itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
+@synthesize pickerView = _pickerView;
+@synthesize itemImage=_itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField, capturedItemImage=_capturedItemImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.descriptionTextField.delegate= self;
     self.priceTextField.delegate= self;
+    
+    self.pickerView.delegate = self;
+    self.pickerView.dataSource = self;
+    self.pickerView.frame = CGRectMake(0, 416, 320, 216);
+    
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     
-
+    
     self.title = @"Add New Item";
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    
+    pickerDataArray=[NSMutableArray new];
+    activePolls = [NSMutableArray new];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 	// Do any additional setup after loading the view.
 }
 
 
 - (void)viewDidUnload
 {
+    [self setPickerView:nil];
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
@@ -53,8 +66,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self useCamera];
     self.navigationItem.hidesBackButton = YES;
+    self.itemImage.image = self.capturedItemImage;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -88,90 +101,27 @@
 {
     [self.descriptionTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
+    [self dismissPickerView];
 }
 
-/*-(IBAction)showActionSheet:(id)sender {
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from photo library", nil];
-	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[popupQuery showFromBarButtonItem:self.cameraButton animated:YES];
-	popupQuery = nil;
-}*/
-- (void) TestOnSimulator
-{
-    self.itemImage.image = [UIImage imageNamed:@"user3.png"];
-}//when testing on devices, reconnect useCamera method below
-
-- (void)useCamera
-{
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypeCamera;
-        imagePicker.mediaTypes = [NSArray arrayWithObjects:
-                                  (NSString *) kUTTypeImage,
-                                  nil];
-        imagePicker.allowsEditing = YES;
-        [self presentModalViewController:imagePicker
-                                animated:YES];
-        //newMedia = YES;
-    }
+- (IBAction)pickPoll:(id)sender {
+    [self.descriptionTextField resignFirstResponder];
+    [self.priceTextField resignFirstResponder];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.3];
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -216);
+    self.pickerView.transform = transform;
+    [UIView commitAnimations];
 }
 
-- (void)useCameraRoll
+-(IBAction)dismissPickerView
 {
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = [NSArray arrayWithObjects:
-                                  (NSString *) kUTTypeImage,
-                                  nil];
-        imagePicker.allowsEditing = NO;
-        [self presentModalViewController:imagePicker animated:YES];
-        //newMedia = NO;
-    }
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.25];
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, 216);
+    self.pickerView.transform = transform;
+    [UIView commitAnimations];
 }
-
-
--(void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    NSString *mediaType = [info
-                           objectForKey:UIImagePickerControllerMediaType];
-    [self dismissModalViewControllerAnimated:YES];
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = [info
-                          objectForKey:UIImagePickerControllerOriginalImage];
-        self.itemImage.image = image;
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-		// Code here to support video if enabled
-	}
-}
-
-/*-(void)image:(UIImage *)image
- finishedSavingWithError:(NSError *)error
- contextInfo:(void *)contextInfo
- {
- if (error) {
- [Utility showAlert:@"Save failed" message:@"Failed to save image"];
- }
- }*/
-
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 #pragma RKObjectLoaderDelegate Methods
 
 - (void)request:(RKRequest*)request didLoadResponse:
@@ -181,7 +131,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 }
 
--(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
+-(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     if ([objectLoader wasSentToResourcePath:@"/items" method:RKRequestMethodPOST] ){
         @try {
@@ -216,7 +166,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         newItemEvent.itemID = item.itemID;
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
-    }else {
+    }else if ([objectLoader wasSentToResourcePath:@"/poll_records" method:RKRequestMethodGET]){
+        for (id obj in objects){
+            PollRecord *pollRecord = (PollRecord*) obj;
+                if ([pollRecord.pollRecordType isEqualToString:ACTIVE]){
+                    [activePolls addObject:pollRecord];
+                    [pickerDataArray addObject:pollRecord.title];
+                    NSLog(@"%@", pollRecord.title);
+            }
+        }
+        [self.pickerView reloadAllComponents];
+    }else{
         [spinner stopAnimating];
         spinner = nil;
         [self backWithFlipAnimation];
@@ -236,7 +196,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [UIView setAnimationDuration: 0.7];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
     [UIView commitAnimations];
-    [self.navigationController popViewControllerAnimated:NO];
+    [[self.navigationController presentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
 /*-(void)doneButton{
@@ -275,24 +235,25 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
  }
  }*/
 
-#pragma mark - UIActionSheetDelegate Methods
+#pragma mark - UIPickerView Data Source Methods
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+    return 1;
+}
 
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return [pickerDataArray count];
+}
 
-/*-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
-        case 0:
-#if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-            [self TestOnSimulator];
-#elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
-            [self useCamera];
-#endif
-            break;
-        case 1:[self useCameraRoll];
-            break;
-        case 2:[actionSheet resignFirstResponder];
-            break;
-        default:
-            break;
-    }
-}*/
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [pickerDataArray objectAtIndex:row];
+}
+
+#pragma mark - UIPickerView Delegate Methods
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    NSLog(@"Selected Poll: %@. Index of selected poll: %i", [pickerDataArray objectAtIndex:row], row);
+}
+
 @end

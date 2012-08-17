@@ -10,8 +10,11 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Utility.h"
 
-@interface AddNewItemController : UIViewController<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate,UIActionSheetDelegate>
+@interface AddNewItemController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (nonatomic, weak) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+
+@property (nonatomic, strong) UIImage *capturedItemImage;
 @end

@@ -56,9 +56,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)backButton:(UIBarButtonItem *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

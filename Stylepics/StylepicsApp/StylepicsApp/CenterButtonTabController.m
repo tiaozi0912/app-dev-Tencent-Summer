@@ -7,6 +7,7 @@
 //
 
 #import "CenterButtonTabController.h"
+#import "AddNewItemController.h"
 
 @interface CenterButtonTabController ()
 
@@ -64,8 +65,20 @@
 
 -(IBAction)cameraButtonClicked:(UIButton*)sender
 {
+#if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
+    [self TestOnSimulator];
+#elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
     [self useCamera];
+#endif
 }
+
+- (void) TestOnSimulator
+{
+    AddNewItemController *addNewItemController = [self.storyboard  instantiateViewControllerWithIdentifier:@"add new item VC"];
+    addNewItemController.capturedItemImage = [UIImage imageNamed:@"user3.png"];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addNewItemController];
+    [self presentModalViewController:nav animated:YES];
+}//when testing on devices, reconnect useCamera method below
 
 - (void)useCamera
 {
@@ -116,7 +129,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info
                           objectForKey:UIImagePickerControllerOriginalImage];
-       // self.itemImage.image = image;
+        AddNewItemController *addNewItemController = [self.storyboard  instantiateViewControllerWithIdentifier:@"add new item VC"];
+        addNewItemController.capturedItemImage = image;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addNewItemController];
+        [self presentModalViewController:nav animated:YES];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {
