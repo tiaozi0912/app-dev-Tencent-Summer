@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *pickedPollTitleLabel;
 
 @property (nonatomic, strong) UIImage *capturedItemImage;
 @end

@@ -1156,8 +1156,8 @@
                                     <action selector="pickPoll:" destination="j5e-0n-Z7z" eventType="touchUpInside" id="Akp-TJ-Gnk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="adv-VX-99r">
-                                <rect key="frame" x="131" y="87" width="144" height="38"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="adv-VX-99r" customClass="AppFormattedLabel">
+                                <rect key="frame" x="135" y="87" width="144" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1192,6 +1192,7 @@
                     <connections>
                         <outlet property="descriptionTextField" destination="04V-Nm-4n9" id="tMc-mJ-yIs"/>
                         <outlet property="itemImage" destination="d5q-e1-g9h" id="IPH-Ch-QgP"/>
+                        <outlet property="pickedPollTitleLabel" destination="adv-VX-99r" id="5Jw-RZ-iIb"/>
                         <outlet property="pickerView" destination="5Rd-vX-KDd" id="cGA-Ha-eKL"/>
                         <outlet property="priceTextField" destination="HnZ-dZ-Lrq" id="xLq-TT-iqC"/>
                         <segue destination="t4M-C9-5tn" kind="modal" identifier="choose poll to add to" id="GmH-9Z-TPf"/>
@@ -1404,6 +1405,7 @@
                 <relationship kind="action" name="pickPoll:"/>
                 <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pickedPollTitleLabel" candidateClass="AppFormattedLabel"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
             </relationships>

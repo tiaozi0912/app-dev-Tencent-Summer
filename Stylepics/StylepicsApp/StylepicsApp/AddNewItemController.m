@@ -21,6 +21,7 @@
 
 @implementation AddNewItemController
 @synthesize pickerView = _pickerView;
+@synthesize pickedPollTitleLabel = _pickedPollTitleLabel;
 @synthesize itemImage=_itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField, capturedItemImage=_capturedItemImage;
 
 - (void)viewDidLoad
@@ -32,7 +33,6 @@
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.frame = CGRectMake(0, 416, 320, 216);
-    
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
@@ -53,6 +53,7 @@
 - (void)viewDidUnload
 {
     [self setPickerView:nil];
+    [self setPickedPollTitleLabel:nil];
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
@@ -254,6 +255,13 @@
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
     NSLog(@"Selected Poll: %@. Index of selected poll: %i", [pickerDataArray objectAtIndex:row], row);
+    self.pickedPollTitleLabel.text = [pickerDataArray objectAtIndex:row];
+    
+}
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 30;
 }
 
 @end
