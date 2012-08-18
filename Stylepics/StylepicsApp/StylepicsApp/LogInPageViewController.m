@@ -23,6 +23,7 @@
 @synthesize usernameField=_usernameField;
 @synthesize passwordField=_passwordField;
 @synthesize loginButton = _loginButton;
+@synthesize spinner = _spinner;
 
 -(void) setUsername:(UITextField *)usernameField
 {
@@ -51,6 +52,7 @@
         user.password = self.passwordField.text;
         user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
         self.loginButton.enabled = NO;
+        [self.spinner startAnimating];
         [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
             loader.resourcePath = @"/login";
             loader.objectMapping = [[RKObjectManager sharedManager].mappingProvider objectMappingForClass:[User class]];
@@ -74,6 +76,7 @@
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
     self.loginButton.enabled = YES;
+    [self.spinner stopAnimating];
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -109,6 +112,7 @@
     [self setUsernameField:nil];
     [self setPasswordField:nil];
     [self setLoginButton:nil];
+    [self setSpinner:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

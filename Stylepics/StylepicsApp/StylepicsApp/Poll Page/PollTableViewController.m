@@ -142,7 +142,6 @@
 #pragma mark - User Actions
 
 - (IBAction)goHomePage:(UIBarButtonItem *)sender {
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
 }
 
 - (IBAction)showActionSheet:(id)sender {

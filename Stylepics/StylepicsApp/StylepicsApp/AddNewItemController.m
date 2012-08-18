@@ -10,18 +10,19 @@
 
 @interface AddNewItemController ()
 {
-    NSURL *photoURL;
     UIActivityIndicatorView *spinner;
     Item *item;
     NSMutableArray *pickerDataArray;
     NSMutableArray *activePolls;
+    BOOL newPoll, backMark;
+    Poll *poll;
 }
 @end
 
 
 @implementation AddNewItemController
 @synthesize pickerView = _pickerView;
-@synthesize pickedPollTitleLabel = _pickedPollTitleLabel;
+@synthesize pickPollTitleTextField = _pickPollTitleTextField;
 @synthesize itemImage=_itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField, capturedItemImage=_capturedItemImage;
 
 - (void)viewDidLoad
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     self.descriptionTextField.delegate= self;
     self.priceTextField.delegate= self;
+    self.pickPollTitleTextField.enabled = NO;
     
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
@@ -40,11 +42,12 @@
     
     self.title = @"Add New Item";
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-    
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
+    item = [Item new];
     pickerDataArray=[NSMutableArray new];
     activePolls = [NSMutableArray new];
+    backMark = NO;
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 	// Do any additional setup after loading the view.
 }
@@ -53,12 +56,12 @@
 - (void)viewDidUnload
 {
     [self setPickerView:nil];
-    [self setPickedPollTitleLabel:nil];
+    [self setPickPollTitleTextField:nil];
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
-    photoURL = nil;
     item = nil;
+    poll = nil;
     spinner = nil;
     [AmazonClientManager clearCredentials];
     // Release any retained subviews of the main view.
@@ -87,11 +90,30 @@
 {
     [self.descriptionTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
-    [self performSegueWithIdentifier:@"choose poll to add to" sender:self];
+    if (self.pickPollTitleTextField.text.length) {
+        if (newPoll) {
+            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [spinner startAnimating];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+            poll = [Poll new];
+            poll.title = self.pickPollTitleTextField.text;
+            poll.ownerID = [Utility getObjectForKey:CURRENTUSERID];
+            poll.state = EDITING;
+            poll.totalVotes = [NSNumber numberWithInt:0];
+            [[RKObjectManager sharedManager] postObject:poll delegate:self];
+        }else{
+            [Utility setObject:item.pollID forKey:IDOfPollToBeShown];
+            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [spinner startAnimating];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+            [[RKObjectManager sharedManager] postObject:item delegate:self];
+        }
+    }else{
+        [Utility showAlert:@"Please type something" message:@"Your new poll should have a name."];
+    }
 
-    /*item = [Item new];
-    item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-    [[RKObjectManager sharedManager] postObject:item delegate:self];*/
 }
 
 - (IBAction)cancelButton{
@@ -102,17 +124,21 @@
 {
     [self.descriptionTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
+    [self.pickPollTitleTextField resignFirstResponder];
     [self dismissPickerView];
 }
 
 - (IBAction)pickPoll:(id)sender {
     [self.descriptionTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
+    [self.pickPollTitleTextField resignFirstResponder];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -216);
     self.pickerView.transform = transform;
     [UIView commitAnimations];
+    self.pickPollTitleTextField.text = [pickerDataArray objectAtIndex:0];
+    item.pollID = ((PollRecord*)[activePolls objectAtIndex:0]).pollID;
 }
 
 -(IBAction)dismissPickerView
@@ -135,6 +161,7 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     if ([objectLoader wasSentToResourcePath:@"/items" method:RKRequestMethodPOST] ){
+        // Having got an item ID, we use the id to name the item image and upload it to amazon S3. And then we flesh the item object in the database with what we want to add
         @try {
             NSString *imageName = [NSString stringWithFormat:@"Item_%@.jpeg", item.itemID];
             NSData *imageData = UIImageJPEGRepresentation(self.itemImage.image, 0.8f);
@@ -149,6 +176,9 @@
             @catch (AmazonClientException *exception) {
                 NSLog(@"Failed to Create Object [%@]", exception);
             }
+            
+            
+            //update item values 
             item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, imageName];
             item.description = self.descriptionTextField.text;
             item.numberOfVotes = [NSNumber numberWithInt:0];
@@ -159,27 +189,51 @@
         @catch (AmazonClientException *exception) {
             NSLog(@"Failed to Create Object [%@]", exception);
         }
+    }else if ([objectLoader wasSentToResourcePath:@"/polls" method:RKRequestMethodPOST] ){
+        //Having created a new poll, we can post a new event and add the item to the new poll
+        [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+        
+        //post a new poll event
+        Event *newPollEvent = [Event new];
+        newPollEvent.eventType = NEWPOLLEVENT;
+        newPollEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
+        newPollEvent.pollID = poll.pollID;
+        [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
+        
+        //post a new poll record
+        PollRecord *pollRecord = [PollRecord new];
+        pollRecord.pollID = poll.pollID;
+        pollRecord.userID = [Utility getObjectForKey:CURRENTUSERID];
+        pollRecord.pollRecordType = ACTIVE;
+        [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
+        
+        
+        //add new item to the new poll
+        item.pollID = poll.pollID;
+        [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+        [[RKObjectManager sharedManager] postObject:item delegate:self];
     }else if (objectLoader.method == RKRequestMethodPUT){
         NSLog(@"The new item has been added!");
+        //post a new item event
         Event *newItemEvent = [Event new];
         newItemEvent.eventType = NEWITEMEVENT;
         newItemEvent.pollID = item.pollID;
         newItemEvent.itemID = item.itemID;
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
+        backMark = YES;
     }else if ([objectLoader wasSentToResourcePath:@"/poll_records" method:RKRequestMethodGET]){
+        // extract all the active polls in editing state of the current user
         for (id obj in objects){
             PollRecord *pollRecord = (PollRecord*) obj;
-                if ([pollRecord.pollRecordType isEqualToString:ACTIVE]){
+                if ([pollRecord.pollRecordType isEqualToString:ACTIVE] && [pollRecord.state isEqualToString:EDITING]){
                     [activePolls addObject:pollRecord];
                     [pickerDataArray addObject:pollRecord.title];
-                    NSLog(@"%@", pollRecord.title);
             }
         }
         [self.pickerView reloadAllComponents];
-    }else{
+    }else if (backMark){
         [spinner stopAnimating];
-        spinner = nil;
         [self backWithFlipAnimation];
     }
 }
@@ -243,25 +297,39 @@
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     
-    return [pickerDataArray count];
+    return [pickerDataArray count] + 1;
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [pickerDataArray objectAtIndex:row];
+    if (row < [pickerDataArray count]) {
+        return [pickerDataArray objectAtIndex:row];
+    }else{
+        return @"New Poll";
+    }
 }
 
 #pragma mark - UIPickerView Delegate Methods
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
-    NSLog(@"Selected Poll: %@. Index of selected poll: %i", [pickerDataArray objectAtIndex:row], row);
-    self.pickedPollTitleLabel.text = [pickerDataArray objectAtIndex:row];
-    
+    if (row < [pickerDataArray count]) {
+        item.pollID = ((PollRecord*)[activePolls objectAtIndex:row]).pollID;
+        newPoll = NO;
+        self.pickPollTitleTextField.text = [pickerDataArray objectAtIndex:row];
+        self.pickPollTitleTextField.enabled = NO;
+        self.pickPollTitleTextField.borderStyle = UITextBorderStyleNone;
+    }else{
+        item.pollID = nil;
+        newPoll = YES;
+        self.pickPollTitleTextField.text = @"";
+        self.pickPollTitleTextField.placeholder = @"Name your new poll here";
+        self.pickPollTitleTextField.enabled = YES;
+        self.pickPollTitleTextField.borderStyle = UITextBorderStyleRoundedRect;
+    }
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
 {
-    return 30;
+    return 40;
 }
 
 @end

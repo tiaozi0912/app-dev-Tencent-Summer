@@ -22,6 +22,7 @@
 @synthesize passwordField=_passwordField;
 @synthesize passwordConfirmationField=_passwordConfirmationField;
 @synthesize signupButton = _signupButton;
+@synthesize spinner = _spinner;
 
 
 -(void) setUsername:(UITextField *)usernameField
@@ -65,7 +66,15 @@
         user.password = self.passwordField.text;
         user.passwordConfirmation = self.passwordConfirmationField.text;
         self.signupButton.enabled = NO;
+        [self.spinner startAnimating];
         [[RKObjectManager sharedManager] postObject:user delegate:self];
+    }
+}
+
+- (void)request:(RKRequest*)request didLoadResponse:
+(RKResponse*)response {
+    if ([response isJSON]) {
+        NSLog(@"Got a JSON, %@", response.bodyAsString);
     }
 }
 
@@ -79,18 +88,12 @@
     [self performSegueWithIdentifier:@"show home" sender:self];
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:
-(RKResponse*)response {
-    if ([response isJSON]) {
-        NSLog(@"Got a JSON, %@", response.bodyAsString);
-    }
-}
-
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     //show errors: existent username and invalid password
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
     self.signupButton.enabled = YES;
+    [self.spinner stopAnimating];
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -139,6 +142,7 @@
     [self setPasswordField:nil];
     [self setPasswordConfirmationField:nil];
     [self setSignupButton:nil];
+    [self setSpinner:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
