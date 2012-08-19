@@ -1294,12 +1294,12 @@
             </objects>
             <point key="canvasLocation" x="3206" y="993"/>
         </scene>
-        <!--Navigation Controller - Home-->
+        <!--Navigation Controller - Feeds-->
         <scene sceneID="xve-u6-DHd">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAs-WY-gLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="N2Q-wT-Pg5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="feeds-icon.png" id="dUC-ef-jD1"/>
+                    <tabBarItem key="tabBarItem" title="Feeds" id="dUC-ef-jD1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sRu-RA-6ur">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1313,7 +1313,7 @@
             </objects>
             <point key="canvasLocation" x="2461" y="419"/>
         </scene>
-        <!--View Controller -  -->
+        <!--View Controller-->
         <scene sceneID="IKe-fY-1NE">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ijo-jZ-gfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1323,7 +1323,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title=" " id="3t7-se-qbx"/>
+                    <tabBarItem key="tabBarItem" title="" id="3t7-se-qbx"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="2463" y="1051"/>
@@ -1333,7 +1333,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvr-iD-O1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="DrO-mn-DYT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile-icon.png" id="olK-ab-SCZ"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="olK-ab-SCZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ho6-29-TB5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1375,11 +1375,9 @@
         <image name="Polls-Icon.png" width="20" height="20"/>
         <image name="comments icon.png" width="45" height="45"/>
         <image name="delete.png" width="46" height="45"/>
-        <image name="feeds-icon.png" width="30" height="30"/>
         <image name="hanger.png" width="256" height="256"/>
         <image name="new poll icon.png" width="20" height="20"/>
         <image name="options.png" width="31" height="31"/>
-        <image name="profile-icon.png" width="30" height="30"/>
         <image name="vote icon.png" width="33" height="32"/>
     </resources>
     <classes>

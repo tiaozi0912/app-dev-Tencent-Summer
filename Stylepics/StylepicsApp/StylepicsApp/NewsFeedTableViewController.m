@@ -37,6 +37,20 @@
 - (void)viewDidLoad
 {
     NSLog(@"Home loaded");
+    //custom tab bar
+    
+    UIImage *selectedImage1 = [UIImage imageNamed:FEEDS_ICON_HL];
+    UIImage *unselectedImage1 = [UIImage imageNamed:FEEDS_ICON];
+    
+    UIImage *selectedImage2 = [UIImage imageNamed:PROFILE_ICON_HL];
+    UIImage *unselectedImage2 = [UIImage imageNamed:PROFILE_ICON];
+    
+    UITabBar *tabBar = self.tabBarController.tabBar;
+    UITabBarItem *item1 = [tabBar.items objectAtIndex:0];
+    UITabBarItem *item2 = [tabBar.items objectAtIndex:2];
+    [item1 setFinishedSelectedImage:selectedImage1 withFinishedUnselectedImage:unselectedImage1];
+    [item2 setFinishedSelectedImage:selectedImage2 withFinishedUnselectedImage:unselectedImage2];
+
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
