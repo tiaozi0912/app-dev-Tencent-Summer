@@ -14,6 +14,7 @@
 @end
 
 @implementation CenterButtonTabController
+@synthesize  button=_button;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
