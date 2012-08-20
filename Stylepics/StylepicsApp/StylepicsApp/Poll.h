@@ -15,11 +15,11 @@
 
 typedef enum{
     Apparel = 0,
-    Accessory,
-    Food,
-    Electronics,
-    Automotive,
-    Others
+    Accessory = 1,
+    Food = 2,
+    Electronics = 3,
+    Automotive = 4,
+    Others = 5
 }PollCategory;
 
 @interface Poll : NSObject

@@ -118,4 +118,33 @@
     }
     return url;
 }
+
++(NSString*)stringFromCategory:(PollCategory) category
+{
+    switch (category) {
+        case Accessory: return @"Accessory";
+        case Apparel:return @"Apparel";
+        case Automotive:return @"Automotive";
+        case Food:return @"Food";
+        case Electronics:return @"Electronics";
+        default:return @"Others";
+    }
+}
+
++(PollCategory)categoryFromString:(NSString*) string
+{
+    if ([string isEqualToString:@"Accessory"]){
+        return Accessory;
+    }else if ([string isEqualToString:@"Apparel"]){
+        return Apparel;
+    }else if ([string isEqualToString:@"Automotive"]){
+        return Automotive;
+    }else if ([string isEqualToString:@"Food"]){
+        return Food;
+    }else if ([string isEqualToString:@"Electronics"]){
+        return Electronics;
+    }else {
+        return Others;
+    }
+}
 @end

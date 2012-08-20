@@ -7,6 +7,8 @@
 //
 
 #import "AddNewItemController.h"
+#define PollPicker 0
+#define CategoryPicker 1
 
 @interface AddNewItemController ()
 {
@@ -23,6 +25,8 @@
 @implementation AddNewItemController
 @synthesize pickerView = _pickerView;
 @synthesize pickPollTitleTextField = _pickPollTitleTextField;
+@synthesize brandTextField = _brandTextField;
+@synthesize categoryButton = _categoryButton;
 @synthesize itemImage=_itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField, capturedItemImage=_capturedItemImage;
 
 - (void)viewDidLoad
@@ -35,6 +39,8 @@
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.frame = CGRectMake(0, 416, 320, 216);
+    
+    
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
@@ -57,6 +63,8 @@
 {
     [self setPickerView:nil];
     [self setPickPollTitleTextField:nil];
+    [self setBrandTextField:nil];
+    [self setCategoryButton:nil];
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
@@ -184,6 +192,7 @@
             item.numberOfVotes = [NSNumber numberWithInt:0];
             item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
             item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+            item.brand =self.brandTextField.text;
             [[RKObjectManager sharedManager] putObject:item delegate:self];
         }
         @catch (AmazonClientException *exception) {

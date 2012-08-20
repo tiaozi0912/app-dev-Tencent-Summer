@@ -20,9 +20,10 @@
 @end
 
 @implementation SingleItemViewController
-@synthesize cameraButton;
-@synthesize singleItemViewOption, item;
-@synthesize itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
+@synthesize brandTextField = _brandTextField;
+@synthesize cameraButton = _cameraButton;
+@synthesize singleItemViewOption, item = _item;
+@synthesize itemImage = _itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
 
 -(void) setDescriptionTextField:(UITextField *)descriptionTextField{
     _descriptionTextField = descriptionTextField;
@@ -84,6 +85,7 @@
 - (void)viewDidUnload
 {
     [self setCameraButton:nil];
+    [self setBrandTextField:nil];
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
@@ -274,6 +276,7 @@ finishedSavingWithError:(NSError *)error
             item.numberOfVotes = [NSNumber numberWithInt:0];
             item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
             item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+            item.brand = self.brandTextField.text;
             [[RKObjectManager sharedManager] putObject:item delegate:self];
         }
         @catch (AmazonClientException *exception) {

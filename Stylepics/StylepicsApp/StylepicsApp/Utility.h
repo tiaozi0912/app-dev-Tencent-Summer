@@ -23,4 +23,6 @@
 +(UILabel*)formatTitleWithString:(NSString *) titleText;
 +(NSString*)formatTimeWithDate:(NSDate *) date;
 +(NSURL*)URLforCategory:(PollCategory) category;
++(NSString*)stringFromCategory:(PollCategory) category;
++(PollCategory)categoryFromString:(NSString*) string;
 @end

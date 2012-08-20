@@ -19,6 +19,7 @@
 #import "AmazonClientManager.h"
 #import "AppFormattedLabel.h"
 #import "SmallFormattedLabel.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
@@ -44,6 +45,7 @@ typedef enum{
     SingleItemViewOptionEdit,
     SingleItemViewOptionView
 }SingleItemViewOption;
+
 
 HJObjManager *HJObjectManager;
 

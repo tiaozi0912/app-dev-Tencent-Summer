@@ -13,6 +13,14 @@
 
 @synthesize window = _window;
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [FBSession.activeSession handleOpenURL:url];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {   
     // Initialize the RestKit Object Manager
@@ -80,7 +88,6 @@
      @"photo_url", @"photoURL",
      @"poll_id", @"pollID",
      @"brand", @"brand",
-     @"category", @"category",
      nil];
     //[itemMapping mapRelationship:@"comments" withMapping:commentMapping];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"item"];
