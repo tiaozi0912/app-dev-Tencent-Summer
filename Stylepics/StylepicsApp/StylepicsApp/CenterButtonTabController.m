@@ -29,7 +29,7 @@
 [self.tabBar setBackgroundImage:[UIImage imageNamed:TAB_BAR_BG]];
 
     [super viewDidLoad];
-    [self addCenterButtonWithImage:[UIImage imageNamed:@"camera_button_take.png"] highlightImage:[UIImage imageNamed:@"tabBar_cameraButton_ready_matte.png"]];
+    [self addCenterButtonWithImage:[UIImage imageNamed:@"camera-icon"] highlightImage:[UIImage imageNamed:@"camera-icon-hl"]];
 	// Do any additional setup after loading the view.
 }
 

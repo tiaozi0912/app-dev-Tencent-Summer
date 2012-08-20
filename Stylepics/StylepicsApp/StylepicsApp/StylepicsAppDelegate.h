@@ -32,7 +32,7 @@
 #define FOLLOWED @"FOLLOWED"
 
 #define BACKGROUND_COLOR @"BG.png"
-#define NAV_BAR_BACKGROUND_COLOR @"Custom-Nav-Bar-BG.png"
+#define NAV_BAR_BACKGROUND_COLOR @"header_bg.png"
 #define TAB_BAR_BG @"tab_bar_background"
 #define FEEDS_ICON @"feeds-icon"
 #define FEEDS_ICON_HL @"feeds-icon-hl"
