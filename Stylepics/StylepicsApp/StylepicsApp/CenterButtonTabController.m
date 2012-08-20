@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad
 {
-[self.tabBar setBackgroundImage:[UIImage imageNamed:TAB_BAR_BG]];
+    [self.tabBar setBackgroundImage:[UIImage imageNamed:TAB_BAR_BG]];
 
     [super viewDidLoad];
     [self addCenterButtonWithImage:[UIImage imageNamed:@"camera-icon"] highlightImage:[UIImage imageNamed:@"camera-icon-hl"]];
@@ -42,22 +42,22 @@
 // Create a custom UIButton and add it to the center of our tab bar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
 {
-    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-    button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    _button = [UIButton buttonWithType:UIButtonTypeCustom];
+    _button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+    _button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    [_button setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [_button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
     if (heightDifference < 0)
-        button.center = self.tabBar.center;
+        _button.center = self.tabBar.center;
     else
     {
         CGPoint center = self.tabBar.center;
         center.y = center.y - heightDifference/2.0;
-        button.center = center;
+        _button.center = center;
     }
-    [button addTarget:self action:@selector(cameraButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    [_button addTarget:self action:@selector(cameraButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_button];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

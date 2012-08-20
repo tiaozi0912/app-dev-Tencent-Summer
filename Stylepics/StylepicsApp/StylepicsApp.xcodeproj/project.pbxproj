@@ -95,9 +95,6 @@
 		0DA9860E15DB14FB0088493A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9860D15DB14FB0088493A /* Icon@2x.png */; };
 		0DA9861115DB84900088493A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9860F15DB84900088493A /* Default.png */; };
 		0DA9861215DB84900088493A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9861015DB84900088493A /* Default@2x.png */; };
-		0DA9ECF515E231CF00A957E3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA9ECF415E231CF00A957E3 /* FacebookSDK.framework */; };
-		0DA9ECF815E231E500A957E3 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9ECF615E231E500A957E3 /* FacebookSDKResources.bundle */; };
-		0DA9ECF915E231E500A957E3 /* FBUserSettingsViewResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9ECF715E231E500A957E3 /* FBUserSettingsViewResources.bundle */; };
 		0DC94A2815CF404200383472 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC94A2715CF404200383472 /* AWSiOSSDK.framework */; };
 		0DC94A2F15CF474B00383472 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC94A2E15CF474B00383472 /* AmazonClientManager.m */; };
 		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
@@ -303,9 +300,6 @@
 		0DA9860D15DB14FB0088493A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		0DA9860F15DB84900088493A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0DA9861015DB84900088493A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		0DA9ECF415E231CF00A957E3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		0DA9ECF615E231E500A957E3 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FacebookSDKResources.bundle; sourceTree = "<group>"; };
-		0DA9ECF715E231E500A957E3 /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
 		0DC94A2715CF404200383472 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = "aws-ios-sdk-1.3.3/AWSiOSSDK.framework"; sourceTree = "<group>"; };
 		0DC94A2D15CF474B00383472 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
 		0DC94A2E15CF474B00383472 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
@@ -350,7 +344,6 @@
 				0D94F4EB15A7D09700903F0B /* Foundation.framework in Frameworks */,
 				0D94F4ED15A7D09700903F0B /* CoreGraphics.framework in Frameworks */,
 				0DC94A2815CF404200383472 /* AWSiOSSDK.framework in Frameworks */,
-				0DA9ECF515E231CF00A957E3 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,8 +449,8 @@
 				0D94F51815A7D41300903F0B /* LogInPageViewController.m */,
 				0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */,
 				0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */,
-				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
 				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
+				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
 				0D957D2315B0E09B009D37AA /* ManagePollsTableViewController.h */,
 				0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */,
 				0D94F51415A7D30700903F0B /* NewPollViewController.h */,
@@ -498,9 +491,6 @@
 		0D94F4E715A7D09700903F0B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0DA9ECF615E231E500A957E3 /* FacebookSDKResources.bundle */,
-				0DA9ECF715E231E500A957E3 /* FBUserSettingsViewResources.bundle */,
-				0DA9ECF415E231CF00A957E3 /* FacebookSDK.framework */,
 				0DC94A2715CF404200383472 /* AWSiOSSDK.framework */,
 				0D98F3ED15C0B3380046423C /* libxml2.dylib */,
 				0D98F3CB15C0B2060046423C /* RestKit.xcodeproj */,
@@ -762,11 +752,6 @@
 				4D983E7815E04EF700B4FD90 /* test.png in Resources */,
 				4D983E7C15E05FEA00B4FD90 /* profile-icon.png in Resources */,
 				4D983E8615E067E900B4FD90 /* feeds-icon.png in Resources */,
-
-				
-				0DA9ECF815E231E500A957E3 /* FacebookSDKResources.bundle in Resources */,
-				0DA9ECF915E231E500A957E3 /* FBUserSettingsViewResources.bundle in Resources */,
-
 				4D98AB9C15E1835800EED5C1 /* header_bg.png in Resources */,
 				4D29327715E2A86A006888B0 /* feeds-icon-hl.png in Resources */,
 				4D29327815E2A86A006888B0 /* profile-icon-hl.png in Resources */,
@@ -778,7 +763,6 @@
 				4D29328615E2B8E3006888B0 /* camera-icon-hl.png in Resources */,
 				4D29328715E2B8E3006888B0 /* camera-icon-hl@2x.png in Resources */,
 				4D29328815E2B8E3006888B0 /* camera-icon@2x.png in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

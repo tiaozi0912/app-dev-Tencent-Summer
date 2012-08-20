@@ -19,7 +19,8 @@
 #import "AmazonClientManager.h"
 #import "AppFormattedLabel.h"
 #import "SmallFormattedLabel.h"
-#import <FacebookSDK/FacebookSDK.h>
+#import "CenterButtonTabController.h"
+//#import <FacebookSDK/FacebookSDK.h>
 
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"

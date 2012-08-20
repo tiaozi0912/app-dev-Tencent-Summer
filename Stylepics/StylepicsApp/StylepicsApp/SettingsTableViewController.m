@@ -85,6 +85,10 @@
     [[self.navigationController presentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma RKObjectLoaderDelegate Methods
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {

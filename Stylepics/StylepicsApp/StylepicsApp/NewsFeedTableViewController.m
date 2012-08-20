@@ -56,6 +56,7 @@
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    ((CenterButtonTabController*)self.tabBarController).button.hidden = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -93,6 +94,11 @@
 {
     [super viewWillDisappear:animated];
     self.events = nil;
+}
+
+- (void) dealloc
+{
+    [[RKClient sharedClient].requestQueue cancelRequestsWithDelegate:self];
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:

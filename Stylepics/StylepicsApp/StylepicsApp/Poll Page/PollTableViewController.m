@@ -38,20 +38,6 @@
 @synthesize followerCount = _followerCount;
 @synthesize stateIndicator = _stateIndicator;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
--(void) loadView
-{
-    [super loadView];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -125,13 +111,9 @@
    // [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
 }
 
--(void)viewDidAppear:(BOOL)animated
+- (void) dealloc
 {
-    [super viewDidAppear:animated];
-}
--(void) viewWillDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-
+    [[RKClient sharedClient].requestQueue cancelRequestsWithDelegate:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

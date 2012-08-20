@@ -7,7 +7,6 @@
 //
 
 #import "ManagePollsTableViewController.h"
-
 #define POLLCELLHEIGHT 46
 
 @interface ManagePollsTableViewController (){
@@ -38,6 +37,7 @@
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    ((CenterButtonTabController*)self.tabBarController).button.hidden = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -70,6 +70,10 @@
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 }
 
+- (void) dealloc
+{
+    [[RKClient sharedClient].requestQueue cancelRequestsWithDelegate:self];
+}
 
 - (void)request:(RKRequest*)request didLoadResponse:
 (RKResponse*)response {
@@ -115,19 +119,28 @@
         case 0: return @"ACTIVE POLLS";
         case 1: return @"FOLLOWED POLLS";
         case 2: return @"PAST POLLS";
+        default: return nil;
     }
-    return nil;
 }/* to customize the font in headers, use the method below instead
 -(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return self.activePolls.count;
-        case 1: return self.followedPolls.count;
-        case 2: return self.pastPolls.count;
+        case 0: {
+            NSLog(@"active polls' count: %u",self.activePolls.count);
+            return self.activePolls.count;
+        }
+        case 1: {
+            NSLog(@"followed polls' count: %u",self.followedPolls.count);
+            return self.followedPolls.count;}
+        case 2: {
+            NSLog(@"past polls' count: %u",self.pastPolls.count);
+            return self.pastPolls.count;
+        }
+        default:return 0;
+            break;
     }// Return the number of rows in the section.
-    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

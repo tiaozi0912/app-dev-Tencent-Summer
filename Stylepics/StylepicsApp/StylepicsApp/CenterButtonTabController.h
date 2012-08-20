@@ -11,5 +11,5 @@
 #import "Utility.h"
 
 @interface CenterButtonTabController : UITabBarController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-
+@property (nonatomic, weak) UIButton* button;
 @end

@@ -13,13 +13,13 @@
 
 @synthesize window = _window;
 
-- (BOOL)application:(UIApplication *)application
+/*- (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
     return [FBSession.activeSession handleOpenURL:url];
-}
+}*/
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {   
