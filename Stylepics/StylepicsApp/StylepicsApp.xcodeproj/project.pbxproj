@@ -762,11 +762,11 @@
 				4D983E7815E04EF700B4FD90 /* test.png in Resources */,
 				4D983E7C15E05FEA00B4FD90 /* profile-icon.png in Resources */,
 				4D983E8615E067E900B4FD90 /* feeds-icon.png in Resources */,
-<<<<<<< HEAD
-				4D983E8815E068BF00B4FD90 /* feeds-icon-hl.png in Resources */,
+
+				
 				0DA9ECF815E231E500A957E3 /* FacebookSDKResources.bundle in Resources */,
 				0DA9ECF915E231E500A957E3 /* FBUserSettingsViewResources.bundle in Resources */,
-=======
+
 				4D98AB9C15E1835800EED5C1 /* header_bg.png in Resources */,
 				4D29327715E2A86A006888B0 /* feeds-icon-hl.png in Resources */,
 				4D29327815E2A86A006888B0 /* profile-icon-hl.png in Resources */,
@@ -778,7 +778,7 @@
 				4D29328615E2B8E3006888B0 /* camera-icon-hl.png in Resources */,
 				4D29328715E2B8E3006888B0 /* camera-icon-hl@2x.png in Resources */,
 				4D29328815E2B8E3006888B0 /* camera-icon@2x.png in Resources */,
->>>>>>> tab bar icons
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
