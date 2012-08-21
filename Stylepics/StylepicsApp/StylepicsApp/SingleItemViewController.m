@@ -14,6 +14,7 @@
     BOOL itemAdded;
     NSURL *photoURL;
     Item *item;
+    UIImage* itemImage;
     UIActivityIndicatorView *spinner;
 }
  
@@ -23,7 +24,7 @@
 @synthesize brandTextField = _brandTextField;
 @synthesize cameraButton = _cameraButton;
 @synthesize singleItemViewOption, item = _item;
-@synthesize itemImage = _itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
+@synthesize descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
 
 -(void) setDescriptionTextField:(UITextField *)descriptionTextField{
     _descriptionTextField = descriptionTextField;
@@ -70,7 +71,8 @@
     if (item){
         self.descriptionTextField.text = item.description;
         self.priceTextField.text = [item.price stringValue];
-        self.itemImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.photoURL]]];
+        itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.photoURL]]];
+        [self.cameraButton setBackgroundImage:itemImage forState:UIControlStateNormal];
     }
     [UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -99,7 +101,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.toolbarHidden = !(self.singleItemViewOption == SingleItemViewOptionNew);
     self.navigationItem.hidesBackButton = YES;
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
 }
@@ -163,14 +164,15 @@
 }
 
 -(IBAction)showActionSheet:(id)sender {
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from photo library", nil];
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[popupQuery showFromBarButtonItem:self.cameraButton animated:YES];
+	[popupQuery showInView:self.view];
 	popupQuery = nil;
 }
 - (void) TestOnSimulator
 {
-    self.itemImage.image = [UIImage imageNamed:@"user3.png"];
+    itemImage = [UIImage imageNamed:@"user3.png"];
+    [self.cameraButton setBackgroundImage:itemImage forState:UIControlStateNormal];
     itemAdded = YES;
 }//when testing on devices, reconnect useCamera method below
 
@@ -223,7 +225,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info 
                           objectForKey:UIImagePickerControllerEditedImage];
-        self.itemImage.image = image;
+        itemImage = image;
+        [self.cameraButton setBackgroundImage:image forState:UIControlStateNormal];
         itemAdded = YES;
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
@@ -260,7 +263,7 @@ finishedSavingWithError:(NSError *)error
     if ([objectLoader wasSentToResourcePath:@"/items" method:RKRequestMethodPOST] ){
         @try {
             NSString *imageName = [NSString stringWithFormat:@"Item_%@.jpeg", item.itemID];
-            NSData *imageData = UIImageJPEGRepresentation(self.itemImage.image, 0.8f);
+            NSData *imageData = UIImageJPEGRepresentation(itemImage, 0.8f);
             @try {
                 S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
                 por.contentType = @"image/jpeg";

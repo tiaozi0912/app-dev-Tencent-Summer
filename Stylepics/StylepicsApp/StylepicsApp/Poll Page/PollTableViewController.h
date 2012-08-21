@@ -13,7 +13,7 @@
 #import "SingleItemViewController.h"
 #import "HintView.h"
 
-@interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate,UIActionSheetDelegate>
+@interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate,UIActionSheetDelegate, UITextViewDelegate>
 @property (nonatomic, strong) Poll *poll;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingWheel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addItemButton;
@@ -21,5 +21,9 @@
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *followerCount;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *stateIndicator;
+@property (weak, nonatomic) IBOutlet UITextView *pollDescription;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *ownerLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *categoryLabel;
+
 
 @end

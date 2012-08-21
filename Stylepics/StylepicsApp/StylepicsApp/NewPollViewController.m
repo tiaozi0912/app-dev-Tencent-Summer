@@ -22,6 +22,7 @@
 @synthesize categoryButton = _categoryButton;
 @synthesize tips = _tips;
 @synthesize pollNameTextField=_pollNameTextField;
+@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

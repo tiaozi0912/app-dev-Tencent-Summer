@@ -14,7 +14,7 @@
 #define  UNFOLLOW_POLL_BUTTON_TITLE @"Unfollow poll"
 #define  DELETE_POLL_BUTTON_TITLE   @"Delete poll"
 #define  SHOW_POLL_RESULT_BUTTON_TITLE @"Show poll result"
-#define  ADD_ITEM_BUTTON_TITLE @"add new item"
+#define  ADD_ITEM_BUTTON_TITLE @"Add new item"
 
 #define OpenPollAlertView 1
 #define EndPollAlertView 2
@@ -26,7 +26,8 @@
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
     NSNumber *isLoadedBefore;
-    HintView *emptyPollHint, *emptyPollHintInAudienceView, *addItemHint;
+    HintView *emptyPollHint, *emptyPollHintInAudienceView;// *addItemHint;
+    UIActionSheet *popupQuery;
 }
 @end
 
@@ -38,6 +39,9 @@
 @synthesize startTimeLabel = _startTimeLabel;
 @synthesize followerCount = _followerCount;
 @synthesize stateIndicator = _stateIndicator;
+@synthesize pollDescription = _pollDescription;
+@synthesize ownerLabel = _ownerLabel;
+@synthesize categoryLabel = _categoryLabel;
 
 - (void)viewDidLoad
 {
@@ -45,9 +49,9 @@
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
-    CGRect frameOfEmptyPollHint = CGRectMake(20, 150, 280, 60);
+    CGRect frameOfEmptyPollHint = CGRectMake(20, 230, 280, 60);
 
-    CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
+    //CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
     
     CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 60, 280, 60);
     
@@ -58,11 +62,11 @@
     emptyPollHint.label.numberOfLines = 2;
     emptyPollHint.hidden = YES;
    
-    addItemHint = [HintView new];
+    /*addItemHint = [HintView new];
     addItemHint = [addItemHint initWithFrame:frameOfAddItemHint];
     addItemHint.label.text = @"Add items from this plus button";
     addItemHint.label.numberOfLines = 1;
-    addItemHint.hidden = YES;
+    addItemHint.hidden = YES;*/
     
     emptyPollHintInAudienceView = [HintView new];
     emptyPollHintInAudienceView = [emptyPollHintInAudienceView initWithFrame:frameOfEmptyPollHintInAudienceView];
@@ -71,10 +75,11 @@
     emptyPollHintInAudienceView.hidden = YES;
 
     [self.view addSubview:emptyPollHint];
-    [self.view addSubview:addItemHint];
+    //[self.view addSubview:addItemHint];
     [self.view addSubview:emptyPollHintInAudienceView];
     self.clearsSelectionOnViewWillAppear = NO;
  
+    //self.pollDescription.
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -86,21 +91,24 @@
     [self setActionButton:nil];
     [self setStartTimeLabel:nil];
     [self setFollowerCount:nil];
+    [self setPollDescription:nil];
+    [self setOwnerLabel:nil];
+    [self setCategoryLabel:nil];
     [super viewDidUnload];
     self.poll = nil;
     pollRecord = nil;
     itemToBeShown = nil;
     isLoadedBefore = nil;
     emptyPollHint = nil;
-    addItemHint = nil;
+    //addItemHint = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.toolbarHidden = YES;
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     self.poll = [Poll new];
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
     dispatch_queue_t loadingQueue = dispatch_queue_create("loading queue", NULL);
@@ -152,13 +160,22 @@
             pollOperation = UNFOLLOW_POLL_BUTTON_TITLE;
         }
     }
-   UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: SHOW_POLL_RESULT_BUTTON_TITLE, pollOperation, nil];
+    if (isOwnerView && [self.poll.state isEqualToString:EDITING])
+    {
+        popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:ADD_ITEM_BUTTON_TITLE, pollOperation, SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
+    }else{
+        if (pollOperation){
+            popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: pollOperation,SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
+        }else{
+            popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
+        }
+    }
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showFromBarButtonItem:self.actionButton animated:YES];
 	popupQuery = nil;
 }
 
-- (IBAction)addNewItem:(UIBarButtonItem *)sender {
+- (void)addNewItem {
     singleItemViewOption = SingleItemViewOptionNew;
     [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
@@ -207,7 +224,6 @@
         votingEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         votingEvent.pollID = self.poll.pollID;
         [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];
-        
     }
 }
 
@@ -229,6 +245,8 @@
         [self confirmToDeletePoll];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]){
         [actionSheet resignFirstResponder];
+    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:ADD_ITEM_BUTTON_TITLE]){
+        [self addNewItem];
     }
 
 }
@@ -342,20 +360,21 @@
     //Successfully loaded a poll
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
 
-        self.title = self.poll.title;
-        self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+        self.pollDescription.text = self.poll.title;
+        self.ownerLabel.text = self.poll.user.username;
+        self.categoryLabel.text = [Utility stringFromCategory:self.poll.category];
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         
         //
         if (self.poll.items.count == 0){
             if (isOwnerView) {
-                addItemHint.hidden = NO;
+                //addItemHint.hidden = NO;
                 emptyPollHint.hidden = NO;
             }else {
                 emptyPollHintInAudienceView.hidden = NO;
             }
         }else {
-            addItemHint.hidden = YES;
+           // addItemHint.hidden = YES;
             emptyPollHint.hidden = YES;
             emptyPollHintInAudienceView.hidden = YES;
         }
@@ -364,19 +383,15 @@
         //if the current user owns this poll
         if (isOwnerView){
             //self.addItemButton.enabled = (self.poll.state == EDITING);
-            self.navigationController.toolbarHidden = !([self.poll.state isEqualToString:EDITING]);
             if ([self.poll.state isEqualToString:EDITING]){
                 self.stateIndicator.text = @"Poll State: Editing \nYou can add and edit items in the poll.";
+                self.pollDescription.editable = YES;
             }else if ([self.poll.state isEqualToString:VOTING]){
                 self.stateIndicator.text = @"Poll State: Voting \nPlease wait for your friends' votes until you want to end this poll.";
             }else {
                 self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";
             }
         }else{
-            self.navigationController.toolbarHidden = YES;
-            //NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
-           // [toolbarItems removeObject:self.addItemButton];
-            //self.toolbarItems = [toolbarItems copy];
             if ([self.poll.state isEqualToString:EDITING]){
                 self.stateIndicator.text = @"Poll State: Editing \nThis is being edited. You can track this poll by following it.";
             }else if ([self.poll.state isEqualToString:VOTING]){
@@ -506,6 +521,14 @@
         if (!singleItemViewOption == SingleItemViewOptionNew){
             nextViewController.item = itemToBeShown;
         }
+    }
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    if (![textView.text isEqualToString:self.poll.title]){
+        self.poll.title = textView.text;
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
     }
 }
 @end

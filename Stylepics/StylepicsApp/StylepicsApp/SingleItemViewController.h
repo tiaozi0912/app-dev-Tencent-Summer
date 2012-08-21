@@ -16,11 +16,10 @@
 {
     BOOL newMedia; 
 }
-@property (nonatomic, weak) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UITextField *brandTextField;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 
 @property (nonatomic) SingleItemViewOption singleItemViewOption;
 @property (strong, nonatomic) Item *item;
