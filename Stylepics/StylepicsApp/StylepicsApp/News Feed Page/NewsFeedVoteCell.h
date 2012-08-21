@@ -11,10 +11,10 @@
 
 @interface NewsFeedVoteCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet HJManagedImageV *userImage;
-@property (nonatomic, weak) IBOutlet UILabel *userNameLabel;
 //@property (nonatomic, weak) IBOutlet UIImageView *iconImage;
 @property (nonatomic, weak) IBOutlet UILabel *eventDescriptionLabel;
 @property (nonatomic, weak) IBOutlet SmallFormattedLabel *timeStampLabel;
 @property (nonatomic, weak) IBOutlet HJManagedImageV
 *categoryIcon;
+@property (weak, nonatomic) IBOutlet MultipartLabel *usernameAndActionLabel;
 @end

@@ -35,7 +35,7 @@
 
 #define BACKGROUND_COLOR @"BG.png"
 #define NAV_BAR_BACKGROUND_COLOR @"header_bg.png"
-#define TAB_BAR_BG @"tab_bar_background"
+#define TAB_BAR_BG @"tab_bar_bg"
 #define FEEDS_ICON @"feeds-icon"
 #define FEEDS_ICON_HL @"feeds-icon-hl"
 #define PROFILE_ICON @"profile-icon"
