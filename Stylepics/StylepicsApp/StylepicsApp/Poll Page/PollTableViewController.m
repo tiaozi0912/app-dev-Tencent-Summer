@@ -14,6 +14,7 @@
 #define  UNFOLLOW_POLL_BUTTON_TITLE @"Unfollow poll"
 #define  DELETE_POLL_BUTTON_TITLE   @"Delete poll"
 #define  SHOW_POLL_RESULT_BUTTON_TITLE @"Show poll result"
+#define  ADD_ITEM_BUTTON_TITLE @"add new item"
 
 #define OpenPollAlertView 1
 #define EndPollAlertView 2

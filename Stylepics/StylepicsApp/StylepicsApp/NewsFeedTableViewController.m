@@ -82,12 +82,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
-    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.events = nil;
+    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/events" delegate:self];
 }
 
