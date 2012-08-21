@@ -101,6 +101,7 @@
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = !(self.singleItemViewOption == SingleItemViewOptionNew);
     self.navigationItem.hidesBackButton = YES;
+    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -186,7 +187,7 @@
         imagePicker.mediaTypes = [NSArray arrayWithObjects:
                                   (NSString *) kUTTypeImage,
                                   nil];
-        imagePicker.allowsEditing = NO;
+        imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker 
                                 animated:YES];
         //newMedia = YES;
@@ -206,7 +207,7 @@
         imagePicker.mediaTypes = [NSArray arrayWithObjects:
                                   (NSString *) kUTTypeImage,
                                   nil];
-        imagePicker.allowsEditing = NO;
+        imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker animated:YES];
         //newMedia = NO;
     } 
@@ -221,7 +222,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self dismissModalViewControllerAnimated:YES];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = [info 
-                          objectForKey:UIImagePickerControllerOriginalImage];
+                          objectForKey:UIImagePickerControllerEditedImage];
         self.itemImage.image = image;
         itemAdded = YES;
     }

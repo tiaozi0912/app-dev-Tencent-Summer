@@ -10,11 +10,14 @@
 #import "AddNewItemController.h"
 
 @interface CenterButtonTabController ()
-
 @end
 
 @implementation CenterButtonTabController
+<<<<<<< HEAD
 @synthesize  button=_button;
+=======
+@synthesize cameraButton = _cameraButton;
+>>>>>>> camera updated
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +33,7 @@
     [self.tabBar setBackgroundImage:[UIImage imageNamed:TAB_BAR_BG]];
 
     [super viewDidLoad];
-    [self addCenterButtonWithImage:[UIImage imageNamed:@"camera-icon"] highlightImage:[UIImage imageNamed:@"camera-icon-hl"]];
+    [self addCenterButtonWithImage:[UIImage imageNamed:CAMERA_ICON] highlightImage:[UIImage imageNamed:CAMERA_ICON_HL]];
 	// Do any additional setup after loading the view.
 }
 
@@ -40,25 +43,26 @@
     // Release any retained subviews of the main view.
 }
 
+
 // Create a custom UIButton and add it to the center of our tab bar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
 {
-    _button = [UIButton buttonWithType:UIButtonTypeCustom];
-    _button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-    _button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-    [_button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [_button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    _cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _cameraButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+    _cameraButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+    [_cameraButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [_cameraButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
     if (heightDifference < 0)
-        _button.center = self.tabBar.center;
+        _cameraButton.center = self.tabBar.center;
     else
     {
         CGPoint center = self.tabBar.center;
         center.y = center.y - heightDifference/2.0;
-        _button.center = center;
+        _cameraButton.center = center;
     }
-    [_button addTarget:self action:@selector(cameraButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_button];
+    [_cameraButton addTarget:self action:@selector(cameraButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cameraButton];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -76,11 +80,8 @@
 }
 
 - (void) TestOnSimulator
-{
-    AddNewItemController *addNewItemController = [self.storyboard  instantiateViewControllerWithIdentifier:@"add new item VC"];
-    addNewItemController.capturedItemImage = [UIImage imageNamed:@"user3.png"];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addNewItemController];
-    [self presentModalViewController:nav animated:YES];
+{    
+    [self addNewItemViewWithPhoto:[UIImage imageNamed:@"user3.png"]];
 }//when testing on devices, reconnect useCamera method below
 
 - (void)useCamera
@@ -116,7 +117,7 @@
         imagePicker.mediaTypes = [NSArray arrayWithObjects:
                                   (NSString *) kUTTypeImage,
                                   nil];
-        imagePicker.allowsEditing = NO;
+        imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker animated:YES];
         //newMedia = NO;
     }
@@ -128,19 +129,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *mediaType = [info
                            objectForKey:UIImagePickerControllerMediaType];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:NO];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = [info
-                          objectForKey:UIImagePickerControllerOriginalImage];
-        AddNewItemController *addNewItemController = [self.storyboard  instantiateViewControllerWithIdentifier:@"add new item VC"];
-        addNewItemController.capturedItemImage = image;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addNewItemController];
-        [self presentModalViewController:nav animated:YES];
+        UIImage *itemImage = [info
+                          objectForKey:UIImagePickerControllerEditedImage];
+        [self addNewItemViewWithPhoto:itemImage];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {
 		// Code here to support video if enabled
 	}
+
 }
 
 /*-(void)image:(UIImage *)image
@@ -155,5 +154,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)addNewItemViewWithPhoto:(UIImage*)image
+{
+    AddNewItemController *addNewItemController = [self.storyboard  instantiateViewControllerWithIdentifier:@"add new item VC"];
+    addNewItemController.capturedItemImage = image;
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addNewItemController];
+    [self presentModalViewController:nav animated:YES];
 }
 @end

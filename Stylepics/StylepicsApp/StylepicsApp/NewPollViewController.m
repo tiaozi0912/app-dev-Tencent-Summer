@@ -8,34 +8,20 @@
 
 #import "NewPollViewController.h"
 #import "Utility.h"
-#import<QuartzCore/QuartzCore.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface NewPollViewController ()
 {
     Poll* poll;
+    BOOL eventCreated, recordCreated;
 }
 @end
 
 @implementation NewPollViewController
+@synthesize categoryPickerView = _categoryPickerView;
+@synthesize categoryButton = _categoryButton;
 @synthesize tips = _tips;
-@synthesize textField=_textField;
-
--(void)setTextField:(UITextField *)textField{
-    _textField = textField;
-    textField.delegate = self;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)aTextField
-{  
-    [self newPoll]; 
-    return YES;
-}
-
--(void)setTips:(UILabel *)tips
-{
-    _tips = tips;
-    _tips.backgroundColor =[UIColor clearColor];
-}
+@synthesize pollNameTextField=_pollNameTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,34 +36,60 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    self.tips.backgroundColor =[UIColor clearColor];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+    self.pollNameTextField.delegate = self;
+    self.categoryPickerView.delegate = self;
+    self.categoryPickerView.dataSource = self;
+    self.categoryPickerView.frame = CGRectMake(0, 460, 320, 216);
+    [self.categoryPickerView selectRow:2 inComponent:0 animated:NO];
+    self.categoryPickerView.isOn = NO;
+
+    self.categoryButton.titleLabel.textAlignment =  UITextAlignmentCenter;
+    
+    poll = [Poll new];
+    eventCreated = NO;
+    recordCreated = NO;
 	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
 {
-    [self setTextField:nil];
+    [self setPollNameTextField:nil];
     [self setTips:nil];
+    [self setCategoryPickerView:nil];
+    [self setCategoryButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.pollNameTextField becomeFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);;
 }
+
 - (void)alertForEmptyName {
     [Utility showAlert:@"Please type something" message:@"Your new poll should have a name."];
 }
 
+#pragma User Actions
+
 - (IBAction)newPoll
 {
-    if ([self.textField.text length] == 0)
+    if ([self.pollNameTextField.text length] == 0)
     { 
         [self alertForEmptyName];  
-    }else{
+    }else if ([self.categoryButton.titleLabel.text isEqualToString:@"Category..."]){
+        [Utility showAlert:@"Choose a category" message:@"Please categorize this poll."];
+    }else
+    {
         poll = [Poll new];
-        poll.title = self.textField.text;
+        poll.title = self.pollNameTextField.text;
         poll.ownerID = [Utility getObjectForKey:CURRENTUSERID];
         poll.state = EDITING;
         poll.totalVotes = [NSNumber numberWithInt:0];
@@ -85,12 +97,29 @@
     }
 }
 
--(IBAction)back
+-(IBAction)cancel
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:
+-(IBAction)categoryButtonPressed{
+    if (self.categoryPickerView.isOn){
+        [self.categoryPickerView dismissPickerView];
+    }else{
+        if ([self.categoryButton.titleLabel.text isEqualToString:@"Category..."]){
+            [self.categoryButton setTitle:[Utility stringFromCategory:(PollCategory)[self.categoryPickerView selectedRowInComponent:0]] forState:UIControlStateNormal];
+        }
+        [self.pollNameTextField resignFirstResponder];
+        [self.categoryPickerView presentPickerView];
+    }
+}
+
+#pragma helper function
+
+
+#pragma RKObjectLoader delegate methods
+
+-(void)request:(RKRequest*)request didLoadResponse:
 (RKResponse*)response {
     if ([response isJSON]) {
         NSLog(@"Got a JSON, %@", response.bodyAsString);
@@ -100,8 +129,7 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
     if ([objectLoader wasSentToResourcePath:@"/polls"]){
-        [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
-        
+
         Event *newPollEvent = [Event new];
         newPollEvent.eventType = NEWPOLLEVENT;
         newPollEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
@@ -113,7 +141,9 @@
         pollRecord.userID = [Utility getObjectForKey:CURRENTUSERID];
         pollRecord.pollRecordType = ACTIVE;
         [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
-        [self performSegueWithIdentifier:@"showNewPoll" sender:self];
+        [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID];
+    }else{
+        
     }
 }
 
@@ -123,7 +153,50 @@
 }
 -(IBAction)backgroundTouched:(id)sender
 {
-    [self.textField resignFirstResponder];
-}  
+    [self.pollNameTextField resignFirstResponder];
+    if (self.categoryPickerView.isOn){
+        [self.categoryPickerView dismissPickerView];
+    }
+}
+
+#pragma mark - UIPickerView Data Source Methods
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return PollTypeCount;
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [Utility stringFromCategory:(PollCategory) row];
+}
+
+#pragma mark - UIPickerView Delegate Methods
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    poll.category = (PollCategory)row;
+    [self.categoryButton setTitle:[Utility stringFromCategory:(PollCategory)row] forState:UIControlStateNormal];
+}
+
+-(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
+{
+    return 40;
+}
+
+#pragma UITextField delegate methods
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    poll.title = textField.text;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self categoryButtonPressed];
+    return YES;
+}
 
 @end

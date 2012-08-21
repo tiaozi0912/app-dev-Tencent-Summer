@@ -7,6 +7,7 @@
 //
 
 #import "NewsFeedTableViewController.h"
+#import "AddNewItemController.h"
 #import "Utility.h"
 
 #define NUMBEROFEVENTSLOADED 200
@@ -56,7 +57,6 @@
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
-    ((CenterButtonTabController*)self.tabBarController).button.hidden = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -82,6 +82,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
+    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -247,8 +248,5 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
-
-
-
 
 @end

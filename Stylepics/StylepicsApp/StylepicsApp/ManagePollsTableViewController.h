@@ -11,7 +11,10 @@
 #import "FollowedPollCell.h"
 #import "PastPollCell.h"
 #import "Utility.h"
+#import "NewPollViewController.h"
 
-@interface ManagePollsTableViewController : UITableViewController<RKObjectLoaderDelegate>
+@interface ManagePollsTableViewController : UITableViewController<RKObjectLoaderDelegate, NewPollViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *usernameLabel;
 @end

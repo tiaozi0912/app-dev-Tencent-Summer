@@ -99,6 +99,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
+    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
     self.poll = [Poll new];
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
     dispatch_queue_t loadingQueue = dispatch_queue_create("loading queue", NULL);
@@ -123,7 +124,8 @@
 
 #pragma mark - User Actions
 
-- (IBAction)goHomePage:(UIBarButtonItem *)sender {
+- (IBAction)back{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)showActionSheet:(id)sender {
@@ -296,7 +298,7 @@
     pollRecord = [PollRecord new];
     pollRecord.pollID = self.poll.pollID;
     [[RKObjectManager sharedManager] deleteObject:pollRecord delegate:self];
-    [self goHomePage:nil];
+    [self back];
 }
 
 -(void)followPoll

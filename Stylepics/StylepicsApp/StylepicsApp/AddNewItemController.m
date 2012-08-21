@@ -27,6 +27,7 @@
 @synthesize pickPollTitleTextField = _pickPollTitleTextField;
 @synthesize brandTextField = _brandTextField;
 @synthesize categoryButton = _categoryButton;
+@synthesize pickPollButton = _pickPollButton;
 @synthesize itemImage=_itemImage,descriptionTextField=_descriptionTextField, priceTextField=_priceTextField, capturedItemImage=_capturedItemImage;
 
 - (void)viewDidLoad
@@ -34,13 +35,14 @@
     [super viewDidLoad];
     self.descriptionTextField.delegate= self;
     self.priceTextField.delegate= self;
+    self.brandTextField.delegate = self;
     self.pickPollTitleTextField.enabled = NO;
     
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.frame = CGRectMake(0, 416, 320, 216);
     
-    
+    self.pickPollButton.enabled = NO;
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
@@ -54,6 +56,7 @@
     pickerDataArray=[NSMutableArray new];
     activePolls = [NSMutableArray new];
     backMark = NO;
+    self.pickerView.isOn = NO;
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 	// Do any additional setup after loading the view.
 }
@@ -65,6 +68,7 @@
     [self setPickPollTitleTextField:nil];
     [self setBrandTextField:nil];
     [self setCategoryButton:nil];
+    [self setPickPollButton:nil];
     [super viewDidUnload];
     self.descriptionTextField = nil;
     self.priceTextField = nil;
@@ -133,30 +137,31 @@
     [self.descriptionTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
     [self.pickPollTitleTextField resignFirstResponder];
-    [self dismissPickerView];
+    [self.brandTextField resignFirstResponder];
+    [self.pickerView dismissPickerView];
 }
 
 - (IBAction)pickPoll:(id)sender {
-    [self.descriptionTextField resignFirstResponder];
-    [self.priceTextField resignFirstResponder];
-    [self.pickPollTitleTextField resignFirstResponder];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.3];
-    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -216);
-    self.pickerView.transform = transform;
-    [UIView commitAnimations];
-    self.pickPollTitleTextField.text = [pickerDataArray objectAtIndex:0];
-    item.pollID = ((PollRecord*)[activePolls objectAtIndex:0]).pollID;
+    if (!self.pickerView.isOn)
+    {
+        [self.descriptionTextField resignFirstResponder];
+        [self.priceTextField resignFirstResponder];
+        [self.pickPollTitleTextField resignFirstResponder];
+        [self.brandTextField resignFirstResponder];
+        [self.pickerView presentPickerView];
+        if ([self.pickerView selectedRowInComponent:0] != pickerDataArray.count){
+            self.pickPollTitleTextField.borderStyle = UITextBorderStyleNone;
+            if (self.pickPollTitleTextField.text.length == 0){
+                self.pickPollTitleTextField.text = [pickerDataArray objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+                item.pollID = ((PollRecord*)[activePolls objectAtIndex:[self.pickerView selectedRowInComponent:0]]).pollID;
+            }
+        }
+
+    }else{
+        [self.pickerView dismissPickerView];
+    }
 }
 
--(IBAction)dismissPickerView
-{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
-    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, 216);
-    self.pickerView.transform = transform;
-    [UIView commitAnimations];
-}
 #pragma RKObjectLoaderDelegate Methods
 
 - (void)request:(RKRequest*)request didLoadResponse:
@@ -241,6 +246,7 @@
             }
         }
         [self.pickerView reloadAllComponents];
+        self.pickPollButton.enabled = YES;
     }else if (backMark){
         [spinner stopAnimating];
         [self backWithFlipAnimation];

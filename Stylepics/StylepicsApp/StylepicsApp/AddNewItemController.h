@@ -14,10 +14,11 @@
 @property (nonatomic, weak) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (weak, nonatomic) IBOutlet AnimatedPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UITextField *pickPollTitleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *brandTextField;
 @property (weak, nonatomic) IBOutlet UIButton *categoryButton;
+@property (weak, nonatomic) IBOutlet UIButton *pickPollButton;
 
 @property (nonatomic, strong) UIImage *capturedItemImage;
 @end

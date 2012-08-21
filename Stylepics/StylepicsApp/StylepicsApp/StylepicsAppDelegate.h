@@ -19,6 +19,7 @@
 #import "AmazonClientManager.h"
 #import "AppFormattedLabel.h"
 #import "SmallFormattedLabel.h"
+#import "AnimatedPickerView.h"
 #import "CenterButtonTabController.h"
 //#import <FacebookSDK/FacebookSDK.h>
 
@@ -39,14 +40,18 @@
 #define FEEDS_ICON_HL @"feeds-icon-hl"
 #define PROFILE_ICON @"profile-icon"
 #define PROFILE_ICON_HL @"profile-icon-hl"
+#define CAMERA_ICON @"camera-icon.png"
+#define CAMERA_ICON_HL @"camera-icon-hl.png"
 #define UserLoginNotification @"logged in"
 #define UserLogoutNotification @"logged out"
+#define DEFAULT_USER_PROFILE_PHOTO @"default_profile_photo.jpeg"
+
+
 typedef enum{
     SingleItemViewOptionNew,
     SingleItemViewOptionEdit,
     SingleItemViewOptionView
 }SingleItemViewOption;
-
 
 HJObjManager *HJObjectManager;
 

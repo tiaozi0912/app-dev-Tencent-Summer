@@ -54,6 +54,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
+    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
 }
 
 -(void)dealloc

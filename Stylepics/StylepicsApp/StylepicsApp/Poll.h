@@ -13,6 +13,8 @@
 #define VOTING @"VOTING"
 #define FINISHED @"FINISHED"
 
+#define PollTypeCount 6
+
 typedef enum{
     Apparel = 0,
     Accessory = 1,
