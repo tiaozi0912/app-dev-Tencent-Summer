@@ -64,7 +64,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
     
     self.activePolls = [NSMutableArray new];
     self.followedPolls = [NSMutableArray new];
@@ -76,6 +75,10 @@
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
+}
 #pragma User Actions
 -(IBAction)newPoll
 {

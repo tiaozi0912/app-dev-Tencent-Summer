@@ -129,7 +129,6 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
     if ([objectLoader wasSentToResourcePath:@"/polls"]){
-
         Event *newPollEvent = [Event new];
         newPollEvent.eventType = NEWPOLLEVENT;
         newPollEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
@@ -141,10 +140,14 @@
         pollRecord.userID = [Utility getObjectForKey:CURRENTUSERID];
         pollRecord.pollRecordType = ACTIVE;
         [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
-        [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID];
-    }/*else if (object){
-        
-    }*/
+    }else if ([objectLoader wasSentToResourcePath:@"/events"]){
+        eventCreated = YES;
+    }else if ([objectLoader wasSentToResourcePath:@"/poll_records"]){
+        recordCreated = YES;
+    }
+    if (eventCreated && recordCreated){
+       [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID]; 
+    }
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
