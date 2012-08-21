@@ -13,11 +13,8 @@
 @end
 
 @implementation CenterButtonTabController
-<<<<<<< HEAD
-@synthesize  button=_button;
-=======
+
 @synthesize cameraButton = _cameraButton;
->>>>>>> camera updated
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

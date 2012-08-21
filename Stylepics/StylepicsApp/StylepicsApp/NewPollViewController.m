@@ -142,9 +142,9 @@
         pollRecord.pollRecordType = ACTIVE;
         [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
         [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID];
-    }else{
+    }/*else if (object){
         
-    }
+    }*/
 }
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
