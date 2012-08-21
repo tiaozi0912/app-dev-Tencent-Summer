@@ -85,6 +85,7 @@
 		0D9EFC3615B3E502002180F1 /* SingleItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */; };
 		0D9FAE9B15B8E12D00B102EA /* new poll icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FAE9A15B8E12D00B102EA /* new poll icon.png */; };
 		0D9FAE9D15B8EADD00B102EA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9FAE9C15B8EADC00B102EA /* delete.png */; };
+		0DA31AE315E3765600801403 /* MultipartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA31AE215E3765600801403 /* MultipartLabel.m */; };
 		0DA3D96C15C8A771008B9E32 /* AppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */; };
 		0DA3EA8415DC1D8A00546961 /* SmallFormattedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */; };
 		0DA4105115CA43C000859E59 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4105015CA43C000859E59 /* Event.m */; };
@@ -287,6 +288,8 @@
 		0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleItemViewController.m; sourceTree = "<group>"; };
 		0D9FAE9A15B8E12D00B102EA /* new poll icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new poll icon.png"; sourceTree = "<group>"; };
 		0D9FAE9C15B8EADC00B102EA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = delete.png; path = img/delete.png; sourceTree = "<group>"; };
+		0DA31AE115E3765600801403 /* MultipartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartLabel.h; sourceTree = "<group>"; };
+		0DA31AE215E3765600801403 /* MultipartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartLabel.m; sourceTree = "<group>"; };
 		0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		0DA3EA8215DC1D8A00546961 /* SmallFormattedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallFormattedLabel.h; sourceTree = "<group>"; };
 		0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallFormattedLabel.m; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				0D03A99915D79A6100A0A9BD /* AppFormattedLabel.m */,
 				0DA3EA8215DC1D8A00546961 /* SmallFormattedLabel.h */,
 				0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */,
+				0DA31AE115E3765600801403 /* MultipartLabel.h */,
+				0DA31AE215E3765600801403 /* MultipartLabel.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -819,6 +824,7 @@
 				0DA3EA8415DC1D8A00546961 /* SmallFormattedLabel.m in Sources */,
 				0DF8D7AE15DE2D4A0010E475 /* AddNewItemController.m in Sources */,
 				0D9C0CA415DEC1A8005FA5C5 /* CenterButtonTabController.m in Sources */,
+				0DA31AE315E3765600801403 /* MultipartLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

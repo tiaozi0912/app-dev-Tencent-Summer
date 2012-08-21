@@ -20,6 +20,7 @@
 #import "AppFormattedLabel.h"
 #import "SmallFormattedLabel.h"
 #import "CenterButtonTabController.h"
+#import "MultipartLabel.h"
 //#import <FacebookSDK/FacebookSDK.h>
 
 
