@@ -9,8 +9,8 @@
 #import "NewsFeedNewPollCell.h"
 
 @implementation NewsFeedNewPollCell
+@synthesize usernameAndActionLabel = _usernameAndActionLabel;
 @synthesize userImage=_userImage;
-@synthesize userNameLabel=_userNameLabel;
 //@synthesize iconImage=_iconImage;
 @synthesize eventDescriptionLabel=_eventDescriptionLabel;
 @synthesize timeStampLabel = _timeStampLabel, categoryIcon = _categoryIcon;
