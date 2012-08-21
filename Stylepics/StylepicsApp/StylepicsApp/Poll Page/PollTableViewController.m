@@ -538,7 +538,9 @@
     }
 }
 
+
 -(void)doneTyping
+
 {
     [self.pollDescription resignFirstResponder];
 }
