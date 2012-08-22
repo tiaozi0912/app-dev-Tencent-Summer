@@ -53,7 +53,7 @@
 
     //CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
     
-    CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 60, 280, 60);
+    CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 320, 280, 60);
     
     
     emptyPollHint = [HintView new];
@@ -79,7 +79,13 @@
     [self.view addSubview:emptyPollHintInAudienceView];
     self.clearsSelectionOnViewWillAppear = NO;
  
-    //self.pollDescription.
+    UIToolbar *keyboardAccessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    keyboardAccessoryView.barStyle = UIBarStyleBlackTranslucent;
+    keyboardAccessoryView.tintColor = [UIColor darkGrayColor];
+    UIBarButtonItem* flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTyping)];
+    [keyboardAccessoryView setItems:[NSArray arrayWithObjects: flexSpace, doneButton, nil] animated:NO];
+    self.pollDescription.inputAccessoryView = keyboardAccessoryView;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -530,5 +536,10 @@
         self.poll.title = textView.text;
         [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
     }
+}
+
+-(void)doneTyping
+{
+    [self.pollDescription resignFirstResponder];
 }
 @end
