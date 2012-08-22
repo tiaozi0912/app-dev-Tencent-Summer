@@ -13,7 +13,7 @@
 #define NUMBEROFEVENTSLOADED 200
 #define HEIGHTOFNEWPOLLCELL 60
 #define HEIGHTOFNEWITEMCELL 383
-#define HEIGHTOFVOTECELL 60
+#define HEIGHTOFVOTECELL 383
 
 @interface NewsFeedTableViewController (){
 }
@@ -147,7 +147,7 @@
      initWithStyle:UITableViewCellStyleDefault 
      reuseIdentifier:CellIdentifier];
      }
-        // Configure the cell...
+        // Configure the cell...New poll event
         cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
@@ -169,7 +169,7 @@
                     initWithStyle:UITableViewCellStyleDefault 
                     reuseIdentifier:CellIdentifier];
         }
-        // Configure the cell...
+        // Configure the cell...Add item event
         cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
@@ -193,7 +193,7 @@
                     initWithStyle:UITableViewCellStyleDefault 
                     reuseIdentifier:CellIdentifier];
         }
-        // Configure the cell...
+        // Configure the cell...Vote event
         cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
@@ -205,8 +205,8 @@
         [cell.timeStampLabel sizeToFit];
         [cell.usernameAndActionLabel updateNumberOfLabels:4];
         [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
-        [cell.usernameAndActionLabel setText:@"voted for " andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
-        [cell.usernameAndActionLabel setText:event.pollOwner.username andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:2];
+        [cell.usernameAndActionLabel setText:@" voted for " andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
+        [cell.usernameAndActionLabel setText:event.pollOwner.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:2];
         [cell.usernameAndActionLabel setText:@"'s poll" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:3];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
