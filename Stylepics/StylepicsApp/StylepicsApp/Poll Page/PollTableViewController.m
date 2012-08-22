@@ -538,7 +538,6 @@
     }
 }
 
-
 -(void)doneTyping
 
 {

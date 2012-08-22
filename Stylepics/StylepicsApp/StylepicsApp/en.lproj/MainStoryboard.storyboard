@@ -1769,7 +1769,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SmallFormattedLabel.h"/>
         </class>
     </classes>
-
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
