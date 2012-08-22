@@ -153,7 +153,7 @@
         [HJObjectManager manage:cell.userImage];
         [cell.usernameAndActionLabel updateNumberOfLabels:2];
         [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
-        [cell.usernameAndActionLabel setText:@" created a new poll." andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
+        [cell.usernameAndActionLabel setText:@" created a new poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
         cell.eventDescriptionLabel.text = event.poll.title;
         cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
         cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
@@ -173,8 +173,7 @@
         cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
-        cell.userNameLabel.text = event.user.username;
-        cell.eventDescriptionLabel.text = [NSString stringWithFormat:@"added an item to Poll '%@'.", event.poll.title];
+        cell.eventDescriptionLabel.text = [NSString stringWithFormat:event.poll.title];
         cell.itemImage.url = [NSURL URLWithString:event.item.photoURL];
         [HJObjectManager manage:cell.itemImage];
         // In current version, photo uploading is limited to one picture at a time
@@ -182,7 +181,9 @@
         cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
         [HJObjectManager manage:cell.categoryIcon];
         [cell.timeStampLabel sizeToFit];
-        [cell.userNameLabel sizeToFit];
+        [cell.usernameAndActionLabel updateNumberOfLabels:2];
+        [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
+        [cell.usernameAndActionLabel setText:@" added a item to poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
     }else /*if ([eventType isEqualToString:@"vote"]) */{
@@ -207,7 +208,7 @@
         [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
         [cell.usernameAndActionLabel setText:@" voted for " andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
         [cell.usernameAndActionLabel setText:event.pollOwner.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:2];
-        [cell.usernameAndActionLabel setText:@"'s poll" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:3];
+        [cell.usernameAndActionLabel setText:@"'s poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:3];
         [cell.eventDescriptionLabel sizeToFit];
         return cell;
     }

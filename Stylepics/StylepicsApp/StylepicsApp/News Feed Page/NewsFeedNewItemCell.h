@@ -18,5 +18,6 @@
 @property (nonatomic, weak) IBOutlet SmallFormattedLabel *timeStampLabel;
 @property (nonatomic, weak) IBOutlet HJManagedImageV
 *categoryIcon;
-
+@property (weak, nonatomic) IBOutlet MultipartLabel *usernameAndActionLabel;
 @end
+

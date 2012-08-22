@@ -10,11 +10,12 @@
 
 @implementation NewsFeedNewItemCell
 @synthesize userImage=_userImage;
-@synthesize userNameLabel=_userNameLabel;
+//@synthesize userNameLabel=_userNameLabel;
 //@synthesize iconImage=_iconImage;
 @synthesize eventDescriptionLabel=_eventDescriptionLabel;
 @synthesize itemImage=_itemnImage;
 @synthesize timeStampLabel = _timeStampLabel, categoryIcon = _categoryIcon;
+@synthesize usernameAndActionLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
