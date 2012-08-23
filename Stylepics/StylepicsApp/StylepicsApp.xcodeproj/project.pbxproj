@@ -244,7 +244,7 @@
 		0D8FA19815AF7606003011A0 /* PollTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PollTableViewController.m; path = "Poll Page/PollTableViewController.m"; sourceTree = "<group>"; };
 		0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationPageViewController.h; sourceTree = "<group>"; };
 		0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationPageViewController.m; sourceTree = "<group>"; };
-		0D94F4E415A7D09700903F0B /* Stylepics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stylepics.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D94F4E415A7D09700903F0B /* ShopVote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopVote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D94F4E815A7D09700903F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D94F4EA15A7D09700903F0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D94F4EC15A7D09700903F0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -627,7 +627,7 @@
 		0D94F4E515A7D09700903F0B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0D94F4E415A7D09700903F0B /* Stylepics.app */,
+				0D94F4E415A7D09700903F0B /* ShopVote.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -770,7 +770,7 @@
 			);
 			name = Stylepics;
 			productName = StylepicsApp;
-			productReference = 0D94F4E415A7D09700903F0B /* Stylepics.app */;
+			productReference = 0D94F4E415A7D09700903F0B /* ShopVote.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1083,7 +1083,7 @@
 					"-all_load",
 					"-lsqlite3.0",
 				);
-				PRODUCT_NAME = Stylepics;
+				PRODUCT_NAME = ShopVote;
 				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1109,7 +1109,7 @@
 					"-all_load",
 					"-lsqlite3.0",
 				);
-				PRODUCT_NAME = Stylepics;
+				PRODUCT_NAME = ShopVote;
 				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
 				WRAPPER_EXTENSION = app;
 			};

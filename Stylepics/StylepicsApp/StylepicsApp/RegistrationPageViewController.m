@@ -26,6 +26,7 @@
 @synthesize signupButton = _signupButton;
 @synthesize spinner = _spinner;
 @synthesize loginButton = _loginButton;
+@synthesize background = _background;
 
 - (void)viewDidLoad
 {
@@ -83,6 +84,7 @@
     [self setSignupButton:nil];
     [self setSpinner:nil];
     [self setLoginButton:nil];
+    [self setBackground:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -173,7 +175,7 @@
         user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
         user.password = self.passwordField.text;
         user.passwordConfirmation = self.passwordConfirmationField.text;
-        self.signupButton.enabled = NO;
+        [self lockUI];
         [self.spinner startAnimating];
         [[RKObjectManager sharedManager] postObject:user delegate:self];
     }
@@ -189,7 +191,7 @@
         user.username = self.usernameField.text;
         user.password = self.passwordField.text;
         user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
-        self.loginButton.enabled = NO;
+        [self lockUI];
         [self.spinner startAnimating];
         [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
             loader.resourcePath = @"/login";
@@ -198,6 +200,26 @@
             loader.delegate = self;
         }];
     }
+}
+
+-(void)lockUI
+{
+    self.background.enabled = NO;
+    self.usernameField.enabled = NO;
+    self.passwordField.enabled = NO;
+    self.passwordConfirmationField.enabled = NO;
+    self.loginButton.enabled = NO;
+    self.signupButton.enabled = NO;
+}
+
+-(void)unlockUI
+{
+    self.background.enabled = YES;
+    self.usernameField.enabled = YES;
+    self.passwordField.enabled = YES;
+    self.passwordConfirmationField.enabled = YES;
+    self.loginButton.enabled = YES;
+    self.signupButton.enabled = YES;
 }
 
 #pragma RKObjectLoader Delegate Methods
@@ -217,16 +239,15 @@
         [Utility setObject:user.userID forKey:CURRENTUSERID];
         [Utility setObject:@"TRUE" forKey:NEWUSER];
         [self performSegueWithIdentifier:@"show home" sender:self];
-        self.signupButton.enabled = YES;
-        [self.spinner stopAnimating];
+        
     }else if ([objectLoader wasSentToResourcePath:@"/login"]){
         [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
         [Utility setObject:user.userID forKey:CURRENTUSERID];
         [Utility setObject:@"FALSE" forKey:NEWUSER];
         [self performSegueWithIdentifier:@"show home" sender:self];
-        self.loginButton.enabled = YES;
-        [self.spinner stopAnimating];
     }
+    [self unlockUI];
+    [self.spinner stopAnimating];
     [self dismissAll];
 }
 
@@ -234,11 +255,7 @@
     //show errors: existent username and invalid password
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
-    if ([objectLoader wasSentToResourcePath:@"/signup"]){
-        self.signupButton.enabled = YES;
-    }else {
-        self.loginButton.enabled = YES;
-    }
+    [self unlockUI];
     [self.spinner stopAnimating];
 }
 

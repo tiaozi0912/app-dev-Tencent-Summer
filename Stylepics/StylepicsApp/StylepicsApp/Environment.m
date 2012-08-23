@@ -10,7 +10,7 @@
 
 // Base URL
 #if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-NSString* const BaseURL = @"http://localhost:3000";
+NSString* const BaseURL = @"http://10.30.141.98:3000";
 #elif ENVIRONMENT == ENVIRONMENT_STAGING
 // TODO: Need a staging environment...
 #elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
