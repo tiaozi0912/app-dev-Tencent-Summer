@@ -105,6 +105,7 @@
      @"start_time", @"startTime",
      @"end_time", @"endTime",
      @"number_of_followers", @"followerCount",
+     @"category", @"category",
      nil];
     [pollMapping mapRelationship:@"user" withMapping:userMapping];
     [pollMapping mapRelationship:@"items" withMapping:itemMapping];

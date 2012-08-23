@@ -107,6 +107,8 @@
     [super viewWillAppear:animated];
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     self.poll = [Poll new];
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
     dispatch_queue_t loadingQueue = dispatch_queue_create("loading queue", NULL);
@@ -361,7 +363,7 @@
 
         self.pollDescription.text = self.poll.title;
         self.ownerLabel.text = self.poll.user.username;
-        self.categoryLabel.text = [Utility stringFromCategory:self.poll.category];
+        self.categoryLabel.text = [Utility stringFromCategory:(PollCategory)[self.poll.category intValue]];
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         
         //

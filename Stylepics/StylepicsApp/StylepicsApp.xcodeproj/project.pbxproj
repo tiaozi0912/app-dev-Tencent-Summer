@@ -51,7 +51,6 @@
 		0D94F50F15A7D2BB00903F0B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50A15A7D2BB00903F0B /* User.m */; };
 		0D94F51015A7D2BB00903F0B /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F50C15A7D2BB00903F0B /* Poll.m */; };
 		0D94F51615A7D30800903F0B /* NewPollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51515A7D30800903F0B /* NewPollViewController.m */; };
-		0D94F51915A7D41300903F0B /* LogInPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51815A7D41300903F0B /* LogInPageViewController.m */; };
 		0D94F51B15A7EBAB00903F0B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F51A15A7EBAB00903F0B /* MobileCoreServices.framework */; };
 		0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */; };
 		0D957D2215B0DC37009D37AA /* comments icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D957D2115B0DC37009D37AA /* comments icon.png */; };
@@ -117,6 +116,8 @@
 		0DA46AC515E61418008F67B1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46AC315E61418008F67B1 /* Default@2x.png */; };
 		0DA46AC815E61788008F67B1 /* header_bg-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46AC615E61788008F67B1 /* header_bg-logo.png */; };
 		0DA46AC915E61788008F67B1 /* header_bg-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46AC715E61788008F67B1 /* header_bg-logo@2x.png */; };
+		0DA46ACC15E621E7008F67B1 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46ACA15E621E7008F67B1 /* Logo.png */; };
+		0DA46ACD15E621E7008F67B1 /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46ACB15E621E7008F67B1 /* Logo@2x.png */; };
 		0DA5C3C915CDA9B90020D7A8 /* PollRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5C3C815CDA9B90020D7A8 /* PollRecord.m */; };
 		0DA9860C15DB14E10088493A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9860B15DB14E10088493A /* Icon.png */; };
 		0DA9860E15DB14FB0088493A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9860D15DB14FB0088493A /* Icon@2x.png */; };
@@ -262,8 +263,6 @@
 		0D94F50C15A7D2BB00903F0B /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
 		0D94F51415A7D30700903F0B /* NewPollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPollViewController.h; sourceTree = "<group>"; };
 		0D94F51515A7D30800903F0B /* NewPollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPollViewController.m; sourceTree = "<group>"; };
-		0D94F51715A7D41300903F0B /* LogInPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInPageViewController.h; sourceTree = "<group>"; };
-		0D94F51815A7D41300903F0B /* LogInPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInPageViewController.m; sourceTree = "<group>"; };
 		0D94F51A15A7EBAB00903F0B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
 		0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -344,6 +343,8 @@
 		0DA46AC315E61418008F67B1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0DA46AC615E61788008F67B1 /* header_bg-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_bg-logo.png"; sourceTree = "<group>"; };
 		0DA46AC715E61788008F67B1 /* header_bg-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_bg-logo@2x.png"; sourceTree = "<group>"; };
+		0DA46ACA15E621E7008F67B1 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		0DA46ACB15E621E7008F67B1 /* Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@2x.png"; sourceTree = "<group>"; };
 		0DA5C3C715CDA9B90020D7A8 /* PollRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollRecord.h; sourceTree = "<group>"; };
 		0DA5C3C815CDA9B90020D7A8 /* PollRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollRecord.m; sourceTree = "<group>"; };
 		0DA9860B15DB14E10088493A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -479,6 +480,9 @@
 		0D3210B015E4AAB800A4A505 /* Other Images */ = {
 			isa = PBXGroup;
 			children = (
+				0DA46ACA15E621E7008F67B1 /* Logo.png */,
+				0DA46ACB15E621E7008F67B1 /* Logo@2x.png */,
+				0D9A683F15DD8426004A93DA /* BG.png */,
 				0DA46AAE15E5BC86008F67B1 /* button-hl.png */,
 				0DA46AAF15E5BC86008F67B1 /* button-hl@2x.png */,
 				0DA46AB015E5BC86008F67B1 /* button.png */,
@@ -587,8 +591,6 @@
 		0D91EE5815AD0BB900D1015D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0D94F51715A7D41300903F0B /* LogInPageViewController.h */,
-				0D94F51815A7D41300903F0B /* LogInPageViewController.m */,
 				0D91EE5915AD4BD300D1015D /* RegistrationPageViewController.h */,
 				0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */,
 				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
@@ -711,7 +713,6 @@
 				0D320AE415E4784300A4A505 /* Category Icons */,
 				0D3210AF15E4AA2900A4A505 /* Navigation Bar */,
 				0D3210AE15E4A9F700A4A505 /* Tab Bar */,
-				0D9A683F15DD8426004A93DA /* BG.png */,
 				0D3210AD15E4A8FF00A4A505 /* App Icon and Launch Image */,
 				0D3210B015E4AAB800A4A505 /* Other Images */,
 			);
@@ -923,6 +924,8 @@
 				0DA46AC515E61418008F67B1 /* Default@2x.png in Resources */,
 				0DA46AC815E61788008F67B1 /* header_bg-logo.png in Resources */,
 				0DA46AC915E61788008F67B1 /* header_bg-logo@2x.png in Resources */,
+				0DA46ACC15E621E7008F67B1 /* Logo.png in Resources */,
+				0DA46ACD15E621E7008F67B1 /* Logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,7 +942,6 @@
 				0D94F50F15A7D2BB00903F0B /* User.m in Sources */,
 				0D94F51015A7D2BB00903F0B /* Poll.m in Sources */,
 				0D94F51615A7D30800903F0B /* NewPollViewController.m in Sources */,
-				0D94F51915A7D41300903F0B /* LogInPageViewController.m in Sources */,
 				0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */,
 				0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */,
 				0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */,

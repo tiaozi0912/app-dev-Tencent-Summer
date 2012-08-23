@@ -94,6 +94,7 @@
         poll.ownerID = [Utility getObjectForKey:CURRENTUSERID];
         poll.state = EDITING;
         poll.totalVotes = [NSNumber numberWithInt:0];
+        poll.category = [NSNumber numberWithInt:[self.categoryPickerView selectedRowInComponent:0]];
         [[RKObjectManager sharedManager] postObject:poll delegate:self];
     }
 }
@@ -180,7 +181,6 @@
 #pragma mark - UIPickerView Delegate Methods
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    poll.category = (PollCategory)row;
     [self.categoryButton setTitle:[Utility stringFromCategory:(PollCategory)row] forState:UIControlStateNormal];
 }
 
