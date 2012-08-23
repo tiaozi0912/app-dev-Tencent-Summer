@@ -13,7 +13,6 @@
 {
     BOOL itemAdded;
     NSURL *photoURL;
-    Item *item;
     UIImage* itemImage;
     UIActivityIndicatorView *spinner;
 }
@@ -54,25 +53,37 @@
     
     NSArray *titles = [[NSArray alloc] initWithObjects:@"Add New Item", @"Edit Item", @"View Item",nil];
     self.title = [titles objectAtIndex:singleItemViewOption];
+    if (singleItemViewOption == SingleItemViewOptionNew){
+        [self.cameraButton setImage:[UIImage imageNamed:ADD_ITEM_HINT] forState:UIControlStateNormal];
+    }
+    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    itemAdded = NO;
+    if (!singleItemViewOption == SingleItemViewOptionNew){
+        self.descriptionTextField.text = self.item.description;
+        self.priceTextField.text = [self.item.price stringValue];
+        self.brandTextField.text = self.item.brand;
+        itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.item.photoURL]]];
+        [self.cameraButton setBackgroundImage:itemImage forState:UIControlStateNormal];
+        self.cameraButton.enabled = NO;
+    }
     if (singleItemViewOption == SingleItemViewOptionView)
     {
         self.descriptionTextField.enabled = NO;
         self.priceTextField.enabled = NO;
+        self.brandTextField.enabled = NO;
         self.descriptionTextField.borderStyle = UITextBorderStyleNone;
         self.priceTextField.borderStyle = UITextBorderStyleNone;
+        self.brandTextField.borderStyle = UITextBorderStyleNone;
     }else{
         self.descriptionTextField.enabled = YES;
         self.priceTextField.enabled = YES;
+        self.brandTextField.enabled = YES;
         self.descriptionTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.priceTextField.borderStyle = UITextBorderStyleRoundedRect;
-    }
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    itemAdded = NO;
-    if (item){
-        self.descriptionTextField.text = item.description;
-        self.priceTextField.text = [item.price stringValue];
-        itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:item.photoURL]]];
-        [self.cameraButton setBackgroundImage:itemImage forState:UIControlStateNormal];
+        self.brandTextField.borderStyle = UITextBorderStyleRoundedRect;
+        self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+        self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+        self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     }
     [UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -92,7 +103,7 @@
     self.descriptionTextField = nil;
     self.priceTextField = nil;
     photoURL = nil;
-    item = nil;
+    self.item = nil;
     spinner = nil;
     [AmazonClientManager clearCredentials];
     // Release any retained subviews of the main view.
@@ -119,15 +130,16 @@
 
 -(IBAction)done
 {
+    [self backgroundTouched:nil];
     switch (self.singleItemViewOption) {
         case SingleItemViewOptionView:
             [self backWithFlipAnimation];
             break;
         case SingleItemViewOptionEdit:
         {
-            item.description = self.descriptionTextField.text;
-            item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
-            [[RKObjectManager sharedManager] putObject:item delegate:self];
+            self.item.description = self.descriptionTextField.text;
+            self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+            [[RKObjectManager sharedManager] putObject:self.item delegate:self];
             break;
         }
         case SingleItemViewOptionNew:
@@ -139,9 +151,9 @@
                 [spinner startAnimating];
                 self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
                 self.navigationItem.rightBarButtonItem.enabled = NO;
-                item = [Item new];
-                item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-                [[RKObjectManager sharedManager] postObject:item delegate:self];
+                self.item = [Item new];
+                self.item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+                [[RKObjectManager sharedManager] postObject:self.item delegate:self];
             }else{
                 [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
             }
@@ -226,7 +238,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImage *image = [info 
                           objectForKey:UIImagePickerControllerEditedImage];
         itemImage = image;
-        [self.cameraButton setBackgroundImage:image forState:UIControlStateNormal];
+        [self.cameraButton setImage:image forState:UIControlStateNormal];
         itemAdded = YES;
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
@@ -262,7 +274,7 @@ finishedSavingWithError:(NSError *)error
 {
     if ([objectLoader wasSentToResourcePath:@"/items" method:RKRequestMethodPOST] ){
         @try {
-            NSString *imageName = [NSString stringWithFormat:@"Item_%@.jpeg", item.itemID];
+            NSString *imageName = [NSString stringWithFormat:@"Item_%@.jpeg", self.item.itemID];
             NSData *imageData = UIImageJPEGRepresentation(itemImage, 0.8f);
             @try {
                 S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
@@ -275,13 +287,13 @@ finishedSavingWithError:(NSError *)error
             @catch (AmazonClientException *exception) {
                 NSLog(@"Failed to Create Object [%@]", exception);
             }            
-            item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, imageName];
-            item.description = self.descriptionTextField.text;
-            item.numberOfVotes = [NSNumber numberWithInt:0];
-            item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
-            item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-            item.brand = self.brandTextField.text;
-            [[RKObjectManager sharedManager] putObject:item delegate:self];
+            self.item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, imageName];
+            self.item.description = self.descriptionTextField.text;
+            self.item.numberOfVotes = [NSNumber numberWithInt:0];
+            self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+            self.item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+            self.item.brand = self.brandTextField.text;
+            [[RKObjectManager sharedManager] putObject:self.item delegate:self];
         }
         @catch (AmazonClientException *exception) {
             NSLog(@"Failed to Create Object [%@]", exception);
@@ -290,8 +302,8 @@ finishedSavingWithError:(NSError *)error
         NSLog(@"The new item has been added!");
         Event *newItemEvent = [Event new];
         newItemEvent.eventType = NEWITEMEVENT;
-        newItemEvent.pollID = item.pollID;
-        newItemEvent.itemID = item.itemID;
+        newItemEvent.pollID = self.item.pollID;
+        newItemEvent.itemID = self.item.itemID;
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
     }else {

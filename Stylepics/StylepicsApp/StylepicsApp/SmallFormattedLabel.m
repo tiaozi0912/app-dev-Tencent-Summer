@@ -13,14 +13,16 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.font = [UIFont fontWithName:@"Helvetica" size:8];
+    self.font = [UIFont fontWithName:@"Helvetica" size:9];
+    self.textColor = [UIColor darkGrayColor];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.font = [UIFont fontWithName:@"Helvetica" size:8];
+        self.font = [UIFont fontWithName:@"Helvetica" size:9];
+        self.textColor = [UIColor darkGrayColor];
     }
     return self;
 }

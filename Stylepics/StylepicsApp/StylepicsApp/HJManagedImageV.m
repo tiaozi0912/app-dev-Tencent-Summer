@@ -150,7 +150,8 @@
 
 -(void) showLoadingWheel {
 	[loadingWheel removeFromSuperview];
-	self.loadingWheel = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
+	self.loadingWheel = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
+    //loadingWheel.color = [UIColor ]
 	loadingWheel.center = self.center;
 	loadingWheel.hidesWhenStopped=YES;
 	[self addSubview:loadingWheel];

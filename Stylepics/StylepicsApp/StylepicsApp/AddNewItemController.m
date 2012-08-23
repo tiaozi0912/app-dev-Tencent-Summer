@@ -36,6 +36,9 @@
     self.descriptionTextField.delegate= self;
     self.priceTextField.delegate= self;
     self.brandTextField.delegate = self;
+    self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.pickPollTitleTextField.enabled = NO;
     
     self.pickerView.delegate = self;

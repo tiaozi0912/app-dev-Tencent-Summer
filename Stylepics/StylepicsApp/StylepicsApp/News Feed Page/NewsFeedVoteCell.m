@@ -11,6 +11,7 @@
 @implementation NewsFeedVoteCell
 @synthesize userImage=_userImage;
 @synthesize usernameAndActionLabel=_usernameAndActionLabel;
+@synthesize itemImage = _itemImage;
 //@synthesize iconImage=_iconImage;
 @synthesize eventDescriptionLabel=_eventDescriptionLabel;
 @synthesize timeStampLabel = _timeStampLabel, categoryIcon = _categoryIcon;

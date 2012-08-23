@@ -22,7 +22,14 @@
 #import "AnimatedPickerView.h"
 #import "CenterButtonTabController.h"
 #import "MultipartLabel.h"
+#import <Quartzcore/Quartzcore.h>
 //#import <FacebookSDK/FacebookSDK.h>
+
+#define KULER_YELLOW 0
+#define KULER_BLACK 1
+#define KULER_CYAN  2
+#define KULER_WHITE 3
+#define KULER_RED   4
 
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
@@ -36,6 +43,7 @@
 
 #define BACKGROUND_COLOR @"BG.png"
 #define NAV_BAR_BACKGROUND_COLOR @"header_bg.png"
+#define NAV_BAR_BACKGROUND_WITH_LOGO @""
 #define TAB_BAR_BG @"tab_bar_bg"
 #define FEEDS_ICON @"feeds-icon"
 #define FEEDS_ICON_HL @"feeds-icon-hl"
@@ -46,7 +54,21 @@
 #define UserLoginNotification @"logged in"
 #define UserLogoutNotification @"logged out"
 #define DEFAULT_USER_PROFILE_PHOTO @"default_profile_photo.jpeg"
-
+#define NEW_POLL_BUTTON @"Newpoll"
+#define NEW_POLL_BUTTON_HL @"Newpoll-hl"
+#define SETTINGS_BUTTON @"Settings"
+#define SETTINGS_BUTTON_HL @"Settings-hl"
+#define DELETE_ITEM_BUTTON @"DeleteItem"
+#define DELETE_ITEM_BUTTON_HL @"DeleteItem-hl"
+#define CHECKBOX @"CheckBox"
+#define CHECKBOX_HL @"CheckBox-hl"
+#define CHECKINBOX @"CheckInBox"
+#define CHECKINBOX_HL @"CheckInBox-hl"
+#define BACK_BUTTON @"Back"
+#define BACK_BUTTON_HL @"Back-hl"
+#define ACTION_BUTTON @"Action"
+#define ACTION_BUTTON_HL @"Action-hl"
+#define ADD_ITEM_HINT @"AddItemHint"
 
 typedef enum{
     SingleItemViewOptionNew,

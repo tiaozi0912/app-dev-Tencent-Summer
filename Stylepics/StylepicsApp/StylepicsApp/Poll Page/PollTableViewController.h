@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AudienceListView.h"
 #import "PollItemCell.h"
 #import "Utility.h"
 #import "SingleItemViewController.h"
@@ -16,8 +15,6 @@
 @interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate,UIActionSheetDelegate, UITextViewDelegate>
 @property (nonatomic, strong) Poll *poll;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingWheel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *addItemButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *followerCount;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *stateIndicator;

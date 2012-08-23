@@ -22,7 +22,17 @@
 +(NSString*) formatCurrencyWithNumber: (NSNumber *) number;
 +(UILabel*)formatTitleWithString:(NSString *) titleText;
 +(NSString*)formatTimeWithDate:(NSDate *) date;
-+(NSURL*)URLforCategory:(PollCategory) category;
++(NSURL*)URLForCategory:(PollCategory) category;
++(UIImage*)iconForCategory:(PollCategory) category;
 +(NSString*)stringFromCategory:(PollCategory) category;
 +(PollCategory)categoryFromString:(NSString*) string;
++(UIBarButtonItem *)createSquareBarButtonItemWithNormalStateImage:(NSString*)normalStateImage
+                                         andHighlightedStateImage:(NSString*) highlightedStateImage
+                                                           target:(id)tgt
+                                                           action:(SEL)a;
++(UIColor*)colorFromKuler:(int)kulerColor
+                   alpha:(CGFloat)alpha;
++(UIToolbar*)keyboardAccessoryToolBarWithButton:(NSString*)title
+                                         target:(id) t
+                                         action:(SEL) a;
 @end

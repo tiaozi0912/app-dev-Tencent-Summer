@@ -13,10 +13,11 @@
 @interface PollItemCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet HJManagedImageV *itemImage;
-@property (nonatomic, weak) IBOutlet UILabel *descriptionOfItemLabel;
-@property (nonatomic, weak) IBOutlet UILabel *priceLabel;
+@property (nonatomic, weak) IBOutlet AppFormattedLabel *descriptionOfItemLabel;
+@property (nonatomic, weak) IBOutlet AppFormattedLabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *voteButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-@property (weak, nonatomic) IBOutlet UILabel *voteCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *commentCountLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *voteCountLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *commentCountLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *brandLabel;
 @end

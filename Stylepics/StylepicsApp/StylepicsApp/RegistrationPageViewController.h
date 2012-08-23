@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordConfirmationField;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
-
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @end

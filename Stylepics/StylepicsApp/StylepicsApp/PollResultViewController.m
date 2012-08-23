@@ -35,6 +35,7 @@
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
     [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -66,7 +67,7 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-- (IBAction)back:(UIBarButtonItem *)sender {
+- (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

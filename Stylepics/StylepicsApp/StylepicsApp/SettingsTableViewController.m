@@ -39,9 +39,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
     self.profilePhoto.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
     currentUser = [User new];
     currentUser.userID = [Utility getObjectForKey:CURRENTUSERID];
+    
     [[RKObjectManager sharedManager] getObject:currentUser delegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -84,9 +86,10 @@
         loader.serializationMapping = [[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
     }];
     [[self.navigationController presentingViewController] dismissModalViewControllerAnimated:YES];
+    [Utility setObject:nil forKey:IDOfPollToBeShown];
 }
 
-- (IBAction)back:(id)sender {
+- (void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -206,7 +209,7 @@
         imagePicker.mediaTypes = [NSArray arrayWithObjects:
                                   (NSString *) kUTTypeImage,
                                   nil];
-        imagePicker.allowsEditing = NO;
+        imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker
                                 animated:YES];
         //newMedia = YES;
@@ -226,7 +229,7 @@
         imagePicker.mediaTypes = [NSArray arrayWithObjects:
                                   (NSString *) kUTTypeImage,
                                   nil];
-        imagePicker.allowsEditing = NO;
+        imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker animated:YES];
         //newMedia = NO;
     } 

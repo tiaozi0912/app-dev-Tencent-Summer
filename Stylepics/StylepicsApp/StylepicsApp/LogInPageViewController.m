@@ -25,22 +25,6 @@
 @synthesize loginButton = _loginButton;
 @synthesize spinner = _spinner;
 
--(void) setUsername:(UITextField *)usernameField
-{
-    _usernameField = usernameField;
-    _usernameField.delegate = self;
-    _usernameField.tag = UsernameField;
-}
-
-
--(void) setPasswordField:(UITextField *)passwordField
-{
-    _passwordField = passwordField;
-    _passwordField.delegate = self;
-    _passwordField.tag = PasswordField;
-}
-
-
 - (IBAction)login {
     if ([self.usernameField.text length] == 0 ||[self.usernameField.text length] == 0 ){
         [Utility showAlert:@"Sorry!" message:@"Neither username nor password can be empty."];
@@ -68,6 +52,8 @@
     [Utility setObject:user.userID forKey:CURRENTUSERID];
     [Utility setObject:@"FALSE" forKey:NEWUSER];
     [self performSegueWithIdentifier:@"show home" sender:self];
+    self.loginButton.enabled = YES;
+    [self.spinner stopAnimating];
 
 }
 
@@ -103,7 +89,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    _usernameField.delegate = self;
+    _usernameField.tag = UsernameField;
+    _usernameField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    
+    _passwordField.delegate = self;
+    _passwordField.tag = PasswordField;
+    _passwordField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
 }
 
 
@@ -121,6 +115,14 @@
     self.usernameField.text = nil;
     self.passwordField.text = nil;
     [super viewWillAppear:animated];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([Utility getObjectForKey:IDOfPollToBeShown]){
+        NSLog(@"%@", [Utility getObjectForKey:IDOfPollToBeShown]);
+        [self performSegueWithIdentifier:@"show home" sender:self];
+    }
 }
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

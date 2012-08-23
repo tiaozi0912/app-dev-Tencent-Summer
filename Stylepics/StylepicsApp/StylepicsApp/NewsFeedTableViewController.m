@@ -10,10 +10,16 @@
 #import "AddNewItemController.h"
 #import "Utility.h"
 
-#define NUMBEROFEVENTSLOADED 200
-#define HEIGHTOFNEWPOLLCELL 60
-#define HEIGHTOFNEWITEMCELL 383
-#define HEIGHTOFVOTECELL 383
+#define HEIGHTOFNEWPOLLCELL 55
+#define HEIGHTOFNEWITEMCELL 369
+#define HEIGHTOFVOTECELL 369
+
+#define TimeStampLabelFrame CGRectMake(48,9,74,9)
+#define UserImageFrame CGRectMake(5,9,40,40)
+#define UsernameAndActionLabelFrame CGRectMake(47,17,236,16)
+#define EventDescriptionLabelFrame CGRectMake(47,33,236,16)
+#define CategoryIconFrame CGRectMake(292,9,23,23)
+#define ItemImageFrame CGRectMake(5,57,310,310)
 
 @interface NewsFeedTableViewController (){
 }
@@ -57,6 +63,7 @@
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -148,18 +155,30 @@
      reuseIdentifier:CellIdentifier];
      }
         // Configure the cell...New poll event
-        cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
+        cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
+        
+        
         [cell.usernameAndActionLabel updateNumberOfLabels:2];
         [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
         [cell.usernameAndActionLabel setText:@" created a new poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
+        
         cell.eventDescriptionLabel.text = event.poll.title;
-        cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
-        cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
-        [HJObjectManager manage:cell.categoryIcon];
-        [cell.timeStampLabel sizeToFit];
         [cell.eventDescriptionLabel sizeToFit];
+        
+        cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
+        
+        cell.categoryIcon.image = [Utility iconForCategory:event.poll.category];
+        [HJObjectManager manage:cell.categoryIcon];
+        
+        cell.usernameAndActionLabel.clipsToBounds = YES;
+
+        /*cell.timeStampLabel.frame = TimeStampLabelFrame;
+        cell.userImage.frame = UserImageFrame;
+        cell.usernameAndActionLabel.frame = UsernameAndActionLabelFrame;
+        cell.eventDescriptionLabel.frame = EventDescriptionLabelFrame;
+        cell.categoryIcon.frame = CategoryIconFrame;*/
         return cell;
     }else if ([eventType isEqualToString:@"new item"]) {
         static NSString *CellIdentifier = @"new item cell";
@@ -170,21 +189,36 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...Add item event
-        cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
+        cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
-        cell.eventDescriptionLabel.text = [NSString stringWithFormat:event.poll.title];
+        
+        cell.eventDescriptionLabel.text = event.poll.title;
+        [cell.eventDescriptionLabel sizeToFit];
+        
+        [cell.itemImage clear];
+        [cell.itemImage showLoadingWheel];
         cell.itemImage.url = [NSURL URLWithString:event.item.photoURL];
         [HJObjectManager manage:cell.itemImage];
         // In current version, photo uploading is limited to one picture at a time
+        
         cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
-        cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
+        
+        cell.categoryIcon.image = [Utility iconForCategory:event.poll.category];
         [HJObjectManager manage:cell.categoryIcon];
-        [cell.timeStampLabel sizeToFit];
+        
         [cell.usernameAndActionLabel updateNumberOfLabels:2];
         [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
         [cell.usernameAndActionLabel setText:@" added a item to poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
-        [cell.eventDescriptionLabel sizeToFit];
+        cell.usernameAndActionLabel.clipsToBounds = YES;
+        
+
+        /*cell.timeStampLabel.frame = TimeStampLabelFrame;
+        cell.userImage.frame = UserImageFrame;
+        cell.usernameAndActionLabel.frame = UsernameAndActionLabelFrame;
+        cell.eventDescriptionLabel.frame = EventDescriptionLabelFrame;
+        cell.categoryIcon.frame = CategoryIconFrame;
+        cell.itemImage.frame = ItemImageFrame;*/
         return cell;
     }else /*if ([eventType isEqualToString:@"vote"]) */{
         static NSString *CellIdentifier = @"vote cell";
@@ -195,21 +229,38 @@
                     reuseIdentifier:CellIdentifier];
         }
         // Configure the cell...Vote event
-        cell.userImage.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
+        cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
         cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
         [HJObjectManager manage:cell.userImage];
         
-        cell.eventDescriptionLabel.text = [[NSString alloc] initWithFormat:event.poll.title];
+        [cell.itemImage clear];
+        cell.itemImage.loadingWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        [cell.itemImage showLoadingWheel];
+        cell.itemImage.url = [NSURL URLWithString:event.item.photoURL];
+        [HJObjectManager manage:cell.itemImage];
+        
+        cell.eventDescriptionLabel.text = event.poll.title;
+        [cell.eventDescriptionLabel sizeToFit];
+        
         cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
-        cell.categoryIcon.url = [Utility URLforCategory:event.poll.category];
+        
+        cell.categoryIcon.image = [Utility iconForCategory:event.poll.category];
         [HJObjectManager manage:cell.categoryIcon];
-        [cell.timeStampLabel sizeToFit];
+        
         [cell.usernameAndActionLabel updateNumberOfLabels:4];
         [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
         [cell.usernameAndActionLabel setText:@" voted for " andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
         [cell.usernameAndActionLabel setText:event.pollOwner.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:2];
         [cell.usernameAndActionLabel setText:@"'s poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:3];
-        [cell.eventDescriptionLabel sizeToFit];
+        cell.usernameAndActionLabel.clipsToBounds = YES;
+        
+
+        /*cell.timeStampLabel.frame = TimeStampLabelFrame;
+        cell.userImage.frame = UserImageFrame;
+        cell.usernameAndActionLabel.frame = UsernameAndActionLabelFrame;
+        cell.eventDescriptionLabel.frame = EventDescriptionLabelFrame;
+        cell.categoryIcon.frame = CategoryIconFrame;
+        cell.itemImage.frame = ItemImageFrame;*/
         return cell;
     }
     return nil;
@@ -244,7 +295,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
 {
     Event *event = [self.events objectAtIndex:indexPath.row];
     [Utility setObject:event.poll.pollID forKey:IDOfPollToBeShown];
-    [self performSegueWithIdentifier:@"show a poll from news feed" sender:self];
+    [self performSegueWithIdentifier:@"show poll" sender:self];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

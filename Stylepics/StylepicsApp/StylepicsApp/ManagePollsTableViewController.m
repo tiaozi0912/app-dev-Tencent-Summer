@@ -40,6 +40,9 @@
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
+    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
+    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEW_POLL_BUTTON andHighlightedStateImage:NEW_POLL_BUTTON_HL target:self action:@selector(newPoll)];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -80,9 +83,14 @@
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
 }
 #pragma User Actions
--(IBAction)newPoll
+-(void)newPoll
 {
     [self performSegueWithIdentifier:@"new poll" sender:self];
+}
+
+-(void)showSettings
+{
+    [self performSegueWithIdentifier:@"settings" sender:self];
 }
 
 - (void) dealloc

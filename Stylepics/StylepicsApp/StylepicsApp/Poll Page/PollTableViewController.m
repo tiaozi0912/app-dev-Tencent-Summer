@@ -7,7 +7,7 @@
 //
 
 #import "PollTableViewController.h"
-#define  POLLITEMCELLHEIGHT 350
+#define  POLLITEMCELLHEIGHT 390
 #define  OPEN_POLL_BUTTON_TITLE @"Open poll"
 #define  END_POLL_BUTTON_TITLE  @"End poll"
 #define  FOLLOW_POLL_BUTTON_TITLE @"Follow poll"
@@ -19,6 +19,7 @@
 #define OpenPollAlertView 1
 #define EndPollAlertView 2
 #define DeletePollAlertView 3
+
 @interface PollTableViewController (){
     NSUInteger audienceIndex;
     BOOL isOwnerView;
@@ -34,8 +35,6 @@
 @implementation PollTableViewController
 @synthesize poll=_poll;
 @synthesize loadingWheel = _loadingWheel;
-@synthesize addItemButton = _addItemButton;
-@synthesize actionButton = _actionButton;
 @synthesize startTimeLabel = _startTimeLabel;
 @synthesize followerCount = _followerCount;
 @synthesize stateIndicator = _stateIndicator;
@@ -48,7 +47,8 @@
     [super viewDidLoad];
     self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    
+    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
+    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:ACTION_BUTTON andHighlightedStateImage:ACTION_BUTTON_HL target:self action:@selector(showActionSheet)];
     CGRect frameOfEmptyPollHint = CGRectMake(20, 230, 280, 60);
 
     //CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
@@ -79,13 +79,7 @@
     [self.view addSubview:emptyPollHintInAudienceView];
     self.clearsSelectionOnViewWillAppear = NO;
  
-    UIToolbar *keyboardAccessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    keyboardAccessoryView.barStyle = UIBarStyleBlackTranslucent;
-    keyboardAccessoryView.tintColor = [UIColor darkGrayColor];
-    UIBarButtonItem* flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneTyping)];
-    [keyboardAccessoryView setItems:[NSArray arrayWithObjects: flexSpace, doneButton, nil] animated:NO];
-    self.pollDescription.inputAccessoryView = keyboardAccessoryView;
+    self.pollDescription.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Done" target:self action:@selector(doneTyping)];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -93,8 +87,6 @@
 - (void)viewDidUnload
 {
     [self setLoadingWheel:nil];
-    [self setAddItemButton:nil];
-    [self setActionButton:nil];
     [self setStartTimeLabel:nil];
     [self setFollowerCount:nil];
     [self setPollDescription:nil];
@@ -139,11 +131,11 @@
 
 #pragma mark - User Actions
 
-- (IBAction)back{
+- (void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)showActionSheet:(id)sender {
+- (void)showActionSheet{
     NSString *pollOperation;
     NSString *deleteButton;
     if (isOwnerView)
@@ -177,7 +169,7 @@
         }
     }
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[popupQuery showFromBarButtonItem:self.actionButton animated:YES];
+	[popupQuery showInView:self.view];
 	popupQuery = nil;
 }
 
@@ -229,6 +221,7 @@
         votingEvent.eventType = VOTINGEVENT;
         votingEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         votingEvent.pollID = self.poll.pollID;
+        votingEvent.itemID = item.itemID;
         [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];
     }
 }
@@ -445,8 +438,6 @@
     [Utility showAlert:@"Sorry!" message:error.localizedDescription];
     }
     if ([error.localizedDescription isEqualToString:@"This poll does not exist any more."]){
-    self.addItemButton.enabled = NO;
-    self.actionButton.enabled = NO;
     }
 }
 
@@ -480,20 +471,27 @@
     // if the current user has voted for the item
     if ([currentUser.hasVoted isEqualToNumber:item.itemID]){
         cell.voteButton.hidden = NO;
-        [cell.voteButton setBackgroundImage:[UIImage imageNamed:@"vote icon.png"] forState:UIControlStateNormal];
+        [cell.voteButton setImage:[UIImage imageNamed:CHECKINBOX] forState:UIControlStateNormal];
+        [cell.voteButton setImage:[UIImage imageNamed:CHECKINBOX_HL] forState:UIControlStateHighlighted];
     }
     if ((!isOwnerView) && ([self.poll.state isEqualToString:VOTING]) && ([currentUser.hasVoted intValue] == 0)){
         cell.voteButton.hidden = NO;
-        [cell.voteButton setBackgroundImage:[UIImage imageNamed:@"empty vote icon.png"] forState:UIControlStateNormal];
+        [cell.voteButton setImage:[UIImage imageNamed:CHECKBOX] forState:UIControlStateNormal];
+        [cell.voteButton setImage:[UIImage imageNamed:CHECKBOX_HL] forState:UIControlStateHighlighted];
     }
+    [cell.deleteButton setImage:[UIImage imageNamed:DELETE_ITEM_BUTTON] forState:UIControlStateNormal];
+    [cell.deleteButton setImage:[UIImage imageNamed:DELETE_ITEM_BUTTON_HL] forState:UIControlStateHighlighted];
     cell.deleteButton.hidden = !(isOwnerView && [self.poll.state isEqualToString:EDITING]);
     cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
+    [cell.itemImage clear];
+    [cell.itemImage showLoadingWheel];
     cell.itemImage.url = [NSURL URLWithString:item.photoURL];
     [HJObjectManager manage:cell.itemImage];
+    
     cell.descriptionOfItemLabel.text = item.description;
     cell.priceLabel.text = [Utility formatCurrencyWithNumber:item.price];
     cell.voteCountLabel.text = [item.numberOfVotes stringValue];
-    [cell.descriptionOfItemLabel sizeToFit];
+    cell.brandLabel.text = item.brand;
     [cell.priceLabel sizeToFit];
     [cell.voteCountLabel sizeToFit];
     return cell;

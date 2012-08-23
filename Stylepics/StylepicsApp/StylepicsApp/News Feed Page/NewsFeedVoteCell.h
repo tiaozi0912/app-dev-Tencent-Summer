@@ -17,4 +17,5 @@
 @property (nonatomic, weak) IBOutlet HJManagedImageV
 *categoryIcon;
 @property (weak, nonatomic) IBOutlet MultipartLabel *usernameAndActionLabel;
+@property (weak, nonatomic) IBOutlet HJManagedImageV *itemImage;
 @end
