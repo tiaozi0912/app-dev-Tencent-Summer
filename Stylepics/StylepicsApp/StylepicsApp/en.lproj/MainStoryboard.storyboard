@@ -185,10 +185,8 @@
                                 </view>
                                 <connections>
                                     <outlet property="itemCountLabel" destination="Ebu-Xb-aQp" id="FIF-PS-BLP"/>
-                                    <outlet property="nameLabel" destination="cm4-fc-Evq" id="Z98-DT-GJW"/>
                                     <outlet property="pollDescriptionLabel" destination="cm4-fc-Evq" id="dMo-8C-LHR"/>
                                     <outlet property="startTimeLabel" destination="rOI-34-wyI" id="9aT-zO-yfS"/>
-                                    <outlet property="stateLabel" destination="rOI-34-wyI" id="Wsu-yh-L4Y"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="opened poll cell" rowHeight="46" id="zh6-Mj-a6n" customClass="OpenedPollCell">
@@ -268,9 +266,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="dateLabel" destination="vFC-bC-jgJ" id="1mv-Tc-aa7"/>
                                     <outlet property="endTimeLabel" destination="vFC-bC-jgJ" id="7j6-Uc-R3Z"/>
-                                    <outlet property="openTimeLabel" destination="vFC-bC-jgJ" id="S2q-aP-N61"/>
                                     <outlet property="pollDescriptionLabel" destination="1oy-Fv-MuK" id="xWO-iQ-JZe"/>
                                     <outlet property="votesCountLabel" destination="Blx-HZ-J22" id="rc1-pY-OBX"/>
                                 </connections>
@@ -311,7 +307,6 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="nameLabel" destination="xVs-MZ-35p" id="5fN-V6-GHp"/>
                                     <outlet property="pollDescriptionLabel" destination="xVs-MZ-35p" id="rum-x6-4D5"/>
                                     <outlet property="stateLabel" destination="P1O-NE-eFf" id="w7e-bn-dn6"/>
                                     <outlet property="votesCountLabel" destination="qq1-YU-NFi" id="ERQ-J2-jdd"/>
@@ -1467,7 +1462,6 @@
             <relationships>
                 <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="thumbnail" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="thumbnail0" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="thumbnail1" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="thumbnail2" candidateClass="HJManagedImageV"/>
@@ -1600,6 +1594,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Tht-ec-FNc"/>
+        <segue reference="E46-aS-6G1"/>
     </inferredMetricsTieBreakers>
 </document>
