@@ -301,6 +301,7 @@
 - (void)openPoll
 {
     self.poll.state = [NSNumber numberWithInt:VOTING];
+    self.poll.openTime = [NSDate date];
     [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
     
     pollRecord = [PollRecord new];

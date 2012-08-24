@@ -232,12 +232,12 @@
     }else if (objectLoader.method == RKRequestMethodPUT){
         NSLog(@"The new item has been added!");
         //post a new item event
-        Event *newItemEvent = [Event new];
+        /*Event *newItemEvent = [Event new];
         newItemEvent.eventType = NEWITEMEVENT;
         newItemEvent.pollID = item.pollID;
         newItemEvent.itemID = item.itemID;
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
-        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
+        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];*/
         backMark = YES;
     }else if ([objectLoader wasSentToResourcePath:@"/poll_records" method:RKRequestMethodGET]){
         // extract all the active polls in editing state of the current user

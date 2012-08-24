@@ -12,9 +12,17 @@
 @interface FeedsCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet HJManagedImageV *userImage;
 @property (nonatomic, weak) IBOutlet UILabel *eventDescriptionLabel;
-@property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail;
+
 @property (nonatomic, weak) IBOutlet SmallFormattedLabel *timeStampLabel;
 @property (nonatomic, weak) IBOutlet HJManagedImageV
 *categoryIcon;
+
 @property (weak, nonatomic) IBOutlet MultipartLabel *usernameAndActionLabel;
+
+@property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail0;
+@property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail1;
+@property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail2;
+@property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail3;
+@property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail4;
+
 @end

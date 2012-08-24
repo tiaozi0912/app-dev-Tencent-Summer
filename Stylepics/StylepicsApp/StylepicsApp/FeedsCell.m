@@ -11,7 +11,7 @@
 @implementation FeedsCell
 @synthesize userImage=_userImage;
 @synthesize eventDescriptionLabel=_eventDescriptionLabel;
-@synthesize thumbnail=_thumbnail;
+@synthesize thumbnail0, thumbnail1, thumbnail2, thumbnail3, thumbnail4;
 @synthesize timeStampLabel = _timeStampLabel, categoryIcon = _categoryIcon;
 @synthesize usernameAndActionLabel;
 

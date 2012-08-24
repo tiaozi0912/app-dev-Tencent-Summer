@@ -137,11 +137,25 @@
     cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
     [HJObjectManager manage:cell.userImage];
     
-    [cell.thumbnail clear];
-    [cell.thumbnail showLoadingWheel];
-    for (int tag = 0; )
-    cell.thumbnail.url = [NSURL URLWithString:event.poll.items.photoURL];
-    [HJObjectManager manage:cell.thumbnail];
+    [cell.thumbnail0 clear];
+    [cell.thumbnail0 showLoadingWheel];
+    cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:0]).photoURL];
+    if (event.items.count > 1) {
+        cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:1]).photoURL];
+    }else if (event.poll.items.count > 2) {
+        cell.thumbnail2.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:2]).photoURL];
+    }else if (event.poll.items.count > 3) {
+        cell.thumbnail3.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:3]).photoURL];
+    }else if (event.poll.items.count > 4) {
+        cell.thumbnail4.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:4]).photoURL];
+    }
+    
+    [HJObjectManager manage:cell.thumbnail0];
+    [HJObjectManager manage:cell.thumbnail1];
+    [HJObjectManager manage:cell.thumbnail2];
+    [HJObjectManager manage:cell.thumbnail3];
+    [HJObjectManager manage:cell.thumbnail4];
+    
     // In current version, photo uploading is limited to one picture at a time
     
     cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
