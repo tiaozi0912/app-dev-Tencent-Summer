@@ -132,6 +132,10 @@
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
     }
+    cell.thumbnail1.hidden = YES;
+    cell.thumbnail2.hidden = YES;
+    cell.thumbnail3.hidden = YES;
+    cell.thumbnail4.hidden = YES;
     // Configure the cell...Add item event
     cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
     cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
@@ -142,12 +146,16 @@
     cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:0]).photoURL];
     if (event.items.count > 1) {
         cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:1]).photoURL];
+        cell.thumbnail1.hidden = NO;
     }else if (event.poll.items.count > 2) {
         cell.thumbnail2.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:2]).photoURL];
+        cell.thumbnail2.hidden = NO;
     }else if (event.poll.items.count > 3) {
         cell.thumbnail3.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:3]).photoURL];
+        cell.thumbnail3.hidden = NO;
     }else if (event.poll.items.count > 4) {
         cell.thumbnail4.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:4]).photoURL];
+        cell.thumbnail4.hidden = NO;
     }
     
     [HJObjectManager manage:cell.thumbnail0];
