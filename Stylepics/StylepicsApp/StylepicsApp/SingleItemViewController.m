@@ -300,12 +300,12 @@ finishedSavingWithError:(NSError *)error
         }
     }else if (objectLoader.method == RKRequestMethodPUT){
         NSLog(@"The new item has been added!");
-        Event *newItemEvent = [Event new];
+        /*Event *newItemEvent = [Event new];
         newItemEvent.eventType = NEWITEMEVENT;
         newItemEvent.pollID = self.item.pollID;
         newItemEvent.itemID = self.item.itemID;
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
-        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];
+        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];*/
     }else {
         [spinner stopAnimating];
         spinner = nil;

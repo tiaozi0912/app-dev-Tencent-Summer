@@ -230,4 +230,18 @@
     [keyboardAccessoryView setItems:[NSArray arrayWithObjects: flexSpace, doneButton, nil] animated:NO];
     return keyboardAccessoryView;
 }
+
++(NSString*)stringFromPollState:(int) state
+{
+    switch (state) {
+        case EDITING:
+            return @"EDITING";
+        case VOTING:
+            return @"VOTING";
+        case FINISHED:
+            return @"FINISHED";
+        default:
+            return @"UNKNOWN";
+    }
+}
 @end

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "StylepicsAppDelegate.h"
-#import "NewsFeedNewPollCell.h"
-#import "NewsFeedNewItemCell.h"
-#import "NewsFeedVoteCell.h"
+#import "FeedsCell.h"
+
 
 @interface NewsFeedTableViewController : UITableViewController<RKObjectLoaderDelegate>
 

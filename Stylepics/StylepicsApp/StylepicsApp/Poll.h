@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
-#define EDITING @"EDITING"
-#define VOTING @"VOTING"
-#define FINISHED @"FINISHED"
+#define EDITING 0
+#define VOTING 1
+#define FINISHED 2
 
 #define PollTypeCount 6
 
@@ -29,9 +29,9 @@ typedef enum{
 @property (nonatomic, strong) NSNumber *pollID, *totalVotes, *ownerID, *followerCount;
 @property (nonatomic, strong) User* user;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *state;// state = "EDITING", "VOTING" or "FINISHED"
+@property (nonatomic, strong) NSNumber *state;// state = EDITING, VOTING or FINISHED
 @property (nonatomic, strong) NSMutableArray *items, *audiences;
-@property (nonatomic, strong) NSDate *startTime, *endTime;
+@property (nonatomic, strong) NSDate *startTime, *endTime, *openTime;
 @property (nonatomic) NSNumber* category;
 
 @end

@@ -36,7 +36,7 @@
 @synthesize poll=_poll;
 @synthesize loadingWheel = _loadingWheel;
 @synthesize startTimeLabel = _startTimeLabel;
-@synthesize followerCount = _followerCount;
+@synthesize totalVotesCount = _totalVotesCount;
 @synthesize stateIndicator = _stateIndicator;
 @synthesize pollDescription = _pollDescription;
 @synthesize ownerLabel = _ownerLabel;
@@ -88,7 +88,7 @@
 {
     [self setLoadingWheel:nil];
     [self setStartTimeLabel:nil];
-    [self setFollowerCount:nil];
+    [self setTotalVotesCount:nil];
     [self setPollDescription:nil];
     [self setOwnerLabel:nil];
     [self setCategoryLabel:nil];
@@ -103,7 +103,8 @@
     // e.g. self.myOutlet = nil;
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
@@ -137,30 +138,32 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)showActionSheet{
+- (void)showActionSheet
+{
     NSString *pollOperation;
     NSString *deleteButton;
     if (isOwnerView)
     {
         deleteButton = DELETE_POLL_BUTTON_TITLE;
-        if ([self.poll.state isEqualToString:EDITING]){
+        if ([self.poll.state intValue] == EDITING){
             pollOperation = OPEN_POLL_BUTTON_TITLE;
-        } else if([self.poll.state isEqualToString:VOTING]){
+        } else if([self.poll.state intValue] == VOTING){
             pollOperation = END_POLL_BUTTON_TITLE;
         } else {
             pollOperation = nil;
         }
     }else{
         deleteButton = nil;
-        Audience *currentUser = [self.poll.audiences objectAtIndex:audienceIndex];
+        pollOperation = nil;
+        /*Audience *currentUser = [self.poll.audiences objectAtIndex:audienceIndex];
         NSLog(@"audience userID = %@",currentUser.userID);
         if (![currentUser.isFollowing boolValue]){
             pollOperation = FOLLOW_POLL_BUTTON_TITLE;
         } else {
             pollOperation = UNFOLLOW_POLL_BUTTON_TITLE;
-        }
+        }*/
     }
-    if (isOwnerView && [self.poll.state isEqualToString:EDITING])
+    if (isOwnerView && [self.poll.state intValue] == EDITING)
     {
         popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:ADD_ITEM_BUTTON_TITLE, pollOperation, SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
     }else{
@@ -175,13 +178,15 @@
 	popupQuery = nil;
 }
 
-- (void)addNewItem {
+- (void)addNewItem
+{
     singleItemViewOption = SingleItemViewOptionNew;
     [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
 
-- (IBAction)deleteItem:(UIButton *)sender {
-    if([self.poll.state isEqualToString:EDITING]&&[[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID]){
+- (IBAction)deleteItem:(UIButton *)sender
+{
+    if([self.poll.state intValue] == EDITING &&[[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID]){
         PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         Item *item = [self.poll.items objectAtIndex:indexPath.row];
@@ -219,19 +224,21 @@
         self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue]+ 1];
         [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
         
-        Event *votingEvent = [Event new];
+        [self followPoll];
+        /*Event *votingEvent = [Event new];
         votingEvent.eventType = VOTINGEVENT;
         votingEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         votingEvent.pollID = self.poll.pollID;
         votingEvent.itemID = item.itemID;
-        [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];
+        [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];*/
     }
 }
 
 #pragma mark - UIActionSheetDelegate Methods
 
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:OPEN_POLL_BUTTON_TITLE]){
         [self confirmToOpenPoll];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:END_POLL_BUTTON_TITLE]){
@@ -293,21 +300,33 @@
 
 - (void)openPoll
 {
-    self.poll.state = VOTING;
+    self.poll.state = [NSNumber numberWithInt:VOTING];
     [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+    
+    pollRecord = [PollRecord new];
+    pollRecord.pollID = self.poll.pollID;
+    pollRecord.pollRecordType = [NSNumber numberWithInt:OPENED_POLL];
+    [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
+    
+    Event* event = [Event new];
+    event.pollID = self.poll.pollID;
+    [[RKObjectManager sharedManager] postObject:event delegate:self];
+    event = nil;
     [self.tableView reloadData];
 }
 
 - (void)endPoll
 {
-    self.poll.state = FINISHED;
+    self.poll.state = [NSNumber numberWithInt:FINISHED];
     self.poll.endTime = [NSDate date];
     [self.tableView reloadData];
     [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+    
     pollRecord = [PollRecord new];
     pollRecord.pollID = self.poll.pollID;
-    pollRecord.pollRecordType = PAST;
+    pollRecord.pollRecordType = [NSNumber numberWithInt:ENDED_POLL];
     [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
+    pollRecord = nil;
 }
 
 - (void)deletePoll
@@ -319,18 +338,21 @@
     pollRecord.pollID = self.poll.pollID;
     [[RKObjectManager sharedManager] deleteObject:pollRecord delegate:self];
     [self back];
+    pollRecord = nil;
 }
 
 -(void)followPoll
 {
     Audience *currentAudience = [self.poll.audiences objectAtIndex:audienceIndex];
+    if (currentAudience.isFollowing) return;
     currentAudience.isFollowing = [NSNumber numberWithBool:YES];
     [[RKObjectManager sharedManager] putObject:currentAudience delegate:self];
     
     pollRecord = [PollRecord new];
     pollRecord.pollID = self.poll.pollID;
-    pollRecord.pollRecordType = FOLLOWED;
+    pollRecord.pollRecordType = [NSNumber numberWithInt:VOTED_POLL];
     [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
+    pollRecord = nil;
 }
 
 -(void)unfollowPoll
@@ -338,10 +360,12 @@
     Audience *currentAudience = [self.poll.audiences objectAtIndex:audienceIndex];
     currentAudience.isFollowing = [NSNumber numberWithBool:NO];
     [[RKObjectManager sharedManager] putObject:currentAudience delegate:self];
+    currentAudience = nil;
     
     pollRecord = [PollRecord new];
     pollRecord.pollID = self.poll.pollID;
     [[RKObjectManager sharedManager] deleteObject:pollRecord delegate:self];
+    pollRecord = nil;
 }
 
 #pragma mark - RKObjectLoaderDelegate Methods
@@ -364,6 +388,10 @@
         self.pollDescription.text = self.poll.title;
         self.ownerLabel.text = self.poll.user.username;
         self.categoryLabel.text = [Utility stringFromCategory:(PollCategory)[self.poll.category intValue]];
+        self.totalVotesCount.text = [NSString stringWithFormat:@"%@", self.poll.totalVotes];
+        self.startTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+        [self.startTimeLabel sizeToFit];
+        [self.totalVotesCount sizeToFit];
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         
         //
@@ -384,27 +412,23 @@
         //if the current user owns this poll
         if (isOwnerView){
             //self.addItemButton.enabled = (self.poll.state == EDITING);
-            if ([self.poll.state isEqualToString:EDITING]){
+            if ([self.poll.state intValue] == EDITING){
                 self.stateIndicator.text = @"Poll State: Editing \nYou can add and edit items in the poll.";
                 self.pollDescription.editable = YES;
-            }else if ([self.poll.state isEqualToString:VOTING]){
+            }else if ([self.poll.state intValue] == VOTING){
                 self.stateIndicator.text = @"Poll State: Voting \nPlease wait for your friends' votes until you want to end this poll.";
             }else {
                 self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";
             }
         }else{
-            if ([self.poll.state isEqualToString:EDITING]){
+            if ([self.poll.state intValue] == EDITING){
                 self.stateIndicator.text = @"Poll State: Editing \nThis is being edited. You can track this poll by following it.";
-            }else if ([self.poll.state isEqualToString:VOTING]){
+            }else if ([self.poll.state intValue] == VOTING){
                 self.stateIndicator.text = @"Poll State: Voting \nPlease vote on the item in the poll by clicking the checkbox in the picture. You can also undo the vote by clicking on the checked checkbox.";    
             }else {
                 self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";    
             }
         }
-        self.followerCount.text = [NSString stringWithFormat:@"%@", self.poll.followerCount];
-        self.startTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-        [self.startTimeLabel sizeToFit];
-        [self.followerCount sizeToFit];
 
         //find whether the current user is among the audience of the poll
         audienceIndex = [self.poll.audiences indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop)
@@ -425,7 +449,7 @@
     }else if (objectLoader.method == RKRequestMethodPUT){
         NSLog(@"Updating of this poll has been done");
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
-    }else if (objectLoader.method == RKRequestMethodPOST){
+    }else if (objectLoader.method == RKRequestMethodPOST && ![objectLoader wasSentToResourcePath:@"/events"]){
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     }else if (objectLoader.method == RKRequestMethodDELETE){
         NSLog(@"Deleted successfully!");
@@ -476,14 +500,14 @@
         [cell.voteButton setImage:[UIImage imageNamed:CHECKINBOX] forState:UIControlStateNormal];
         [cell.voteButton setImage:[UIImage imageNamed:CHECKINBOX_HL] forState:UIControlStateHighlighted];
     }
-    if ((!isOwnerView) && ([self.poll.state isEqualToString:VOTING]) && ([currentUser.hasVoted intValue] == 0)){
+    if ((!isOwnerView) && ([self.poll.state intValue] == VOTING) && ([currentUser.hasVoted intValue] == 0)){
         cell.voteButton.hidden = NO;
         [cell.voteButton setImage:[UIImage imageNamed:CHECKBOX] forState:UIControlStateNormal];
         [cell.voteButton setImage:[UIImage imageNamed:CHECKBOX_HL] forState:UIControlStateHighlighted];
     }
     [cell.deleteButton setImage:[UIImage imageNamed:DELETE_ITEM_BUTTON] forState:UIControlStateNormal];
     [cell.deleteButton setImage:[UIImage imageNamed:DELETE_ITEM_BUTTON_HL] forState:UIControlStateHighlighted];
-    cell.deleteButton.hidden = !(isOwnerView && [self.poll.state isEqualToString:EDITING]);
+    cell.deleteButton.hidden = !(isOwnerView && [self.poll.state intValue] == EDITING);
     cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
     [cell.itemImage clear];
     [cell.itemImage showLoadingWheel];
@@ -512,7 +536,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     itemToBeShown = [self.poll.items objectAtIndex:indexPath.row];
-    if ((isOwnerView)&&([self.poll.state isEqualToString:EDITING])){
+    if ((isOwnerView)&&([self.poll.state intValue] == EDITING)){
         singleItemViewOption = SingleItemViewOptionEdit;
     }else{
         singleItemViewOption = SingleItemViewOptionView;
@@ -520,7 +544,8 @@
     [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"show single item view"]){
         SingleItemViewController* nextViewController = (SingleItemViewController*) segue.destinationViewController;
         nextViewController.singleItemViewOption = singleItemViewOption;

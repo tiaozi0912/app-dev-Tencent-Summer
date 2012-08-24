@@ -14,23 +14,14 @@
     User* user;
 }
 
-@property (nonatomic, strong) NSMutableArray *activePolls, *pastPolls, *followedPolls;
+@property (nonatomic, strong) NSMutableArray *editingPolls, *openedPolls, *endedPolls, *votedPolls;
 @end
 
 @implementation ManagePollsTableViewController
 @synthesize userPhoto;
 @synthesize usernameLabel;
 
-@synthesize activePolls, pastPolls, followedPolls;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize editingPolls, openedPolls, endedPolls, votedPolls;
 
 - (void)viewDidLoad
 {
@@ -40,12 +31,6 @@
     self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
     self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
     self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEW_POLL_BUTTON andHighlightedStateImage:NEW_POLL_BUTTON_HL target:self action:@selector(newPoll)];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -53,8 +38,6 @@
     [self setUserPhoto:nil];
     [self setUsernameLabel:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -68,9 +51,10 @@
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     
-    self.activePolls = [NSMutableArray new];
-    self.followedPolls = [NSMutableArray new];
-    self.pastPolls = [NSMutableArray new];
+    self.editingPolls = [NSMutableArray new];
+    self.votedPolls = [NSMutableArray new];
+    self.openedPolls = [NSMutableArray new];
+    self.endedPolls = [NSMutableArray new];
     
     user = [User new];
     user.userID = [Utility getObjectForKey:CURRENTUSERID];
@@ -82,6 +66,7 @@
     [super viewDidAppear:animated];
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
 }
+
 #pragma User Actions
 -(void)newPoll
 {
@@ -113,12 +98,16 @@
         for (id obj in pollRecords){
             if ([obj isKindOfClass:[PollRecord class]]){
                 PollRecord* pollRecord = (PollRecord*) obj;
-                if ([pollRecord.pollRecordType isEqualToString:ACTIVE]){
-                    [self.activePolls addObject:pollRecord];
-                }else if ([pollRecord.pollRecordType isEqualToString:FOLLOWED]){
-                    [self.followedPolls addObject:pollRecord];
-                }else if ([pollRecord.pollRecordType isEqualToString:PAST]){
-                    [self.pastPolls addObject:pollRecord];
+                switch ([pollRecord.pollRecordType intValue]) {
+                    case EDITING_POLL:[self.editingPolls addObject:pollRecord];
+                        break;
+                    case OPENED_POLL:[self.openedPolls addObject:pollRecord];
+                        break;
+                    case ENDED_POLL:[self.endedPolls addObject:pollRecord];
+                        break;
+                    case VOTED_POLL:[self.votedPolls addObject:pollRecord];
+                        break;
+                        break;
                 }
             }
         }
@@ -146,9 +135,10 @@
 
 -(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     switch (section){ 
-        case 0: return @"ACTIVE POLLS";
-        case 1: return @"FOLLOWED POLLS";
-        case 2: return @"PAST POLLS";
+        case 0: return @"EDITING POLLS";
+        case 1: return @"OPENED POLLS";
+        case 2: return @"ENDED POLLS";
+        case 3: return @"VOTED POLLS";
         default: return nil;
     }
 }/* to customize the font in headers, use the method below instead
@@ -158,15 +148,20 @@
 {
     switch (section) {
         case 0: {
-            NSLog(@"active polls' count: %u",self.activePolls.count);
-            return self.activePolls.count;
+            NSLog(@"editingPolls' count: %u",self.editingPolls.count);
+            return self.editingPolls.count;
         }
         case 1: {
-            NSLog(@"followed polls' count: %u",self.followedPolls.count);
-            return self.followedPolls.count;}
+            NSLog(@"opened polls' count: %u",self.openedPolls.count);
+            return self.openedPolls.count;
+        }
         case 2: {
-            NSLog(@"past polls' count: %u",self.pastPolls.count);
-            return self.pastPolls.count;
+            NSLog(@"ended polls' count: %u",self.endedPolls.count);
+            return self.endedPolls.count;
+        }
+        case 3:{
+            NSLog(@"voted polls' count: %u",self.votedPolls.count);
+            return self.votedPolls.count;
         }
         default:return 0;
             break;
@@ -183,52 +178,65 @@
     switch (indexPath.section) {
 
         case 0:{
-            static NSString *CellIdentifier = @"active poll cell";
-            ActivePollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            static NSString *CellIdentifier = @"editing poll cell";
+            EditingPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
-                cell = [[ActivePollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [[EditingPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            if (indexPath.row < self.activePolls.count){
-                PollRecord* poll = [self.activePolls objectAtIndex:indexPath.row];
-                cell.nameLabel.text = poll.title;
-                cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
-                cell.stateLabel.text = poll.state;
-                [cell.nameLabel sizeToFit];
+            if (indexPath.row < self.editingPolls.count){
+                PollRecord* poll = [self.editingPolls objectAtIndex:indexPath.row];
+                cell.pollDescriptionLabel.text = poll.title;
+                cell.itemCountLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.itemsCount];
+                cell.startTimeLabel.text = [Utility formatTimeWithDate:poll.startTime];
+                [cell.pollDescriptionLabel setNeedsLayout];
+                [cell.startTimeLabel setNeedsLayout];
             }
             return cell;
         } 
         case 1:{
-            static NSString *CellIdentifier = @"followed poll cell";
-            FollowedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            static NSString *CellIdentifier = @"opened poll cell";
+            OpenedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
-                cell = [[FollowedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [[OpenedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            if (indexPath.row < self.followedPolls.count){
-                PollRecord *poll = [self.followedPolls objectAtIndex:indexPath.row];
-                cell.nameLabel.text = poll.title;
-                cell.ownerLabel.text = poll.owner.username;
-                cell.userPhoto.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
-                cell.userPhoto.url = [NSURL URLWithString:poll.owner.profilePhotoURL];
-                [HJObjectManager manage:cell.userPhoto];
-                cell.stateLabel.text = poll.state;
-                [cell.nameLabel sizeToFit];
-                [cell.ownerLabel sizeToFit];
+            if (indexPath.row < self.openedPolls.count){
+                PollRecord *poll = [self.votedPolls objectAtIndex:indexPath.row];
+                cell.pollDescriptionLabel.text = poll.title;
+                cell.votesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
+                cell.openTimeLabel.text = [Utility formatTimeWithDate:poll.openTime];
+                [cell.pollDescriptionLabel setNeedsLayout];
+                [cell.openTimeLabel setNeedsLayout];
             }
             return cell;
         } 
         case 2:{
-            static NSString *CellIdentifier = @"past poll cell";
-            PastPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            static NSString *CellIdentifier = @"ended poll cell";
+            EndedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
-                cell = [[PastPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [[EndedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            if (indexPath.row < self.pastPolls.count){
-                PollRecord *poll = [self.pastPolls objectAtIndex:indexPath.row];
-                cell.nameLabel.text = poll.title;
-                cell.votesLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
-                cell.dateLabel.text =[NSDateFormatter localizedStringFromDate:poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-                [cell.nameLabel sizeToFit];
-                [cell.dateLabel sizeToFit];
+            if (indexPath.row < self.endedPolls.count){
+                PollRecord *poll = [self.endedPolls objectAtIndex:indexPath.row];
+                cell.pollDescriptionLabel.text = poll.title;
+                cell.votesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
+                cell.endTimeLabel.text = [Utility formatTimeWithDate:poll.endTime];
+                [cell.pollDescriptionLabel setNeedsLayout];
+                [cell.endTimeLabel setNeedsLayout];
+            }
+            return cell;
+        }
+        case 3:{
+            static NSString *CellIdentifier = @"voted poll cell";
+            VotedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[VotedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            if (indexPath.row < self.votedPolls.count){
+                PollRecord *poll = [self.votedPolls objectAtIndex:indexPath.row];
+                cell.pollDescriptionLabel.text = poll.title;
+                cell.votesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
+                cell.stateLabel.text = [Utility stringFromPollState:[poll.state intValue]];
+                [cell.pollDescriptionLabel setNeedsLayout];
             }
             return cell;
         }
@@ -242,44 +250,6 @@
 {
     return POLLCELLHEIGHT;
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -287,17 +257,21 @@
 {
     switch (indexPath.section) {
         case 0:{
-            Poll* poll = [self.activePolls objectAtIndex:indexPath.row];
+            Poll* poll = [self.editingPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             break;
         }
         case 1:{
-            Poll* poll = [self.followedPolls objectAtIndex:indexPath.row];
+            Poll* poll = [self.openedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             break;
         }
         case 2:{
-            Poll* poll = [self.pastPolls objectAtIndex:indexPath.row];
+            Poll* poll = [self.endedPolls objectAtIndex:indexPath.row];
+            [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+        }
+        case 3:{
+            Poll* poll = [self.votedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         }
         default:
@@ -305,13 +279,7 @@
     }
 
     [self performSegueWithIdentifier:@"show poll" sender:self];
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+
 }
 
 #pragma NewPollViewController delegate method

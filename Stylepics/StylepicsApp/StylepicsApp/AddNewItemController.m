@@ -211,17 +211,17 @@
         [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         
         //post a new poll event
-        Event *newPollEvent = [Event new];
+        /*Event *newPollEvent = [Event new];
         newPollEvent.eventType = NEWPOLLEVENT;
         newPollEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         newPollEvent.pollID = poll.pollID;
-        [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
+        [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];*/
         
         //post a new poll record
         PollRecord *pollRecord = [PollRecord new];
         pollRecord.pollID = poll.pollID;
         pollRecord.userID = [Utility getObjectForKey:CURRENTUSERID];
-        pollRecord.pollRecordType = ACTIVE;
+        pollRecord.pollRecordType = [NSNumber numberWithInt:EDITING_POLL];
         [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
         
         
@@ -243,7 +243,7 @@
         // extract all the active polls in editing state of the current user
         for (id obj in objects){
             PollRecord *pollRecord = (PollRecord*) obj;
-                if ([pollRecord.pollRecordType isEqualToString:ACTIVE] && [pollRecord.state isEqualToString:EDITING]){
+                if ([pollRecord.pollRecordType intValue] == EDITING_POLL){
                     [activePolls addObject:pollRecord];
                     [pickerDataArray addObject:pollRecord.title];
             }

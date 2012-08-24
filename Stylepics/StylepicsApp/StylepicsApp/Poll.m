@@ -10,5 +10,5 @@
 
 @implementation Poll
 
-@synthesize title, pollID, ownerID, user, items, audiences, state, totalVotes, startTime, endTime, followerCount, category;
+@synthesize title, pollID, ownerID, user, items, audiences, state, totalVotes, startTime, endTime, openTime, followerCount, category;
 @end

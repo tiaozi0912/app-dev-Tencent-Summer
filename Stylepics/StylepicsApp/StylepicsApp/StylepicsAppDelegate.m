@@ -56,6 +56,8 @@
      @"state", @"state",
      @"start_time", @"startTime",
      @"end_time", @"endTime",
+     @"open_time", @"openTime",
+     @"items_count", @"itemsCount",
      nil];
     [pollRecordMapping mapRelationship:@"owner" withMapping:userMapping];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:pollRecordMapping withRootKeyPath:@"poll_record"];
@@ -99,13 +101,13 @@
      @"id", @"pollID",
      @"user_id", @"ownerID",
      @"total_votes", @"totalVotes",
-     //@"max_votes_for_single_item", @"maxVotesForSingleItem",
      @"title", @"title",
      @"state", @"state",
      @"start_time", @"startTime",
      @"end_time", @"endTime",
-     @"number_of_followers", @"followerCount",
      @"category", @"category",
+     @"open_time", @"openTime",
+     @"items_count", @"itemsCount",
      nil];
     [pollMapping mapRelationship:@"user" withMapping:userMapping];
     [pollMapping mapRelationship:@"items" withMapping:itemMapping];
@@ -117,16 +119,16 @@
     RKObjectMapping* eventMapping = [RKObjectMapping mappingForClass:[Event class]];
     [eventMapping mapKeyPathsToAttributes:
      @"id", @"eventID",
-     @"event_type", @"eventType",
-     @"user_id", @"userID",
-     @"poll_id", @"pollID",
-     @"item_id", @"itemID",
+    // @"event_type", @"eventType",
+    // @"user_id", @"userID",
+    // @"poll_id", @"pollID",
+    // @"item_id", @"itemID",
      @"created_at", @"timeStamp",
      nil];
     [eventMapping mapRelationship:@"user" withMapping:userMapping];
-    [eventMapping mapKeyPath:@"poll_owner" toRelationship:@"pollOwner" withMapping:userMapping];
+    //[eventMapping mapKeyPath:@"poll_owner" toRelationship:@"pollOwner" withMapping:userMapping];
     [eventMapping mapRelationship:@"poll" withMapping:pollMapping];
-    [eventMapping mapRelationship:@"item" withMapping:itemMapping];
+    [eventMapping mapRelationship:@"items" withMapping:itemMapping];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:eventMapping withRootKeyPath:@"event"];
     
 

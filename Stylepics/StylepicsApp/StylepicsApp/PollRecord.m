@@ -10,6 +10,6 @@
 
 @implementation PollRecord
 
-@synthesize pollID, userID, totalVotes, pollRecordType, title, state, owner, startTime, endTime;
+@synthesize pollID, userID, totalVotes, pollRecordType, title, state, owner, startTime, endTime, openTime, itemsCount;
 
 @end

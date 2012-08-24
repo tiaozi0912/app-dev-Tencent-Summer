@@ -35,4 +35,5 @@
 +(UIToolbar*)keyboardAccessoryToolBarWithButton:(NSString*)title
                                          target:(id) t
                                          action:(SEL) a;
++(NSString*)stringFromPollState:(int) state;
 @end

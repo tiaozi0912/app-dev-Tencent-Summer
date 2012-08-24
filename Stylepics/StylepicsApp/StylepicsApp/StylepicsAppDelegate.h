@@ -37,10 +37,6 @@
 #define NEWUSER @"newUser"
 #define SINGLE_ACCESS_TOKEN_KEY @"singleAccessTokenKey"
 
-#define ACTIVE @"ACTIVE"
-#define PAST @"PAST"
-#define FOLLOWED @"FOLLOWED"
-
 #define BACKGROUND_COLOR @"BG.png"
 #define NAV_BAR_BACKGROUND_COLOR @"header_bg.png"
 #define NAV_BAR_BACKGROUND_WITH_LOGO @"header_bg-logo"

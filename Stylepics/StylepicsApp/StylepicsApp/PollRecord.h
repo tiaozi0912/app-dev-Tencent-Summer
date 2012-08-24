@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+
+#define EDITING_POLL 0
+#define OPENED_POLL 1
+#define ENDED_POLL 2
+#define VOTED_POLL 3
+
 @interface PollRecord : NSObject
 
-@property (nonatomic, strong) NSNumber *pollID, *userID, *totalVotes;
-@property (nonatomic, strong) NSString *pollRecordType, *title, *state;
+
+@property (nonatomic, strong) NSNumber *pollID, *userID, *totalVotes,*pollRecordType, *state, *itemsCount;
+@property (nonatomic, strong) NSString  *title;
 @property (nonatomic, strong) User *owner;
-@property (nonatomic, strong) NSDate *startTime, *endTime;
+@property (nonatomic, strong) NSDate *startTime, *endTime, *openTime;
 
 @end

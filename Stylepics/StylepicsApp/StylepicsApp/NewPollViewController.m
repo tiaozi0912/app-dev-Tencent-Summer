@@ -13,7 +13,7 @@
 @interface NewPollViewController ()
 {
     Poll* poll;
-    BOOL eventCreated, recordCreated;
+    //BOOL eventCreated, recordCreated;
 }
 @end
 
@@ -49,8 +49,8 @@
     self.categoryButton.titleLabel.textAlignment =  UITextAlignmentCenter;
     
     poll = [Poll new];
-    eventCreated = NO;
-    recordCreated = NO;
+    //eventCreated = NO;
+    //recordCreated = NO;
 	// Do any additional setup after loading the view.
 }
 
@@ -131,24 +131,19 @@
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
     if ([objectLoader wasSentToResourcePath:@"/polls"]){
-        Event *newPollEvent = [Event new];
+        /*Event *newPollEvent = [Event new];
         newPollEvent.eventType = NEWPOLLEVENT;
         newPollEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         newPollEvent.pollID = poll.pollID;
-        [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];
+        [[RKObjectManager sharedManager] postObject:newPollEvent delegate:self];*/
         
         PollRecord *pollRecord = [PollRecord new];
         pollRecord.pollID = poll.pollID;
         pollRecord.userID = [Utility getObjectForKey:CURRENTUSERID];
-        pollRecord.pollRecordType = ACTIVE;
+        pollRecord.pollRecordType = [NSNumber numberWithInt:EDITING_POLL];
         [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
-    }else if ([objectLoader wasSentToResourcePath:@"/events"]){
-        eventCreated = YES;
     }else if ([objectLoader wasSentToResourcePath:@"/poll_records"]){
-        recordCreated = YES;
-    }
-    if (eventCreated && recordCreated){
-       [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID]; 
+        [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID]; 
     }
 }
 

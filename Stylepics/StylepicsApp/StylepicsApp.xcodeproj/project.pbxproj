@@ -32,9 +32,6 @@
 		0D553A8D15C27D5A00799F0A /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D553A8215C27D5900799F0A /* HJMOUserBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D553A8E15C27D5A00799F0A /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D553A8415C27D5900799F0A /* HJObjManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D553A8F15C27D5A00799F0A /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D553A8615C27D5900799F0A /* HJWeakMutableArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		0D647C4715B1205C00530658 /* ActivePollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D647C4615B1205C00530658 /* ActivePollCell.m */; };
-		0D7AE97915B6671800A23CE0 /* FollowedPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7AE97815B6671800A23CE0 /* FollowedPollCell.m */; };
-		0D7AE97C15B6673800A23CE0 /* PastPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7AE97B15B6673800A23CE0 /* PastPollCell.m */; };
 		0D8F49D315B605CF00C2DAEF /* PollResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8F49D215B605CF00C2DAEF /* PollResultViewController.m */; };
 		0D8F49D615B6065A00C2DAEF /* PollResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8F49D515B6065A00C2DAEF /* PollResultCell.m */; };
 		0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19615AF7606003011A0 /* PollItemCell.m */; };
@@ -55,8 +52,6 @@
 		0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */; };
 		0D957D2215B0DC37009D37AA /* comments icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D957D2115B0DC37009D37AA /* comments icon.png */; };
 		0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */; };
-		0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */; };
-		0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */; };
 		0D96665E15AB9DEB00753491 /* comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665D15AB9DEA00753491 /* comment.m */; };
 		0D98F3E215C0B2B20046423C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3D715C0B2070046423C /* libRestKit.a */; };
 		0D98F3E415C0B2EE0046423C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3E315C0B2EE0046423C /* CFNetwork.framework */; };
@@ -70,7 +65,6 @@
 		0D9A684215DD8427004A93DA /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A683F15DD8426004A93DA /* BG.png */; };
 		0D9B1C6115CB0E77003A34DD /* Audience.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B1C6015CB0E77003A34DD /* Audience.m */; };
 		0D9BA1CA15C603EC00599AA2 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9BA1C915C603EC00599AA2 /* Environment.m */; };
-		0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */; };
 		0D9C0CA415DEC1A8005FA5C5 /* CenterButtonTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9C0CA315DEC1A8005FA5C5 /* CenterButtonTabController.m */; };
 		0D9DDAEE15D3100A008D27AB /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9DDAED15D3100A008D27AB /* SettingsTableViewController.m */; };
 		0D9EFC3615B3E502002180F1 /* SingleItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */; };
@@ -121,6 +115,11 @@
 		0DA5C3C915CDA9B90020D7A8 /* PollRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA5C3C815CDA9B90020D7A8 /* PollRecord.m */; };
 		0DA9860C15DB14E10088493A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9860B15DB14E10088493A /* Icon.png */; };
 		0DA9860E15DB14FB0088493A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA9860D15DB14FB0088493A /* Icon@2x.png */; };
+		0DB2A55015E6F46500FA1470 /* FeedsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2A54F15E6F46500FA1470 /* FeedsCell.m */; };
+		0DB2A55315E705CD00FA1470 /* VotedPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2A55215E705CC00FA1470 /* VotedPollCell.m */; };
+		0DB2A55615E7075900FA1470 /* EditingPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2A55515E7075800FA1470 /* EditingPollCell.m */; };
+		0DB2A55915E7097B00FA1470 /* OpenedPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2A55815E7097A00FA1470 /* OpenedPollCell.m */; };
+		0DB2A55C15E70FF100FA1470 /* EndedPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2A55B15E70FF000FA1470 /* EndedPollCell.m */; };
 		0DC94A2815CF404200383472 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC94A2715CF404200383472 /* AWSiOSSDK.framework */; };
 		0DC94A2F15CF474B00383472 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC94A2E15CF474B00383472 /* AmazonClientManager.m */; };
 		0DE651D015B1E5C4002C8BA5 /* default_profile_photo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0DE651CF15B1E5C4002C8BA5 /* default_profile_photo.jpeg */; };
@@ -228,12 +227,6 @@
 		0D553A8415C27D5900799F0A /* HJObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJObjManager.m; sourceTree = "<group>"; };
 		0D553A8515C27D5900799F0A /* HJWeakMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJWeakMutableArray.h; sourceTree = "<group>"; };
 		0D553A8615C27D5900799F0A /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJWeakMutableArray.m; sourceTree = "<group>"; };
-		0D647C4515B1205C00530658 /* ActivePollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivePollCell.h; sourceTree = "<group>"; };
-		0D647C4615B1205C00530658 /* ActivePollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivePollCell.m; sourceTree = "<group>"; };
-		0D7AE97715B6671800A23CE0 /* FollowedPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowedPollCell.h; sourceTree = "<group>"; };
-		0D7AE97815B6671800A23CE0 /* FollowedPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowedPollCell.m; sourceTree = "<group>"; };
-		0D7AE97A15B6673800A23CE0 /* PastPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastPollCell.h; sourceTree = "<group>"; };
-		0D7AE97B15B6673800A23CE0 /* PastPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastPollCell.m; sourceTree = "<group>"; };
 		0D8F49D115B605CF00C2DAEF /* PollResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollResultViewController.h; sourceTree = "<group>"; };
 		0D8F49D215B605CF00C2DAEF /* PollResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollResultViewController.m; sourceTree = "<group>"; };
 		0D8F49D415B6065A00C2DAEF /* PollResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PollResultCell.h; sourceTree = "<group>"; };
@@ -269,10 +262,6 @@
 		0D957D2115B0DC37009D37AA /* comments icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comments icon.png"; path = "img/comments icon.png"; sourceTree = "<group>"; };
 		0D957D2315B0E09B009D37AA /* ManagePollsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagePollsTableViewController.h; sourceTree = "<group>"; };
 		0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagePollsTableViewController.m; sourceTree = "<group>"; };
-		0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewItemCell.h; path = "News Feed Page/NewsFeedNewItemCell.h"; sourceTree = "<group>"; };
-		0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewItemCell.m; path = "News Feed Page/NewsFeedNewItemCell.m"; sourceTree = "<group>"; };
-		0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedVoteCell.h; path = "News Feed Page/NewsFeedVoteCell.h"; sourceTree = "<group>"; };
-		0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedVoteCell.m; path = "News Feed Page/NewsFeedVoteCell.m"; sourceTree = "<group>"; };
 		0D96665C15AB9DEA00753491 /* comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comment.h; sourceTree = "<group>"; };
 		0D96665D15AB9DEA00753491 /* comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comment.m; sourceTree = "<group>"; };
 		0D98F3CB15C0B2060046423C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "RestKit-RestKit-6540552/RestKit.xcodeproj"; sourceTree = "<group>"; };
@@ -290,8 +279,6 @@
 		0D9B1C6015CB0E77003A34DD /* Audience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Audience.m; sourceTree = "<group>"; };
 		0D9BA1C815C603EC00599AA2 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		0D9BA1C915C603EC00599AA2 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
-		0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsFeedNewPollCell.h; path = "News Feed Page/NewsFeedNewPollCell.h"; sourceTree = "<group>"; };
-		0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsFeedNewPollCell.m; path = "News Feed Page/NewsFeedNewPollCell.m"; sourceTree = "<group>"; };
 		0D9C0CA215DEC1A8005FA5C5 /* CenterButtonTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterButtonTabController.h; sourceTree = "<group>"; };
 		0D9C0CA315DEC1A8005FA5C5 /* CenterButtonTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterButtonTabController.m; sourceTree = "<group>"; };
 		0D9DDAEC15D3100A008D27AB /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
@@ -349,6 +336,16 @@
 		0DA5C3C815CDA9B90020D7A8 /* PollRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PollRecord.m; sourceTree = "<group>"; };
 		0DA9860B15DB14E10088493A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		0DA9860D15DB14FB0088493A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		0DB2A54E15E6F46500FA1470 /* FeedsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedsCell.h; sourceTree = "<group>"; };
+		0DB2A54F15E6F46500FA1470 /* FeedsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedsCell.m; sourceTree = "<group>"; };
+		0DB2A55115E705CC00FA1470 /* VotedPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotedPollCell.h; sourceTree = "<group>"; };
+		0DB2A55215E705CC00FA1470 /* VotedPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotedPollCell.m; sourceTree = "<group>"; };
+		0DB2A55415E7075800FA1470 /* EditingPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditingPollCell.h; sourceTree = "<group>"; };
+		0DB2A55515E7075800FA1470 /* EditingPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditingPollCell.m; sourceTree = "<group>"; };
+		0DB2A55715E7097A00FA1470 /* OpenedPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenedPollCell.h; sourceTree = "<group>"; };
+		0DB2A55815E7097A00FA1470 /* OpenedPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenedPollCell.m; sourceTree = "<group>"; };
+		0DB2A55A15E70FF000FA1470 /* EndedPollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndedPollCell.h; sourceTree = "<group>"; };
+		0DB2A55B15E70FF000FA1470 /* EndedPollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndedPollCell.m; sourceTree = "<group>"; };
 		0DC94A2715CF404200383472 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = "aws-ios-sdk-1.3.3/AWSiOSSDK.framework"; sourceTree = "<group>"; };
 		0DC94A2D15CF474B00383472 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
 		0DC94A2E15CF474B00383472 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
@@ -537,20 +534,18 @@
 			isa = PBXGroup;
 			children = (
 				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
-				0D647C4515B1205C00530658 /* ActivePollCell.h */,
-				0D647C4615B1205C00530658 /* ActivePollCell.m */,
-				0D7AE97715B6671800A23CE0 /* FollowedPollCell.h */,
-				0D7AE97815B6671800A23CE0 /* FollowedPollCell.m */,
-				0D7AE97A15B6673800A23CE0 /* PastPollCell.h */,
-				0D7AE97B15B6673800A23CE0 /* PastPollCell.m */,
+				0DB2A55415E7075800FA1470 /* EditingPollCell.h */,
+				0DB2A55515E7075800FA1470 /* EditingPollCell.m */,
+				0DB2A55715E7097A00FA1470 /* OpenedPollCell.h */,
+				0DB2A55815E7097A00FA1470 /* OpenedPollCell.m */,
+				0DB2A55A15E70FF000FA1470 /* EndedPollCell.h */,
+				0DB2A55B15E70FF000FA1470 /* EndedPollCell.m */,
+				0DB2A55115E705CC00FA1470 /* VotedPollCell.h */,
+				0DB2A55215E705CC00FA1470 /* VotedPollCell.m */,
 				0D8FA19515AF7606003011A0 /* PollItemCell.h */,
 				0D8FA19615AF7606003011A0 /* PollItemCell.m */,
-				0D9C05A215AA1BCE006D86CE /* NewsFeedNewPollCell.h */,
-				0D9C05A315AA1BCE006D86CE /* NewsFeedNewPollCell.m */,
-				0D96664F15AB6E9500753491 /* NewsFeedNewItemCell.h */,
-				0D96665015AB6E9500753491 /* NewsFeedNewItemCell.m */,
-				0D96665315AB70AB00753491 /* NewsFeedVoteCell.h */,
-				0D96665415AB70AB00753491 /* NewsFeedVoteCell.m */,
+				0DB2A54E15E6F46500FA1470 /* FeedsCell.h */,
+				0DB2A54F15E6F46500FA1470 /* FeedsCell.m */,
 				0D8F49D415B6065A00C2DAEF /* PollResultCell.h */,
 				0D8F49D515B6065A00C2DAEF /* PollResultCell.m */,
 				0D03A99115D7353600A0A9BD /* HintView.h */,
@@ -943,21 +938,15 @@
 				0D94F51015A7D2BB00903F0B /* Poll.m in Sources */,
 				0D94F51615A7D30800903F0B /* NewPollViewController.m in Sources */,
 				0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */,
-				0D9C05A415AA1BCE006D86CE /* NewsFeedNewPollCell.m in Sources */,
-				0D96665115AB6E9500753491 /* NewsFeedNewItemCell.m in Sources */,
-				0D96665515AB70AB00753491 /* NewsFeedVoteCell.m in Sources */,
 				0D96665E15AB9DEB00753491 /* comment.m in Sources */,
 				0D91EE5B15AD4BD300D1015D /* RegistrationPageViewController.m in Sources */,
 				0D99436315AEB1590037194D /* Utility.m in Sources */,
 				0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */,
 				0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */,
 				0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */,
-				0D647C4715B1205C00530658 /* ActivePollCell.m in Sources */,
 				0D9EFC3615B3E502002180F1 /* SingleItemViewController.m in Sources */,
 				0D8F49D315B605CF00C2DAEF /* PollResultViewController.m in Sources */,
 				0D8F49D615B6065A00C2DAEF /* PollResultCell.m in Sources */,
-				0D7AE97915B6671800A23CE0 /* FollowedPollCell.m in Sources */,
-				0D7AE97C15B6673800A23CE0 /* PastPollCell.m in Sources */,
 				0D553A8715C27D5A00799F0A /* HJCircularBuffer.m in Sources */,
 				0D553A8815C27D5A00799F0A /* HJManagedImageV.m in Sources */,
 				0D553A8915C27D5A00799F0A /* HJMOBigFileCache.m in Sources */,
@@ -981,6 +970,11 @@
 				0D9C0CA415DEC1A8005FA5C5 /* CenterButtonTabController.m in Sources */,
 				0DA31AC615E30E0E00801403 /* AnimatedPickerView.m in Sources */,
 				4D558B0215E44D6E00CDBD3D /* MultipartLabel.m in Sources */,
+				0DB2A55015E6F46500FA1470 /* FeedsCell.m in Sources */,
+				0DB2A55315E705CD00FA1470 /* VotedPollCell.m in Sources */,
+				0DB2A55615E7075900FA1470 /* EditingPollCell.m in Sources */,
+				0DB2A55915E7097B00FA1470 /* OpenedPollCell.m in Sources */,
+				0DB2A55C15E70FF100FA1470 /* EndedPollCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

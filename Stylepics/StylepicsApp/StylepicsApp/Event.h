@@ -11,18 +11,17 @@
 #import "Poll.h"
 #import "Item.h"
 
-#define VOTINGEVENT @"vote"
+/*#define VOTINGEVENT @"vote"
 #define NEWPOLLEVENT @"new poll"
-#define NEWITEMEVENT @"new item"
+#define NEWITEMEVENT @"new item"*/
 
 @interface Event : NSObject
 
-@property (nonatomic, strong) NSNumber* eventID, *userID, *pollID, *itemID;
-@property (nonatomic, strong) NSString* eventType;
-@property (nonatomic, strong) Poll* poll;
-@property (nonatomic, strong) Item* item;
+@property (nonatomic, strong) NSNumber *eventID, *pollID;
+//@property (nonatomic, strong) NSString* eventType;
+@property (nonatomic, strong) Poll *poll;
+@property (nonatomic, strong) NSArray* items;
 @property (nonatomic, strong) User* user;
-@property (nonatomic, strong) User* pollOwner;
-@property (nonatomic, strong) NSDate* timeStamp;
+@property (nonatomic, strong) NSDate *timeStamp;
 
 @end
