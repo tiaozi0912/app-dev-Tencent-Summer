@@ -274,7 +274,7 @@ finishedSavingWithError:(NSError *)error
 {
     if ([objectLoader wasSentToResourcePath:@"/items" method:RKRequestMethodPOST] ){
         @try {
-            NSString *imageName = [NSString stringWithFormat:@"Item_%@.jpeg", self.item.itemID];
+            NSString *imageName = [NSString stringWithFormat:@"Item_%@_%@.jpeg", self.item.itemID, [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterShortStyle]];
             NSData *imageData = UIImageJPEGRepresentation(itemImage, 0.8f);
             @try {
                 S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
@@ -287,7 +287,7 @@ finishedSavingWithError:(NSError *)error
             @catch (AmazonClientException *exception) {
                 NSLog(@"Failed to Create Object [%@]", exception);
             }            
-            self.item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, imageName];
+            self.item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, [Utility formatURLFromDateString:imageName]];
             self.item.description = self.descriptionTextField.text;
             self.item.numberOfVotes = [NSNumber numberWithInt:0];
             self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
@@ -300,13 +300,6 @@ finishedSavingWithError:(NSError *)error
         }
     }else if (objectLoader.method == RKRequestMethodPUT){
         NSLog(@"The new item has been added!");
-        /*Event *newItemEvent = [Event new];
-        newItemEvent.eventType = NEWITEMEVENT;
-        newItemEvent.pollID = self.item.pollID;
-        newItemEvent.itemID = self.item.itemID;
-        newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
-        [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];*/
-    }else {
         [spinner stopAnimating];
         spinner = nil;
         [self backWithFlipAnimation];

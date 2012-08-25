@@ -58,13 +58,13 @@
     
     user = [User new];
     user.userID = [Utility getObjectForKey:CURRENTUSERID];
-    [[RKObjectManager sharedManager] getObject:user delegate:self];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
+    [[RKObjectManager sharedManager] getObject:user delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
 }
 
 #pragma User Actions
@@ -130,7 +130,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 -(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -200,7 +200,7 @@
                 cell = [[OpenedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
             if (indexPath.row < self.openedPolls.count){
-                PollRecord *poll = [self.votedPolls objectAtIndex:indexPath.row];
+                PollRecord *poll = [self.openedPolls objectAtIndex:indexPath.row];
                 cell.pollDescriptionLabel.text = poll.title;
                 cell.votesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
                 cell.openTimeLabel.text = [Utility formatTimeWithDate:poll.openTime];

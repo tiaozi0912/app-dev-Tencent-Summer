@@ -244,4 +244,13 @@
             return @"UNKNOWN";
     }
 }
+
++(NSString*)formatURLFromDateString:(NSString*) string
+{
+    NSMutableString *result = [string mutableCopy];
+    [result replaceOccurrencesOfString:@" " withString:@"+" options:NSCaseInsensitiveSearch range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@"," withString:@"%2C" options:NSCaseInsensitiveSearch range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@":" withString:@"%3A" options:NSCaseInsensitiveSearch range:NSMakeRange(0, result.length)];
+    return result;
+}
 @end

@@ -250,7 +250,8 @@
         }
         [self.pickerView reloadAllComponents];
         self.pickPollButton.enabled = YES;
-    }else if (backMark){
+    }
+    if (backMark){
         [spinner stopAnimating];
         [self backWithFlipAnimation];
     }

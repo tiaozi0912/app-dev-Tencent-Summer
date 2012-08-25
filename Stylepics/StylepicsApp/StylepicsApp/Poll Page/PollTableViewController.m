@@ -22,7 +22,7 @@
 
 @interface PollTableViewController (){
     NSUInteger audienceIndex;
-    BOOL isOwnerView;
+    BOOL isOwnerView, needsBack;
     PollRecord *pollRecord;
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
@@ -78,6 +78,8 @@
     //[self.view addSubview:addItemHint];
     [self.view addSubview:emptyPollHintInAudienceView];
     self.clearsSelectionOnViewWillAppear = NO;
+    
+    needsBack = NO;
  
     self.pollDescription.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Done" target:self action:@selector(doneTyping)];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -300,20 +302,24 @@
 
 - (void)openPoll
 {
-    self.poll.state = [NSNumber numberWithInt:VOTING];
-    self.poll.openTime = [NSDate date];
-    [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
-    
-    pollRecord = [PollRecord new];
-    pollRecord.pollID = self.poll.pollID;
-    pollRecord.pollRecordType = [NSNumber numberWithInt:OPENED_POLL];
-    [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
-    
-    Event* event = [Event new];
-    event.pollID = self.poll.pollID;
-    [[RKObjectManager sharedManager] postObject:event delegate:self];
-    event = nil;
-    [self.tableView reloadData];
+    if (self.poll.items.count < 2) {
+        [Utility showAlert:@"Please add more items." message:@"You can't open the poll until you have 2 items in the poll."];
+    }else{
+        self.poll.state = [NSNumber numberWithInt:VOTING];
+        self.poll.openTime = [NSDate date];
+        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+        
+        pollRecord = [PollRecord new];
+        pollRecord.pollID = self.poll.pollID;
+        pollRecord.pollRecordType = [NSNumber numberWithInt:OPENED_POLL];
+        [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
+        
+        Event* event = [Event new];
+        event.pollID = self.poll.pollID;
+        event.userID = [Utility getObjectForKey:CURRENTUSERID];
+        [[RKObjectManager sharedManager] postObject:event delegate:self];
+        [self.tableView reloadData];
+    }
 }
 
 - (void)endPoll
@@ -337,8 +343,8 @@
     
     pollRecord = [PollRecord new];
     pollRecord.pollID = self.poll.pollID;
+    needsBack = YES;
     [[RKObjectManager sharedManager] deleteObject:pollRecord delegate:self];
-    [self back];
     pollRecord = nil;
 }
 
@@ -456,6 +462,7 @@
         NSLog(@"Deleted successfully!");
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     }
+    if (needsBack) [self back];
     [self.tableView reloadData];
 }
 

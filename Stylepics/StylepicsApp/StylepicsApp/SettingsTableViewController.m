@@ -187,7 +187,7 @@
     @catch (AmazonClientException *exception) {
         NSLog(@"Failed to Create Object [%@]", exception);
     }
-    currentUser.profilePhotoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", USER_PROFILE_PHOTOS_BUCKET_NAME, imageName];
+    currentUser.profilePhotoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", USER_PROFILE_PHOTOS_BUCKET_NAME, [Utility formatURLFromDateString:imageName]];
     [[RKObjectManager sharedManager] putObject:currentUser delegate:self];
 }
 - (void) TestOnSimulator

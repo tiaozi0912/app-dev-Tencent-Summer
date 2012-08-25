@@ -143,18 +143,21 @@
     
     [cell.thumbnail0 clear];
     [cell.thumbnail0 showLoadingWheel];
-    cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:0]).photoURL];
+    cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL];
     if (event.items.count > 1) {
-        cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:1]).photoURL];
+        cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL];
         cell.thumbnail1.hidden = NO;
-    }else if (event.poll.items.count > 2) {
-        cell.thumbnail2.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:2]).photoURL];
+    }
+    if (event.items.count > 2) {
+        cell.thumbnail2.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL];
         cell.thumbnail2.hidden = NO;
-    }else if (event.poll.items.count > 3) {
-        cell.thumbnail3.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:3]).photoURL];
+    }
+    if (event.items.count > 3) {
+        cell.thumbnail3.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:3]).photoURL];
         cell.thumbnail3.hidden = NO;
-    }else if (event.poll.items.count > 4) {
-        cell.thumbnail4.url = [NSURL URLWithString:((Item*)[event.poll.items objectAtIndex:4]).photoURL];
+    }
+    if (event.items.count > 4) {
+        cell.thumbnail4.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:4]).photoURL];
         cell.thumbnail4.hidden = NO;
     }
     
@@ -173,12 +176,12 @@
     
     [cell.usernameAndActionLabel updateNumberOfLabels:2];
     [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
-    [cell.usernameAndActionLabel setText:@"started a poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
+    [cell.usernameAndActionLabel setText:@" opened a poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
     cell.usernameAndActionLabel.clipsToBounds = YES;
     
     cell.eventDescriptionLabel.text = event.poll.title;
     cell.eventDescriptionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14.0];
-    [cell.eventDescriptionLabel sizeToFit];
+    [cell.eventDescriptionLabel setNeedsLayout];
     
     /*cell.timeStampLabel.frame = TimeStampLabelFrame;
      cell.userImage.frame = UserImageFrame;

@@ -36,4 +36,5 @@
                                          target:(id) t
                                          action:(SEL) a;
 +(NSString*)stringFromPollState:(int) state;
++(NSString*)formatURLFromDateString:(NSString*) string;
 @end

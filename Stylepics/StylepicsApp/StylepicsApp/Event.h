@@ -17,7 +17,7 @@
 
 @interface Event : NSObject
 
-@property (nonatomic, strong) NSNumber *eventID, *pollID;
+@property (nonatomic, strong) NSNumber *eventID, *pollID, *userID;
 //@property (nonatomic, strong) NSString* eventType;
 @property (nonatomic, strong) Poll *poll;
 @property (nonatomic, strong) NSArray* items;

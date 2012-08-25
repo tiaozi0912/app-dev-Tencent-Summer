@@ -107,7 +107,6 @@
      @"end_time", @"endTime",
      @"category", @"category",
      @"open_time", @"openTime",
-     @"items_count", @"itemsCount",
      nil];
     [pollMapping mapRelationship:@"user" withMapping:userMapping];
     [pollMapping mapRelationship:@"items" withMapping:itemMapping];
@@ -120,8 +119,8 @@
     [eventMapping mapKeyPathsToAttributes:
      @"id", @"eventID",
     // @"event_type", @"eventType",
-    // @"user_id", @"userID",
-    // @"poll_id", @"pollID",
+     @"user_id", @"userID",
+     @"poll_id", @"pollID",
     // @"item_id", @"itemID",
      @"created_at", @"timeStamp",
      nil];
