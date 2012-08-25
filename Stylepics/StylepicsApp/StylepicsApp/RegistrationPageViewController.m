@@ -8,7 +8,7 @@
 
 #import "RegistrationPageViewController.h"
 #import "Utility.h"
-#define UsernameField 0
+#define EmailField 0
 #define PasswordField 1
 #define PasswordConfirmationField 2
 @interface RegistrationPageViewController (){
@@ -20,7 +20,7 @@
 
 @implementation RegistrationPageViewController
 
-@synthesize usernameField=_usernameField;
+@synthesize emailField=_emailField;
 @synthesize passwordField=_passwordField;
 @synthesize passwordConfirmationField=_passwordConfirmationField;
 @synthesize signupButton = _signupButton;
@@ -33,11 +33,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
-    _usernameField.delegate = self;
-    _usernameField.returnKeyType = UIReturnKeyNext;
-    _usernameField.tag = UsernameField;
-    _usernameField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    _usernameField.alpha = 0;
+    _emailField.delegate = self;
+    _emailField.returnKeyType = UIReturnKeyNext;
+    _emailField.tag = EmailField;
+    _emailField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    _emailField.alpha = 0;
 
     
     _passwordField.delegate = self;
@@ -54,7 +54,7 @@
     _passwordConfirmationField.alpha = 0;
 
     
-    /*_usernameField.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Dismiss" target:self action:@selector(dismissAll)];
+    /*_emailField.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Dismiss" target:self action:@selector(dismissAll)];
     _passwordField.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Dismiss" target:self action:@selector(dismissAll)];    choiceMade = NO;
     _passwordConfirmationField.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Dismiss" target:self action:@selector(dismissAll)];*/
     
@@ -78,7 +78,7 @@
 
 - (void)viewDidUnload
 {
-    [self setUsernameField:nil];
+    self.emailField = nil;
     [self setPasswordField:nil];
     [self setPasswordConfirmationField:nil];
     [self setSignupButton:nil];
@@ -91,7 +91,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    self.usernameField.text=nil;
+    self.emailField.text=nil;
     self.passwordField.text=nil;
     self.passwordConfirmationField.text=nil;
     [super viewDidDisappear:animated];
@@ -108,11 +108,11 @@
         choiceMade = YES;
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.signupButton.alpha = 0;
-            self.usernameField.alpha = 1;
+            self.emailField.alpha = 1;
             self.passwordField.alpha = 1;
         } completion:^(BOOL success){
             if (success){
-                [self.usernameField becomeFirstResponder];
+                [self.emailField becomeFirstResponder];
             }
         }];
     }
@@ -126,12 +126,12 @@
         choiceMade = YES;
         [UIView animateWithDuration:1 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.loginButton.alpha = 0;
-            self.usernameField.alpha = 1;
+            self.emailField.alpha = 1;
             self.passwordField.alpha = 1;
             self.passwordConfirmationField.alpha = 1;
         } completion:^(BOOL success){
             if (success){
-                [self.usernameField becomeFirstResponder];
+                [self.emailField becomeFirstResponder];
             }
         }];
     }
@@ -146,11 +146,11 @@
 
 -(void)dismissAll
 {
-    [self.usernameField resignFirstResponder];
+    [self.emailField resignFirstResponder];
     [self.passwordField resignFirstResponder];
     [self.passwordConfirmationField resignFirstResponder];
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-        self.usernameField.alpha = 0;
+        self.emailField.alpha = 0;
         self.passwordField.alpha = 0;
         self.passwordConfirmationField.alpha = 0;
     } completion:nil];
@@ -162,17 +162,20 @@
 }
 
 - (void)signup {
+    /*if ([_emailField.text rangeOfString:@"@"].location == NSNotFound){
+        [Utility showAlert:@"Invalid email address" message:@"Please double check your email address"];
+    }else */
     if (_passwordField.text.length < 6){
         [Utility showAlert:@"Password is too short!" message:@"Password should be longer than 6 characters"];
     }else if (![_passwordConfirmationField.text isEqualToString:_passwordField.text]){
         [Utility showAlert:@"Password Confirmation Mismatch!" message:@"Your password and password confirmation should be exactly the same."];
     }else {
-        [self.usernameField resignFirstResponder];
+        [self.emailField resignFirstResponder];
         [self.passwordField resignFirstResponder];
         [self.passwordConfirmationField resignFirstResponder];
         user = [User new];
-        user.username = self.usernameField.text;
-        user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
+        user.username = [self.emailField.text substringToIndex:[self.emailField.text rangeOfString:@"@"].location];
+        user.email = self.emailField.text;
         user.password = self.passwordField.text;
         user.passwordConfirmation = self.passwordConfirmationField.text;
         [self lockUI];
@@ -182,15 +185,14 @@
 }
 
 - (void)login {
-    if ([self.usernameField.text length] == 0 ||[self.usernameField.text length] == 0 ){
-        [Utility showAlert:@"Sorry!" message:@"Neither username nor password can be empty."];
+    if ([self.emailField.text length] == 0 ||[self.emailField.text length] == 0 ){
+        [Utility showAlert:@"Sorry!" message:@"Neither email nor password can be empty."];
     }else{
-        [self.usernameField resignFirstResponder];
+        [self.emailField resignFirstResponder];
         [self.passwordField resignFirstResponder];
         user = [User new];
-        user.username = self.usernameField.text;
+        user.email = self.emailField.text;
         user.password = self.passwordField.text;
-        user.email = [self.usernameField.text stringByAppendingString:@"@gmail.com"];
         [self lockUI];
         [self.spinner startAnimating];
         [[RKObjectManager sharedManager] postObject:user usingBlock:^(RKObjectLoader* loader){
@@ -205,7 +207,7 @@
 -(void)lockUI
 {
     self.background.enabled = NO;
-    self.usernameField.enabled = NO;
+    self.emailField.enabled = NO;
     self.passwordField.enabled = NO;
     self.passwordConfirmationField.enabled = NO;
     self.loginButton.enabled = NO;
@@ -215,7 +217,7 @@
 -(void)unlockUI
 {
     self.background.enabled = YES;
-    self.usernameField.enabled = YES;
+    self.emailField.enabled = YES;
     self.passwordField.enabled = YES;
     self.passwordConfirmationField.enabled = YES;
     self.loginButton.enabled = YES;
@@ -234,7 +236,7 @@
     // signup was successful
     if ([objectLoader wasSentToResourcePath:@"/signup"]){
         [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
-        NSLog(@"userID:%@, username:%@, password:%@", user.userID, user.username, user.password);
+        NSLog(@"userID:%@, email:%@, password:%@", user.userID, user.email, user.password);
         [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
         [Utility setObject:user.userID forKey:CURRENTUSERID];
         [Utility setObject:@"TRUE" forKey:NEWUSER];
@@ -252,7 +254,7 @@
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-    //show errors: existent username and invalid password
+    //show errors: existent email and invalid password
     [Utility showAlert:@"Sorry!" message:[error localizedDescription]];
     NSLog(@"Encountered an error: %@", error);
     [self unlockUI];
@@ -266,7 +268,7 @@
     [textField resignFirstResponder];
     if (!loginMode){
         switch (textField.tag) {
-            case UsernameField:{
+            case EmailField:{
                 [_passwordField becomeFirstResponder];
                 return NO;
             }
@@ -282,7 +284,7 @@
                 break;
         }
     }else{
-        if (textField.tag == UsernameField)
+        if (textField.tag == EmailField)
         {
             [_passwordField becomeFirstResponder];
             return NO;

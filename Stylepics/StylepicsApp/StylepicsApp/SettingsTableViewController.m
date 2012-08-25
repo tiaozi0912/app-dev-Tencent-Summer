@@ -155,7 +155,6 @@
     if (![textField.text isEqualToString:currentUser.username])
     {
         currentUser.username = textField.text;
-        currentUser.email = [textField.text stringByAppendingString:@"@gmail.com"];
         [[RKObjectManager sharedManager] putObject:currentUser delegate:self];
     }
     [textField resignFirstResponder];
