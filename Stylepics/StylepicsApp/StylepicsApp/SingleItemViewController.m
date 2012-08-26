@@ -149,8 +149,8 @@
                 [self.priceTextField resignFirstResponder];
                 spinner =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
                 [spinner startAnimating];
-                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-                self.navigationItem.rightBarButtonItem.enabled = NO;
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+                self.navigationItem.leftBarButtonItem.enabled = NO;
                 self.item = [Item new];
                 self.item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
                 [[RKObjectManager sharedManager] postObject:self.item delegate:self];

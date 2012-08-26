@@ -19,4 +19,8 @@
 @property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *usernameLabel;
 @property (strong, nonatomic) User* user;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *editingPollCountLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *openedPollCountLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *endedPollCountLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *votedPollCountLabel;
 @end

@@ -1,25 +1,26 @@
 //
-//  AppFormattedLabel.m
+//  AppFormattedBoldLabel.m
 //  StylepicsApp
 //
-//  Created by Yong Lin on 8/12/12.
+//  Created by Yong Lin on 8/26/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "AppFormattedLabel.h"
+#import "AppFormattedBoldLabel.h"
 
-@implementation AppFormattedLabel
+@implementation AppFormattedBoldLabel
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.font = [UIFont fontWithName:@"HelveticaNeue" size:14.0];
+    self.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        self.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
     }
     return self;
 }

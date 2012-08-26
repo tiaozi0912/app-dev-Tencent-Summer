@@ -31,7 +31,7 @@
 -(void) setUsername:(UITextField *)username
 {
     _username = username;
-    _username.delegate = self;
+
 }
 
 - (void)viewDidLoad
@@ -40,10 +40,10 @@
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
-    self.profilePhoto.image = [UIImage imageNamed:@"default_profile_photo.jpeg"];
     currentUser = [User new];
     currentUser.userID = [Utility getObjectForKey:CURRENTUSERID];
-    
+    _username.delegate = self;
+    self.profilePhoto.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
     [[RKObjectManager sharedManager] getObject:currentUser delegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

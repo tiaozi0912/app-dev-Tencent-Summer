@@ -24,6 +24,10 @@
 @synthesize userPhoto;
 @synthesize usernameLabel;
 @synthesize user = _user;
+@synthesize editingPollCountLabel;
+@synthesize openedPollCountLabel;
+@synthesize endedPollCountLabel;
+@synthesize votedPollCountLabel;
 
 @synthesize editingPolls, openedPolls, endedPolls, votedPolls;
 
@@ -31,7 +35,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
+    self.userPhoto.backgroundColor =[UIColor colorWithWhite:1 alpha:0];
     if (_user.userID == nil)
     {
         _user = [User new];
@@ -48,6 +52,10 @@
 {
     [self setUserPhoto:nil];
     [self setUsernameLabel:nil];
+    [self setEditingPollCountLabel:nil];
+    [self setOpenedPollCountLabel:nil];
+    [self setEndedPollCountLabel:nil];
+    [self setVotedPollCountLabel:nil];
     [super viewDidUnload];
     _user = nil;
     self.editingPolls = nil;
@@ -136,10 +144,13 @@
                         break;
                     case VOTED_POLL:[self.votedPolls addObject:pollRecord];
                         break;
-                        break;
                 }
             }
         }
+        self.editingPollCountLabel.text = [NSString stringWithFormat:@"%d", editingPolls.count];
+        self.openedPollCountLabel.text = [NSString stringWithFormat:@"%d", openedPolls.count];
+        self.endedPollCountLabel.text = [NSString stringWithFormat:@"%d", endedPolls.count];
+        self.votedPollCountLabel.text = [NSString stringWithFormat:@"%d", votedPolls.count];
     }else{
         self.usernameLabel.text = _user.username;
         self.userPhoto.url = [NSURL URLWithString:_user.profilePhotoURL];

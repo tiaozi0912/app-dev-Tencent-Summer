@@ -109,8 +109,8 @@
         if (newPoll) {
             spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
             [spinner startAnimating];
-            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-            self.navigationItem.rightBarButtonItem.enabled = NO;
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+            self.navigationItem.leftBarButtonItem.enabled = NO;
             poll = [Poll new];
             poll.title = self.pickPollTitleTextField.text;
             poll.ownerID = [Utility getObjectForKey:CURRENTUSERID];

@@ -152,7 +152,7 @@
     cell.thumbnail3.hidden = YES;
     cell.thumbnail4.hidden = YES;
     // Configure the cell...Add item event
-    cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
+    cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_SMALL];
     cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
     [HJObjectManager manage:cell.userImage];
     

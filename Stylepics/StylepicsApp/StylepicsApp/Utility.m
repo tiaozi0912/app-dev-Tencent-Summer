@@ -83,9 +83,9 @@
 {
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
     title.backgroundColor = [UIColor clearColor];
-    title.font = [UIFont fontWithName:@"Noteworthy-Bold" size:22];
-    title.shadowColor = [UIColor whiteColor];
-    title.shadowOffset = CGSizeMake(2, 2);
+    title.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:22];
+    /*title.shadowColor = [Utility colorFromKuler:KULER_YELLOW alpha:1];
+    title.shadowOffset = CGSizeMake(3, 3);*/
     title.textAlignment = UITextAlignmentCenter;
     title.textColor = [UIColor blackColor]; // change this color
     title.text = titleText;
