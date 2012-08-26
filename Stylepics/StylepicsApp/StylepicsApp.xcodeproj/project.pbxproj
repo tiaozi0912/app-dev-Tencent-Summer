@@ -951,16 +951,13 @@
 				0D0C43D015E76A260031DECC /* Food@2x.png in Resources */,
 				0D0C43D115E76A260031DECC /* Others.png in Resources */,
 				0D0C43D315E76A660031DECC /* Others@2x.png in Resources */,
-<<<<<<< HEAD
 				4DAF2D6B15EA1B83009B2D89 /* camera-icon-hl.png in Resources */,
 				4DAF2D6C15EA1B83009B2D89 /* camera-icon-hl@2x.png in Resources */,
-=======
 				0D388BF015EA0483005A56D7 /* default-profile-photo-large.png in Resources */,
 				0D388BF115EA0483005A56D7 /* default-profile-photo-large@2x.png in Resources */,
 				0D388BF215EA0483005A56D7 /* default-profile-photo-small.png in Resources */,
 				0D388BF315EA0483005A56D7 /* default-profile-photo-small@2x.png in Resources */,
 				0D388BF815EA1647005A56D7 /* PollTableView.png in Resources */,
->>>>>>> UI on profile page
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,7 +1098,7 @@
 		0D94F50315A7D09700903F0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yujun Wu (GJP74VVN36)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -1119,7 +1116,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = ShopVote;
-				PROVISIONING_PROFILE = "EBD99C16-CA14-44F7-BF11-8E9903BBDA23";
+				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1127,7 +1124,7 @@
 		0D94F50415A7D09700903F0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yujun Wu (GJP74VVN36)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -1145,7 +1142,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = ShopVote;
-				PROVISIONING_PROFILE = "EBD99C16-CA14-44F7-BF11-8E9903BBDA23";
+				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

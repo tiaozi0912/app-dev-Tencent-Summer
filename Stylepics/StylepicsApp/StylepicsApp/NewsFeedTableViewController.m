@@ -198,12 +198,12 @@
     [HJObjectManager manage:cell.categoryIcon];
     
     [cell.usernameAndActionLabel updateNumberOfLabels:2];
-    [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"Helvetica-Bold" size:14.0] forLabel:0];
-    [cell.usernameAndActionLabel setText:@" opened a poll:" andFont:[UIFont fontWithName:@"Helvetica" size:14.0] forLabel:1];
+    [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] forLabel:0];
+    [cell.usernameAndActionLabel setText:@" opened a poll:" andFont:[UIFont fontWithName:@"HelveticaNeue-Regular" size:14.0] forLabel:1];
     cell.usernameAndActionLabel.clipsToBounds = YES;
     
     cell.eventDescriptionLabel.text = event.poll.title;
-    cell.eventDescriptionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14.0];
+    cell.eventDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
     [cell.eventDescriptionLabel setNeedsLayout];
     
     /*cell.timeStampLabel.frame = TimeStampLabelFrame;

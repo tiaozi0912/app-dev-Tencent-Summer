@@ -17,10 +17,11 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingWheel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *totalVotesCount;
-@property (weak, nonatomic) IBOutlet AppFormattedLabel *stateIndicator;
 @property (weak, nonatomic) IBOutlet UITextView *pollDescription;
-@property (weak, nonatomic) IBOutlet AppFormattedLabel *ownerLabel;
+@property (weak, nonatomic) IBOutlet MultipartLabel *ownerAndStateLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryIconView;
 
 
 @end

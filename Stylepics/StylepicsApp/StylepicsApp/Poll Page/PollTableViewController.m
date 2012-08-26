@@ -37,10 +37,11 @@
 @synthesize loadingWheel = _loadingWheel;
 @synthesize startTimeLabel = _startTimeLabel;
 @synthesize totalVotesCount = _totalVotesCount;
-@synthesize stateIndicator = _stateIndicator;
+@synthesize ownerAndStateLabel = _ownerAndStateLabel;
 @synthesize pollDescription = _pollDescription;
-@synthesize ownerLabel = _ownerLabel;
 @synthesize categoryLabel = _categoryLabel;
+@synthesize userPhoto = _userPhoto;
+@synthesize categoryIconView = _categoryIconView;
 
 - (void)viewDidLoad
 {
@@ -49,6 +50,8 @@
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:ACTION_BUTTON andHighlightedStateImage:ACTION_BUTTON_HL target:self action:@selector(showActionSheet)];
+    self.userPhoto.backgroundColor = [UIColor clearColor];
+    self.ownerAndStateLabel.backgroundColor = [UIColor clearColor];
     CGRect frameOfEmptyPollHint = CGRectMake(20, 230, 280, 60);
 
     //CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
@@ -92,8 +95,10 @@
     [self setStartTimeLabel:nil];
     [self setTotalVotesCount:nil];
     [self setPollDescription:nil];
-    [self setOwnerLabel:nil];
     [self setCategoryLabel:nil];
+    [self setUserPhoto:nil];
+    self.ownerAndStateLabel = nil;
+    [self setCategoryIconView:nil];
     [super viewDidUnload];
     self.poll = nil;
     pollRecord = nil;
@@ -394,15 +399,44 @@
     
     //Successfully loaded a poll
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
-
-        self.pollDescription.text = self.poll.title;
-        self.ownerLabel.text = self.poll.user.username;
-        self.categoryLabel.text = [Utility stringFromCategory:(PollCategory)[self.poll.category intValue]];
-        self.totalVotesCount.text = [NSString stringWithFormat:@"%@", self.poll.totalVotes];
-        self.startTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-        [self.startTimeLabel sizeToFit];
-        [self.totalVotesCount sizeToFit];
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
+        self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
+        [self.ownerAndStateLabel updateNumberOfLabels:2];
+        [self.ownerAndStateLabel setText:self.poll.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] forLabel:0];
+        NSString* stateIndication;
+        switch ([self.poll.state intValue]) {
+            case EDITING:
+            {
+                stateIndication = isOwnerView?@", you are editing this poll.": @" is editing this poll.";
+                break;
+            }
+            case VOTING:
+            {
+                stateIndication = isOwnerView?@", you have opened this poll.": @" has opened this poll.";
+                break;
+            }
+            case FINISHED:
+            {
+                stateIndication = isOwnerView?@", you have ended this poll.": @" has ended this poll.";
+                break;
+            }
+            default:
+                break;
+        }
+        [self.ownerAndStateLabel setText:stateIndication andFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0] forLabel:1];
+        self.ownerAndStateLabel.clipsToBounds = YES;
+        
+        self.pollDescription.text = self.poll.title;
+        
+        self.categoryLabel.text = [Utility stringFromCategory:(PollCategory)[self.poll.category intValue]];
+        self.categoryIconView.image = [Utility iconForCategory:(PollCategory)[self.poll.category intValue]];
+        
+        //self.totalVotesCount.text = [NSString stringWithFormat:@"%@", self.poll.totalVotes];
+        self.startTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+        
+        [self.startTimeLabel sizeToFit];
+        //[self.totalVotesCount sizeToFit];
+
         
         //
         if (self.poll.items.count == 0){
@@ -418,27 +452,28 @@
             emptyPollHintInAudienceView.hidden = YES;
         }
         
-        
-        //if the current user owns this poll
-        if (isOwnerView){
-            //self.addItemButton.enabled = (self.poll.state == EDITING);
-            if ([self.poll.state intValue] == EDITING){
-                self.stateIndicator.text = @"Poll State: Editing \nYou can add and edit items in the poll.";
-                self.pollDescription.editable = YES;
-            }else if ([self.poll.state intValue] == VOTING){
-                self.stateIndicator.text = @"Poll State: Voting \nPlease wait for your friends' votes until you want to end this poll.";
-            }else {
-                self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";
+        NSString* hintMessage;
+        switch ([self.poll.state intValue]) {
+            case EDITING:
+            {
+                hintMessage = isOwnerView?@"You can add and edit items in the poll.": @"This is being edited. You can track this poll by following it.";
+                break;
             }
-        }else{
-            if ([self.poll.state intValue] == EDITING){
-                self.stateIndicator.text = @"Poll State: Editing \nThis is being edited. You can track this poll by following it.";
-            }else if ([self.poll.state intValue] == VOTING){
-                self.stateIndicator.text = @"Poll State: Voting \nPlease vote on the item in the poll by clicking the checkbox in the picture. You can also undo the vote by clicking on the checked checkbox.";    
-            }else {
-                self.stateIndicator.text = @"Poll State: Finished \nThis poll is ended. You can check the result by clicking the action button in the top right corner.";    
+            case VOTING:
+            {
+                hintMessage = isOwnerView?@"Please wait for your friends' votes until you want to end this poll.": @"Please vote on the item in the poll by clicking the checkbox in the picture. You can also undo the vote by clicking on the checked checkbox.";
+                break;
             }
+            case FINISHED:
+            {
+                hintMessage = isOwnerView?@"This poll is ended. You can check the result by clicking the action button in the top right corner.": @"This poll is ended. You can check the result by clicking the action button in the top right corner.";
+                break;
+            }
+            default:
+                break;
         }
+        
+        [Utility showAlert:@"Hint" message:hintMessage];
 
         //find whether the current user is among the audience of the poll
         audienceIndex = [self.poll.audiences indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop)
