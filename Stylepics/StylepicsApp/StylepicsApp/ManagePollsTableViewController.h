@@ -18,4 +18,5 @@
 
 @property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *usernameLabel;
+@property (strong, nonatomic) User* user;
 @end

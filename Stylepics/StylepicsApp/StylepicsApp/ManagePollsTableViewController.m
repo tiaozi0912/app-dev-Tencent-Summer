@@ -8,10 +8,13 @@
 
 #import "ManagePollsTableViewController.h"
 #define POLLCELLHEIGHT 46
+#define ContentTypeEditingPoll 0
+#define ContentTypeOpenedPoll 1
+#define ContentTypeEndedPoll 2
+#define ContentTypeVotedPoll 3
 
-@interface ManagePollsTableViewController ()
-{
-    User* user;
+@interface ManagePollsTableViewController (){
+    int ContentType;
 }
 
 @property (nonatomic, strong) NSMutableArray *editingPolls, *openedPolls, *endedPolls, *votedPolls;
@@ -20,6 +23,7 @@
 @implementation ManagePollsTableViewController
 @synthesize userPhoto;
 @synthesize usernameLabel;
+@synthesize user = _user;
 
 @synthesize editingPolls, openedPolls, endedPolls, votedPolls;
 
@@ -27,10 +31,17 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO];
-    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
-    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEW_POLL_BUTTON andHighlightedStateImage:NEW_POLL_BUTTON_HL target:self action:@selector(newPoll)];
+    if (_user.userID == nil)
+    {
+        _user = [User new];
+        _user.userID = [Utility getObjectForKey: CURRENTUSERID];
+        self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
+        self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEW_POLL_BUTTON andHighlightedStateImage:NEW_POLL_BUTTON_HL target:self action:@selector(newPoll)];
+    }else{
+        self.navigationItem.title = @"Profile";
+        self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
+    }
 }
 
 - (void)viewDidUnload
@@ -38,6 +49,11 @@
     [self setUserPhoto:nil];
     [self setUsernameLabel:nil];
     [super viewDidUnload];
+    _user = nil;
+    self.editingPolls = nil;
+    self.openedPolls = nil;
+    self.endedPolls = nil;
+    self.votedPolls = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -48,6 +64,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    NSLog(@"User profile's user ID: %@",  _user.userID);
+    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     
@@ -56,15 +74,13 @@
     self.openedPolls = [NSMutableArray new];
     self.endedPolls = [NSMutableArray new];
     
-    user = [User new];
-    user.userID = [Utility getObjectForKey:CURRENTUSERID];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = NO;
-    [[RKObjectManager sharedManager] getObject:user delegate:self];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/user_profile_poll_records/%@",_user.userID] delegate:self];
+    [[RKObjectManager sharedManager] getObject:_user delegate:self];
 }
 
 #pragma User Actions
@@ -78,10 +94,23 @@
     [self performSegueWithIdentifier:@"settings" sender:self];
 }
 
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)switchContentType:(UIButton *)sender {
+    ContentType = sender.tag;
+    [self.tableView reloadData];
+}
+
+
 - (void) dealloc
 {
     [[RKClient sharedClient].requestQueue cancelRequestsWithDelegate:self];
 }
+
+#pragma RKObjectLoader Delegate Method
 
 - (void)request:(RKRequest*)request didLoadResponse:
 (RKResponse*)response {
@@ -92,7 +121,7 @@
 
 - (void)objectLoader:(RKObjectLoader*)objectLoader didLoadObjects:(NSArray*)objects
 {
-    if ([objectLoader wasSentToResourcePath:@"/poll_records"])
+    if ([objectLoader.resourcePath hasPrefix:@"/user_profile_poll_records"])
     {
         NSArray *pollRecords = objects;
         for (id obj in pollRecords){
@@ -112,8 +141,8 @@
             }
         }
     }else{
-        self.usernameLabel.text = user.username;
-        self.userPhoto.url = [NSURL URLWithString:user.profilePhotoURL];
+        self.usernameLabel.text = _user.username;
+        self.userPhoto.url = [NSURL URLWithString:_user.profilePhotoURL];
         [HJObjectManager manage:self.userPhoto];
     }
     [self.tableView reloadData];
@@ -130,36 +159,38 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    //return 4;
+    return 1;
 }
 
--(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    switch (section){ 
+/*-(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    switch (section){
         case 0: return @"EDITING POLLS";
         case 1: return @"OPENED POLLS";
         case 2: return @"ENDED POLLS";
         case 3: return @"VOTED POLLS";
         default: return nil;
     }
-}/* to customize the font in headers, use the method below instead
+}*/
+/* to customize the font in headers, use the method below instead
 -(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0: {
+    switch (ContentType) {
+        case ContentTypeEditingPoll: {
             NSLog(@"editingPolls' count: %u",self.editingPolls.count);
             return self.editingPolls.count;
         }
-        case 1: {
+        case ContentTypeOpenedPoll: {
             NSLog(@"opened polls' count: %u",self.openedPolls.count);
             return self.openedPolls.count;
         }
-        case 2: {
+        case ContentTypeEndedPoll: {
             NSLog(@"ended polls' count: %u",self.endedPolls.count);
             return self.endedPolls.count;
         }
-        case 3:{
+        case ContentTypeVotedPoll:{
             NSLog(@"voted polls' count: %u",self.votedPolls.count);
             return self.votedPolls.count;
         }
@@ -175,9 +206,9 @@
         return [self performSelector:@selector(tableView: cellForRowAtIndexPath:) withObject:tableView withObject:indexPath];
        
     }*/
-    switch (indexPath.section) {
+    switch (ContentType) {
 
-        case 0:{
+        case ContentTypeEditingPoll:{
             static NSString *CellIdentifier = @"editing poll cell";
             EditingPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
@@ -193,7 +224,7 @@
             }
             return cell;
         } 
-        case 1:{
+        case ContentTypeOpenedPoll:{
             static NSString *CellIdentifier = @"opened poll cell";
             OpenedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
@@ -209,7 +240,7 @@
             }
             return cell;
         } 
-        case 2:{
+        case ContentTypeEndedPoll:{
             static NSString *CellIdentifier = @"ended poll cell";
             EndedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
@@ -225,7 +256,7 @@
             }
             return cell;
         }
-        case 3:{
+        case ContentTypeVotedPoll:{
             static NSString *CellIdentifier = @"voted poll cell";
             VotedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {

@@ -12,7 +12,7 @@
 #if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
 NSString* const BaseURL = @"http://10.30.141.98:3000";
 #elif ENVIRONMENT == ENVIRONMENT_STAGING
-// TODO: Need a staging environment...
+NSString* const BaseURL = @"http://stamp-bugs.herokuapp.com/";
 #elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
 NSString* const BaseURL = @"http://gentle-hamlet-2953.herokuapp.com";
 #endif

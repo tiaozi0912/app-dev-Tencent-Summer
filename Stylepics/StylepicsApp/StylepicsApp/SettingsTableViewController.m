@@ -85,8 +85,9 @@
         loader.resourcePath = @"/logout";
         loader.serializationMapping = [[RKObjectManager sharedManager].mappingProvider serializationMappingForClass:[User class]];
     }];
+    [Utility setObject:nil forKey:CURRENTUSERID];
     [[self.navigationController presentingViewController] dismissModalViewControllerAnimated:YES];
-    [Utility setObject:nil forKey:IDOfPollToBeShown];
+
 }
 
 - (void)back{
@@ -276,7 +277,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     switch (buttonIndex) {
         case 0:
 #if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-            [self TestOnSimulator];
+            [self useCamera];
 #elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
             [self useCamera];
 #endif

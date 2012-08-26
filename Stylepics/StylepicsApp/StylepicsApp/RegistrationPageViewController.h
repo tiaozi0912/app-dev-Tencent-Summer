@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Utility.h"
 
-@interface RegistrationPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate>
+@interface RegistrationPageViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate, UIGestureRecognizerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;

@@ -60,7 +60,7 @@
     activePolls = [NSMutableArray new];
     backMark = NO;
     self.pickerView.isOn = NO;
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/poll_records" delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/user_profile_poll_records/%@", [Utility getObjectForKey:CURRENTUSERID]] delegate:self];
 	// Do any additional setup after loading the view.
 }
 
@@ -239,7 +239,7 @@
         newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
         [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];*/
         backMark = YES;
-    }else if ([objectLoader wasSentToResourcePath:@"/poll_records" method:RKRequestMethodGET]){
+    }else if ([objectLoader.resourcePath hasPrefix:@"/user_profile_poll_records"]){
         // extract all the active polls in editing state of the current user
         for (id obj in objects){
             PollRecord *pollRecord = (PollRecord*) obj;

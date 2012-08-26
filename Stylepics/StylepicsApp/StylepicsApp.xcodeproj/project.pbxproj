@@ -543,7 +543,6 @@
 		0D91EE5615AD0B7200D1015D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
 				0DB2A55415E7075800FA1470 /* EditingPollCell.h */,
 				0DB2A55515E7075800FA1470 /* EditingPollCell.m */,
 				0DB2A55715E7097A00FA1470 /* OpenedPollCell.h */,
@@ -664,6 +663,7 @@
 				0D94F4F715A7D09700903F0B /* StylepicsAppDelegate.h */,
 				0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */,
 				0D8DD6AF15AE9F20009177D0 /* Utility */,
+				0D94F4FA15A7D09700903F0B /* MainStoryboard.storyboard */,
 				0D91EE5615AD0B7200D1015D /* View */,
 				0D91EE5815AD0BB900D1015D /* Controller */,
 				0D91EE5715AD0B8200D1015D /* Model */,

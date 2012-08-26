@@ -242,7 +242,11 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:OPEN_POLL_BUTTON_TITLE]){
-        [self confirmToOpenPoll];
+        if (self.poll.items.count < 2) {
+            [Utility showAlert:@"Please add more items." message:@"You can't open the poll until you have 2 items in the poll."];
+        }else{
+            [self confirmToOpenPoll];
+        }
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:END_POLL_BUTTON_TITLE]){
         [self confirmToEndPoll];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:FOLLOW_POLL_BUTTON_TITLE]){
@@ -302,24 +306,21 @@
 
 - (void)openPoll
 {
-    if (self.poll.items.count < 2) {
-        [Utility showAlert:@"Please add more items." message:@"You can't open the poll until you have 2 items in the poll."];
-    }else{
-        self.poll.state = [NSNumber numberWithInt:VOTING];
-        self.poll.openTime = [NSDate date];
-        [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
-        
-        pollRecord = [PollRecord new];
-        pollRecord.pollID = self.poll.pollID;
-        pollRecord.pollRecordType = [NSNumber numberWithInt:OPENED_POLL];
-        [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
-        
-        Event* event = [Event new];
-        event.pollID = self.poll.pollID;
-        event.userID = [Utility getObjectForKey:CURRENTUSERID];
-        [[RKObjectManager sharedManager] postObject:event delegate:self];
-        [self.tableView reloadData];
-    }
+    self.poll.state = [NSNumber numberWithInt:VOTING];
+    self.poll.openTime = [NSDate date];
+    [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
+    
+    pollRecord = [PollRecord new];
+    pollRecord.pollID = self.poll.pollID;
+    pollRecord.pollRecordType = [NSNumber numberWithInt:OPENED_POLL];
+    [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
+    
+    Event* event = [Event new];
+    event.pollID = self.poll.pollID;
+    event.userID = [Utility getObjectForKey:CURRENTUSERID];
+    [[RKObjectManager sharedManager] postObject:event delegate:self];
+    [self.tableView reloadData];
+
 }
 
 - (void)endPoll
@@ -351,7 +352,9 @@
 -(void)followPoll
 {
     Audience *currentAudience = [self.poll.audiences objectAtIndex:audienceIndex];
-    if (currentAudience.isFollowing) return;
+    if ([currentAudience.isFollowing boolValue]) {
+        return;
+    }
     currentAudience.isFollowing = [NSNumber numberWithBool:YES];
     [[RKObjectManager sharedManager] putObject:currentAudience delegate:self];
     

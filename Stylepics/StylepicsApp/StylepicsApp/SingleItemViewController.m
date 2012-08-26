@@ -365,7 +365,7 @@ finishedSavingWithError:(NSError *)error
      switch (buttonIndex) {
          case 0:
 #if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-             [self TestOnSimulator];
+             [self useCamera];
 #elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
              [self useCamera];
 #endif

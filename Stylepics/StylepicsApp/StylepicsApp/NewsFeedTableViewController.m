@@ -9,6 +9,7 @@
 #import "NewsFeedTableViewController.h"
 #import "AddNewItemController.h"
 #import "Utility.h"
+#import "ManagePollsTableViewController.h"
 
 #define ROWHEIGHT 369
 
@@ -20,6 +21,7 @@
 #define ItemImageFrame CGRectMake(5,57,310,310)
 
 @interface NewsFeedTableViewController (){
+    User* userToBePassed;
 }
 @property (nonatomic, strong) NSArray* events;
 @end
@@ -145,18 +147,26 @@
     [cell.thumbnail0 showLoadingWheel];
     cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL];
     if (event.items.count > 1) {
+        [cell.thumbnail1 clear];
+        [cell.thumbnail1 showLoadingWheel];
         cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL];
         cell.thumbnail1.hidden = NO;
     }
     if (event.items.count > 2) {
+        [cell.thumbnail2 clear];
+        [cell.thumbnail2 showLoadingWheel];
         cell.thumbnail2.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL];
         cell.thumbnail2.hidden = NO;
     }
     if (event.items.count > 3) {
+        [cell.thumbnail3 clear];
+        [cell.thumbnail3 showLoadingWheel];
         cell.thumbnail3.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:3]).photoURL];
         cell.thumbnail3.hidden = NO;
     }
     if (event.items.count > 4) {
+        [cell.thumbnail4 clear];
+        [cell.thumbnail4 showLoadingWheel];
         cell.thumbnail4.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:4]).photoURL];
         cell.thumbnail4.hidden = NO;
     }
@@ -216,4 +226,18 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
     [self performSegueWithIdentifier:@"show poll" sender:self];
 }
 
+- (IBAction)showUserProfile:(id)sender {
+    FeedsCell *cell = (FeedsCell*)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Event* event = [self.events objectAtIndex:indexPath.row];
+    userToBePassed = event.user;
+    [self performSegueWithIdentifier:@"show profile" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"show profile"])
+    {
+        ((ManagePollsTableViewController*)segue.destinationViewController).user = userToBePassed;
+    }
+}
 @end

@@ -66,7 +66,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([Utility getObjectForKey:IDOfPollToBeShown]){
+    if ([Utility getObjectForKey:CURRENTUSERID]){
      [self performSegueWithIdentifier:@"show home" sender:self];
      }
     [self.spinner stopAnimating];
@@ -174,7 +174,9 @@
         [self.passwordField resignFirstResponder];
         [self.passwordConfirmationField resignFirstResponder];
         user = [User new];
-        user.username = [self.emailField.text substringToIndex:[self.emailField.text rangeOfString:@"@"].location];
+        if ([self.emailField.text rangeOfString:@"@"].location != NSNotFound){
+            user.username = [self.emailField.text substringToIndex:[self.emailField.text rangeOfString:@"@"].location];
+        }
         user.email = self.emailField.text;
         user.password = self.passwordField.text;
         user.passwordConfirmation = self.passwordConfirmationField.text;
@@ -235,7 +237,7 @@
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
     // signup was successful
     if ([objectLoader wasSentToResourcePath:@"/signup"]){
-        [Utility showAlert:@"Congratulations!" message:@"Welcome to Stylepics!"];
+        [Utility showAlert:@"Congratulations!" message:@"Welcome to ShopVote!"];
         NSLog(@"userID:%@, email:%@, password:%@", user.userID, user.email, user.password);
         [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
         [Utility setObject:user.userID forKey:CURRENTUSERID];

@@ -70,7 +70,7 @@
 -(IBAction)cameraButtonClicked:(UIButton*)sender
 {
 #if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-    [self TestOnSimulator];
+    [self useCamera];
 #elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
     [self useCamera];
 #endif
