@@ -366,6 +366,8 @@ finishedSavingWithError:(NSError *)error
          case 0:
 #if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
              [self useCamera];
+#elif ENVIRONMENT == ENVIRONMENT_STAGING
+             [self useCamera];
 #elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
              [self useCamera];
 #endif
