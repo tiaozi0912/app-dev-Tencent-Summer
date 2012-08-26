@@ -33,7 +33,20 @@
 - (void)viewDidLoad
 {
     NSLog(@"Home loaded");
-    //custom tab bar
+    //set color of text in UITabBarItem
+    [[UITabBarItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor whiteColor], UITextAttributeTextColor, 
+      [UIFont fontWithName:@"Helvetica" size:11], UITextAttributeFont, 
+      nil] 
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor blackColor], UITextAttributeTextColor, 
+      [UIFont fontWithName:@"Helvetica" size:11], UITextAttributeFont, 
+      nil] 
+                                             forState:UIControlStateHighlighted];
+    //custom tab bar icons
     
     UIImage *selectedImage1 = [UIImage imageNamed:FEEDS_ICON_HL];
     UIImage *unselectedImage1 = [UIImage imageNamed:FEEDS_ICON];
