@@ -136,8 +136,6 @@
 		4D29327F15E2A9D3006888B0 /* profile-icon-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29327B15E2A9D3006888B0 /* profile-icon-hl@2x.png */; };
 		4D29328015E2A9D3006888B0 /* profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29327C15E2A9D3006888B0 /* profile-icon@2x.png */; };
 		4D29328215E2B732006888B0 /* camera-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29328115E2B732006888B0 /* camera-icon.png */; };
-		4D29328615E2B8E3006888B0 /* camera-icon-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29328315E2B8E3006888B0 /* camera-icon-hl.png */; };
-		4D29328715E2B8E3006888B0 /* camera-icon-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29328415E2B8E3006888B0 /* camera-icon-hl@2x.png */; };
 		4D29328815E2B8E3006888B0 /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29328515E2B8E3006888B0 /* camera-icon@2x.png */; };
 		4D558AD315E4431D00CDBD3D /* tab_bar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D558ACF15E4431D00CDBD3D /* tab_bar_bg.png */; };
 		4D558AD415E4431D00CDBD3D /* tab_bar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D558AD015E4431D00CDBD3D /* tab_bar_bg@2x.png */; };
@@ -146,6 +144,8 @@
 		4D558B2315E459D900CDBD3D /* header_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D558B2115E459D900CDBD3D /* header_bg@2x.png */; };
 		4D983E7C15E05FEA00B4FD90 /* profile-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D983E7B15E05FEA00B4FD90 /* profile-icon.png */; };
 		4D983E8615E067E900B4FD90 /* feeds-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D983E8415E067E800B4FD90 /* feeds-icon.png */; };
+		4DAF2D6B15EA1B83009B2D89 /* camera-icon-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF2D6915EA1B83009B2D89 /* camera-icon-hl.png */; };
+		4DAF2D6C15EA1B83009B2D89 /* camera-icon-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF2D6A15EA1B83009B2D89 /* camera-icon-hl@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -369,8 +369,6 @@
 		4D29327B15E2A9D3006888B0 /* profile-icon-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon-hl@2x.png"; sourceTree = "<group>"; };
 		4D29327C15E2A9D3006888B0 /* profile-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon@2x.png"; sourceTree = "<group>"; };
 		4D29328115E2B732006888B0 /* camera-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon.png"; sourceTree = "<group>"; };
-		4D29328315E2B8E3006888B0 /* camera-icon-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon-hl.png"; sourceTree = "<group>"; };
-		4D29328415E2B8E3006888B0 /* camera-icon-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon-hl@2x.png"; sourceTree = "<group>"; };
 		4D29328515E2B8E3006888B0 /* camera-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon@2x.png"; sourceTree = "<group>"; };
 		4D558ACF15E4431D00CDBD3D /* tab_bar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bar_bg.png; sourceTree = "<group>"; };
 		4D558AD015E4431D00CDBD3D /* tab_bar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bar_bg@2x.png"; sourceTree = "<group>"; };
@@ -380,6 +378,8 @@
 		4D558B2115E459D900CDBD3D /* header_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_bg@2x.png"; sourceTree = "<group>"; };
 		4D983E7B15E05FEA00B4FD90 /* profile-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-icon.png"; sourceTree = "<group>"; };
 		4D983E8415E067E800B4FD90 /* feeds-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feeds-icon.png"; sourceTree = "<group>"; };
+		4DAF2D6915EA1B83009B2D89 /* camera-icon-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon-hl.png"; sourceTree = "<group>"; };
+		4DAF2D6A15EA1B83009B2D89 /* camera-icon-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon-hl@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,8 +443,8 @@
 				4D558AD015E4431D00CDBD3D /* tab_bar_bg@2x.png */,
 				4D29328115E2B732006888B0 /* camera-icon.png */,
 				4D29328515E2B8E3006888B0 /* camera-icon@2x.png */,
-				4D29328315E2B8E3006888B0 /* camera-icon-hl.png */,
-				4D29328415E2B8E3006888B0 /* camera-icon-hl@2x.png */,
+				4DAF2D6915EA1B83009B2D89 /* camera-icon-hl.png */,
+				4DAF2D6A15EA1B83009B2D89 /* camera-icon-hl@2x.png */,
 				4D983E7B15E05FEA00B4FD90 /* profile-icon.png */,
 				4D29327C15E2A9D3006888B0 /* profile-icon@2x.png */,
 				4D29327615E2A86A006888B0 /* profile-icon-hl.png */,
@@ -877,8 +877,6 @@
 				4D29327F15E2A9D3006888B0 /* profile-icon-hl@2x.png in Resources */,
 				4D29328015E2A9D3006888B0 /* profile-icon@2x.png in Resources */,
 				4D29328215E2B732006888B0 /* camera-icon.png in Resources */,
-				4D29328615E2B8E3006888B0 /* camera-icon-hl.png in Resources */,
-				4D29328715E2B8E3006888B0 /* camera-icon-hl@2x.png in Resources */,
 				4D29328815E2B8E3006888B0 /* camera-icon@2x.png in Resources */,
 				4D558AD315E4431D00CDBD3D /* tab_bar_bg.png in Resources */,
 				4D558AD415E4431D00CDBD3D /* tab_bar_bg@2x.png in Resources */,
@@ -941,6 +939,8 @@
 				0D0C43D015E76A260031DECC /* Food@2x.png in Resources */,
 				0D0C43D115E76A260031DECC /* Others.png in Resources */,
 				0D0C43D315E76A660031DECC /* Others@2x.png in Resources */,
+				4DAF2D6B15EA1B83009B2D89 /* camera-icon-hl.png in Resources */,
+				4DAF2D6C15EA1B83009B2D89 /* camera-icon-hl@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,7 +1080,7 @@
 		0D94F50315A7D09700903F0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yujun Wu (GJP74VVN36)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -1098,7 +1098,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = ShopVote;
-				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
+				PROVISIONING_PROFILE = "EBD99C16-CA14-44F7-BF11-8E9903BBDA23";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1106,7 +1106,7 @@
 		0D94F50415A7D09700903F0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yujun Wu (GJP74VVN36)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -1124,7 +1124,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = ShopVote;
-				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
+				PROVISIONING_PROFILE = "EBD99C16-CA14-44F7-BF11-8E9903BBDA23";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
