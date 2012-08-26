@@ -36,6 +36,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.userPhoto.backgroundColor =[UIColor colorWithWhite:1 alpha:0];
+    self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
     if (_user.userID == nil)
     {
         _user = [User new];
@@ -297,22 +298,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
-        case 0:{
+    switch (ContentType) {
+        case ContentTypeEditingPoll:{
             Poll* poll = [self.editingPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             break;
         }
-        case 1:{
+        case ContentTypeOpenedPoll:{
             Poll* poll = [self.openedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             break;
         }
-        case 2:{
+        case ContentTypeEndedPoll:{
             Poll* poll = [self.endedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         }
-        case 3:{
+        case ContentTypeVotedPoll:{
             Poll* poll = [self.votedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
         }

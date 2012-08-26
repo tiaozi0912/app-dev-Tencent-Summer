@@ -40,10 +40,12 @@
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
+    
+    _username.delegate = self;
+    self.profilePhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
+    
     currentUser = [User new];
     currentUser.userID = [Utility getObjectForKey:CURRENTUSERID];
-    _username.delegate = self;
-    self.profilePhoto.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
     [[RKObjectManager sharedManager] getObject:currentUser delegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -102,6 +104,7 @@
     }else if (objectLoader.method == RKRequestMethodGET){
         self.username.text = currentUser.username;
         self.profilePhoto.url = [NSURL URLWithString: currentUser.profilePhotoURL];
+        [HJObjectManager manage:self.profilePhoto];
     }else if (objectLoader.method == RKRequestMethodPUT){
         [self.spinner stopAnimating];
     }
@@ -164,7 +167,7 @@
 
 -(void)showActionSheet
 {
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from photo library", nil];
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
 	popupQuery = nil;

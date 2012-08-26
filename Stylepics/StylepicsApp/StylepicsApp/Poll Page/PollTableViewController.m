@@ -50,7 +50,7 @@
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:ACTION_BUTTON andHighlightedStateImage:ACTION_BUTTON_HL target:self action:@selector(showActionSheet)];
-    self.userPhoto.backgroundColor = [UIColor clearColor];
+    self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
     self.ownerAndStateLabel.backgroundColor = [UIColor clearColor];
     CGRect frameOfEmptyPollHint = CGRectMake(20, 230, 280, 60);
 
