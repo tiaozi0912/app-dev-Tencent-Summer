@@ -201,6 +201,11 @@
                                         <action selector="switchContentType:" destination="6a9-bf-0wD" eventType="touchUpInside" id="Of9-zU-zsC"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" id="2Ja-TU-a6C">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="98"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -1107,22 +1112,51 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view alpha="0.29999999999999999" contentMode="scaleToFill" id="hH4-mH-cl5">
-                                <rect key="frame" x="0.0" y="42" width="320" height="124"/>
+                            <view alpha="0.0" contentMode="scaleToFill" id="cDI-be-xlJ">
+                                <rect key="frame" x="0.0" y="44" width="320" height="388"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view alpha="0.30000001192092896" contentMode="scaleToFill" id="Jxz-nf-2V1">
-                                        <rect key="frame" x="8" y="11" width="102" height="101"/>
+                                    <view alpha="0.30000001192092896" contentMode="scaleToFill" id="LQm-Bk-MFI">
+                                        <rect key="frame" x="0.0" y="123" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view alpha="0.30000001192092896" contentMode="scaleToFill" id="yl9-ma-Rp8">
+                                                <rect key="frame" x="6" y="10" width="74" height="61"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view alpha="0.30000001192092896" contentMode="scaleToFill" id="jJb-Jq-njx">
+                                                <rect key="frame" x="84" y="10" width="74" height="61"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view alpha="0.30000001192092896" contentMode="scaleToFill" id="CJH-tk-lPH">
+                                                <rect key="frame" x="162" y="10" width="74" height="61"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view alpha="0.30000001192092896" contentMode="scaleToFill" id="eJo-0O-HDc">
+                                                <rect key="frame" x="240" y="10" width="74" height="61"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view alpha="0.30000001192092896" contentMode="scaleToFill" id="bvs-vD-gy4">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view alpha="0.30000001192092896" contentMode="scaleToFill" id="d2v-8m-rFc">
+                                                <rect key="frame" x="8" y="11" width="102" height="101"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view alpha="0.30000001192092896" contentMode="scaleToFill" id="zNP-q5-A7F">
-                                <rect key="frame" x="6" y="175" width="74" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1209,16 +1243,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add New Item" id="8ar-cg-IP6">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Rvd-tr-KfK"/>
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="bL4-H1-s9u">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="NFj-Yv-mVl">
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButton" destination="j5e-0n-Z7z" id="O9R-dV-Y9d"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="bL4-H1-s9u">
                             <color key="tintColor" red="0.26445597630000001" green="0.92489735399999995" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addToPoll" destination="j5e-0n-Z7z" id="mO3-DH-yYS"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="sI1-kz-lQX">
-                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="cancelButton" destination="j5e-0n-Z7z" id="oMI-Ly-trx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1300,16 +1334,16 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Add New Item" id="f51-EF-XSU">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="dbx-3p-gpI"/>
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="WOO-41-3fN">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="pJC-XQ-y3Q">
+                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelButton" destination="ld5-tW-awy" id="nD5-7k-y1H"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="WOO-41-3fN">
                             <color key="tintColor" red="0.26445597627737227" green="0.92489735401459849" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="done" destination="ld5-tW-awy" id="ivW-1P-dpX"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="eb3-YP-2bX">
-                            <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="cancelButton" destination="ld5-tW-awy" id="Afz-BH-vfE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1472,7 +1506,6 @@
         <class className="ManagePollsTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ManagePollsTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="switchContentType:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="userPhoto" candidateClass="HJManagedImageV"/>
                 <relationship kind="outlet" name="usernameLabel" candidateClass="AppFormattedLabel"/>
             </relationships>

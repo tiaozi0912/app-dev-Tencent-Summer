@@ -154,12 +154,15 @@
         [self.pickerView presentPickerView];
         if ([self.pickerView selectedRowInComponent:0] != pickerDataArray.count){
             self.pickPollTitleTextField.borderStyle = UITextBorderStyleNone;
+            self.pickPollTitleTextField.enabled = NO;
             if (self.pickPollTitleTextField.text.length == 0){
                 self.pickPollTitleTextField.text = [pickerDataArray objectAtIndex:[self.pickerView selectedRowInComponent:0]];
                 item.pollID = ((PollRecord*)[activePolls objectAtIndex:[self.pickerView selectedRowInComponent:0]]).pollID;
             }
+        }else{
+            self.pickPollTitleTextField.borderStyle = UITextBorderStyleRoundedRect;
+            self.pickPollTitleTextField.enabled = YES;
         }
-
     }else{
         [self.pickerView dismissPickerView];
     }
