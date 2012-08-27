@@ -8,13 +8,14 @@
 
 #import "PollTableViewController.h"
 #define  POLLITEMCELLHEIGHT 330
+#define  ADD_ITEM_BUTTON_CELL_HEIGHT 58
 #define  OPEN_POLL_BUTTON_TITLE @"Open poll"
 #define  END_POLL_BUTTON_TITLE  @"End poll"
 #define  FOLLOW_POLL_BUTTON_TITLE @"Follow poll"
 #define  UNFOLLOW_POLL_BUTTON_TITLE @"Unfollow poll"
 #define  DELETE_POLL_BUTTON_TITLE   @"Delete poll"
 #define  SHOW_POLL_RESULT_BUTTON_TITLE @"Show poll result"
-#define  ADD_ITEM_BUTTON_TITLE @"Add new item"
+//#define  ADD_ITEM_BUTTON_TITLE @"Add new item"
 
 #define OpenPollAlertView 1
 #define EndPollAlertView 2
@@ -47,7 +48,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.rowHeight = POLLITEMCELLHEIGHT;
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:ACTION_BUTTON andHighlightedStateImage:ACTION_BUTTON_HL target:self action:@selector(showActionSheet)];
@@ -125,7 +125,6 @@
     });
     dispatch_release(loadingQueue);
 
-
    // [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
 }
 
@@ -170,23 +169,22 @@
             pollOperation = UNFOLLOW_POLL_BUTTON_TITLE;
         }*/
     }
-    if (isOwnerView && [self.poll.state intValue] == EDITING)
+    /*if (isOwnerView && [self.poll.state intValue] == EDITING)
     {
         popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:ADD_ITEM_BUTTON_TITLE, pollOperation, SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
-    }else{
+    }else{*/
         if (pollOperation){
             popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: pollOperation,SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
         }else{
             popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
         }
-    }
+    //}
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
 	popupQuery = nil;
 }
 
-- (void)addNewItem
-{
+- (IBAction)addNewItem:(id)sender {
     singleItemViewOption = SingleItemViewOptionNew;
     [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
@@ -264,9 +262,9 @@
         [self confirmToDeletePoll];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]){
         [actionSheet resignFirstResponder];
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:ADD_ITEM_BUTTON_TITLE]){
-        [self addNewItem];
-    }
+    }/*else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:ADD_ITEM_BUTTON_TITLE]){
+        [self addNewItem:nil];
+    }*/
 
 }
 
@@ -396,9 +394,9 @@
 {
     NSString *getPollPath = [NSString stringWithFormat:@"/polls/%@", self.poll.pollID];
     //NSString *audiencePath = [NSString stringWithFormat:@"/audiences/", self.poll.pollID];
-    
     //Successfully loaded a poll
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
+        NSLog(@"item_count: %d", self.poll.items.count);
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
         self.navigationItem.titleView = [Utility formatTitleWithString:self.poll.user.username];
@@ -506,10 +504,8 @@
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
 {
-    if (objectLoader.method == RKRequestMethodGET){
-    [Utility showAlert:@"Sorry!" message:error.localizedDescription];
-    }
     if ([error.localizedDescription isEqualToString:@"This poll does not exist any more."]){
+        [Utility showAlert:@"Sorry!" message:error.localizedDescription];
     }
 }
 
@@ -524,11 +520,32 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.poll.items.count;
+    if (isOwnerView && self.poll.state.intValue == EDITING){
+        return self.poll.items.count + 1;
+    }else return self.poll.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Item *item = [Item new];
+    
+    if (isOwnerView && self.poll.state.intValue == EDITING){
+        if (indexPath.row == 0){
+            static NSString *CellIdentifier = @"add item button cell";
+            PollItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[PollItemCell alloc]
+                        initWithStyle:UITableViewCellStyleDefault
+                        reuseIdentifier:CellIdentifier];
+            }
+            return cell;
+        }else{
+            item = [self.poll.items objectAtIndex:indexPath.row - 1];
+        }
+    }else {
+        item = [self.poll.items objectAtIndex:indexPath.row];
+    }
+    
     static NSString *CellIdentifier = @"poll item cell";
     PollItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -537,7 +554,7 @@
                 reuseIdentifier:CellIdentifier];
     }
     Audience *currentUser = (audienceIndex == NSNotFound? nil:[self.poll.audiences objectAtIndex:audienceIndex]);
-    Item *item = [self.poll.items objectAtIndex:indexPath.row];
+
     // Configure the cell...
     cell.voteButton.hidden = YES;
     // if the current user has voted for the item
@@ -581,15 +598,26 @@
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (isOwnerView && self.poll.state.intValue == EDITING && indexPath.row == 0){
+        return ADD_ITEM_BUTTON_CELL_HEIGHT;
+    }else{
+        return POLLITEMCELLHEIGHT;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    itemToBeShown = [self.poll.items objectAtIndex:indexPath.row];
-    if ((isOwnerView)&&([self.poll.state intValue] == EDITING)){
-        singleItemViewOption = SingleItemViewOptionEdit;
-    }else{
-        singleItemViewOption = SingleItemViewOptionView;
+    if (!(isOwnerView && self.poll.state.intValue == EDITING && indexPath.row == 0)){
+        itemToBeShown = [self.poll.items objectAtIndex:indexPath.row];
+        if ((isOwnerView)&&([self.poll.state intValue] == EDITING)){
+            singleItemViewOption = SingleItemViewOptionEdit;
+        }else{
+            singleItemViewOption = SingleItemViewOptionView;
+        }
+        [self performSegueWithIdentifier:@"show single item view" sender:self];
     }
-    [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

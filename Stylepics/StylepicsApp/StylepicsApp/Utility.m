@@ -111,35 +111,35 @@ double secondsInAYear = 3600*24*365;
     
     if (years > 1)
     {
-        return [NSString stringWithFormat:@"%u years ago", years];
+        return [NSString stringWithFormat:@"%u yr ago", years];
     }else if (years == 1){
-        return @"1 year ago";
+        return @"1 yr ago";
     }else if (months > 1)
     {
-        return [NSString stringWithFormat:@"%u months ago", months];
+        return [NSString stringWithFormat:@"%u mo ago", months];
     }else if (months == 1){
-        return @"1 month ago";
+        return @"1 mo ago";
     }else if (weeks > 1)
     {
-        return [NSString stringWithFormat:@"%u weeks ago", weeks];
+        return [NSString stringWithFormat:@"%u wk ago", weeks];
     }else if (weeks == 1){
-        return @"1 week ago";
+        return @"1 wk ago";
     }else if (days > 1)
     {
-        return [NSString stringWithFormat:@"%u days ago", days];
+        return [NSString stringWithFormat:@"%u d ago", days];
     }else if (days == 1){
-        return @"1 day ago";
+        return @"1 d ago";
     }else if (hours > 1)
     {
-        return [NSString stringWithFormat:@"%u hours ago", hours];
+        return [NSString stringWithFormat:@"%u hr ago", hours];
     }else if (hours == 1){
-        return @"1 hour ago";
+        return @"1 hr ago";
     }else if (minutes > 1)
     {
-        return [NSString stringWithFormat:@"%u minutes ago", minutes];
+        return [NSString stringWithFormat:@"%u min ago", minutes];
     }else if (minutes == 1){
-        return @"1 minute ago";
-    }else return @"0 minute ago";
+        return @"1 min ago";
+    }else return @"0 min ago";
 }
 
 +(NSURL*)URLForCategory:(PollCategory) category;
