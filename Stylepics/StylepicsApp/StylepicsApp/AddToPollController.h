@@ -11,11 +11,16 @@
 #import "Utility.h"
 
 @interface AddToPollController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UIButton *pickPollButton;
-@property (weak, nonatomic) IBOutlet AnimatedPickerView *pickerView;
 @property (nonatomic, strong) UIImage *capturedItemImage;
-@property (weak, nonatomic) IBOutlet UITextField *pickPollTitleTextField;
 @property (strong, nonatomic) Item *item;
+@property (weak, nonatomic) IBOutlet UILabel *brandLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
+@property (weak, nonatomic) IBOutlet UILabel *DescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextField *pickPollTitleTextField;
+@property (weak, nonatomic) IBOutlet UILabel *chooseCategoryLabel;
+@property (weak, nonatomic) IBOutlet UIPickerView *categoryPickerView;
+@property (weak, nonatomic) IBOutlet UIView *categoryPickerParentView;
 @end

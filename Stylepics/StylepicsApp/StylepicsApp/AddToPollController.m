@@ -20,9 +20,15 @@
 @end
 
 @implementation AddToPollController
+@synthesize brandLabel = _brandLabel;
+@synthesize priceLabel = _priceLabel;
 @synthesize itemImageView = _itemImageView;
+@synthesize DescriptionLabel = _DescriptionLabel;
+@synthesize chooseCategoryLabel = _chooseCategoryLabel;
+@synthesize categoryPickerView = _categoryPickerView;
+@synthesize categoryPickerParentView = _categoryPickerParentView;
 
-@synthesize pickPollTitleTextField = _pickPollTitleTextField,capturedItemImage=_capturedItemImage, pickerView, pickPollButton, item=_item;
+@synthesize pickPollTitleTextField = _pickPollTitleTextField,capturedItemImage=_capturedItemImage, pickerView, item=_item;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,29 +45,48 @@
     
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
-    self.pickerView.frame = CGRectMake(0, 416, 320, 216);
     
-    self.pickPollButton.enabled = NO;
+    self.categoryPickerView.delegate = self;
+    self.categoryPickerView.dataSource = self;
+    self.categoryPickerParentView.hidden = YES;
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
-    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:DONE_BUTTON andHighlightedStateImage:DONE_BUTTON_HL target:self action:@selector(addToPoll)];
-
+        self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    
     pickerDataArray=[NSMutableArray new];
     activePolls = [NSMutableArray new];
     backMark = NO;
-    self.pickerView.isOn = NO;
-    self.pickPollTitleTextField.enabled = NO;
+    self.pickPollTitleTextField.hidden = YES;
+    self.DescriptionLabel.hidden = YES;
+    self.chooseCategoryLabel.hidden = YES;
     self.itemImageView.image = self.capturedItemImage;
+
+    self.pickPollTitleTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    self.brandLabel.text = _item.brand;
+    self.priceLabel.text = [Utility formatCurrencyWithNumber:_item.price];
+    [self.brandLabel setNeedsLayout];
+    [self.priceLabel setNeedsLayout];
     
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/user_profile_poll_records/%@", [Utility getObjectForKey:CURRENTUSERID]] delegate:self];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidUnload
 {
-    [self setItemImageView:nil];
+    [self setChooseCategoryLabel:nil];
+    [self setCategoryPickerView:nil];
+    [self setDescriptionLabel:nil];
+    [self setBrandLabel:nil];
+    [self setPriceLabel:nil];
+    [self setCategoryPickerParentView:nil];
     [super viewDidUnload];
-    [self setPickPollButton:nil];
+    [self setItemImageView:nil];
     [self setPickerView:nil];
     [self setPickPollTitleTextField:nil];
     _item = nil;
@@ -75,16 +100,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)back
-{
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)back:(id)sender {
+     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)addToPoll
 {
-    //[self.descriptionTextField resignFirstResponder];
-    if (self.pickPollTitleTextField.text.length) {
+    [self.pickPollTitleTextField resignFirstResponder];
         if (newPoll) {
+            if (self.pickPollTitleTextField.text.length == 0)
+            {
+                [Utility showAlert:@"Please type something" message:@"Your new poll should have a description."];
+                return;
+            }
             spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
             [spinner startAnimating];
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
@@ -96,26 +124,22 @@
             poll.totalVotes = [NSNumber numberWithInt:0];
             [[RKObjectManager sharedManager] postObject:poll delegate:self];
         }else{
-            [Utility setObject:_item.pollID forKey:IDOfPollToBeShown];
+           // [Utility setObject:_item.pollID forKey:IDOfPollToBeShown];
             spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
             [spinner startAnimating];
             self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
             self.navigationItem.rightBarButtonItem.enabled = NO;
+            _item.pollID = ((PollRecord*)[activePolls objectAtIndex:[self.pickerView selectedRowInComponent:0]]).pollID;
             [[RKObjectManager sharedManager] postObject:_item delegate:self];
         }
-    }else{
-        [Utility showAlert:@"Please type something" message:@"Your new poll should have a name."];
-    }
-    
 }
 
 -(IBAction)backgroundTouched:(id)sender
 {
     [self.pickPollTitleTextField resignFirstResponder];
-    [self.pickerView dismissPickerView];
 }
 
-- (IBAction)pickPoll:(id)sender {
+/*- (IBAction)pickPoll:(id)sender {
     if (!self.pickerView.isOn)
     {
         [self.pickerView presentPickerView];
@@ -133,7 +157,7 @@
     }else{
         [self.pickerView dismissPickerView];
     }
-}
+}*/
 
 -(void)backWithFlipAnimation{
     [UIView beginAnimations:@"animation2" context:nil];
@@ -226,7 +250,8 @@
             }
         }
         [self.pickerView reloadAllComponents];
-        self.pickPollButton.enabled = YES;
+        [self.pickerView selectRow:0 inComponent:0 animated:YES];
+        [self.categoryPickerView selectRow:(PollTypeCount - 1)/2 inComponent:0 animated:NO];
     }
     if (backMark){
         [spinner stopAnimating];
@@ -245,39 +270,83 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    
-    return [pickerDataArray count] + 1;
+    switch (thePickerView.tag) {
+        case PollPicker:
+        {
+            return [pickerDataArray count] + 1;
+        }
+        case CategoryPicker:
+        {
+            return PollTypeCount;
+        }
+        default:
+            return 0;
+    }
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if (row < [pickerDataArray count]) {
-        return [pickerDataArray objectAtIndex:row];
-    }else{
-        return @"New Poll";
+    switch (thePickerView.tag) {
+        case PollPicker:
+        {
+            if (row > 0) {
+                return [pickerDataArray objectAtIndex:row - 1];
+            }else{
+                return @"New A Poll";
+            }
+        }
+        case CategoryPicker:
+        {
+            return [Utility stringFromCategory:(PollCategory) row]; 
+        }
+        default:
+            return @"None";
     }
+
 }
 
 #pragma mark - UIPickerView Delegate Methods
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (row < [pickerDataArray count]) {
-        _item.pollID = ((PollRecord*)[activePolls objectAtIndex:row]).pollID;
-        newPoll = NO;
-        self.pickPollTitleTextField.text = [pickerDataArray objectAtIndex:row];
-        self.pickPollTitleTextField.enabled = NO;
-        self.pickPollTitleTextField.borderStyle = UITextBorderStyleNone;
-    }else{
-        _item.pollID = nil;
-        newPoll = YES;
-        self.pickPollTitleTextField.text = @"";
-        self.pickPollTitleTextField.placeholder = @"Name your new poll here";
-        self.pickPollTitleTextField.enabled = YES;
-        self.pickPollTitleTextField.borderStyle = UITextBorderStyleRoundedRect;
+    switch (thePickerView.tag) {
+        case PollPicker:
+        {
+            if (row > 0) {
+                _item.pollID = ((PollRecord*)[activePolls objectAtIndex:row - 1]).pollID;
+                newPoll = NO;
+                self.pickPollTitleTextField.hidden = YES;
+                self.DescriptionLabel.hidden = YES;
+                self.chooseCategoryLabel.hidden = YES;
+                self.categoryPickerParentView.hidden = YES;
+            }else{
+                _item.pollID = nil;
+                newPoll = YES;
+                self.pickPollTitleTextField.hidden = NO;
+                self.DescriptionLabel.hidden = NO;
+                self.chooseCategoryLabel.hidden = NO;
+                self.categoryPickerParentView.hidden = NO;
+                
+            }
+            break;
+        }
+        case CategoryPicker:
+        {
+            break;
+        }
     }
+
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
 {
-    return 40;
+    return 30;
 }
+
+#pragma mark - TextFieldDelegate Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end

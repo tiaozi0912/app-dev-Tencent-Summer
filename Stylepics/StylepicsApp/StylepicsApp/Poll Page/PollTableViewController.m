@@ -7,7 +7,7 @@
 //
 
 #import "PollTableViewController.h"
-#define  POLLITEMCELLHEIGHT 390
+#define  POLLITEMCELLHEIGHT 330
 #define  OPEN_POLL_BUTTON_TITLE @"Open poll"
 #define  END_POLL_BUTTON_TITLE  @"End poll"
 #define  FOLLOW_POLL_BUTTON_TITLE @"Follow poll"
@@ -115,7 +115,6 @@
 {
     [super viewWillAppear:animated];
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
-    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     self.poll = [Poll new];
@@ -402,7 +401,7 @@
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
-        self.username.text = self.poll.user.username;
+        self.navigationItem.titleView = [Utility formatTitleWithString:self.poll.user.username];
         NSString* stateIndication;
         switch ([self.poll.state intValue]) {
             case EDITING:

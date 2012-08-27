@@ -98,6 +98,16 @@
 		0DA3999815EB08C2002A4D58 /* Next-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998C15EB08C2002A4D58 /* Next-hl@2x.png */; };
 		0DA3999915EB08C2002A4D58 /* Next.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998D15EB08C2002A4D58 /* Next.png */; };
 		0DA3999A15EB08C2002A4D58 /* Next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998E15EB08C2002A4D58 /* Next@2x.png */; };
+		0DA3999D15EB4112002A4D58 /* votes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3999B15EB4112002A4D58 /* votes.png */; };
+		0DA3999E15EB4112002A4D58 /* votes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3999C15EB4112002A4D58 /* votes@2x.png */; };
+		0DA399A115EB4179002A4D58 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3999F15EB4178002A4D58 /* CheckBox.png */; };
+		0DA399A215EB4179002A4D58 /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A015EB4178002A4D58 /* CheckBox@2x.png */; };
+		0DA399A515EB41C1002A4D58 /* CheckBox-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A315EB41C1002A4D58 /* CheckBox-hl.png */; };
+		0DA399A615EB41C1002A4D58 /* CheckBox-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A415EB41C1002A4D58 /* CheckBox-hl@2x.png */; };
+		0DA399A915EB41F5002A4D58 /* CheckInBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A715EB41F5002A4D58 /* CheckInBox.png */; };
+		0DA399AA15EB41F5002A4D58 /* CheckInBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A815EB41F5002A4D58 /* CheckInBox@2x.png */; };
+		0DA399AD15EB420F002A4D58 /* CheckInBox-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399AB15EB420F002A4D58 /* CheckInBox-hl.png */; };
+		0DA399AE15EB420F002A4D58 /* CheckInBox-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399AC15EB420F002A4D58 /* CheckInBox-hl@2x.png */; };
 		0DA3D96C15C8A771008B9E32 /* AppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */; };
 		0DA3EA8415DC1D8A00546961 /* SmallFormattedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */; };
 		0DA4105115CA43C000859E59 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4105015CA43C000859E59 /* Event.m */; };
@@ -109,12 +119,6 @@
 		0DA46A8715E59A7E008F67B1 /* Settings-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A7F15E59A7E008F67B1 /* Settings-hl@2x.png */; };
 		0DA46A8815E59A7E008F67B1 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A8015E59A7E008F67B1 /* Settings.png */; };
 		0DA46A8915E59A7E008F67B1 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A8115E59A7E008F67B1 /* Settings@2x.png */; };
-		0DA46A8E15E59FB2008F67B1 /* Votes.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A8C15E59FB2008F67B1 /* Votes.png */; };
-		0DA46A8F15E59FB2008F67B1 /* Votes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A8D15E59FB2008F67B1 /* Votes@2x.png */; };
-		0DA46A9515E5A267008F67B1 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A9115E5A267008F67B1 /* CheckBox.png */; };
-		0DA46A9615E5A267008F67B1 /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A9215E5A267008F67B1 /* CheckBox@2x.png */; };
-		0DA46A9715E5A267008F67B1 /* CheckInBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A9315E5A267008F67B1 /* CheckInBox.png */; };
-		0DA46A9815E5A267008F67B1 /* CheckInBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A9415E5A267008F67B1 /* CheckInBox@2x.png */; };
 		0DA46A9B15E5A39C008F67B1 /* DeleteItem.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A9915E5A39C008F67B1 /* DeleteItem.png */; };
 		0DA46A9C15E5A39C008F67B1 /* DeleteItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A9A15E5A39C008F67B1 /* DeleteItem@2x.png */; };
 		0DA46A9F15E5A5CD008F67B1 /* DeleteItem-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA46A9D15E5A5CD008F67B1 /* DeleteItem-hl.png */; };
@@ -346,6 +350,16 @@
 		0DA3998C15EB08C2002A4D58 /* Next-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next-hl@2x.png"; sourceTree = "<group>"; };
 		0DA3998D15EB08C2002A4D58 /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next.png; sourceTree = "<group>"; };
 		0DA3998E15EB08C2002A4D58 /* Next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next@2x.png"; sourceTree = "<group>"; };
+		0DA3999B15EB4112002A4D58 /* votes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = votes.png; sourceTree = "<group>"; };
+		0DA3999C15EB4112002A4D58 /* votes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "votes@2x.png"; sourceTree = "<group>"; };
+		0DA3999F15EB4178002A4D58 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
+		0DA399A015EB4178002A4D58 /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
+		0DA399A315EB41C1002A4D58 /* CheckBox-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox-hl.png"; sourceTree = "<group>"; };
+		0DA399A415EB41C1002A4D58 /* CheckBox-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox-hl@2x.png"; sourceTree = "<group>"; };
+		0DA399A715EB41F5002A4D58 /* CheckInBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckInBox.png; sourceTree = "<group>"; };
+		0DA399A815EB41F5002A4D58 /* CheckInBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckInBox@2x.png"; sourceTree = "<group>"; };
+		0DA399AB15EB420F002A4D58 /* CheckInBox-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckInBox-hl.png"; sourceTree = "<group>"; };
+		0DA399AC15EB420F002A4D58 /* CheckInBox-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckInBox-hl@2x.png"; sourceTree = "<group>"; };
 		0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		0DA3EA8215DC1D8A00546961 /* SmallFormattedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallFormattedLabel.h; sourceTree = "<group>"; };
 		0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallFormattedLabel.m; sourceTree = "<group>"; };
@@ -359,12 +373,6 @@
 		0DA46A7F15E59A7E008F67B1 /* Settings-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-hl@2x.png"; sourceTree = "<group>"; };
 		0DA46A8015E59A7E008F67B1 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		0DA46A8115E59A7E008F67B1 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
-		0DA46A8C15E59FB2008F67B1 /* Votes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Votes.png; sourceTree = "<group>"; };
-		0DA46A8D15E59FB2008F67B1 /* Votes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Votes@2x.png"; sourceTree = "<group>"; };
-		0DA46A9115E5A267008F67B1 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
-		0DA46A9215E5A267008F67B1 /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
-		0DA46A9315E5A267008F67B1 /* CheckInBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckInBox.png; sourceTree = "<group>"; };
-		0DA46A9415E5A267008F67B1 /* CheckInBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckInBox@2x.png"; sourceTree = "<group>"; };
 		0DA46A9915E5A39C008F67B1 /* DeleteItem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeleteItem.png; sourceTree = "<group>"; };
 		0DA46A9A15E5A39C008F67B1 /* DeleteItem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DeleteItem@2x.png"; sourceTree = "<group>"; };
 		0DA46A9D15E5A5CD008F67B1 /* DeleteItem-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DeleteItem-hl.png"; sourceTree = "<group>"; };
@@ -800,8 +808,8 @@
 				0D0C43B315E7627F0031DECC /* Profile-Button-hl@2x.png */,
 				0D0C43B415E7627F0031DECC /* Profile-Button.png */,
 				0D0C43B515E7627F0031DECC /* Profile-Button@2x.png */,
-				0DA46A8C15E59FB2008F67B1 /* Votes.png */,
-				0DA46A8D15E59FB2008F67B1 /* Votes@2x.png */,
+				0DA3999B15EB4112002A4D58 /* votes.png */,
+				0DA3999C15EB4112002A4D58 /* votes@2x.png */,
 			);
 			name = "Profile Page";
 			sourceTree = "<group>";
@@ -817,11 +825,15 @@
 				0DA46A9E15E5A5CD008F67B1 /* DeleteItem-hl@2x.png */,
 				0DA46A9915E5A39C008F67B1 /* DeleteItem.png */,
 				0DA46A9A15E5A39C008F67B1 /* DeleteItem@2x.png */,
-				0DA46A9115E5A267008F67B1 /* CheckBox.png */,
-				0DA46A9215E5A267008F67B1 /* CheckBox@2x.png */,
-				0DA46A9315E5A267008F67B1 /* CheckInBox.png */,
-				0DA46A9415E5A267008F67B1 /* CheckInBox@2x.png */,
 				0D388BF715EA1647005A56D7 /* PollTableView.png */,
+				0DA3999F15EB4178002A4D58 /* CheckBox.png */,
+				0DA399A015EB4178002A4D58 /* CheckBox@2x.png */,
+				0DA399A315EB41C1002A4D58 /* CheckBox-hl.png */,
+				0DA399A415EB41C1002A4D58 /* CheckBox-hl@2x.png */,
+				0DA399A715EB41F5002A4D58 /* CheckInBox.png */,
+				0DA399A815EB41F5002A4D58 /* CheckInBox@2x.png */,
+				0DA399AB15EB420F002A4D58 /* CheckInBox-hl.png */,
+				0DA399AC15EB420F002A4D58 /* CheckInBox-hl@2x.png */,
 			);
 			name = "Poll Table";
 			sourceTree = "<group>";
@@ -962,12 +974,6 @@
 				0DA46A8715E59A7E008F67B1 /* Settings-hl@2x.png in Resources */,
 				0DA46A8815E59A7E008F67B1 /* Settings.png in Resources */,
 				0DA46A8915E59A7E008F67B1 /* Settings@2x.png in Resources */,
-				0DA46A8E15E59FB2008F67B1 /* Votes.png in Resources */,
-				0DA46A8F15E59FB2008F67B1 /* Votes@2x.png in Resources */,
-				0DA46A9515E5A267008F67B1 /* CheckBox.png in Resources */,
-				0DA46A9615E5A267008F67B1 /* CheckBox@2x.png in Resources */,
-				0DA46A9715E5A267008F67B1 /* CheckInBox.png in Resources */,
-				0DA46A9815E5A267008F67B1 /* CheckInBox@2x.png in Resources */,
 				0DA46A9B15E5A39C008F67B1 /* DeleteItem.png in Resources */,
 				0DA46A9C15E5A39C008F67B1 /* DeleteItem@2x.png in Resources */,
 				0DA46A9F15E5A5CD008F67B1 /* DeleteItem-hl.png in Resources */,
@@ -1035,6 +1041,16 @@
 				0DA3999815EB08C2002A4D58 /* Next-hl@2x.png in Resources */,
 				0DA3999915EB08C2002A4D58 /* Next.png in Resources */,
 				0DA3999A15EB08C2002A4D58 /* Next@2x.png in Resources */,
+				0DA3999D15EB4112002A4D58 /* votes.png in Resources */,
+				0DA3999E15EB4112002A4D58 /* votes@2x.png in Resources */,
+				0DA399A115EB4179002A4D58 /* CheckBox.png in Resources */,
+				0DA399A215EB4179002A4D58 /* CheckBox@2x.png in Resources */,
+				0DA399A515EB41C1002A4D58 /* CheckBox-hl.png in Resources */,
+				0DA399A615EB41C1002A4D58 /* CheckBox-hl@2x.png in Resources */,
+				0DA399A915EB41F5002A4D58 /* CheckInBox.png in Resources */,
+				0DA399AA15EB41F5002A4D58 /* CheckInBox@2x.png in Resources */,
+				0DA399AD15EB420F002A4D58 /* CheckInBox-hl.png in Resources */,
+				0DA399AE15EB420F002A4D58 /* CheckInBox-hl@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

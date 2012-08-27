@@ -10,7 +10,9 @@
 #import "AddToPollController.h"
 
 @interface AddNewItemController ()
-
+{
+    BOOL textboxOn;
+}
 @end
 
 
@@ -44,8 +46,7 @@
     
     self.priceTextField.hidden = YES;
     self.brandTextField.hidden = YES;
-    
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/user_profile_poll_records/%@", [Utility getObjectForKey:CURRENTUSERID]] delegate:self];
+    textboxOn = NO;
 	// Do any additional setup after loading the view.
 }
 
@@ -144,8 +145,16 @@
  }*/
 
 - (IBAction)tapPicture:(UIControl *)sender {
-    self.brandTextField.hidden = NO;
-    self.priceTextField.hidden = NO;
+    if (!textboxOn) {
+        self.brandTextField.hidden = NO;
+        self.priceTextField.hidden = NO;
+        textboxOn = YES;
+    }else{
+        [self.priceTextField resignFirstResponder];
+        [self.brandTextField resignFirstResponder];
+        textboxOn = NO;
+    }
+    
 }
 
 -(void)next
