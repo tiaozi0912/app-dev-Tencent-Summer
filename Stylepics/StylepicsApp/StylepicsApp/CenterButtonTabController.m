@@ -69,13 +69,10 @@
 
 -(IBAction)cameraButtonClicked:(UIButton*)sender
 {
-#if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-    [self useCamera];
-#elif ENVIRONMENT == ENVIRONMENT_STAGING
-    [self useCamera];
-#elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
-    [self useCamera];
-#endif
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showInView:self.view];
+	popupQuery = nil;
 }
 
 - (void) TestOnSimulator
@@ -162,4 +159,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addNewItemController];
     [self presentModalViewController:nav animated:YES];
 }
+
+#pragma mark - UIActionSheetDelegate Methods
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+#if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
+            [self useCamera];
+#elif ENVIRONMENT == ENVIRONMENT_STAGING
+            [self useCamera];
+#elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
+            [self useCamera];
+#endif
+            break;
+        case 1:[self useCameraRoll];
+            break;
+        case 2:[actionSheet resignFirstResponder];
+            break;
+        default:
+            break;
+    }
+}
+
 @end

@@ -20,4 +20,6 @@
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *voteCountLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *commentCountLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *brandLabel;
+@property (weak, nonatomic) IBOutlet AppFormattedLabel *timeStampLabel;
+
 @end

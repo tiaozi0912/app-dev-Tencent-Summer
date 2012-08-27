@@ -90,6 +90,7 @@
      @"photo_url", @"photoURL",
      @"poll_id", @"pollID",
      @"brand", @"brand",
+     @"created_at", @"addedTime",
      nil];
     //[itemMapping mapRelationship:@"comments" withMapping:commentMapping];
     [[RKObjectManager sharedManager].mappingProvider registerMapping:itemMapping withRootKeyPath:@"item"];

@@ -10,6 +10,6 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Utility.h"
 
-@interface CenterButtonTabController : UITabBarController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface CenterButtonTabController : UITabBarController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 @property (nonatomic, weak) UIButton* cameraButton;
 @end

@@ -15,13 +15,15 @@
 @interface PollTableViewController : UITableViewController<RKObjectLoaderDelegate, UIAlertViewDelegate,UIActionSheetDelegate, UITextViewDelegate>
 @property (nonatomic, strong) Poll *poll;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingWheel;
-@property (weak, nonatomic) IBOutlet AppFormattedLabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *totalVotesCount;
 @property (weak, nonatomic) IBOutlet UITextView *pollDescription;
-@property (weak, nonatomic) IBOutlet MultipartLabel *ownerAndStateLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryIconView;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *stateIndicationLabel;
+
 
 
 @end

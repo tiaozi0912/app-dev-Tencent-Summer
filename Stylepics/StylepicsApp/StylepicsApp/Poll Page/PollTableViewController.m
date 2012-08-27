@@ -35,13 +35,14 @@
 @implementation PollTableViewController
 @synthesize poll=_poll;
 @synthesize loadingWheel = _loadingWheel;
-@synthesize startTimeLabel = _startTimeLabel;
+@synthesize timeStampLabel = _timeStampLabel;
 @synthesize totalVotesCount = _totalVotesCount;
-@synthesize ownerAndStateLabel = _ownerAndStateLabel;
 @synthesize pollDescription = _pollDescription;
 @synthesize categoryLabel = _categoryLabel;
 @synthesize userPhoto = _userPhoto;
 @synthesize categoryIconView = _categoryIconView;
+@synthesize username = _username;
+@synthesize stateIndicationLabel = _stateIndicationLabel;
 
 - (void)viewDidLoad
 {
@@ -51,7 +52,6 @@
     self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:ACTION_BUTTON andHighlightedStateImage:ACTION_BUTTON_HL target:self action:@selector(showActionSheet)];
     self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
-    self.ownerAndStateLabel.backgroundColor = [UIColor clearColor];
     CGRect frameOfEmptyPollHint = CGRectMake(20, 230, 280, 60);
 
     //CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
@@ -92,13 +92,14 @@
 - (void)viewDidUnload
 {
     [self setLoadingWheel:nil];
-    [self setStartTimeLabel:nil];
+    self.timeStampLabel = nil;
     [self setTotalVotesCount:nil];
     [self setPollDescription:nil];
     [self setCategoryLabel:nil];
     [self setUserPhoto:nil];
-    self.ownerAndStateLabel = nil;
     [self setCategoryIconView:nil];
+    [self setUsername:nil];
+    [self setStateIndicationLabel:nil];
     [super viewDidUnload];
     self.poll = nil;
     pollRecord = nil;
@@ -401,30 +402,31 @@
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
-        [self.ownerAndStateLabel updateNumberOfLabels:2];
-        [self.ownerAndStateLabel setText:self.poll.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] forLabel:0];
+        self.username.text = self.poll.user.username;
         NSString* stateIndication;
         switch ([self.poll.state intValue]) {
             case EDITING:
             {
-                stateIndication = isOwnerView?@", you are editing this poll.": @" is editing this poll.";
+                stateIndication = isOwnerView?@"You are editing this poll.": @"is editing this poll.";
+                self.timeStampLabel.text = [Utility formatTimeWithDate:self.poll.startTime];
                 break;
             }
             case VOTING:
             {
-                stateIndication = isOwnerView?@", you have opened this poll.": @" has opened this poll.";
+                stateIndication = isOwnerView?@"You have opened this poll.": @"has opened this poll.";
+                self.timeStampLabel.text = [Utility formatTimeWithDate:self.poll.openTime];
                 break;
             }
             case FINISHED:
             {
-                stateIndication = isOwnerView?@", you have ended this poll.": @" has ended this poll.";
+                stateIndication = isOwnerView?@"You have ended this poll.": @"has ended this poll.";
+                self.timeStampLabel.text = [Utility formatTimeWithDate:self.poll.endTime];
                 break;
             }
             default:
                 break;
         }
-        [self.ownerAndStateLabel setText:stateIndication andFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0] forLabel:1];
-        self.ownerAndStateLabel.clipsToBounds = YES;
+        self.stateIndicationLabel.text = stateIndication;
         
         self.pollDescription.text = self.poll.title;
         
@@ -432,9 +434,8 @@
         self.categoryIconView.image = [Utility iconForCategory:(PollCategory)[self.poll.category intValue]];
         
         //self.totalVotesCount.text = [NSString stringWithFormat:@"%@", self.poll.totalVotes];
-        self.startTimeLabel.text = [NSDateFormatter localizedStringFromDate:self.poll.startTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
         
-        [self.startTimeLabel sizeToFit];
+        [self.timeStampLabel setNeedsLayout];
         //[self.totalVotesCount sizeToFit];
 
         
@@ -452,7 +453,7 @@
             emptyPollHintInAudienceView.hidden = YES;
         }
         
-        NSString* hintMessage;
+        /*NSString* hintMessage;
         switch ([self.poll.state intValue]) {
             case EDITING:
             {
@@ -473,7 +474,7 @@
                 break;
         }
         
-        [Utility showAlert:@"Hint" message:hintMessage];
+        [Utility showAlert:@"Hint" message:hintMessage];*/
 
         //find whether the current user is among the audience of the poll
         audienceIndex = [self.poll.audiences indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop)
@@ -563,7 +564,9 @@
     cell.descriptionOfItemLabel.text = item.description;
     cell.priceLabel.text = [Utility formatCurrencyWithNumber:item.price];
     cell.voteCountLabel.text = [item.numberOfVotes stringValue];
+    cell.timeStampLabel.text = [Utility formatTimeWithDate:item.addedTime];
     cell.brandLabel.text = item.brand;
+    [cell.brandLabel sizeToFit];
     [cell.priceLabel sizeToFit];
     [cell.voteCountLabel sizeToFit];
     return cell;

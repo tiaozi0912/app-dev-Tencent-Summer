@@ -79,6 +79,25 @@
 		0D9DDAEE15D3100A008D27AB /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9DDAED15D3100A008D27AB /* SettingsTableViewController.m */; };
 		0D9EFC3615B3E502002180F1 /* SingleItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */; };
 		0DA31AC615E30E0E00801403 /* AnimatedPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA31AC515E30E0D00801403 /* AnimatedPickerView.m */; };
+		0DA3996815EAE413002A4D58 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3996415EAE413002A4D58 /* check.png */; };
+		0DA3996915EAE413002A4D58 /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3996515EAE413002A4D58 /* check@2x.png */; };
+		0DA3996A15EAE413002A4D58 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3996615EAE413002A4D58 /* clock.png */; };
+		0DA3996B15EAE413002A4D58 /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3996715EAE413002A4D58 /* clock@2x.png */; };
+		0DA3997E15EAF4A3002A4D58 /* tapHint.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3997C15EAF4A3002A4D58 /* tapHint.png */; };
+		0DA3997F15EAF4A3002A4D58 /* tapHint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3997D15EAF4A3002A4D58 /* tapHint@2x.png */; };
+		0DA3998215EAFB4A002A4D58 /* AddToPollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3998115EAFB49002A4D58 /* AddToPollController.m */; };
+		0DA3998F15EB08C2002A4D58 /* cancel-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998315EB08C2002A4D58 /* cancel-hl.png */; };
+		0DA3999015EB08C2002A4D58 /* cancel-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998415EB08C2002A4D58 /* cancel-hl@2x.png */; };
+		0DA3999115EB08C2002A4D58 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998515EB08C2002A4D58 /* cancel.png */; };
+		0DA3999215EB08C2002A4D58 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998615EB08C2002A4D58 /* cancel@2x.png */; };
+		0DA3999315EB08C2002A4D58 /* done-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998715EB08C2002A4D58 /* done-hl.png */; };
+		0DA3999415EB08C2002A4D58 /* done-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998815EB08C2002A4D58 /* done-hl@2x.png */; };
+		0DA3999515EB08C2002A4D58 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998915EB08C2002A4D58 /* done.png */; };
+		0DA3999615EB08C2002A4D58 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998A15EB08C2002A4D58 /* done@2x.png */; };
+		0DA3999715EB08C2002A4D58 /* Next-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998B15EB08C2002A4D58 /* Next-hl.png */; };
+		0DA3999815EB08C2002A4D58 /* Next-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998C15EB08C2002A4D58 /* Next-hl@2x.png */; };
+		0DA3999915EB08C2002A4D58 /* Next.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998D15EB08C2002A4D58 /* Next.png */; };
+		0DA3999A15EB08C2002A4D58 /* Next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3998E15EB08C2002A4D58 /* Next@2x.png */; };
 		0DA3D96C15C8A771008B9E32 /* AppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3D96A15C8A771008B9E32 /* AppDataModel.xcdatamodeld */; };
 		0DA3EA8415DC1D8A00546961 /* SmallFormattedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */; };
 		0DA4105115CA43C000859E59 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4105015CA43C000859E59 /* Event.m */; };
@@ -307,6 +326,26 @@
 		0D9EFC3515B3E502002180F1 /* SingleItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleItemViewController.m; sourceTree = "<group>"; };
 		0DA31AC415E30E0D00801403 /* AnimatedPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedPickerView.h; sourceTree = "<group>"; };
 		0DA31AC515E30E0D00801403 /* AnimatedPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedPickerView.m; sourceTree = "<group>"; };
+		0DA3996415EAE413002A4D58 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		0DA3996515EAE413002A4D58 /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
+		0DA3996615EAE413002A4D58 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		0DA3996715EAE413002A4D58 /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		0DA3997C15EAF4A3002A4D58 /* tapHint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapHint.png; sourceTree = "<group>"; };
+		0DA3997D15EAF4A3002A4D58 /* tapHint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tapHint@2x.png"; sourceTree = "<group>"; };
+		0DA3998015EAFB49002A4D58 /* AddToPollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToPollController.h; sourceTree = "<group>"; };
+		0DA3998115EAFB49002A4D58 /* AddToPollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToPollController.m; sourceTree = "<group>"; };
+		0DA3998315EB08C2002A4D58 /* cancel-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-hl.png"; sourceTree = "<group>"; };
+		0DA3998415EB08C2002A4D58 /* cancel-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel-hl@2x.png"; sourceTree = "<group>"; };
+		0DA3998515EB08C2002A4D58 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		0DA3998615EB08C2002A4D58 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
+		0DA3998715EB08C2002A4D58 /* done-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done-hl.png"; sourceTree = "<group>"; };
+		0DA3998815EB08C2002A4D58 /* done-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done-hl@2x.png"; sourceTree = "<group>"; };
+		0DA3998915EB08C2002A4D58 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = done.png; sourceTree = "<group>"; };
+		0DA3998A15EB08C2002A4D58 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
+		0DA3998B15EB08C2002A4D58 /* Next-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next-hl.png"; sourceTree = "<group>"; };
+		0DA3998C15EB08C2002A4D58 /* Next-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next-hl@2x.png"; sourceTree = "<group>"; };
+		0DA3998D15EB08C2002A4D58 /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next.png; sourceTree = "<group>"; };
+		0DA3998E15EB08C2002A4D58 /* Next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next@2x.png"; sourceTree = "<group>"; };
 		0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		0DA3EA8215DC1D8A00546961 /* SmallFormattedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallFormattedLabel.h; sourceTree = "<group>"; };
 		0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallFormattedLabel.m; sourceTree = "<group>"; };
@@ -469,6 +508,18 @@
 		0D3210AF15E4AA2900A4A505 /* Navigation Bar */ = {
 			isa = PBXGroup;
 			children = (
+				0DA3998315EB08C2002A4D58 /* cancel-hl.png */,
+				0DA3998415EB08C2002A4D58 /* cancel-hl@2x.png */,
+				0DA3998515EB08C2002A4D58 /* cancel.png */,
+				0DA3998615EB08C2002A4D58 /* cancel@2x.png */,
+				0DA3998715EB08C2002A4D58 /* done-hl.png */,
+				0DA3998815EB08C2002A4D58 /* done-hl@2x.png */,
+				0DA3998915EB08C2002A4D58 /* done.png */,
+				0DA3998A15EB08C2002A4D58 /* done@2x.png */,
+				0DA3998B15EB08C2002A4D58 /* Next-hl.png */,
+				0DA3998C15EB08C2002A4D58 /* Next-hl@2x.png */,
+				0DA3998D15EB08C2002A4D58 /* Next.png */,
+				0DA3998E15EB08C2002A4D58 /* Next@2x.png */,
 				0DA46AB615E5BF84008F67B1 /* Action-hl.png */,
 				0DA46AB715E5BF84008F67B1 /* Action-hl@2x.png */,
 				0DA46AB815E5BF84008F67B1 /* Action.png */,
@@ -496,6 +547,8 @@
 		0D3210B015E4AAB800A4A505 /* Other Images */ = {
 			isa = PBXGroup;
 			children = (
+				0DA3997C15EAF4A3002A4D58 /* tapHint.png */,
+				0DA3997D15EAF4A3002A4D58 /* tapHint@2x.png */,
 				0D388BEC15EA0483005A56D7 /* default-profile-photo-large.png */,
 				0D388BED15EA0483005A56D7 /* default-profile-photo-large@2x.png */,
 				0D388BEE15EA0483005A56D7 /* default-profile-photo-small.png */,
@@ -627,6 +680,8 @@
 				0D8F49D215B605CF00C2DAEF /* PollResultViewController.m */,
 				0DF8D7AC15DE2D4A0010E475 /* AddNewItemController.h */,
 				0DF8D7AD15DE2D4A0010E475 /* AddNewItemController.m */,
+				0DA3998015EAFB49002A4D58 /* AddToPollController.h */,
+				0DA3998115EAFB49002A4D58 /* AddToPollController.m */,
 				0D9C0CA215DEC1A8005FA5C5 /* CenterButtonTabController.h */,
 				0D9C0CA315DEC1A8005FA5C5 /* CenterButtonTabController.m */,
 			);
@@ -754,6 +809,10 @@
 		0DA46A9015E5A256008F67B1 /* Poll Table */ = {
 			isa = PBXGroup;
 			children = (
+				0DA3996415EAE413002A4D58 /* check.png */,
+				0DA3996515EAE413002A4D58 /* check@2x.png */,
+				0DA3996615EAE413002A4D58 /* clock.png */,
+				0DA3996715EAE413002A4D58 /* clock@2x.png */,
 				0DA46A9D15E5A5CD008F67B1 /* DeleteItem-hl.png */,
 				0DA46A9E15E5A5CD008F67B1 /* DeleteItem-hl@2x.png */,
 				0DA46A9915E5A39C008F67B1 /* DeleteItem.png */,
@@ -958,6 +1017,24 @@
 				0D388BF215EA0483005A56D7 /* default-profile-photo-small.png in Resources */,
 				0D388BF315EA0483005A56D7 /* default-profile-photo-small@2x.png in Resources */,
 				0D388BF815EA1647005A56D7 /* PollTableView.png in Resources */,
+				0DA3996815EAE413002A4D58 /* check.png in Resources */,
+				0DA3996915EAE413002A4D58 /* check@2x.png in Resources */,
+				0DA3996A15EAE413002A4D58 /* clock.png in Resources */,
+				0DA3996B15EAE413002A4D58 /* clock@2x.png in Resources */,
+				0DA3997E15EAF4A3002A4D58 /* tapHint.png in Resources */,
+				0DA3997F15EAF4A3002A4D58 /* tapHint@2x.png in Resources */,
+				0DA3998F15EB08C2002A4D58 /* cancel-hl.png in Resources */,
+				0DA3999015EB08C2002A4D58 /* cancel-hl@2x.png in Resources */,
+				0DA3999115EB08C2002A4D58 /* cancel.png in Resources */,
+				0DA3999215EB08C2002A4D58 /* cancel@2x.png in Resources */,
+				0DA3999315EB08C2002A4D58 /* done-hl.png in Resources */,
+				0DA3999415EB08C2002A4D58 /* done-hl@2x.png in Resources */,
+				0DA3999515EB08C2002A4D58 /* done.png in Resources */,
+				0DA3999615EB08C2002A4D58 /* done@2x.png in Resources */,
+				0DA3999715EB08C2002A4D58 /* Next-hl.png in Resources */,
+				0DA3999815EB08C2002A4D58 /* Next-hl@2x.png in Resources */,
+				0DA3999915EB08C2002A4D58 /* Next.png in Resources */,
+				0DA3999A15EB08C2002A4D58 /* Next@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,6 +1090,7 @@
 				0DB2A55915E7097B00FA1470 /* OpenedPollCell.m in Sources */,
 				0DB2A55C15E70FF100FA1470 /* EndedPollCell.m in Sources */,
 				0D388BF615EA07DE005A56D7 /* AppFormattedBoldLabel.m in Sources */,
+				0DA3998215EAFB4A002A4D58 /* AddToPollController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

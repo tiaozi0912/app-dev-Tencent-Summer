@@ -67,6 +67,12 @@
 #define ACTION_BUTTON @"Action"
 #define ACTION_BUTTON_HL @"Action-hl"
 #define ADD_ITEM_HINT @"AddItemHint"
+#define DONE_BUTTON  @"done"
+#define DONE_BUTTON_HL @"done-hl"
+#define CANCEL_BUTTON  @"cancel"
+#define CANCEL_BUTTON_HL @"cancel-hl"
+#define NEXT_BUTTON @"Next"
+#define NEXT_BUTTON_HL @"Next-hl"
 
 typedef enum{
     SingleItemViewOptionNew,

@@ -41,8 +41,7 @@
     {
         _user = [User new];
         _user.userID = [Utility getObjectForKey: CURRENTUSERID];
-        self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
-        self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEW_POLL_BUTTON andHighlightedStateImage:NEW_POLL_BUTTON_HL target:self action:@selector(newPoll)];
+        self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
     }else{
         self.navigationItem.title = @"Profile";
         self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
@@ -93,10 +92,6 @@
 }
 
 #pragma User Actions
--(void)newPoll
-{
-    [self performSegueWithIdentifier:@"new poll" sender:self];
-}
 
 -(void)showSettings
 {
@@ -325,19 +320,5 @@
 
 }
 
-#pragma NewPollViewController delegate method
--(void)newPollViewController:(id)sender didCreateANewPoll:(NSNumber *)pollID
-{
-    [Utility setObject:pollID forKey:IDOfPollToBeShown];
-    [self dismissModalViewControllerAnimated:NO];
-    [self performSegueWithIdentifier:@"show poll" sender:self];
-}
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"new poll"]){
-        ((NewPollViewController*)(segue.destinationViewController)).delegate = self;
-    }
-
-}
 @end

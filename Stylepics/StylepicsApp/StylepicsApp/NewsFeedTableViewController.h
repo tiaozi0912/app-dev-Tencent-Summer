@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "StylepicsAppDelegate.h"
 #import "FeedsCell.h"
+#import "NewPollViewController.h"
 
 
-@interface NewsFeedTableViewController : UITableViewController<RKObjectLoaderDelegate>
+@interface NewsFeedTableViewController : UITableViewController<RKObjectLoaderDelegate, NewPollViewControllerDelegate>
 
 @end

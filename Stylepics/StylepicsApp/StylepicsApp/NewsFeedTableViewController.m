@@ -11,6 +11,7 @@
 #import "Utility.h"
 #import "ManagePollsTableViewController.h"
 
+
 #define ROWHEIGHT 369
 
 #define TimeStampLabelFrame CGRectMake(48,9,74,9)
@@ -19,6 +20,7 @@
 #define EventDescriptionLabelFrame CGRectMake(47,33,236,16)
 #define CategoryIconFrame CGRectMake(292,9,23,23)
 #define ItemImageFrame CGRectMake(5,57,310,310)
+#define degreesToRadians(degrees) (M_PI * degrees / 180.0)
 
 @interface NewsFeedTableViewController (){
     User* userToBePassed;
@@ -64,6 +66,7 @@
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_WITH_LOGO] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEW_POLL_BUTTON andHighlightedStateImage:NEW_POLL_BUTTON_HL target:self action:@selector(newPoll)];
 }
 
 - (void)viewDidUnload
@@ -159,6 +162,11 @@
     [cell.thumbnail0 clear];
     [cell.thumbnail0 showLoadingWheel];
     cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL];
+
+    cell.thumbnail0.transform = CGAffineTransformIdentity;
+    cell.thumbnail0.transform = CGAffineTransformMakeRotation(degreesToRadians(30));
+    cell.thumbnail0.bounds = CGRectMake(0,0, 200, 200);
+    
     if (event.items.count > 1) {
         [cell.thumbnail1 clear];
         [cell.thumbnail1 showLoadingWheel];
@@ -199,7 +207,7 @@
     
     [cell.usernameAndActionLabel updateNumberOfLabels:2];
     [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] forLabel:0];
-    [cell.usernameAndActionLabel setText:@" opened a poll:" andFont:[UIFont fontWithName:@"HelveticaNeue-Regular" size:14.0] forLabel:1];
+    [cell.usernameAndActionLabel setText:@" would like your vote" andFont:[UIFont fontWithName:@"HelveticaNeue-Regular" size:14.0] forLabel:1];
     cell.usernameAndActionLabel.clipsToBounds = YES;
     
     cell.eventDescriptionLabel.text = event.poll.title;
@@ -247,10 +255,30 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
     [self performSegueWithIdentifier:@"show profile" sender:self];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"show profile"])
+#pragma User Actions
+
+-(void)newPoll
+{
+    [self performSegueWithIdentifier:@"new poll" sender:self];
+}
+
+#pragma NewPollViewController delegate method
+
+-(void)newPollViewController:(id)sender didCreateANewPoll:(NSNumber *)pollID
+{
+    [Utility setObject:pollID forKey:IDOfPollToBeShown];
+    [self dismissModalViewControllerAnimated:NO];
+    [self performSegueWithIdentifier:@"show poll" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"new poll"]){
+        ((NewPollViewController*)(segue.destinationViewController)).delegate = self;
+    }else if ([segue.identifier isEqualToString:@"show profile"])
     {
         ((ManagePollsTableViewController*)segue.destinationViewController).user = userToBePassed;
     }
+    
 }
 @end

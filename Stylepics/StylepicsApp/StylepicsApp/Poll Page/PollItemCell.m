@@ -16,6 +16,7 @@
 @synthesize brandLabel = _brandLabel;
 
 @synthesize itemImage=_itemImage,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel;
+@synthesize timeStampLabel = _timeStampLabel;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

@@ -8,7 +8,12 @@
 
 #import "Utility.h"
 
-
+double secondsInAnHour = 3600;
+double secondsInAMinute = 60;
+double secondsInADay = 3600*24;
+double secondsInAWeek = 3600*24*7;
+double secondsInAMonth = 3600*24*30.5;
+double secondsInAYear = 3600*24*365;
 
 @implementation Utility
 
@@ -95,7 +100,46 @@
 
 +(NSString*)formatTimeWithDate:(NSDate *) date
 {
-    return [NSDateFormatter localizedStringFromDate:date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    NSDate* now = [NSDate date];
+    NSTimeInterval timeDifference = [now timeIntervalSinceDate:date];
+    NSInteger years = timeDifference /secondsInAYear;
+    NSInteger minutes = timeDifference / secondsInAMinute;
+    NSInteger hours = timeDifference / secondsInAnHour;
+    NSInteger days = timeDifference /secondsInADay;
+    NSInteger weeks = timeDifference / secondsInAWeek;
+    NSInteger months = timeDifference / secondsInAMonth;
+    
+    if (years > 1)
+    {
+        return [NSString stringWithFormat:@"%u years ago", years];
+    }else if (years == 1){
+        return @"1 year ago";
+    }else if (months > 1)
+    {
+        return [NSString stringWithFormat:@"%u months ago", months];
+    }else if (months == 1){
+        return @"1 month ago";
+    }else if (weeks > 1)
+    {
+        return [NSString stringWithFormat:@"%u weeks ago", weeks];
+    }else if (weeks == 1){
+        return @"1 week ago";
+    }else if (days > 1)
+    {
+        return [NSString stringWithFormat:@"%u days ago", days];
+    }else if (days == 1){
+        return @"1 day ago";
+    }else if (hours > 1)
+    {
+        return [NSString stringWithFormat:@"%u hours ago", hours];
+    }else if (hours == 1){
+        return @"1 hour ago";
+    }else if (minutes > 1)
+    {
+        return [NSString stringWithFormat:@"%u minutes ago", minutes];
+    }else if (minutes == 1){
+        return @"1 minute ago";
+    }else return @"0 minute ago";
 }
 
 +(NSURL*)URLForCategory:(PollCategory) category;
