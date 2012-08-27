@@ -50,14 +50,25 @@
     self.categoryPickerView.dataSource = self;
     self.categoryPickerParentView.hidden = YES;
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-<<<<<<< HEAD
+
         self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
-=======
+
     //self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
+    
+    //set back button
+    UIImage *backButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
+    UIImage *backIconImage = [UIImage imageNamed:BACK_BUTTON];
+    UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backIconImage style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
+    
+    [backButton  setBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [backButton  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
     self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:DONE_BUTTON andHighlightedStateImage:DONE_BUTTON_HL target:self action:@selector(addToPoll)];
 
->>>>>>> nab icon updated
+
     pickerDataArray=[NSMutableArray new];
     activePolls = [NSMutableArray new];
     backMark = NO;

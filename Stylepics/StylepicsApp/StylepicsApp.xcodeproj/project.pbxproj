@@ -341,9 +341,6 @@
 		0DA3998A15EB08C2002A4D58 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
 		0DA3998B15EB08C2002A4D58 /* Next-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next-hl.png"; sourceTree = "<group>"; };
 		0DA3998C15EB08C2002A4D58 /* Next-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next-hl@2x.png"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		0DA3998D15EB08C2002A4D58 /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next.png; sourceTree = "<group>"; };
-		0DA3998E15EB08C2002A4D58 /* Next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next@2x.png"; sourceTree = "<group>"; };
 		0DA3999B15EB4112002A4D58 /* votes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = votes.png; sourceTree = "<group>"; };
 		0DA3999C15EB4112002A4D58 /* votes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "votes@2x.png"; sourceTree = "<group>"; };
 		0DA3999F15EB4178002A4D58 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
@@ -354,14 +351,11 @@
 		0DA399A815EB41F5002A4D58 /* CheckInBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckInBox@2x.png"; sourceTree = "<group>"; };
 		0DA399AB15EB420F002A4D58 /* CheckInBox-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckInBox-hl.png"; sourceTree = "<group>"; };
 		0DA399AC15EB420F002A4D58 /* CheckInBox-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckInBox-hl@2x.png"; sourceTree = "<group>"; };
-=======
->>>>>>> nab icon updated
 		0DA3D96B15C8A771008B9E32 /* AppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		0DA3EA8215DC1D8A00546961 /* SmallFormattedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallFormattedLabel.h; sourceTree = "<group>"; };
 		0DA3EA8315DC1D8A00546961 /* SmallFormattedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallFormattedLabel.m; sourceTree = "<group>"; };
 		0DA4104F15CA43C000859E59 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		0DA4105015CA43C000859E59 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-
 		0DA46A8C15E59FB2008F67B1 /* Votes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Votes.png; sourceTree = "<group>"; };
 		0DA46A8D15E59FB2008F67B1 /* Votes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Votes@2x.png"; sourceTree = "<group>"; };
 		0DA46A9115E5A267008F67B1 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
@@ -965,14 +959,12 @@
 				4D558AD415E4431D00CDBD3D /* tab_bar_bg@2x.png in Resources */,
 				4D558B2215E459D900CDBD3D /* header_bg.png in Resources */,
 				4D558B2315E459D900CDBD3D /* header_bg@2x.png in Resources */,
-
 				0DA46A8E15E59FB2008F67B1 /* Votes.png in Resources */,
 				0DA46A8F15E59FB2008F67B1 /* Votes@2x.png in Resources */,
 				0DA46A9515E5A267008F67B1 /* CheckBox.png in Resources */,
 				0DA46A9615E5A267008F67B1 /* CheckBox@2x.png in Resources */,
 				0DA46A9715E5A267008F67B1 /* CheckInBox.png in Resources */,
 				0DA46A9815E5A267008F67B1 /* CheckInBox@2x.png in Resources */,
-
 				0DA46A9B15E5A39C008F67B1 /* DeleteItem.png in Resources */,
 				0DA46A9C15E5A39C008F67B1 /* DeleteItem@2x.png in Resources */,
 				0DA46A9F15E5A5CD008F67B1 /* DeleteItem-hl.png in Resources */,
@@ -1030,7 +1022,6 @@
 				0DA3999615EB08C2002A4D58 /* done@2x.png in Resources */,
 				0DA3999715EB08C2002A4D58 /* Next-hl.png in Resources */,
 				0DA3999815EB08C2002A4D58 /* Next-hl@2x.png in Resources */,
-
 				4DFE618815EB3919009952EF /* next-icon.png in Resources */,
 				4DFE618915EB3919009952EF /* next-icon@2x.png in Resources */,
 				4DFE618C15EB40B7009952EF /* back-icon.png in Resources */,
@@ -1046,7 +1037,6 @@
 				4DFE61A715EB686E009952EF /* New-poll-icon@2x.png in Resources */,
 				4DFE61A815EB686E009952EF /* Settings.png in Resources */,
 				4DFE61A915EB686E009952EF /* Settings@2x.png in Resources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

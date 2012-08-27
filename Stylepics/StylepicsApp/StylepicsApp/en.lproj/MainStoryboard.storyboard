@@ -1086,14 +1086,12 @@
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </toolbarItems>
-<<<<<<< HEAD
-                    <navigationItem key="navigationItem" id="zXe-q2-cfQ"/>
-=======
+
                     <navigationItem key="navigationItem" title="Poll" id="zXe-q2-cfQ">
                         <barButtonItem key="leftBarButtonItem" image="back-icon.png" id="jX8-D9-sf9"/>
                         <barButtonItem key="rightBarButtonItem" image="Action.png" id="j8Y-fq-6ya"/>
                     </navigationItem>
->>>>>>> nab icon updated
+
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryIconView" destination="zTb-wn-yJ9" id="chY-Tg-2us"/>
@@ -1558,18 +1556,16 @@
         <image name="Polls-Icon.png" width="16" height="16"/>
         <image name="Profile-Button-hl.png" width="76" height="63"/>
         <image name="Profile-Button.png" width="76" height="63"/>
-<<<<<<< HEAD
-        <image name="Votes.png" width="16" height="16"/>
-=======
+
         <image name="Votes.png" width="20" height="20"/>
         <image name="back-icon.png" width="20" height="20"/>
->>>>>>> nab icon updated
+
         <image name="button-hl.png" width="73" height="40"/>
         <image name="button.png" width="73" height="40"/>
         <image name="check.png" width="27" height="30"/>
         <image name="clock.png" width="27" height="30"/>
     </resources>
-<<<<<<< HEAD
+
     <classes>
         <class className="AddNewItemController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewItemController.h"/>
@@ -1761,18 +1757,17 @@
             </relationships>
         </class>
     </classes>
-=======
->>>>>>> nab icon updated
+
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
+
         <segue reference="E46-aS-6G1"/>
-=======
->>>>>>> nab icon updated
+
+
         <segue reference="ptE-zf-Lfr"/>
         <segue reference="E46-aS-6G1"/>
     </inferredMetricsTieBreakers>
