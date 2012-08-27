@@ -55,15 +55,14 @@
 #define NEW_POLL_BUTTON @"Newpoll"
 #define NEW_POLL_BUTTON_HL @"Newpoll-hl"
 #define SETTINGS_BUTTON @"Settings"
-#define SETTINGS_BUTTON_HL @"Settings-hl"
 #define DELETE_ITEM_BUTTON @"DeleteItem"
 #define DELETE_ITEM_BUTTON_HL @"DeleteItem-hl"
 #define CHECKBOX @"CheckBox"
 #define CHECKBOX_HL @"CheckBox-hl"
 #define CHECKINBOX @"CheckInBox"
 #define CHECKINBOX_HL @"CheckInBox-hl"
-#define BACK_BUTTON @"Back"
-#define BACK_BUTTON_HL @"Back-hl"
+#define NAV_BAR_BUTTON_BG @"Nav-btn-bg"
+#define NAV_BAR_BUTTON_BG_HL @"Nav-btn-bg-hl"
 #define ACTION_BUTTON @"Action"
 #define ACTION_BUTTON_HL @"Action-hl"
 #define ADD_ITEM_HINT @"AddItemHint"
@@ -73,6 +72,7 @@
 #define CANCEL_BUTTON_HL @"cancel-hl"
 #define NEXT_BUTTON @"Next"
 #define NEXT_BUTTON_HL @"Next-hl"
+#define BACK_BUTTON @"back-icon"
 
 typedef enum{
     SingleItemViewOptionNew,

@@ -50,8 +50,14 @@
     self.categoryPickerView.dataSource = self;
     self.categoryPickerParentView.hidden = YES;
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+<<<<<<< HEAD
         self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
+=======
+    //self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
+    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:DONE_BUTTON andHighlightedStateImage:DONE_BUTTON_HL target:self action:@selector(addToPoll)];
+
+>>>>>>> nab icon updated
     pickerDataArray=[NSMutableArray new];
     activePolls = [NSMutableArray new];
     backMark = NO;

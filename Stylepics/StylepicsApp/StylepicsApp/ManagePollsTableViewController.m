@@ -41,10 +41,33 @@
     {
         _user = [User new];
         _user.userID = [Utility getObjectForKey: CURRENTUSERID];
-        self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
+        //self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:SETTINGS_BUTTON andHighlightedStateImage:SETTINGS_BUTTON_HL target:self action:@selector(showSettings)];
+        
+        //set UIBarButtonItem background image
+        UIImage *settingButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
+        UIImage *settingIconImage = [UIImage imageNamed:SETTINGS_BUTTON];
+        UIImage *settingButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+        UIBarButtonItem *settingButton = [[UIBarButtonItem alloc] initWithImage:settingIconImage style:UIBarButtonItemStyleBordered target:self action:@selector(showSettings)];
+        
+        [settingButton  setBackgroundImage:settingButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [settingButton  setBackgroundImage:settingButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+        self.navigationItem.rightBarButtonItem = settingButton;
+       
+        
     }else{
         self.navigationItem.title = @"Profile";
-        self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
+        //self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
+        
+        //set UIBarButtonItem background image
+        UIImage *backButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
+        UIImage *backIconImage = [UIImage imageNamed:BACK_BUTTON];
+        UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backIconImage style:UIBarButtonItemStyleBordered target:self action:@selector(back)];
+        
+        [backButton  setBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [backButton  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+        self.navigationItem.leftBarButtonItem = backButton;
+        
     }
 }
 
