@@ -33,8 +33,8 @@
     
 
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:CANCEL_BUTTON andHighlightedStateImage:CANCEL_BUTTON_HL target:self action:@selector(cancelButton)];
-    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEXT_BUTTON andHighlightedStateImage:NEXT_BUTTON_HL target:self action:@selector(next)];
+    /*self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:CANCEL_BUTTON andHighlightedStateImage:CANCEL_BUTTON_HL target:self action:@selector(cancelButton)];
+    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:NEXT_BUTTON andHighlightedStateImage:NEXT_BUTTON_HL target:self action:@selector(next)];*/
     
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];

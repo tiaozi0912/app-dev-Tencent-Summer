@@ -14,7 +14,7 @@
 #import "Utility.h"
 #import "NewPollViewController.h"
 
-@interface ManagePollsTableViewController : UITableViewController<RKObjectLoaderDelegate, NewPollViewControllerDelegate>
+@interface ManagePollsTableViewController : UITableViewController<RKObjectLoaderDelegate>
 
 @property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *usernameLabel;

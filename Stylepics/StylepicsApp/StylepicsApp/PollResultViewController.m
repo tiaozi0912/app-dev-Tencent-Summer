@@ -35,12 +35,12 @@
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
     [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-    //self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIImage *backButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL];
+    [self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+
 }
 
 - (void)viewDidUnload
@@ -67,8 +67,10 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-- (void)back {
+
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)request:(RKRequest*)request didLoadResponse:

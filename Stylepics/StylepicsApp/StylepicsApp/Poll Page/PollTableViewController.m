@@ -57,6 +57,7 @@
     UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
     [self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    
     UIImage *actionButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
     UIImage *actionButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
     [self.navigationItem.rightBarButtonItem  setBackgroundImage:actionButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -151,50 +152,50 @@
 }
 
 #pragma mark - User Actions
-
-- (void)back{
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)showActionSheet
+- (IBAction)actionButtonPressed:(UIBarButtonItem *)sender 
 {
-    NSString *pollOperation;
-    NSString *deleteButton;
-    if (isOwnerView)
-    {
-        deleteButton = DELETE_POLL_BUTTON_TITLE;
-        if ([self.poll.state intValue] == EDITING){
-            pollOperation = OPEN_POLL_BUTTON_TITLE;
-        } else if([self.poll.state intValue] == VOTING){
-            pollOperation = END_POLL_BUTTON_TITLE;
-        } else {
+        NSString *pollOperation;
+        NSString *deleteButton;
+        if (isOwnerView)
+        {
+            deleteButton = DELETE_POLL_BUTTON_TITLE;
+            if ([self.poll.state intValue] == EDITING){
+                pollOperation = OPEN_POLL_BUTTON_TITLE;
+            } else if([self.poll.state intValue] == VOTING){
+                pollOperation = END_POLL_BUTTON_TITLE;
+            } else {
+                pollOperation = nil;
+            }
+        }else{
+            deleteButton = nil;
             pollOperation = nil;
+            /*Audience *currentUser = [self.poll.audiences objectAtIndex:audienceIndex];
+             NSLog(@"audience userID = %@",currentUser.userID);
+             if (![currentUser.isFollowing boolValue]){
+             pollOperation = FOLLOW_POLL_BUTTON_TITLE;
+             } else {
+             pollOperation = UNFOLLOW_POLL_BUTTON_TITLE;
+             }*/
         }
-    }else{
-        deleteButton = nil;
-        pollOperation = nil;
-        /*Audience *currentUser = [self.poll.audiences objectAtIndex:audienceIndex];
-        NSLog(@"audience userID = %@",currentUser.userID);
-        if (![currentUser.isFollowing boolValue]){
-            pollOperation = FOLLOW_POLL_BUTTON_TITLE;
-        } else {
-            pollOperation = UNFOLLOW_POLL_BUTTON_TITLE;
-        }*/
-    }
-    /*if (isOwnerView && [self.poll.state intValue] == EDITING)
-    {
-        popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:ADD_ITEM_BUTTON_TITLE, pollOperation, SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
-    }else{*/
+        /*if (isOwnerView && [self.poll.state intValue] == EDITING)
+         {
+         popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:ADD_ITEM_BUTTON_TITLE, pollOperation, SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
+         }else{*/
         if (pollOperation){
             popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: pollOperation,SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
         }else{
             popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
         }
-    //}
-	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[popupQuery showInView:self.view];
-	popupQuery = nil;
+        //}
+        popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [popupQuery showInView:self.view];
+        popupQuery = nil;
 }
+
 
 - (IBAction)addNewItem:(id)sender {
     singleItemViewOption = SingleItemViewOptionNew;
@@ -510,7 +511,7 @@
         NSLog(@"Deleted successfully!");
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     }
-    if (needsBack) [self back];
+    if (needsBack) [self backButtonPressed:nil];
     [self.tableView reloadData];
 }
 
