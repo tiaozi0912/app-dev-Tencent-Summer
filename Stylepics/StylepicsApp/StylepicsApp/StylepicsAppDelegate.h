@@ -72,12 +72,7 @@
 #define CANCEL_BUTTON_HL @"cancel-hl"
 #define NEXT_BUTTON @"next-icon"
 #define BACK_BUTTON @"back-icon"
-#define PIC_COLLAGE_LAYOUT_FOR_2 @"2pics"
-#define PIC_COLLAGE_LAYOUT_FOR_3 @"3pics"
-#define PIC_COLLAGE_LAYOUT_FOR_4 @"4pics"
-#define PIC_COLLAGE_FRAME_FOR_2 @"2pics-frame"
-#define PIC_COLLAGE_FRAME_FOR_3 @"3pics-frame"
-#define PIC_COLLAGE_FRAME_FOR_4 @"4pics-frame"
+#define PIC_CONTAINER_BG @"PictureContainer"
 
 typedef enum{
     SingleItemViewOptionNew,

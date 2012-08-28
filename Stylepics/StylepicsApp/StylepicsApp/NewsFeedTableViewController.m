@@ -10,6 +10,7 @@
 #import "AddNewItemController.h"
 #import "Utility.h"
 #import "ManagePollsTableViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 #define ROWHEIGHT 400
@@ -168,25 +169,21 @@
     cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_SMALL];
     cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
     [HJObjectManager manage:cell.userImage];
-    
-    [cell.thumbnail0 clear];
-    [cell.thumbnail0 showLoadingWheel];
-    cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL];
-
 
     
     if (event.items.count == 2) {
-        cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_2];
-        cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_2];
+        cell.picContainerImageView.image = [UIImage imageNamed:PIC_CONTAINER_BG];
+        //cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_2];
         [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:213.6 Y:210.9 angleInDegree:17 edge:150];
+        
         [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:105.5 Y:104.94 angleInDegree:75.53 - 90 edge:149];
         /*[cell.thumbnail1 clear];
         [cell.thumbnail1 showLoadingWheel];
         cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL];*/
     }else
     if (event.items.count == 3) {
-        cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_3];
-        cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_3];
+        cell.picContainerImageView.image = [UIImage imageNamed:PIC_CONTAINER_BG];
+        //cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_3];
         [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:247.31 Y:246.44 angleInDegree:11.26 edge:97];
         [self setPicture:cell.thumbnail2 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL] atCenterX:150.43 Y:161.68 angleInDegree:66.5 - 90 edge:194];
         [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:247.5 Y:77.42 angleInDegree:19.30 edge:88];
@@ -194,8 +191,8 @@
         cell.thumbnail2.hidden = NO;
     }else
     if (event.items.count >= 4) {
-        cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_4];
-        cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_4];
+        cell.picContainerImageView.image = [UIImage imageNamed:PIC_CONTAINER_BG];
+        //cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_4];
         CGFloat edge = 131;
         [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:224.89 Y:224.44 angleInDegree:20.91 edge:edge];
         [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:224.66 Y:95.53 angleInDegree:18.5 edge:edge];
@@ -299,6 +296,13 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
     imageView.transform = CGAffineTransformMakeRotation(degreesToRadians(angle));
     imageView.bounds = CGRectMake(0,0, edge, edge);
     imageView.center = CGPointMake(x, y);
+    // border
+    imageView.layer.borderColor = [[UIColor blackColor] CGColor];
+    imageView.layer.borderWidth = 5;
+    
+    // corner
+    imageView.layer.cornerRadius = 5;
+    imageView.layer.masksToBounds = YES;
     [imageView clear];
     [imageView showLoadingWheel];
     imageView.url = url;
