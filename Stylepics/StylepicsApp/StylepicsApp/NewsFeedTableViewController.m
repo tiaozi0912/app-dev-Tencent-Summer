@@ -69,9 +69,9 @@
     
     //set UIBarButtonItem background image
     UIImage *newPollButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
-    UIImage *newPollButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+    //UIImage *newPollButtonPressedImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG_HL] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
     [self.navigationItem.rightBarButtonItem  setBackgroundImage:newPollButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.navigationItem.leftBarButtonItem  setBackgroundImage:newPollButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    //[self.navigationItem.rightBarButtonItem  setBackgroundImage:newPollButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidUnload

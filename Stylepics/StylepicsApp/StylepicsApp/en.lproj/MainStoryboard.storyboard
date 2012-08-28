@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E2620" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TEI-15-lt5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TEI-15-lt5">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Registration Page View Controller - Sign Up-->
@@ -1280,6 +1280,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add New Item" id="8ar-cg-IP6">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Rvd-tr-KfK"/>
+<<<<<<< HEAD
                         <barButtonItem key="leftBarButtonItem" title="Item" id="5KZ-EW-cwj">
                             <connections>
                                 <action selector="cancelButton" destination="j5e-0n-Z7z" id="ccK-IH-ONG"/>
@@ -1290,6 +1291,8 @@
                                 <action selector="nextButtonPressed:" destination="j5e-0n-Z7z" id="biN-Ni-2Rl"/>
                             </connections>
                         </barButtonItem>
+=======
+>>>>>>> nav buttons
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1300,7 +1303,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="3045" y="1638"/>
+            <point key="canvasLocation" x="2928" y="1536"/>
         </scene>
         <!--Add To Poll Controller - Add To A Poll-->
         <scene sceneID="ldJ-9g-V8O">
@@ -1397,18 +1400,7 @@
                             <action selector="backgroundTouched:" destination="oVB-cZ-hsy" eventType="touchDown" id="XDg-9k-NHM"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Add To A Poll" id="LLR-Ic-2KQ">
-                        <barButtonItem key="leftBarButtonItem" title="back" id="lCc-Xx-XtY">
-                            <connections>
-                                <action selector="back:" destination="oVB-cZ-hsy" id="V7G-Pd-vWy"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="done" id="hy1-TT-qGV">
-                            <connections>
-                                <action selector="addToPoll" destination="oVB-cZ-hsy" id="Ve9-J6-ukz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Add To A Poll" id="LLR-Ic-2KQ"/>
                     <connections>
                         <outlet property="DescriptionLabel" destination="5rH-Ck-sNm" id="v3v-xv-DRi"/>
                         <outlet property="brandLabel" destination="cs1-7B-ly6" id="c9J-ux-O2b"/>
@@ -1422,7 +1414,11 @@
                     </connections>
                 </viewController>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="3475" y="1645"/>
+=======
+            <point key="canvasLocation" x="3373" y="1612"/>
+>>>>>>> nav buttons
         </scene>
         <!--Single Item View Controller - Add New Item-->
         <scene sceneID="HpC-Ot-YOP">
@@ -1584,6 +1580,195 @@
         <image name="check.png" width="27" height="30"/>
         <image name="clock.png" width="27" height="30"/>
     </resources>
+<<<<<<< HEAD
+=======
+    <classes>
+        <class className="AddNewItemController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewItemController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="brandTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="AddToPollController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddToPollController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="DescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="brandLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="categoryPickerParentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="categoryPickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="chooseCategoryLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pickPollTitleTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AnimatedPickerView" superclassName="UIPickerView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AnimatedPickerView.h"/>
+        </class>
+        <class className="AppFormattedBoldLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppFormattedBoldLabel.h"/>
+        </class>
+        <class className="AppFormattedLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppFormattedLabel.h"/>
+        </class>
+        <class className="CenterButtonTabController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CenterButtonTabController.h"/>
+        </class>
+        <class className="EditingPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditingPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="itemCountLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="pollDescriptionLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="startTimeLabel" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+        <class className="EndedPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EndedPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="endTimeLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="pollDescriptionLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="votesCountLabel" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+        <class className="FeedsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeedsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="categoryIcon" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="thumbnail0" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="thumbnail1" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="thumbnail2" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="thumbnail3" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="thumbnail4" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="SmallFormattedLabel"/>
+                <relationship kind="outlet" name="userImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="usernameAndActionLabel" candidateClass="MultipartLabel"/>
+            </relationships>
+        </class>
+        <class className="HJManagedImageV" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HJManagedImageV.h"/>
+        </class>
+        <class className="ManagePollsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ManagePollsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="editingPollCountLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="endedPollCountLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="openedPollCountLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="userPhoto" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="usernameLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="votedPollCountLabel" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+        <class className="MultipartLabel" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MultipartLabel.h"/>
+        </class>
+        <class className="NewPollViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPollViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundTouched:"/>
+                <relationship kind="outlet" name="categoryButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="categoryPickerView" candidateClass="AnimatedPickerView"/>
+                <relationship kind="outlet" name="pollNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tips" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NewsFeedTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsFeedTableViewController.h"/>
+        </class>
+        <class className="OpenedPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OpenedPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="openTimeLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="pollDescriptionLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="votesCountLabel" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+        <class className="PollItemCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollItemCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="brandLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="commentCountLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="descriptionOfItemLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="voteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="voteCountLabel" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+        <class className="PollResultCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollResultCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemImage" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="numberOfVotesIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="numberOfVotesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PollResultViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollResultViewController.h"/>
+        </class>
+        <class className="PollTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PollTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="categoryIconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="categoryLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="loadingWheel" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="pollDescription" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="stateIndicationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeStampLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalVotesCount" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="userPhoto" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RegistrationPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegistrationPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="background" candidateClass="UIControl"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="passwordConfirmationField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="signupButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="SettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="profilePhoto" candidateClass="HJManagedImageV"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SingleItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SingleItemViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="brandTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cameraButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SmallFormattedLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmallFormattedLabel.h"/>
+        </class>
+        <class className="VotedPollCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VotedPollCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pollDescriptionLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="stateLabel" candidateClass="AppFormattedLabel"/>
+                <relationship kind="outlet" name="votesCountLabel" candidateClass="AppFormattedLabel"/>
+            </relationships>
+        </class>
+    </classes>
+>>>>>>> nav buttons
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

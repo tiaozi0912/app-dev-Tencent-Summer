@@ -49,19 +49,17 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    //self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:BACK_BUTTON andHighlightedStateImage:BACK_BUTTON_HL target:self action:@selector(back)];
-    //self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:ACTION_BUTTON andHighlightedStateImage:ACTION_BUTTON_HL target:self action:@selector(showActionSheet)];
     
     //set UIBarButtonItem background image
     UIImage *backButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
-    UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+    //UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
     [self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    //[self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     
     UIImage *actionButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
-    UIImage *actionButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+   // UIImage *actionButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
     [self.navigationItem.rightBarButtonItem  setBackgroundImage:actionButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.navigationItem.rightBarButtonItem  setBackgroundImage:actionButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    //[self.navigationItem.rightBarButtonItem  setBackgroundImage:actionButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     
     
     self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];

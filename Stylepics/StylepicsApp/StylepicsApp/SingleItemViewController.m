@@ -50,8 +50,22 @@
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
-    self.navigationItem.leftBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:CANCEL_BUTTON andHighlightedStateImage:CANCEL_BUTTON_HL target:self action:@selector(cancelButton)];
-    self.navigationItem.rightBarButtonItem = [Utility createSquareBarButtonItemWithNormalStateImage:DONE_BUTTON andHighlightedStateImage:DONE_BUTTON_HL target:self action:@selector(done)];
+    
+    UIImage *backButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
+    UIImage *backIconImage = [UIImage imageNamed:BACK_BUTTON];
+    //UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backIconImage style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButton)];
+    
+    [backButton  setBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    //[backButton  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
+    
+    UIImage *addToPollButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
+    //UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
+    UIBarButtonItem *addToPollButton = [[UIBarButtonItem alloc] initWithTitle:@"done" style:UIBarButtonItemStyleBordered target:self action:@selector(done)];
+    [addToPollButton  setBackgroundImage:addToPollButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    self.navigationItem.rightBarButtonItem = addToPollButton;
     
     NSArray *titles = [[NSArray alloc] initWithObjects:@"Add New Item", @"Edit Item", @"View Item",nil];
     self.title = [titles objectAtIndex:singleItemViewOption];

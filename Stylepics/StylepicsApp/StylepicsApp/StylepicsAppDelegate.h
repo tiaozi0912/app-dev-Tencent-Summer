@@ -70,8 +70,7 @@
 #define DONE_BUTTON_HL @"done-hl"
 #define CANCEL_BUTTON  @"cancel"
 #define CANCEL_BUTTON_HL @"cancel-hl"
-#define NEXT_BUTTON @"Next"
-#define NEXT_BUTTON_HL @"Next-hl"
+#define NEXT_BUTTON @"next-icon"
 #define BACK_BUTTON @"back-icon"
 
 typedef enum{
