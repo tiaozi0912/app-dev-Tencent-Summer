@@ -10,12 +10,10 @@
 #define  POLLITEMCELLHEIGHT 330
 #define  ADD_ITEM_BUTTON_CELL_HEIGHT 58
 #define  OPEN_POLL_BUTTON_TITLE @"Open poll"
-#define  END_POLL_BUTTON_TITLE  @"End poll"
 #define  FOLLOW_POLL_BUTTON_TITLE @"Follow poll"
 #define  UNFOLLOW_POLL_BUTTON_TITLE @"Unfollow poll"
 #define  DELETE_POLL_BUTTON_TITLE   @"Delete poll"
 #define  SHOW_POLL_RESULT_BUTTON_TITLE @"Show poll result"
-//#define  ADD_ITEM_BUTTON_TITLE @"Add new item"
 
 #define OpenPollAlertView 1
 #define EndPollAlertView 2
@@ -74,7 +72,7 @@
     
     emptyPollHint = [HintView new];
     emptyPollHint = [emptyPollHint initWithFrame:frameOfEmptyPollHint];
-    emptyPollHint.label.text = @"This poll is empty. You can add more items to stuff this poll.";
+    emptyPollHint.label.text = @"What are you waiting for? Add more items";
     emptyPollHint.label.numberOfLines = 2;
     emptyPollHint.hidden = YES;
    
@@ -86,7 +84,6 @@
     
     emptyPollHintInAudienceView = [HintView new];
     emptyPollHintInAudienceView = [emptyPollHintInAudienceView initWithFrame:frameOfEmptyPollHintInAudienceView];
-    emptyPollHintInAudienceView.label.text = @"This poll is empty. You can add more items to stuff this poll.";
     emptyPollHintInAudienceView.label.numberOfLines = 2;
     emptyPollHintInAudienceView.hidden = YES;
 
@@ -165,26 +162,13 @@
             deleteButton = DELETE_POLL_BUTTON_TITLE;
             if ([self.poll.state intValue] == EDITING){
                 pollOperation = OPEN_POLL_BUTTON_TITLE;
-            } else if([self.poll.state intValue] == VOTING){
-                pollOperation = END_POLL_BUTTON_TITLE;
             } else {
                 pollOperation = nil;
             }
         }else{
             deleteButton = nil;
             pollOperation = nil;
-            /*Audience *currentUser = [self.poll.audiences objectAtIndex:audienceIndex];
-             NSLog(@"audience userID = %@",currentUser.userID);
-             if (![currentUser.isFollowing boolValue]){
-             pollOperation = FOLLOW_POLL_BUTTON_TITLE;
-             } else {
-             pollOperation = UNFOLLOW_POLL_BUTTON_TITLE;
-             }*/
         }
-        /*if (isOwnerView && [self.poll.state intValue] == EDITING)
-         {
-         popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:ADD_ITEM_BUTTON_TITLE, pollOperation, SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
-         }else{*/
         if (pollOperation){
             popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: pollOperation,SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
         }else{
@@ -263,8 +247,6 @@
         }else{
             [self confirmToOpenPoll];
         }
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:END_POLL_BUTTON_TITLE]){
-        [self confirmToEndPoll];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:FOLLOW_POLL_BUTTON_TITLE]){
         [self followPoll];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:UNFOLLOW_POLL_BUTTON_TITLE]){
@@ -275,9 +257,7 @@
         [self confirmToDeletePoll];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]){
         [actionSheet resignFirstResponder];
-    }/*else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:ADD_ITEM_BUTTON_TITLE]){
-        [self addNewItem:nil];
-    }*/
+    }
 
 }
 
@@ -289,13 +269,6 @@
     openPollAlertView = nil;
 }
 
--(void)confirmToEndPoll
-{
-    UIAlertView *endPollAlertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to end this poll now?" message:@"Note: Once you end this poll, your friends can't vote in your poll anymore." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-    endPollAlertView.tag = EndPollAlertView;
-    [endPollAlertView show];
-    endPollAlertView = nil;
-}
 -(void)confirmToDeletePoll
 {
     UIAlertView *deletePollAlertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to delete this poll?" message:@"Note: Once you delete this poll, you will delete the items in this poll as well." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
@@ -312,8 +285,6 @@
     if (buttonIndex == 1) {
         if (alertView.tag == OpenPollAlertView) {
             [self openPoll];
-        }else if (alertView.tag == EndPollAlertView){
-            [self endPoll];
         }else if (alertView.tag == DeletePollAlertView){
             [self deletePoll];
         }
@@ -337,20 +308,6 @@
     [[RKObjectManager sharedManager] postObject:event delegate:self];
     [self.tableView reloadData];
 
-}
-
-- (void)endPoll
-{
-    self.poll.state = [NSNumber numberWithInt:FINISHED];
-    self.poll.endTime = [NSDate date];
-    [self.tableView reloadData];
-    [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
-    
-    pollRecord = [PollRecord new];
-    pollRecord.pollID = self.poll.pollID;
-    pollRecord.pollRecordType = [NSNumber numberWithInt:ENDED_POLL];
-    [[RKObjectManager sharedManager] putObject:pollRecord delegate:self];
-    pollRecord = nil;
 }
 
 - (void)deletePoll
@@ -427,12 +384,6 @@
                 self.timeStampLabel.text = [Utility formatTimeWithDate:self.poll.openTime];
                 break;
             }
-            case FINISHED:
-            {
-                stateIndication = isOwnerView?@"You have ended this poll.": @"has ended this poll.";
-                self.timeStampLabel.text = [Utility formatTimeWithDate:self.poll.endTime];
-                break;
-            }
             default:
                 break;
         }
@@ -452,13 +403,11 @@
         //
         if (self.poll.items.count == 0){
             if (isOwnerView) {
-                //addItemHint.hidden = NO;
                 emptyPollHint.hidden = NO;
             }else {
                 emptyPollHintInAudienceView.hidden = NO;
             }
         }else {
-           // addItemHint.hidden = YES;
             emptyPollHint.hidden = YES;
             emptyPollHintInAudienceView.hidden = YES;
         }
@@ -592,7 +541,8 @@
     
     cell.descriptionOfItemLabel.text = item.description;
     cell.priceLabel.text = [Utility formatCurrencyWithNumber:item.price];
-    cell.voteCountLabel.text = [item.numberOfVotes stringValue];
+    cell.voteCountLabel.text = [NSString stringWithFormat:@"%d%%",item.numberOfVotes.intValue*100/self.poll.totalVotes.intValue];
+    
     cell.timeStampLabel.text = [Utility formatTimeWithDate:item.addedTime];
     cell.brandLabel.text = item.brand;
     [cell.brandLabel sizeToFit];

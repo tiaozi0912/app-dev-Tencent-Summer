@@ -10,14 +10,13 @@
 #define POLLCELLHEIGHT 46
 #define ContentTypeEditingPoll 0
 #define ContentTypeOpenedPoll 1
-#define ContentTypeEndedPoll 2
-#define ContentTypeVotedPoll 3
+#define ContentTypeVotedPoll 2
 
 @interface ManagePollsTableViewController (){
     int ContentType;
 }
 
-@property (nonatomic, strong) NSMutableArray *editingPolls, *openedPolls, *endedPolls, *votedPolls;
+@property (nonatomic, strong) NSMutableArray *editingPolls, *openedPolls, *votedPolls;
 @end
 
 @implementation ManagePollsTableViewController
@@ -26,10 +25,9 @@
 @synthesize user = _user;
 @synthesize editingPollCountLabel;
 @synthesize openedPollCountLabel;
-@synthesize endedPollCountLabel;
 @synthesize votedPollCountLabel;
 
-@synthesize editingPolls, openedPolls, endedPolls, votedPolls;
+@synthesize editingPolls, openedPolls, votedPolls;
 
 - (void)viewDidLoad
 {
@@ -77,13 +75,11 @@
     [self setUsernameLabel:nil];
     [self setEditingPollCountLabel:nil];
     [self setOpenedPollCountLabel:nil];
-    [self setEndedPollCountLabel:nil];
     [self setVotedPollCountLabel:nil];
     [super viewDidUnload];
     _user = nil;
     self.editingPolls = nil;
     self.openedPolls = nil;
-    self.endedPolls = nil;
     self.votedPolls = nil;
 }
 
@@ -103,7 +99,6 @@
     self.editingPolls = [NSMutableArray new];
     self.votedPolls = [NSMutableArray new];
     self.openedPolls = [NSMutableArray new];
-    self.endedPolls = [NSMutableArray new];
     
 }
 
@@ -159,8 +154,6 @@
                         break;
                     case OPENED_POLL:[self.openedPolls addObject:pollRecord];
                         break;
-                    case ENDED_POLL:[self.endedPolls addObject:pollRecord];
-                        break;
                     case VOTED_POLL:[self.votedPolls addObject:pollRecord];
                         break;
                 }
@@ -168,7 +161,6 @@
         }
         self.editingPollCountLabel.text = [NSString stringWithFormat:@"%d", editingPolls.count];
         self.openedPollCountLabel.text = [NSString stringWithFormat:@"%d", openedPolls.count];
-        self.endedPollCountLabel.text = [NSString stringWithFormat:@"%d", endedPolls.count];
         self.votedPollCountLabel.text = [NSString stringWithFormat:@"%d", votedPolls.count];
     }else{
         self.usernameLabel.text = _user.username;
@@ -193,17 +185,6 @@
     return 1;
 }
 
-/*-(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    switch (section){
-        case 0: return @"EDITING POLLS";
-        case 1: return @"OPENED POLLS";
-        case 2: return @"ENDED POLLS";
-        case 3: return @"VOTED POLLS";
-        default: return nil;
-    }
-}*/
-/* to customize the font in headers, use the method below instead
--(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section*/
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -215,10 +196,6 @@
         case ContentTypeOpenedPoll: {
             NSLog(@"opened polls' count: %u",self.openedPolls.count);
             return self.openedPolls.count;
-        }
-        case ContentTypeEndedPoll: {
-            NSLog(@"ended polls' count: %u",self.endedPolls.count);
-            return self.endedPolls.count;
         }
         case ContentTypeVotedPoll:{
             NSLog(@"voted polls' count: %u",self.votedPolls.count);
@@ -269,22 +246,6 @@
                 [cell.openTimeLabel setNeedsLayout];
             }
             return cell;
-        } 
-        case ContentTypeEndedPoll:{
-            static NSString *CellIdentifier = @"ended poll cell";
-            EndedPollCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                cell = [[EndedPollCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-            if (indexPath.row < self.endedPolls.count){
-                PollRecord *poll = [self.endedPolls objectAtIndex:indexPath.row];
-                cell.pollDescriptionLabel.text = poll.title;
-                cell.votesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
-                cell.endTimeLabel.text = [Utility formatTimeWithDate:poll.endTime];
-                [cell.pollDescriptionLabel setNeedsLayout];
-                [cell.endTimeLabel setNeedsLayout];
-            }
-            return cell;
         }
         case ContentTypeVotedPoll:{
             static NSString *CellIdentifier = @"voted poll cell";
@@ -318,22 +279,25 @@
 {
     switch (ContentType) {
         case ContentTypeEditingPoll:{
+            if (indexPath.row < self.editingPolls.count){
             Poll* poll = [self.editingPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+            }
             break;
         }
         case ContentTypeOpenedPoll:{
+            if (indexPath.row < self.editingPolls.count){
             Poll* poll = [self.openedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+            }
             break;
         }
-        case ContentTypeEndedPoll:{
-            Poll* poll = [self.endedPolls objectAtIndex:indexPath.row];
-            [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
-        }
         case ContentTypeVotedPoll:{
+            if (indexPath.row < self.editingPolls.count){
             Poll* poll = [self.votedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
+            }
+            break;
         }
         default:
             break;

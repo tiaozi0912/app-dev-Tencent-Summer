@@ -41,7 +41,7 @@
 }
 -(void) setLabel:(UILabel *)label{
     _label = label;
-    _label.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    _label.font = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:14];
     _label.backgroundColor = [UIColor clearColor];
     _label.textColor = [UIColor blackColor];
     

@@ -11,7 +11,7 @@
 
 #define EDITING 0
 #define VOTING 1
-#define FINISHED 2
+//#define FINISHED 2
 
 #define PollTypeCount 6
 

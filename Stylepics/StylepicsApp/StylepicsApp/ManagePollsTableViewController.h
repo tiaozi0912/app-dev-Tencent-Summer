@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "EditingPollCell.h"
 #import "OpenedPollCell.h"
-#import "EndedPollCell.h"
 #import "VotedPollCell.h"
 #import "Utility.h"
 #import "NewPollViewController.h"

@@ -9,6 +9,7 @@
 #import "FeedsCell.h"
 
 @implementation FeedsCell
+@synthesize categoryLabel;
 @synthesize userImage=_userImage;
 @synthesize eventDescriptionLabel=_eventDescriptionLabel;
 @synthesize thumbnail0, thumbnail1, thumbnail2, thumbnail3, thumbnail4;

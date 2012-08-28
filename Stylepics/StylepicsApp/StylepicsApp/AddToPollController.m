@@ -173,7 +173,7 @@
             [spinner startAnimating];
             self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
             self.navigationItem.rightBarButtonItem.enabled = NO;
-            _item.pollID = ((PollRecord*)[activePolls objectAtIndex:[self.pickerView selectedRowInComponent:0]]).pollID;
+            _item.pollID = ((PollRecord*)[activePolls objectAtIndex:[self.pickerView selectedRowInComponent:0]-1]).pollID;
             [[RKObjectManager sharedManager] postObject:_item delegate:self];
         }
 }

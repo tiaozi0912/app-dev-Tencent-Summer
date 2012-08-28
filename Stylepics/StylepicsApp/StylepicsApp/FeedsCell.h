@@ -24,5 +24,6 @@
 @property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail2;
 @property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail3;
 @property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail4;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 
 @end

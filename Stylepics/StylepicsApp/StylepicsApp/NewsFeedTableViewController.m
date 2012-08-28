@@ -209,11 +209,11 @@
     
     cell.categoryIcon.image = [Utility iconForCategory:(PollCategory)[event.poll.category intValue]];
     [HJObjectManager manage:cell.categoryIcon];
+    cell.categoryLabel.text = [Utility stringFromCategory:(PollCategory)[event.poll.category intValue]];
     
     [cell.usernameAndActionLabel updateNumberOfLabels:2];
     [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] forLabel:0];
-    [cell.usernameAndActionLabel setText:@" would like your vote" andFont:[UIFont fontWithName:@"HelveticaNeue-Regular" size:14.0] forLabel:1];
-    cell.usernameAndActionLabel.clipsToBounds = YES;
+    [cell.usernameAndActionLabel setText:@" would like your vote" andFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0] forLabel:1];
     
     cell.eventDescriptionLabel.text = event.poll.title;
     cell.eventDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];

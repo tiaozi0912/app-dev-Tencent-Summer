@@ -82,11 +82,6 @@
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
-    maxVotesForSingleItem = 1;
-    for (Item* item in self.poll.items)
-    {
-        maxVotesForSingleItem = MAX(maxVotesForSingleItem, [item.numberOfVotes doubleValue]);
-    }
     [self.tableView reloadData];
 }
 
@@ -124,8 +119,8 @@
     [HJObjectManager manage:cell.itemImage];
     cell.descriptionLabel.text = item.description;
     cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
-    cell.numberOfVotesIndicator.progress = [item.numberOfVotes floatValue]/maxVotesForSingleItem;
-    cell.numberOfVotesLabel.text = [[NSString alloc] initWithFormat:@"%@", item.numberOfVotes];
+    cell.numberOfVotesIndicator.progress = item.numberOfVotes.floatValue/self.poll.totalVotes.floatValue;
+    cell.numberOfVotesLabel.text = [NSString stringWithFormat:@"%d%%",item.numberOfVotes.intValue*100/self.poll.totalVotes.intValue];
     [cell.descriptionLabel sizeToFit];
     [cell.priceLabel sizeToFit];
     return cell;
