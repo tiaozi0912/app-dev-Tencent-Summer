@@ -9,6 +9,7 @@
 #import "AddToPollController.h"
 #define PollPicker 0
 #define CategoryPicker 1
+#define kOFFSET_FOR_KEYBOARD 216.0
 
 @interface AddToPollController (){
     BOOL newPoll, backMark;
@@ -48,7 +49,7 @@
     
     self.categoryPickerView.delegate = self;
     self.categoryPickerView.dataSource = self;
-    self.categoryPickerParentView.hidden = YES;
+
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 
         self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
@@ -72,9 +73,7 @@
     pickerDataArray=[NSMutableArray new];
     activePolls = [NSMutableArray new];
     backMark = NO;
-    self.pickPollTitleTextField.hidden = YES;
-    self.DescriptionLabel.hidden = YES;
-    self.chooseCategoryLabel.hidden = YES;
+
     self.itemImageView.image = self.capturedItemImage;
 
     self.pickPollTitleTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
@@ -110,6 +109,34 @@
     poll = nil;
     spinner = nil;
     // Release any retained subviews of the main view.
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -267,8 +294,6 @@
             }
         }
         [self.pickerView reloadAllComponents];
-        [self.pickerView selectRow:0 inComponent:0 animated:YES];
-        [self.categoryPickerView selectRow:(PollTypeCount - 1)/2 inComponent:0 animated:NO];
     }
     if (backMark){
         [spinner stopAnimating];
@@ -301,24 +326,35 @@
     }
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (UIView *)pickerView:(UIPickerView *)thePickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* tView = (UILabel*)view;
+    if (!tView){
+        tView = [[UILabel alloc] init];
+        // Setup label properties - frame, font, colors etc
+        tView.backgroundColor = [UIColor clearColor];
+        tView.font = [UIFont fontWithName:@"HelveticaNeue-BoldItalic" size:14.0];
+    }
+    // Fill the label text here
     switch (thePickerView.tag) {
         case PollPicker:
         {
             if (row > 0) {
-                return [pickerDataArray objectAtIndex:row - 1];
+                tView.text = [pickerDataArray objectAtIndex:row - 1];
             }else{
-                return @"New A Poll";
+                tView.text = @"New Poll ... ";
             }
+            break;
         }
         case CategoryPicker:
         {
-            return [Utility stringFromCategory:(PollCategory) row]; 
+            tView.text = [Utility stringFromCategory:(PollCategory) row];
+            break;
         }
         default:
-            return @"None";
+            break;
     }
-
+    tView.text = [@" " stringByAppendingString:tView.text];
+    return tView;
 }
 
 #pragma mark - UIPickerView Delegate Methods
@@ -366,4 +402,43 @@
     return YES;
 }
 
+-(void)keyboardWillShow {
+    // Animate the current view out of the way
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+}
+
+-(void)keyboardWillHide {
+    if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO];
+    }
+}
+
+//method to move the view up/down whenever the keyboard is shown/dismissed
+-(void)setViewMovedUp:(BOOL)movedUp
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    
+    CGRect rect = self.view.frame;
+    if (movedUp)
+    {
+        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
+        // 2. increase the size of the view so that the area behind the keyboard is covered up.
+        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
+        rect.size.height += kOFFSET_FOR_KEYBOARD;
+    }
+    else
+    {
+        // revert back to the normal state.
+        rect.origin.y += kOFFSET_FOR_KEYBOARD;
+        rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
+}
 @end

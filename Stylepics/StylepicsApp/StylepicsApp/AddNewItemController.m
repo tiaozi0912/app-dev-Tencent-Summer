@@ -157,6 +157,10 @@
     
 }
 
+- (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {
+    [self next];
+}
+
 -(void)next
 {
     [self.priceTextField resignFirstResponder];

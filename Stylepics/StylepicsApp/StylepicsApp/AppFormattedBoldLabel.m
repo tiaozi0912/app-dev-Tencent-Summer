@@ -20,7 +20,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
+        self.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
     }
     return self;
 }

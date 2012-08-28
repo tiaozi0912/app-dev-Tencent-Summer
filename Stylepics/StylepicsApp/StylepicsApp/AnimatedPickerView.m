@@ -22,7 +22,7 @@
 -(void)presentPickerView
 {
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDuration:0.2];
     CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -216);
     self.transform = transform;
     [UIView commitAnimations];
@@ -32,7 +32,7 @@
 -(void)dismissPickerView
 {
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.25];
+    [UIView setAnimationDuration:0.2];
     CGAffineTransform transform = CGAffineTransformMakeTranslation(0, 216);
     self.transform = transform;
     [UIView commitAnimations];
