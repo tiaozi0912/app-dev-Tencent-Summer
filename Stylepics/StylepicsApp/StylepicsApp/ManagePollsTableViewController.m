@@ -26,6 +26,9 @@
 @synthesize editingPollCountLabel;
 @synthesize openedPollCountLabel;
 @synthesize votedPollCountLabel;
+@synthesize editingPollButton;
+@synthesize activePollButton;
+@synthesize votedPollButton;
 
 @synthesize editingPolls, openedPolls, votedPolls;
 
@@ -74,6 +77,9 @@
     [self setEditingPollCountLabel:nil];
     [self setOpenedPollCountLabel:nil];
     [self setVotedPollCountLabel:nil];
+    [self setEditingPollButton:nil];
+    [self setActivePollButton:nil];
+    [self setVotedPollButton:nil];
     [super viewDidUnload];
     _user = nil;
     self.editingPolls = nil;
@@ -121,6 +127,26 @@
 
 - (IBAction)switchContentType:(UIButton *)sender {
     ContentType = sender.tag;
+    [sender setImage:[UIImage imageNamed:PROFILE_TAB_CONTROL_BUTTON_HL] forState:UIControlStateNormal];
+    switch (ContentType) {
+        case ContentTypeEditingPoll: {
+            [self.activePollButton setImage:[UIImage imageNamed:PROFILE_TAB_CONTROL_BUTTON] forState:UIControlStateNormal];
+            [self.votedPollButton setImage:[UIImage imageNamed:PROFILE_TAB_CONTROL_BUTTON] forState:UIControlStateNormal];
+            break;
+        }
+        case ContentTypeOpenedPoll: {
+            [self.editingPollButton setImage:[UIImage imageNamed:PROFILE_TAB_CONTROL_BUTTON] forState:UIControlStateNormal];
+            [self.votedPollButton setImage:[UIImage imageNamed:PROFILE_TAB_CONTROL_BUTTON] forState:UIControlStateNormal];
+            break;
+        }
+        case ContentTypeVotedPoll:{
+            [self.editingPollButton setImage:[UIImage imageNamed:PROFILE_TAB_CONTROL_BUTTON] forState:UIControlStateNormal];
+            [self.activePollButton setImage:[UIImage imageNamed:PROFILE_TAB_CONTROL_BUTTON] forState:UIControlStateNormal];
+            break;
+        }
+        default:
+            break;
+    }
     [self.tableView reloadData];
 }
 
@@ -147,6 +173,7 @@
         for (id obj in pollRecords){
             if ([obj isKindOfClass:[PollRecord class]]){
                 PollRecord* pollRecord = (PollRecord*) obj;
+                NSLog(@"%@", pollRecord.pollRecordType);
                 switch ([pollRecord.pollRecordType intValue]) {
                     case EDITING_POLL:[self.editingPolls addObject:pollRecord];
                         break;

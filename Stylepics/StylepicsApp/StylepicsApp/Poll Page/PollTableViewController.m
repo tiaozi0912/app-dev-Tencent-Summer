@@ -247,9 +247,9 @@
         }
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:FOLLOW_POLL_BUTTON_TITLE]){
         [self followPoll];
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:UNFOLLOW_POLL_BUTTON_TITLE]){
+    }/*else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:UNFOLLOW_POLL_BUTTON_TITLE]){
         [self unfollowPoll];
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:SHOW_POLL_RESULT_BUTTON_TITLE]){
+    }*/else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:SHOW_POLL_RESULT_BUTTON_TITLE]){
         [self performSegueWithIdentifier:@"show poll result" sender:self];
     }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:DELETE_POLL_BUTTON_TITLE]){
         [self confirmToDeletePoll];
@@ -336,7 +336,7 @@
     pollRecord = nil;
 }
 
--(void)unfollowPoll
+/*-(void)unfollowPoll
 {    
     Audience *currentAudience = [self.poll.audiences objectAtIndex:audienceIndex];
     currentAudience.isFollowing = [NSNumber numberWithBool:NO];
@@ -347,7 +347,7 @@
     pollRecord.pollID = self.poll.pollID;
     [[RKObjectManager sharedManager] deleteObject:pollRecord delegate:self];
     pollRecord = nil;
-}
+}*/
 
 #pragma mark - RKObjectLoaderDelegate Methods
 

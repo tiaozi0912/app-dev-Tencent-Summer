@@ -76,10 +76,11 @@
     itemAdded = NO;
     if (!singleItemViewOption == SingleItemViewOptionNew){
         self.descriptionTextField.text = self.item.description;
-        self.priceTextField.text = [self.item.price stringValue];
+        self.priceTextField.text = [Utility formatCurrencyWithNumber:self.item.price];
         self.brandTextField.text = self.item.brand;
         itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.item.photoURL]]];
-        [self.cameraButton setBackgroundImage:itemImage forState:UIControlStateNormal];
+        [self.cameraButton setImage:itemImage forState:UIControlStateNormal];
+        self.cameraButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         self.cameraButton.enabled = NO;
     }
     if (singleItemViewOption == SingleItemViewOptionView)

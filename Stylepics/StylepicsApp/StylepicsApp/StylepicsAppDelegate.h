@@ -73,6 +73,8 @@
 #define NEXT_BUTTON @"next-icon"
 #define BACK_BUTTON @"back-icon"
 #define PIC_CONTAINER_BG @"PictureContainer"
+#define PROFILE_TAB_CONTROL_BUTTON @"tab"
+#define PROFILE_TAB_CONTROL_BUTTON_HL @"tab-hl"
 
 typedef enum{
     SingleItemViewOptionNew,

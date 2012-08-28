@@ -21,4 +21,7 @@
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *editingPollCountLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *openedPollCountLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *votedPollCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *editingPollButton;
+@property (weak, nonatomic) IBOutlet UIButton *activePollButton;
+@property (weak, nonatomic) IBOutlet UIButton *votedPollButton;
 @end
