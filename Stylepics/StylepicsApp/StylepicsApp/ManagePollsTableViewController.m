@@ -147,6 +147,7 @@
         for (id obj in pollRecords){
             if ([obj isKindOfClass:[PollRecord class]]){
                 PollRecord* pollRecord = (PollRecord*) obj;
+                NSLog(@"%@", pollRecord.pollRecordType);
                 switch ([pollRecord.pollRecordType intValue]) {
                     case EDITING_POLL:[self.editingPolls addObject:pollRecord];
                         break;
