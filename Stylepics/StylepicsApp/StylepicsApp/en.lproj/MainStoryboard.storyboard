@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E2620" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TEI-15-lt5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TEI-15-lt5">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Registration Page View Controller - Sign Up-->
@@ -1264,16 +1264,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add New Item" id="8ar-cg-IP6">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Rvd-tr-KfK"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="5KZ-EW-cwj">
-                            <connections>
-                                <action selector="cancelButton" destination="j5e-0n-Z7z" id="ccK-IH-ONG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Xrc-JT-Ldu">
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="j5e-0n-Z7z" id="biN-Ni-2Rl"/>
-                            </connections>
-                        </barButtonItem>
+
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1284,7 +1275,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="3045" y="1638"/>
+            <point key="canvasLocation" x="2928" y="1536"/>
         </scene>
         <!--Add To Poll Controller - Add To A Poll-->
         <scene sceneID="ldJ-9g-V8O">
@@ -1381,18 +1372,7 @@
                             <action selector="backgroundTouched:" destination="oVB-cZ-hsy" eventType="touchDown" id="XDg-9k-NHM"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Add To A Poll" id="LLR-Ic-2KQ">
-                        <barButtonItem key="leftBarButtonItem" title="back" id="lCc-Xx-XtY">
-                            <connections>
-                                <action selector="back:" destination="oVB-cZ-hsy" id="V7G-Pd-vWy"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="done" id="hy1-TT-qGV">
-                            <connections>
-                                <action selector="addToPoll" destination="oVB-cZ-hsy" id="Ve9-J6-ukz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Add To A Poll" id="LLR-Ic-2KQ"/>
                     <connections>
                         <outlet property="DescriptionLabel" destination="5rH-Ck-sNm" id="v3v-xv-DRi"/>
                         <outlet property="brandLabel" destination="cs1-7B-ly6" id="c9J-ux-O2b"/>
@@ -1406,7 +1386,9 @@
                     </connections>
                 </viewController>
             </objects>
+
             <point key="canvasLocation" x="3475" y="1645"/>
+
         </scene>
         <!--Single Item View Controller - Add New Item-->
         <scene sceneID="HpC-Ot-YOP">
@@ -1569,6 +1551,7 @@
         <image name="clock.png" width="27" height="30"/>
         <image name="profilePage.png" width="321" height="482"/>
     </resources>
+
     <classes>
         <class className="AddNewItemController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewItemController.h"/>
