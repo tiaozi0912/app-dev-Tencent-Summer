@@ -1280,19 +1280,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add New Item" id="8ar-cg-IP6">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Rvd-tr-KfK"/>
-<<<<<<< HEAD
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="5KZ-EW-cwj">
-                            <connections>
-                                <action selector="cancelButton" destination="j5e-0n-Z7z" id="ccK-IH-ONG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="Xrc-JT-Ldu">
-                            <connections>
-                                <action selector="nextButtonPressed:" destination="j5e-0n-Z7z" id="biN-Ni-2Rl"/>
-                            </connections>
-                        </barButtonItem>
-=======
->>>>>>> nav buttons
+
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1414,11 +1402,9 @@
                     </connections>
                 </viewController>
             </objects>
-<<<<<<< HEAD
+
             <point key="canvasLocation" x="3475" y="1645"/>
-=======
-            <point key="canvasLocation" x="3373" y="1612"/>
->>>>>>> nav buttons
+
         </scene>
         <!--Single Item View Controller - Add New Item-->
         <scene sceneID="HpC-Ot-YOP">
@@ -1580,8 +1566,7 @@
         <image name="check.png" width="27" height="30"/>
         <image name="clock.png" width="27" height="30"/>
     </resources>
-<<<<<<< HEAD
-=======
+
     <classes>
         <class className="AddNewItemController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddNewItemController.h"/>
@@ -1768,7 +1753,7 @@
             </relationships>
         </class>
     </classes>
->>>>>>> nav buttons
+
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
