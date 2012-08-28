@@ -12,7 +12,7 @@
 #import "ManagePollsTableViewController.h"
 
 
-#define ROWHEIGHT 369
+#define ROWHEIGHT 400
 
 #define TimeStampLabelFrame CGRectMake(48,9,74,9)
 #define UserImageFrame CGRectMake(5,9,40,40)
@@ -64,8 +64,9 @@
 
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_WITH_LOGO] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+
     
     //set UIBarButtonItem background image
     UIImage *newPollButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
@@ -89,8 +90,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
-    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_WITH_LOGO] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:LOGO]];
+    self.navigationItem.titleView.contentMode = UIViewContentModeScaleAspectFit;
+    CGRect frame = self.navigationItem.titleView.frame;
+    frame.size.height = 40;
+    frame.size.width = 140;
+    self.navigationItem.titleView.frame = frame;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -172,40 +177,34 @@
     
     if (event.items.count == 2) {
         cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_2];
+        cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_2];
         [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:213.6 Y:210.9 angleInDegree:17 edge:150];
-        [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:105.5 Y:104.94 angleInDegree:75.53 edge:149];
+        [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:105.5 Y:104.94 angleInDegree:75.53 - 90 edge:149];
         /*[cell.thumbnail1 clear];
         [cell.thumbnail1 showLoadingWheel];
         cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL];*/
-    }
+    }else
     if (event.items.count == 3) {
         cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_3];
-        [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:150.43 Y:161.68 angleInDegree:66.5 edge:194];
+        cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_3];
+        [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:247.31 Y:246.44 angleInDegree:11.26 edge:97];
+        [self setPicture:cell.thumbnail2 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL] atCenterX:150.43 Y:161.68 angleInDegree:66.5 - 90 edge:194];
         [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:247.5 Y:77.42 angleInDegree:19.30 edge:88];
-        [self setPicture:cell.thumbnail2 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL] atCenterX:247.31 Y:246.44 angleInDegree:11.26 edge:97];
+
         cell.thumbnail2.hidden = NO;
-    }
-    if (event.items.count == 4) {
+    }else
+    if (event.items.count >= 4) {
         cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_4];
-        [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:99.95 Y:98.53 angleInDegree:66.5 edge:125];
-        [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:224.66 Y:95.53 angleInDegree:18.5 edge:125];
-        [self setPicture:cell.thumbnail2 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL] atCenterX:90.83 Y:227.21 angleInDegree:79.21 edge:125];
-        [self setPicture:cell.thumbnail3 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:3]).photoURL] atCenterX:224.89 Y:224.44 angleInDegree:20.91 edge:125];
+        cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_4];
+        CGFloat edge = 131;
+        [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:224.89 Y:224.44 angleInDegree:20.91 edge:edge];
+        [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:224.66 Y:95.53 angleInDegree:18.5 edge:edge];
+        [self setPicture:cell.thumbnail2 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL] atCenterX:90.83 Y:227.21 angleInDegree:79.21-90 edge:edge];
+        [self setPicture:cell.thumbnail3 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:3]).photoURL] atCenterX:99.95 Y:98.53 angleInDegree:66.5-90 edge:edge];
         cell.thumbnail2.hidden = NO;
         cell.thumbnail3.hidden = NO;
     }
-    if (event.items.count > 4) {
-        [cell.thumbnail4 clear];
-        [cell.thumbnail4 showLoadingWheel];
-        cell.thumbnail4.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:4]).photoURL];
-        cell.thumbnail4.hidden = NO;
-    }
     
-    [HJObjectManager manage:cell.thumbnail0];
-    [HJObjectManager manage:cell.thumbnail1];
-    [HJObjectManager manage:cell.thumbnail2];
-    [HJObjectManager manage:cell.thumbnail3];
-    [HJObjectManager manage:cell.thumbnail4];
     
     // In current version, photo uploading is limited to one picture at a time
     
@@ -297,9 +296,9 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
              edge:(CGFloat)edge
 {
     imageView.transform = CGAffineTransformIdentity;
-    imageView.transform = CGAffineTransformMakeRotation(degreesToRadians(17));
-    imageView.bounds = CGRectMake(0,0, 150, 150);
-    imageView.center = CGPointMake(214, 211);
+    imageView.transform = CGAffineTransformMakeRotation(degreesToRadians(angle));
+    imageView.bounds = CGRectMake(0,0, edge, edge);
+    imageView.center = CGPointMake(x, y);
     [imageView clear];
     [imageView showLoadingWheel];
     imageView.url = url;

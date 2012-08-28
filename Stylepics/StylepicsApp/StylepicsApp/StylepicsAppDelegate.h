@@ -40,7 +40,7 @@
 
 #define BACKGROUND_COLOR @"BG.png"
 #define NAV_BAR_BACKGROUND_COLOR @"header_bg.png"
-#define NAV_BAR_BACKGROUND_WITH_LOGO @"header_bg-logo"
+#define LOGO @"Logo"
 #define TAB_BAR_BG @"tab_bar_bg"
 #define FEEDS_ICON @"feeds-icon"
 #define FEEDS_ICON_HL @"feeds-icon-hl"
@@ -75,6 +75,9 @@
 #define PIC_COLLAGE_LAYOUT_FOR_2 @"2pics"
 #define PIC_COLLAGE_LAYOUT_FOR_3 @"3pics"
 #define PIC_COLLAGE_LAYOUT_FOR_4 @"4pics"
+#define PIC_COLLAGE_FRAME_FOR_2 @"2pics-frame"
+#define PIC_COLLAGE_FRAME_FOR_3 @"3pics-frame"
+#define PIC_COLLAGE_FRAME_FOR_4 @"4pics-frame"
 
 typedef enum{
     SingleItemViewOptionNew,

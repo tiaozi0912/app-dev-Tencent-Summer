@@ -26,4 +26,5 @@
 @property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail4;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *picContainerImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *picFrameImageView;
 @end
