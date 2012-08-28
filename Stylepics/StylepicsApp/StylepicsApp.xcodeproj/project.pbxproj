@@ -150,6 +150,10 @@
 		4DAF2D6B15EA1B83009B2D89 /* camera-icon-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF2D6915EA1B83009B2D89 /* camera-icon-hl.png */; };
 		4DAF2D6C15EA1B83009B2D89 /* camera-icon-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAF2D6A15EA1B83009B2D89 /* camera-icon-hl@2x.png */; };
 		4DC659EB15EC87C900728E30 /* Action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC659EA15EC87C900728E30 /* Action@2x.png */; };
+		4DC65A4515ECC9A700728E30 /* 2pics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC65A4315ECC9A700728E30 /* 2pics.png */; };
+		4DC65A4615ECC9A700728E30 /* 2pics@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC65A4415ECC9A700728E30 /* 2pics@2x.png */; };
+		4DC65A4A15ECD11100728E30 /* 3pics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC65A4915ECD11100728E30 /* 3pics.png */; };
+		4DC65A4C15ECDA4000728E30 /* 4pics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DC65A4B15ECDA4000728E30 /* 4pics.png */; };
 		4DFE618815EB3919009952EF /* next-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE618615EB3919009952EF /* next-icon.png */; };
 		4DFE618915EB3919009952EF /* next-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE618715EB3919009952EF /* next-icon@2x.png */; };
 		4DFE618C15EB40B7009952EF /* back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DFE618A15EB40B6009952EF /* back-icon.png */; };
@@ -411,6 +415,10 @@
 		4DAF2D6915EA1B83009B2D89 /* camera-icon-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon-hl.png"; sourceTree = "<group>"; };
 		4DAF2D6A15EA1B83009B2D89 /* camera-icon-hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-icon-hl@2x.png"; sourceTree = "<group>"; };
 		4DC659EA15EC87C900728E30 /* Action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Action@2x.png"; sourceTree = "<group>"; };
+		4DC65A4315ECC9A700728E30 /* 2pics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2pics.png; sourceTree = "<group>"; };
+		4DC65A4415ECC9A700728E30 /* 2pics@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2pics@2x.png"; sourceTree = "<group>"; };
+		4DC65A4915ECD11100728E30 /* 3pics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3pics.png; sourceTree = "<group>"; };
+		4DC65A4B15ECDA4000728E30 /* 4pics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4pics.png; sourceTree = "<group>"; };
 		4DFE618615EB3919009952EF /* next-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-icon.png"; sourceTree = "<group>"; };
 		4DFE618715EB3919009952EF /* next-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-icon@2x.png"; sourceTree = "<group>"; };
 		4DFE618A15EB40B6009952EF /* back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon.png"; sourceTree = "<group>"; };
@@ -592,6 +600,10 @@
 		0D729A3115EC8998005DFA67 /* Feeds Page */ = {
 			isa = PBXGroup;
 			children = (
+				4DC65A4315ECC9A700728E30 /* 2pics.png */,
+				4DC65A4915ECD11100728E30 /* 3pics.png */,
+				4DC65A4415ECC9A700728E30 /* 2pics@2x.png */,
+				4DC65A4B15ECDA4000728E30 /* 4pics.png */,
 				0D729A3215EC89B8005DFA67 /* PictureContainer.png */,
 				0D729A3315EC89B8005DFA67 /* PictureContainer@2x.png */,
 			);
@@ -1038,6 +1050,10 @@
 				0D729A3515EC89B8005DFA67 /* PictureContainer@2x.png in Resources */,
 				0D729A3715EC8EA3005DFA67 /* profilePage.png in Resources */,
 				4DC659EB15EC87C900728E30 /* Action@2x.png in Resources */,
+				4DC65A4515ECC9A700728E30 /* 2pics.png in Resources */,
+				4DC65A4615ECC9A700728E30 /* 2pics@2x.png in Resources */,
+				4DC65A4A15ECD11100728E30 /* 3pics.png in Resources */,
+				4DC65A4C15ECDA4000728E30 /* 4pics.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1178,7 +1194,7 @@
 		0D94F50315A7D09700903F0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yujun Wu (GJP74VVN36)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -1196,7 +1212,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = ShopVote;
-				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
+				PROVISIONING_PROFILE = "EBD99C16-CA14-44F7-BF11-8E9903BBDA23";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1204,7 +1220,7 @@
 		0D94F50415A7D09700903F0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Lin (JN5AXQ269V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yujun Wu (GJP74VVN36)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Developer/aws-ios-sdk-1.3.3\"",
@@ -1222,7 +1238,7 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = ShopVote;
-				PROVISIONING_PROFILE = "7818FFCF-D823-4AC9-A235-638D38C2281C";
+				PROVISIONING_PROFILE = "EBD99C16-CA14-44F7-BF11-8E9903BBDA23";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -155,7 +155,7 @@
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:CellIdentifier];
     }
-    cell.thumbnail1.hidden = YES;
+    
     cell.thumbnail2.hidden = YES;
     cell.thumbnail3.hidden = YES;
     cell.thumbnail4.hidden = YES;
@@ -168,26 +168,30 @@
     [cell.thumbnail0 showLoadingWheel];
     cell.thumbnail0.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL];
 
-    cell.thumbnail0.transform = CGAffineTransformIdentity;
-    cell.thumbnail0.transform = CGAffineTransformMakeRotation(degreesToRadians(30));
-    cell.thumbnail0.bounds = CGRectMake(0,0, 200, 200);
+
     
-    if (event.items.count > 1) {
-        [cell.thumbnail1 clear];
+    if (event.items.count == 2) {
+        cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_2];
+        [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:213.6 Y:210.9 angleInDegree:17 edge:150];
+        [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:105.5 Y:104.94 angleInDegree:75.53 edge:149];
+        /*[cell.thumbnail1 clear];
         [cell.thumbnail1 showLoadingWheel];
-        cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL];
-        cell.thumbnail1.hidden = NO;
+        cell.thumbnail1.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL];*/
     }
-    if (event.items.count > 2) {
-        [cell.thumbnail2 clear];
-        [cell.thumbnail2 showLoadingWheel];
-        cell.thumbnail2.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL];
+    if (event.items.count == 3) {
+        cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_3];
+        [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:150.43 Y:161.68 angleInDegree:66.5 edge:194];
+        [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:247.5 Y:77.42 angleInDegree:19.30 edge:88];
+        [self setPicture:cell.thumbnail2 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL] atCenterX:247.31 Y:246.44 angleInDegree:11.26 edge:97];
         cell.thumbnail2.hidden = NO;
     }
-    if (event.items.count > 3) {
-        [cell.thumbnail3 clear];
-        [cell.thumbnail3 showLoadingWheel];
-        cell.thumbnail3.url = [NSURL URLWithString:((Item*)[event.items objectAtIndex:3]).photoURL];
+    if (event.items.count == 4) {
+        cell.picContainerImageView.image = [UIImage imageNamed:PIC_COLLAGE_LAYOUT_FOR_4];
+        [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:99.95 Y:98.53 angleInDegree:66.5 edge:125];
+        [self setPicture:cell.thumbnail1 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:1]).photoURL] atCenterX:224.66 Y:95.53 angleInDegree:18.5 edge:125];
+        [self setPicture:cell.thumbnail2 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:2]).photoURL] atCenterX:90.83 Y:227.21 angleInDegree:79.21 edge:125];
+        [self setPicture:cell.thumbnail3 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:3]).photoURL] atCenterX:224.89 Y:224.44 angleInDegree:20.91 edge:125];
+        cell.thumbnail2.hidden = NO;
         cell.thumbnail3.hidden = NO;
     }
     if (event.items.count > 4) {
@@ -283,5 +287,22 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
         ((ManagePollsTableViewController*)segue.destinationViewController).user = userToBePassed;
     }
     
+}
+
+-(void)setPicture:(HJManagedImageV*)imageView
+          withURL:(NSURL*)url
+          atCenterX:(CGFloat)x
+                Y:(CGFloat)y
+    angleInDegree:(CGFloat)angle
+             edge:(CGFloat)edge
+{
+    imageView.transform = CGAffineTransformIdentity;
+    imageView.transform = CGAffineTransformMakeRotation(degreesToRadians(17));
+    imageView.bounds = CGRectMake(0,0, 150, 150);
+    imageView.center = CGPointMake(214, 211);
+    [imageView clear];
+    [imageView showLoadingWheel];
+    imageView.url = url;
+    [HJObjectManager manage:imageView];
 }
 @end
