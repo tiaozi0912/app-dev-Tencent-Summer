@@ -174,7 +174,7 @@
 
     
     if (event.items.count == 2) {
-        cell.picContainerImageView.image = [UIImage imageNamed:PIC_CONTAINER_BG];
+        //cell.picContainerImageView.image = [UIImage imageNamed:PIC_CONTAINER_BG];
         //cell.picFrameImageView.image = [UIImage imageNamed:PIC_COLLAGE_FRAME_FOR_2];
         [self setPicture:cell.thumbnail0 withURL:[NSURL URLWithString:((Item*)[event.items objectAtIndex:0]).photoURL] atCenterX:213.6 Y:210.9 angleInDegree:17 edge:150];
         
