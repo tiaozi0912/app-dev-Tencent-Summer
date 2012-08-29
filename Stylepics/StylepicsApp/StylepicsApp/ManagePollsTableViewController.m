@@ -283,7 +283,11 @@
                 PollRecord *poll = [self.votedPolls objectAtIndex:indexPath.row];
                 cell.pollDescriptionLabel.text = poll.title;
                 cell.votesCountLabel.text = [[NSString alloc] initWithFormat:@"%@", poll.totalVotes];
-                cell.stateLabel.text = [Utility stringFromPollState:[poll.state intValue]];
+                cell.username.text = poll.owner.username;
+                [Utility renderView:cell.userPhoto withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH];
+                cell.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_SMALL];
+                cell.userPhoto.url = [NSURL URLWithString:poll.owner.profilePhotoURL];
+                [HJObjectManager manage:cell.userPhoto];
                 [cell.pollDescriptionLabel setNeedsLayout];
             }
             return cell;
@@ -312,14 +316,14 @@
             break;
         }
         case ContentTypeOpenedPoll:{
-            if (indexPath.row < self.editingPolls.count){
+            if (indexPath.row < self.openedPolls.count){
             Poll* poll = [self.openedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             }
             break;
         }
         case ContentTypeVotedPoll:{
-            if (indexPath.row < self.editingPolls.count){
+            if (indexPath.row < self.votedPolls.count){
             Poll* poll = [self.votedPolls objectAtIndex:indexPath.row];
             [Utility setObject:poll.pollID forKey:IDOfPollToBeShown];
             }

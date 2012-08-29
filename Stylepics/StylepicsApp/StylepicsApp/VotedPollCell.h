@@ -12,6 +12,7 @@
 @interface VotedPollCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *pollDescriptionLabel;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *votesCountLabel;
-@property (weak, nonatomic) IBOutlet AppFormattedLabel *stateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
 
 @end

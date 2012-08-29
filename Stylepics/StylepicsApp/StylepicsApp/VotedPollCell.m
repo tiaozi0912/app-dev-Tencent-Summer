@@ -11,7 +11,8 @@
 @implementation VotedPollCell
 @synthesize pollDescriptionLabel;
 @synthesize votesCountLabel;
-@synthesize stateLabel;
+@synthesize username;
+@synthesize userPhoto;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

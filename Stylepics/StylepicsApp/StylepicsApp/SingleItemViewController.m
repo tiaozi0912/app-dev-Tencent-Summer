@@ -53,7 +53,8 @@
     NSArray *titles = [[NSArray alloc] initWithObjects:@"Add New Item", @"Edit Item", @"View Item",nil];
     self.title = [titles objectAtIndex:singleItemViewOption];
 
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    //self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    self.view.backgroundColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
     
     //self.descriptionTextField.delegate= self;
     self.priceTextField.delegate= self;

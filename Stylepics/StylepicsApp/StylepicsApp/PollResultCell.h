@@ -12,8 +12,8 @@
 
 @interface PollResultCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet HJManagedImageV *itemImage;
-@property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *priceLabel;
 @property (nonatomic, weak) IBOutlet UIProgressView *numberOfVotesIndicator;
 @property (nonatomic, weak) IBOutlet UILabel *numberOfVotesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *brandLabel;
 @end
