@@ -115,13 +115,13 @@
     }
     Item* item = [self.poll.items objectAtIndex:indexPath.row];
     // Configure the cell...
+    [Utility renderView:cell.itemImage withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH];
     cell.itemImage.url= [NSURL URLWithString:item.photoURL];
     [HJObjectManager manage:cell.itemImage];
-    cell.descriptionLabel.text = item.description;
-    cell.priceLabel.text = [[NSString alloc] initWithFormat:@"%@", item.price];    
+    cell.priceLabel.text = [Utility formatCurrencyWithNumber:item.price];
+    cell.brandLabel.text = item.brand;
     cell.numberOfVotesIndicator.progress = item.numberOfVotes.floatValue/self.poll.totalVotes.floatValue;
     cell.numberOfVotesLabel.text = [NSString stringWithFormat:@"%d%%",item.numberOfVotes.intValue*100/self.poll.totalVotes.intValue];
-    [cell.descriptionLabel sizeToFit];
     [cell.priceLabel sizeToFit];
     return cell;
 }
@@ -130,13 +130,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
 }
 
 @end

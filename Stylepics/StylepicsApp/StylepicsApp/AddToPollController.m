@@ -211,8 +211,7 @@
             _item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, imageName];
             //item.description = self.descriptionTextField.text;
             _item.numberOfVotes = [NSNumber numberWithInt:0];
-
-            _item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
+            [Utility getObjectForKey:IDOfPollToBeShown];
             [[RKObjectManager sharedManager] putObject:_item delegate:self];
         }
         @catch (AmazonClientException *exception) {
@@ -304,6 +303,7 @@
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (row > 0) {
         _item.pollID = ((PollRecord*)[activePolls objectAtIndex:row - 1]).pollID;
+        [Utility setObject:_item.pollID forKey:IDOfPollToBeShown];
         newPoll = NO;
     }else{
         _item.pollID = nil;

@@ -7,12 +7,14 @@
 //
 
 #import "AppFormattedLabel.h"
+#import "Utility.h"
 
 @implementation AppFormattedLabel
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     self.font = [UIFont fontWithName:@"HelveticaNeue" size:14.0];
+    self.textColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -20,6 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        self.textColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
     }
     return self;
 }

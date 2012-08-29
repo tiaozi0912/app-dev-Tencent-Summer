@@ -40,13 +40,13 @@
     [[UITabBarItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor whiteColor], UITextAttributeTextColor, 
-      [UIFont fontWithName:@"Helvetica" size:11], UITextAttributeFont, 
+      [UIFont fontWithName:@"HelveticaNeue-Bold" size:11], UITextAttributeFont, 
       nil] 
                                              forState:UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor blackColor], UITextAttributeTextColor, 
-      [UIFont fontWithName:@"Helvetica" size:11], UITextAttributeFont, 
+      [UIFont fontWithName:@"HelveticaNeue-Bold" size:11], UITextAttributeFont, 
       nil] 
                                              forState:UIControlStateHighlighted];
     //custom tab bar icons
@@ -206,7 +206,6 @@
     
     
     // In current version, photo uploading is limited to one picture at a time
-    
     cell.timeStampLabel.text = [Utility formatTimeWithDate:event.timeStamp];
     
     cell.categoryIcon.image = [Utility iconForCategory:(PollCategory)[event.poll.category intValue]];
@@ -214,11 +213,12 @@
     cell.categoryLabel.text = [Utility stringFromCategory:(PollCategory)[event.poll.category intValue]];
     
     [cell.usernameAndActionLabel updateNumberOfLabels:2];
-    [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] forLabel:0];
-    [cell.usernameAndActionLabel setText:@" would like your vote" andFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0] forLabel:1];
+    [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] andColor:[Utility colorFromKuler:KULER_BLACK alpha:1] forLabel:0];
+    [cell.usernameAndActionLabel setText:@" would like your vote" andFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0] andColor:[Utility colorFromKuler:KULER_BLACK alpha:1] forLabel:1];
     
     cell.eventDescriptionLabel.text = event.poll.title;
     cell.eventDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
+    cell.eventDescriptionLabel.textColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
     [cell.eventDescriptionLabel setNeedsLayout];
     cell.totalVotes.text = [event.poll.totalVotes stringValue];
     [cell.eventDescriptionLabel setNeedsLayout];

@@ -37,13 +37,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    //self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.tips.backgroundColor =[UIColor clearColor];
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     self.pollNameTextField.delegate = self;
     self.categoryPickerView.delegate = self;
     self.categoryPickerView.dataSource = self;
-    self.categoryPickerView.frame = CGRectMake(0, 460, 320, 216);
+    self.categoryPickerView.frame = CGRectMake(0, 415, 320, 216);
     [self.categoryPickerView selectRow:0 inComponent:0 animated:NO];
     self.categoryPickerView.isOn = NO;
 

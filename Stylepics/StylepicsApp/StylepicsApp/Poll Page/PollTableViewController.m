@@ -569,6 +569,8 @@
     [cell.deleteButton setImage:[UIImage imageNamed:DELETE_ITEM_BUTTON] forState:UIControlStateNormal];
     [cell.deleteButton setImage:[UIImage imageNamed:DELETE_ITEM_BUTTON_HL] forState:UIControlStateHighlighted];
     cell.deleteButton.hidden = !(isOwnerView && [self.poll.state intValue] == EDITING);
+    
+    [Utility renderView:cell.itemImage withCornerRadius:LARGE_CORNER_RADIUS andBorderWidth:LARGE_BORDER_WIDTH];
     cell.itemImage.contentMode = UIViewContentModeScaleAspectFit;
     [cell.itemImage clear];
     [cell.itemImage showLoadingWheel];

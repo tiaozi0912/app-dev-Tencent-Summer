@@ -9,7 +9,8 @@
 #import "PollResultCell.h"
 
 @implementation PollResultCell
-@synthesize itemImage, descriptionLabel, priceLabel, numberOfVotesIndicator, numberOfVotesLabel;
+@synthesize brandLabel;
+@synthesize itemImage, priceLabel, numberOfVotesIndicator, numberOfVotesLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
