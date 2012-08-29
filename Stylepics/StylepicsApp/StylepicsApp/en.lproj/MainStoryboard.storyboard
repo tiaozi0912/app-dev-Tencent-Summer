@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TEI-15-lt5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E2620" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TEI-15-lt5">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
         <!--Registration Page View Controller - Sign Up-->
@@ -115,6 +115,20 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1442" y="467"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="POT-Om-gXh">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlW-dN-SLL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="4zq-Q9-w6O" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tvd-iZ-9y1">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1431" y="1034"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="M6K-y3-yLm">
@@ -500,12 +514,12 @@
                                         <view contentMode="scaleAspectFit" id="8Nd-1e-CCd" customClass="HJManagedImageV">
                                             <rect key="frame" x="277" y="9" width="23" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.2156862745" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <view contentMode="scaleAspectFit" id="sjj-9m-Tat" customClass="HJManagedImageV">
                                             <rect key="frame" x="5" y="9" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.2156862745" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <gestureRecognizers/>
                                         </view>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1 minute ago" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="krJ-SZ-UcQ" customClass="SmallFormattedLabel">
@@ -903,19 +917,24 @@
                             <color key="backgroundColor" red="0.20000000000000001" green="0.2156862745" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <prototypes>
-                            <tableViewCell alpha="0.94999998807907104" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="add item button cell" rowHeight="58" id="ldA-BW-Jil" customClass="PollItemCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="add item button cell" rowHeight="58" id="ldA-BW-Jil" customClass="PollItemCell">
                                 <rect key="frame" x="0.0" y="112" width="320" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" id="crg-Ql-4ag">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.2156862745" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Op-2b-0bp">
                                             <rect key="frame" x="20" y="10" width="280" height="37"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                             <color key="tintColor" red="0.46666666670000001" green="0.76862745099999996" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="ADD NEW ITEM">
+                                            <state key="normal" title="Add a new item">
                                                 <color key="titleColor" red="0.20000000000000001" green="0.2156862745" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                             </state>
@@ -1450,7 +1469,7 @@
         <image name="Delete-hl.png" width="33" height="33"/>
         <image name="Delete.png" width="33" height="33"/>
         <image name="LandingPage.png" width="384" height="480"/>
-        <image name="Logo.png" width="182" height="65"/>
+        <image name="Logo.png" width="177" height="65"/>
         <image name="New-poll-icon.png" width="20" height="20"/>
         <image name="PictureContainer.png" width="320" height="318"/>
         <image name="Votes.png" width="20" height="22"/>
