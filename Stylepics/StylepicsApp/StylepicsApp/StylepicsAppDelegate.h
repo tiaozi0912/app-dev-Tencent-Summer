@@ -75,7 +75,7 @@
 #define PIC_CONTAINER_BG @"PictureContainer"
 #define PROFILE_TAB_CONTROL_BUTTON @"tab"
 #define PROFILE_TAB_CONTROL_BUTTON_HL @"tab-hl"
-
+#define EMPTY_POLL_HINT @"add-new-items"
 #define SMALL_CORNER_RADIUS 2
 #define SMALL_BORDER_WIDTH 2
 

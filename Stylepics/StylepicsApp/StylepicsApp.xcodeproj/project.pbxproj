@@ -123,6 +123,15 @@
 		0DB2A55915E7097B00FA1470 /* OpenedPollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2A55815E7097A00FA1470 /* OpenedPollCell.m */; };
 		0DC94A2815CF404200383472 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC94A2715CF404200383472 /* AWSiOSSDK.framework */; };
 		0DC94A2F15CF474B00383472 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC94A2E15CF474B00383472 /* AmazonClientManager.m */; };
+		0DF8B20B15EE0A2F00230497 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8B20A15EE0A2F00230497 /* TutorialViewController.m */; };
+		0DF8B20E15EE124500230497 /* TutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8B20D15EE124500230497 /* TutorialPageViewController.m */; };
+		0DF8B21515EE18D800230497 /* instruction-page-0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8B21015EE18D800230497 /* instruction-page-0@2x.png */; };
+		0DF8B21615EE18D800230497 /* instruction-page-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8B21115EE18D800230497 /* instruction-page-1@2x.png */; };
+		0DF8B21715EE18D800230497 /* instruction-page-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8B21215EE18D800230497 /* instruction-page-2@2x.png */; };
+		0DF8B21815EE18D800230497 /* instruction-page-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8B21315EE18D800230497 /* instruction-page-3@2x.png */; };
+		0DF8B21915EE18D800230497 /* instruction-page-4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8B21415EE18D800230497 /* instruction-page-4@2x.png */; };
+		0DF8B21C15EE1DDE00230497 /* add-new-items.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8B21A15EE1DDE00230497 /* add-new-items.png */; };
+		0DF8B21D15EE1DDE00230497 /* add-new-items@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DF8B21B15EE1DDE00230497 /* add-new-items@2x.png */; };
 		0DF8D7AE15DE2D4A0010E475 /* AddNewItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF8D7AD15DE2D4A0010E475 /* AddNewItemController.m */; };
 		4D29327715E2A86A006888B0 /* feeds-icon-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29327515E2A86A006888B0 /* feeds-icon-hl.png */; };
 		4D29327815E2A86A006888B0 /* profile-icon-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D29327615E2A86A006888B0 /* profile-icon-hl.png */; };
@@ -378,6 +387,17 @@
 		0DC94A2715CF404200383472 /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = "aws-ios-sdk-1.3.3/AWSiOSSDK.framework"; sourceTree = "<group>"; };
 		0DC94A2D15CF474B00383472 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
 		0DC94A2E15CF474B00383472 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
+		0DF8B20915EE0A2F00230497 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		0DF8B20A15EE0A2F00230497 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		0DF8B20C15EE124500230497 /* TutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialPageViewController.h; sourceTree = "<group>"; };
+		0DF8B20D15EE124500230497 /* TutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialPageViewController.m; sourceTree = "<group>"; };
+		0DF8B21015EE18D800230497 /* instruction-page-0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instruction-page-0@2x.png"; sourceTree = "<group>"; };
+		0DF8B21115EE18D800230497 /* instruction-page-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instruction-page-1@2x.png"; sourceTree = "<group>"; };
+		0DF8B21215EE18D800230497 /* instruction-page-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instruction-page-2@2x.png"; sourceTree = "<group>"; };
+		0DF8B21315EE18D800230497 /* instruction-page-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instruction-page-3@2x.png"; sourceTree = "<group>"; };
+		0DF8B21415EE18D800230497 /* instruction-page-4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instruction-page-4@2x.png"; sourceTree = "<group>"; };
+		0DF8B21A15EE1DDE00230497 /* add-new-items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-new-items.png"; sourceTree = "<group>"; };
+		0DF8B21B15EE1DDE00230497 /* add-new-items@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-new-items@2x.png"; sourceTree = "<group>"; };
 		0DF8D7AC15DE2D4A0010E475 /* AddNewItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewItemController.h; sourceTree = "<group>"; };
 		0DF8D7AD15DE2D4A0010E475 /* AddNewItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewItemController.m; sourceTree = "<group>"; };
 		4D29327515E2A86A006888B0 /* feeds-icon-hl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feeds-icon-hl.png"; sourceTree = "<group>"; };
@@ -673,6 +693,10 @@
 				0DA3998115EAFB49002A4D58 /* AddToPollController.m */,
 				0D9C0CA215DEC1A8005FA5C5 /* CenterButtonTabController.h */,
 				0D9C0CA315DEC1A8005FA5C5 /* CenterButtonTabController.m */,
+				0DF8B20915EE0A2F00230497 /* TutorialViewController.h */,
+				0DF8B20A15EE0A2F00230497 /* TutorialViewController.m */,
+				0DF8B20C15EE124500230497 /* TutorialPageViewController.h */,
+				0DF8B20D15EE124500230497 /* TutorialPageViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -770,6 +794,7 @@
 		0D9C0CAD15DECBE8005FA5C5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DF8B20F15EE18BC00230497 /* Tutorial Pages */,
 				0D729A3115EC8998005DFA67 /* Feeds Page */,
 				0DA46AAD15E5BBE4008F67B1 /* Single Item View */,
 				0DA46A9015E5A256008F67B1 /* Poll Table */,
@@ -800,6 +825,8 @@
 		0DA46A9015E5A256008F67B1 /* Poll Table */ = {
 			isa = PBXGroup;
 			children = (
+				0DF8B21A15EE1DDE00230497 /* add-new-items.png */,
+				0DF8B21B15EE1DDE00230497 /* add-new-items@2x.png */,
 				0D66009E15EDCEEB00AF0687 /* Delete-hl.png */,
 				0D66009F15EDCEEB00AF0687 /* Delete-hl@2x.png */,
 				0D6600A015EDCEEB00AF0687 /* Delete.png */,
@@ -828,6 +855,18 @@
 				0DA46AAA15E5BBD7008F67B1 /* AddItemHint@2x.png */,
 			);
 			name = "Single Item View";
+			sourceTree = "<group>";
+		};
+		0DF8B20F15EE18BC00230497 /* Tutorial Pages */ = {
+			isa = PBXGroup;
+			children = (
+				0DF8B21015EE18D800230497 /* instruction-page-0@2x.png */,
+				0DF8B21115EE18D800230497 /* instruction-page-1@2x.png */,
+				0DF8B21215EE18D800230497 /* instruction-page-2@2x.png */,
+				0DF8B21315EE18D800230497 /* instruction-page-3@2x.png */,
+				0DF8B21415EE18D800230497 /* instruction-page-4@2x.png */,
+			);
+			name = "Tutorial Pages";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1022,6 +1061,13 @@
 				0D6600A915EDCF8800AF0687 /* Logo@2x.png in Resources */,
 				0D6600AC15EDCF9800AF0687 /* Default.png in Resources */,
 				0D6600AD15EDCF9800AF0687 /* Default@2x.png in Resources */,
+				0DF8B21515EE18D800230497 /* instruction-page-0@2x.png in Resources */,
+				0DF8B21615EE18D800230497 /* instruction-page-1@2x.png in Resources */,
+				0DF8B21715EE18D800230497 /* instruction-page-2@2x.png in Resources */,
+				0DF8B21815EE18D800230497 /* instruction-page-3@2x.png in Resources */,
+				0DF8B21915EE18D800230497 /* instruction-page-4@2x.png in Resources */,
+				0DF8B21C15EE1DDE00230497 /* add-new-items.png in Resources */,
+				0DF8B21D15EE1DDE00230497 /* add-new-items@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,6 +1123,8 @@
 				0DB2A55915E7097B00FA1470 /* OpenedPollCell.m in Sources */,
 				0D388BF615EA07DE005A56D7 /* AppFormattedBoldLabel.m in Sources */,
 				0DA3998215EAFB4A002A4D58 /* AddToPollController.m in Sources */,
+				0DF8B20B15EE0A2F00230497 /* TutorialViewController.m in Sources */,
+				0DF8B20E15EE124500230497 /* TutorialPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
