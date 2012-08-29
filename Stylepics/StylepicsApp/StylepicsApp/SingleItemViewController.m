@@ -25,6 +25,7 @@
 @synthesize singleItemViewOption, item = _item;
 //@synthesize descriptionTextField=_descriptionTextField;
 @synthesize priceTextField=_priceTextField;
+@synthesize capturedImage = _capturedImage;
 
 
 - (void)viewDidLoad
