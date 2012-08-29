@@ -76,6 +76,14 @@
 #define PROFILE_TAB_CONTROL_BUTTON @"tab"
 #define PROFILE_TAB_CONTROL_BUTTON_HL @"tab-hl"
 
+#define SMALL_CORNER_RADIUS 2
+#define SMALL_BORDER_WIDTH 2
+
+#define MEDIUM_CORNER_RADIUS 5
+#define MEDIUM_BORDER_WIDTH 5
+
+#define LARGE_CORNER_RADIUS 7
+#define LARGE_BORDER_WIDTH 7
 typedef enum{
     SingleItemViewOptionNew,
     SingleItemViewOptionEdit,

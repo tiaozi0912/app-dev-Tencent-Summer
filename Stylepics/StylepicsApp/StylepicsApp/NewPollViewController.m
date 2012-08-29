@@ -13,6 +13,7 @@
 @interface NewPollViewController ()
 {
     Poll* poll;
+    UIActivityIndicatorView* spinner;
     //BOOL eventCreated, recordCreated;
 }
 @end
@@ -43,10 +44,17 @@
     self.categoryPickerView.delegate = self;
     self.categoryPickerView.dataSource = self;
     self.categoryPickerView.frame = CGRectMake(0, 460, 320, 216);
-    [self.categoryPickerView selectRow:2 inComponent:0 animated:NO];
+    [self.categoryPickerView selectRow:0 inComponent:0 animated:NO];
     self.categoryPickerView.isOn = NO;
 
     self.categoryButton.titleLabel.textAlignment =  UITextAlignmentCenter;
+    
+    UIImage *backButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    [self.navigationItem.leftBarButtonItem  setBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    UIImage *doneButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    [self.navigationItem.rightBarButtonItem  setBackgroundImage:doneButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     poll = [Poll new];
     //eventCreated = NO;
@@ -62,6 +70,14 @@
     [self setCategoryButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.toolbarHidden = YES;
+    ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -95,13 +111,17 @@
         poll.state = EDITING;
         poll.totalVotes = [NSNumber numberWithInt:0];
         poll.category = [NSNumber numberWithInt:[self.categoryPickerView selectedRowInComponent:0]];
+        spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [spinner startAnimating];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        self.navigationItem.leftBarButtonItem.enabled = NO;
         [[RKObjectManager sharedManager] postObject:poll delegate:self];
     }
 }
 
 -(IBAction)cancel
 {
-    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)categoryButtonPressed{
@@ -143,7 +163,7 @@
         pollRecord.pollRecordType = [NSNumber numberWithInt:EDITING_POLL];
         [[RKObjectManager sharedManager] postObject:pollRecord delegate:self];
     }else if ([objectLoader wasSentToResourcePath:@"/poll_records"]){
-        [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID]; 
+        [self.delegate newPollViewController:self didCreateANewPoll:poll.pollID];
     }
 }
 
@@ -169,8 +189,17 @@
     return PollTypeCount;
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [Utility stringFromCategory:(PollCategory) row];
+- (UIView *)pickerView:(UIPickerView *)thePickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    UILabel* tView = (UILabel*)view;
+    if (!tView){
+        tView = [[UILabel alloc] init];
+        // Setup label properties - frame, font, colors etc
+        tView.backgroundColor = [UIColor clearColor];
+        tView.font = [UIFont fontWithName:@"HelveticaNeue-BoldItalic" size:20.0];
+    }
+    // Fill the label text here
+    tView.text = [@" " stringByAppendingString:[Utility stringFromCategory:(PollCategory) row]];
+    return tView;
 }
 
 #pragma mark - UIPickerView Delegate Methods
@@ -197,6 +226,7 @@
     [self categoryButtonPressed];
     return YES;
 }
+
 
 
 @end

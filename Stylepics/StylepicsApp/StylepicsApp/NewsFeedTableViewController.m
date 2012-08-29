@@ -166,6 +166,8 @@
     cell.thumbnail3.hidden = YES;
     cell.thumbnail4.hidden = YES;
     // Configure the cell...Add item event
+    [Utility renderView:cell.userImage withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH ];
+    
     cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_SMALL];
     cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
     [HJObjectManager manage:cell.userImage];
@@ -217,6 +219,8 @@
     
     cell.eventDescriptionLabel.text = event.poll.title;
     cell.eventDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
+    [cell.eventDescriptionLabel setNeedsLayout];
+    cell.totalVotes.text = [event.poll.totalVotes stringValue];
     [cell.eventDescriptionLabel setNeedsLayout];
     
     /*cell.timeStampLabel.frame = TimeStampLabelFrame;
@@ -270,7 +274,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
 -(void)newPollViewController:(id)sender didCreateANewPoll:(NSNumber *)pollID
 {
     [Utility setObject:pollID forKey:IDOfPollToBeShown];
-    [self dismissModalViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:NO];
     [self performSegueWithIdentifier:@"show poll" sender:self];
 }
 
@@ -296,13 +300,8 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
     imageView.transform = CGAffineTransformMakeRotation(degreesToRadians(angle));
     imageView.bounds = CGRectMake(0,0, edge, edge);
     imageView.center = CGPointMake(x, y);
-    // border
-    imageView.layer.borderColor = [[UIColor blackColor] CGColor];
-    imageView.layer.borderWidth = 5;
-    
-    // corner
-    imageView.layer.cornerRadius = 5;
-    imageView.layer.masksToBounds = YES;
+
+    [Utility renderView:imageView withCornerRadius:MEDIUM_CORNER_RADIUS andBorderWidth:MEDIUM_BORDER_WIDTH];
     [imageView clear];
     [imageView showLoadingWheel];
     imageView.url = url;

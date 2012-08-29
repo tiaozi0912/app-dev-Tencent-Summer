@@ -8,8 +8,8 @@
 
 #import "AddToPollController.h"
 #define PollPicker 0
-#define CategoryPicker 1
-#define kOFFSET_FOR_KEYBOARD 216.0
+//#define CategoryPicker 1
+//#define kOFFSET_FOR_KEYBOARD 216.0
 
 @interface AddToPollController (){
     BOOL newPoll, backMark;
@@ -21,24 +21,13 @@
 @end
 
 @implementation AddToPollController
-@synthesize brandLabel = _brandLabel;
-@synthesize priceLabel = _priceLabel;
+//@synthesize brandLabel = _brandLabel;
+//@synthesize priceLabel = _priceLabel;
 @synthesize itemImageView = _itemImageView;
-@synthesize DescriptionLabel = _DescriptionLabel;
-@synthesize chooseCategoryLabel = _chooseCategoryLabel;
-@synthesize categoryPickerView = _categoryPickerView;
-@synthesize categoryPickerParentView = _categoryPickerParentView;
 
-@synthesize pickPollTitleTextField = _pickPollTitleTextField,capturedItemImage=_capturedItemImage, pickerView, item=_item;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize capturedItemImage=_capturedItemImage, pickerView, item=_item;
+
 
 - (void)viewDidLoad
 {
@@ -46,13 +35,10 @@
     
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
-    
-    self.categoryPickerView.delegate = self;
-    self.categoryPickerView.dataSource = self;
 
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
 
-        self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    //self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
     
     //set back button
@@ -70,14 +56,14 @@
     pickerDataArray=[NSMutableArray new];
     activePolls = [NSMutableArray new];
     backMark = NO;
+    newPoll = YES;
 
     self.itemImageView.image = self.capturedItemImage;
 
-    self.pickPollTitleTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    self.brandLabel.text = _item.brand;
+    /*self.brandLabel.text = _item.brand;
     self.priceLabel.text = [Utility formatCurrencyWithNumber:_item.price];
     [self.brandLabel setNeedsLayout];
-    [self.priceLabel setNeedsLayout];
+    [self.priceLabel setNeedsLayout];*/
     
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
@@ -92,16 +78,11 @@
 
 - (void)viewDidUnload
 {
-    [self setChooseCategoryLabel:nil];
-    [self setCategoryPickerView:nil];
-    [self setDescriptionLabel:nil];
-    [self setBrandLabel:nil];
-    [self setPriceLabel:nil];
-    [self setCategoryPickerParentView:nil];
+    //[self setBrandLabel:nil];
+    //[self setPriceLabel:nil];
     [super viewDidUnload];
     [self setItemImageView:nil];
     [self setPickerView:nil];
-    [self setPickPollTitleTextField:nil];
     _item = nil;
     poll = nil;
     spinner = nil;
@@ -112,28 +93,28 @@
 {
     [super viewWillAppear:animated];
     // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
+    /*[[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
+    //[[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide)
                                                  name:UIKeyboardWillHideNotification
-                                               object:nil];
+                                               object:nil];*/
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self
+    /*[[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillShowNotification
                                                   object:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillHideNotification
-                                                  object:nil];
+                                                  object:nil];*/
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -147,29 +128,17 @@
 
 -(IBAction)addToPoll
 {
-    [self.pickPollTitleTextField resignFirstResponder];
+    //[self.pickPollTitleTextField resignFirstResponder];
         if (newPoll) {
-            if (self.pickPollTitleTextField.text.length == 0)
-            {
-                [Utility showAlert:@"Please type something" message:@"Your new poll should have a description."];
-                return;
-            }
-            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            [spinner startAnimating];
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-            self.navigationItem.leftBarButtonItem.enabled = NO;
-            poll = [Poll new];
-            poll.title = self.pickPollTitleTextField.text;
-            poll.ownerID = [Utility getObjectForKey:CURRENTUSERID];
-            poll.state = EDITING;
-            poll.totalVotes = [NSNumber numberWithInt:0];
-            [[RKObjectManager sharedManager] postObject:poll delegate:self];
+            NewPollViewController* newPOllVC = [self.storyboard  instantiateViewControllerWithIdentifier:@"new poll VC"];;
+            newPOllVC.delegate = self;
+            [self.navigationController pushViewController:newPOllVC animated:YES];
         }else{
            // [Utility setObject:_item.pollID forKey:IDOfPollToBeShown];
             spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
             [spinner startAnimating];
-            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-            self.navigationItem.rightBarButtonItem.enabled = NO;
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+            self.navigationItem.leftBarButtonItem.enabled = NO;
             _item.pollID = ((PollRecord*)[activePolls objectAtIndex:[self.pickerView selectedRowInComponent:0]-1]).pollID;
             [[RKObjectManager sharedManager] postObject:_item delegate:self];
         }
@@ -177,7 +146,7 @@
 
 -(IBAction)backgroundTouched:(id)sender
 {
-    [self.pickPollTitleTextField resignFirstResponder];
+   // [self.pickPollTitleTextField resignFirstResponder];
 }
 
 /*- (IBAction)pickPoll:(id)sender {
@@ -309,18 +278,7 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    switch (thePickerView.tag) {
-        case PollPicker:
-        {
-            return [pickerDataArray count] + 1;
-        }
-        case CategoryPicker:
-        {
-            return PollTypeCount;
-        }
-        default:
-            return 0;
-    }
+    return [pickerDataArray count] + 1;
 }
 
 - (UIView *)pickerView:(UIPickerView *)thePickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
@@ -332,23 +290,10 @@
         tView.font = [UIFont fontWithName:@"HelveticaNeue-BoldItalic" size:14.0];
     }
     // Fill the label text here
-    switch (thePickerView.tag) {
-        case PollPicker:
-        {
-            if (row > 0) {
-                tView.text = [pickerDataArray objectAtIndex:row - 1];
-            }else{
-                tView.text = @"New Poll ... ";
-            }
-            break;
-        }
-        case CategoryPicker:
-        {
-            tView.text = [Utility stringFromCategory:(PollCategory) row];
-            break;
-        }
-        default:
-            break;
+    if (row > 0) {
+        tView.text = [pickerDataArray objectAtIndex:row - 1];
+    }else{
+        tView.text = @"New Poll ... ";
     }
     tView.text = [@" " stringByAppendingString:tView.text];
     return tView;
@@ -357,33 +302,13 @@
 #pragma mark - UIPickerView Delegate Methods
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    switch (thePickerView.tag) {
-        case PollPicker:
-        {
-            if (row > 0) {
-                _item.pollID = ((PollRecord*)[activePolls objectAtIndex:row - 1]).pollID;
-                newPoll = NO;
-                self.pickPollTitleTextField.hidden = YES;
-                self.DescriptionLabel.hidden = YES;
-                self.chooseCategoryLabel.hidden = YES;
-                self.categoryPickerParentView.hidden = YES;
-            }else{
-                _item.pollID = nil;
-                newPoll = YES;
-                self.pickPollTitleTextField.hidden = NO;
-                self.DescriptionLabel.hidden = NO;
-                self.chooseCategoryLabel.hidden = NO;
-                self.categoryPickerParentView.hidden = NO;
-                
-            }
-            break;
-        }
-        case CategoryPicker:
-        {
-            break;
-        }
+    if (row > 0) {
+        _item.pollID = ((PollRecord*)[activePolls objectAtIndex:row - 1]).pollID;
+        newPoll = NO;
+    }else{
+        _item.pollID = nil;
+        newPoll = YES;
     }
-
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
@@ -391,15 +316,15 @@
     return 30;
 }
 
-#pragma mark - TextFieldDelegate Methods
+#pragma mark - NewPollViewController Delegate Method
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+-(void)newPollViewController:(id)sender didCreateANewPoll:(NSNumber *)pollID
 {
-    [textField resignFirstResponder];
-    return YES;
+    _item.pollID = pollID;
+    [[RKObjectManager sharedManager] postObject:_item delegate:self];
 }
 
--(void)keyboardWillShow {
+/*-(void)keyboardWillShow {
     // Animate the current view out of the way
     if (self.view.frame.origin.y >= 0)
     {
@@ -437,5 +362,5 @@
     self.view.frame = rect;
     
     [UIView commitAnimations];
-}
+}*/
 @end

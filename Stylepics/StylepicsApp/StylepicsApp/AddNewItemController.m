@@ -30,7 +30,9 @@
     //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    
+    self.priceTextField.hidden = YES;
+    self.brandTextField.hidden = YES;
+    textboxOn = NO;
 
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -54,11 +56,9 @@
     
     self.title = @"Add New Item";
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-    self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
+    //self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     
-    self.priceTextField.hidden = YES;
-    self.brandTextField.hidden = YES;
-    textboxOn = NO;
+
 	// Do any additional setup after loading the view.
 }
 

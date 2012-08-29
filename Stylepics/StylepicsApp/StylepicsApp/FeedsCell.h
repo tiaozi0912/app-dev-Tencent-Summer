@@ -12,7 +12,7 @@
 @interface FeedsCell : UITableViewCell
 @property (nonatomic, weak) IBOutlet HJManagedImageV *userImage;
 @property (nonatomic, weak) IBOutlet UILabel *eventDescriptionLabel;
-
+@property (nonatomic, weak) IBOutlet UILabel *totalVotes;
 @property (nonatomic, weak) IBOutlet SmallFormattedLabel *timeStampLabel;
 @property (nonatomic, weak) IBOutlet HJManagedImageV
 *categoryIcon;
@@ -26,5 +26,6 @@
 @property (nonatomic, weak) IBOutlet HJManagedImageV *thumbnail4;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *picContainerImageView;
+
 //@property (weak, nonatomic) IBOutlet UIImageView *picFrameImageView;
 @end

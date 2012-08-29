@@ -19,15 +19,22 @@
 #define EndPollAlertView 2
 #define DeletePollAlertView 3
 
+
+#define NewItemActionSheet 0
+#define PollOperationActionSheet 1
+#define DeleteItemConfirmation 2
+
 @interface PollTableViewController (){
     NSUInteger audienceIndex;
     BOOL isOwnerView, needsBack;
     PollRecord *pollRecord;
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
+    UIImage* capturedImage;
     NSNumber *isLoadedBefore;
     HintView *emptyPollHint, *emptyPollHintInAudienceView;// *addItemHint;
-    UIActionSheet *popupQuery;
+    UIActionSheet *popupQuery, *newItemOptions, *confirmation;
+    id senderButton;
 }
 @end
 
@@ -38,10 +45,10 @@
 @synthesize totalVotesCount = _totalVotesCount;
 @synthesize pollDescription = _pollDescription;
 @synthesize categoryLabel = _categoryLabel;
-@synthesize userPhoto = _userPhoto;
+//@synthesize userPhoto = _userPhoto;
 @synthesize categoryIconView = _categoryIconView;
-@synthesize username = _username;
-@synthesize stateIndicationLabel = _stateIndicationLabel;
+//@synthesize username = _username;
+//@synthesize stateIndicationLabel = _stateIndicationLabel;
 
 - (void)viewDidLoad
 {
@@ -60,7 +67,7 @@
     //[self.navigationItem.rightBarButtonItem  setBackgroundImage:actionButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     
     
-    self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
+    //self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
     CGRect frameOfEmptyPollHint = CGRectMake(20, 230, 280, 60);
 
     //CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
@@ -104,10 +111,10 @@
     [self setTotalVotesCount:nil];
     [self setPollDescription:nil];
     [self setCategoryLabel:nil];
-    [self setUserPhoto:nil];
+    //[self setUserPhoto:nil];
     [self setCategoryIconView:nil];
-    [self setUsername:nil];
-    [self setStateIndicationLabel:nil];
+    //[self setUsername:nil];
+    //[self setStateIndicationLabel:nil];
     [super viewDidUnload];
     self.poll = nil;
     pollRecord = nil;
@@ -175,23 +182,26 @@
         //}
         popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [popupQuery showInView:self.view];
+        popupQuery.tag = PollOperationActionSheet;
         popupQuery = nil;
 }
 
 
-- (IBAction)addNewItem:(id)sender {
-    singleItemViewOption = SingleItemViewOptionNew;
-    [self performSegueWithIdentifier:@"show single item view" sender:self];
+- (IBAction)deleteButtonPressed:(UIButton *)sender {
+    senderButton = sender;
+    confirmation = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+    confirmation.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [confirmation showInView:self.view];
+    confirmation.tag = DeleteItemConfirmation;
+    confirmation = nil;
 }
 
-- (IBAction)deleteItem:(UIButton *)sender
+- (void)deleteItem:(UIButton *)sender
 {
-    if([self.poll.state intValue] == EDITING &&[[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID]){
-        PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        Item *item = [self.poll.items objectAtIndex:indexPath.row];
-        [[RKObjectManager sharedManager] deleteObject:item delegate:self];
-    }
+    PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Item *item = [self.poll.items objectAtIndex:indexPath.row - 1];
+    [[RKObjectManager sharedManager] deleteObject:item delegate:self];
 }
 
 - (IBAction)vote:(UIButton *)sender
@@ -239,24 +249,52 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:OPEN_POLL_BUTTON_TITLE]){
-        if (self.poll.items.count < 2) {
-            [Utility showAlert:@"Please add more items." message:@"You can't open the poll until you have 2 items in the poll."];
-        }else{
-            [self confirmToOpenPoll];
+    if (actionSheet.tag == PollOperationActionSheet){
+        if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:OPEN_POLL_BUTTON_TITLE]){
+            if (self.poll.items.count < 2) {
+                [Utility showAlert:@"Please add more items." message:@"You can't open the poll until you have 2 items in the poll."];
+            }else{
+                [self confirmToOpenPoll];
+            }
+        }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:FOLLOW_POLL_BUTTON_TITLE]){
+            [self followPoll];
+        }/*else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:UNFOLLOW_POLL_BUTTON_TITLE]){
+          [self unfollowPoll];
+          }*/else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:SHOW_POLL_RESULT_BUTTON_TITLE]){
+              [self performSegueWithIdentifier:@"show poll result" sender:self];
+          }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:DELETE_POLL_BUTTON_TITLE]){
+              [self confirmToDeletePoll];
+          }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]){
+              [actionSheet resignFirstResponder];
+          }
+    }else if (actionSheet.tag == NewItemActionSheet){
+        switch (buttonIndex) {
+            case 0:
+#if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
+                [self useCamera];
+#elif ENVIRONMENT == ENVIRONMENT_STAGING
+                [self useCamera];
+#elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
+                [self useCamera];
+#endif
+                break;
+            case 1:[self useCameraRoll];
+                break;
+            case 2:[actionSheet resignFirstResponder];
+                break;
+            default:
+                break;
         }
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:FOLLOW_POLL_BUTTON_TITLE]){
-        [self followPoll];
-    }/*else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:UNFOLLOW_POLL_BUTTON_TITLE]){
-        [self unfollowPoll];
-    }*/else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:SHOW_POLL_RESULT_BUTTON_TITLE]){
-        [self performSegueWithIdentifier:@"show poll result" sender:self];
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:DELETE_POLL_BUTTON_TITLE]){
-        [self confirmToDeletePoll];
-    }else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]){
-        [actionSheet resignFirstResponder];
+    }else if (actionSheet.tag == DeleteItemConfirmation){
+        switch (buttonIndex) {
+            case 0:
+                [self deleteItem:senderButton];
+            case 1:[actionSheet resignFirstResponder];
+                break;
+            default:
+                break;
+        }
     }
-
 }
 
 -(void)confirmToOpenPoll
@@ -366,26 +404,26 @@
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
         NSLog(@"item_count: %d", self.poll.items.count);
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
-        self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
+        //self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
         self.navigationItem.titleView = [Utility formatTitleWithString:self.poll.user.username];
-        NSString* stateIndication;
+        //NSString* stateIndication;
         switch ([self.poll.state intValue]) {
             case EDITING:
             {
-                stateIndication = isOwnerView?@"You are editing this poll.": @"is editing this poll.";
+                //stateIndication = isOwnerView?@"You are editing this poll.": @"is editing this poll.";
                 self.timeStampLabel.text = [Utility formatTimeWithDate:self.poll.startTime];
                 break;
             }
             case VOTING:
             {
-                stateIndication = isOwnerView?@"You have opened this poll.": @"has opened this poll.";
+                //stateIndication = isOwnerView?@"You have opened this poll.": @"has opened this poll.";
                 self.timeStampLabel.text = [Utility formatTimeWithDate:self.poll.openTime];
                 break;
             }
             default:
                 break;
         }
-        self.stateIndicationLabel.text = stateIndication;
+        //self.stateIndicationLabel.text = stateIndication;
         
         self.pollDescription.text = self.poll.title;
         
@@ -570,15 +608,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!(isOwnerView && self.poll.state.intValue == EDITING && indexPath.row == 0)){
-        itemToBeShown = [self.poll.items objectAtIndex:indexPath.row];
-        if ((isOwnerView)&&([self.poll.state intValue] == EDITING)){
-            singleItemViewOption = SingleItemViewOptionEdit;
+    if (isOwnerView && self.poll.state.intValue == EDITING){
+        if (indexPath.row == 0){
+            return;
         }else{
-            singleItemViewOption = SingleItemViewOptionView;
+            itemToBeShown = [self.poll.items objectAtIndex:indexPath.row - 1];
         }
-        [self performSegueWithIdentifier:@"show single item view" sender:self];
+    }else {
+        itemToBeShown = [self.poll.items objectAtIndex:indexPath.row];
     }
+    
+    if ((isOwnerView)&&([self.poll.state intValue] == EDITING)){
+        singleItemViewOption = SingleItemViewOptionEdit;
+    }else{
+        singleItemViewOption = SingleItemViewOptionView;
+    }
+    [self performSegueWithIdentifier:@"show single item view" sender:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -588,6 +633,8 @@
         nextViewController.singleItemViewOption = singleItemViewOption;
         if (!singleItemViewOption == SingleItemViewOptionNew){
             nextViewController.item = itemToBeShown;
+        }else{
+            nextViewController.capturedImage = capturedImage;
         }
     }
 }
@@ -605,4 +652,92 @@
 {
     [self.pollDescription resignFirstResponder];
 }
+
+#pragma New Item
+-(IBAction) newItemButtonPressed:(id)sender {
+	newItemOptions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
+	newItemOptions.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[newItemOptions showInView:self.view];
+    newItemOptions.tag = NewItemActionSheet;
+	newItemOptions = nil;
+}
+
+- (void) TestOnSimulator
+{
+    capturedImage = [UIImage imageNamed:@"user3.png"];
+}//when testing on devices, reconnect useCamera method below
+
+- (void)useCamera
+{
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeCamera])
+    {
+        UIImagePickerController *imagePicker =
+        [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType =
+        UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  nil];
+        imagePicker.allowsEditing = YES;
+        [self presentModalViewController:imagePicker
+                                animated:YES];
+        //newMedia = YES;
+    }
+}
+
+- (void)useCameraRoll
+{
+    if ([UIImagePickerController isSourceTypeAvailable:
+         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        UIImagePickerController *imagePicker =
+        [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType =
+        UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = [NSArray arrayWithObjects:
+                                  (NSString *) kUTTypeImage,
+                                  nil];
+        imagePicker.allowsEditing = YES;
+        [self presentModalViewController:imagePicker animated:YES];
+        //newMedia = NO;
+    }
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *mediaType = [info
+                           objectForKey:UIImagePickerControllerMediaType];
+    [self dismissModalViewControllerAnimated:NO];
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = [info
+                          objectForKey:UIImagePickerControllerEditedImage];
+        capturedImage = image;
+        singleItemViewOption = SingleItemViewOptionNew;
+        [self performSegueWithIdentifier:@"show single item view" sender:self];
+    }
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
+    {
+		// Code here to support video if enabled
+	}
+}
+
+/*-(void)image:(UIImage *)image
+ finishedSavingWithError:(NSError *)error
+ contextInfo:(void *)contextInfo
+ {
+ if (error) {
+ [Utility showAlert:@"Save failed" message:@"Failed to save image"];
+ }
+ }*/
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 @end

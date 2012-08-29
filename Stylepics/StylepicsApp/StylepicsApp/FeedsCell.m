@@ -15,6 +15,8 @@
 @synthesize thumbnail0, thumbnail1, thumbnail2, thumbnail3, thumbnail4;
 @synthesize timeStampLabel = _timeStampLabel, categoryIcon = _categoryIcon;
 @synthesize usernameAndActionLabel;
+@synthesize totalVotes;
+@synthesize picContainerImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

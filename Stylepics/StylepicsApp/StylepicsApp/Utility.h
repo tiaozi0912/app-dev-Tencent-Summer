@@ -37,4 +37,7 @@
                                          action:(SEL) a;
 +(NSString*)stringFromPollState:(int) state;
 +(NSString*)formatURLFromDateString:(NSString*) string;
++(void)renderView:(UIView*)view
+ withCornerRadius:(CGFloat)r
+   andBorderWidth:(CGFloat)w;
 @end

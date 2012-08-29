@@ -49,6 +49,8 @@
     self.navigationItem.leftBarButtonItem = backButton; 
     
     _username.delegate = self;
+    
+    [Utility renderView:self.profilePhoto withCornerRadius:MEDIUM_CORNER_RADIUS andBorderWidth:MEDIUM_BORDER_WIDTH];
     self.profilePhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
     
     currentUser = [User new];

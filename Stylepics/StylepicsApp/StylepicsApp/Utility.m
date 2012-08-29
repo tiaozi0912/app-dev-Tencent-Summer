@@ -89,10 +89,10 @@ double secondsInAYear = 3600*24*365;
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectZero];
     title.backgroundColor = [UIColor clearColor];
     title.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:22];
-    /*title.shadowColor = [Utility colorFromKuler:KULER_YELLOW alpha:1];
-    title.shadowOffset = CGSizeMake(3, 3);*/
+    /*title.shadowColor = [Utility colorFromKuler:KULER_YELLOW alpha:0.5];
+    title.shadowOffset = CGSizeMake(1, 1);*/
     title.textAlignment = UITextAlignmentCenter;
-    title.textColor = [UIColor blackColor]; // change this color
+    title.textColor = [Utility colorFromKuler:KULER_BLACK alpha:1]; // change this color
     title.text = titleText;
     [title sizeToFit];
     return title;
@@ -252,11 +252,11 @@ double secondsInAYear = 3600*24*365;
                     alpha:(CGFloat)a
 {
     switch (kulerColor) {
-        case KULER_YELLOW:return [UIColor colorWithRed:246 green:247 blue:146 alpha:a];
-        case KULER_BLACK:return [UIColor colorWithRed:51  green:55 blue:69 alpha:a];
-        case KULER_CYAN:return [UIColor colorWithRed:119 green:196 blue:211 alpha:a];
-        case KULER_WHITE:return [UIColor colorWithRed:218 green:237 blue:226 alpha:a];
-        case KULER_RED:return [UIColor colorWithRed:234 green:46 blue:73 alpha:a];
+        case KULER_YELLOW:return [UIColor colorWithRed:246/255.0 green:247/255.0 blue:146/255.0 alpha:a];
+        case KULER_BLACK:return [UIColor colorWithRed:51/255.0  green:55/255.0 blue:69/255.0 alpha:a];
+        case KULER_CYAN:return [UIColor colorWithRed:119/255.0 green:196/255.0 blue:211/255.0 alpha:a];
+        case KULER_WHITE:return [UIColor colorWithRed:218/255.0 green:237/255.0 blue:226/255.0 alpha:a];
+        case KULER_RED:return [UIColor colorWithRed:234/255.0 green:46/255.0 blue:73/255.0 alpha:a];
         default:return [UIColor clearColor];
     }
 }
@@ -279,9 +279,9 @@ double secondsInAYear = 3600*24*365;
 {
     switch (state) {
         case EDITING:
-            return @"EDITING";
+            return @"DRAFT";
         case VOTING:
-            return @"VOTING";
+            return @"ACTIVE";
         default:
             return @"UNKNOWN";
     }
@@ -294,5 +294,18 @@ double secondsInAYear = 3600*24*365;
     [result replaceOccurrencesOfString:@"," withString:@"%2C" options:NSCaseInsensitiveSearch range:NSMakeRange(0, result.length)];
     [result replaceOccurrencesOfString:@":" withString:@"%3A" options:NSCaseInsensitiveSearch range:NSMakeRange(0, result.length)];
     return result;
+}
+
++(void)renderView:(UIView*)view
+ withCornerRadius:(CGFloat)r
+   andBorderWidth:(CGFloat)w
+{
+    // border
+    view.layer.borderColor = [[Utility colorFromKuler:KULER_BLACK alpha:1] CGColor];
+    view.layer.borderWidth = w;
+    
+    // corner
+    view.layer.cornerRadius = r;
+    view.layer.masksToBounds = YES;
 }
 @end

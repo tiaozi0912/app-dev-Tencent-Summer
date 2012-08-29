@@ -11,9 +11,8 @@
 
 @interface SingleItemViewController ()
 {
-    BOOL itemAdded;
+    BOOL textboxOn;
     NSURL *photoURL;
-    UIImage* itemImage;
     UIActivityIndicatorView *spinner;
 }
  
@@ -21,28 +20,12 @@
 
 @implementation SingleItemViewController
 @synthesize brandTextField = _brandTextField;
-@synthesize cameraButton = _cameraButton;
+@synthesize itemImageView = _itemImageView;
+//@synthesize cameraButton = _cameraButton;
 @synthesize singleItemViewOption, item = _item;
-@synthesize descriptionTextField=_descriptionTextField, priceTextField=_priceTextField;
+//@synthesize descriptionTextField=_descriptionTextField;
+@synthesize priceTextField=_priceTextField;
 
--(void) setDescriptionTextField:(UITextField *)descriptionTextField{
-    _descriptionTextField = descriptionTextField;
-    self.descriptionTextField.delegate= self;
-}
-
--(void) setPriceTextField:(UITextField *)priceTextField{
-    _priceTextField = priceTextField;
-    self.priceTextField.delegate= self;
-}
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -69,36 +52,45 @@
     
     NSArray *titles = [[NSArray alloc] initWithObjects:@"Add New Item", @"Edit Item", @"View Item",nil];
     self.title = [titles objectAtIndex:singleItemViewOption];
-    if (singleItemViewOption == SingleItemViewOptionNew){
-        [self.cameraButton setImage:[UIImage imageNamed:ADD_ITEM_HINT] forState:UIControlStateNormal];
-    }
+
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    itemAdded = NO;
+    
+    //self.descriptionTextField.delegate= self;
+    self.priceTextField.delegate= self;
+    self.brandTextField.delegate = self;
+    //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    self.priceTextField.hidden = YES;
+    self.brandTextField.hidden = YES;
+    textboxOn = NO;
+    
+    
     if (!singleItemViewOption == SingleItemViewOptionNew){
-        self.descriptionTextField.text = self.item.description;
+        //self.descriptionTextField.text = self.item.description;
         self.priceTextField.text = [Utility formatCurrencyWithNumber:self.item.price];
         self.brandTextField.text = self.item.brand;
-        itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.item.photoURL]]];
-        [self.cameraButton setImage:itemImage forState:UIControlStateNormal];
-        self.cameraButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        self.cameraButton.enabled = NO;
+        self.itemImageView.url = [NSURL URLWithString:self.item.photoURL];
+        [HJObjectManager manage:self.itemImageView];
+    }else{
+        self.itemImageView.image = self.capturedImage;
     }
     if (singleItemViewOption == SingleItemViewOptionView)
     {
-        self.descriptionTextField.enabled = NO;
+        //self.descriptionTextField.enabled = NO;
         self.priceTextField.enabled = NO;
         self.brandTextField.enabled = NO;
-        self.descriptionTextField.borderStyle = UITextBorderStyleNone;
+        //self.descriptionTextField.borderStyle = UITextBorderStyleNone;
         self.priceTextField.borderStyle = UITextBorderStyleNone;
         self.brandTextField.borderStyle = UITextBorderStyleNone;
     }else{
-        self.descriptionTextField.enabled = YES;
+        //self.descriptionTextField.enabled = YES;
         self.priceTextField.enabled = YES;
         self.brandTextField.enabled = YES;
-        self.descriptionTextField.borderStyle = UITextBorderStyleRoundedRect;
+        //self.descriptionTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.priceTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.brandTextField.borderStyle = UITextBorderStyleRoundedRect;
-        self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+        //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
         self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
         self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     }
@@ -114,14 +106,15 @@
 
 - (void)viewDidUnload
 {
-    [self setCameraButton:nil];
     [self setBrandTextField:nil];
+    [self setItemImageView:nil];
     [super viewDidUnload];
-    self.descriptionTextField = nil;
+    //self.descriptionTextField = nil;
     self.priceTextField = nil;
     photoURL = nil;
     self.item = nil;
     spinner = nil;
+    self.capturedImage = nil;
     [AmazonClientManager clearCredentials];
     // Release any retained subviews of the main view.
 }
@@ -147,23 +140,22 @@
 
 -(IBAction)done
 {
-    [self backgroundTouched:nil];
+    //[self.descriptionTextField resignFirstResponder];
+    [self.priceTextField resignFirstResponder];
+    [self.brandTextField resignFirstResponder];
     switch (self.singleItemViewOption) {
         case SingleItemViewOptionView:
             [self backWithFlipAnimation];
             break;
         case SingleItemViewOptionEdit:
         {
-            self.item.description = self.descriptionTextField.text;
+            //self.item.description = self.descriptionTextField.text;
             self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
             [[RKObjectManager sharedManager] putObject:self.item delegate:self];
             break;
         }
         case SingleItemViewOptionNew:
         {
-            if (itemAdded) {
-                [self.descriptionTextField resignFirstResponder];
-                [self.priceTextField resignFirstResponder];
                 spinner =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
                 [spinner startAnimating];
                 self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
@@ -171,9 +163,6 @@
                 self.item = [Item new];
                 self.item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
                 [[RKObjectManager sharedManager] postObject:self.item delegate:self];
-            }else{
-                [Utility showAlert:@"Sorry!" message:@"You have to add one item before clicking on me."];
-            }
             break;
         }
         default:
@@ -188,94 +177,17 @@
 
 -(IBAction)backgroundTouched:(id)sender
 {
-    [self.descriptionTextField resignFirstResponder];
-    [self.priceTextField resignFirstResponder];
-}
+    if (textboxOn) {
+        self.brandTextField.hidden = YES;
+        self.priceTextField.hidden = YES;
 
--(IBAction)showActionSheet:(id)sender {
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
-	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[popupQuery showInView:self.view];
-	popupQuery = nil;
-}
-- (void) TestOnSimulator
-{
-    itemImage = [UIImage imageNamed:@"user3.png"];
-    [self.cameraButton setBackgroundImage:itemImage forState:UIControlStateNormal];
-    itemAdded = YES;
-}//when testing on devices, reconnect useCamera method below
-
-- (void)useCamera
-{
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = 
-        UIImagePickerControllerSourceTypeCamera;
-        imagePicker.mediaTypes = [NSArray arrayWithObjects:
-                                  (NSString *) kUTTypeImage,
-                                  nil];
-        imagePicker.allowsEditing = YES;
-        [self presentModalViewController:imagePicker 
-                                animated:YES];
-        //newMedia = YES;
+        [self.priceTextField resignFirstResponder];
+        [self.brandTextField resignFirstResponder];
+    }else {
+        self.brandTextField.hidden = NO;
+        self.priceTextField.hidden = NO;
     }
-}
-
-- (void)useCameraRoll
-{
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = 
-        UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = [NSArray arrayWithObjects:
-                                  (NSString *) kUTTypeImage,
-                                  nil];
-        imagePicker.allowsEditing = YES;
-        [self presentModalViewController:imagePicker animated:YES];
-        //newMedia = NO;
-    } 
-}
-
-
--(void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    NSString *mediaType = [info
-                           objectForKey:UIImagePickerControllerMediaType];
-    [self dismissModalViewControllerAnimated:YES];
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = [info 
-                          objectForKey:UIImagePickerControllerEditedImage];
-        itemImage = image;
-        [self.cameraButton setImage:image forState:UIControlStateNormal];
-        itemAdded = YES;
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-		// Code here to support video if enabled
-	}
-}
-
-/*-(void)image:(UIImage *)image
-finishedSavingWithError:(NSError *)error 
- contextInfo:(void *)contextInfo
-{
-    if (error) {
-        [Utility showAlert:@"Save failed" message:@"Failed to save image"];
-    }
-}*/
-
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissModalViewControllerAnimated:YES];
+    textboxOn = !textboxOn;
 }
 
 #pragma RKObjectLoaderDelegate Methods
@@ -292,7 +204,7 @@ finishedSavingWithError:(NSError *)error
     if ([objectLoader wasSentToResourcePath:@"/items" method:RKRequestMethodPOST] ){
         @try {
             NSString *imageName = [NSString stringWithFormat:@"Item_%@_%@.jpeg", self.item.itemID, [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterShortStyle]];
-            NSData *imageData = UIImageJPEGRepresentation(itemImage, 0.8f);
+            NSData *imageData = UIImageJPEGRepresentation(self.capturedImage, 0.8f);
             @try {
                 S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:imageName inBucket:ITEM_PHOTOS_BUCKET_NAME];
                 por.contentType = @"image/jpeg";
@@ -305,7 +217,7 @@ finishedSavingWithError:(NSError *)error
                 NSLog(@"Failed to Create Object [%@]", exception);
             }            
             self.item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, [Utility formatURLFromDateString:imageName]];
-            self.item.description = self.descriptionTextField.text;
+            //self.item.description = self.descriptionTextField.text;
             self.item.numberOfVotes = [NSNumber numberWithInt:0];
             self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
             self.item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
@@ -375,26 +287,5 @@ finishedSavingWithError:(NSError *)error
     }
 }*/
 
-#pragma mark - UIActionSheetDelegate Methods
 
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-     switch (buttonIndex) {
-         case 0:
-#if ENVIRONMENT == ENVIRONMENT_DEVELOPMENT
-             [self useCamera];
-#elif ENVIRONMENT == ENVIRONMENT_STAGING
-             [self useCamera];
-#elif ENVIRONMENT == ENVIRONMENT_PRODUCTION
-             [self useCamera];
-#endif
-     break;
-         case 1:[self useCameraRoll];
-     break;
-         case 2:[actionSheet resignFirstResponder];
-     break;
-     default:
-     break;
-     }
-}
 @end

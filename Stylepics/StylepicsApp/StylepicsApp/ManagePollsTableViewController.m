@@ -38,6 +38,7 @@
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.userPhoto.backgroundColor =[UIColor colorWithWhite:1 alpha:0];
     self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
+    [Utility renderView:self.userPhoto withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH];
     if (_user.userID == nil)
     {
         _user = [User new];

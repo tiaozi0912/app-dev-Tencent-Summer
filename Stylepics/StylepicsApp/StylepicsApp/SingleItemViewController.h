@@ -12,16 +12,18 @@
 #import "Item.h"
 #import "Utility.h"
 
-@interface SingleItemViewController : UIViewController<UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate,UIActionSheetDelegate>
+@interface SingleItemViewController : UIViewController<UITextFieldDelegate,RKObjectLoaderDelegate,AmazonServiceRequestDelegate,UIActionSheetDelegate>
 {
     BOOL newMedia; 
 }
-@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UITextField *brandTextField;
-@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+@property (weak, nonatomic) IBOutlet HJManagedImageV *itemImageView;
+
 
 @property (nonatomic) SingleItemViewOption singleItemViewOption;
 @property (strong, nonatomic) Item *item;
+@property (strong, nonatomic) UIImage* capturedImage;
 
 @end
