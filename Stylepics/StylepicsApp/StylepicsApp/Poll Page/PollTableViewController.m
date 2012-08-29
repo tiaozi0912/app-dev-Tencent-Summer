@@ -39,6 +39,7 @@
 @end
 
 @implementation PollTableViewController
+@synthesize openPollHint = _openPollHint;
 @synthesize poll=_poll;
 @synthesize loadingWheel = _loadingWheel;
 @synthesize timeStampLabel = _timeStampLabel;
@@ -76,24 +77,9 @@
     
     emptyPollHint = [[UIImageView alloc] initWithImage:[UIImage imageNamed:EMPTY_POLL_HINT]];
     emptyPollHint.frame = frameOfEmptyPollHint;
-    /*emptyPollHint = [HintView new];
-    emptyPollHint = [emptyPollHint initWithFrame:frameOfEmptyPollHint];
-    emptyPollHint.label.text = @"What are you waiting for? Add more items";
-    emptyPollHint.label.numberOfLines = 2;
     emptyPollHint.hidden = YES;
-   
-    /*addItemHint = [HintView new];
-    addItemHint = [addItemHint initWithFrame:frameOfAddItemHint];
-    addItemHint.label.text = @"Add items from this plus button";
-    addItemHint.label.numberOfLines = 1;
-    addItemHint.hidden = YES;*/
-    
-    /*emptyPollHintInAudienceView = [HintView new];
-    emptyPollHintInAudienceView = [emptyPollHintInAudienceView initWithFrame:frameOfEmptyPollHintInAudienceView];
-    emptyPollHintInAudienceView.label.numberOfLines = 2;
-    emptyPollHintInAudienceView.hidden = YES;*/
-
     [self.view addSubview:emptyPollHint];
+    
     //[self.view addSubview:addItemHint];
    // [self.view addSubview:emptyPollHintInAudienceView];
     self.clearsSelectionOnViewWillAppear = NO;
@@ -103,6 +89,7 @@
     self.pollDescription.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Done" target:self action:@selector(doneTyping)];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.openPollHint.hidden = YES;
 }
 
 - (void)viewDidUnload
@@ -116,6 +103,7 @@
     [self setCategoryIconView:nil];
     //[self setUsername:nil];
     //[self setStateIndicationLabel:nil];
+    [self setOpenPollHint:nil];
     [super viewDidUnload];
     self.poll = nil;
     pollRecord = nil;
@@ -163,22 +151,26 @@
 {
         NSString *pollOperation;
         NSString *deleteButton;
+        NSString *showPollResultButton;
         if (isOwnerView)
         {
             deleteButton = DELETE_POLL_BUTTON_TITLE;
             if ([self.poll.state intValue] == EDITING){
                 pollOperation = OPEN_POLL_BUTTON_TITLE;
+                showPollResultButton = nil;
             } else {
                 pollOperation = nil;
+                showPollResultButton = SHOW_POLL_RESULT_BUTTON_TITLE;
             }
         }else{
             deleteButton = nil;
             pollOperation = nil;
+            showPollResultButton = SHOW_POLL_RESULT_BUTTON_TITLE;
         }
         if (pollOperation){
-            popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: pollOperation,SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
+            popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles: pollOperation,showPollResultButton,  nil];
         }else{
-            popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:SHOW_POLL_RESULT_BUTTON_TITLE,  nil];
+            popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:deleteButton otherButtonTitles:showPollResultButton,  nil];
         }
         //}
         popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
@@ -203,6 +195,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Item *item = [self.poll.items objectAtIndex:indexPath.row - 1];
     [[RKObjectManager sharedManager] deleteObject:item delegate:self];
+    [Utility showAlert:@"Item deleted!" message:@""];
 }
 
 - (IBAction)vote:(UIButton *)sender
@@ -242,6 +235,7 @@
         votingEvent.pollID = self.poll.pollID;
         votingEvent.itemID = item.itemID;
         [[RKObjectManager sharedManager] postObject:votingEvent delegate:self];*/
+        [Utility showAlert:@"Voted!" message:@"You can click the checked box to undo your vote."];
     }
 }
 
@@ -253,7 +247,7 @@
     if (actionSheet.tag == PollOperationActionSheet){
         if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:OPEN_POLL_BUTTON_TITLE]){
             if (self.poll.items.count < 2) {
-                [Utility showAlert:@"Please add more items." message:@"You can't open the poll until you have 2 items in the poll."];
+                [Utility showAlert:@"Please add more items." message:@"You can't open the poll until you have 2 or more items in the poll."];
             }else{
                 [self confirmToOpenPoll];
             }
@@ -405,6 +399,11 @@
     if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
         NSLog(@"item_count: %d", self.poll.items.count);
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
+        
+        if (isOwnerView && self.poll.state == EDITING)
+        {
+            self.openPollHint.hidden = NO;
+        }
         //self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
         self.navigationItem.titleView = [Utility formatTitleWithString:self.poll.user.username];
         //NSString* stateIndication;
@@ -438,15 +437,8 @@
 
         
         //
-        if (self.poll.items.count == 0){
-            if (isOwnerView) {
-                emptyPollHint.hidden = NO;
-            }else {
-                emptyPollHintInAudienceView.hidden = NO;
-            }
-        }else {
-            emptyPollHint.hidden = YES;
-            emptyPollHintInAudienceView.hidden = YES;
+        if (self.poll.items.count == 0 && isOwnerView){
+            emptyPollHint.hidden = NO;
         }
         
         /*NSString* hintMessage;
@@ -579,7 +571,7 @@
     [HJObjectManager manage:cell.itemImage];
     
     cell.descriptionOfItemLabel.text = item.description;
-    cell.priceLabel.text = [Utility formatCurrencyWithNumber:item.price];
+    cell.priceLabel.text = (item.price.intValue == 0 )?@"":[Utility formatCurrencyWithNumber:item.price];
     cell.voteCountLabel.text = [NSString stringWithFormat:@"%d%%",item.numberOfVotes.intValue*100/self.poll.totalVotes.intValue];
     
     cell.timeStampLabel.text = [Utility formatTimeWithDate:item.addedTime];

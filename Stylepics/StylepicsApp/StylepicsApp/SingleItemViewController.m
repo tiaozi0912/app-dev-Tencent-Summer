@@ -26,6 +26,7 @@
 //@synthesize descriptionTextField=_descriptionTextField;
 @synthesize priceTextField=_priceTextField;
 @synthesize capturedImage = _capturedImage;
+@synthesize tapHintImageView = _tapHintImageView;
 
 
 - (void)viewDidLoad
@@ -85,6 +86,7 @@
         //self.descriptionTextField.borderStyle = UITextBorderStyleNone;
         self.priceTextField.borderStyle = UITextBorderStyleNone;
         self.brandTextField.borderStyle = UITextBorderStyleNone;
+        self.tapHintImageView.image = [UIImage imageNamed:TAP_FOR_MORE_INFO];
     }else{
         //self.descriptionTextField.enabled = YES;
         self.priceTextField.enabled = YES;
@@ -95,6 +97,7 @@
         //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
         self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
         self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+        self.tapHintImageView.image = [UIImage imageNamed:TAP_TO_ADD_INFO];
     }
     [UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -110,6 +113,7 @@
 {
     [self setBrandTextField:nil];
     [self setItemImageView:nil];
+    [self setTapHintImageView:nil];
     [super viewDidUnload];
     //self.descriptionTextField = nil;
     self.priceTextField = nil;

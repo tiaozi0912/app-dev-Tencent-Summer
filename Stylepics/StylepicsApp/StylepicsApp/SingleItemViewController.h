@@ -25,5 +25,6 @@
 @property (nonatomic) SingleItemViewOption singleItemViewOption;
 @property (strong, nonatomic) Item *item;
 @property (strong, nonatomic) UIImage* capturedImage;
+@property (weak, nonatomic) IBOutlet UIImageView *tapHintImageView;
 
 @end

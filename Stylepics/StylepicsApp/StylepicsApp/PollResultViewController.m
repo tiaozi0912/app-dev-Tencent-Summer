@@ -118,8 +118,12 @@
     [Utility renderView:cell.itemImage withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH];
     cell.itemImage.url= [NSURL URLWithString:item.photoURL];
     [HJObjectManager manage:cell.itemImage];
-    cell.priceLabel.text = [Utility formatCurrencyWithNumber:item.price];
-    cell.brandLabel.text = item.brand;
+    cell.priceLabel.text = (item.price.intValue == 0 )?@"":[Utility formatCurrencyWithNumber:item.price];
+    cell.brandPreLabel.hidden = YES;
+    if (item.brand.length > 0) {
+        cell.brandLabel.text = item.brand;
+        cell.brandPreLabel.hidden = NO;
+    }
     cell.numberOfVotesIndicator.progress = item.numberOfVotes.floatValue/self.poll.totalVotes.floatValue;
     cell.numberOfVotesLabel.text = [NSString stringWithFormat:@"%d%%",item.numberOfVotes.intValue*100/self.poll.totalVotes.intValue];
     [cell.priceLabel sizeToFit];

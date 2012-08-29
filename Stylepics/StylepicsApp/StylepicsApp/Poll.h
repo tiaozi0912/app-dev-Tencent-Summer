@@ -21,7 +21,7 @@ typedef enum{
     Food = 2,
     Electronics = 3,
     Automotive = 4,
-    Others = 5
+    Other = 5
 }PollCategory;
 
 @interface Poll : NSObject

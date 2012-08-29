@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *categoryIconView;
 //@property (weak, nonatomic) IBOutlet UILabel *username;
 //@property (weak, nonatomic) IBOutlet UILabel *stateIndicationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *openPollHint;
 
 
 

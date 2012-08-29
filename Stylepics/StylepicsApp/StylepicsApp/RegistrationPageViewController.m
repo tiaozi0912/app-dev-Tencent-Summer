@@ -11,11 +11,15 @@
 #define EmailField 0
 #define PasswordField 1
 #define PasswordConfirmationField 2
+static NSUInteger kNumberOfPages = 5;
+
 @interface RegistrationPageViewController (){
     User* user;
     BOOL choiceMade;
     BOOL loginMode;
 }
+- (void)loadScrollViewWithPage:(int)page;
+- (void)scrollViewDidScroll:(UIScrollView *)sender;
 @end
 
 @implementation RegistrationPageViewController
@@ -27,6 +31,8 @@
 @synthesize spinner = _spinner;
 @synthesize loginButton = _loginButton;
 @synthesize background = _background;
+@synthesize scrollView = _scrollView;
+@synthesize pageControl = _pageControl;
 
 - (void)viewDidLoad
 {
@@ -61,12 +67,28 @@
     self.loginButton.alpha = 0;
     self.signupButton.alpha = 0;
     [self.spinner startAnimating];
+    
+    _scrollView.pagingEnabled = YES;
+    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * kNumberOfPages, _scrollView.frame.size.height);
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.scrollsToTop = NO;
+    _scrollView.delegate = self;
+    _scrollView.alpha = 0;
+    _pageControl.numberOfPages = kNumberOfPages;
+    _pageControl.currentPage = 0;
+    [self loadScrollViewWithPage:0];
+    [self loadScrollViewWithPage:1];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([Utility getObjectForKey:CURRENTUSERID]){
+    //[Utility setObject:[NSNumber numberWithBool:YES] forKey:NEWUSER];//For testing purpose
+    if ([[Utility getObjectForKey:NEWUSER] boolValue]){
+        [self showTutorial];
+        [Utility setObject:[NSNumber numberWithBool:NO] forKey:NEWUSER];
+    }else if ([Utility getObjectForKey:CURRENTUSERID]){
      [self performSegueWithIdentifier:@"show home" sender:self];
      }
     [self.spinner stopAnimating];
@@ -85,6 +107,8 @@
     [self setSpinner:nil];
     [self setLoginButton:nil];
     [self setBackground:nil];
+    [self setScrollView:nil];
+    [self setPageControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -305,5 +329,97 @@
 }
 
 
+-(void)showTutorial
+{
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+        _scrollView.alpha = 1;
+    } completion:nil];
+    //[self performSegueWithIdentifier:@"show tutorial" sender:self];
+}
+
+-(void)endTutorial
+{
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+        _scrollView.alpha = 0;
+    } completion:^(BOOL success){if (success){[_scrollView removeFromSuperview];}}];
+    
+}
+- (void)loadScrollViewWithPage:(int)page
+{
+    if (page < 0)
+        return;
+    if (page >= kNumberOfPages)
+        return;
+    
+    UIImageView* tutorialPage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"instruction-page-%d", page]]];
+    NSLog(@"tutorial loaded");
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    tutorialPage.frame = frame;
+        
+    [self.scrollView addSubview:tutorialPage];
+    if (page == 4){
+        UIButton* endTutorialButton= [UIButton buttonWithType:UIButtonTypeCustom];
+        endTutorialButton.frame = CGRectMake(frame.origin.x + 69, frame.origin.y + 120, 248, 37);
+        [endTutorialButton addTarget:self action:@selector(endTutorial) forControlEvents:UIControlEventTouchDown];
+        [self.scrollView addSubview:endTutorialButton];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender
+{
+    // We don't want a "feedback loop" between the UIPageControl and the scroll delegate in
+    // which a scroll event generated from the user hitting the page control triggers updates from
+    // the delegate method. We use a boolean to disable the delegate logic when the page control is used.
+    if (pageControlUsed)
+    {
+        // do nothing - the scroll was initiated from the page control, not the user dragging
+        return;
+    }
+	
+    // Switch the indicator when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = _scrollView.frame.size.width;
+    int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    _pageControl.currentPage = page;
+    
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+    [self loadScrollViewWithPage:page - 1];
+    [self loadScrollViewWithPage:page];
+    [self loadScrollViewWithPage:page + 1];
+    
+    // A possible optimization would be to unload the views+controllers which are no longer visible
+}
+
+// At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    pageControlUsed = NO;
+}
+
+// At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    pageControlUsed = NO;
+}
+
+- (IBAction)changePage:(id)sender
+{
+    int page = _pageControl.currentPage;
+	
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+    [self loadScrollViewWithPage:page - 1];
+    [self loadScrollViewWithPage:page];
+    [self loadScrollViewWithPage:page + 1];
+    
+	// update the scroll view to the appropriate page
+    CGRect frame = _scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    [_scrollView scrollRectToVisible:frame animated:YES];
+    
+	// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
+    pageControlUsed = YES;
+}
 
 @end

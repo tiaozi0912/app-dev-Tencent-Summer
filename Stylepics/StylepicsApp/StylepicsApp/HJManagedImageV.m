@@ -152,7 +152,7 @@
 	[loadingWheel removeFromSuperview];
 	self.loadingWheel = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] autorelease];
     //loadingWheel.color = [UIColor ]
-	CGPoint point =  CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+	CGPoint point =  CGPointMake(self.bounds.origin.x + self.bounds.size.width/2, self.bounds.origin.y +self.bounds.size.height/2);
     loadingWheel.center = point;
 	loadingWheel.hidesWhenStopped=YES;
 	[self addSubview:loadingWheel];

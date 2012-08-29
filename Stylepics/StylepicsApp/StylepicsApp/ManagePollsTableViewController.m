@@ -14,6 +14,7 @@
 
 @interface ManagePollsTableViewController (){
     int ContentType;
+    BOOL isOwnProfile;
 }
 
 @property (nonatomic, strong) NSMutableArray *editingPolls, *openedPolls, *votedPolls;
@@ -41,6 +42,7 @@
     [Utility renderView:self.userPhoto withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH];
     if (_user.userID == nil)
     {
+        isOwnProfile = YES;
         _user = [User new];
         _user.userID = [Utility getObjectForKey: CURRENTUSERID];
         
@@ -56,6 +58,7 @@
        
         
     }else{
+        isOwnProfile = NO;
         self.navigationItem.title = @"Profile";
     
         //set UIBarButtonItem background image
@@ -255,6 +258,11 @@
                 [cell.pollDescriptionLabel setNeedsLayout];
                 [cell.startTimeLabel setNeedsLayout];
             }
+            if (isOwnProfile) {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }else{
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             return cell;
         } 
         case ContentTypeOpenedPoll:{
@@ -332,8 +340,9 @@
         default:
             break;
     }
-
+    if (!(ContentType == ContentTypeEditingPoll && !isOwnProfile)){
     [self performSegueWithIdentifier:@"show poll" sender:self];
+    }
 
 }
 

@@ -156,7 +156,7 @@ double secondsInAYear = 3600*24*365;
             break;
         case Electronics:
             break;
-        case Others:
+        case Other:
             break;
         default:
             break;
@@ -178,7 +178,7 @@ double secondsInAYear = 3600*24*365;
             break;
         case Electronics: imageName = @"Electronics.png";
             break;
-        case Others: imageName = @"Others.png";
+        case Other: imageName = @"Others.png";
             break;
         default:
             break;
@@ -194,7 +194,7 @@ double secondsInAYear = 3600*24*365;
         case Automotive:return @"Automotive";
         case Food:return @"Food";
         case Electronics:return @"Electronics";
-        default:return @"Others";
+        default:return @"Other";
     }
 }
 
@@ -211,7 +211,7 @@ double secondsInAYear = 3600*24*365;
     }else if ([string isEqualToString:@"Electronics"]){
         return Electronics;
     }else {
-        return Others;
+        return Other;
     }
 }
 

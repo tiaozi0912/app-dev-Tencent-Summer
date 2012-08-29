@@ -76,6 +76,9 @@
 #define PROFILE_TAB_CONTROL_BUTTON @"tab"
 #define PROFILE_TAB_CONTROL_BUTTON_HL @"tab-hl"
 #define EMPTY_POLL_HINT @"add-new-items"
+#define TAP_TO_ADD_INFO @"tap-to-add"
+#define TAP_FOR_MORE_INFO @"tap-for-more-info"
+
 #define SMALL_CORNER_RADIUS 2
 #define SMALL_BORDER_WIDTH 2
 
