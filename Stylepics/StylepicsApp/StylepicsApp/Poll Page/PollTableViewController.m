@@ -32,7 +32,7 @@
     Item *itemToBeShown;
     UIImage* capturedImage;
     NSNumber *isLoadedBefore;
-    HintView *emptyPollHint, *emptyPollHintInAudienceView;// *addItemHint;
+    UIImageView *emptyPollHint, *emptyPollHintInAudienceView;// *addItemHint;
     UIActionSheet *popupQuery, *newItemOptions, *confirmation;
     id senderButton;
 }
@@ -68,14 +68,15 @@
     
     
     //self.userPhoto.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_LARGE];
-    CGRect frameOfEmptyPollHint = CGRectMake(20, 230, 280, 60);
+    CGRect frameOfEmptyPollHint = CGRectMake(0, 150, 320, 160);
 
     //CGRect frameOfAddItemHint = CGRectMake(115 , 335, 200, 30);
     
-    CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 320, 280, 60);
+    //CGRect frameOfEmptyPollHintInAudienceView = CGRectMake(20, 320, 280, 60);
     
-    
-    emptyPollHint = [HintView new];
+    emptyPollHint = [[UIImageView alloc] initWithImage:[UIImage imageNamed:EMPTY_POLL_HINT]];
+    emptyPollHint.frame = frameOfEmptyPollHint;
+    /*emptyPollHint = [HintView new];
     emptyPollHint = [emptyPollHint initWithFrame:frameOfEmptyPollHint];
     emptyPollHint.label.text = @"What are you waiting for? Add more items";
     emptyPollHint.label.numberOfLines = 2;
@@ -87,14 +88,14 @@
     addItemHint.label.numberOfLines = 1;
     addItemHint.hidden = YES;*/
     
-    emptyPollHintInAudienceView = [HintView new];
+    /*emptyPollHintInAudienceView = [HintView new];
     emptyPollHintInAudienceView = [emptyPollHintInAudienceView initWithFrame:frameOfEmptyPollHintInAudienceView];
     emptyPollHintInAudienceView.label.numberOfLines = 2;
-    emptyPollHintInAudienceView.hidden = YES;
+    emptyPollHintInAudienceView.hidden = YES;*/
 
     [self.view addSubview:emptyPollHint];
     //[self.view addSubview:addItemHint];
-    [self.view addSubview:emptyPollHintInAudienceView];
+   // [self.view addSubview:emptyPollHintInAudienceView];
     self.clearsSelectionOnViewWillAppear = NO;
     
     needsBack = NO;
@@ -343,7 +344,7 @@
     event.userID = [Utility getObjectForKey:CURRENTUSERID];
     [[RKObjectManager sharedManager] postObject:event delegate:self];
     [self.tableView reloadData];
-
+    [Utility showAlert:@"Your poll is opened now." message:@""];
 }
 
 - (void)deletePoll
