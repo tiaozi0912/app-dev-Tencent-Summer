@@ -9,11 +9,11 @@
 #import "PollTableViewController.h"
 #define  POLLITEMCELLHEIGHT 330
 #define  ADD_ITEM_BUTTON_CELL_HEIGHT 58
-#define  OPEN_POLL_BUTTON_TITLE @"Open poll"
+#define  OPEN_POLL_BUTTON_TITLE @"Publish poll"
 #define  FOLLOW_POLL_BUTTON_TITLE @"Follow poll"
 #define  UNFOLLOW_POLL_BUTTON_TITLE @"Unfollow poll"
 #define  DELETE_POLL_BUTTON_TITLE   @"Delete poll"
-#define  SHOW_POLL_RESULT_BUTTON_TITLE @"Show poll result"
+#define  SHOW_POLL_RESULT_BUTTON_TITLE @"Show poll results"
 #define  OPEN_POLL_HINT_STAY_DURATION 3
 
 #define OpenPollAlertView 1
@@ -297,7 +297,7 @@
 
 -(void)confirmToOpenPoll
 {
-    UIAlertView *openPollAlertView = [[UIAlertView alloc] initWithTitle:@"Are you sure to open this poll now?" message:@"Note: Once you open this poll, your friends can vote in your poll. But you can not edit your poll any more." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+    UIAlertView *openPollAlertView = [[UIAlertView alloc] initWithTitle:@"Are you sure ?" message:@"Publishing allows your friends to vote. You can't edit a published poll." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
     openPollAlertView.tag = OpenPollAlertView;
     [openPollAlertView show];
     openPollAlertView = nil;
@@ -341,7 +341,7 @@
     event.userID = [Utility getObjectForKey:CURRENTUSERID];
     [[RKObjectManager sharedManager] postObject:event delegate:self];
     [self.tableView reloadData];
-    [Utility showAlert:@"Your poll is opened now." message:@""];
+    [Utility showAlert:@"Your poll is published." message:@""];
 }
 
 - (void)deletePoll
@@ -614,7 +614,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (singleItemViewOption == SingleItemViewOptionView) return;
+    if (singleItemViewOption != SingleItemViewOptionNew && singleItemViewOption != SingleItemViewOptionEdit) return;
     if (isOwnerView && self.poll.state.intValue == EDITING){
         if (indexPath.row == 0){
             return;

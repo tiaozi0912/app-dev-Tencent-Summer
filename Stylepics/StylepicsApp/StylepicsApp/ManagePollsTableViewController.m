@@ -7,8 +7,8 @@
 //
 
 #import "ManagePollsTableViewController.h"
-#define EDITING_POLL_CELL_HEIGHT 46
-#define OPENED_POLL_CELL_HEIGHT 46
+#define EDITING_POLL_CELL_HEIGHT 65
+#define OPENED_POLL_CELL_HEIGHT 65
 #define VOTED_POLL_CELL_HEIGHT 65
 #define ContentTypeEditingPoll 0
 #define ContentTypeOpenedPoll 1

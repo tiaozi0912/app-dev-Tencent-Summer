@@ -49,7 +49,7 @@
 
     UIImage *addToPollButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
     //UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
-    UIBarButtonItem *addToPollButton = [[UIBarButtonItem alloc] initWithTitle:@"done" style:UIBarButtonItemStyleBordered target:self action:@selector(addToPoll)];
+    UIBarButtonItem *addToPollButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(addToPoll)];
     [addToPollButton  setBackgroundImage:addToPollButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     self.navigationItem.rightBarButtonItem = addToPollButton;
 
@@ -241,6 +241,7 @@
         [[RKObjectManager sharedManager] postObject:_item delegate:self];
     }else if (objectLoader.method == RKRequestMethodPUT){
         NSLog(@"The new item has been added!");
+        [Utility showAlert:@"Item added!" message:@""];
         //post a new item event
         /*Event *newItemEvent = [Event new];
          newItemEvent.eventType = NEWITEMEVENT;
