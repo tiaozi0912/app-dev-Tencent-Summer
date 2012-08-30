@@ -131,15 +131,15 @@ double secondsInAYear = 3600*24*365;
         return @"1 day ago";
     }else if (hours > 1)
     {
-        return [NSString stringWithFormat:@"%u hours ago", hours];
+        return [NSString stringWithFormat:@"%u hrs ago", hours];
     }else if (hours == 1){
-        return @"1 hour ago";
+        return @"1 hr ago";
     }else if (minutes > 1)
     {
-        return [NSString stringWithFormat:@"%u minutes ago", minutes];
+        return [NSString stringWithFormat:@"%u mins ago", minutes];
     }else if (minutes == 1){
-        return @"1 minute ago";
-    }else return @"0 minute ago";
+        return @"1 min ago";
+    }else return @"0 min ago";
 }
 
 +(NSURL*)URLForCategory:(PollCategory) category;

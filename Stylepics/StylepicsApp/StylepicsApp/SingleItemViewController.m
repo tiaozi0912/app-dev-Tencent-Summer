@@ -64,8 +64,8 @@
     //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    self.priceTextField.hidden = YES;
-    self.brandTextField.hidden = YES;
+    self.brandTextField.alpha = 0;
+    self.priceTextField.alpha = 0;
     textboxOn = NO;
     
     
@@ -184,14 +184,21 @@
 -(IBAction)backgroundTouched:(id)sender
 {
     if (textboxOn) {
-        self.brandTextField.hidden = YES;
-        self.priceTextField.hidden = YES;
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.brandTextField.alpha = 0;
+            self.priceTextField.alpha = 0;
+            self.tapHintImageView.alpha = 1;
 
+        } completion:nil];
         [self.priceTextField resignFirstResponder];
         [self.brandTextField resignFirstResponder];
     }else {
-        self.brandTextField.hidden = NO;
-        self.priceTextField.hidden = NO;
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.brandTextField.alpha = 1;
+            self.priceTextField.alpha = 1;
+            self.tapHintImageView.alpha = 0;
+            
+        } completion:nil];
     }
     textboxOn = !textboxOn;
 }

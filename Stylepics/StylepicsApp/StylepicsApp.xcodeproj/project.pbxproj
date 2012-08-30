@@ -53,6 +53,14 @@
 		0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19615AF7606003011A0 /* PollItemCell.m */; };
 		0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FA19815AF7606003011A0 /* PollTableViewController.m */; };
 		0D91EE5B15AD4BD300D1015D /* RegistrationPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */; };
+		0D92826B15EEE795004AF806 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA3999F15EB4178002A4D58 /* CheckBox.png */; };
+		0D92826C15EEE795004AF806 /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A015EB4178002A4D58 /* CheckBox@2x.png */; };
+		0D92826D15EEE795004AF806 /* CheckBox-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A315EB41C1002A4D58 /* CheckBox-hl.png */; };
+		0D92826E15EEE795004AF806 /* CheckBox-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A415EB41C1002A4D58 /* CheckBox-hl@2x.png */; };
+		0D92826F15EEE795004AF806 /* CheckInBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A715EB41F5002A4D58 /* CheckInBox.png */; };
+		0D92827015EEE795004AF806 /* CheckInBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399A815EB41F5002A4D58 /* CheckInBox@2x.png */; };
+		0D92827115EEE795004AF806 /* CheckInBox-hl.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399AB15EB420F002A4D58 /* CheckInBox-hl.png */; };
+		0D92827215EEE795004AF806 /* CheckInBox-hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA399AC15EB420F002A4D58 /* CheckInBox-hl@2x.png */; };
 		0D94F4E915A7D09700903F0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F4E815A7D09700903F0B /* UIKit.framework */; };
 		0D94F4EB15A7D09700903F0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F4EA15A7D09700903F0B /* Foundation.framework */; };
 		0D94F4ED15A7D09700903F0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F4EC15A7D09700903F0B /* CoreGraphics.framework */; };
@@ -1082,6 +1090,14 @@
 				0D9B7DAB15EEB92F006D7B7A /* Delete-hl@2x.png in Resources */,
 				0D9B7DAC15EEB92F006D7B7A /* Delete.png in Resources */,
 				0D9B7DAD15EEB92F006D7B7A /* Delete@2x.png in Resources */,
+				0D92826B15EEE795004AF806 /* CheckBox.png in Resources */,
+				0D92826C15EEE795004AF806 /* CheckBox@2x.png in Resources */,
+				0D92826D15EEE795004AF806 /* CheckBox-hl.png in Resources */,
+				0D92826E15EEE795004AF806 /* CheckBox-hl@2x.png in Resources */,
+				0D92826F15EEE795004AF806 /* CheckInBox.png in Resources */,
+				0D92827015EEE795004AF806 /* CheckInBox@2x.png in Resources */,
+				0D92827115EEE795004AF806 /* CheckInBox-hl.png in Resources */,
+				0D92827215EEE795004AF806 /* CheckInBox-hl@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

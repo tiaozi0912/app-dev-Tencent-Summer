@@ -174,7 +174,7 @@
         }
         //}
         popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [popupQuery showInView:self.view];
+        [popupQuery showFromToolbar:self.navigationController.toolbar];
         popupQuery.tag = PollOperationActionSheet;
         popupQuery = nil;
 }
@@ -184,7 +184,7 @@
     senderButton = sender;
     confirmation = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
     confirmation.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [confirmation showInView:self.view];
+    [confirmation showFromToolbar:self.navigationController.toolbar];
     confirmation.tag = DeleteItemConfirmation;
     confirmation = nil;
 }
@@ -195,7 +195,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Item *item = [self.poll.items objectAtIndex:indexPath.row - 1];
     [[RKObjectManager sharedManager] deleteObject:item delegate:self];
-    [Utility showAlert:@"Item deleted!" message:@""];
+    [Utility showAlert:@"Deleted!" message:@""];
 }
 
 - (IBAction)vote:(UIButton *)sender
@@ -339,6 +339,15 @@
     [[RKObjectManager sharedManager] postObject:event delegate:self];
     [self.tableView reloadData];
     [Utility showAlert:@"Your poll is opened now." message:@""];
+    self.openPollHint.hidden = YES;
+ 
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.2];
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -21);
+    CGRect frame = self.view.frame;
+    self.view.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+21);
+    self.view.transform = transform;
+    [UIView commitAnimations];
 }
 
 - (void)deletePoll
@@ -403,6 +412,14 @@
         if (isOwnerView && self.poll.state == EDITING)
         {
             self.openPollHint.hidden = NO;
+        }else{
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.2];
+            CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -21);
+            CGRect frame = self.view.frame;
+            self.view.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+21);
+            self.view.transform = transform;
+            [UIView commitAnimations];
         }
         //self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
         self.navigationItem.titleView = [Utility formatTitleWithString:self.poll.user.username];
@@ -439,6 +456,8 @@
         //
         if (self.poll.items.count == 0 && isOwnerView){
             emptyPollHint.hidden = NO;
+        }else{
+            emptyPollHint.hidden = YES;
         }
         
         /*NSString* hintMessage;
@@ -487,7 +506,9 @@
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
     }else if (objectLoader.method == RKRequestMethodDELETE){
         NSLog(@"Deleted successfully!");
+        if (![objectLoader.resourcePath hasPrefix:@"/polls"]){
         [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
+        }
     }
     if (needsBack) [self backButtonPressed:nil];
     [self.tableView reloadData];
@@ -603,6 +624,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (!isOwnerView) return;
     if (isOwnerView && self.poll.state.intValue == EDITING){
         if (indexPath.row == 0){
             return;
@@ -652,7 +674,7 @@
 -(IBAction) newItemButtonPressed:(id)sender {
 	newItemOptions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
 	newItemOptions.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[newItemOptions showInView:self.view];
+    [newItemOptions showFromToolbar:self.navigationController.toolbar];
     newItemOptions.tag = NewItemActionSheet;
 	newItemOptions = nil;
 }

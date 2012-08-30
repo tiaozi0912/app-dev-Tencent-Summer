@@ -74,11 +74,12 @@ static NSUInteger kNumberOfPages = 5;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.scrollsToTop = NO;
     _scrollView.delegate = self;
-    _scrollView.alpha = 0;
+
     _pageControl.numberOfPages = kNumberOfPages;
     _pageControl.currentPage = 0;
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
+    _scrollView.alpha = 0;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -90,12 +91,13 @@ static NSUInteger kNumberOfPages = 5;
         [Utility setObject:[NSNumber numberWithBool:NO] forKey:NEWUSER];
     }else if ([Utility getObjectForKey:CURRENTUSERID]){
      [self performSegueWithIdentifier:@"show home" sender:self];
-     }
-    [self.spinner stopAnimating];
+    }
+    
     [UIView animateWithDuration:0.5 delay:0.2 options:UIViewAnimationCurveEaseInOut animations:^{
         self.loginButton.alpha = 1;
         self.signupButton.alpha = 1;
     } completion:nil];
+    [self.spinner stopAnimating];
 }
 
 - (void)viewDidUnload
@@ -339,9 +341,10 @@ static NSUInteger kNumberOfPages = 5;
 
 -(void)endTutorial
 {
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
         _scrollView.alpha = 0;
     } completion:^(BOOL success){if (success){[_scrollView removeFromSuperview];}}];
+    NSLog(@"tutorial ended");
     
 }
 - (void)loadScrollViewWithPage:(int)page
@@ -352,7 +355,6 @@ static NSUInteger kNumberOfPages = 5;
         return;
     
     UIImageView* tutorialPage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"instruction-page-%d", page]]];
-    NSLog(@"tutorial loaded");
     CGRect frame = self.scrollView.frame;
     frame.origin.x = frame.size.width * page;
     frame.origin.y = 0;
