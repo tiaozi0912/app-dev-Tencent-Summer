@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UITextField *brandTextField;
 @property (nonatomic, strong) UIImage *capturedItemImage;
+@property (weak, nonatomic) IBOutlet UIImageView *tapHintView;
 @end

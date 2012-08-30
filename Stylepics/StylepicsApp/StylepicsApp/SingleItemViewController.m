@@ -156,7 +156,13 @@
         case SingleItemViewOptionEdit:
         {
             //self.item.description = self.descriptionTextField.text;
-            self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+            NSString* priceValueString;
+            if ([self.priceTextField.text hasPrefix:@"$"]){
+                priceValueString = [self.priceTextField.text substringFromIndex:1];
+            }else{
+                priceValueString = self.priceTextField.text;
+            }
+            self.item.price = [NSNumber numberWithDouble:[priceValueString doubleValue]];
             [[RKObjectManager sharedManager] putObject:self.item delegate:self];
             break;
         }

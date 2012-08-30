@@ -7,7 +7,9 @@
 //
 
 #import "ManagePollsTableViewController.h"
-#define POLLCELLHEIGHT 46
+#define EDITING_POLL_CELL_HEIGHT 46
+#define OPENED_POLL_CELL_HEIGHT 46
+#define VOTED_POLL_CELL_HEIGHT 65
 #define ContentTypeEditingPoll 0
 #define ContentTypeOpenedPoll 1
 #define ContentTypeVotedPoll 2
@@ -118,6 +120,9 @@
 }
 
 #pragma User Actions
+- (IBAction)changeProfile:(id)sender {
+    [self showSettings];
+}
 
 -(void)showSettings
 {
@@ -308,7 +313,18 @@
 //Set up cell height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return POLLCELLHEIGHT;
+    switch (ContentType) {
+        case ContentTypeEditingPoll: {
+            return EDITING_POLL_CELL_HEIGHT;
+        }
+        case ContentTypeOpenedPoll: {
+            return OPENED_POLL_CELL_HEIGHT;
+        }
+        case ContentTypeVotedPoll:{
+            return VOTED_POLL_CELL_HEIGHT;
+        }
+        default:return 0;
+    }
 }
 
 #pragma mark - Table view delegate

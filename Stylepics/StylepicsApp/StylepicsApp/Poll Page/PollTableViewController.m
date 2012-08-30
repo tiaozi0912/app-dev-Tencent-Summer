@@ -14,6 +14,7 @@
 #define  UNFOLLOW_POLL_BUTTON_TITLE @"Unfollow poll"
 #define  DELETE_POLL_BUTTON_TITLE   @"Delete poll"
 #define  SHOW_POLL_RESULT_BUTTON_TITLE @"Show poll result"
+#define  OPEN_POLL_HINT_STAY_DURATION 3
 
 #define OpenPollAlertView 1
 #define EndPollAlertView 2
@@ -26,13 +27,12 @@
 
 @interface PollTableViewController (){
     NSUInteger audienceIndex;
-    BOOL isOwnerView, needsBack;
+    BOOL isOwnerView, needsBack, openPollHintHasShown, newMedia;
     PollRecord *pollRecord;
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
     UIImage* capturedImage;
-    NSNumber *isLoadedBefore;
-    UIImageView *emptyPollHint, *emptyPollHintInAudienceView;// *addItemHint;
+    UIImageView *emptyPollHint;//, *emptyPollHintInAudienceView;// *addItemHint;
     UIActionSheet *popupQuery, *newItemOptions, *confirmation;
     id senderButton;
 }
@@ -89,7 +89,7 @@
     self.pollDescription.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Done" target:self action:@selector(doneTyping)];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.openPollHint.hidden = YES;
+    self.openPollHint.alpha = 0;
 }
 
 - (void)viewDidUnload
@@ -108,8 +108,9 @@
     self.poll = nil;
     pollRecord = nil;
     itemToBeShown = nil;
-    isLoadedBefore = nil;
     emptyPollHint = nil;
+    capturedImage = nil;
+    senderButton = nil;
     //addItemHint = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -123,15 +124,17 @@
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     self.poll = [Poll new];
     self.poll.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
-    dispatch_queue_t loadingQueue = dispatch_queue_create("loading queue", NULL);
-    dispatch_async(loadingQueue, ^{
-        [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
-    });
-    dispatch_release(loadingQueue);
-
+    openPollHintHasShown = NO;
+    [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
+    
    // [[RKObjectManager sharedManager] getObject:self.poll delegate:self];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    openPollHintHasShown = NO;
+}
 - (void) dealloc
 {
     [[RKClient sharedClient].requestQueue cancelRequestsWithDelegate:self];
@@ -174,7 +177,7 @@
         }
         //}
         popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [popupQuery showFromToolbar:self.navigationController.toolbar];
+        [popupQuery showFromTabBar:self.tabBarController.tabBar];
         popupQuery.tag = PollOperationActionSheet;
         popupQuery = nil;
 }
@@ -184,7 +187,7 @@
     senderButton = sender;
     confirmation = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
     confirmation.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [confirmation showFromToolbar:self.navigationController.toolbar];
+    [confirmation showFromTabBar:self.tabBarController.tabBar];
     confirmation.tag = DeleteItemConfirmation;
     confirmation = nil;
 }
@@ -339,27 +342,12 @@
     [[RKObjectManager sharedManager] postObject:event delegate:self];
     [self.tableView reloadData];
     [Utility showAlert:@"Your poll is opened now." message:@""];
-    self.openPollHint.hidden = YES;
- 
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.2];
-    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -21);
-    CGRect frame = self.view.frame;
-    self.view.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+21);
-    self.view.transform = transform;
-    [UIView commitAnimations];
 }
 
 - (void)deletePoll
 {
     NSLog(@"delete request sent");
     [[RKObjectManager sharedManager] deleteObject:self.poll delegate:self];
-    
-    pollRecord = [PollRecord new];
-    pollRecord.pollID = self.poll.pollID;
-    needsBack = YES;
-    [[RKObjectManager sharedManager] deleteObject:pollRecord delegate:self];
-    pollRecord = nil;
 }
 
 -(void)followPoll
@@ -402,24 +390,26 @@
 
 -(void)objectLoader:(RKObjectLoader *)objectLoader didLoadObject:(id)object
 {
-    NSString *getPollPath = [NSString stringWithFormat:@"/polls/%@", self.poll.pollID];
-    //NSString *audiencePath = [NSString stringWithFormat:@"/audiences/", self.poll.pollID];
+    //NSString *getPollPath = [NSString stringWithFormat:@"/polls/%@", self.poll.pollID];
+
     //Successfully loaded a poll
-    if ([objectLoader wasSentToResourcePath:getPollPath method:RKRequestMethodGET]){
+    if (objectLoader.method == RKRequestMethodGET && [objectLoader.resourcePath hasPrefix:@"/polls"]){
         NSLog(@"item_count: %d", self.poll.items.count);
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         
-        if (isOwnerView && self.poll.state == EDITING)
+        if (isOwnerView && self.poll.state == EDITING && !openPollHintHasShown)
         {
-            self.openPollHint.hidden = NO;
-        }else{
-            [UIView beginAnimations:nil context:nil];
-            [UIView setAnimationDuration:0.2];
-            CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -21);
-            CGRect frame = self.view.frame;
-            self.view.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height+21);
-            self.view.transform = transform;
-            [UIView commitAnimations];
+            openPollHintHasShown = YES;
+            [UIView animateWithDuration:1
+                                  delay:0
+                                options:UIViewAnimationCurveLinear
+                             animations:^{self.openPollHint.alpha = 1;}
+                             completion:^(BOOL finished) {
+                if (finished){
+                [UIView animateWithDuration:1 delay:OPEN_POLL_HINT_STAY_DURATION options:UIViewAnimationCurveLinear animations:^{self.openPollHint.alpha = 0;} completion:nil];
+                }
+            }];
+            openPollHintHasShown = YES;
         }
         //self.userPhoto.url = [NSURL URLWithString:self.poll.user.profilePhotoURL];
         self.navigationItem.titleView = [Utility formatTitleWithString:self.poll.user.username];
@@ -624,7 +614,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!isOwnerView) return;
+    if (singleItemViewOption == SingleItemViewOptionView) return;
     if (isOwnerView && self.poll.state.intValue == EDITING){
         if (indexPath.row == 0){
             return;
@@ -674,7 +664,7 @@
 -(IBAction) newItemButtonPressed:(id)sender {
 	newItemOptions = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
 	newItemOptions.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [newItemOptions showFromToolbar:self.navigationController.toolbar];
+    [newItemOptions showFromTabBar:self.tabBarController.tabBar];
     newItemOptions.tag = NewItemActionSheet;
 	newItemOptions = nil;
 }
@@ -700,7 +690,7 @@
         imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker
                                 animated:YES];
-        //newMedia = YES;
+        newMedia = YES;
     }
 }
 
@@ -719,7 +709,7 @@
                                   nil];
         imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker animated:YES];
-        //newMedia = NO;
+        newMedia = NO;
     }
 }
 
@@ -735,6 +725,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                           objectForKey:UIImagePickerControllerEditedImage];
         capturedImage = image;
         singleItemViewOption = SingleItemViewOptionNew;
+        if (newMedia){
+            UIImageWriteToSavedPhotosAlbum(image,
+                                           self,
+                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           nil);
+         }
         [self performSegueWithIdentifier:@"show single item view" sender:self];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
@@ -743,14 +739,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	}
 }
 
-/*-(void)image:(UIImage *)image
+-(void)image:(UIImage *)image
  finishedSavingWithError:(NSError *)error
  contextInfo:(void *)contextInfo
  {
  if (error) {
  [Utility showAlert:@"Save failed" message:@"Failed to save image"];
  }
- }*/
+}
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {

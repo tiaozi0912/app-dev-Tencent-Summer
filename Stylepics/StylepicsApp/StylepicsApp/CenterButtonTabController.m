@@ -10,6 +10,9 @@
 #import "AddNewItemController.h"
 
 @interface CenterButtonTabController ()
+{
+    BOOL newMedia;
+}
 @end
 
 @implementation CenterButtonTabController
@@ -96,7 +99,7 @@
         imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker
                                 animated:YES];
-        //newMedia = YES;
+        newMedia = YES;
     }
 }
 
@@ -115,7 +118,7 @@
                                   nil];
         imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker animated:YES];
-        //newMedia = NO;
+        newMedia = NO;
     }
 }
 
@@ -129,6 +132,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *itemImage = [info
                           objectForKey:UIImagePickerControllerEditedImage];
+        if (newMedia){
+            UIImageWriteToSavedPhotosAlbum(itemImage,
+                                           self,
+                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           nil);
+        }
         [self addNewItemViewWithPhoto:itemImage];
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
@@ -138,14 +147,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 }
 
-/*-(void)image:(UIImage *)image
+-(void)image:(UIImage *)image
  finishedSavingWithError:(NSError *)error
  contextInfo:(void *)contextInfo
  {
  if (error) {
  [Utility showAlert:@"Save failed" message:@"Failed to save image"];
  }
- }*/
+}
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {

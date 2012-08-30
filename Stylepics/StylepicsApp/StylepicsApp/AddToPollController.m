@@ -15,7 +15,7 @@
     BOOL newPoll, backMark;
     UIActivityIndicatorView *spinner;
     NSMutableArray *pickerDataArray;
-    NSMutableArray *activePolls;
+    NSArray *draftPolls;
     Poll *poll;
 }
 @end
@@ -54,7 +54,7 @@
     self.navigationItem.rightBarButtonItem = addToPollButton;
 
     pickerDataArray=[NSMutableArray new];
-    activePolls = [NSMutableArray new];
+    draftPolls = [NSMutableArray new];
     backMark = NO;
     newPoll = YES;
 
@@ -68,7 +68,7 @@
     UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/user_profile_poll_records/%@", [Utility getObjectForKey:CURRENTUSERID]] delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/draft_polls" delegate:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -139,7 +139,7 @@
             [spinner startAnimating];
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
             self.navigationItem.leftBarButtonItem.enabled = NO;
-            _item.pollID = ((PollRecord*)[activePolls objectAtIndex:[self.pickerView selectedRowInComponent:0]-1]).pollID;
+            _item.pollID = ((PollRecord*)[draftPolls objectAtIndex:[self.pickerView selectedRowInComponent:0]-1]).pollID;
             [[RKObjectManager sharedManager] postObject:_item delegate:self];
         }
 }
@@ -249,12 +249,13 @@
          newItemEvent.userID = [Utility getObjectForKey:CURRENTUSERID];
          [[RKObjectManager sharedManager] postObject:newItemEvent delegate:self];*/
         backMark = YES;
-    }else if ([objectLoader.resourcePath hasPrefix:@"/user_profile_poll_records"]){
+    }else if ([objectLoader.resourcePath hasPrefix:@"/draft_polls"]){
         // extract all the active polls in editing state of the current user
+        draftPolls = objects;
         for (id obj in objects){
             PollRecord *pollRecord = (PollRecord*) obj;
             if ([pollRecord.pollRecordType intValue] == EDITING_POLL){
-                [activePolls addObject:pollRecord];
+                //[draftPolls addObject:pollRecord];
                 [pickerDataArray addObject:pollRecord.title];
             }
         }
@@ -302,7 +303,7 @@
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (row > 0) {
-        _item.pollID = ((PollRecord*)[activePolls objectAtIndex:row - 1]).pollID;
+        _item.pollID = ((PollRecord*)[draftPolls objectAtIndex:row - 1]).pollID;
         [Utility setObject:_item.pollID forKey:IDOfPollToBeShown];
         newPoll = NO;
     }else{

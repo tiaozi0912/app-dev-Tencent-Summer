@@ -26,5 +26,5 @@ extern NSString* const BaseURL;
 
 // Use Production by default
 #ifndef ENVIRONMENT
-#define ENVIRONMENT ENVIRONMENT_DEVELOPMENT
+#define ENVIRONMENT ENVIRONMENT_STAGING
 #endif

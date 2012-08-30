@@ -17,6 +17,7 @@
 
 
 @implementation AddNewItemController
+@synthesize tapHintView = _tapHintView;
 
 @synthesize brandTextField = _brandTextField;
 @synthesize itemImage=_itemImage, priceTextField=_priceTextField, capturedItemImage=_capturedItemImage;
@@ -30,8 +31,8 @@
     //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    self.priceTextField.hidden = YES;
-    self.brandTextField.hidden = YES;
+    self.priceTextField.alpha = 0;
+    self.brandTextField.alpha = 0;
     textboxOn = NO;
 
     self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
@@ -69,6 +70,7 @@
     [self setBrandTextField:nil];
     //[self setCategoryButton:nil];
 
+    [self setTapHintView:nil];
     [super viewDidUnload];
    // self.descriptionTextField = nil;
     self.priceTextField = nil;
@@ -104,19 +106,34 @@
 
 -(IBAction)backgroundTouched:(id)sender
 {
-    //[self.descriptionTextField resignFirstResponder];
-    [self.priceTextField resignFirstResponder];
-    [self.brandTextField resignFirstResponder];
+    if (textboxOn) {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.brandTextField.alpha = 0;
+            self.priceTextField.alpha = 0;
+            self.tapHintView.alpha = 1;
+            
+        } completion:nil];
+        [self.priceTextField resignFirstResponder];
+        [self.brandTextField resignFirstResponder];
+    }else {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.brandTextField.alpha = 1;
+            self.priceTextField.alpha = 1;
+            self.tapHintView.alpha = 0;
+            
+        } completion:nil];
+    }
+    textboxOn = !textboxOn;
 }
 
 #pragma mark - Helper Methods
 
 -(void)backWithFlipAnimation{
-    [UIView beginAnimations:@"animation2" context:nil];
+    /*[UIView beginAnimations:@"animation2" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration: 0.7];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
-    [UIView commitAnimations];
+    [UIView commitAnimations];*/
     [[self.navigationController presentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
@@ -157,16 +174,24 @@
  }*/
 
 - (IBAction)tapPicture:(UIControl *)sender {
-    if (!textboxOn) {
-        self.brandTextField.hidden = NO;
-        self.priceTextField.hidden = NO;
-        textboxOn = YES;
-    }else{
+    if (textboxOn) {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.brandTextField.alpha = 0;
+            self.priceTextField.alpha = 0;
+            self.tapHintView.alpha = 1;
+            
+        } completion:nil];
         [self.priceTextField resignFirstResponder];
         [self.brandTextField resignFirstResponder];
-        textboxOn = NO;
+    }else {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.brandTextField.alpha = 1;
+            self.priceTextField.alpha = 1;
+            self.tapHintView.alpha = 0;
+            
+        } completion:nil];
     }
-    
+    textboxOn = !textboxOn;
 }
 
 - (IBAction)nextButtonPressed:(UIBarButtonItem *)sender {

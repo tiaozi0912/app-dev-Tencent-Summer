@@ -214,6 +214,13 @@
 }
 
 #pragma UITextField delegate methods
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (self.categoryPickerView.isOn){
+        self.categoryPickerView.isOn = NO;
+        [self.categoryPickerView dismissPickerView];
+    }
+}
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {

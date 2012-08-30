@@ -70,10 +70,10 @@
 
     
     //set UIBarButtonItem background image
-    UIImage *newPollButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
-    //UIImage *newPollButtonPressedImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG_HL] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
-    [self.navigationItem.rightBarButtonItem  setBackgroundImage:newPollButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    //[self.navigationItem.rightBarButtonItem  setBackgroundImage:newPollButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    UIImage *navButtonBGImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+ 
+    [self.navigationItem.rightBarButtonItem  setBackgroundImage:navButtonBGImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.navigationItem.leftBarButtonItem  setBackgroundImage:navButtonBGImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidUnload
@@ -115,6 +115,14 @@
 {
     [[RKClient sharedClient].requestQueue cancelRequestsWithDelegate:self];
 }
+#pragma mark - User Actions
+
+
+- (IBAction)refresh:(id)sender {
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/events" delegate:self]; 
+}
+
+#pragma mark - RKObjectLoader Delegate Methods
 
 - (void)request:(RKRequest*)request didLoadResponse:
 (RKResponse*)response {
@@ -216,6 +224,7 @@
     [cell.usernameAndActionLabel setText:event.user.username andFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0] andColor:[Utility colorFromKuler:KULER_BLACK alpha:1] forLabel:0];
     [cell.usernameAndActionLabel setText:@" would like your vote" andFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0] andColor:[Utility colorFromKuler:KULER_BLACK alpha:1] forLabel:1];
     
+    [Utility renderView:cell.categoryIcon withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH];
     cell.eventDescriptionLabel.text = event.poll.title;
     cell.eventDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
     cell.eventDescriptionLabel.textColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
