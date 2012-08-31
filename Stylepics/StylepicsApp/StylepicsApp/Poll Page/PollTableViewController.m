@@ -27,7 +27,7 @@
 
 @interface PollTableViewController (){
     NSUInteger audienceIndex;
-    BOOL isOwnerView, needsBack, openPollHintHasShown, newMedia, needsBackToFeeds;
+    BOOL isOwnerView, needsBack, openPollHintHasShown, newMedia, needsBackToFeeds, votingState;
     PollRecord *pollRecord;
     SingleItemViewOption singleItemViewOption;
     Item *itemToBeShown;
@@ -86,6 +86,7 @@
     
     needsBack = NO;
     needsBackToFeeds = NO;
+    votingState = NO;
     
     self.pollDescription.inputAccessoryView = [Utility keyboardAccessoryToolBarWithButton:@"Done" target:self action:@selector(doneTyping)];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -205,6 +206,11 @@
 
 - (IBAction)vote:(UIButton *)sender
 {
+    if (votingState) {
+        return;
+    }else{
+        votingState = YES;
+    }
     PollItemCell *cell = (PollItemCell*)[[sender superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Item *item = [self.poll.items objectAtIndex:indexPath.row];
@@ -212,22 +218,24 @@
     
     if ([[[self.poll.audiences objectAtIndex:audienceIndex] hasVoted] boolValue]){
         // if the current user has voted for an item in this poll, then undo the voting
+        audience.hasVoted= [NSNumber numberWithInt:0];
+        [[RKObjectManager sharedManager] putObject:audience delegate:self];
+        
         self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue] - 1];
         [[RKObjectManager sharedManager] putObject:self.poll delegate:self];
         
         item.numberOfVotes = [NSNumber numberWithInt:[item.numberOfVotes intValue] - 1];
         [[RKObjectManager sharedManager] putObject:item delegate:self];
         
-        audience.hasVoted= [NSNumber numberWithInt:0];
-        [[RKObjectManager sharedManager] putObject:audience delegate:self];
+       
         
     }else {
         //if the current user has not voted for an item in this poll, then vote for this item
-        item.numberOfVotes = [NSNumber numberWithInt:[item.numberOfVotes intValue]+ 1];
-        [[RKObjectManager sharedManager] putObject:item delegate:self];
-        
         audience.hasVoted=item.itemID;
         [[RKObjectManager sharedManager] putObject:audience delegate:self];
+        
+        item.numberOfVotes = [NSNumber numberWithInt:[item.numberOfVotes intValue]+ 1];
+        [[RKObjectManager sharedManager] putObject:item delegate:self];
         
         //[Utility showAlert:@"Thank you!" message:@"We appreciate your vote."];
         self.poll.totalVotes = [NSNumber numberWithInt:[self.poll.totalVotes intValue]+ 1];
@@ -396,6 +404,7 @@
     //Successfully loaded a poll
     if (objectLoader.method == RKRequestMethodGET){
         NSLog(@"item_count: %d", self.poll.items.count);
+        if (votingState) votingState = NO;
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         
         if (isOwnerView && self.poll.state == EDITING && !openPollHintHasShown)
@@ -477,6 +486,7 @@
         //find whether the current user is among the audience of the poll
         audienceIndex = [self.poll.audiences indexOfObjectPassingTest:^(Audience* audience, NSUInteger idx, BOOL *stop)
                          {
+                             NSLog(@"%@",audience.userID);
                              if ([audience.userID isEqualToNumber:[Utility getObjectForKey:CURRENTUSERID]]){
                                  *stop = YES;
                                  return YES;
@@ -591,6 +601,7 @@
     cell.timeStampLabel.text = [Utility formatTimeWithDate:item.addedTime];
     cell.brandLabel.text = item.brand;
     [cell.brandLabel sizeToFit];
+    [cell.brandLabel setNeedsLayout];
     //[cell.priceLabel sizeToFit];
     [cell.voteCountLabel sizeToFit];
     return cell;

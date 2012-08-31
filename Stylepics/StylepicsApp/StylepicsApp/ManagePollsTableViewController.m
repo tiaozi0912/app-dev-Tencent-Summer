@@ -101,9 +101,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"User profile's user ID: %@",  _user.userID);
-    self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    //self.navigationItem.titleView = [Utility formatTitleWithString:self.navigationItem.title];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_WITH_LOGO] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
     
     self.editingPolls = [NSMutableArray new];

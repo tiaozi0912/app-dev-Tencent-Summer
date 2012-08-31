@@ -80,6 +80,8 @@
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
     ((CenterButtonTabController*)self.tabBarController).cameraButton.hidden = YES;
+    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

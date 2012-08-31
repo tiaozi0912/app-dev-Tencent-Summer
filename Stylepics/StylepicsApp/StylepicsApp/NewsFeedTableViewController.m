@@ -65,8 +65,6 @@
 
     [super viewDidLoad];
     self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
-    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_COLOR]resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
 
     
     //set UIBarButtonItem background image
@@ -91,12 +89,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:LOGO]];
+    UIImage *navigationBarBackground =[[UIImage imageNamed:NAV_BAR_BACKGROUND_WITH_LOGO] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarBackground forBarMetrics:UIBarMetricsDefault];
+    /*self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:LOGO]];
     self.navigationItem.titleView.contentMode = UIViewContentModeScaleAspectFit;
     CGRect frame = self.navigationItem.titleView.frame;
     frame.size.height = 40;
     frame.size.width = 140;
-    self.navigationItem.titleView.frame = frame;
+    self.navigationItem.titleView.frame = frame;*/
 }
 
 -(void)viewDidAppear:(BOOL)animated{
