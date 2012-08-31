@@ -74,7 +74,7 @@
 {
     UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a picture", @"Choose from existing", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-	[popupQuery showInView:self.view];
+	[popupQuery showFromTabBar:self.tabBar];
 	popupQuery = nil;
 }
 
@@ -166,7 +166,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     AddNewItemController *addNewItemController = [self.storyboard  instantiateViewControllerWithIdentifier:@"add new item VC"];
     addNewItemController.capturedItemImage = image;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:addNewItemController];
+    [nav setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentModalViewController:nav animated:YES];
+    
 }
 
 #pragma mark - UIActionSheetDelegate Methods

@@ -20,18 +20,19 @@
 @synthesize tapHintView = _tapHintView;
 
 @synthesize brandTextField = _brandTextField;
-@synthesize itemImage=_itemImage, priceTextField=_priceTextField, capturedItemImage=_capturedItemImage;
+@synthesize itemImage=_itemImage,capturedItemImage=_capturedItemImage;
+//@synthesize priceTextField=_priceTextField;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     //self.descriptionTextField.delegate= self;
-    self.priceTextField.delegate= self;
+    //self.priceTextField.delegate= self;
     self.brandTextField.delegate = self;
     //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    //self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    self.priceTextField.alpha = 0;
+    //self.priceTextField.alpha = 0;
     self.brandTextField.alpha = 0;
     textboxOn = NO;
 
@@ -73,7 +74,7 @@
     [self setTapHintView:nil];
     [super viewDidUnload];
    // self.descriptionTextField = nil;
-    self.priceTextField = nil;
+    //self.priceTextField = nil;
 
     [AmazonClientManager clearCredentials];
     // Release any retained subviews of the main view.
@@ -109,16 +110,16 @@
     if (textboxOn) {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.brandTextField.alpha = 0;
-            self.priceTextField.alpha = 0;
+            //self.priceTextField.alpha = 0;
             self.tapHintView.alpha = 1;
             
         } completion:nil];
-        [self.priceTextField resignFirstResponder];
+        //[self.priceTextField resignFirstResponder];
         [self.brandTextField resignFirstResponder];
     }else {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.brandTextField.alpha = 1;
-            self.priceTextField.alpha = 1;
+            //self.priceTextField.alpha = 1;
             self.tapHintView.alpha = 0;
             
         } completion:nil];
@@ -177,16 +178,16 @@
     if (textboxOn) {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.brandTextField.alpha = 0;
-            self.priceTextField.alpha = 0;
+            //self.priceTextField.alpha = 0;
             self.tapHintView.alpha = 1;
             
         } completion:nil];
-        [self.priceTextField resignFirstResponder];
+        //[self.priceTextField resignFirstResponder];
         [self.brandTextField resignFirstResponder];
     }else {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.brandTextField.alpha = 1;
-            self.priceTextField.alpha = 1;
+            //self.priceTextField.alpha = 1;
             self.tapHintView.alpha = 0;
             
         } completion:nil];
@@ -200,7 +201,7 @@
 
 -(void)next
 {
-    [self.priceTextField resignFirstResponder];
+    //[self.priceTextField resignFirstResponder];
     [self.brandTextField resignFirstResponder];
     [self performSegueWithIdentifier:@"next" sender:self];
 }
@@ -212,7 +213,7 @@
         AddToPollController* nextVC = (AddToPollController*)(segue.destinationViewController);
         nextVC.item = [Item new];
         nextVC.item.brand = self.brandTextField.text;
-        nextVC.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+        //nextVC.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
         nextVC.capturedItemImage = self.capturedItemImage;
     }
 }

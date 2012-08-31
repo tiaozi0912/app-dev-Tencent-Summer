@@ -11,7 +11,7 @@
 #import "Utility.h"
 #import "NewPollViewController.h"
 
-@interface AddToPollController : UIViewController<RKObjectLoaderDelegate,AmazonServiceRequestDelegate, UIPickerViewDataSource, UIPickerViewDelegate, NewPollViewControllerDelegate>
+@interface AddToPollController : UIViewController<RKObjectLoaderDelegate,AmazonServiceRequestDelegate, UIPickerViewDataSource, UIPickerViewDelegate,NewPollViewControllerDelegate>
 @property (nonatomic, strong) UIImage *capturedItemImage;
 @property (strong, nonatomic) Item *item;
 

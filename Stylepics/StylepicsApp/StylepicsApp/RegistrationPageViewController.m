@@ -11,18 +11,23 @@
 #define EmailField 0
 #define PasswordField 1
 #define PasswordConfirmationField 2
+
+#define OpacityOfDimissButton 0.15
 static NSUInteger kNumberOfPages = 5;
 
 @interface RegistrationPageViewController (){
     User* user;
     BOOL choiceMade;
     BOOL loginMode;
+    UIImageView* tutorialPage;
+    int currentPage;
 }
 - (void)loadScrollViewWithPage:(int)page;
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
 @end
 
 @implementation RegistrationPageViewController
+@synthesize dismissButton = _dismissButton;
 
 @synthesize emailField=_emailField;
 @synthesize passwordField=_passwordField;
@@ -32,7 +37,7 @@ static NSUInteger kNumberOfPages = 5;
 @synthesize loginButton = _loginButton;
 @synthesize background = _background;
 @synthesize scrollView = _scrollView;
-@synthesize pageControl = _pageControl;
+//@synthesize pageControl = _pageControl;
 
 - (void)viewDidLoad
 {
@@ -66,6 +71,7 @@ static NSUInteger kNumberOfPages = 5;
     
     self.loginButton.alpha = 0;
     self.signupButton.alpha = 0;
+    self.dismissButton.alpha = 0;
     [self.spinner startAnimating];
     
     _scrollView.pagingEnabled = YES;
@@ -75,8 +81,9 @@ static NSUInteger kNumberOfPages = 5;
     _scrollView.scrollsToTop = NO;
     _scrollView.delegate = self;
 
-    _pageControl.numberOfPages = kNumberOfPages;
-    _pageControl.currentPage = 0;
+    //_pageControl.numberOfPages = kNumberOfPages;
+    //_pageControl.currentPage = 0;
+    currentPage = 0;
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
     _scrollView.alpha = 0;
@@ -85,10 +92,10 @@ static NSUInteger kNumberOfPages = 5;
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //[Utility setObject:[NSNumber numberWithBool:YES] forKey:NEWUSER];//For testing purpose
-    if ([[Utility getObjectForKey:NEWUSER] boolValue]){
+    //[Utility setObject:nil forKey:IS_OLD_USER];//For testing purpose
+    if (![Utility getObjectForKey:IS_OLD_USER]){
         [self showTutorial];
-        [Utility setObject:[NSNumber numberWithBool:NO] forKey:NEWUSER];
+        [Utility setObject:[NSNumber numberWithBool:YES] forKey:IS_OLD_USER];
     }else if ([Utility getObjectForKey:CURRENTUSERID]){
      [self performSegueWithIdentifier:@"show home" sender:self];
     }
@@ -98,6 +105,15 @@ static NSUInteger kNumberOfPages = 5;
         self.signupButton.alpha = 1;
     } completion:nil];
     [self.spinner stopAnimating];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.emailField.text=nil;
+    self.passwordField.text=nil;
+    self.passwordConfirmationField.text=nil;
+    [super viewDidDisappear:animated];
+    // Release any retained subviews of the main view.
 }
 
 - (void)viewDidUnload
@@ -110,17 +126,9 @@ static NSUInteger kNumberOfPages = 5;
     [self setLoginButton:nil];
     [self setBackground:nil];
     [self setScrollView:nil];
-    [self setPageControl:nil];
+    //[self setPageControl:nil];
+    [self setDismissButton:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    self.emailField.text=nil;
-    self.passwordField.text=nil;
-    self.passwordConfirmationField.text=nil;
-    [super viewDidDisappear:animated];
     // Release any retained subviews of the main view.
 }
 
@@ -136,6 +144,7 @@ static NSUInteger kNumberOfPages = 5;
             self.signupButton.alpha = 0;
             self.emailField.alpha = 1;
             self.passwordField.alpha = 1;
+            self.dismissButton.alpha = OpacityOfDimissButton;
         } completion:^(BOOL success){
             if (success){
                 [self.emailField becomeFirstResponder];
@@ -155,6 +164,7 @@ static NSUInteger kNumberOfPages = 5;
             self.emailField.alpha = 1;
             self.passwordField.alpha = 1;
             self.passwordConfirmationField.alpha = 1;
+            self.dismissButton.alpha = OpacityOfDimissButton;
         } completion:^(BOOL success){
             if (success){
                 [self.emailField becomeFirstResponder];
@@ -179,6 +189,7 @@ static NSUInteger kNumberOfPages = 5;
         self.emailField.alpha = 0;
         self.passwordField.alpha = 0;
         self.passwordConfirmationField.alpha = 0;
+        self.dismissButton.alpha = 0;
     } completion:nil];
     [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationCurveEaseInOut animations:^{
         self.loginButton.alpha = 1;
@@ -263,17 +274,15 @@ static NSUInteger kNumberOfPages = 5;
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
     // signup was successful
     if ([objectLoader wasSentToResourcePath:@"/signup"]){
-        [Utility showAlert:@"Congratulations!" message:@"Welcome to ShopVote!"];
+        [Utility showAlert:@"Congratulations!" message:@"Welcome to MuseMe!"];
         NSLog(@"userID:%@, email:%@, password:%@", user.userID, user.email, user.password);
         [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
         [Utility setObject:user.userID forKey:CURRENTUSERID];
-        [Utility setObject:@"TRUE" forKey:NEWUSER];
         [self performSegueWithIdentifier:@"show home" sender:self];
         
     }else if ([objectLoader wasSentToResourcePath:@"/login"]){
         [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
         [Utility setObject:user.userID forKey:CURRENTUSERID];
-        [Utility setObject:@"FALSE" forKey:NEWUSER];
         [self performSegueWithIdentifier:@"show home" sender:self];
     }
     [self unlockUI];
@@ -341,20 +350,24 @@ static NSUInteger kNumberOfPages = 5;
 
 -(void)endTutorial
 {
-    [UIView animateWithDuration:0 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-        _scrollView.alpha = 0;
-    } completion:^(BOOL success){if (success){[_scrollView removeFromSuperview];}}];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.2];
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(-320, 0);
+    _scrollView.transform = transform;
+    [UIView commitAnimations];
+    
     NSLog(@"tutorial ended");
     
 }
 - (void)loadScrollViewWithPage:(int)page
 {
+
     if (page < 0)
         return;
     if (page >= kNumberOfPages)
         return;
-    
-    UIImageView* tutorialPage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"instruction-page-%d", page]]];
+    tutorialPage = nil;
+    tutorialPage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"instruction-page-%d", page]]];
     CGRect frame = self.scrollView.frame;
     frame.origin.x = frame.size.width * page;
     frame.origin.y = 0;
@@ -366,6 +379,11 @@ static NSUInteger kNumberOfPages = 5;
         endTutorialButton.frame = CGRectMake(frame.origin.x + 69, frame.origin.y + 120, 248, 37);
         [endTutorialButton addTarget:self action:@selector(endTutorial) forControlEvents:UIControlEventTouchDown];
         [self.scrollView addSubview:endTutorialButton];
+    }else{
+        UIButton* nextPageButton= [UIButton buttonWithType:UIButtonTypeCustom];
+        nextPageButton.frame = CGRectMake(frame.origin.x + 276, frame.origin.y + 226, 43, 37);
+        [nextPageButton addTarget:self action:@selector(nextPage) forControlEvents:UIControlEventTouchDown];
+        [self.scrollView addSubview:nextPageButton];
     }
 }
 
@@ -383,8 +401,8 @@ static NSUInteger kNumberOfPages = 5;
     // Switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = _scrollView.frame.size.width;
     int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    _pageControl.currentPage = page;
-    
+   // _pageControl.currentPage = page;
+    currentPage = page;
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
     [self loadScrollViewWithPage:page - 1];
     [self loadScrollViewWithPage:page];
@@ -393,6 +411,21 @@ static NSUInteger kNumberOfPages = 5;
     // A possible optimization would be to unload the views+controllers which are no longer visible
 }
 
+-(void)nextPage
+{
+	NSLog(@"go to the next page");
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+    [self loadScrollViewWithPage:currentPage + 1];
+    [self loadScrollViewWithPage:currentPage + 2];
+    
+	// update the scroll view to the appropriate page
+    currentPage += 1;
+    CGRect frame = _scrollView.frame;
+    frame.origin.x = frame.size.width * currentPage;
+    frame.origin.y = 0;
+    [_scrollView scrollRectToVisible:frame animated:YES];
+    
+}
 // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -405,7 +438,7 @@ static NSUInteger kNumberOfPages = 5;
     pageControlUsed = NO;
 }
 
-- (IBAction)changePage:(id)sender
+/*- (IBAction)changePage:(id)sender
 {
     int page = _pageControl.currentPage;
 	
@@ -422,6 +455,6 @@ static NSUInteger kNumberOfPages = 5;
     
 	// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
     pageControlUsed = YES;
-}
+}*/
 
 @end

@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIControl *background;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-- (IBAction)changePage:(id)sender;
+//@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+//- (IBAction)changePage:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 @end

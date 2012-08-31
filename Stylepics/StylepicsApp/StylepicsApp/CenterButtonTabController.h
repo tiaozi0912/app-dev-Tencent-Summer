@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Utility.h"
+//#import "AddToPollController.h"
 
 @interface CenterButtonTabController : UITabBarController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 @property (nonatomic, weak) UIButton* cameraButton;

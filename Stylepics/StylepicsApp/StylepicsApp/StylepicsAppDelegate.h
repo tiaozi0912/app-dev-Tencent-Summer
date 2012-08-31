@@ -35,7 +35,7 @@
 
 #define IDOfPollToBeShown @"IDOfPollToBeShown"
 #define CURRENTUSERID @"currentUserID"
-#define NEWUSER @"newUser"
+#define IS_OLD_USER @"isOldUser"
 #define SINGLE_ACCESS_TOKEN_KEY @"singleAccessTokenKey"
 
 #define BACKGROUND_COLOR @"BG.png"

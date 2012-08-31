@@ -13,15 +13,21 @@
 #define VOTING 1
 //#define FINISHED 2
 
-#define PollTypeCount 6
+#define PollTypeCount 12
 
 typedef enum{
-    Apparel = 0,
-    Accessory = 1,
-    Food = 2,
-    Electronics = 3,
-    Automotive = 4,
-    Other = 5
+    Art = 0,
+    Automotive = 1,
+    Beauty = 2,
+    Cuteness = 3,
+    Electronics = 4,
+    Events = 5,
+    Fashion = 6,
+    Food = 7,
+    Humor = 8,
+    Media = 9,
+    Travel = 10,
+    Other= 11,
 }PollCategory;
 
 @interface Poll : NSObject

@@ -12,10 +12,11 @@
 @synthesize voteButton = _voteButton;
 @synthesize deleteButton = _deleteButton;
 @synthesize voteCountLabel = _voteCountLabel;
-@synthesize commentCountLabel = _commentCountLabel;
+//@synthesize commentCountLabel = _commentCountLabel;
 @synthesize brandLabel = _brandLabel;
 
-@synthesize itemImage=_itemImage,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel;
+@synthesize itemImage=_itemImage;
+//,descriptionOfItemLabel=_descriptionOfItemLabel,priceLabel=_priceLabel;
 @synthesize timeStampLabel = _timeStampLabel;
 
 

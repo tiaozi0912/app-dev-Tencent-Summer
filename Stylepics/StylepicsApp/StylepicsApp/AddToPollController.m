@@ -7,6 +7,7 @@
 //
 
 #import "AddToPollController.h"
+#import "CenterButtonTabController.h"
 #define PollPicker 0
 //#define CategoryPicker 1
 //#define kOFFSET_FOR_KEYBOARD 216.0
@@ -170,11 +171,9 @@
 }*/
 
 -(void)backWithFlipAnimation{
-    [UIView beginAnimations:@"animation2" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration: 0.7];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
-    [UIView commitAnimations];
+    [Utility setObject:self.item.pollID forKey:IDOfPollToBeShown];
+    id VC = ((UINavigationController*)((CenterButtonTabController*)[self.navigationController presentingViewController]).selectedViewController).topViewController;
+    [VC performSegueWithIdentifier:@"show poll" sender:VC];
     [[self.navigationController presentingViewController] dismissModalViewControllerAnimated:YES];
 }
 

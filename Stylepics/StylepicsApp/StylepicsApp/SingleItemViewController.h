@@ -17,7 +17,7 @@
     BOOL newMedia; 
 }
 //@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
-@property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UITextField *brandTextField;
 @property (weak, nonatomic) IBOutlet HJManagedImageV *itemImageView;
 

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-               BuildableName = "ShopVote.app"
-               BlueprintName = "ShopVote"
+               BuildableName = "Muse Me.app"
+               BlueprintName = "MuseMe"
                ReferencedContainer = "container:StylepicsApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,15 +33,15 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "ShopVote.app"
-            BlueprintName = "ShopVote"
+            BuildableName = "Muse Me.app"
+            BlueprintName = "MuseMe"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
    <LaunchAction
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "ShopVote.app"
-            BlueprintName = "ShopVote"
+            BuildableName = "Muse Me.app"
+            BlueprintName = "MuseMe"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,8 +71,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "ShopVote.app"
-            BlueprintName = "ShopVote"
+            BuildableName = "Muse Me.app"
+            BlueprintName = "MuseMe"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

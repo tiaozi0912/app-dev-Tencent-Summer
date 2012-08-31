@@ -10,8 +10,9 @@
 
 @implementation PollResultCell
 @synthesize brandLabel;
-@synthesize brandPreLabel;
-@synthesize itemImage, priceLabel, numberOfVotesIndicator, numberOfVotesLabel;
+//@synthesize brandPreLabel;
+@synthesize itemImage, numberOfVotesIndicator, numberOfVotesLabel;
+//@synthesize priceLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -24,7 +24,7 @@
 //@synthesize cameraButton = _cameraButton;
 @synthesize singleItemViewOption, item = _item;
 //@synthesize descriptionTextField=_descriptionTextField;
-@synthesize priceTextField=_priceTextField;
+//@synthesize priceTextField=_priceTextField;
 @synthesize capturedImage = _capturedImage;
 @synthesize tapHintImageView = _tapHintImageView;
 
@@ -52,26 +52,26 @@
     [addToPollButton  setBackgroundImage:addToPollButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     self.navigationItem.rightBarButtonItem = addToPollButton;
     
-    NSArray *titles = [[NSArray alloc] initWithObjects:@"Add New Item", @"Edit Item", @"View Item",nil];
+    NSArray *titles = [[NSArray alloc] initWithObjects:@"Add new item", @"Edit item", @"View item",nil];
     self.title = [titles objectAtIndex:singleItemViewOption];
 
     //self.view.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:BACKGROUND_COLOR]];
     self.view.backgroundColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
     
     //self.descriptionTextField.delegate= self;
-    self.priceTextField.delegate= self;
+    //self.priceTextField.delegate= self;
     self.brandTextField.delegate = self;
     //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-    self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+    //self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
     self.brandTextField.alpha = 0;
-    self.priceTextField.alpha = 0;
+    //self.priceTextField.alpha = 0;
     textboxOn = NO;
     
     
     if (!singleItemViewOption == SingleItemViewOptionNew){
         //self.descriptionTextField.text = self.item.description;
-        self.priceTextField.text = [Utility formatCurrencyWithNumber:self.item.price];
+        //self.priceTextField.text = [Utility formatCurrencyWithNumber:self.item.price];
         self.brandTextField.text = self.item.brand;
         self.itemImageView.url = [NSURL URLWithString:self.item.photoURL];
         [HJObjectManager manage:self.itemImageView];
@@ -81,21 +81,21 @@
     if (singleItemViewOption == SingleItemViewOptionView)
     {
         //self.descriptionTextField.enabled = NO;
-        self.priceTextField.enabled = NO;
+        //self.priceTextField.enabled = NO;
         self.brandTextField.enabled = NO;
         //self.descriptionTextField.borderStyle = UITextBorderStyleNone;
-        self.priceTextField.borderStyle = UITextBorderStyleNone;
+        //self.priceTextField.borderStyle = UITextBorderStyleNone;
         self.brandTextField.borderStyle = UITextBorderStyleNone;
         self.tapHintImageView.image = [UIImage imageNamed:TAP_FOR_MORE_INFO];
     }else{
         //self.descriptionTextField.enabled = YES;
-        self.priceTextField.enabled = YES;
+        //self.priceTextField.enabled = YES;
         self.brandTextField.enabled = YES;
         //self.descriptionTextField.borderStyle = UITextBorderStyleRoundedRect;
-        self.priceTextField.borderStyle = UITextBorderStyleRoundedRect;
+        //self.priceTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.brandTextField.borderStyle = UITextBorderStyleRoundedRect;
         //self.descriptionTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
-        self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
+        //self.priceTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
         self.brandTextField.backgroundColor = [UIColor colorWithWhite:1 alpha:0.75];
         self.tapHintImageView.image = [UIImage imageNamed:TAP_TO_ADD_INFO];
     }
@@ -116,7 +116,7 @@
     [self setTapHintImageView:nil];
     [super viewDidUnload];
     //self.descriptionTextField = nil;
-    self.priceTextField = nil;
+    //self.priceTextField = nil;
     photoURL = nil;
     self.item = nil;
     spinner = nil;
@@ -147,7 +147,7 @@
 -(IBAction)done
 {
     //[self.descriptionTextField resignFirstResponder];
-    [self.priceTextField resignFirstResponder];
+    //[self.priceTextField resignFirstResponder];
     [self.brandTextField resignFirstResponder];
     switch (self.singleItemViewOption) {
         case SingleItemViewOptionView:
@@ -156,13 +156,13 @@
         case SingleItemViewOptionEdit:
         {
             //self.item.description = self.descriptionTextField.text;
-            NSString* priceValueString;
+            /*NSString* priceValueString;
             if ([self.priceTextField.text hasPrefix:@"$"]){
                 priceValueString = [self.priceTextField.text substringFromIndex:1];
             }else{
                 priceValueString = self.priceTextField.text;
             }
-            self.item.price = [NSNumber numberWithDouble:[priceValueString doubleValue]];
+            self.item.price = [NSNumber numberWithDouble:[priceValueString doubleValue]];*/
             [[RKObjectManager sharedManager] putObject:self.item delegate:self];
             break;
         }
@@ -192,16 +192,16 @@
     if (textboxOn) {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.brandTextField.alpha = 0;
-            self.priceTextField.alpha = 0;
+            //self.priceTextField.alpha = 0;
             self.tapHintImageView.alpha = 1;
 
         } completion:nil];
-        [self.priceTextField resignFirstResponder];
+        //[self.priceTextField resignFirstResponder];
         [self.brandTextField resignFirstResponder];
     }else {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.brandTextField.alpha = 1;
-            self.priceTextField.alpha = 1;
+            //self.priceTextField.alpha = 1;
             self.tapHintImageView.alpha = 0;
             
         } completion:nil];
@@ -238,7 +238,7 @@
             self.item.photoURL = [IMAGE_HOST_BASE_URL stringByAppendingFormat:@"/%@/%@", ITEM_PHOTOS_BUCKET_NAME, [Utility formatURLFromDateString:imageName]];
             //self.item.description = self.descriptionTextField.text;
             self.item.numberOfVotes = [NSNumber numberWithInt:0];
-            self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
+            //self.item.price = [NSNumber numberWithDouble:[self.priceTextField.text doubleValue]];
             self.item.pollID = [Utility getObjectForKey:IDOfPollToBeShown];
             self.item.brand = self.brandTextField.text;
             [[RKObjectManager sharedManager] putObject:self.item delegate:self];

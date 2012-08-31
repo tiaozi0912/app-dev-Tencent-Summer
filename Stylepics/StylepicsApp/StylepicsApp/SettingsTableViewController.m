@@ -10,6 +10,7 @@
 
 @interface SettingsTableViewController (){
     User* currentUser;
+    BOOL newMedia;
 }
 
 @end
@@ -224,7 +225,7 @@
         imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker
                                 animated:YES];
-        //newMedia = YES;
+        newMedia = YES;
     }
 }
 
@@ -243,7 +244,7 @@
                                   nil];
         imagePicker.allowsEditing = YES;
         [self presentModalViewController:imagePicker animated:YES];
-        //newMedia = NO;
+        newMedia = NO;
     } 
 }
 
@@ -255,12 +256,18 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                            objectForKey:UIImagePickerControllerMediaType];
     [self dismissModalViewControllerAnimated:YES];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *original = [info
-                          objectForKey:UIImagePickerControllerOriginalImage];
-        UIImage *small = [UIImage imageWithCGImage:original.CGImage scale:0.25 orientation:original.imageOrientation];
+        UIImage *cropped = [info
+                          objectForKey:UIImagePickerControllerEditedImage];
+        UIImage *small = [UIImage imageWithCGImage:cropped.CGImage scale:0.25 orientation:cropped.imageOrientation];
         
         self.profilePhoto.image = small;
         [self uploadPhoto];
+        if (newMedia){
+            UIImageWriteToSavedPhotosAlbum(small,
+                                           self,
+                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           nil);
+        }
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
     {
@@ -268,14 +275,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 	}
 }
 
-/*-(void)image:(UIImage *)image
+-(void)image:(UIImage *)image
  finishedSavingWithError:(NSError *)error
  contextInfo:(void *)contextInfo
- {
+{
  if (error) {
  [Utility showAlert:@"Save failed" message:@"Failed to save image"];
  }
- }*/
+}
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {

@@ -145,22 +145,6 @@ double secondsInAYear = 3600*24*365;
 +(NSURL*)URLForCategory:(PollCategory) category;
 {
     NSURL* url;
-    switch (category) {
-        case Accessory: url = [NSURL URLWithString:@""];
-            break;
-        case Apparel:
-            break;
-        case Automotive:
-            break;
-        case Food:
-            break;
-        case Electronics:
-            break;
-        case Other:
-            break;
-        default:
-            break;
-    }
     return url;
 }
 
@@ -168,19 +152,29 @@ double secondsInAYear = 3600*24*365;
 {
     NSString *imageName;
     switch (category) {
-        case Accessory: imageName = @"Accessories.png";
+        case Art: imageName = @"Art";
             break;
-        case Apparel: imageName = @"Apparel.png";
+        case Automotive: imageName = @"Cars";
             break;
-        case Automotive: imageName = @"Automotive.png";
+        case Beauty: imageName = @"Beauty";
             break;
-        case Food: imageName = @"Food.png";
+        case Cuteness: imageName = @"CuteThings";
             break;
-        case Electronics: imageName = @"Electronics.png";
+        case Electronics: imageName = @"Electronics";
             break;
-        case Other: imageName = @"Others.png";
+        case Events: imageName = @"Events";
             break;
-        default:
+        case Fashion: imageName = @"Fashion";
+            break;
+        case Food: imageName = @"Food";
+            break;
+        case Humor: imageName = @"Humor";
+            break;
+        case Media: imageName = @"Media";
+            break;
+        case Travel: imageName = @"Travel";
+            break;
+        default: imageName = @"Other";
             break;
     }
     return [UIImage imageNamed:imageName];
@@ -189,30 +183,48 @@ double secondsInAYear = 3600*24*365;
 +(NSString*)stringFromCategory:(PollCategory) category
 {
     switch (category) {
-        case Accessory: return @"Accessory";
-        case Apparel:return @"Apparel";
-        case Automotive:return @"Automotive";
-        case Food:return @"Food";
-        case Electronics:return @"Electronics";
-        default:return @"Other";
+        case Art: return @"Art";
+        case Automotive: return @"Cars";
+        case Beauty: return @"Beauty";
+        case Cuteness: return @"Cute things";
+        case Electronics: return @"Electronics";
+        case Events: return @"Events";
+        case Fashion: return @"Fashion";
+        case Food: return @"Food";
+        case Humor: return @"Humor";
+        case Media: return @"Media";
+        case Travel: return @"Travel";
+        default: return @"Other";
     }
 }
 
 +(PollCategory)categoryFromString:(NSString*) string
 {
-    if ([string isEqualToString:@"Accessory"]){
-        return Accessory;
-    }else if ([string isEqualToString:@"Apparel"]){
-        return Apparel;
-    }else if ([string isEqualToString:@"Automotive"]){
+    if ([string isEqualToString:@"Art"]){
+        return Art;
+    }else if ([string isEqualToString:@"Cars"]){
         return Automotive;
-    }else if ([string isEqualToString:@"Food"]){
-        return Food;
+    }else if ([string isEqualToString:@"Beauty"]){
+        return Beauty;
+    }else if ([string isEqualToString:@"Cuteness"]){
+        return Cuteness;
     }else if ([string isEqualToString:@"Electronics"]){
         return Electronics;
-    }else {
-        return Other;
+    }else if ([string isEqualToString:@"Events"]){
+        return Events;
+    }else if ([string isEqualToString:@"Fashion"]){
+        return Fashion;
+    }else if ([string isEqualToString:@"Food"]){
+        return Food;
+    }else if ([string isEqualToString:@"Humor"]){
+        return Humor;
+    }else if ([string isEqualToString:@"Media"]){
+        return Media;
+    }else if ([string isEqualToString:@"Travel"]){
+        return Travel;
     }
+    
+    return Other;
 }
 
 + (UIBarButtonItem *)createSquareBarButtonItemWithNormalStateImage:(NSString*)normalStateImage
