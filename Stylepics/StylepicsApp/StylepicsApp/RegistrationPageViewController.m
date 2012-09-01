@@ -13,7 +13,7 @@
 #define PasswordConfirmationField 2
 
 #define OpacityOfDimissButton 0.15
-static NSUInteger kNumberOfPages = 5;
+static NSUInteger kNumberOfPages = 6;
 
 @interface RegistrationPageViewController (){
     User* user;
@@ -28,6 +28,7 @@ static NSUInteger kNumberOfPages = 5;
 
 @implementation RegistrationPageViewController
 @synthesize dismissButton = _dismissButton;
+@synthesize logoImage = _logoImage;
 
 @synthesize emailField=_emailField;
 @synthesize passwordField=_passwordField;
@@ -99,12 +100,22 @@ static NSUInteger kNumberOfPages = 5;
     }else if ([Utility getObjectForKey:CURRENTUSERID]){
      [self performSegueWithIdentifier:@"show home" sender:self];
     }
-    
-    [UIView animateWithDuration:0.5 delay:0.2 options:UIViewAnimationCurveEaseInOut animations:^{
-        self.loginButton.alpha = 1;
-        self.signupButton.alpha = 1;
-    } completion:nil];
     [self.spinner stopAnimating];
+    /*[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.2];
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -216);
+    self.transform = transform;
+    [UIView commitAnimations];*/
+    CGRect frame = self.logoImage.frame;
+    frame.origin.y = 0;
+    [UIView animateWithDuration:2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+        self.logoImage.frame = frame;
+    } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.loginButton.alpha = 1;
+            self.signupButton.alpha = 1;
+        } completion:nil];
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -128,6 +139,7 @@ static NSUInteger kNumberOfPages = 5;
     [self setScrollView:nil];
     //[self setPageControl:nil];
     [self setDismissButton:nil];
+    [self setLogoImage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

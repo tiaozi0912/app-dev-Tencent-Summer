@@ -26,4 +26,5 @@
 //@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 //- (IBAction)changePage:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @end

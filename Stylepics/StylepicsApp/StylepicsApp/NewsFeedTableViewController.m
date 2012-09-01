@@ -228,9 +228,11 @@
     cell.eventDescriptionLabel.text = event.poll.title;
     cell.eventDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
     cell.eventDescriptionLabel.textColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
+    [cell.eventDescriptionLabel sizeToFit];
     [cell.eventDescriptionLabel setNeedsLayout];
+    
     cell.totalVotes.text = [event.poll.totalVotes stringValue];
-    [cell.eventDescriptionLabel setNeedsLayout];
+
     
     /*cell.timeStampLabel.frame = TimeStampLabelFrame;
      cell.userImage.frame = UserImageFrame;
