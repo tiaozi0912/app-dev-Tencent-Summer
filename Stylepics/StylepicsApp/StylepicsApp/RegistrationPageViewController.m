@@ -98,7 +98,18 @@ static NSUInteger kNumberOfPages = 6;
         [self showTutorial];
         [Utility setObject:[NSNumber numberWithBool:YES] forKey:IS_OLD_USER];
     }else if ([Utility getObjectForKey:CURRENTUSERID]){
-     [self performSegueWithIdentifier:@"show home" sender:self];
+        [self performSegueWithIdentifier:@"show home" sender:self];
+    }else{
+        CGRect frame = self.logoImage.frame;
+        frame.origin.y = 0;
+        [UIView animateWithDuration:2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.logoImage.frame = frame;
+        } completion:^(BOOL finished){
+            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+                self.loginButton.alpha = 1;
+                self.signupButton.alpha = 1;
+            } completion:nil];
+        }];
     }
     [self.spinner stopAnimating];
     /*[UIView beginAnimations:nil context:nil];
@@ -106,16 +117,6 @@ static NSUInteger kNumberOfPages = 6;
     CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -216);
     self.transform = transform;
     [UIView commitAnimations];*/
-    CGRect frame = self.logoImage.frame;
-    frame.origin.y = 0;
-    [UIView animateWithDuration:2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-        self.logoImage.frame = frame;
-    } completion:^(BOOL finished){
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-            self.loginButton.alpha = 1;
-            self.signupButton.alpha = 1;
-        } completion:nil];
-    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -286,7 +287,7 @@ static NSUInteger kNumberOfPages = 6;
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
     // signup was successful
     if ([objectLoader wasSentToResourcePath:@"/signup"]){
-        [Utility showAlert:@"Congratulations!" message:@"Welcome to MuseMe!"];
+        [Utility showAlert:@"Congratulations!" message:@"Welcome to Muse Me!"];
         NSLog(@"userID:%@, email:%@, password:%@", user.userID, user.email, user.password);
         [Utility setObject:user.singleAccessToken forKey:SINGLE_ACCESS_TOKEN_KEY];
         [Utility setObject:user.userID forKey:CURRENTUSERID];
@@ -367,9 +368,19 @@ static NSUInteger kNumberOfPages = 6;
     CGAffineTransform transform = CGAffineTransformMakeTranslation(-320, 0);
     _scrollView.transform = transform;
     [UIView commitAnimations];
-    
     NSLog(@"tutorial ended");
     
+
+    CGRect frame = self.logoImage.frame;
+    frame.origin.y = 0;
+    [UIView animateWithDuration:2 delay:0.2 options:UIViewAnimationCurveEaseInOut animations:^{
+        self.logoImage.frame = frame;
+    } completion:^(BOOL finished){
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.loginButton.alpha = 1;
+            self.signupButton.alpha = 1;
+        } completion:nil];
+    }];    
 }
 - (void)loadScrollViewWithPage:(int)page
 {
@@ -386,9 +397,9 @@ static NSUInteger kNumberOfPages = 6;
     tutorialPage.frame = frame;
         
     [self.scrollView addSubview:tutorialPage];
-    if (page == 4){
+    if (page == kNumberOfPages - 1){
         UIButton* endTutorialButton= [UIButton buttonWithType:UIButtonTypeCustom];
-        endTutorialButton.frame = CGRectMake(frame.origin.x + 69, frame.origin.y + 120, 248, 37);
+        endTutorialButton.frame = CGRectMake(frame.origin.x + 50, frame.origin.y + 106, 224, 61);
         [endTutorialButton addTarget:self action:@selector(endTutorial) forControlEvents:UIControlEventTouchDown];
         [self.scrollView addSubview:endTutorialButton];
     }else{

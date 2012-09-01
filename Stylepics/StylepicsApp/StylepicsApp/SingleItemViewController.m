@@ -45,7 +45,6 @@
     //[backButton  setBackgroundImage:backButtonPressedImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
     self.navigationItem.leftBarButtonItem = backButton;
     
-    
     UIImage *addToPollButtonImage = [[UIImage imageNamed:NAV_BAR_BUTTON_BG] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)]; 
     //UIImage *backButtonPressedImage = [UIImage imageNamed:NAV_BAR_BUTTON_BG_HL]; 
     UIBarButtonItem *addToPollButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(done)];
@@ -286,6 +285,10 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return (newLength > MAX_CHARACTER_NUMBER_FOR_ITEM_DESCRIPTION) ? NO : YES;
+}
 
 /*- (void)textFieldDidBeginEditing:(UITextField *)textField
 {

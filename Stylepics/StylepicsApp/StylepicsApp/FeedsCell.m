@@ -17,6 +17,8 @@
 @synthesize usernameAndActionLabel;
 @synthesize totalVotes;
 @synthesize picContainerImageView;
+@synthesize picContainer;
+@synthesize seperator;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

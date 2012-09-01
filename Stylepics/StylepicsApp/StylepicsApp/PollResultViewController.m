@@ -122,7 +122,7 @@
     //cell.brandPreLabel.hidden = YES;
     /*if (item.brand.length > 0) {*/
     cell.brandLabel.text = item.brand;
-    [cell.brandLabel sizeToFit];
+    [cell.brandLabel adjustHeight];
         //cell.brandPreLabel.hidden = NO;
     //}
     cell.numberOfVotesIndicator.progress = item.numberOfVotes.floatValue/self.poll.totalVotes.floatValue;

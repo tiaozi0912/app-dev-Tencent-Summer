@@ -151,7 +151,10 @@
     return YES;
 }
 
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return (newLength > MAX_CHARACTER_NUMBER_FOR_ITEM_DESCRIPTION) ? NO : YES;
+}
 /*- (void)textFieldDidBeginEditing:(UITextField *)textField
  {
  if (textField == self.priceTextField) {

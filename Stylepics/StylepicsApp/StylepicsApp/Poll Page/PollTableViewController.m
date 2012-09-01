@@ -600,10 +600,9 @@
     
     cell.timeStampLabel.text = [Utility formatTimeWithDate:item.addedTime];
     cell.brandLabel.text = item.brand;
-    [cell.brandLabel sizeToFit];
-    [cell.brandLabel setNeedsLayout];
+    [cell.brandLabel adjustHeight];
     //[cell.priceLabel sizeToFit];
-    [cell.voteCountLabel sizeToFit];
+    [cell.voteCountLabel adjustHeight];
     return cell;
 }
 

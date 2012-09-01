@@ -14,6 +14,7 @@
 
 
 #define ROWHEIGHT 400
+#define CELL_BOTTOM_MARGIN 10
 
 #define TimeStampLabelFrame CGRectMake(48,9,74,9)
 #define UserImageFrame CGRectMake(5,9,40,40)
@@ -177,8 +178,12 @@
     [Utility renderView:cell.userImage withCornerRadius:SMALL_CORNER_RADIUS andBorderWidth:SMALL_BORDER_WIDTH ];
     
     cell.userImage.image = [UIImage imageNamed:DEFAULT_USER_PROFILE_PHOTO_SMALL];
-    cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
-    [HJObjectManager manage:cell.userImage];
+    if (event.user.profilePhotoURL){
+        [cell.userImage clear];
+        [cell.userImage showLoadingWheel];
+        cell.userImage.url = [NSURL URLWithString:event.user.profilePhotoURL];
+        [HJObjectManager manage:cell.userImage];
+    }
 
     
     if (event.items.count == 2) {
@@ -228,12 +233,17 @@
     cell.eventDescriptionLabel.text = event.poll.title;
     cell.eventDescriptionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14.0];
     cell.eventDescriptionLabel.textColor = [Utility colorFromKuler:KULER_BLACK alpha:1];
-    [cell.eventDescriptionLabel sizeToFit];
-    [cell.eventDescriptionLabel setNeedsLayout];
+    [cell.eventDescriptionLabel adjustHeight];
     
     cell.totalVotes.text = [event.poll.totalVotes stringValue];
 
+    CGRect frame = cell.picContainer.frame;
+    frame.origin.y = cell.eventDescriptionLabel.frame.origin.y + cell.eventDescriptionLabel.frame.size.height + 13;
+    cell.picContainer.frame = frame;
     
+    frame = cell.seperator.frame;
+    frame.origin.y = cell.picContainer.frame.origin.y + cell.picContainer.frame.size.height + 11;
+    cell.seperator.frame = frame;
     /*cell.timeStampLabel.frame = TimeStampLabelFrame;
      cell.userImage.frame = UserImageFrame;
      cell.usernameAndActionLabel.frame = UsernameAndActionLabelFrame;
@@ -248,7 +258,9 @@
 //Set up cell height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ROWHEIGHT;
+    CGFloat charCount = [((Event*)[self.events objectAtIndex:indexPath.row]).poll.title length];
+    CGFloat delta = floor(charCount/ 30) *20;
+    return ROWHEIGHT + delta;
 }
 
 

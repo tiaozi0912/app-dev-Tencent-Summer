@@ -23,6 +23,7 @@
 #import "AnimatedPickerView.h"
 #import "CenterButtonTabController.h"
 #import "MultipartLabel.h"
+#import "UILabel+UILabel_Auto.h"
 #import <Quartzcore/Quartzcore.h>
 //#import <FacebookSDK/FacebookSDK.h>
 
@@ -79,6 +80,9 @@
 #define EMPTY_POLL_HINT @"add-new-items"
 #define TAP_TO_ADD_INFO @"tap-to-add"
 #define TAP_FOR_MORE_INFO @"tap-for-more-info"
+
+#define MAX_CHARACTER_NUMBER_FOR_ITEM_DESCRIPTION 33
+#define MAX_CHARACTER_NUMBER_FOR_POLL_DESCRIPTION 90
 
 #define SMALL_CORNER_RADIUS 2
 #define SMALL_BORDER_WIDTH 2
