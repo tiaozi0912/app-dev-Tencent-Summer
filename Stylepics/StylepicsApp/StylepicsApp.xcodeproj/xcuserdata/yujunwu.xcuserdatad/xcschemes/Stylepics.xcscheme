@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-               BuildableName = "ShopVote.app"
-               BlueprintName = "ShopVote"
+               BuildableName = "Muse Me.app"
+               BlueprintName = "MuseMe"
                ReferencedContainer = "container:StylepicsApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "ShopVote.app"
-            BlueprintName = "ShopVote"
+            BuildableName = "Muse Me.app"
+            BlueprintName = "MuseMe"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "ShopVote.app"
-            BlueprintName = "ShopVote"
+            BuildableName = "Muse Me.app"
+            BlueprintName = "MuseMe"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
-            BuildableName = "ShopVote.app"
-            BlueprintName = "ShopVote"
+            BuildableName = "Muse Me.app"
+            BlueprintName = "MuseMe"
             ReferencedContainer = "container:StylepicsApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
