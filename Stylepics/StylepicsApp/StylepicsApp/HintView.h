@@ -1,6 +1,6 @@
 //
 //  HintView.h
-//  StylepicsApp
+//  MuseMe
 //
 //  Created by Yong Lin on 8/11/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.

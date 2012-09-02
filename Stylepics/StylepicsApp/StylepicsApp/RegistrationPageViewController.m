@@ -1,6 +1,6 @@
 //
 //  RegistrationPageViewController.m
-//  StylepicsApp
+//  MuseMe
 //
 //  Created by Yong Lin on 7/10/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
@@ -100,16 +100,7 @@ static NSUInteger kNumberOfPages = 6;
     }else if ([Utility getObjectForKey:CURRENTUSERID]){
         [self performSegueWithIdentifier:@"show home" sender:self];
     }else{
-        CGRect frame = self.logoImage.frame;
-        frame.origin.y = 0;
-        [UIView animateWithDuration:2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-            self.logoImage.frame = frame;
-        } completion:^(BOOL finished){
-            [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-                self.loginButton.alpha = 1;
-                self.signupButton.alpha = 1;
-            } completion:nil];
-        }];
+        [self animateOpening];
     }
     [self.spinner stopAnimating];
     /*[UIView beginAnimations:nil context:nil];
@@ -117,6 +108,37 @@ static NSUInteger kNumberOfPages = 6;
     CGAffineTransform transform = CGAffineTransformMakeTranslation(0, -216);
     self.transform = transform;
     [UIView commitAnimations];*/
+}
+
+-(void)animateOpening
+{
+    CGRect frame = CGRectMake(65, 175, 196, 73);
+    self.logoImage.frame = frame;
+    self.logoImage.image = [UIImage imageNamed:LOGO_IN_LANDING_PAGE];
+    frame.origin.y = 125;
+    CGFloat transitionDuration = 0.8;
+    [UIView animateWithDuration:transitionDuration delay:0 options:UIViewAnimationCurveEaseIn animations:^{
+        self.logoImage.frame = frame;
+        self.logoImage.alpha = 0;
+    } completion:^(BOOL finished){
+        CGRect frame1 = self.logoImage.frame;
+        frame1.origin.y = 50;
+        self.logoImage.frame = frame1;
+        frame1.origin.y = 0;
+        [UIView animateWithDuration:transitionDuration delay:0 options:UIViewAnimationCurveEaseOut animations:^{
+            self.logoImage.frame = frame1;
+            self.logoImage.alpha = 1;
+        } completion:^(BOOL finished){
+            self.logoImage.image = [UIImage imageNamed:LOGO_IN_LANDING_PAGE_GLOW];
+        }];
+    }];
+    
+    
+    
+    [UIView animateWithDuration:0.5 delay:transitionDuration*2 options:UIViewAnimationCurveEaseInOut animations:^{
+        self.loginButton.alpha = 1;
+        self.signupButton.alpha = 1;
+    } completion:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -158,11 +180,8 @@ static NSUInteger kNumberOfPages = 6;
             self.emailField.alpha = 1;
             self.passwordField.alpha = 1;
             self.dismissButton.alpha = OpacityOfDimissButton;
-        } completion:^(BOOL success){
-            if (success){
-                [self.emailField becomeFirstResponder];
-            }
-        }];
+        } completion:nil];
+        [self.emailField becomeFirstResponder];
     }
 }
 
@@ -172,17 +191,14 @@ static NSUInteger kNumberOfPages = 6;
     }else{
         loginMode = NO;
         choiceMade = YES;
-        [UIView animateWithDuration:1 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.loginButton.alpha = 0;
             self.emailField.alpha = 1;
             self.passwordField.alpha = 1;
             self.passwordConfirmationField.alpha = 1;
             self.dismissButton.alpha = OpacityOfDimissButton;
-        } completion:^(BOOL success){
-            if (success){
-                [self.emailField becomeFirstResponder];
-            }
-        }];
+        } completion:nil];
+        [self.emailField becomeFirstResponder];
     }
 }
 
@@ -204,7 +220,7 @@ static NSUInteger kNumberOfPages = 6;
         self.passwordConfirmationField.alpha = 0;
         self.dismissButton.alpha = 0;
     } completion:nil];
-    [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
         self.loginButton.alpha = 1;
         self.signupButton.alpha = 1;
     } completion:nil];
@@ -370,17 +386,7 @@ static NSUInteger kNumberOfPages = 6;
     [UIView commitAnimations];
     NSLog(@"tutorial ended");
     
-
-    CGRect frame = self.logoImage.frame;
-    frame.origin.y = 0;
-    [UIView animateWithDuration:2 delay:0.2 options:UIViewAnimationCurveEaseInOut animations:^{
-        self.logoImage.frame = frame;
-    } completion:^(BOOL finished){
-        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-            self.loginButton.alpha = 1;
-            self.signupButton.alpha = 1;
-        } completion:nil];
-    }];    
+    [self animateOpening];
 }
 - (void)loadScrollViewWithPage:(int)page
 {

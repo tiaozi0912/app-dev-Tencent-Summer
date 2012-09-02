@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'StylepicsApp' target in the 'StylepicsApp' project
+// Prefix header for all source files of the 'MuseMe' target in the 'MuseMe' project
 //
 
 #import <Availability.h>

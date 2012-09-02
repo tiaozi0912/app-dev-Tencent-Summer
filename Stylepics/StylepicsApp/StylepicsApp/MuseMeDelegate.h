@@ -1,6 +1,6 @@
 //
-//  StylepicsAppDelegate.h
-//  StylepicsApp
+//  MuseMeDelegate.h
+//  MuseMe
 //
 //  Created by Yong Lin on 7/6/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
@@ -43,6 +43,8 @@
 #define NAV_BAR_BACKGROUND_COLOR @"header_bg.png"
 #define NAV_BAR_BACKGROUND_WITH_LOGO @"header_with_logo"
 #define LOGO @"Logo"
+#define LOGO_IN_LANDING_PAGE @"LogoInLandingPage"
+#define LOGO_IN_LANDING_PAGE_GLOW @"LogoInLandingPageGlowing"
 #define TAB_BAR_BG @"tab_bar_bg"
 #define FEEDS_ICON @"feeds-icon"
 #define FEEDS_ICON_HL @"feeds-icon-hl"
@@ -100,7 +102,7 @@ typedef enum{
 
 HJObjManager *HJObjectManager;
 
-@interface StylepicsAppDelegate : UIResponder 
+@interface MuseMeDelegate : UIResponder 
 
 @property (strong, nonatomic) UIWindow *window;
 

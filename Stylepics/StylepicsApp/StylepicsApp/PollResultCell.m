@@ -1,6 +1,6 @@
 //
 //  PollResultCell.m
-//  StylepicsApp
+//  MuseMe
 //
 //  Created by Yong Lin on 7/17/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.

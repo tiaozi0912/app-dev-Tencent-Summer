@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RKJSONParserJSONKit.h>
-#import "StylepicsAppDelegate.h" 
+#import "MuseMeDelegate.h" 
 
 @interface Utility : NSObject
 {
