@@ -17,7 +17,7 @@
                BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
                BuildableName = "Muse Me.app"
                BlueprintName = "MuseMe"
-               ReferencedContainer = "container:StylepicsApp.xcodeproj">
+               ReferencedContainer = "container:MuseMe.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
             BuildableName = "Muse Me.app"
             BlueprintName = "MuseMe"
-            ReferencedContainer = "container:StylepicsApp.xcodeproj">
+            ReferencedContainer = "container:MuseMe.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
             BuildableName = "Muse Me.app"
             BlueprintName = "MuseMe"
-            ReferencedContainer = "container:StylepicsApp.xcodeproj">
+            ReferencedContainer = "container:MuseMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -73,7 +73,7 @@
             BlueprintIdentifier = "0D94F4E315A7D09700903F0B"
             BuildableName = "Muse Me.app"
             BlueprintName = "MuseMe"
-            ReferencedContainer = "container:StylepicsApp.xcodeproj">
+            ReferencedContainer = "container:MuseMe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

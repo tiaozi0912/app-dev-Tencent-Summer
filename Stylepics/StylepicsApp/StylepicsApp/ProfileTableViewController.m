@@ -1,12 +1,12 @@
 //
-//  ManagePollsTableViewController.m
+//  ProfileTableViewController.m
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/13/12.
 //  Copyright (c) 2012 Stanford University. All rights reserved.
 //
 
-#import "ManagePollsTableViewController.h"
+#import "ProfileTableViewController.h"
 #define EDITING_POLL_CELL_HEIGHT 65
 #define OPENED_POLL_CELL_HEIGHT 65
 #define VOTED_POLL_CELL_HEIGHT 65
@@ -14,7 +14,7 @@
 #define ContentTypeOpenedPoll 1
 #define ContentTypeVotedPoll 2
 
-@interface ManagePollsTableViewController (){
+@interface ProfileTableViewController (){
     int ContentType;
     BOOL isOwnProfile;
 }
@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *editingPolls, *openedPolls, *votedPolls;
 @end
 
-@implementation ManagePollsTableViewController
+@implementation ProfileTableViewController
 @synthesize userPhoto;
 @synthesize usernameLabel;
 @synthesize user = _user;

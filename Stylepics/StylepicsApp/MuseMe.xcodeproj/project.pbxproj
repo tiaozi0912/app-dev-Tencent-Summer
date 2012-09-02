@@ -88,7 +88,7 @@
 		0D94F51B15A7EBAB00903F0B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D94F51A15A7EBAB00903F0B /* MobileCoreServices.framework */; };
 		0D94F51E15A7FCEB00903F0B /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */; };
 		0D957D2215B0DC37009D37AA /* comments icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D957D2115B0DC37009D37AA /* comments icon.png */; };
-		0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */; };
+		0D957D2515B0E09C009D37AA /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D957D2415B0E09B009D37AA /* ProfileTableViewController.m */; };
 		0D96665E15AB9DEB00753491 /* comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D96665D15AB9DEA00753491 /* comment.m */; };
 		0D98F3E215C0B2B20046423C /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3D715C0B2070046423C /* libRestKit.a */; };
 		0D98F3E415C0B2EE0046423C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D98F3E315C0B2EE0046423C /* CFNetwork.framework */; };
@@ -325,10 +325,10 @@
 		0D94F4E815A7D09700903F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D94F4EA15A7D09700903F0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D94F4EC15A7D09700903F0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		0D94F4F015A7D09700903F0B /* StylepicsApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StylepicsApp-Info.plist"; sourceTree = "<group>"; };
+		0D94F4F015A7D09700903F0B /* MuseMe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MuseMe-Info.plist"; sourceTree = "<group>"; };
 		0D94F4F215A7D09700903F0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0D94F4F415A7D09700903F0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0D94F4F615A7D09700903F0B /* StylepicsApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StylepicsApp-Prefix.pch"; sourceTree = "<group>"; };
+		0D94F4F615A7D09700903F0B /* MuseMe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuseMe-Prefix.pch"; sourceTree = "<group>"; };
 		0D94F4F715A7D09700903F0B /* StylepicsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StylepicsAppDelegate.h; sourceTree = "<group>"; };
 		0D94F4F815A7D09700903F0B /* StylepicsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StylepicsAppDelegate.m; sourceTree = "<group>"; };
 		0D94F4FB15A7D09700903F0B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -344,8 +344,8 @@
 		0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
 		0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0D957D2115B0DC37009D37AA /* comments icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "comments icon.png"; path = "img/comments icon.png"; sourceTree = "<group>"; };
-		0D957D2315B0E09B009D37AA /* ManagePollsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagePollsTableViewController.h; sourceTree = "<group>"; };
-		0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagePollsTableViewController.m; sourceTree = "<group>"; };
+		0D957D2315B0E09B009D37AA /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
+		0D957D2415B0E09B009D37AA /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
 		0D96665C15AB9DEA00753491 /* comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comment.h; sourceTree = "<group>"; };
 		0D96665D15AB9DEA00753491 /* comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = comment.m; sourceTree = "<group>"; };
 		0D98F3CB15C0B2060046423C /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = "RestKit-RestKit-6540552/RestKit.xcodeproj"; sourceTree = "<group>"; };
@@ -722,8 +722,8 @@
 				0D91EE5A15AD4BD300D1015D /* RegistrationPageViewController.m */,
 				0D94F51C15A7FCEA00903F0B /* NewsFeedTableViewController.h */,
 				0D94F51D15A7FCEB00903F0B /* NewsFeedTableViewController.m */,
-				0D957D2315B0E09B009D37AA /* ManagePollsTableViewController.h */,
-				0D957D2415B0E09B009D37AA /* ManagePollsTableViewController.m */,
+				0D957D2315B0E09B009D37AA /* ProfileTableViewController.h */,
+				0D957D2415B0E09B009D37AA /* ProfileTableViewController.m */,
 				0D9DDAEC15D3100A008D27AB /* SettingsTableViewController.h */,
 				0D9DDAED15D3100A008D27AB /* SettingsTableViewController.m */,
 				0D94F51415A7D30700903F0B /* NewPollViewController.h */,
@@ -803,10 +803,10 @@
 			isa = PBXGroup;
 			children = (
 				0D99436415AEB9340037194D /* stylepics.db */,
-				0D94F4F015A7D09700903F0B /* StylepicsApp-Info.plist */,
+				0D94F4F015A7D09700903F0B /* MuseMe-Info.plist */,
 				0D94F4F115A7D09700903F0B /* InfoPlist.strings */,
 				0D94F4F415A7D09700903F0B /* main.m */,
-				0D94F4F615A7D09700903F0B /* StylepicsApp-Prefix.pch */,
+				0D94F4F615A7D09700903F0B /* MuseMe-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -965,7 +965,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Stanford University";
 			};
-			buildConfigurationList = 0D94F4DE15A7D09700903F0B /* Build configuration list for PBXProject "StylepicsApp" */;
+			buildConfigurationList = 0D94F4DE15A7D09700903F0B /* Build configuration list for PBXProject "MuseMe" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1181,7 +1181,7 @@
 				0D99436315AEB1590037194D /* Utility.m in Sources */,
 				0D8FA19915AF7606003011A0 /* PollItemCell.m in Sources */,
 				0D8FA19A15AF7606003011A0 /* PollTableViewController.m in Sources */,
-				0D957D2515B0E09C009D37AA /* ManagePollsTableViewController.m in Sources */,
+				0D957D2515B0E09C009D37AA /* ProfileTableViewController.m in Sources */,
 				0D9EFC3615B3E502002180F1 /* SingleItemViewController.m in Sources */,
 				0D8F49D315B605CF00C2DAEF /* PollResultViewController.m in Sources */,
 				0D8F49D615B6065A00C2DAEF /* PollResultCell.m in Sources */,
@@ -1312,9 +1312,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "StylepicsApp/StylepicsApp-Prefix.pch";
+				GCC_PREFIX_HEADER = "StylepicsApp/MuseMe-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				INFOPLIST_FILE = "StylepicsApp/StylepicsApp-Info.plist";
+				INFOPLIST_FILE = "StylepicsApp/MuseMe-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1340,9 +1340,9 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "StylepicsApp/StylepicsApp-Prefix.pch";
+				GCC_PREFIX_HEADER = "StylepicsApp/MuseMe-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
-				INFOPLIST_FILE = "StylepicsApp/StylepicsApp-Info.plist";
+				INFOPLIST_FILE = "StylepicsApp/MuseMe-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1358,7 +1358,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D94F4DE15A7D09700903F0B /* Build configuration list for PBXProject "StylepicsApp" */ = {
+		0D94F4DE15A7D09700903F0B /* Build configuration list for PBXProject "MuseMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D94F50015A7D09700903F0B /* Debug */,

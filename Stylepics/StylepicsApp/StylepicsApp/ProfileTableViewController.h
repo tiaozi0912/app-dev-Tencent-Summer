@@ -1,5 +1,5 @@
 //
-//  ManagePollsTableViewController.h
+//  ProfileTableViewController.h
 //  StylepicsApp
 //
 //  Created by Yong Lin on 7/13/12.
@@ -13,7 +13,7 @@
 #import "Utility.h"
 #import "NewPollViewController.h"
 
-@interface ManagePollsTableViewController : UITableViewController<RKObjectLoaderDelegate>
+@interface ProfileTableViewController : UITableViewController<RKObjectLoaderDelegate>
 
 @property (weak, nonatomic) IBOutlet HJManagedImageV *userPhoto;
 @property (weak, nonatomic) IBOutlet AppFormattedLabel *usernameLabel;

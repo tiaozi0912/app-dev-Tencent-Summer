@@ -9,7 +9,7 @@
 #import "NewsFeedTableViewController.h"
 #import "AddNewItemController.h"
 #import "Utility.h"
-#import "ManagePollsTableViewController.h"
+#import "ProfileTableViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -307,7 +307,7 @@ forRowAtIndexPath: (NSIndexPath*)indexPath{
         ((NewPollViewController*)(segue.destinationViewController)).delegate = self;
     }else if ([segue.identifier isEqualToString:@"show profile"])
     {
-        ((ManagePollsTableViewController*)segue.destinationViewController).user = userToBePassed;
+        ((ProfileTableViewController*)segue.destinationViewController).user = userToBePassed;
     }
     
 }
