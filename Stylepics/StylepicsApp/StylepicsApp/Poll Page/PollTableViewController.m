@@ -407,7 +407,7 @@
         if (votingState) votingState = NO;
         isOwnerView = [[Utility getObjectForKey:CURRENTUSERID] isEqualToNumber:self.poll.user.userID];
         
-        if (isOwnerView && self.poll.state == EDITING && !openPollHintHasShown)
+        if (isOwnerView && self.poll.state.intValue == EDITING && !openPollHintHasShown)
         {
             openPollHintHasShown = YES;
             [UIView animateWithDuration:1
